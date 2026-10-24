@@ -24,6 +24,7 @@ jobs:
       - uses: typst-community/setup-typst@v4
         with:
           typst-version: 0.15.1
+      - run: pip install pypdf
       - run: python3 build.py
       - uses: actions/upload-pages-artifact@v3
         with:

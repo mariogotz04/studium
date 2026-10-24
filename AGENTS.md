@@ -26,7 +26,7 @@ Vorher prüfen, dass das Skript fehlerfrei kompiliert, falls `typst` installiert
   Alte Stände, Sicherungen oder Kopien (auch in anderen Ordnern) werden nie hochgeladen.
   Die Seite zeigt je Modul: Modulname (Ordnername) · Lernskript · Stand. Der Stand kommt aus der Zeile
   „Stand TT.MM.JJJJ“ im Kopf von `main.typ`; diese also bei jeder Änderung aktualisieren.
-  Die PDF heißt beim Download z. B. `FET_Lernskript_Stand_24.10.2026.pdf`.
+  Die PDF heißt beim Download z. B. `FET Lernskript Stand 24.10.2026.pdf`.
 - Nie hochgeladen werden: `Zum Löschen/`, `Unterlagen/`, `Sonstiges/`, `Physik Praktikum/` und dieser Ordner.
 - Ein neues Modul erscheint automatisch, sobald es `Lernskript aktuell/Typst-Dateien/main.typ` hat.
 

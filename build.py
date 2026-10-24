@@ -9,7 +9,6 @@ import re
 import shutil
 import subprocess
 import sys
-import unicodedata
 from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -21,12 +20,16 @@ TEMPLATE = ROOT / "vorlage.html"
 BERLIN = ZoneInfo("Europe/Berlin")
 
 
-def dateiname(text):
-    """Modulname für Dateinamen: Umlaute umschreiben, Leer- und Sonderzeichen zu _."""
-    for a, b in {"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "Ae", "Ö": "Oe", "Ü": "Ue", "ß": "ss"}.items():
-        text = text.replace(a, b)
-    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
-    return re.sub(r"[^A-Za-z0-9]+", "_", text).strip("_") or "Modul"
+def titel_setzen(pdf, titel):
+    """PDF-Titel (wird im Viewer und beim Speichern angezeigt) auf den Dateinamen setzen."""
+    try:
+        from pypdf import PdfReader, PdfWriter
+    except ImportError:
+        return
+    writer = PdfWriter(clone_from=PdfReader(pdf))
+    writer.add_metadata({"/Title": titel})
+    with open(pdf, "wb") as f:
+        writer.write(f)
 
 
 def find_entrypoints():
@@ -72,8 +75,8 @@ def main():
         rel = typ.relative_to(SRC)
         module = rel.parts[0]
         datum = stand(typ)
-        name = f"{dateiname(module)}_Lernskript_Stand_{datum:%d.%m.%Y}.pdf"
-        pdf = OUT / "pdf" / name
+        name = f"{module} Lernskript Stand {datum:%d.%m.%Y}"
+        pdf = OUT / "pdf" / f"{name}.pdf"
         print(f"→ {rel}")
         result = subprocess.run(["typst", "compile", "--root", str(typ.parent), str(typ), str(pdf)],
                                 capture_output=True, text=True)
@@ -81,10 +84,11 @@ def main():
             print(result.stderr, file=sys.stderr)
             failed.append(str(rel))
             continue
+        titel_setzen(pdf, name)
         modules.append({
             "name": module,
             "title": doc_title(typ),
-            "file": f"pdf/{name}",
+            "file": f"pdf/{name}.pdf",
             "pages": page_count(pdf),
             "size": pdf.stat().st_size,
             "updated": datum.isoformat(),
