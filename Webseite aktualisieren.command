@@ -1,20 +1,30 @@
 #!/bin/bash
-# Lädt die aktuellen Typst-Lernskripte aus dem Uni-Ordner auf die Webseite hoch.
-# Doppelklick genügt. Die PDFs werden danach auf GitHub automatisch erzeugt (dauert 1–3 Minuten).
+# Lädt die aktuellen Typst-Lernskripte und die Webseite aus dem Uni-Ordner auf GitHub hoch.
+# Doppelklick genügt, oder im Terminal / von Codex: bash "Uni/Webseite/Webseite aktualisieren.command"
+# Die PDFs werden danach auf GitHub automatisch erzeugt (dauert 1–3 Minuten).
 
 GITHUB_REPO="mariogotz04/studium"
 WEBSEITE="https://mariogotz04.github.io/studium/"
-ARBEITSKOPIE="$HOME/Studium-Webseite"
+ARBEITSKOPIE="$HOME/Studium-Webseite"   # Git-Kopie bewusst außerhalb von iCloud
 
 # Ordner mit diesen Namen werden nie hochgeladen (* statt Umlaut, weil macOS Umlaute
 # unterschiedlich speichern kann).
-AUSSCHLIESSEN=("Zum L*schen" "Unterlagen" "Sonstiges")
+AUSSCHLIESSEN=("Zum L*schen" "Unterlagen" "Sonstiges" "Physik Praktikum" "Webseite")
+
+# Diese Dateien aus Uni/Webseite gehören zur Seite selbst und werden mit hochgeladen.
+SEITENDATEIEN=("vorlage.html" "build.py" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command")
 
 set -e
-UNI="$(cd "$(dirname "$0")" && pwd)"
+SEITE="$(cd "$(dirname "$0")" && pwd)"
+UNI="$(dirname "$SEITE")"
 cd "$HOME"
 
-fertig() { echo; read -n 1 -s -r -p "Taste drücken zum Schließen …"; echo; exit "${1:-0}"; }
+# Ohne Terminal (z. B. Codex) nicht auf Tastendruck warten.
+interaktiv() { [ -t 0 ] && [ -t 1 ]; }
+fertig() {
+  if interaktiv; then echo; read -n 1 -s -r -p "Taste drücken zum Schließen …"; echo; fi
+  exit "${1:-0}"
+}
 trap 'echo; echo "❌ Da ist etwas schiefgelaufen (siehe oben)."; fertig 1' ERR
 
 if ! command -v git >/dev/null; then
@@ -30,12 +40,16 @@ fi
 cd "$ARBEITSKOPIE"
 git pull --quiet --rebase
 
+for datei in "${SEITENDATEIEN[@]}"; do
+  if [ -e "$SEITE/$datei" ]; then rm -rf "./$datei"; cp -Rp "$SEITE/$datei" "./$datei"; fi
+done
+
 # Alles neu aufbauen, damit gelöschte oder umbenannte Skripte auch online verschwinden.
 rm -rf skripte
 mkdir skripte
 
 ausschluss=()
-for name in "${AUSSCHLIESSEN[@]}"; do ausschluss+=(-not -path "*/$name/*"); done
+for name in "${AUSSCHLIESSEN[@]}"; do ausschluss+=(-not -path "$UNI/$name/*" -not -path "*/$name/*"); done
 
 echo "Suche Typst-Skripte in $UNI …"
 find "$UNI" -name "*.typ" "${ausschluss[@]}" -not -path "*/.*" -print0 |
@@ -67,5 +81,5 @@ git push --quiet
 echo
 echo "✅ Hochgeladen. In 1–3 Minuten sind die neuen PDFs hier:"
 echo "   $WEBSEITE"
-open "https://github.com/$GITHUB_REPO/actions" 2>/dev/null || true
+interaktiv && open "https://github.com/$GITHUB_REPO/actions" 2>/dev/null || true
 fertig 0
