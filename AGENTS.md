@@ -30,7 +30,7 @@ Vorher prüfen, dass das Skript fehlerfrei kompiliert, falls `typst` installiert
 
 - `vorlage.html` – Aussehen der Seite (die Daten werden bei `/*DATA*/null` eingesetzt).
 - `build.py` – kompiliert die Skripte und baut die Seite (läuft auf GitHub).
-- `.github/workflows/webseite.yml` – GitHub Action für Build und Veröffentlichung.
+- Die GitHub Action (`.github/workflows/webseite.yml`) liegt nur im Repository auf GitHub, nicht hier.
 - `Webseite aktualisieren.command` – Upload (Doppelklick oder `bash`).
 
 Änderungen an diesen Dateien werden ebenfalls mit dem Upload-Skript veröffentlicht.
