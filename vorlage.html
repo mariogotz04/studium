@@ -67,10 +67,26 @@ function render(query) {
     .map(m => `<div class="script"><div><div class="title">${esc(m.name)}</div>
       <div class="sub">Lernskript · <span class="stand">Stand ${fmtDate(m.updated)}</span></div>
       <div class="meta">${m.pages} Seiten · ${fmtSize(m.size)}</div></div>
-      <div class="actions"><a class="btn" href="${encodeURI(m.file)}" target="_blank" rel="noopener">Ansehen</a>
-      <a class="btn primary" href="${encodeURI(m.file)}" download="${esc(m.file.slice(4))}">Download</a></div></div>`).join("");
+      <div class="actions"><a class="btn" href="${m.file}" target="_blank" rel="noopener">Ansehen</a>
+      <a class="btn primary" href="${m.file}" download="${esc(m.download)}">Download</a></div></div>`).join("");
   document.getElementById("list").innerHTML = html || `<p class="empty">Nichts gefunden.</p>`;
 }
+// Download über einen Blob, damit jeder Browser (auch Safari auf iPad/iPhone) den Dateinamen übernimmt.
+document.getElementById("list").addEventListener("click", async e => {
+  const a = e.target.closest("a[download]");
+  if (!a) return;
+  e.preventDefault();
+  const text = a.textContent;
+  a.textContent = "Lädt …";
+  try {
+    const blob = await (await fetch(a.href)).blob();
+    const url = URL.createObjectURL(blob);
+    const tmp = Object.assign(document.createElement("a"), { href: url, download: a.getAttribute("download") });
+    document.body.appendChild(tmp); tmp.click(); tmp.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch { location.href = a.href; }
+  a.textContent = text;
+});
 const input = document.getElementById("q");
 input.addEventListener("input", () => render(input.value));
 render("");

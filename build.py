@@ -18,6 +18,7 @@ SRC = ROOT / "skripte"
 OUT = ROOT / "_site"
 TEMPLATE = ROOT / "vorlage.html"
 BERLIN = ZoneInfo("Europe/Berlin")
+UMLAUTE = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "Ae", "Ö": "Oe", "Ü": "Ue", "ß": "ss"})
 
 
 def titel_setzen(pdf, titel):
@@ -76,7 +77,8 @@ def main():
         module = rel.parts[0]
         datum = stand(typ)
         name = f"{module} Lernskript Stand {datum:%d.%m.%Y}"
-        pdf = OUT / "pdf" / f"{name}.pdf"
+        # Adresse ohne Leerzeichen/Umlaute (sonst %20 im Namen); den schönen Namen bekommt der Download.
+        pdf = OUT / "pdf" / (re.sub(r"[^A-Za-z0-9.-]+", "_", name.translate(UMLAUTE)) + ".pdf")
         print(f"→ {rel}")
         result = subprocess.run(["typst", "compile", "--root", str(typ.parent), str(typ), str(pdf)],
                                 capture_output=True, text=True)
@@ -88,7 +90,8 @@ def main():
         modules.append({
             "name": module,
             "title": doc_title(typ),
-            "file": f"pdf/{name}.pdf",
+            "file": f"pdf/{pdf.name}",
+            "download": f"{name}.pdf",
             "pages": page_count(pdf),
             "size": pdf.stat().st_size,
             "updated": datum.isoformat(),
