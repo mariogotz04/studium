@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meine Lernskripte</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23244f70'/><path d='M9 8h10l4 4v12H9z' fill='white'/><path d='M12 16h8M12 20h6' stroke='%23244f70' stroke-width='2'/></svg>">
+<style>
+:root {
+  --bg: #f6f8fa; --card: #ffffff; --ink: #1f2a33; --muted: #62717d; --line: #dfe6ec;
+  --accent: #244f70; --accent-ink: #ffffff; --accent-soft: #e8f0f6; --teal: #16746d;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #11161b; --card: #1a2128; --ink: #e4eaef; --muted: #93a2ae; --line: #2a343d;
+          --accent: #7fb3d9; --accent-ink: #0d1820; --accent-soft: #1f2d39; --teal: #5cc2b3; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 40px 16px 64px; }
+header h1 { margin: 0 0 4px; font-size: 30px; letter-spacing: -0.02em; }
+header p { margin: 0; color: var(--muted); }
+.search { margin: 28px 0 8px; width: 100%; padding: 12px 14px; font-size: 16px; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+.search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.module { margin-top: 28px; }
+.module h2 { margin: 0 0 10px; font-size: 19px; display: flex; align-items: baseline; gap: 10px; }
+.module h2 .count { font-size: 13px; font-weight: 500; color: var(--muted); }
+.script { display: flex; gap: 16px; align-items: center; justify-content: space-between;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; }
+.script .title { font-weight: 600; }
+.script .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.actions { display: flex; gap: 8px; flex-shrink: 0; }
+.btn { display: inline-block; padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
+  text-decoration: none; border: 1px solid var(--accent); color: var(--accent); white-space: nowrap; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn:hover { filter: brightness(1.08); }
+.empty { color: var(--muted); margin-top: 32px; }
+footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
+@media (max-width: 560px) {
+  .script { flex-direction: column; align-items: stretch; }
+  .actions .btn { flex: 1; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Meine Lernskripte</h1>
+    <p id="summary"></p>
+  </header>
+  <input class="search" id="q" type="search" placeholder="Modul oder Skript suchen …" autocomplete="off">
+  <main id="list"></main>
+  <footer>PDFs werden automatisch aus den Typst-Dateien erzeugt.</footer>
+</div>
+<script>
+const DATA = /*DATA*/null;
+const fmtSize = b => b > 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : Math.round(b / 1e3) + " KB";
+const fmtDate = s => new Date(s).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+const total = DATA.reduce((n, m) => n + m.scripts.length, 0);
+document.getElementById("summary").textContent =
+  `${DATA.length} Module · ${total} Skripte als PDF zum Herunterladen`;
+
+function render(query) {
+  const q = query.trim().toLowerCase();
+  const html = DATA.map(m => {
+    const hit = m.name.toLowerCase().includes(q);
+    const scripts = m.scripts.filter(s => !q || hit || s.title.toLowerCase().includes(q));
+    if (!scripts.length) return "";
+    return `<section class="module"><h2>${esc(m.name)}<span class="count">${scripts.length} ${scripts.length === 1 ? "Skript" : "Skripte"}</span></h2>` +
+      scripts.map(s => `<div class="script"><div><div class="title">${esc(s.title)}</div>
+        <div class="meta">${s.pages} Seiten · ${fmtSize(s.size)} · Stand ${fmtDate(s.updated)}</div></div>
+        <div class="actions"><a class="btn" href="${s.file}" target="_blank" rel="noopener">Ansehen</a>
+        <a class="btn primary" href="${s.file}" download>Download</a></div></div>`).join("") + "</section>";
+  }).join("");
+  document.getElementById("list").innerHTML = html || `<p class="empty">Nichts gefunden.</p>`;
+}
+const input = document.getElementById("q");
+input.addEventListener("input", () => render(input.value));
+render("");
+</script>
+</body>
+</html>
