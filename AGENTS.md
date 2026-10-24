@@ -17,18 +17,18 @@ GitHub baut die PDFs danach in 1–3 Minuten. Es braucht Netzwerkzugriff (git pu
 Melde dem Nutzer das Ergebnis (✅-Zeile oder Fehlermeldung).
 
 Vorher prüfen, dass das Skript fehlerfrei kompiliert, falls `typst` installiert ist:
-`typst compile "<Modul>/Lernskript aktuell/Typst/main.typ"`. Auf GitHub läuft Typst 0.15.1.
+`typst compile "<Modul>/Lernskript aktuell/Typst-Dateien/main.typ"`. Auf GitHub läuft Typst 0.15.1.
 
 ## Was hochgeladen wird
 
-- Pro Modul **nur das aktuelle Lernskript**: `<Modul>/Lernskript aktuell/Typst/main.typ` mit seinen Bildern.
+- Pro Modul **nur das aktuelle Lernskript**: `<Modul>/Lernskript aktuell/Typst-Dateien/main.typ` mit seinen Bildern.
   Online steht also immer genau eine PDF je Modul, mit dem neuesten Stand; jeder Upload ersetzt die alte.
   Alte Stände, Sicherungen oder Kopien (auch in anderen Ordnern) werden nie hochgeladen.
   Die Seite zeigt je Modul: Modulname (Ordnername) · Lernskript · Stand. Der Stand kommt aus der Zeile
   „Stand TT.MM.JJJJ“ im Kopf von `main.typ`; diese also bei jeder Änderung aktualisieren.
   Die PDF heißt beim Download z. B. `FET_Lernskript_Stand_24.10.2026.pdf`.
 - Nie hochgeladen werden: `Zum Löschen/`, `Unterlagen/`, `Sonstiges/`, `Physik Praktikum/` und dieser Ordner.
-- Ein neues Modul erscheint automatisch, sobald es `Lernskript aktuell/Typst/main.typ` hat.
+- Ein neues Modul erscheint automatisch, sobald es `Lernskript aktuell/Typst-Dateien/main.typ` hat.
 
 ## Dateien hier
 

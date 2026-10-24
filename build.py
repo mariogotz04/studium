@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Kompiliert das aktuelle Lernskript jedes Moduls zu einer PDF und baut die Webseite in _site/.
 
-Aufbau: skripte/<Modul>/Lernskript aktuell/Typst/main.typ (genau ein Skript je Modul).
+Aufbau: skripte/<Modul>/Lernskript aktuell/Typst-Dateien/main.typ (genau ein Skript je Modul).
 Andere .typ-Dateien, etwa alte Stände, werden nie veröffentlicht.
 """
 import json
@@ -30,7 +30,7 @@ def dateiname(text):
 
 
 def find_entrypoints():
-    return sorted(SRC.glob("*/Lernskript aktuell/Typst/main.typ"))
+    return sorted(SRC.glob("*/Lernskript aktuell/Typst-Dateien/main.typ"))
 
 
 def doc_title(typ):
