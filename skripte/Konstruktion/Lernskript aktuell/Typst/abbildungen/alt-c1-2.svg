@@ -1,0 +1,22 @@
+<svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="10">
+<g stroke="#000" stroke-width="1.4" fill="none">
+<!-- a Grundsymbol -->
+<polyline points="20,60 35,86 65,34"/>
+<!-- b beliebig -->
+<polyline points="120,60 135,86 165,34 205,34"/>
+<!-- c Abtrag gefordert -->
+<polyline points="250,60 265,86 295,34 335,34"/><line x1="250" y1="60" x2="280" y2="60"/>
+<!-- d Abtrag unzulässig -->
+<polyline points="380,60 395,86 425,34 465,34"/><circle cx="396" cy="66" r="7.5"/>
+</g>
+<g font-size="10" text-anchor="middle">
+<text x="42" y="110">a) Grundsymbol</text>
+<text x="160" y="110">b) alle Fertigungs-</text><text x="160" y="122">verfahren zulässig</text>
+<text x="292" y="110">c) Material-</text><text x="292" y="122">abtrag gefordert</text>
+<text x="422" y="110">d) Material-</text><text x="422" y="122">abtrag unzulässig</text>
+</g>
+<text x="300" y="30" font-size="9" fill="#1f4e79">Ra  3,2</text>
+<text x="490" y="60" font-size="9" fill="#555">z. B. „roh“</text>
+<text x="490" y="72" font-size="9" fill="#555">(Guss-/Schmiede-</text>
+<text x="490" y="84" font-size="9" fill="#555">zustand bleibt)</text>
+</svg>

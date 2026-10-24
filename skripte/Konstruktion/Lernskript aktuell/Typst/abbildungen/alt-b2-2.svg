@@ -1,0 +1,25 @@
+<svg viewBox="0 0 330 135" width="400" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="9">
+<defs><marker id="a2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#000"/></marker></defs>
+<path d="M60 40 H170 V55 H250 V95 H170 V110 H60 Z" fill="#f3f6f9" stroke="#000" stroke-width="1.8"/>
+<line x1="170" y1="55" x2="170" y2="95" stroke="#000" stroke-width="1.8"/>
+<line x1="45" y1="75" x2="265" y2="75" stroke="#000" stroke-width="0.7" stroke-dasharray="14 3 2 3"/>
+<g stroke="#000" stroke-width="0.7">
+<line x1="60" y1="110" x2="60" y2="130"/><line x1="170" y1="112" x2="170" y2="122"/><line x1="250" y1="97" x2="250" y2="130"/>
+<line x1="60" y1="120" x2="170" y2="120" marker-start="url(#a2)" marker-end="url(#a2)"/>
+<line x1="60" y1="128" x2="250" y2="128" marker-start="url(#a2)" marker-end="url(#a2)"/>
+<line x1="100" y1="40" x2="100" y2="110" marker-start="url(#a2)" marker-end="url(#a2)"/>
+<line x1="215" y1="55" x2="215" y2="95" marker-start="url(#a2)" marker-end="url(#a2)"/>
+</g>
+<text x="115" y="118" text-anchor="middle">55</text>
+<text x="160" y="126" text-anchor="middle">95</text>
+<text x="96" y="68" transform="rotate(-90 96 68)" text-anchor="middle">Ø40</text>
+<text x="211" y="78" transform="rotate(-90 211 78)" text-anchor="middle">Ø25</text>
+<text x="20" y="30" fill="#1f4e79">Bezugsebene</text>
+<text x="20" y="40" fill="#1f4e79">(plangedreht)</text>
+<line x1="45" y1="42" x2="58" y2="50" stroke="#1f4e79" stroke-width="0.6"/>
+<text x="268" y="40" fill="#1f4e79">axial: alle Maße</text>
+<text x="268" y="50" fill="#1f4e79">von einer Bezugs-</text>
+<text x="268" y="60" fill="#1f4e79">ebene aus</text>
+<text x="268" y="76" fill="#1f4e79">radial: als</text>
+<text x="268" y="86" fill="#1f4e79">Durchmesser</text>
+</svg>

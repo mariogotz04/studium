@@ -1,0 +1,20 @@
+<svg viewBox="0 0 220 175" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="10">
+<defs><pattern id="d2h" width="5" height="5" patternUnits="userSpaceOnUse" patterntransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#000" stroke-width="0.5"/></pattern>
+<pattern id="d2h2" width="5" height="5" patternUnits="userSpaceOnUse" patterntransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#000" stroke-width="0.5"/></pattern>
+<marker id="d2a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#1f4e79"/></marker></defs>
+<!-- Nabe Ring -->
+<path d="M110 10 a85 85 0 1 0 0.01 0 Z M110 40 a55 55 0 1 1 -0.01 0 Z" fill="url(#d2h2)" fill-rule="evenodd" stroke="#000" stroke-width="1.6"/>
+<!-- Welle -->
+<circle cx="110" cy="95" r="55" fill="url(#d2h)" stroke="#000" stroke-width="1.6"/>
+<!-- Nut Welle + Nabe ausgespart: Passfeder -->
+<rect x="96" y="31" width="28" height="22" fill="#fff" stroke="#000" stroke-width="1.6"/>
+<rect x="97" y="34" width="26" height="18" fill="#555"/>
+<line x1="60" y1="40" x2="96" y2="40" stroke="#888" stroke-dasharray="2 2"/>
+<line x1="130" y1="53" x2="165" y2="53" stroke="#1f4e79" stroke-width="0.6"/>
+<line x1="130" y1="40" x2="190" y2="40" stroke="#1f4e79" stroke-width="0.6"/>
+<line x1="160" y1="31" x2="190" y2="31" stroke="#1f4e79" stroke-width="0.6"/>
+<line x1="160" y1="40" x2="160" y2="53" stroke="#1f4e79" marker-start="url(#d2a)" marker-end="url(#d2a)"/><text x="163" y="50" fill="#1f4e79">t₁</text>
+<line x1="185" y1="31" x2="185" y2="40" stroke="#1f4e79" marker-start="url(#d2a)" marker-end="url(#d2a)"/><text x="188" y="38" fill="#1f4e79">t₂</text>
+<text x="95" y="24" fill="#1f4e79">b</text>
+<text x="96" y="125">Welle</text><text x="12" y="170">Nabe</text>
+</svg>

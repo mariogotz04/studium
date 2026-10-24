@@ -1,0 +1,19 @@
+<svg viewBox="0 0 230 160" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="9.5">
+<defs><pattern id="d5h" width="6" height="6" patternUnits="userSpaceOnUse" patterntransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#000" stroke-width="0.5"/></pattern>
+<pattern id="d5k" width="5" height="5" patternUnits="userSpaceOnUse" patterntransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#000" stroke-width="0.4"/><line x1="0" y1="0" x2="5" y2="0" stroke="#000" stroke-width="0.4"/></pattern>
+<marker id="d5a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#1f4e79"/></marker></defs>
+<!-- bore housing (top) -->
+<rect x="20" y="20" width="150" height="35" fill="url(#d5h)" stroke="#000" stroke-width="1.6"/>
+<!-- piston with groove -->
+<path d="M20 57 H70 V87 H100 V57 H170 V130 H20 Z" fill="url(#d5h)" stroke="#000" stroke-width="1.6"/>
+<!-- deformed o-ring -->
+<ellipse cx="85" cy="72" rx="14" ry="14.5" fill="url(#d5k)" stroke="#000" stroke-width="1.4"/>
+<line x1="10" y1="145" x2="180" y2="145" stroke="#000" stroke-width="0.5" stroke-dasharray="12 2 2 2"/>
+<!-- dims -->
+<line x1="70" y1="12" x2="100" y2="12" stroke="#1f4e79" marker-start="url(#d5a)" marker-end="url(#d5a)"/><text x="70" y="9" fill="#1f4e79">B + 0,2</text>
+<line x1="110" y1="57" x2="110" y2="87" stroke="#1f4e79" marker-start="url(#d5a)" marker-end="url(#d5a)"/><text x="113" y="76" fill="#1f4e79">(T)</text>
+<text x="176" y="60" fill="#1f4e79">Ø H8/f7</text>
+<text x="176" y="91" fill="#1f4e79">Ø h9</text>
+<text x="24" y="40" font-size="8.5">Gehäuse (Bohrung)</text>
+<text x="24" y="118" font-size="8.5">Kolben / Welle</text>
+</svg>

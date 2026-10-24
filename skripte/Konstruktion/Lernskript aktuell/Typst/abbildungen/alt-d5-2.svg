@@ -1,0 +1,24 @@
+<svg viewBox="0 0 230 175" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="9">
+<defs><pattern id="d5h2" width="5" height="5" patternUnits="userSpaceOnUse" patterntransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#000" stroke-width="0.5"/></pattern></defs>
+<!-- housing -->
+<path d="M70 15 H210 V95 H120 V60 L113 54 H70 Z" fill="url(#d5h2)" stroke="#000" stroke-width="1.5"/>
+<!-- rwdr body black -->
+<path d="M75 58 H118 V95 H110 L104 108 L96 108 L92 98 H83 V70 H75 Z" fill="#222" stroke="#000" stroke-width="1"/>
+<!-- stiffening ring (hatched, white bg) -->
+<path d="M79 61 H114 V66 H85 V92 H79 Z" fill="#fff" stroke="#000" stroke-width="0.6"/>
+<path d="M79 61 H114 V66 H85 V92 H79 Z" fill="url(#d5h2)" stroke="none"/>
+<!-- spring circles -->
+<circle cx="104" cy="100" r="4" fill="#fff" stroke="#000" stroke-width="0.6"/><circle cx="104" cy="100" r="1.6" fill="#fff" stroke="#000" stroke-width="0.6"/>
+<!-- shaft with chamfer -->
+<path d="M40 160 V122 L52 110 H200" fill="none" stroke="#000" stroke-width="1.5"/>
+<line x1="10" y1="165" x2="210" y2="165" stroke="#000" stroke-width="0.5" stroke-dasharray="12 2 2 2"/>
+<text x="5" y="118" font-size="8.5" fill="#1f4e79">Fase 15°–25°,</text>
+<text x="5" y="128" font-size="8.5" fill="#1f4e79">Kante gerundet</text>
+<text x="5" y="138" font-size="8.5" fill="#1f4e79">und poliert</text>
+<text x="10" y="50" font-size="8.5" fill="#1f4e79">Fase 5°–10°</text>
+<line x1="60" y1="50" x2="112" y2="55" stroke="#1f4e79" stroke-width="0.6"/>
+<text x="125" y="128" font-size="8.5" fill="#1f4e79">Welle h11, drallfrei</text>
+<text x="125" y="138" font-size="8.5" fill="#1f4e79">geschliffen, Ra 0,2–0,8</text>
+<text x="128" y="45" font-size="8.5">Bohrung H8</text>
+<text x="170" y="10" font-size="8.5">Gehäuse</text>
+</svg>

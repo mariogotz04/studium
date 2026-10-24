@@ -1,0 +1,23 @@
+<svg viewBox="0 0 265 170" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="9">
+<defs><marker id="d6a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#1f4e79"/></marker></defs>
+<!-- root body -->
+<path d="M5 150 V110 H35" fill="none" stroke="#000" stroke-width="1.4"/>
+<!-- tooth 1 -->
+<path d="M35 110 Q41 108 44 98 L52 62 H72 L80 98 Q83 108 89 110 H105 Q111 108 114 98 L122 62 H142 L150 98 Q153 108 159 110 H175 Q181 108 184 98 L192 62" fill="none" stroke="#000" stroke-width="1.4"/>
+<!-- circles -->
+<line x1="5" y1="62" x2="198" y2="62" stroke="#888" stroke-width="0.5" stroke-dasharray="3 2"/>
+<line x1="5" y1="86" x2="198" y2="86" stroke="#000" stroke-width="0.6" stroke-dasharray="10 2 2 2"/>
+<line x1="5" y1="110" x2="198" y2="110" stroke="#888" stroke-width="0.5" stroke-dasharray="3 2"/>
+<text x="200" y="58" font-size="8">Kopfkreis da</text>
+<text x="200" y="83" font-size="8">Teilkreis d</text>
+<text x="200" y="121" font-size="8">Fußkreis df</text>
+<!-- ha hf -->
+<line x1="30" y1="62" x2="30" y2="86" stroke="#1f4e79" marker-start="url(#d6a)" marker-end="url(#d6a)"/><text x="12" y="77" fill="#1f4e79">ha</text>
+<line x1="30" y1="86" x2="30" y2="110" stroke="#1f4e79" marker-start="url(#d6a)" marker-end="url(#d6a)"/><text x="12" y="101" fill="#1f4e79">hf</text>
+<!-- pitch p -->
+<line x1="62" y1="30" x2="132" y2="30" stroke="#1f4e79" marker-start="url(#d6a)" marker-end="url(#d6a)"/><text x="92" y="26" fill="#1f4e79">p</text>
+<line x1="62" y1="34" x2="62" y2="84" stroke="#1f4e79" stroke-width="0.4"/><line x1="132" y1="34" x2="132" y2="84" stroke="#1f4e79" stroke-width="0.4"/>
+<!-- s and e on pitch line -->
+<line x1="48" y1="94" x2="76" y2="94" stroke="#1f4e79" stroke-width="0.8" marker-start="url(#d6a)" marker-end="url(#d6a)"/><text x="58" y="104" fill="#1f4e79">s</text>
+<line x1="76" y1="94" x2="118" y2="94" stroke="#1f4e79" stroke-width="0.8" marker-start="url(#d6a)" marker-end="url(#d6a)"/><text x="94" y="104" fill="#1f4e79">e</text>
+</svg>

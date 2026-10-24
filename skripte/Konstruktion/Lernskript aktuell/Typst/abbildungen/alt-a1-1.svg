@@ -1,0 +1,12 @@
+<svg viewBox="0 0 240 172" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="9">
+<rect x="2" y="2" width="236" height="167" fill="#e8f0f8" stroke="#1f4e79" stroke-width="1.5"/>
+<line x1="120" y1="2" x2="120" y2="169" stroke="#1f4e79"/>
+<line x1="120" y1="85.5" x2="238" y2="85.5" stroke="#1f4e79"/>
+<line x1="179" y1="85.5" x2="179" y2="169" stroke="#1f4e79"/>
+<line x1="179" y1="127" x2="238" y2="127" stroke="#1f4e79"/>
+<text x="61" y="90" text-anchor="middle" font-size="13" fill="#1f4e79">A1</text>
+<text x="179" y="48" text-anchor="middle" font-size="12" fill="#1f4e79">A2</text>
+<text x="149" y="131" text-anchor="middle" font-size="11" fill="#1f4e79">A3</text>
+<text x="208" y="110" text-anchor="middle" font-size="10" fill="#1f4e79">A4</text>
+<text x="208" y="151" text-anchor="middle" font-size="10" fill="#1f4e79">A4</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="9.5">
+<defs><pattern id="d1h" width="5" height="5" patternUnits="userSpaceOnUse" patterntransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#000" stroke-width="0.6"/></pattern></defs>
+<!-- 1 Bolzen Ansicht -->
+<line x1="30" y1="70" x2="195" y2="70" stroke="#000" stroke-width="0.5" stroke-dasharray="12 2 2 2"/>
+<g stroke="#000" stroke-width="1.8" fill="none">
+<polyline points="185,45 47,45 40,52 40,88 47,95 185,95"/>
+<line x1="150" y1="45" x2="150" y2="95"/>
+</g>
+<g stroke="#000" stroke-width="0.6"><line x1="44" y1="52" x2="150" y2="52"/><line x1="44" y1="88" x2="150" y2="88"/></g>
+<path d="M185 40 q5 8 0 15 q-5 8 0 15 q5 8 0 15 q-5 8 0 15" stroke="#000" stroke-width="0.6" fill="none"/>
+<text x="60" y="38">Nenn-Ø: breit</text><text x="60" y="114">Kern-Ø: schmal</text>
+<text x="118" y="128">Gewindeende: breit</text>
+<!-- 2 Bolzen axial -->
+<g transform="translate(250,70)">
+<line x1="-32" y1="0" x2="32" y2="0" stroke="#000" stroke-width="0.5" stroke-dasharray="8 2 2 2"/><line x1="0" y1="-32" x2="0" y2="32" stroke="#000" stroke-width="0.5" stroke-dasharray="8 2 2 2"/>
+<circle r="25" fill="none" stroke="#000" stroke-width="1.8"/>
+<path d="M18 -3 A18 18 0 1 1 3 -18" fill="none" stroke="#000" stroke-width="0.6"/>
+</g>
+<!-- 3 Mutter Schnitt -->
+<rect x="330" y="35" width="130" height="22" fill="url(#d1h)"/><rect x="330" y="83" width="130" height="22" fill="url(#d1h)"/>
+<g stroke="#000" stroke-width="1.8" fill="none"><rect x="330" y="35" width="130" height="70"/><line x1="330" y1="57" x2="460" y2="57"/><line x1="330" y1="83" x2="460" y2="83"/></g>
+<g stroke="#000" stroke-width="0.6"><line x1="330" y1="52" x2="460" y2="52"/><line x1="330" y1="88" x2="460" y2="88"/></g>
+<line x1="320" y1="70" x2="470" y2="70" stroke="#000" stroke-width="0.5" stroke-dasharray="12 2 2 2"/>
+<text x="340" y="28">Nenn-Ø: schmal</text><text x="340" y="118">Kern-Ø: breit, Schraffur bis Kern-Ø</text>
+<!-- 4 Mutter axial -->
+<g transform="translate(540,70)">
+<line x1="-32" y1="0" x2="32" y2="0" stroke="#000" stroke-width="0.5" stroke-dasharray="8 2 2 2"/><line x1="0" y1="-32" x2="0" y2="32" stroke="#000" stroke-width="0.5" stroke-dasharray="8 2 2 2"/>
+<circle r="18" fill="none" stroke="#000" stroke-width="1.8"/>
+<path d="M25 -3 A25 25 0 1 1 3 -25" fill="none" stroke="#000" stroke-width="0.6"/>
+</g>
+<g font-weight="bold" fill="#1f4e79" text-anchor="middle">
+<text x="110" y="150">Bolzen, Ansicht</text><text x="250" y="150">Bolzen, axial</text>
+<text x="395" y="150">Gewindebohrung, Schnitt</text><text x="540" y="150">Bohrung, axial</text>
+</g>
+<text x="215" y="118" font-size="8.5">Kern-Ø als ¾-Kreis, schmal</text>
+<text x="505" y="118" font-size="8.5">Nenn-Ø als ¾-Kreis</text>
+</svg>

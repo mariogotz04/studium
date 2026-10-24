@@ -1,0 +1,16 @@
+<svg viewBox="0 0 250 175" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="10">
+<defs><marker id="c2a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#1f4e79"/></marker></defs>
+<rect x="20" y="70" width="70" height="95" fill="#e8eef5" stroke="#000" stroke-width="1.2"/>
+<line x1="10" y1="70" x2="240" y2="70" stroke="#000" stroke-width="1"/>
+<text x="200" y="66">Null-Linie (N)</text>
+<rect x="110" y="30" width="45" height="28" fill="#c9daf0" stroke="#1f4e79"/>
+<text x="117" y="48" font-size="9">Toleranz-</text><text x="125" y="26" font-size="9">feld</text>
+<line x1="100" y1="30" x2="240" y2="30" stroke="#888" stroke-dasharray="3 2"/>
+<line x1="100" y1="58" x2="240" y2="58" stroke="#888" stroke-dasharray="3 2"/>
+<line x1="175" y1="70" x2="175" y2="30" stroke="#1f4e79" marker-end="url(#c2a)"/><text x="178" y="45" fill="#1f4e79">es</text>
+<line x1="205" y1="70" x2="205" y2="58" stroke="#1f4e79" marker-end="url(#c2a)"/><text x="208" y="66" fill="#1f4e79" font-size="9">ei</text>
+<line x1="228" y1="30" x2="228" y2="58" stroke="#c00" marker-start="url(#c2a)" marker-end="url(#c2a)"/><text x="231" y="48" fill="#c00">T</text>
+<text x="24" y="120">Welle</text><text x="24" y="132">(Innenteil)</text>
+<text x="100" y="95" font-size="9">Go = N + es</text><text x="100" y="108" font-size="9">Gu = N + ei</text>
+<text x="100" y="121" font-size="9">T = Go − Gu = es − ei</text>
+</svg>

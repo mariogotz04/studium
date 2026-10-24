@@ -1,0 +1,17 @@
+<svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" font-family="Arial" font-size="9.5">
+<defs><pattern id="d4h" width="5" height="5" patternUnits="userSpaceOnUse" patterntransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#000" stroke-width="0.5"/></pattern>
+<marker id="d4a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1.5 L10 5 L0 8.5 Z" fill="#1f4e79"/></marker></defs>
+<!-- outer ring -->
+<path d="M40 20 H130 V60 H107.4 A30 30 0 0 0 62.6 60 H40 Z" fill="url(#d4h)" stroke="#000" stroke-width="1.6"/>
+<!-- inner ring -->
+<path d="M40 140 H130 V100 H107.4 A30 30 0 0 1 62.6 100 H40 Z" fill="url(#d4h)" stroke="#000" stroke-width="1.6"/>
+<circle cx="85" cy="80" r="30" fill="#fff" stroke="#000" stroke-width="1.6"/>
+<line x1="85" y1="46" x2="85" y2="114" stroke="#000" stroke-width="0.4" stroke-dasharray="6 2 2 2"/>
+<line x1="51" y1="80" x2="119" y2="80" stroke="#000" stroke-width="0.4" stroke-dasharray="6 2 2 2"/>
+<line x1="20" y1="155" x2="150" y2="155" stroke="#000" stroke-width="0.5" stroke-dasharray="12 2 2 2"/>
+<text x="152" y="158" font-size="8.5">Lagerachse</text>
+<line x1="150" y1="20" x2="150" y2="140" stroke="#1f4e79" marker-start="url(#d4a)" marker-end="url(#d4a)"/><text x="153" y="84" fill="#1f4e79">H</text>
+<line x1="140" y1="20" x2="140" y2="60" stroke="#1f4e79" marker-start="url(#d4a)" marker-end="url(#d4a)"/><text x="160" y="38" fill="#1f4e79">H/3</text>
+<text x="2" y="84" fill="#1f4e79">D<tspan font-size="7" dy="2">W</tspan><tspan dy="-2"> ≈ H/2</tspan></text>
+<text x="44" y="14">Außenring</text><text x="44" y="152">Innenring</text>
+</svg>
