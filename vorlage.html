@@ -20,15 +20,14 @@ body { margin: 0; background: var(--bg); color: var(--ink);
 .wrap { max-width: 980px; margin: 0 auto; padding: 40px 16px 64px; }
 header h1 { margin: 0 0 4px; font-size: 30px; letter-spacing: -0.02em; }
 header p { margin: 0; color: var(--muted); }
-.search { margin: 28px 0 8px; width: 100%; padding: 12px 14px; font-size: 16px; color: var(--ink);
+.search { margin: 28px 0 16px; width: 100%; padding: 12px 14px; font-size: 16px; color: var(--ink);
   background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
 .search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
-.module { margin-top: 28px; }
-.module h2 { margin: 0 0 10px; font-size: 19px; display: flex; align-items: baseline; gap: 10px; }
-.module h2 .count { font-size: 13px; font-weight: 500; color: var(--muted); }
 .script { display: flex; gap: 16px; align-items: center; justify-content: space-between;
   background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; }
-.script .title { font-weight: 600; }
+.script .title { font-weight: 700; font-size: 18px; }
+.script .sub { margin-top: 1px; }
+.script .stand { color: var(--teal); font-weight: 600; }
 .script .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
 .actions { display: flex; gap: 8px; flex-shrink: 0; }
 .btn { display: inline-block; padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
@@ -49,32 +48,27 @@ footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
     <h1>Meine Lernskripte</h1>
     <p id="summary"></p>
   </header>
-  <input class="search" id="q" type="search" placeholder="Modul oder Skript suchen …" autocomplete="off">
+  <input class="search" id="q" type="search" placeholder="Modul suchen …" autocomplete="off">
   <main id="list"></main>
   <footer>PDFs werden automatisch aus den Typst-Dateien erzeugt.</footer>
 </div>
 <script>
 const DATA = /*DATA*/null;
 const fmtSize = b => b > 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : Math.round(b / 1e3) + " KB";
-const fmtDate = s => new Date(s).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
+const fmtDate = s => new Date(s + "T12:00:00").toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
-const total = DATA.reduce((n, m) => n + m.scripts.length, 0);
 document.getElementById("summary").textContent =
-  `${DATA.length} Module · ${total} Skripte als PDF zum Herunterladen`;
+  `${DATA.length} Module · jeweils das aktuelle Lernskript als PDF`;
 
 function render(query) {
   const q = query.trim().toLowerCase();
-  const html = DATA.map(m => {
-    const hit = m.name.toLowerCase().includes(q);
-    const scripts = m.scripts.filter(s => !q || hit || s.title.toLowerCase().includes(q));
-    if (!scripts.length) return "";
-    return `<section class="module"><h2>${esc(m.name)}<span class="count">${scripts.length} ${scripts.length === 1 ? "Skript" : "Skripte"}</span></h2>` +
-      scripts.map(s => `<div class="script"><div><div class="title">${esc(s.title)}</div>
-        <div class="meta">${s.pages} Seiten · ${fmtSize(s.size)} · Stand ${fmtDate(s.updated)}</div></div>
-        <div class="actions"><a class="btn" href="${s.file}" target="_blank" rel="noopener">Ansehen</a>
-        <a class="btn primary" href="${s.file}" download>Download</a></div></div>`).join("") + "</section>";
-  }).join("");
+  const html = DATA.filter(m => !q || m.name.toLowerCase().includes(q) || m.title.toLowerCase().includes(q))
+    .map(m => `<div class="script"><div><div class="title">${esc(m.name)}</div>
+      <div class="sub">Lernskript · <span class="stand">Stand ${fmtDate(m.updated)}</span></div>
+      <div class="meta">${m.pages} Seiten · ${fmtSize(m.size)}</div></div>
+      <div class="actions"><a class="btn" href="${m.file}" target="_blank" rel="noopener">Ansehen</a>
+      <a class="btn primary" href="${m.file}" download="${esc(m.file.slice(4))}">Download</a></div></div>`).join("");
   document.getElementById("list").innerHTML = html || `<p class="empty">Nichts gefunden.</p>`;
 }
 const input = document.getElementById("q");

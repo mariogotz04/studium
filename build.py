@@ -10,19 +10,23 @@ import shutil
 import subprocess
 import sys
 import unicodedata
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "skripte"
 OUT = ROOT / "_site"
 TEMPLATE = ROOT / "vorlage.html"
+BERLIN = ZoneInfo("Europe/Berlin")
 
 
-def slug(text):
-    text = unicodedata.normalize("NFKD", text.replace("ß", "ss"))
-    text = text.encode("ascii", "ignore").decode()
-    return re.sub(r"[^a-zA-Z0-9]+", "-", text).strip("-").lower() or "skript"
+def dateiname(text):
+    """Modulname für Dateinamen: Umlaute umschreiben, Leer- und Sonderzeichen zu _."""
+    for a, b in {"ä": "ae", "ö": "oe", "ü": "ue", "Ä": "Ae", "Ö": "Oe", "Ü": "Ue", "ß": "ss"}.items():
+        text = text.replace(a, b)
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
+    return re.sub(r"[^A-Za-z0-9]+", "_", text).strip("_") or "Modul"
 
 
 def find_entrypoints():
@@ -32,6 +36,14 @@ def find_entrypoints():
 def doc_title(typ):
     m = re.search(r'#set\s+document\([^)]*title:\s*"([^"]+)"', typ.read_text(encoding="utf-8"))
     return m.group(1) if m else (typ.parent.name if typ.stem == "main" else typ.stem)
+
+
+def stand(typ):
+    """Stand aus dem Skript selbst („Stand 24.10.2026“), sonst Datum der letzten Änderung."""
+    m = re.search(r"Stand\s+(\d{1,2})\.(\d{1,2})\.(\d{4})", typ.read_text(encoding="utf-8"))
+    if m:
+        return date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+    return last_change(typ.parent).astimezone(BERLIN).date()
 
 
 def last_change(path):
@@ -55,16 +67,13 @@ def main():
         shutil.rmtree(OUT)
     (OUT / "pdf").mkdir(parents=True)
 
-    modules, failed, used = {}, [], set()
+    modules, failed = [], []
     for typ in find_entrypoints():
         rel = typ.relative_to(SRC)
         module = rel.parts[0]
-        title = doc_title(typ)
-        name = slug(title)
-        while name in used:
-            name += "-2"
-        used.add(name)
-        pdf = OUT / "pdf" / f"{name}.pdf"
+        datum = stand(typ)
+        name = f"{dateiname(module)}_Lernskript_Stand_{datum:%d.%m.%Y}.pdf"
+        pdf = OUT / "pdf" / name
         print(f"→ {rel}")
         result = subprocess.run(["typst", "compile", "--root", str(typ.parent), str(typ), str(pdf)],
                                 capture_output=True, text=True)
@@ -72,21 +81,22 @@ def main():
             print(result.stderr, file=sys.stderr)
             failed.append(str(rel))
             continue
-        modules.setdefault(module, []).append({
-            "title": title,
-            "file": f"pdf/{name}.pdf",
+        modules.append({
+            "name": module,
+            "title": doc_title(typ),
+            "file": f"pdf/{name}",
             "pages": page_count(pdf),
             "size": pdf.stat().st_size,
-            "updated": last_change(typ.parent).isoformat(),
+            "updated": datum.isoformat(),
         })
 
-    data = [{"name": m, "scripts": s} for m, s in sorted(modules.items(), key=lambda kv: kv[0].lower())]
+    data = sorted(modules, key=lambda m: m["name"].lower())
     page = TEMPLATE.read_text(encoding="utf-8").replace(
         "/*DATA*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
     (OUT / "index.html").write_text(page, encoding="utf-8")
     (OUT / ".nojekyll").touch()
 
-    print(f"\n{sum(len(s) for s in modules.values())} PDFs in {len(modules)} Modulen erzeugt.")
+    print(f"\n{len(modules)} Lernskripte erzeugt.")
     # Ein kaputtes Skript soll die anderen nicht blockieren: Seite trotzdem bauen, Fehler im Action-Log markieren.
     for f in failed:
         print(f"::error title=Typst-Fehler::{f} konnte nicht kompiliert werden", file=sys.stderr)
