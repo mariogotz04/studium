@@ -51,8 +51,10 @@ mkdir skripte
 ausschluss=()
 for name in "${AUSSCHLIESSEN[@]}"; do ausschluss+=(-not -path "$UNI/$name/*" -not -path "*/$name/*"); done
 
-echo "Suche Typst-Skripte in $UNI …"
-find "$UNI" -name "*.typ" "${ausschluss[@]}" -not -path "*/.*" -print0 |
+# Pro Modul wird nur das aktuelle Lernskript hochgeladen: <Modul>/Lernskript aktuell/Typst/
+# Alte Stände, Sicherungen und Kopien woanders im Ordner kommen nie auf die Webseite.
+echo "Suche aktuelle Lernskripte in $UNI …"
+find "$UNI" -mindepth 4 -maxdepth 4 -path "*/Lernskript aktuell/Typst/main.typ" "${ausschluss[@]}" -print0 |
   xargs -0 -n1 dirname | sort -u |
   while read -r ordner; do
     ziel="skripte/${ordner#"$UNI"/}"

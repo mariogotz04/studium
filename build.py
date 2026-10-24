@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Kompiliert alle Typst-Skripte unter skripte/ zu PDFs und baut die Webseite in _site/.
+"""Kompiliert das aktuelle Lernskript jedes Moduls zu einer PDF und baut die Webseite in _site/.
 
-Aufbau: skripte/<Modul>/<beliebige Unterordner>/<datei>.typ
-In jedem Ordner wird main.typ kompiliert; gibt es keine main.typ, wird jede .typ-Datei
-des Ordners einzeln kompiliert.
+Aufbau: skripte/<Modul>/Lernskript aktuell/Typst/main.typ (genau ein Skript je Modul).
+Andere .typ-Dateien, etwa alte Stände, werden nie veröffentlicht.
 """
 import json
 import re
@@ -27,11 +26,7 @@ def slug(text):
 
 
 def find_entrypoints():
-    entries = []
-    for folder in sorted({p.parent for p in SRC.rglob("*.typ")}):
-        main = folder / "main.typ"
-        entries += [main] if main.exists() else sorted(folder.glob("*.typ"))
-    return entries
+    return sorted(SRC.glob("*/Lernskript aktuell/Typst/main.typ"))
 
 
 def doc_title(typ):

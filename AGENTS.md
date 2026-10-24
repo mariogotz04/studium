@@ -21,10 +21,12 @@ Vorher prüfen, dass das Skript fehlerfrei kompiliert, falls `typst` installiert
 
 ## Was hochgeladen wird
 
-- Jeder Ordner mit `.typ`-Dateien im Uni-Ordner. Pro Ordner wird `main.typ` kompiliert; gibt es keine,
-  wird jede `.typ`-Datei einzeln kompiliert. Der Titel auf der Seite kommt aus `#set document(title: "…")`.
+- Pro Modul **nur das aktuelle Lernskript**: `<Modul>/Lernskript aktuell/Typst/main.typ` mit seinen Bildern.
+  Online steht also immer genau eine PDF je Modul, mit dem neuesten Stand; jeder Upload ersetzt die alte.
+  Alte Stände, Sicherungen oder Kopien (auch in anderen Ordnern) werden nie hochgeladen.
+  Der Titel auf der Seite kommt aus `#set document(title: "…")`.
 - Nie hochgeladen werden: `Zum Löschen/`, `Unterlagen/`, `Sonstiges/`, `Physik Praktikum/` und dieser Ordner.
-- Ein neues Modul erscheint automatisch, sobald es einen solchen Ordner hat.
+- Ein neues Modul erscheint automatisch, sobald es `Lernskript aktuell/Typst/main.typ` hat.
 
 ## Dateien hier
 
