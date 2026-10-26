@@ -68,6 +68,8 @@ h2 { font-family: var(--serif); font-weight: 700; }
   text-decoration: underline; cursor: pointer; }
 .empty { color: var(--muted); margin-top: 32px; }
 footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
+footer.stand { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); text-align: center; padding-bottom: env(safe-area-inset-bottom); }
+body.lernen footer.stand { display: none; }
 .muted { color: var(--muted); }
 p a, .muted a { color: var(--accent); font-weight: 600; }
 .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; margin: 16px 0; }
@@ -75,7 +77,7 @@ p a, .muted a { color: var(--accent); font-weight: 600; }
 .panel h2 { font-size: 22px; margin: 0 0 12px; }
 .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .row + .row { margin-top: 12px; }
-select, input[type=text], input[type=email], input[type=date], input[type=time], input[type=search], textarea {
+select, input[type=text], input[type=email], input[type=password], input[type=date], input[type=time], input[type=search], textarea {
   font: inherit; font-size: 16px; padding: 10px 12px; min-height: 46px; color: var(--ink); background: var(--bg);
   border: 1px solid var(--line); border-radius: 12px; max-width: 100%; }
 textarea { width: 100%; min-height: 110px; resize: vertical; }
@@ -439,6 +441,7 @@ figure.abb + figure.abb { margin-top: 14px; }
   <section id="view-lernen" hidden></section>
   <section id="view-termine" hidden></section>
   <section id="view-konto" hidden></section>
+  <footer class="stand" id="stand"></footer>
 </div>
 <a class="pomopille" id="pomopille" href="#lernen/pomodoro" hidden></a>
 <script>
@@ -456,6 +459,9 @@ const DATA = /*DATA*/null || [];
 const DECKS = /*KARTEN*/null || [];
 const LERNEN = /*LERNEN*/null || [];
 const PLAN = /*PLAN*/null || { termine: [], tage: {} };
+const BUILD = /*BUILD*/null;
+// Stand der Plattform ganz unten: wann die Seite zuletzt gebaut wurde und was sich zuletzt geändert hat
+if (BUILD) document.getElementById("stand").textContent = `Stand der Plattform: ${BUILD.zeit} Uhr${BUILD.was ? " · zuletzt: " + BUILD.was : ""}`;
 // Synchronisation über Supabase (Projekt „studium“). Der Schlüssel ist öffentlich gedacht: Jeder sieht nur seine eigenen
 // Zeilen, das regelt die Datenbank (Row Level Security).
 const SUPABASE = { url: "https://rqouznmfasdvrlsxtlxj.supabase.co", key: "sb_publishable_eERiCReLijLdOeypAmKwEg_GFSw58z8" };
@@ -538,8 +544,9 @@ const auth = {
   get s() { return store.get("auth", null); },
   set s(v) { v ? store.set("auth", v) : localStorage.removeItem("auth"); },
   email() { try { return JSON.parse(atob(this.s.access_token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/"))).email; } catch { return ""; } },
-  async anfrage(pfad, body) {
-    const r = await fetch(SUPABASE.url + pfad, { method: "POST", headers: { apikey: SUPABASE.key, "Content-Type": "application/json" },
+  async anfrage(pfad, body, methode = "POST", token = null) {
+    const r = await fetch(SUPABASE.url + pfad, { method: methode,
+      headers: { apikey: SUPABASE.key, "Content-Type": "application/json", ...(token ? { Authorization: "Bearer " + token } : {}) },
       body: JSON.stringify(body) });
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(j.msg || j.error_description || j.message || `Fehler ${r.status}`);
@@ -557,6 +564,16 @@ const auth = {
     return this.s.access_token;
   },
   seite: () => location.origin + location.pathname,
+  // Normale Anmeldung: E-Mail und Passwort. Auf jedem Gerät einmal, danach bleibt man angemeldet.
+  async passwortAnmelden(email, passwort) {
+    try { this.merken(await this.anfrage("/auth/v1/token?grant_type=password", { email, password: passwort })); }
+    catch (e) { throw new Error(/invalid login|credentials/i.test(e.message) ? "E-Mail oder Passwort stimmt nicht." : e.message); }
+  },
+  // Passwort festlegen oder ändern (nur angemeldet, z. B. nach der Anmeldung per E-Mail-Link)
+  async passwortSetzen(passwort) {
+    await this.anfrage("/auth/v1/user", { password: passwort }, "PUT", await this.token());
+    store.set("auth:passwort", true);
+  },
   async linkSenden(email) {
     await this.anfrage("/auth/v1/otp?redirect_to=" + encodeURIComponent(this.seite()), { email, create_user: true });
   },
@@ -1884,10 +1901,23 @@ function kontoSeite() {
       <p class="muted">${sync.zustand === "fehler" ? `Gerade kein Abgleich möglich (${esc(sync.fehler)}). Deine Änderungen bleiben auf diesem Gerät und gehen später automatisch raus.` :
         sync.zuletzt ? `Zuletzt abgeglichen: ${new Date(sync.zuletzt).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" })}` : "Noch kein Abgleich."}
         ${offen ? ` · ${offen} Änderung${offen === 1 ? "" : "en"} warten auf den Upload.` : ""}</p>
-      <div class="row"><button class="btn primary" id="jetzt">Jetzt abgleichen</button><button class="link" id="abmelden">Abmelden</button></div>`
-    : `<h2>Anmelden</h2><p style="margin-top:0">Gib deine E-Mail-Adresse ein. Du bekommst einen Anmeldelink, ein Passwort brauchst du nicht.</p>
+      <div class="row"><button class="btn primary" id="jetzt">Jetzt abgleichen</button><button class="link" id="abmelden">Abmelden</button></div>
+      <h2 style="margin-top:26px">${store.get("auth:passwort", false) ? "Passwort ändern" : "Passwort festlegen"}</h2>
+      <p class="muted" style="margin-top:0">Damit meldest du dich auf deinen anderen Geräten mit E-Mail und Passwort an, ohne Link.</p>
+      <form id="pwsetzen" class="formular">
+        <input type="email" name="username" autocomplete="username" value="${esc(auth.email())}" hidden>
+        <label>Neues Passwort<input type="password" id="pwneu" required minlength="8" autocomplete="new-password"></label>
+        <label>Wiederholen<input type="password" id="pwneu2" required minlength="8" autocomplete="new-password"></label>
+        <div class="ganz row"><button class="btn primary">Passwort speichern</button></div></form>`
+    : `<h2>Anmelden</h2><p style="margin-top:0">Mit deinem Konto ist dein Lernstand auf iPad, iPhone und Mac derselbe. Auf jedem Gerät meldest du dich einmal an.</p>
+      <form id="pwanmelden" class="formular">
+        <label class="ganz">E-Mail<input type="email" id="pwemail" name="username" required placeholder="name@beispiel.de" autocomplete="username" value="${esc(store.get("auth:email", ""))}"></label>
+        <label class="ganz">Passwort<input type="password" id="pwwort" name="password" required autocomplete="current-password"></label>
+        <div class="ganz row"><button class="btn primary">Anmelden</button></div></form>
+      <details style="margin-top:18px"><summary style="min-height:44px;cursor:pointer;color:var(--accent);font-weight:600">Noch kein Passwort oder vergessen?</summary>
+        <p class="muted">Lass dir einen Anmeldelink schicken. Nach der Anmeldung legst du hier dein Passwort fest.</p>
       <form id="anmelden" class="row"><input type="email" id="email" required placeholder="name@beispiel.de" autocomplete="email" style="flex:1 1 240px" value="${esc(store.get("auth:email", ""))}">
-        <button class="btn primary">Link senden</button></form>
+        <button class="btn">Link senden</button></form></details>
       <details style="margin-top:18px"><summary style="min-height:44px;cursor:pointer;color:var(--accent);font-weight:600">Die Seite liegt als App auf dem Home-Bildschirm?</summary>
         <p class="muted">Dann öffnet der Link Safari statt der App. Drück in der E-Mail lange auf den Link, wähle „Link kopieren“ und füge ihn hier ein:</p>
         <form id="einlösen" class="row"><input type="text" id="link" placeholder="https://…supabase.co/auth/v1/verify?token=…" style="flex:1 1 240px" autocomplete="off">
@@ -1897,6 +1927,20 @@ function kontoSeite() {
       <p style="margin-top:0">Karteikarten-Fortschritt, gelöste Aufgaben, Quiz-Ergebnisse, Fristen, To-dos, abgehakte Tagesvorschläge und die Einstellungen von Karteikarten und Pomodoro-Timer.</p>
       <p class="muted">Alles bleibt zusätzlich auf jedem Gerät gespeichert, die Seite funktioniert also auch offline. Sobald wieder Netz da ist, gleicht sie sich ab. Wurde derselbe Eintrag auf zwei Geräten geändert, gilt die neuere Änderung.</p>
       <p class="muted" style="margin-bottom:0">Gespeichert wird bei Supabase (Server in Frankfurt). Nur du siehst deine Einträge.</p></div></div>`;
+  $("#pwanmelden")?.addEventListener("submit", async e => {
+    e.preventDefault();
+    const email = $("#pwemail").value.trim(); store.set("auth:email", email);
+    try { await auth.passwortAnmelden(email, $("#pwwort").value); store.set("auth:passwort", true); kontoHinweis = "Angemeldet. Deine Daten werden jetzt abgeglichen."; sync.jetzt(); }
+    catch (err) { kontoHinweis = "Das hat nicht geklappt: " + err.message; }
+    kontoSeite();
+  });
+  $("#pwsetzen")?.addEventListener("submit", async e => {
+    e.preventDefault();
+    if ($("#pwneu").value !== $("#pwneu2").value) { kontoHinweis = "Die beiden Passwörter sind nicht gleich."; return kontoSeite(); }
+    try { await auth.passwortSetzen($("#pwneu").value); kontoHinweis = "Passwort gespeichert. Auf deinen anderen Geräten meldest du dich jetzt mit E-Mail und Passwort an."; }
+    catch (err) { kontoHinweis = "Das hat nicht geklappt: " + err.message; }
+    kontoSeite();
+  });
   $("#anmelden")?.addEventListener("submit", async e => {
     e.preventDefault();
     const email = $("#email").value.trim(); store.set("auth:email", email);

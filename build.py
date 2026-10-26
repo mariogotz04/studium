@@ -527,6 +527,13 @@ def stundenplan():
     return {"termine": termine, "tage": tage, "stand": datetime.fromtimestamp(PLAN_PDF.stat().st_mtime, BERLIN).date().isoformat()}
 
 
+def baustand():
+    """Zeitpunkt des Builds und letzte Änderung (für die Zeile „Stand der Plattform“ unten auf der Seite)."""
+    jetzt = datetime.now(ZoneInfo("Europe/Berlin"))
+    r = subprocess.run(["git", "log", "-1", "--format=%s"], capture_output=True, text=True)
+    return {"zeit": jetzt.strftime("%d.%m.%Y, %H:%M"), "was": r.stdout.strip()[:100] if r.returncode == 0 else ""}
+
+
 def main():
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -590,7 +597,8 @@ def main():
             .replace("/*DATA*/null", einsetzen(data))
             .replace("/*KARTEN*/null", einsetzen(decks))
             .replace("/*LERNEN*/null", einsetzen(lernen))
-            .replace("/*PLAN*/null", einsetzen(stundenplan())))
+            .replace("/*PLAN*/null", einsetzen(stundenplan()))
+            .replace("/*BUILD*/null", einsetzen(baustand())))
     page = formeln_setzen(page)
     print(f"→ {len(FORMELN)} Formeln gesetzt")
     (OUT / "index.html").write_text(page, encoding="utf-8")
