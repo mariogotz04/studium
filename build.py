@@ -6,6 +6,8 @@ Andere .typ-Dateien, etwa alte Stände, werden nie veröffentlicht.
 Karteikarten: skripte/<Modul>/Lernskript aktuell/Karteikarten.md (Aufbau steht am Kopf jeder Datei).
 Eine Karte kann mit „Quelle: 1.3“ auf einen Abschnitt des Lernskripts zeigen (die Seite wird beim Bauen
 aus dem Inhaltsverzeichnis der PDF bestimmt) und mit „Abbildung: name“ ein Bild aus abbildungen/ zeigen.
+Formeln stehen in Typst-Schreibweise zwischen Dollarzeichen ($c = sqrt(2 g h)$, eine Zeile nur mit
+$ … $ wird abgesetzt). Sie werden mit Typst als SVG gesetzt und sehen so aus wie im Lernskript.
 """
 import hashlib
 import html
@@ -110,8 +112,67 @@ def page_count(pdf):
     return len(re.findall(rb"/Type\s*/Page[^s]", pdf.read_bytes()))
 
 
+FORMELN = {}   # Platzhalter-Schlüssel → (Typst-Quelltext, abgesetzt?)
+
+
+def formel(quelle, abgesetzt=False):
+    """Formel zum Setzen vormerken und einen Platzhalter zurückgeben (wird nach dem Setzen ersetzt)."""
+    schlüssel = hashlib.sha1(f"{abgesetzt}|{quelle}".encode()).hexdigest()[:12]
+    FORMELN[schlüssel] = (quelle, abgesetzt)
+    return f"@@F{schlüssel}@@"
+
+
+SCHRIFT = 9.6   # pt, die einer Schrifthöhe auf der Webseite entsprechen (Formelschrift wirkt kleiner als Inter)
+FORMEL_KOPF = """#set page(width: auto, height: auto, margin: (x: 0.6pt, y: 1.2pt), fill: none)
+#set text(font: "Libertinus Serif", size: 11pt, lang: "de", fill: rgb("#1f2328"), top-edge: "bounds", bottom-edge: "bounds")
+#let stütze = box(width: 0pt, hide[$($])
+"""
+
+
+def formeln_setzen(seite):
+    """Alle vorgemerkten Formeln mit Typst als SVG setzen und die Platzhalter in seite ersetzen."""
+    if not FORMELN:
+        return seite
+    ziel = OUT / "f"
+    ziel.mkdir(parents=True, exist_ok=True)
+    tmp = OUT / "_formeln"
+    tmp.mkdir(exist_ok=True)
+    schlüssel = list(FORMELN)
+    zeile = lambda k: (f"$ {FORMELN[k][0]} $" if FORMELN[k][1] else f"#stütze#box(${FORMELN[k][0]}$)")
+
+    def setzen(liste, name):
+        (tmp / f"{name}.typ").write_text(FORMEL_KOPF + "\n#pagebreak()\n".join(zeile(k) for k in liste), encoding="utf-8")
+        r = subprocess.run(["typst", "compile", str(tmp / f"{name}.typ"), str(tmp / (name + "-{p}.svg"))],
+                           capture_output=True, text=True)
+        return r.returncode == 0
+
+    fertig = {}
+    if setzen(schlüssel, "alle"):
+        fertig = {k: tmp / f"alle-{i}.svg" for i, k in enumerate(schlüssel, 1)}
+    else:   # einzeln setzen, damit eine fehlerhafte Formel nicht alle anderen mitnimmt
+        for k in schlüssel:
+            if setzen([k], k):
+                fertig[k] = tmp / f"{k}-1.svg"
+            else:
+                print(f"::warning title=Formel fehlerhaft::${FORMELN[k][0]}$", file=sys.stderr)
+    for k, (quelle, abgesetzt) in FORMELN.items():
+        alt = html.escape(quelle)
+        if k in fertig:
+            svg = fertig[k].read_text(encoding="utf-8")
+            höhe = float(re.search(r'height="([\d.]+)pt"', svg).group(1))
+            (ziel / f"{k}.svg").write_text(svg, encoding="utf-8")
+            img = f'<img class="formel" src="f/{k}.svg" alt="{alt}" style="height:{höhe / SCHRIFT:.3f}em">'
+            ersatz = f'<span class="formel-block">{img}</span>' if abgesetzt else img
+        else:
+            ersatz = f"<code>{alt}</code>"
+        seite = seite.replace(f"@@F{k}@@", json.dumps(ersatz, ensure_ascii=False)[1:-1].replace("</", "<\\/"))
+    shutil.rmtree(tmp)
+    return seite
+
+
 def inline(text):
-    """**fett**, *kursiv* und `Code` in HTML umwandeln (alles andere wird maskiert)."""
+    """**fett**, *kursiv*, `Code` und $Formeln$ in HTML umwandeln (alles andere wird maskiert)."""
+    text = re.sub(r"\$([^$\n]+)\$", lambda m: formel(m.group(1).strip()), text)
     t = html.escape(text, quote=False)
     t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
     t = re.sub(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?![*\w])", r"<em>\1</em>", t)
@@ -134,6 +195,9 @@ def antwort_html(zeilen):
         z = z.strip()
         if not z:
             leeren()
+        elif re.fullmatch(r"\$\s.*\s\$", z):    # $ … $ allein in der Zeile: abgesetzte Formel
+            leeren()
+            teile.append(formel(z[1:-1].strip(), abgesetzt=True))
         elif re.match(r"^Bild:\s*", z):
             leeren()
             bild.append(re.sub(r"^Bild:\s*", "", z))
@@ -254,6 +318,8 @@ def main():
     page = (TEMPLATE.read_text(encoding="utf-8")
             .replace("/*DATA*/null", einsetzen(data))
             .replace("/*KARTEN*/null", einsetzen(decks)))
+    page = formeln_setzen(page)
+    print(f"→ {len(FORMELN)} Formeln gesetzt")
     (OUT / "index.html").write_text(page, encoding="utf-8")
     (OUT / ".nojekyll").touch()
 

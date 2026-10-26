@@ -8,6 +8,7 @@ So ist diese Datei aufgebaut (die Webseite liest sie beim Hochladen automatisch 
 - Eine Zeile "Bild: …" erscheint als Merkbild (Analogie im Feynman-Stil) unten auf der Karte.
 - "Quelle: 1.3" (Nummer des Abschnitts im Lernskript, bei TM2 z. B. "TM2 1.6") zeigt auf der Karte die Seite im aktuellen Lernskript an. Die Seite wird beim Hochladen automatisch bestimmt.
 - "Abbildung: name" zeigt ein Bild aus Typst-Dateien/abbildungen/ (Dateiname ohne Endung, wie bei #bild im Lernskript). Mehrere mit Komma trennen.
+- Formeln in Typst-Schreibweise wie im Lernskript zwischen Dollarzeichen, z. B. $c = sqrt(2 g h)$ oder $p_"abs"$. Eine Zeile nur mit "$ … $" (mit Leerzeichen) wird abgesetzt und groß gesetzt. Ein Schrägstrich ohne Bruch: \/
 - Nur Verständnisfragen, keine Rechenaufgaben. Antworten kurz, einfach, in eigenen Worten.
 - Den Fragetext nur ändern, wenn nötig: Der Lernfortschritt hängt am Wortlaut der Frage.
 -->
@@ -19,11 +20,12 @@ Die ausgelenkte Feder zieht die Masse zur Ruhelage zurück. Dort hat die Masse i
 Quelle: 5.0
 
 ### Wovon hängt die Eigenfrequenz eines Federpendels ab?
-ω₀ = √(D/m). Eine härtere Feder (größeres D) macht die Schwingung schneller, eine größere Masse langsamer. Die Amplitude spielt keine Rolle.
+$ omega_0 = sqrt(D/m) $
+Eine härtere Feder (größeres $D$) macht die Schwingung schneller, eine größere Masse langsamer. Die Amplitude spielt keine Rolle.
 Quelle: 5.0
 
 ### Was ist der Unterschied zwischen f und ω?
-f zählt vollständige Schwingungen pro Sekunde (Hz). ω ist die Kreisfrequenz in rad/s: ω = 2πf. Es sind zwei Zahlen für denselben Takt. Bei 2 Hz durchläuft der Sinus 4π Radiant pro Sekunde.
+$f$ zählt vollständige Schwingungen pro Sekunde (Hz). $omega$ ist die Kreisfrequenz in rad/s: $omega = 2 pi f$. Es sind zwei Zahlen für denselben Takt. Bei 2 Hz durchläuft der Sinus $4 pi$ Radiant pro Sekunde.
 Quelle: 5.0
 
 ### Wann entsteht eine Schwebung, und warum wird der Ton lauter und leiser?
@@ -34,12 +36,12 @@ Quelle: 5.4.1
 Abbildung: schwebung-quelle
 
 ### Was hört man bei 440 Hz und 442 Hz zusammen?
-Einen Ton nahe 441 Hz (der schnelle Träger, die Mittenfrequenz), der zweimal pro Sekunde an- und abschwillt. Die 2 Hz sind kein eigener Ton, sondern der Rhythmus der Lautstärke: f_s = |f₁ − f₂|.
+Einen Ton nahe 441 Hz (der schnelle Träger, die Mittenfrequenz), der zweimal pro Sekunde an- und abschwillt. Die 2 Hz sind kein eigener Ton, sondern der Rhythmus der Lautstärke: $f_s = abs(f_1 - f_2)$.
 Quelle: 5.4.1
 Abbildung: schwebung-quelle
 
 ### Warum ist die hörbare Schwebungsfrequenz doppelt so groß wie die Frequenz der Kosinushülle?
-Die Hülle 2A·cos(Δω·t/2) wechselt zwischen +2A und −2A. Laut ist es aber bei beiden Extremen, denn das Ohr hört den Betrag. Pro Periode der Kosinushülle gibt es also zwei Lautstärkemaxima.
+Die Hülle $2 A cos((Delta omega t)\/2)$ wechselt zwischen $+2A$ und $-2A$. Laut ist es aber bei beiden Extremen, denn das Ohr hört den Betrag. Pro Periode der Kosinushülle gibt es also zwei Lautstärkemaxima.
 Quelle: 5.4.1
 Abbildung: schwebung-quelle
 
@@ -59,12 +61,14 @@ Quelle: 5.4.2
 Abbildung: pendel-quelle
 
 ### Warum hängt die Kraft der Kopplungsfeder vom Unterschied der Auslenkungen ab?
-Die mittlere Feder wird nur gedehnt oder gestaucht, wenn sich der Abstand der Massen ändert, also um x₂ − x₁. Bewegen sich beide gleich weit, bleibt sie entspannt.
+Die mittlere Feder wird nur gedehnt oder gestaucht, wenn sich der Abstand der Massen ändert, also um $x_2 - x_1$. Bewegen sich beide gleich weit, bleibt sie entspannt.
 Quelle: 5.4.2
 Abbildung: pendel-quelle
 
 ### Warum rechnet man bei gekoppelten Pendeln mit Summe und Differenz der Auslenkungen?
-Die beiden Bewegungsgleichungen hängen voneinander ab. Addiert und subtrahiert man sie, entstehen zwei unabhängige Gleichungen, jede wie ein einzelnes Federpendel. Danach rechnet man mit x₁ = (ψ₁ + ψ₂)/2 und x₂ = (ψ₁ − ψ₂)/2 zurück.
+Die beiden Bewegungsgleichungen hängen voneinander ab. Addiert und subtrahiert man sie, entstehen zwei unabhängige Gleichungen, jede wie ein einzelnes Federpendel. Danach rechnet man mit
+$ x_1 = (psi_1 + psi_2)/2, quad x_2 = (psi_1 - psi_2)/2 $
+zurück.
 Quelle: 5.4.2
 Abbildung: pendel-quelle
 
@@ -74,9 +78,11 @@ Quelle: 5.4.2
 Abbildung: pendel-quelle
 
 ### Was passiert bei gekoppelten Pendeln im Gleichtakt und im Gegentakt?
-Gleichtakt: Beide bewegen sich gleich, die Kopplungsfeder bleibt entspannt. Frequenz wie beim einzelnen Pendel: ω_gl = √(D/m).
+Gleichtakt: Beide bewegen sich gleich, die Kopplungsfeder bleibt entspannt. Frequenz wie beim einzelnen Pendel:
+$ omega_"gl" = sqrt(D/m) $
 
-Gegentakt: Beide bewegen sich entgegengesetzt, die Kopplungsfeder wird stark gedehnt und zieht zusätzlich zurück. Deshalb ist die Frequenz höher: ω_gg = √((D + 2D_k)/m).
+Gegentakt: Beide bewegen sich entgegengesetzt, die Kopplungsfeder wird stark gedehnt und zieht zusätzlich zurück. Deshalb ist die Frequenz höher:
+$ omega_"gg" = sqrt((D + 2 D_k)/m) $
 Quelle: 5.4.2
 Abbildung: pendel-quelle
 
@@ -117,27 +123,28 @@ Quelle: 6.1
 Abbildung: wellenarten-quelle
 
 ### Woran erkennt man an ψ(x, t) = u(x − ct), in welche Richtung die Welle läuft?
-Ein bestimmter Wellenberg hat ein festes Argument: x − ct = konstant, also x = konstant + ct. Sein Ort wächst mit der Zeit, die Welle läuft nach +x. Bei u(x + ct) läuft sie nach −x.
+Ein bestimmter Wellenberg hat ein festes Argument: $x - c t = "konstant"$, also $x = "konstant" + c t$. Sein Ort wächst mit der Zeit, die Welle läuft nach $+x$. Bei $u(x + c t)$ läuft sie nach $-x$.
 Quelle: 6.1.1
 Abbildung: alt-puls
 
 ### Was ist der Unterschied zwischen Wellenlänge und Periodendauer?
-Die Wellenlänge λ ist die räumliche Wiederholung: der Abstand zweier gleicher Punkte in einer Momentaufnahme. Die Periodendauer T ist die zeitliche Wiederholung: wie lange ein fester Ort für eine Schwingung braucht.
+Die Wellenlänge $lambda$ ist die räumliche Wiederholung: der Abstand zweier gleicher Punkte in einer Momentaufnahme. Die Periodendauer $T$ ist die zeitliche Wiederholung: wie lange ein fester Ort für eine Schwingung braucht.
 Quelle: 6.2
 Abbildung: alt-harmwelle
 
 ### Warum gilt c = λ·f?
-In einer Periodendauer T rückt ein Wellenberg genau um eine Wellenlänge λ vor. Also ist c = λ/T = λ·f.
+In einer Periodendauer $T$ rückt ein Wellenberg genau um eine Wellenlänge $lambda$ vor. Also ist
+$ c = lambda/T = lambda f $
 Quelle: 6.2
 Abbildung: alt-harmwelle
 
 ### Was legt die Quelle fest und was das Medium?
-Die Quelle gibt den Takt vor, also die Frequenz f. Das Medium bestimmt die Ausbreitungsgeschwindigkeit c. Daraus ergibt sich die Wellenlänge λ = c/f. Beim Übergang in ein anderes Medium bleibt f gleich, c und λ ändern sich.
+Die Quelle gibt den Takt vor, also die Frequenz $f$. Das Medium bestimmt die Ausbreitungsgeschwindigkeit $c$. Daraus ergibt sich die Wellenlänge $lambda = c\/f$. Beim Übergang in ein anderes Medium bleibt $f$ gleich, $c$ und $lambda$ ändern sich.
 Quelle: 6.2
 Abbildung: alt-harmwelle
 
 ### Was ist der Unterschied zwischen Schnelle und Ausbreitungsgeschwindigkeit?
-Die Schnelle ist die Geschwindigkeit, mit der ein einzelnes Teilchen hin und her schwingt. Die Ausbreitungsgeschwindigkeit c ist die Geschwindigkeit, mit der das Muster (z. B. ein Wellenberg) wandert. Ein Luftteilchen fliegt also nicht mit 343 m/s zum Zuhörer.
+Die Schnelle ist die Geschwindigkeit, mit der ein einzelnes Teilchen hin und her schwingt. Die Ausbreitungsgeschwindigkeit $c$ ist die Geschwindigkeit, mit der das Muster (z. B. ein Wellenberg) wandert. Ein Luftteilchen fliegt also nicht mit 343 m/s zum Zuhörer.
 Quelle: 6.2.1
 Abbildung: schnelle-quelle
 
@@ -152,27 +159,30 @@ Quelle: 6.2.1
 Abbildung: schnelle-quelle
 
 ### Warum hängt die Wellengeschwindigkeit von Steifigkeit und Dichte des Mediums ab?
-Die Nachbarteilchen müssen sich die Bewegung weitergeben. Starke Rückstellkräfte (Steifigkeit, Spannung) beschleunigen die Weitergabe, große Trägheit (Dichte) bremst sie. Deshalb steht in den Formeln meist √(Steifigkeit/Dichte).
+Die Nachbarteilchen müssen sich die Bewegung weitergeben. Starke Rückstellkräfte (Steifigkeit, Spannung) beschleunigen die Weitergabe, große Trägheit (Dichte) bremst sie. Deshalb steht in den Formeln meist $sqrt("Steifigkeit"\/"Dichte")$.
 Quelle: 6.3
 Abbildung: saite-quelle
 
 ### Was passiert mit der Wellengeschwindigkeit auf einer Saite bei vierfacher Spannung?
-c = √(F/(ρA)). Vierfache Zugkraft gibt doppelte Geschwindigkeit, wegen der Wurzel. Vierfache Dichte würde sie halbieren.
+$ c = sqrt(F/(rho A)) $
+Vierfache Zugkraft gibt doppelte Geschwindigkeit, wegen der Wurzel. Vierfache Dichte würde sie halbieren.
 Quelle: 6.3
 Abbildung: saite-quelle
 
 ### Wovon hängt die Schallgeschwindigkeit in einem idealen Gas ab?
-c = √(κRT/m_mol). Bei demselben Gas nur von der absoluten Temperatur: c ∝ √T. Wärmere Luft leitet Schall schneller (etwa 330 m/s bei 0 °C, 343 m/s bei 20 °C). T muss in Kelvin stehen.
+$ c = sqrt((kappa R T)/m_"mol") $
+Bei demselben Gas hängt sie nur von der absoluten Temperatur ab: $c prop sqrt(T)$. Wärmere Luft leitet Schall schneller (etwa 330 m/s bei 0 °C, 343 m/s bei 20 °C). $T$ muss in Kelvin stehen.
 Quelle: 6.3
 Abbildung: saite-quelle
 
 ### Was ist die Intensität einer Welle?
-Die Leistung pro Fläche senkrecht zur Ausbreitung: I = P/F in W/m². Eine größere Empfangsfläche fängt mehr Leistung ein, die Intensität selbst bleibt dabei gleich.
+Die Leistung pro Fläche senkrecht zur Ausbreitung: $I = P\/F$ in W/m². Eine größere Empfangsfläche fängt mehr Leistung ein, die Intensität selbst bleibt dabei gleich.
 Quelle: 6.4
 Abbildung: energie-quelle
 
 ### Wie hängt die Intensität von Amplitude und Frequenz ab?
-I = ½·ρ·c·ω²·u². Sie wächst mit dem Quadrat der Amplitude und dem Quadrat der Frequenz. Doppelte Amplitude gibt vierfache Intensität.
+$ I = 1/2 rho c omega^2 hat(u)^2 $
+Sie wächst mit dem Quadrat der Amplitude und dem Quadrat der Frequenz. Doppelte Amplitude gibt vierfache Intensität.
 Quelle: 6.4
 Abbildung: intensitaet-kurve
 
@@ -182,22 +192,23 @@ Quelle: 6.5
 Abbildung: interferenz-quelle
 
 ### Wann ist die Interferenz zweier gleichphasiger Quellen konstruktiv oder destruktiv?
-Es zählt der Wegunterschied Δl. Ganze Wellenlängen: konstruktiv. Ungerade halbe Wellenlängen: destruktiv.
+Es zählt der Wegunterschied $Delta l$. Ganze Wellenlängen: konstruktiv. Ungerade halbe Wellenlängen: destruktiv.
 Quelle: 6.5
 Abbildung: interferenz-quelle
 
 ### Warum gibt doppelte Amplitude bei Interferenz die vierfache Intensität, und ist das Energie aus dem Nichts?
-Man addiert zuerst die Auslenkungen: A + A = 2A. Die Intensität hängt quadratisch von der Amplitude ab, also 4·I. Das ist keine neue Energie: An anderen Stellen löschen sich die Wellen aus, die Energie wird nur umverteilt.
+Man addiert zuerst die Auslenkungen: $A + A = 2A$. Die Intensität hängt quadratisch von der Amplitude ab, also $4 I$. Das ist keine neue Energie: An anderen Stellen löschen sich die Wellen aus, die Energie wird nur umverteilt.
 Quelle: 6.4
 Abbildung: energie-quelle
 
 ### Wie entsteht eine stehende Welle?
-Zwei gleich starke Wellen mit gleicher Frequenz laufen gegeneinander, typisch eine Welle und ihre Reflexion. Ihre Summe ist 2A·sin(kx)·cos(ωt): Das Ortsmuster bleibt stehen, die Teilchen schwingen darin weiter auf und ab.
+Zwei gleich starke Wellen mit gleicher Frequenz laufen gegeneinander, typisch eine Welle und ihre Reflexion. Ihre Summe ist
+$ u = 2 A sin(k x) cos(omega t) $ Das Ortsmuster bleibt stehen, die Teilchen schwingen darin weiter auf und ab.
 Quelle: 6.6
 Abbildung: stehend-quelle
 
 ### Was sind Knoten und Bäuche, und wie weit liegen sie auseinander?
-Knoten: Stellen, die immer in Ruhe sind. Bäuche: Stellen mit der größten Schwingungsamplitude. Zwei benachbarte Knoten (oder Bäuche) liegen λ/2 auseinander, Knoten und Bauch λ/4.
+Knoten: Stellen, die immer in Ruhe sind. Bäuche: Stellen mit der größten Schwingungsamplitude. Zwei benachbarte Knoten (oder Bäuche) liegen $lambda\/2$ auseinander, Knoten und Bauch $lambda\/4$.
 Quelle: 6.6
 Abbildung: stehend-quelle
 
@@ -214,7 +225,9 @@ Quelle: 6.6.1
 Abbildung: reflexion-quelle
 
 ### Warum passen auf eine eingespannte Saite nur bestimmte Wellenlängen?
-Beide Enden müssen Knoten sein. Dazwischen passen nur ganze Vielfache einer halben Wellenlänge: L = n·λ/2. Daraus folgen die Eigenfrequenzen f_n = n·c/(2L), also Grundton und Obertöne 2f₁, 3f₁, …
+Beide Enden müssen Knoten sein. Dazwischen passen nur ganze Vielfache einer halben Wellenlänge:
+$ L = n lambda/2, quad f_n = n c/(2L) $
+Also Grundton und Obertöne $2 f_1$, $3 f_1$, …
 Quelle: 6.7.1
 Abbildung: mode-fest-quelle
 
@@ -224,12 +237,13 @@ Quelle: 6.7.1
 Abbildung: mode-fest-quelle
 
 ### Welche Moden passen bei einem festen und einem losen Ende?
-Zwischen Knoten und Bauch passt in der Grundmode eine Viertelwellenlänge. Jede weitere Mode fügt eine halbe Wellenlänge dazu. Es passen nur ungerade Vielfache: L = n·λ/4 mit n = 1, 3, 5, …
+Zwischen Knoten und Bauch passt in der Grundmode eine Viertelwellenlänge. Jede weitere Mode fügt eine halbe Wellenlänge dazu. Es passen nur ungerade Vielfache:
+$ L = n lambda/4 quad "mit" n = 1, 3, 5, dots $
 
-Achtung: Die zweite Mode hat hier n = 3, nicht n = 2. Beispiel: einseitig eingespannte Zunge, Luftsäule mit einem geschlossenen Ende.
+Achtung: Die zweite Mode hat hier $n = 3$, nicht $n = 2$. Beispiel: einseitig eingespannte Zunge, Luftsäule mit einem geschlossenen Ende.
 Quelle: 6.7.2
 Abbildung: mode-gemischt-quelle
 
 ### Welche Moden passen bei zwei losen Enden?
-An beiden Enden ist ein Bauch. Es passen dieselben Wellenlängen wie bei zwei festen Enden, L = n·λ/2 mit n = 1, 2, 3, …, nur das Ortsbild ist anders: Knoten liegen innen, Bäuche an den Rändern.
+An beiden Enden ist ein Bauch. Es passen dieselben Wellenlängen wie bei zwei festen Enden, $L = n lambda\/2$ mit $n = 1, 2, 3, dots$, nur das Ortsbild ist anders: Knoten liegen innen, Bäuche an den Rändern.
 Quelle: 6.7.3

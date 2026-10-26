@@ -8,6 +8,7 @@ So ist diese Datei aufgebaut (die Webseite liest sie beim Hochladen automatisch 
 - Eine Zeile "Bild: …" erscheint als Merkbild (Analogie im Feynman-Stil) unten auf der Karte.
 - "Quelle: 1.3" (Nummer des Abschnitts im Lernskript, bei TM2 z. B. "TM2 1.6") zeigt auf der Karte die Seite im aktuellen Lernskript an. Die Seite wird beim Hochladen automatisch bestimmt.
 - "Abbildung: name" zeigt ein Bild aus Typst-Dateien/abbildungen/ (Dateiname ohne Endung, wie bei #bild im Lernskript). Mehrere mit Komma trennen.
+- Formeln in Typst-Schreibweise wie im Lernskript zwischen Dollarzeichen, z. B. $c = sqrt(2 g h)$ oder $p_"abs"$. Eine Zeile nur mit "$ … $" (mit Leerzeichen) wird abgesetzt und groß gesetzt. Ein Schrägstrich ohne Bruch: \/
 - Nur Verständnisfragen, keine Rechenaufgaben. Antworten kurz, einfach, in eigenen Worten.
 - Den Fragetext nur ändern, wenn nötig: Der Lernfortschritt hängt am Wortlaut der Frage.
 -->
@@ -530,7 +531,7 @@ Quelle: 12.1
 Abbildung: b-getriebearten
 
 ### Was ist der Modul, und warum müssen kämmende Räder denselben Modul haben?
-m = d/z, also Teilkreisdurchmesser pro Zahn. Er bestimmt die Zahngröße. Nur bei gleichem Modul passen Teilung und Zahnform zusammen.
+$m = d\/z$, also Teilkreisdurchmesser pro Zahn. Er bestimmt die Zahngröße. Nur bei gleichem Modul passen Teilung und Zahnform zusammen.
 
 Bild: Wie die Gliedergröße einer Fahrradkette: Ritzel und Kettenblatt müssen zur selben Kette passen.
 Quelle: 12.2

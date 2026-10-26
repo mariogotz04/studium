@@ -8,6 +8,7 @@ So ist diese Datei aufgebaut (die Webseite liest sie beim Hochladen automatisch 
 - Eine Zeile "Bild: …" erscheint als Merkbild (Analogie im Feynman-Stil) unten auf der Karte.
 - "Quelle: 1.3" (Nummer des Abschnitts im Lernskript, bei TM2 z. B. "TM2 1.6") zeigt auf der Karte die Seite im aktuellen Lernskript an. Die Seite wird beim Hochladen automatisch bestimmt.
 - "Abbildung: name" zeigt ein Bild aus Typst-Dateien/abbildungen/ (Dateiname ohne Endung, wie bei #bild im Lernskript). Mehrere mit Komma trennen.
+- Formeln in Typst-Schreibweise wie im Lernskript zwischen Dollarzeichen, z. B. $c = sqrt(2 g h)$ oder $p_"abs"$. Eine Zeile nur mit "$ … $" (mit Leerzeichen) wird abgesetzt und groß gesetzt. Ein Schrägstrich ohne Bruch: \/
 - Nur Verständnisfragen, keine Rechenaufgaben. Antworten kurz, einfach, in eigenen Worten.
 - Den Fragetext nur ändern, wenn nötig: Der Lernfortschritt hängt am Wortlaut der Frage.
 -->
@@ -137,7 +138,8 @@ Abbildung: cashflow-bereiche
 ### Was leistet ein Finanzplan?
 Er plant künftige Ein- und Auszahlungen Periode für Periode und zeigt, wann Geld fehlt oder übrig ist. So sieht man einen Engpass, bevor die Zahlung fällig wird, und kann rechtzeitig Finanzierung organisieren.
 
-Fortschreibung: Endbestand = Anfangsbestand + Einzahlungen − Auszahlungen.
+Fortschreibung:
+$ "Endbestand" = "Anfangsbestand" + "Einzahlungen" - "Auszahlungen" $
 Quelle: 1.7
 Abbildung: plan-und-bilanz
 
@@ -154,7 +156,7 @@ Quelle: 1.7
 Abbildung: plan-und-bilanz
 
 ### Wie berechnet man die verfügbare Liquidität mit einem Kontokorrentkredit?
-Positiver Kontostand plus freie Kreditlinie. Ist das Konto schon im Minus, ist die freie Linie = vereinbarte Linie − genutzter Betrag. Nicht doppelt abziehen.
+Positiver Kontostand plus freie Kreditlinie. Ist das Konto schon im Minus, ist die freie Linie $= "vereinbarte Linie" - "genutzter Betrag"$. Nicht doppelt abziehen.
 Quelle: 1.7
 Abbildung: liquiditaetsverlauf
 
@@ -200,13 +202,14 @@ Quelle: 1.9
 Abbildung: liquiditaetsgrade
 
 ### Was sagt die goldene Bilanzregel?
-Langfristig gebundenes Anlagevermögen soll mit langfristig verfügbarem Kapital finanziert werden (Fristenkongruenz). Geprüft mit der Anlagendeckung II: (EK + langfristiges FK) / AV, mindestens 100 %.
+Langfristig gebundenes Anlagevermögen soll mit langfristig verfügbarem Kapital finanziert werden (Fristenkongruenz). Geprüft mit der Anlagendeckung II, mindestens 100 %:
+$ "Anlagendeckung II" = ("EK" + "langfristiges FK")/"AV" $
 
 Bild: Ein Haus finanziert man nicht dauerhaft über den Dispokredit.
 Quelle: 1.10
 
 ### Was sagt die Eigenkapitalquote aus?
-EK / Gesamtkapital. Sie zeigt, wie groß das Verlustpolster ist. Mehr Eigenkapital heißt mehr Sicherheit und meist bessere Kreditwürdigkeit. Zielwert laut Folie mindestens 15–20 %.
+$"EK-Quote" = "EK" \/ "Gesamtkapital"$. Sie zeigt, wie groß das Verlustpolster ist. Mehr Eigenkapital heißt mehr Sicherheit und meist bessere Kreditwürdigkeit. Zielwert laut Folie mindestens 15–20 %.
 Quelle: 1.10
 
 ### Ist eine niedrige Anlageintensität automatisch gut?
@@ -218,16 +221,19 @@ In wie vielen Jahren das Unternehmen seine Schulden rechnerisch aus dem Cashflow
 Quelle: 1.10
 
 ### Was unterscheidet Eigenkapitalrentabilität und Umsatzrentabilität?
-EK-Rentabilität = Jahresüberschuss / Eigenkapital: Wie gut verzinst sich das Geld der Eigentümer? Sie soll deutlich über dem Marktzins liegen, weil sie das Risiko vergüten muss.
+$ "EK-Rentabilität" = "Jahresüberschuss"/"Eigenkapital" $
+Wie gut verzinst sich das Geld der Eigentümer? Sie soll deutlich über dem Marktzins liegen, weil sie das Risiko vergüten muss.
 
-Umsatzrentabilität = Jahresüberschuss / Umsatz: Wie viel vom Umsatz bleibt als Gewinn hängen?
+$ "Umsatzrentabilität" = "Jahresüberschuss"/"Umsatz" $
+Wie viel vom Umsatz bleibt als Gewinn hängen?
 Quelle: 1.11
 Abbildung: kapitalrisiko-folie
 
 ### Was ist der Leverage-Effekt?
-Mehr Fremdkapital hebelt die Eigenkapitalrendite: r_e = r_G + (r_G − r_f)·FK/EK.
+Mehr Fremdkapital hebelt die Eigenkapitalrendite:
+$ r_e = r_G + (r_G - r_f) dot "FK"/"EK" $
 
-Verdient das Gesamtkapital mehr als der Kreditzins kostet (r_G > r_f), steigt die EK-Rendite mit jeder Verschuldung. Ist r_G < r_f, drückt derselbe Hebel die EK-Rendite nach unten.
+Verdient das Gesamtkapital mehr als der Kreditzins kostet ($r_G > r_f$), steigt die EK-Rendite mit jeder Verschuldung. Ist $r_G < r_f$, drückt derselbe Hebel die EK-Rendite nach unten.
 
 Bild: Ein Hebel verstärkt in beide Richtungen.
 Quelle: 1.12

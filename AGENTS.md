@@ -49,6 +49,11 @@ Vorher prüfen, dass das Skript fehlerfrei kompiliert, falls `typst` installiert
   Die Seite stimmt so auch, wenn das Lernskript wächst. Wird der Abschnitt nicht gefunden, warnt der Build.
 - Gibt es im Lernskript eine passende Abbildung, `Abbildung: name` (oder `name1, name2`) ergänzen; `name` ist die
   Datei `Typst-Dateien/abbildungen/<name>.svg`. Die Bildunterschrift wird aus `#bild("name", [...])` übernommen.
+- Formeln in den Antworten in Typst-Schreibweise zwischen `$…$` schreiben (z. B. `$c = sqrt(2 g h)$`), eine Zeile nur
+  mit `$ … $` wird abgesetzt. `build.py` setzt sie mit Typst als SVG (Ordner `f/`), sie sehen aus wie im Lernskript.
+  Den Fragetext dafür nicht ändern (Lernstand hängt daran), Formeln gehören in die Antwort.
+- Startseite der Karteikarten: „fällige lernen“ mischt fällige Karten aller Module (reihum, höchstens die eingestellte
+  Anzahl pro Runde). Auf der Modulseite gibt es „Nur fällige“ ohne neue Karten.
   Die Karteikarten sind für das iPad und Bedienung mit dem Finger gemacht (keine Tastatur).
 - `build.py` liest die Dateien ein; jede Karte bekommt eine ID aus Modul und Fragetext. Den Fragetext deshalb
   nur ändern, wenn nötig, sonst beginnt die Karte wieder als neu.
