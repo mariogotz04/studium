@@ -2,7 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Lernen">
 <title>Meine Lernskripte</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23244f70'/><path d='M9 8h10l4 4v12H9z' fill='white'/><path d='M12 16h8M12 20h6' stroke='%23244f70' stroke-width='2'/></svg>">
 <style>
@@ -66,43 +70,88 @@ label.l { font-size: 14px; color: var(--muted); }
 .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin: 16px 0 6px; }
 .bar i { display: block; height: 100%; background: var(--teal); transition: width .3s; }
 .status { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
-.stage { perspective: 1600px; margin: 12px 0 16px; }
-.flash { position: relative; min-height: 340px; transform-style: preserve-3d; transition: transform .45s; cursor: pointer;
-  -webkit-tap-highlight-color: transparent; touch-action: pan-y; }
-.flash.flipped { transform: rotateY(180deg); }
+/* Lernrunde: aufs iPad zugeschnitten (nur Finger), Karte füllt den Bildschirm */
+body.lernen header, body.lernen .tabs { display: none; }
+body.lernen .wrap { max-width: 1040px; padding: max(14px, env(safe-area-inset-top)) 20px max(14px, env(safe-area-inset-bottom));
+  min-height: 100dvh; display: flex; flex-direction: column; }
+body.lernen #view-karten { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.topbar { display: flex; align-items: center; gap: 14px; }
+.topbar .back { margin: 0; padding: 10px 4px; min-height: 44px; display: flex; align-items: center; white-space: nowrap; }
+.topbar .bar { flex: 1; margin: 0; }
+.topbar .zahl { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.status { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-top: 2px; }
+.stage { perspective: 2000px; margin: 12px 0 14px; flex: 1; min-height: 360px; display: flex; }
+.flash { position: relative; flex: 1; transform-style: preserve-3d; transition: transform .45s; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+.flash.flipped { transform: rotateY(180deg); cursor: default; }
 .side { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 22px 18px;
-  display: flex; flex-direction: column; overflow-y: auto; box-shadow: 0 6px 24px rgba(20, 40, 60, .07); }
+  background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px 28px 22px;
+  display: flex; flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  box-shadow: 0 8px 30px rgba(20, 40, 60, .08); }
 .side.back-side { transform: rotateY(180deg); }
-.chap { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.side .q { font-size: 22px; font-weight: 650; line-height: 1.35; margin: auto 0; padding: 18px 0; text-align: center; }
-.side .q-small { font-weight: 650; margin: 8px 0 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
-.side .a { font-size: 17px; }
-.side .a p { margin: 0 0 10px; }
-.side .a ul { margin: 0 0 10px; padding-left: 22px; }
+.chap { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.side .q { font-size: clamp(22px, 3.2vw, 32px); font-weight: 650; line-height: 1.3; margin: auto 0; padding: 24px 4%;
+  text-align: center; text-wrap: balance; }
+.side .q-small { font-size: 18px; font-weight: 650; margin: 8px 0 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.inhalt { display: grid; gap: 18px 26px; align-items: start; }
+.inhalt.mit-bild { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.side .a { font-size: 19px; line-height: 1.55; }
+.side .a p { margin: 0 0 12px; }
+.side .a ul { margin: 0 0 12px; padding-left: 24px; }
+.side .a li { margin-bottom: 4px; }
 .side .a code { font-size: .92em; background: var(--accent-soft); padding: 1px 4px; border-radius: 4px; }
-.merkbild { margin-top: auto; background: var(--bild); border: 1px solid var(--bild-line); border-radius: 10px;
-  padding: 10px 12px; font-size: 15px; }
+figure.abb { margin: 0; }
+figure.abb button { display: block; width: 100%; padding: 10px; background: #fff; border: 1px solid var(--line);
+  border-radius: 12px; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
+figure.abb img { display: block; width: 100%; height: auto; max-height: 46vh; object-fit: contain; }
+figure.abb figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+figure.abb + figure.abb { margin-top: 14px; }
+.fuss { margin-top: auto; padding-top: 16px; display: grid; gap: 10px; }
+.merkbild { background: var(--bild); border: 1px solid var(--bild-line); border-radius: 12px; padding: 12px 14px; font-size: 16px; }
 .merkbild b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
-.hint { text-align: center; font-size: 13px; color: var(--muted); }
+.quelle { display: flex; align-items: center; gap: 10px; padding: 12px 14px; min-height: 48px; border-radius: 12px;
+  background: var(--accent-soft); color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 600; }
+.quelle span { font-weight: 400; color: var(--muted); }
+.quelle::after { content: "›"; margin-left: auto; font-size: 22px; line-height: 1; }
+.hint { text-align: center; font-size: 15px; color: var(--muted); }
 .mode { font-size: 12px; font-weight: 600; color: var(--hard); }
-.grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.grade button { font: inherit; border-radius: 10px; padding: 10px 4px; cursor: pointer; background: var(--card);
-  border: 1px solid currentColor; font-weight: 650; line-height: 1.25; }
-.grade button small { display: block; font-weight: 400; font-size: 12px; color: var(--muted); }
+#controls { padding-bottom: 4px; }
+.grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.grade button { font: inherit; font-size: 19px; border-radius: 14px; min-height: 76px; padding: 10px 4px; cursor: pointer;
+  background: var(--card); border: 2px solid currentColor; font-weight: 700; line-height: 1.25;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.grade button:active { transform: scale(.97); }
+.grade button small { display: block; font-weight: 500; font-size: 14px; color: var(--muted); margin-top: 2px; }
 .grade .g1 { color: var(--again); } .grade .g2 { color: var(--hard); } .grade .g3 { color: var(--good); } .grade .g4 { color: var(--easy); }
-.flipbtn { width: 100%; padding: 13px; font-size: 16px; }
-.kbd { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+.flipbtn { width: 100%; min-height: 76px; font-size: 20px; border-radius: 14px; touch-action: manipulation; }
 .done h2 { margin: 0 0 6px; }
 .muted { color: var(--muted); }
+/* Bild groß ansehen: antippen öffnet, Finger zum Zoomen, antippen schließt */
+.lupe { position: fixed; inset: 0; z-index: 10; background: rgba(10, 16, 22, .88); display: flex; align-items: center;
+  justify-content: center; padding: max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom)); }
+.lupe figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.lupe img { background: #fff; border-radius: 12px; padding: 12px; max-width: 100%; max-height: calc(100dvh - 120px);
+  object-fit: contain; touch-action: pinch-zoom; }
+.lupe figcaption { color: #e6edf2; font-size: 15px; text-align: center; max-width: 760px; }
+.lupe .zu { position: absolute; top: max(14px, env(safe-area-inset-top)); right: 16px; width: 48px; height: 48px;
+  border-radius: 24px; border: 0; background: rgba(255,255,255,.16); color: #fff; font-size: 26px; cursor: pointer; }
+/* Fingerbedienung überall: große Tippflächen */
+.btn { min-height: 44px; padding: 10px 18px; font-size: 15px; display: inline-flex; align-items: center; justify-content: center; }
+select { min-height: 44px; font-size: 16px; }
+.link { min-height: 44px; padding: 0 6px; font-size: 15px; }
+@media (max-width: 860px) {
+  .inhalt.mit-bild { grid-template-columns: 1fr; }
+  figure.abb img { max-height: 38vh; }
+}
 @media (max-width: 560px) {
   .wrap { padding-top: 24px; }
   .script { flex-direction: column; align-items: stretch; }
   .actions .btn { flex: 1; text-align: center; }
-  .flash { min-height: 420px; }
-  .side .q { font-size: 20px; }
-  .grade { grid-template-columns: repeat(2, 1fr); }
-  .kbd { display: none; }
+  body.lernen .wrap { padding-left: 12px; padding-right: 12px; }
+  .side { padding: 18px 18px 16px; }
+  .side .a { font-size: 17px; }
+  .grade { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .grade button { min-height: 62px; font-size: 17px; }
 }
 </style>
 </head>
@@ -327,18 +376,25 @@ function zeigen() {
   s.umgedreht = false;
   const vorschau = s.frei ? ["heute nochmal", "", "", ""] : [1, 2, 3, 4].map(n => dauer(planen(st, n)));
   const offen = s.queue.length;
-  view.innerHTML = `<a class="back" href="#karteikarten/${encodeURIComponent(s.deck.name)}">← ${esc(s.deck.name)} · Runde beenden</a>
-    <div class="bar"><i style="width:${Math.round(100 * s.fertig / (s.fertig + offen))}%"></i></div>
-    <div class="status"><span>${s.fertig} erledigt · ${offen} offen</span>
+  document.body.classList.add("lernen");
+  const bilder = (c.i || []).map((b, n) => `<figure class="abb"><button type="button" data-bild="${n}" aria-label="Abbildung groß ansehen">
+      <img src="${b.src}" alt="${esc(b.cap.replace(/<[^>]+>/g, ""))}" loading="lazy"></button>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`).join("");
+  const quelle = c.s ? `<a class="quelle" href="${s.deck.pdf}#page=${c.s.p}" target="_blank" rel="noopener">📖 Lernskript S. ${c.s.p}
+      <span>${esc(c.s.t)}</span></a>` : "";
+  view.innerHTML = `<div class="topbar"><a class="back" href="#karteikarten/${encodeURIComponent(s.deck.name)}">← ${esc(s.deck.name)}</a>
+      <div class="bar"><i style="width:${Math.round(100 * s.fertig / (s.fertig + offen))}%"></i></div>
+      <span class="zahl">${s.fertig} / ${s.fertig + offen}</span></div>
+    <div class="status"><span>${esc(c.k)}</span>
       <span>${s.frei ? `<span class="mode">Frei üben – ändert den Plan nicht</span>` : !st ? "neue Karte" : st.typ === "wdh" ? "Wiederholung" : "im Lernen"}</span></div>
     <div class="stage"><div class="flash" id="flash">
-      <div class="side"><div class="chap">${esc(c.k)}</div><div class="q">${c.q}</div>
-        <div class="hint">Erst laut in eigenen Worten erklären, dann tippen zum Umdrehen</div></div>
-      <div class="side back-side"><div class="chap">${esc(c.k)}</div><div class="q-small">${c.q}</div>
-        <div class="a">${c.a}</div>${c.b ? `<div class="merkbild"><b>Merkbild</b>${c.b}</div>` : ""}</div>
+      <div class="side"><div class="q">${c.q}</div>
+        <div class="hint">Erst laut in eigenen Worten erklären, dann antippen zum Umdrehen</div></div>
+      <div class="side back-side"><div class="q-small">${c.q}</div>
+        <div class="inhalt${bilder ? " mit-bild" : ""}"><div class="a">${c.a}</div>${bilder ? `<div>${bilder}</div>` : ""}</div>
+        ${c.b || quelle ? `<div class="fuss">${c.b ? `<div class="merkbild"><b>Merkbild</b>${c.b}</div>` : ""}${quelle}</div>` : ""}</div>
     </div></div>
-    <div id="controls"><button class="btn primary flipbtn" id="flip">Antwort zeigen</button></div>
-    <div class="kbd">Leertaste: umdrehen · 1–4: bewerten</div>`;
+    <div id="controls"><button class="btn primary flipbtn" id="flip">Antwort zeigen</button></div>`;
+  view.querySelectorAll("[data-bild]").forEach(b => b.onclick = e => { e.stopPropagation(); lupe(c.i[+b.dataset.bild]); });
   const flash = view.querySelector("#flash");
   const umdrehen = () => {
     if (s.umgedreht) return;
@@ -352,7 +408,7 @@ function zeigen() {
       }).join("")}</div>`;
     view.querySelectorAll(".grade button").forEach(b => b.onclick = () => bewerten(+b.dataset.n));
   };
-  flash.onclick = umdrehen;
+  flash.onclick = e => { if (!e.target.closest("a, button")) umdrehen(); };
   view.querySelector("#flip").onclick = umdrehen;
   // Wischen auf der umgedrehten Karte: links = Nochmal, rechts = Gut
   let x0 = null;
@@ -362,6 +418,15 @@ function zeigen() {
     const dx = e.changedTouches[0].clientX - x0; x0 = null;
     if (Math.abs(dx) > 70) bewerten(dx < 0 ? 1 : 3);
   });
+}
+
+function lupe(b) {
+  const d = document.createElement("div");
+  d.className = "lupe";
+  d.innerHTML = `<button class="zu" aria-label="Schließen">×</button><figure><img src="${b.src}" alt="">
+    ${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`;
+  d.onclick = e => { if (e.target === d || e.target.closest(".zu") || e.target.tagName === "FIGCAPTION") d.remove(); };
+  document.body.appendChild(d);
 }
 
 function bewerten(n) {
@@ -388,6 +453,7 @@ function bewerten(n) {
 
 function ende() {
   const s = sitzung;
+  document.body.classList.remove("lernen");
   const z = zählen(s.deck, s.kapitel);
   const nochNeu = !s.frei && z.neu > 0;
   view.innerHTML = `<a class="back" href="#karteikarten/${encodeURIComponent(s.deck.name)}">← ${esc(s.deck.name)}</a>
@@ -412,6 +478,8 @@ document.addEventListener("keydown", e => {
 
 function route() {
   const h = decodeURIComponent(location.hash.slice(1));
+  document.body.classList.remove("lernen");
+  document.querySelector(".lupe")?.remove();
   const karten = h.startsWith("karteikarten");
   document.getElementById("view-skripte").hidden = karten;
   view.hidden = !karten;
