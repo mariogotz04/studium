@@ -995,7 +995,7 @@ Quelle $U_q = 24 thin "V"$, $R_i = 2 thin Omega$, Last $R_a = 10 thin Omega$. Be
   ergebnis: [$R_a = 2 thin Omega$, $P_"a,max" = 72 thin "W"$ bei $eta = 50 thin %$],
   tipp: [Leistungsanpassung: Bei welchem Lastwiderstand bekommt der Verbraucher am meisten?],
 )[
-Gleiche Quelle wie in Aufgabe 9: Welches $R_a$ liefert maximale Leistung? Wie groß ist $P_"a,max"$?
+Gleiche Quelle wie in „Grundstromkreis vollständig berechnen“ ($U_q = 24 thin "V"$, $R_i = 2 thin Omega$): Welches $R_a$ liefert maximale Leistung? Wie groß ist $P_"a,max"$?
 ][
 *Der Zielkonflikt:* Ist $R_a$ sehr klein, fließt viel Strom, aber außen liegt kaum Spannung. Ist $R_a$ sehr groß, liegt außen fast $U_q$, aber es fließt kaum Strom. Dazwischen gibt es ein Maximum, und es liegt bei $R_a = R_i$ (Leistungsanpassung).
 ][
@@ -1003,7 +1003,7 @@ Gleiche Quelle wie in Aufgabe 9: Welches $R_a$ liefert maximale Leistung? Wie gr
 ][
 *Maximale Leistung:* Strom $I = 24\/4 = 6 thin "A"$, Spannung außen $U_a = 12 thin "V"$, also $P_"a,max" = 72 thin "W"$. Kurzformel: $P_"a,max" = U_q^2\/(4 R_i) = 576\/8 = 72 thin "W"$.
 ][
-*Preis dafür:* Innen entsteht genauso viel Wärme wie außen, $eta = 50 thin %$. *Prüfen:* 72 W sind mehr als die 40 W aus Aufgabe 9, obwohl der Wirkungsgrad schlechter ist.
+*Preis dafür:* Innen entsteht genauso viel Wärme wie außen, $eta = 50 thin %$. *Prüfen:* 72 W sind mehr als die 40 W bei $R_a = 10 thin Omega$, obwohl der Wirkungsgrad schlechter ist.
 ]
 
 // 2-11
