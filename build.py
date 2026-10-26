@@ -528,7 +528,7 @@ def stundenplan():
 
 
 def baustand():
-    """Zeitpunkt des Builds und letzte Änderung (für die Zeile „Stand der Plattform“ unten auf der Seite)."""
+    """Zeitpunkt des Builds und letzte Änderung (für die Zeile „Stand der Seite“ unten auf der Seite)."""
     jetzt = datetime.now(ZoneInfo("Europe/Berlin"))
     r = subprocess.run(["git", "log", "-1", "--format=%s"], capture_output=True, text=True)
     return {"zeit": jetzt.strftime("%d.%m.%Y, %H:%M"), "was": r.stdout.strip()[:100] if r.returncode == 0 else ""}
