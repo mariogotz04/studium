@@ -52,6 +52,43 @@
 }
 #let th(..cells) = table.header(..cells.pos().map(c => table.cell(fill: pale)[#strong(c)]))
 
+// ─── Überblick-Ebenen und Chunkmaps (in allen Modulen gleich) ─────────────────
+// Ebene 0: Seite „Das Modul auf einen Blick“ nach dem Wegweiser (Label <ueberblick>).
+// Ebene 1: unter jeder Kapitelüberschrift (Label <a-n>) #überblick mit #idee-Links und eine #karte oder ein #ablauf.
+// Ebene 2: die Abschnitte; am Ende jedes Abschnitts #hoch(<a-n>, [Kapitelübersicht]).
+// Die Kästen sind keine Überschriften: Inhaltsverzeichnis und PDF-Lesezeichen bleiben unverändert.
+#let chunk(titel, begriffe, ziel: none, fill: pale, stroke: navy) = {
+  let kasten = block(width: 100%, fill: fill, stroke: 0.6pt + stroke, radius: 4pt, inset: (x: 6pt, y: 5pt), breakable: false)[
+    #set par(leading: 0.35em, spacing: 0.35em, justify: false)
+    #set text(hyphenate: true)
+    #text(size: 9pt, weight: "bold", fill: navy, titel)
+    #if begriffe != none [#parbreak() #text(size: 7.8pt, fill: muted, begriffe)]
+  ]
+  if ziel == none { kasten } else { link(ziel, kasten) }
+}
+#let pfeil(beschriftung: none, zeichen: sym.arrow.r) = align(center + horizon, stack(dir: ttb, spacing: 2pt,
+  ..(if beschriftung != none { (text(size: 6.8pt, fill: teal, beschriftung),) } else { () }),
+  text(size: 13pt, fill: teal, zeichen)))
+// Chunkmap als Raster: #karte((1fr, auto, 1fr), chunk(..), pfeil(..), chunk(..))
+#let karte(spalten, ..zellen) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em,
+  grid(columns: spalten, column-gutter: 3pt, row-gutter: 7pt, align: center + horizon, ..zellen))
+// Flussdiagramm von oben nach unten: #ablauf(chunk(..), entscheidung(..), chunk(..))
+#let ablauf(breite: 80%, ..schritte) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em, align(center,
+  stack(dir: ttb, spacing: 2pt, ..schritte.pos().enumerate().map(((i, x)) =>
+    (if i > 0 { (text(size: 12pt, fill: teal, sym.arrow.b),) } else { () }) + (block(width: breite, x),)).flatten())))
+#let entscheidung(frage, ja, nein) = stack(dir: ttb, spacing: 3pt,
+  chunk(frage, none, fill: sand, stroke: teal),
+  grid(columns: (1fr, 1fr), column-gutter: 8pt,
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *ja*]) #ja],
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *nein*]) #nein]))
+#let idee(ziel, kern, satz) = [#link(ziel)[#text(fill: teal, weight: "bold", kern)] #satz]
+#let überblick(titel, ..ideen) = block(width: 100%, fill: pale, inset: (x: 9pt, y: 7pt), above: 0.6em, below: 0.6em, breakable: false)[
+  #text(fill: navy, weight: "bold", titel)
+  #set list(marker: text(fill: teal, sym.arrow.r), spacing: 0.45em)
+  #list(..ideen.pos())
+]
+#let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
+
 #let abbildungen = (
   "skript-thermo": "abbildungen/skript-thermo.svg",
   "skript-foto": "abbildungen/skript-foto.svg",
@@ -161,7 +198,51 @@ Stand 26.10.2026: Enthalten sind Skript Kapitel 1.1 bis 1.2.5, deine Randnotizen
 #text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Vorlesungsskript Kölbl, „Grundlagen der Elektrotechnik“ (aufgedruckte Seite = PDF-Seite); M = Mitschrift „eigenes Skript Elektrotechnik“; B = BAF-Mitschrift VL 1–3 (S. 1 = VL 1, S. 2 = VL 2, S. 3 = VL 3); Z = handschriftliche Zusammenfassung VL 3; FK = Fragenkatalog „Einstieg GET auf Schulniveau“ (Fragennummer); Ü = Übung GET (Aufgabe); A, B = Übungsblatt A bzw. B (Aufgabe); R = handschriftliche Lösungen zu Blatt A und B („Prüfungsvorbereitungsfragen.pdf“). N = „neue VL GET.pdf“ mit Notizen vom 15./22.10. (PDF-S. 1–6 entsprechen V S. 14–19); FK-N = Fragenkatalog mit Lösungen bis 22.10.; Ü-N = „ÜBUNG GET (mit Mitschrift zu Aufgabe 1)“; DC = „ÜBUNGEN_GET_DC_URI_Basics_202610161827_42497“ mit Rechenwegen zu Ü 1–3. „S.“ bei Mitschriften zählt ab der ersten PDF-Seite. Externe Fachprüfungen sind mit Anbieter und Link direkt am Abschnitt genannt. „Eigene Ergänzung“ bezeichnet zusätzliche Erklärhilfen und Beispiele.]
 
 #pagebreak()
-= Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung
+#heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
+
+Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zusammenhängen.
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung], [Ladung · Spannung · Strom · Widerstand · Leistung], ziel: <a-0>),
+  pfeil(beschriftung: [erklärt die Größen für]),
+  chunk([Kapitel 1 · Grundbegriffe: Strom und Quellspannung], [Ladungstransport · Stromdichte · Stromwirkung · Ladungstrennung · Quelleneffekte], ziel: <a-1>),
+  pfeil(beschriftung: [liefert Quellenmodell für]),
+  chunk([Kapitel 2 · Der Grundstromkreis], [Innenwiderstand · Klemmenspannung · Arbeitspunkt · Leistungsbilanz · Anpassung], ziel: <a-2>),
+)
+
+Ladung, Spannung und Strom bilden die Sprache des Moduls. Mit Widerstand und Leistung beschreibst Du zuerst einfache Schaltungen. Danach erklären die Quelleneffekte, wie eine Spannung entsteht. Der Grundstromkreis verbindet die reale Quelle mit dem Verbraucher: Innenwiderstand und Last bestimmen Arbeitspunkt, Verluste und nutzbare Leistung.
+#src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
+
+#pagebreak()
+
+#pagebreak(weak: true)
+= Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung <a-0>
+
+#überblick([Kapitel 0 auf einen Blick],
+  idee(<a-0-1>, [Spannung treibt, Strom transportiert Ladung.], [Beide Größen beschreiben unterschiedliche Eigenschaften desselben Stromkreises.]),
+  idee(<a-0-2>, [Widerstand verknüpft Spannung und Strom.], [Das Ohmsche Gesetz gilt für das betrachtete ohmsche Modell.]),
+  idee(<a-0-3>, [Leistung beschreibt die Energie pro Zeit.], [Spannung und Strom bestimmen gemeinsam die umgesetzte Leistung.]),
+  idee(<a-0-4>, [Die Verschaltung bestimmt die Aufteilung.], [In Reihe ist der Strom gleich, parallel die Spannung.]),
+  idee(<a-0-6>, [Eine reale Quelle hat innere Verluste.], [Der Innenwiderstand verbindet das Vorwissen mit dem späteren Grundstromkreis.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Spannung U], [Energie je Ladung], ziel: <a-0-1>),
+  pfeil(beschriftung: [treibt über R]),
+  chunk([Strom I], [Ladung je Zeit · Widerstand R], ziel: <a-0-2>),
+  pfeil(beschriftung: [liefert mit U]),
+  chunk([Leistung P], [Energie je Zeit], ziel: <a-0-3>),
+)
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Reihenschaltung], [gleicher Strom], ziel: <a-0-4>),
+  pfeil(beschriftung: [liefert Regel für]),
+  chunk([Schaltung auswerten], [Ersatzwiderstand · Teilgrößen], ziel: <a-0-6>),
+  pfeil(beschriftung: [braucht eigene Regel für]),
+  chunk([Parallelschaltung], [gleiche Spannung], ziel: <a-0-4>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Die Vorlesung setzt Schulwissen voraus. Dieses Kapitel baut die vier Grundgrößen und ihre zwei wichtigsten Verknüpfungen auf: das Ohmsche Gesetz und die Leistung. Wenn hier etwas wackelt, festige es zuerst. Der Fragenkatalog enthält nur Fragen; die Erklärtexte sind deshalb Schulwissen und, wo nicht anders angegeben, _eigene Ergänzung_. Die Formeln $R = rho l\/A$ und $P = U I$ stehen auch in deiner Mitschrift.
 
@@ -186,6 +267,8 @@ Die *Spannung* $U$ in Volt ist der „Druck“, der Ladungen in Bewegung setzen 
 )
 #note("Fehler vermeiden", [Zwischen zwei benachbarten Vorsilben liegt immer der Faktor 1000. Von groß nach klein (kV → V → mV) wird die Zahl größer: 0,23 kV = 230 V = 230 000 mV.], fill: sand)
 #src([FK 1–4, 6 und Umrechnungsaufgaben; Erklärtexte Schulwissen, eigene Ergänzung.])
+#hoch(<a-0>, [Kapitelübersicht])
+
 
 == 0.2 Widerstand und Ohmsches Gesetz <a-0-2>
 Die Elektronen stoßen auf ihrem Weg ständig an die schwingenden Atome des Metallgitters. Diese „Reibung“ bremst den Strom: Das ist der *Widerstand*. Dabei entsteht Wärme.
@@ -201,6 +284,8 @@ $rho$: spezifischer Widerstand in $Omega thin "mm"^2\/"m"$ (Materialkonstante); 
 #note("Fehler vermeiden", [Halber Durchmesser heißt viertel Querschnitt (wegen $d^2$) und damit vierfacher Widerstand.], fill: sand)
 *Weitere Begriffe aus dem Fragenkatalog.* *PTC* (Kaltleiter): Widerstand steigt mit der Temperatur. *NTC* (Heißleiter): Widerstand sinkt mit der Temperatur. *E12-Reihe:* Normwerte mit ±10 % Toleranz; ein 8,2-kΩ-Widerstand liegt zwischen 7,38 und 9,02 kΩ. Beste Leiter: Silber vor Kupfer, Gold und Aluminium, Eisen deutlich schlechter (_eigene Ergänzung_, FK 7 fragt danach).
 #src([FK 7, 13–17; M S. 1; B S. 1 (VL 1); V S. 9; Ü 7. Ohmsches Gesetz ausführlich erst in V Kap. 1.4 (noch nicht behandelt).])
+#hoch(<a-0>, [Kapitelübersicht])
+
 
 == 0.3 Leistung, Energie, Kosten <a-0-3>
 Die *Leistung* sagt, wie viel Energie pro Sekunde umgesetzt wird. Mit dem Ohmschen Gesetz gibt es drei gleichwertige Formen:
@@ -214,6 +299,8 @@ Welche Form du nimmst, hängt davon ab, was gegeben ist: $I^2 R$, wenn der Strom
 + Kosten: $K = "480,2" thin "kWh" dot.c "0,31" thin "€/kWh" approx "148,87" thin "€"$
 #note("In eigenen Worten", [_Eigene Ergänzung, WI-Sicht:_ Stromkosten = Leistung × Zeit × Preis. Genauso rechnest du später Betriebskosten von Maschinen oder die Amortisation effizienterer Geräte.])
 #src([FK 18–19; M S. 3; B S. 2 (VL 2).])
+#hoch(<a-0>, [Kapitelübersicht])
+
 
 == 0.4 Reihen- und Parallelschaltung <a-0-4>
 #tab(columns: (1fr, 1.6fr, 1.6fr),
@@ -227,12 +314,16 @@ Welche Form du nimmst, hängt davon ab, was gegeben ist: $I^2 R$, wenn der Strom
 #form[$ "zwei parallele Widerstände:" quad R_"ges" = (R_1 R_2)/(R_1 + R_2) quad quad "unbelasteter Spannungsteiler:" quad U_2 = U dot.c R_2/(R_1 + R_2) $]
 #note("In eigenen Worten", [Erhöht man in einer Reihenschaltung einen Widerstand, sinken Strom und Gesamtleistung ($P = U^2\/R_"ges"$); die Quelle wird weniger belastet.])
 #src([FK 20–25; Schulwissen, eigene Ergänzung. Im Skript folgen Reihen- und Parallelschaltung ausführlich in V Kap. 2.4.4–2.4.5 (noch nicht behandelt).])
+#hoch(<a-0>, [Kapitelübersicht])
+
 
 == 0.5 Ideale und reale Spannungsquelle (Vorschau) <a-0-5>
 Eine ideale Quelle liefert immer dieselbe Spannung, egal wie viel Strom fließt. Eine reale Quelle hat zusätzlich einen *Innenwiderstand* $R_i$ in Reihe. Je mehr Strom fließt, desto mehr Spannung bleibt innen hängen, die Klemmenspannung sinkt:
 #form[$ U_"Klemme" = U_q - I dot.c R_i $]
 *Beispiel (FK 27):* Mignonzelle, $U_q = "1,52" thin "V"$, $R_i = "0,13" thin Omega$, $I = 40 thin "mA"$: $U = "1,52" - "0,04" dot.c "0,13" approx "1,515" thin "V"$. Ausführlich in Abschnitt 2.4.1.
 #src([FK 26–30; V S. 42.])
+#hoch(<a-0>, [Kapitelübersicht])
+
 
 == 0.6 Ergänzung vom 22.10.: Spannungsteiler und Quellen <a-0-6>
 Ein *unbelasteter Spannungsteiler* ist eine Reihenschaltung mit offenem Ausgang: Du greifst eine Spannung ab, ohne dort Strom zu entnehmen. Wie bei zwei Engstellen hintereinander verteilt sich der gesamte Spannungsabfall auf beide Widerstände.
@@ -249,8 +340,38 @@ $U$: Gesamtspannung in V; $R_1$, $R_2$: Widerstände in Ω; $U_20$: Ausgangsspan
 #src([FK-N, PDF-S. 6, Aufgaben 25–27 samt handschriftlichen Lösungen; Abschnitt 0.4 und V S. 42 für die Schaltungsregeln. Rechenwege ergänzt und ohne frühes Runden geprüft.])
 
 *Der Zusammenhang in Kapitel 0.* Die Spannung ist die Ursache, der Strom die Folge, der Widerstand bestimmt, wie viel Strom die Spannung antreibt. Die Leistung verknüpft Spannung und Strom zu dem, was am Verbraucher ankommt, und über die Zeit zur Energie, die bezahlt wird. In Schaltungen entscheidet die Schaltungsart, welche Größe überall gleich ist.
+#hoch(<a-0>, [Kapitelübersicht])
 
-= Kapitel 1 · Grundbegriffe: Strom und Quellspannung
+
+#pagebreak(weak: true)
+= Kapitel 1 · Grundbegriffe: Strom und Quellspannung <a-1>
+
+#überblick([Kapitel 1 auf einen Blick],
+  idee(<a-1-1-2>, [Strom ist gerichteter Ladungstransport.], [Technische Stromrichtung und Elektronenbewegung sind im Metall entgegengesetzt.]),
+  idee(<a-1-1-3>, [Drift und Wirkung haben verschiedene Geschwindigkeiten.], [Die Elektronen bewegen sich langsam, während das Feld die Wirkung rasch vermittelt.]),
+  idee(<a-1-1-5>, [Stromdichte bezieht Strom auf den Querschnitt.], [Derselbe Strom beansprucht eine dünne Leiterstelle stärker.]),
+  idee(<a-1-1-6>, [Wirkungen machen Strom sichtbar.], [Wärme, Kräfte und Materialtransport verbinden die Größen mit Anwendungen.]),
+  idee(<a-1-2-1>, [Quellen trennen Ladungen durch Energieumwandlung.], [Chemie, Induktion, Temperaturdifferenz, Licht und Kraft sind die behandelten Wege.]),
+  idee(<a-1-2-6>, [Bauteile bestimmen das zeitliche und nichtlineare Verhalten.], [Die Spule widersetzt sich Stromänderungen; bei der Diode muss der Arbeitspunkt passen.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Bewegte Ladung], [Strom · Drift], ziel: <a-1-1-2>),
+  pfeil(beschriftung: [bezogen auf Fläche ergibt]),
+  chunk([Stromdichte], [Strom je Querschnitt], ziel: <a-1-1-5>),
+  pfeil(beschriftung: [ordnet Beanspruchung ein]),
+  chunk([Stromwirkungen], [Wärme · Kraft · Stofftransport], ziel: <a-1-1-6>),
+)
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Zugeführte Energie], [Chemie · Bewegung · Wärme · Licht · Kraft], ziel: <a-1-2-1>),
+  pfeil(beschriftung: [ermöglicht]),
+  chunk([Ladungstrennung], [jeweiliger Quelleneffekt], ziel: <a-1-2-2>),
+  pfeil(beschriftung: [erzeugt]),
+  chunk([Quellspannung], [Antrieb des äußeren Stromkreises], ziel: <a-1-2-4>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Wir bauen ein Bild davon auf, was im Draht passiert, wenn Strom fließt: wie viel Ladung darin steckt, wie schnell sie wandert, wie sie sich auf den Querschnitt verteilt und woran man sie erkennt. Danach klären wir, woher der Antrieb kommt: Eine Quelle trennt Ladungen, chemisch, durch Induktion, eine Temperaturdifferenz, Licht oder eine mechanische Einwirkung. Grundlage ist Skript Kapitel 1.1 bis 1.2.5; hinzu kommen die Randnotizen vom 15. und 22.10.
 
@@ -264,6 +385,8 @@ $n$: Ladungsträgerdichte, Kupfer $n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-
 
 Ein Elektron trägt $-e$, ein Proton $+e$. Ladung ist immer an einen Träger und damit an Masse gebunden. Sie hat *Mengencharakter*: Man kann sie zählen wie Wasser in Litern.
 #src([V S. 5–6; M S. 1.])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.1.2 Die elektrische Stromstärke und die Stromrichtung <a-1-1-2>
 Gerät die Ladung unter dem „Druck“ einer Spannung $U_q$ in Bewegung, fließt ein Strom. Die *Stromstärke* ist die Ladung, die pro Zeit durch den Querschnitt fließt:
@@ -285,6 +408,8 @@ Das Ampere ist laut Skript eine der Basiseinheiten des SI. 1 A heißt: Pro Sekun
 Die Ladung im Akku nimmt dabei linear ab, wie Wasser in einem Eimer mit konstantem Ausfluss.
 #note("Fehler vermeiden", [_Eigene Ergänzung:_ „Ah“ ist eine Ladung (Strom × Zeit), keine Energie. Die Energie wäre $W = U dot.c Q = 12 thin "V" dot.c 36 thin "Ah" = 432 thin "Wh"$.], fill: sand)
 #src([V S. 6–7; M S. 2; B S. 2 (VL 2); Ü 2.])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.1.3 Driftgeschwindigkeit und Stromleitung im Festkörper <a-1-1-3>
 Setzt man in $I = n e l A\/t$ für $l\/t$ eine Geschwindigkeit ein, erhält man, wie schnell die Elektronen im Mittel wandern, die *Driftgeschwindigkeit*:
@@ -298,6 +423,8 @@ Das ist Schneckentempo; das Berechnungsblatt in V S. 9 vergleicht ausdrücklich 
 #note("Widerspruch in den Unterlagen", [V S. 8 nennt für den 1-mm²-Draht „dauernd 16 A zugelassen“, also 16 A/mm². V S. 10 nennt als zulässige Stromdichte aber nur $S_"zul" = 1 dots 6 thin "A/mm"^2$. Rechne das Beispiel so, wie es dasteht; für die Frage „zulässig?“ gilt S. 10. Am besten in der Vorlesung nachfragen.], fill: sand)
 #note("Fehler vermeiden", [Einheiten konsequent einsetzen: $n$ ist in cm⁻³ gegeben, also $A$ in cm² umrechnen ($1 thin "mm"^2 = "0,01" thin "cm"^2$).], fill: sand)
 #src([V S. 8–9 (Kap. 1.1.3 und 1.1.4 mit Berechnungsblatt Abb. 1.5); M S. 1.])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.1.5 Die Stromdichte <a-1-1-5>
 Die *Stromdichte* sagt, wie viel Strom sich durch jeden mm² Querschnitt „quetschen“ muss. Je enger, desto mehr Reibung pro Fläche, desto heißer wird der Leiter. Nicht die Stromstärke allein, sondern die Stromdichte ist maßgebend für die Erwärmung (V S. 10; B S. 2: „Stromdichte entscheidet, wie warm etwas wird“).
@@ -314,6 +441,8 @@ Größerer Querschnitt bedeutet kleinere Stromdichte (M S. 1). Die dünnste Stel
 #form[$ U_1/U_2 = N_1/N_2 = I_2/I_1 $]
 Deshalb setzte sich Teslas Wechselstrom gegen Edisons Gleichstrom durch. Deine Mitschrift hält fest: Der Transformator kann hohe Spannung auf kleine heruntersetzen und auch niedrige auf hohe, also in beide Richtungen (B S. 2). Dort steht auch „Spannung kleiner ⇒ es fließt größerer Strom“; das gilt bei gleicher übertragener Leistung $P = U I$ (Deutung ergänzt).
 #src([V S. 10; M S. 1; B S. 2 (VL 2).])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.1.6 Die äußere Wirkung des Stromes <a-1-1-6>
 Strom kann man nicht sehen. Man erkennt ihn an drei Wirkungen:
@@ -337,6 +466,8 @@ $F_L$ in N, $B$ = magnetische Flussdichte in $"T" = "Vs/m"^2$. Je größer Strom
 $N$: Windungszahl; $A$: Fläche der Leiterschleife $2 r l$; $D^*$: Winkelrichtgröße der Rückstellfedern; $phi$: Zeigerausschlag.
 #note("In eigenen Worten", [$phi ∼ I$: Der Ausschlag ist direkt proportional zum Strom. Doppelter Strom, doppelter Ausschlag. Deshalb hat das Instrument eine lineare Skala (V S. 13; M S. 2).])
 #src([V S. 11–13; M S. 2; B S. 1–2 (VL 1–2).])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.1.7 Stromarten <a-1-1-7>
 #bild("stromarten", [Gleichstrom und sinusförmiger Wechselstrom. Eigene Darstellung nach V S. 13, Abb. 1.9.], height: 36mm)
@@ -345,6 +476,8 @@ $N$: Windungszahl; $A$: Fläche der Leiterschleife $2 r l$; $D^*$: Winkelrichtgr
 - *Nichtsinusförmiger Wechselstrom*: beliebige periodische Form mit der Periodendauer $T$; wird per Fourieranalyse in Sinusanteile zerlegt.
 #note("In eigenen Worten", [_Eigene Ergänzung:_ Der Effektivwert ist der Gleichstromwert, der in einem Widerstand dieselbe Wärme erzeugt. Die 230 V der Steckdose sind ein Effektivwert; der Scheitelwert ist $hat(u) = 230 thin "V" dot.c sqrt(2) approx 325 thin "V"$. Deine Mitschrift notiert dazu $u_"eff" = hat(u)\/sqrt(2)$ beim Hausnetz (B S. 2).])
 #src([V S. 13; M S. 2; B S. 2 (VL 2).])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.1.7.1 Qualitative Fragestellung: drei Lampen und ein Schalter <a-1-1-7-1>
 Drei identische Glühlampen liegen in Reihe an einer Batterie, der Schalter S liegt parallel zu Lampe C. Was passiert, wenn S geschlossen wird?
@@ -368,6 +501,8 @@ Drei identische Glühlampen liegen in Reihe an einer Batterie, der Schalter S li
 Die Faktoren sind eigene Rechnung. Mit den Zahlen aus deiner Mitschrift (12-V-Autobatterie): vorher jede Lampe 4 V, nachher A und B je 6 V, C 0 V (M S. 3).
 #note("Fehler vermeiden", [Helligkeit hängt an der Leistung: $P = I^2 R = U I = U^2\/R$. Gehe immer in dieser Reihenfolge vor: $R_"ges"$ → $I$ → Teilspannungen → Leistungen.], fill: sand)
 #src([V S. 14; M S. 2–3; B S. 2 (VL 2).])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.2.1 Quellspannung durch chemische Reaktion <a-1-2-1>
 Damit eine Quellspannung entsteht, also ein „Elektronendruck“, muss in der Quelle aufgrund eines physikalischen Effekts eine *Ladungstrennung* stattfinden. In Akku, Trockenbatterie und Brennstoffzelle sorgt eine chemische Reaktion für einen Elektronenüberschuss am Minuspol gegenüber dem Pluspol. Im äußeren Lastkreis fließen die Elektronen vom Minus- zum Pluspol.
@@ -379,6 +514,8 @@ Damit eine Quellspannung entsteht, also ein „Elektronendruck“, muss in der Q
 Die weiteren behandelten Effekte stehen in den Ergänzungen 1.2.3 bis 1.2.5: Temperaturdifferenz, Licht und mechanische Einwirkung können ebenfalls Ladungen trennen.
 #note("Skriptfehler: Elektrodenbezeichnungen", [V S. 15 und die bisherige Lernskriptfassung ordnen Kathode dem Minuspol und Anode dem Pluspol zu. Beim gezeigten Entladen gilt dagegen: *Anode = Minuspol, Kathode = Pluspol*. Die Originalabbildung bleibt als Quelle erkennbar; ihre Beschriftung ist hier ausdrücklich berichtigt.], fill: sand)
 #src([V S. 15; N, PDF-S. 2; M S. 3; B S. 1 (VL 1). Fachprüfung: #link("https://engineering.mit.edu/ask-an-engineer/how-does-a-battery-work")[MIT, How does a battery work?]; Geschichte: #link("https://www.eia.gov/kids/history-of-energy/timelines/electricity.php")[EIA, Electricity timeline].])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.2.2 Induktion <a-1-2-2>
 Bewegt man eine Spule im Magnetfeld (oder einen Magneten in einer Spule), ändert sich der *magnetische Fluss* $Phi$ durch die Spule. Diese Änderung trennt Ladungen: Es entsteht eine induzierte Spannung $u_i$. Energieumwandlung: mechanische → elektrische Energie (Synchrongenerator, Gleichstromgenerator). Deine Mitschrift spricht bildlich von einer Spannung „aus dem Nichts“ (B S. 3). Gemeint ist eine Spannung ohne chemische Batterie; die elektrische Energie stammt beim Generator aus der zugeführten mechanischen Arbeit.
@@ -394,6 +531,8 @@ Dieselbe Änderung in 10 ms ist doppelt so schnell: 80 V.
 *Praxis (V S. 16, Fußnote):* Mit dem Induktionsgesetz kann man Magnetfelder messen. Man zieht eine kleine Messspule aus dem Feld und misst die durchgeflossene Ladung $Q = integral i thin dif t$. Mit $u_i = i R$ folgt $B = (R dot.c Q)\/(N dot.c A)$, unabhängig davon, wie schnell man zieht.
 #bild("map-quellen", [Mindmap: Wie eine Quellspannung entsteht. Eigene Darstellung.], height: 44mm)
 #src([V S. 16–17; N, PDF-S. 3–4 mit Markierung „Start VL 15.10.26“ und „Ende 15.10.26“; M S. 3–4; B S. 3 (VL 3). FK-N, PDF-S. 6, Aufgabe 28; Präzisierung der Voraussetzungen ergänzt.])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.2.3 Thermoeffekt · ergänzt aus der VL vom 15.10. <a-1-2-3>
 Zwei unterschiedliche Metalle können eine Temperaturdifferenz in eine elektrische Spannung übersetzen. Das ist der *Seebeck-Effekt*: Ein *Thermoelement* aus Kupfer und Konstantan vergleicht die Temperatur seiner Messstelle mit der Temperatur der Vergleichsstelle an den Anschlüssen.
@@ -405,6 +544,8 @@ $U_q$: Thermospannung in mV; $K$: näherungsweise konstanter Thermokoeffizient; 
 #note("Gültigkeit und Skriptangabe", [V S. 17 nennt einen Temperaturbereich „bis 1000 °C“. Das darfst du nicht pauschal auf Cu–Konstantan übertragen: Herstellerangaben für Typ T reichen bis etwa 400 °C, abhängig von der Ausführung. Auch der konstante Skriptwert 0,05 mV/K ist eine Rechennäherung. Für unsere Aufgaben verwenden wir den angegebenen Wert; eine reale Messung braucht die passende Kennlinie.], fill: sand)
 #note("Selbst erklären", [Warum reicht „Die Messstelle hat 80 °C“ noch nicht für die Spannung? \ *Antwort:* Es fehlt die Temperatur der Vergleichsstelle. Dieselbe Messstelle liefert bei unterschiedlich warmen Anschlüssen unterschiedliche Spannungen.])
 #src([N, PDF-S. 4 = V S. 17, Abschnitt 1.2.3; Beispiel und Erklärung der Vergleichsstelle ergänzt. Fachprüfung des Temperaturbereichs: #link("https://www.emerson.com/en/measurement-instrumentation/catalog/temperature-measurement/temperature-sensors/type-t-thermocouple")[Emerson, Type T Thermocouple].])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.2.4 Fotoeffekt · VL vom 22.10. <a-1-2-4>
 Eine Solarzelle wandelt *Strahlungsenergie* in elektrische Energie um. Im Halbleiter erzeugt geeignetes Licht *Elektron-Loch-Paare*: ein bewegliches Elektron und eine positiv wirkende Lücke. Ein inneres elektrisches Feld trennt beide, sodass im äußeren Kreis ein Fotostrom fließen kann.
@@ -429,6 +570,8 @@ $ lambda_g = ("6,626" dot.c 10^(-34) thin "Js" dot.c 299792458 thin "m/s")/("1,1
 #note("Grenze richtig lesen", [Für die Erzeugung über die Bandlücke braucht man $h nu >= W$, also $nu >= nu_g$ bzw. $lambda <= lambda_g$. Jenseits der langwelligen Grenze ($lambda > lambda_g$) reicht die Photonenergie nicht. V S. 18 formuliert das Verschwinden mit „≤“ bzw. „≥“ an der Grenze; die Gleichheit bezeichnet den idealen Schwellenfall. Eine reale Empfindlichkeitskurve ist keine scharfe Rechteckkante.], fill: sand)
 *In eigenen Worten:* Mehr Licht kann mehr geeignete Photonen liefern. Eine zu große Wellenlänge wird dadurch im einfachen Modell nicht kurz genug: Die Energie eines einzelnen Photons bleibt zu klein. Anwendungen laut V: fotoelektronische Steuerungen, Solarzellen und Photovoltaik; Fotodioden wandeln Licht in ein Messsignal um. Die erwähnte Lawinenfotodiode verstärkt das Signal intern; die Durchbruchidee ist in deiner Randnotiz skizziert.
 #src([N, PDF-S. 5–6 = V S. 18–19, Abschnitt 1.2.4 und Tabelle 1.1; Umrechnung und Erklärhilfen ergänzt. Fachprüfung des Bandlückenmodells: #link("https://hub.hamamatsu.com/us/en/technical-notes/detector-selection/guide-to-detector-selection.html")[Hamamatsu, Guide to Detector Selection].])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.2.5 Piezoeffekt · VL vom 22.10. <a-1-2-5>
 Drückst oder ziehst du an einem geeigneten Kristall, verschieben sich Ladungen im Kristallgitter. An seinen Elektroden entsteht eine Spannung. Dieser *direkte Piezoeffekt* macht aus einer mechanischen Einwirkung ein elektrisches Signal, etwa im Kristallmikrofon oder Tonabnehmer.
@@ -445,6 +588,8 @@ Drückst oder ziehst du an einem geeigneten Kristall, verschieben sich Ladungen 
 *Gültigkeit:* Quarzfrequenz 32768 Hz und elektronische Teilung durch $2^15$. Die Elektronik teilt die Frequenz; der Quarz schwingt weiterhin mit 32768 Hz.
 #note("Selbst erklären", [Wie kann derselbe Effekt Sensor und Antrieb sein? \ *Antwort:* Als Sensor liefert eine mechanische Einwirkung ein elektrisches Signal. Beim umgekehrten Effekt erzeugt eine angelegte Spannung eine mechanische Verformung.])
 #src([N, PDF-S. 6 = V S. 19, Abschnitt 1.2.5 und Abb. 1.15–1.16; Erklärung der Frequenzteilung ergänzt.])
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.2.6 Ergänzungen aus den Randnotizen vom 15. und 22.10. <a-1-2-6>
 Die neuen Randnotizen verbinden die Quellen mit Bauteilen, deren Verhalten nicht durch einen konstanten Widerstand allein beschrieben wird. Bei der Spule zählt die zeitliche Stromänderung; bei der Diode eine gekrümmte Kennlinie. Dieser Abschnitt übernimmt nur die dort skizzierten Zusammenhänge.
@@ -473,8 +618,30 @@ $U_D$: Diodenspannung in V; $R$: Serienwiderstand in Ω; $I$: gemeinsamer Strom 
 #src([Zusammenführung von V S. 15–19 und N, PDF-S. 2–6; eigene Darstellung.])
 
 *Der Zusammenhang in Kapitel 1.* Strom beschreibt bewegte Ladung. Die Elektronen driften langsam; das elektrische Feld vermittelt die Wirkung rasch. Stromdichte und Material bestimmen die Erwärmung, Wärme-, Kraft- und chemische Wirkung machen Strom erkennbar. Quellen trennen Ladungen durch Chemie, Flussänderung, Temperaturdifferenz, Licht oder Kraft. Die Randnotizen verbinden diese Grundlagen mit der verzögerten Stromänderung einer Spule und dem Arbeitspunkt einer Diode.
+#hoch(<a-1>, [Kapitelübersicht])
 
-= Kapitel 2 · Der Grundstromkreis
+
+#pagebreak(weak: true)
+= Kapitel 2 · Der Grundstromkreis <a-2>
+
+#überblick([Kapitel 2 auf einen Blick],
+  idee(<a-2-4-1>, [Die reale Quelle enthält einen Innenwiderstand.], [Unter Last fällt dort Spannung ab und der Kurzschlussstrom bleibt endlich.]),
+  idee(<a-2-4-1-k>, [Der Arbeitspunkt muss zu Quelle und Last passen.], [Er ergibt sich aus ihren Kennlinien oder aus dem Maschenumlauf.]),
+  idee(<a-2-4-3>, [Quellenleistung teilt sich auf.], [Ein Teil wird innen Verlustwärme, der andere erreicht den Verbraucher.]),
+  idee(<a-2-4-3>, [Maximale Leistung ist ein bestimmter Lastfall.], [Bei gleichem Außen- und Innenwiderstand ist die Lastleistung maximal, der Wirkungsgrad beträgt dann 50 %.]),
+)
+
+#ablauf(
+  chunk([Quelle und Last modellieren], [Quellspannung · Innenwiderstand · Außenwiderstand], ziel: <a-2-4-1>),
+  chunk([Arbeitspunkt bestimmen], [Maschenumlauf oder Schnittpunkt der Kennlinien], ziel: <a-2-4-1-k>),
+  chunk([Leistungsbilanz prüfen], [Quellenleistung = innere Verluste + Lastleistung], ziel: <a-2-4-3>),
+  entscheidung([Ist maximale Lastleistung das Ziel?],
+    chunk([Leistungsanpassung], [Außenwiderstand = Innenwiderstand · Wirkungsgrad 50 %], ziel: <a-2-4-3>),
+    chunk([Anderes Ziel prüfen], [für hohen Wirkungsgrad Außenwiderstand deutlich größer wählen], ziel: <a-2-4-3>)),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Im Skript gehört der Grundstromkreis zu Kapitel 2 „Die Kirchhoffschen Gesetze“ (Abschnitt 2.4.1 bis 2.4.3). In der Vorlesung 3 kam er vorab dran, deine Zusammenfassung rechnet ihn vollständig durch. Die Strategie: Eine reale Quelle wird als ideale Quelle mit Innenwiderstand modelliert. Daraus folgen Strom, Klemmenspannung, Arbeitspunkt, Leistung und Wirkungsgrad. Die übrigen Abschnitte von Kapitel 2 folgen, sobald sie behandelt sind.
 
@@ -518,6 +685,8 @@ Man kann den Grundstromkreis auch zeichnerisch lösen. Dazu trägt man zwei Kenn
 #form[$ I(U) = -1/R_i dot.c U + I_k = -G_i dot.c U + I_k $]
 Probe: Bei $U = U_q$ ist $I = -U_q\/R_i + I_k = 0$. Die Steigung der Quellenkennlinie ist $-1\/R_i$ (Z S. 2, Geradengleichung $y = m x + b$). Wird $R_a$ kleiner (z. B. $R_a' = 50 thin Omega$ wie in deiner Zusammenfassung), wird die Gerade steiler und der AP wandert nach links oben: mehr Strom, weniger Spannung (AP₂, eigene Rechnung: 1,29 V, 25,7 mA). Wird $R_a$ größer, wandert der AP Richtung Leerlauf. Die Rechteckfläche $U_a dot.c I$ unter dem AP ist die Verbraucherleistung $P_a$, das Rechteck rechts daneben bis $U_q$ die Verlustleistung $P_i$ in der Quelle.
 #src([V S. 42; Z S. 1–2; M S. 3–4; B S. 1 (VL 1).])
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.4.2 Aufgabe zum Grundstromkreis <a-2-4-2>
 *V S. 43 und Ü 3:* Ein Heizwiderstand von 31,2 Ω wird ans Netz gelegt. Die Netzspannung beträgt im Leerlauf 230 V, im Einschaltmoment sinkt die Klemmenspannung auf 218 V. Wie groß ist der Innenwiderstand des Netzes?
@@ -528,6 +697,8 @@ Probe: Bei $U = U_q$ ist $I = -U_q\/R_i + I_k = 0$. Die Steigung der Quellenkenn
 #note("In eigenen Worten", [Die Differenz zwischen Leerlauf- und Klemmenspannung fällt immer an $R_i$ ab.])
 #note("Deinen Rechenweg einordnen", [DC, PDF-S. 4, unterscheidet den Leerlauf ($I = 0$, kein innerer Spannungsabfall) und den Lastfall (12 V Spannungsabfall bei rund 7 A). Die dort notierten 135 A Kurzschlussstrom entstehen aus dem gerundeten $R_i = 1,7$ Ω; mit dem ungerundeten Wert sind es rund 134 A. Das ist eine Modellrechnung, kein zusätzlich gemessener Wert.])
 #src([V S. 43; Ü 3; DC, PDF-S. 1 und 4.])
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.4.3 Die Leistungsverhältnisse im Grundstromkreis <a-2-4-3>
 *Leistungsbilanz.* Quellenleistung = Verlustleistung + Verbraucherleistung:
@@ -549,6 +720,8 @@ _Eigene Ergänzung:_ In der Nachrichtentechnik (Antenne, Lautsprecher) ist Anpas
 #src([V S. 44–46; Z S. 1; FK 30.])
 
 *Der Zusammenhang in Kapitel 2.* Das Modell „ideale Quelle plus Innenwiderstand“ erklärt, warum der Kurzschlussstrom endlich ist und die Klemmenspannung unter Last sinkt. Strom und Spannung lassen sich rechnerisch über den Maschenumlauf oder zeichnerisch über den Schnittpunkt zweier Kennlinien bestimmen. Die Leistungsbilanz zeigt, dass der Verbraucher bei $R_a = R_i$ am meisten bekommt, die Quelle dabei aber die Hälfte selbst verheizt.
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 = Anhang
 

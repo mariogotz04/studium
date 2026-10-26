@@ -92,6 +92,11 @@ Abbildung: notiz-spannungsteiler
 Die ideale Quelle liefert immer dieselbe Spannung, egal wie viel Strom fließt. Die reale hat zusätzlich einen Innenwiderstand $R_i$ in Reihe. Je mehr Strom fließt, desto mehr Spannung bleibt innen hängen: $U_"Klemme" = U_q - I R_i$.
 Quelle: 0.5
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 0 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Ladung ist die transportierte Größe; Strom sagt, wie viel Ladung pro Zeit fließt. Spannung beschreibt Energie je Ladung, und der Widerstand verknüpft Spannung und Strom. Aus Spannung mal Strom folgt die Leistung, aus Leistung mal Zeit die Energie. Reihen- und Parallelschaltung bestimmen die Verteilung; der Innenwiderstand erweitert die ideale zur realen Quelle.
+Quelle: 0.1
+
 ## Kapitel 1 · Strom und Quellspannung
 
 ### Was bedeutet Q = n·e·A·l?
@@ -237,6 +242,11 @@ Eine Diode leitet in Durchlassrichtung viel besser als in Sperrrichtung. Ihre Ke
 Quelle: 1.2.6.2
 Abbildung: notiz-diode
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Gerichtete Ladungsbewegung ergibt Strom, bezogen auf die Leiterfläche die Stromdichte. Die langsame Drift ist von der raschen Feldwirkung zu unterscheiden. Wärme-, Kraft- und chemische Wirkung machen den Strom erkennbar. Quellen wandeln zugeführte Energie über Chemie, Induktion, Thermo-, Foto- oder Piezoeffekt in Ladungstrennung und Quellspannung um; Spule und Diode ergänzen dieses Bild um Stromänderung und Arbeitspunkt.
+Quelle: 1.1.1
+
 ## Kapitel 2 · Grundstromkreis
 
 ### Woran merkt man, dass eine reale Quelle einen Innenwiderstand haben muss?
@@ -308,3 +318,8 @@ $ eta = R_a/(R_a + R_i) $
 Im Kurzschluss ist er null. Je größer $R_a$ gegenüber $R_i$, desto näher an 100 %. Bester Wirkungsgrad und maximale Leistung sind also nicht derselbe Fall.
 Quelle: 2.4.3
 Abbildung: skript-anpassung
+
+### Zeichne die Begriffslandkarte zu Kapitel 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Das Ersatzschaltbild verbindet die ideale Quellspannung mit Innen- und Außenwiderstand. Der Maschenumlauf liefert Strom und Klemmenspannung; der Kennlinienschnitt beschreibt denselben Arbeitspunkt. Die Quellenleistung verteilt sich auf innere Verluste und Lastleistung. Leistungsanpassung bedeutet gleicher Außen- und Innenwiderstand und maximale Lastleistung, aber nur 50 % Wirkungsgrad; ein hoher Wirkungsgrad erfordert einen anderen Lastfall.
+Quelle: 2.4.1
+
