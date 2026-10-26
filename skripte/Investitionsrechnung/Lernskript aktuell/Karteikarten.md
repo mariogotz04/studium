@@ -199,3 +199,11 @@ Quelle: 1.8.2
 ### Warum soll man beim Ergebnis ein Vorzeichen schreiben?
 Damit sofort klar ist, ob es ein Gewinn oder Verlust ist: $G = +4 thin 000 "€"$ oder $G = -3 thin 000 "€"$.
 Quelle: 1.8.2
+
+### Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Am Anfang steht die **Bezugsgröße**: Periode, Nettopreise, Stück oder gesamt. Dann zerlege ich die Kosten in **fixe Kosten** $K_f$ und **variable Stückkosten** $k_v$; daraus entstehen die Kostenfunktion $K(x)$ und die Stückkosten $k(x)$.
+
+Mit dem Preis kommt der **Deckungsbeitrag** dazu: $d = p - k_v$ je Stück, $D = d dot x$ gesamt. Er deckt erst die Fixkosten, der Rest ist Gewinn. Daraus folgt die **Gewinnschwelle** $x_"BEP" = K_f / d$, die ich mit Kapazität und Nachfrage abgleiche. Am Ende stehen **Entscheidungen** (Preissenkung, Zusatzauftrag), bei denen ich nur die tatsächlichen Änderungen vergleiche.
+
+Bild: Wie eine Treppe: Bezugsgröße → Kosten → Deckungsbeitrag → Gewinnschwelle → Entscheidung. Keine Stufe lässt sich überspringen.
+Quelle: 1.1

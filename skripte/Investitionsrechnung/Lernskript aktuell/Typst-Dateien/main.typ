@@ -52,6 +52,43 @@
 }
 #let th(..cells) = table.header(..cells.pos().map(c => table.cell(fill: pale)[#strong(c)]))
 
+// ─── Überblick-Ebenen und Chunkmaps (in allen Modulen gleich) ─────────────────
+// Ebene 0: Seite „Das Modul auf einen Blick“ nach dem Wegweiser (Label <ueberblick>).
+// Ebene 1: unter jeder Kapitelüberschrift (Label <a-n>) #überblick mit #idee-Links und eine #karte oder ein #ablauf.
+// Ebene 2: die Abschnitte; am Ende jedes Abschnitts #hoch(<a-n>, [Kapitelübersicht]).
+// Die Kästen sind keine Überschriften: Inhaltsverzeichnis und PDF-Lesezeichen bleiben unverändert.
+#let chunk(titel, begriffe, ziel: none, fill: pale, stroke: navy) = {
+  let kasten = block(width: 100%, fill: fill, stroke: 0.6pt + stroke, radius: 4pt, inset: (x: 6pt, y: 5pt), breakable: false)[
+    #set par(leading: 0.35em, spacing: 0.35em, justify: false)
+    #set text(hyphenate: true)
+    #text(size: 9pt, weight: "bold", fill: navy, titel)
+    #if begriffe != none [#parbreak() #text(size: 7.8pt, fill: muted, begriffe)]
+  ]
+  if ziel == none { kasten } else { link(ziel, kasten) }
+}
+#let pfeil(beschriftung: none, zeichen: sym.arrow.r) = align(center + horizon, stack(dir: ttb, spacing: 2pt,
+  ..(if beschriftung != none { (text(size: 6.8pt, fill: teal, beschriftung),) } else { () }),
+  text(size: 13pt, fill: teal, zeichen)))
+// Chunkmap als Raster: #karte((1fr, auto, 1fr), chunk(..), pfeil(..), chunk(..))
+#let karte(spalten, ..zellen) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em,
+  grid(columns: spalten, column-gutter: 3pt, row-gutter: 7pt, align: center + horizon, ..zellen))
+// Flussdiagramm von oben nach unten: #ablauf(chunk(..), entscheidung(..), chunk(..))
+#let ablauf(breite: 80%, ..schritte) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em, align(center,
+  stack(dir: ttb, spacing: 2pt, ..schritte.pos().enumerate().map(((i, x)) =>
+    (if i > 0 { (text(size: 12pt, fill: teal, sym.arrow.b),) } else { () }) + (block(width: breite, x),)).flatten())))
+#let entscheidung(frage, ja, nein) = stack(dir: ttb, spacing: 3pt,
+  chunk(frage, none, fill: sand, stroke: teal),
+  grid(columns: (1fr, 1fr), column-gutter: 8pt,
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *ja*]) #ja],
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *nein*]) #nein]))
+#let idee(ziel, kern, satz) = [#link(ziel)[#text(fill: teal, weight: "bold", kern)] #satz]
+#let überblick(titel, ..ideen) = block(width: 100%, fill: pale, inset: (x: 9pt, y: 7pt), above: 0.6em, below: 0.6em, breakable: false)[
+  #text(fill: navy, weight: "bold", titel)
+  #set list(marker: text(fill: teal, sym.arrow.r), spacing: 0.45em)
+  #list(..ideen.pos())
+]
+#let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
+
 #let abbildungen = (
   "bep-aufgabe1": "abbildungen/bep-aufgabe1.svg",
   "bep-aufgabe3": "abbildungen/bep-aufgabe3.svg",
@@ -139,7 +176,64 @@
 #bild("map-ueberblick", [Die Denkkette des bisher behandelten Stoffs. Eigene Darstellung nach K und Ü, jeweils PDF-S. 1–2.], height: 47mm)
 
 #pagebreak()
-= Kapitel 1 · KLR und #box[Deckungsbeitragsrechnung]
+#heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
+
+Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu springen. Graue Kästen stehen in der Gliederung, sind aber noch nicht behandelt.
+
+#karte((1fr, auto, 1fr, auto, 1fr, auto, 1fr),
+  chunk([Kapitel 1 · KLR und Deckungsbeitragsrechnung], [Bezugsgröße · fixe und variable Kosten · Deckungsbeitrag · Break-Even · Entscheidungen], ziel: <a-1>),
+  pfeil(beschriftung: [Grundlage für]),
+  chunk([Statische Investitionsverfahren], [noch nicht behandelt], fill: white, stroke: muted),
+  pfeil(),
+  chunk([Dynamische Investitionsverfahren], [noch nicht behandelt], fill: white, stroke: muted),
+  pfeil(),
+  chunk([Technisches Controlling], [noch nicht behandelt], fill: white, stroke: muted),
+)
+
+*Der rote Faden in Kapitel 1*
+
+#karte((1fr, auto, 1fr, auto, 1fr, auto, 1fr, auto, 1fr),
+  chunk([1.1 Bezugsgröße], [Periode · netto · Stück oder gesamt], ziel: <a-1-1>),
+  pfeil(),
+  chunk([1.2–1.3 Kosten], [$K_f$ · $k_v$ · $K(x)$ · $k(x)$], ziel: <a-1-2>),
+  pfeil(),
+  chunk([1.4 Deckungsbeitrag], [$d = p - k_v$ · $D = d dot x$], ziel: <a-1-4>),
+  pfeil(),
+  chunk([1.5 Break-Even], [$x_"BEP" = K_f / d$ · Kapazität], ziel: <a-1-5>),
+  pfeil(),
+  chunk([1.6 Entscheidung], [Preissenkung · Zusatzauftrag · Untergrenze], ziel: <a-1-6>),
+)
+#karte((1fr, 1fr),
+  chunk([1.7 Kosten aus zwei Perioden], [zwei Beobachtungen → $k_v$ und $K_f$], ziel: <a-1-7>),
+  chunk([1.8 Rückwärts rechnen und prüfen], [Zielgewinn · unerreichbare Schwelle · Ansatz für jede Textaufgabe], ziel: <a-1-8>),
+)
+
+Das Modul fragt im Kern: *Lohnt sich das?* Kapitel 1 legt dafür das Werkzeug. Du trennst Kosten, die mit jedem Stück entstehen, von Kosten, die ohnehin anfallen. Der Deckungsbeitrag zeigt, was jedes Stück zur Deckung der Fixkosten beiträgt, und daraus folgen Gewinnschwelle und Entscheidungen. Die späteren Investitionsverfahren bauen laut Gliederung auf genau dieser Trennung auf.
+#src[Gliederung, PDF-S. 1–2; Zusammenführung aus Kapitel 1. Eigene Darstellung.]
+
+#pagebreak()
+= Kapitel 1 · KLR und #box[Deckungsbeitragsrechnung] <a-1>
+
+#überblick([Kapitel 1 auf einen Blick],
+  idee(<a-1-1>, [Erst die Bezugsgröße.], [Periode, Nettopreise und Stück oder Gesamtbetrag klären, bevor gerechnet wird.]),
+  idee(<a-1-2>, [Kosten zerlegen.], [Fixe Kosten fallen ohnehin an, variable Kosten mit jedem Stück; daraus entstehen $K(x)$ und $k(x)$.]),
+  idee(<a-1-4>, [Der Deckungsbeitrag verbindet Stück und Gewinn.], [Jedes Stück bringt $d = p - k_v$; erst wenn die Summe die Fixkosten deckt, entsteht Gewinn.]),
+  idee(<a-1-5>, [Die Gewinnschwelle zeigt die nötige Menge.], [$x_"BEP" = K_f / d$, aber nur sinnvoll, wenn Kapazität und Nachfrage sie erlauben.]),
+  idee(<a-1-6>, [Entscheiden heißt Änderungen vergleichen.], [Bei Preissenkung oder Zusatzauftrag zählt, wie sich Erlös und Kosten wirklich ändern.]),
+)
+
+*So gehst Du jede Textaufgabe an* (Abschnitt 1.8.2)
+
+#ablauf(
+  chunk([1 · Basis], [Preise netto? Mengen und Kosten auf dieselbe Periode bezogen?], ziel: <a-1-1>),
+  chunk([2 · Modell], [Was ist fix, was je Stück variabel? Kommen neue Kosten dazu?], ziel: <a-1-2>),
+  chunk([3 · Ansatz], [Kosten, Erlös und DB unterscheiden, gesuchte Größe durch Umstellen bestimmen], ziel: <a-1-4>),
+  entscheidung([4 · Passt die Menge in Kapazität und Nachfrage?],
+    chunk([5 · Prüfen], [Einheiten, Vorzeichen, Rundung, zweiter Rechenweg], ziel: <a-1-8-2>),
+    chunk([Ziel unerreichbar], [Preis, Kosten oder Kapazität ändern], ziel: <a-1-8-1>)),
+  chunk([6 · Entscheidung], [begründetes Ja oder Nein mit Bedingungen und Risiko], ziel: <a-1-6>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
 
 Ein Betrieb kann viel verkaufen und trotzdem Verlust machen. Deshalb trennst Du zuerst die Kosten eines zusätzlichen Stücks von den Kosten, die ohnehin anfallen. Danach verbindest Du Preis, Menge und Kapazität zu einer nachvollziehbaren Entscheidung. Diese Grundlage steht in der Gliederung vor den eigentlichen Investitionsverfahren.
 #src[Gliederung, PDF-S. 1; K, PDF-S. 1–2; Ü 1–4, PDF-S. 1–2. Einstieg: eigene Erklärung.]
@@ -174,6 +268,7 @@ Zähler und Nenner müssen zur selben Periode gehören. Wenn in einer Aufgabe nu
 Die 19 % sind die Rechenannahme dieser Aufgaben. In den folgenden Erlösrechnungen wird mit dem Nettopreis gerechnet.
 #bild("map-begriffe", [Mindmap: Bezugsgrößen vor dem Einsetzen prüfen. Eigene Darstellung nach M und K, jeweils PDF-S. 1.], height: 46mm)
 #src[M, PDF-S. 1–2; K, PDF-S. 1–2; Ü 4, PDF-S. 2; Foto Ü 4; L15, PDF-S. 3. Klarstellung zur Periode: eigene Präzisierung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.2 Fixe, variable, gemischte und sprungfixe Kosten <a-1-2>
 
@@ -201,6 +296,7 @@ Damit ergeben sich *20 000 € Fixkosten pro Monat* und *30 € variable Kosten 
 #note("Fehler vermeiden", [Der *1-Stück-Test* ist eine Erklärhilfe: „Ändert sich dieser Betrag bei einem Stück mehr?“ Er gilt innerhalb desselben Bereichs. An einem Fixkostensprung reicht eine einzige Kostenfunktion mit unverändertem $K_f$ nicht mehr. „Je Stück“ allein beweist ebenfalls keine variable Kostenart: Auch fixe Kosten können rechnerisch auf Stücke verteilt sein.], fill: sand)
 #bild("map-kosten", [Mindmap: Kosten zuerst richtig aufteilen. Eigene Darstellung nach Ü 1, PDF-S. 1.], height: 46mm)
 #src[Ü 1 und Randnotizen, PDF-S. 1; L15, PDF-S. 4; L02, PDF-S. 2–3. Analogien und Modellgrenzen: eigene Erklärung/Präzisierung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.3 Kostenfunktion und Stückkosten <a-1-3>
 
@@ -229,6 +325,7 @@ Im Modell mit $K_f>0$ und endlicher Kapazität liegen die minimalen Stückkosten
 #note("Quelle sichtbar korrigiert", [In Deiner Kostentabelle steht bei 600 Packungen „63,30“. Die Rechnung ergibt $38 000/600="63,333…"$, auf Cent gerundet *63,33 €/Packung*. Der Originalscan bleibt unverändert.], fill: sand)
 #bild("map-stueck", [Mindmap: vom Gesamtbetrag zum Betrag je Stück. Eigene Darstellung nach K, PDF-S. 1, und Ü 1, PDF-S. 1.], height: 46mm)
 #src[M, PDF-S. 2; K, PDF-S. 1; Ü 1 mit Kostentabelle und Markierung „Gesetz der Massenproduktion“, PDF-S. 1; L15, PDF-S. 4–5; L02, PDF-S. 3–4. Grenzfall und WG: eigene Erklärung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.4 Erlös, Gewinn und Deckungsbeitrag <a-1-4>
 
@@ -257,6 +354,7 @@ Das ist der in der Randnotiz bezeichnete Schnellweg „Variante GBW“. Er erset
 #bild("map-deckung", [Mindmap: Deckungsbeitrag und Gewinn unterscheiden. Eigene Darstellung nach M, PDF-S. 2, und Ü 1, PDF-S. 1.], height: 46mm)
 #note("Notation in den Quellen", [F, PDF-S. 4–5 verwendet „dB I“ und „DB I“ ohne überall klaren Stückbezug. Für den BEP teilst Du *Euro durch Euro je Stück*. Deshalb steht im Nenner der Stückdeckungsbeitrag, nicht der gesamte Monats-DB.], fill: sand)
 #src[M, PDF-S. 1–2; K, PDF-S. 1; Ü 1, PDF-S. 1, grün umrandete Randrechnungen und rote Notiz; F, PDF-S. 4–5; L15, PDF-S. 5–6; L02, PDF-S. 5. Eimer und begriffliche Präzisierung: eigene Erklärung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.5 Break-Even-Point und Beschäftigungsgrad <a-1-5>
 
@@ -293,6 +391,7 @@ Ein hoher BG an der Gewinnschwelle lässt wenig Puffer gegen einen Absatzrückga
 #note("Von Dir markiert", [Bei Ü 4 steht rot sinngemäß: „Gewinn zu niedrig bei solch einer hohen Auslastung“; $K_f$, $k_v$ und $e$ prüfen. Die Rechnung liefert +7 400 €. Ob dieser Gewinn wirtschaftlich genügt, braucht zusätzlich ein Ziel; die Randnotiz ist ein Anlass zur Prüfung, kein allgemeiner Grenzwert.])
 #bild("map-bep", [Mindmap: Schwelle, Rundung und Kapazität zusammen denken. Eigene Darstellung nach K, PDF-S. 1–2, und Ü, PDF-S. 1–2.], height: 46mm)
 #src[K, PDF-S. 1–2; M, PDF-S. 1–2; Ü 1 und 4, PDF-S. 1–2; F, PDF-S. 5; L15, PDF-S. 6–7 und 10. Unterscheidung exakt/ganzzahlig, Randfälle und Nachfragegrenze: eigene Präzisierung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.6 Entscheidungen: Preissenkung und Zusatzauftrag <a-1-6>
 
@@ -330,6 +429,7 @@ Als *eigene ergänzende Einordnung aus den alten Skripten* gilt kurzfristig bei 
 #note("In eigenen Worten", [„Für den Zusatzauftrag frage ich: *Was ändert sich durch ihn?* Für die allgemeine Preissenkung frage ich: *Was verdient der ganze Betrieb danach?*“ Eigene Erklärung nach Ü 1.])
 #bild("map-entscheidung", [Mindmap: Kapazität, Vergleich und Risiko. Eigene Darstellung nach Ü 1, PDF-S. 1.], height: 46mm)
 #src[Ü 1 mit grün umrandeten Rechnungen und Notiz „Preisdifferenzierung“, PDF-S. 1; L15, PDF-S. 7–9; L13, PDF-S. 7–9; L02, PDF-S. 7–9. Preisuntergrenzen, Bedingungen und Verlustverkleinerung: ausdrücklich ergänzte Erklärung/Präzisierung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.7 Kosten aus zwei Perioden bestimmen <a-1-7>
 
@@ -347,6 +447,7 @@ Dann $K_f=700 000-25 dot 20 000=200 000$ €/Periode.
 *Eigene Erklärhilfe aus dem alten Skript:* Eine Stromrechnung kostet bei 300 kWh 110 €, bei 400 kWh 140 €. Die Steigung ist 30 €/100 kWh = 0,30 €/kWh. Der feste Anteil ist 110 € − 0,30 €/kWh · 300 kWh = 20 €. Das Beispiel zeigt nur das lineare Modell.
 #note("Selbst erklären", [Warum muss bei beiden Perioden dasselbe $K_f$ herauskommen? *Weil Du gerade annimmst, dass beide Punkte zu derselben Kostenlinie gehören.* Zwei Beobachtungen allein beweisen noch nicht, dass das Modell auch in jedem anderen Monat gilt. Eigene Präzisierung.])
 #src[Ü 3 und Randrechnungen, PDF-S. 2; Foto Ü 3; L15, PDF-S. 8 und 10; L02, PDF-S. 7–9. Strombeispiel und Aussage zur Modellprüfung: eigene Erklärung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.8 Rückwärts rechnen, Ziele setzen und Ergebnisse prüfen <a-1-8>
 
@@ -383,6 +484,7 @@ Mögliche Stellschrauben sind Preis erhöhen, variable Stückkosten senken, Fixk
 #src[Zusammenführung aus M und K, jeweils PDF-S. 1–2, sowie Ü 1–4, PDF-S. 1–2. Eigene Darstellung.]
 
 ]
+#hoch(<a-1>, [Kapitelübersicht])
 
 = Anhang
 == Formelsammlung mit Voraussetzungen
