@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 22.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -148,7 +148,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand 22.10.2026, ergänzt um die neuen Unterlagen: Enthalten sind Skript Kapitel 1.1 bis 1.2.5, deine Randnotizen zu Spule und Diode sowie der Grundstromkreis aus der Zusammenfassung (Skript 2.4.1 bis 2.4.3). Die neuen Markierungen belegen den 15.10. auf Skript S. 16–17 und den 22.10. auf S. 18–19; die Nummern dieser Vorlesungen sind offen. Ergänzt sind auch die am 22.10. bearbeiteten Fragen 25–28; Aufgaben und getrennte Lösungen wachsen mit.
+Stand 26.10.2026: Enthalten sind Skript Kapitel 1.1 bis 1.2.5, deine Randnotizen zu Spule und Diode sowie der Grundstromkreis aus der Zusammenfassung (Skript 2.4.1 bis 2.4.3). Die neuen Markierungen belegen den 15.10. auf Skript S. 16–17 und den 22.10. auf S. 18–19; die Nummern dieser Vorlesungen sind offen. Das Skript enthält nur noch die Erklärungen und im Anhang die Formelsammlung. Alle Rechenaufgaben und Verständnisfragen mit Lösungen Schritt für Schritt stehen auf der Lernwebseite im Reiter „Lernen“, das Quiz ebenfalls dort.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -236,7 +236,7 @@ Eine ideale Quelle liefert immer dieselbe Spannung, egal wie viel Strom fließt.
 
 == 0.6 Ergänzung vom 22.10.: Spannungsteiler und Quellen <a-0-6>
 Ein *unbelasteter Spannungsteiler* ist eine Reihenschaltung mit offenem Ausgang: Du greifst eine Spannung ab, ohne dort Strom zu entnehmen. Wie bei zwei Engstellen hintereinander verteilt sich der gesamte Spannungsabfall auf beide Widerstände.
-#note("Von dir markiert", [Im neuen Fragenkatalog steht: „Aufgabe 25 bis 28 am 22.10 gemacht“. Die Spannungsteilerregel ist in deiner Lösung eingerahmt. Die Fragen zum Magnetfeld greifen wir bei Induktion und in Aufgabe 37 von Kapitel 1 auf.])
+#note("Von dir markiert", [Im neuen Fragenkatalog steht: „Aufgabe 25 bis 28 am 22.10 gemacht“. Die Spannungsteilerregel ist in deiner Lösung eingerahmt. Die Fragen zum Magnetfeld greifen wir bei der Induktion und in den Aufgaben auf der Lernwebseite auf.])
 #bild("notiz-spannungsteiler", [Spannungsteiler mit deinem Rechenweg. FK-N, PDF-S. 6, Aufgabe 25, Ausschnitt.], height: 48mm)
 #form[$ I = U/(R_1 + R_2) quad U_20 = I R_2 = U R_2/(R_1 + R_2) $]
 $U$: Gesamtspannung in V; $R_1$, $R_2$: Widerstände in Ω; $U_20$: Ausgangsspannung an $R_2$ im Leerlauf. *Voraussetzung:* kein Laststrom am Ausgang; ein ideales Voltmeter verändert die Schaltung nicht.
@@ -250,118 +250,6 @@ $U$: Gesamtspannung in V; $R_1$, $R_2$: Widerstände in Ω; $U_20$: Ausgangsspan
 
 *Der Zusammenhang in Kapitel 0.* Die Spannung ist die Ursache, der Strom die Folge, der Widerstand bestimmt, wie viel Strom die Spannung antreibt. Die Leistung verknüpft Spannung und Strom zu dem, was am Verbraucher ankommt, und über die Zeit zur Energie, die bezahlt wird. In Schaltungen entscheidet die Schaltungsart, welche Größe überall gleich ist.
 
-#pagebreak()
-== Verständnisfragen und Rechenaufgaben · Kapitel 0
-#set enum(spacing: 0.85em)
-Erkläre erst selbst. Bei Rechenaufgaben schreibst du Gegebenes, Gesuchtes und die Formel auf. Die Lösungen folgen getrennt.
-
-1. Welche Elementarteilchen sind elektrisch geladen? Welche davon bewegen sich in einem Metalldraht?
-2. Wie wirken gleichartige und ungleichartige Ladungen aufeinander?
-3. Warum setzt ein Leiter dem Strom einen Widerstand entgegen? Was entsteht dabei?
-4. Nenne vier Größen, von denen der Widerstand eines Leiters abhängt.
-5. Wofür stehen AC, DC, PTC und NTC?
-6. In einer Reihenschaltung wird ein Widerstand vergrößert. Was passiert mit Strom, Leistung und Belastung der Quelle?
-7. Ordne zu: 380 kV, 400 V, 230 V, 12 V, 1,5 V → AAA-Batterie, Höchstspannung, Drehstromnetz, Wechselstromnetz, PKW-Batterie.
-8. Welcher Werkstoff leitet am besten: Eisen, Silber, Kupfer oder Gold?
-9. Zwei unterschiedliche Widerstände liegen in Reihe. Was ist an beiden gleich, was ist verschieden? Hat die Schaltungsart Einfluss auf Strom und Spannung?
-10. Unterschiedliche Widerstände liegen parallel. Was gilt für Spannung, Strom und Leistung der einzelnen Widerstände? Was passiert mit dem Gesamtstrom, wenn ein Widerstand ausfällt?
-11. Welche Ladung wird bei konstant 600 mA in 30 ms transportiert?
-12. Signallampe 3 W / 0,5 A: Wie groß ist ihr Betriebswiderstand?
-13. Heizspirale 75 Ω an 230 V: Welcher Strom fließt?
-14. Wärmegerät 2,5 kW, gemessener Strom 3,75 A: An welcher Spannung wird es betrieben?
-15. Reihenschaltung, $R_"ges" = 180 thin Omega$, $I = 2 thin "A"$, $R_1 = 70 thin Omega$. a) $R_2$? b) Teilspannungen? c) Gesamtspannung?
-16. Drei Widerstände parallel an 36 V, Ströme 4,5 A, 7 A und 5 A. a) Teilwiderstände? b) Gesamtstrom? c) Gesamtwiderstand?
-17. Unbelasteter Spannungsteiler: $R_1 = 15 thin "k"Omega$, $R_2 = 100 thin "k"Omega$, $U = 35 thin "V"$. Wie groß ist $U_20$ an $R_2$?
-18. Rechne um: a) 2,67 V in µV b) 180 µA in mA c) 370 kΩ in MΩ d) 36,2 mA in µA e) 4700 µΩ in Ω f) 50 000 A in kA.
-19. Eine Kupferleitung führt 25 m hin und 25 m zurück, $A = "1,5" thin "mm"^2$, $rho_"Cu" = "0,0179" thin Omega thin "mm"^2\/"m"$ (Daten aus V S. 9). Bestimme die Leiterlänge und den Widerstand. Warum zählt die Länge doppelt?
-20. Ein Kupferdraht ($rho = "0,0178" thin Omega thin "mm"^2\/"m"$) ist 20 m lang und hat 0,5 mm Durchmesser. Wie groß ist sein Widerstand?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-21. *Kohleschicht-Widerstand, Ü 1a:* Die Kohleschicht ist zu einer Wendel von 95 mm Länge und 3,5 mm Breite geschliffen, $rho_"Kohle" = 60 thin Omega thin "mm"^2\/"m"$. Wie dick muss die Schicht sein, damit der Widerstand 80 kΩ beträgt?
-22. *Aluminium und Kupfer, Ü 7 (= Blatt B 14):* In welchem Verhältnis stehen a) die Querschnitte gleich langer und widerstandsgleicher Aluminium- und Kupferleiter, b) die Widerstände gleich langer Kupferleiter mit dem Durchmesserverhältnis 2 : 1? ($rho_"Al" = "0,0278"$, $rho_"Cu" = "0,0178" thin Omega thin "mm"^2\/"m"$)
-23. *Belastbarkeit, Blatt A 1:* An welcher Spannung darf ein Widerstand von 4,7 kΩ mit einer Dauerbelastbarkeit von 1/8 W höchstens betrieben werden?
-24. *Spannung +10 %, Blatt A 6:* Bei einem Verbraucher mit konstantem Widerstand steigt die Spannung um 10 % über die Nennspannung. Um wie viel Prozent ändert sich die Leistung?
-25. *Wasserkocher, Blatt A 7:* Nenndaten 230 V / 1500 W, Wirkungsgrad 0,85. Wie lange dauert es, 1 Liter Wasser von 15 °C auf 100 °C zu erwärmen? ($c = "4,19" thin "kJ/(kg K)"$, 1 J = 1 Ws)
-26. *Reihenschaltung, Blatt B 15:* Drei Widerstände in Reihe liegen an 10 V. In $R_1 = 39 thin Omega$ fließen 75,2 mA. Wie groß sind $R_2 = R_3$?
-27. *Stand-by, Blatt B 16:* Ein Fernseher nimmt im Betrieb 90 W auf, im Stand-by 15 W; Betrieb 4 h, Stand-by 20 h täglich. a) Monatlicher Energiebedarf (30 Tage) im Betrieb? b) im Stand-by? c) Zu wie viel Prozent wäre ein 400-MW-Kraftwerk ausgelastet, um den Stand-by von 10 Millionen Geräten zu versorgen?
-28. *Elektromotor, Blatt B 18:* Ein Motor gibt an der Welle 6,5 kW ab, Wirkungsgrad 78 %. Wie groß ist seine Stromaufnahme an 440 V Gleichspannung?
-
-29. *Ergänzung zu FK 25, eigene Aufgabe:* Der Spannungsteiler aus Abschnitt 0.6 erhält einen Verbraucher $R_L = 100 thin "k"Omega$ parallel zu $R_2 = 100 thin "k"Omega$. $R_1 = 15 thin "k"Omega$, $U = 35 thin "V"$. a) Welche Spannung liegt jetzt am Ausgang? b) Warum ist sie kleiner als im Leerlauf?
-30. *FK 27, am 22.10. bearbeitet:* Eine Mignonzelle hat $U_q = "1,52" thin "V"$ und $R_i = "0,13" thin Omega$. Berechne die Klemmenspannung bei 40 mA und, als eigene Variation, bei 80 mA. Erkläre den Unterschied.
-
-#pagebreak()
-== Lösungen Kapitel 0
-#set enum(spacing: 0.65em)
-1. Protonen (+) und Elektronen (−). Im Metall bewegen sich nur die Elektronen; Neutronen und Atome als Ganzes sind neutral. #nachschlagen[Lernskript, #stelle(<a-0-1>)]
-2. Gleichartige stoßen sich ab, ungleichartige ziehen sich an. #nachschlagen[Lernskript, #stelle(<a-0-1>)]
-3. Die Elektronen stoßen an die Atome des Gitters („Reibung“). Dabei wird elektrische Energie in Wärme umgewandelt. #nachschlagen[Lernskript, #stelle(<a-0-2>)]
-4. Material ($rho$), Länge $l$, Querschnitt $A$ und Temperatur. #nachschlagen[Lernskript, #stelle(<a-0-2>)]
-5. AC = Alternating Current (Wechselstrom), DC = Direct Current (Gleichstrom), PTC = Kaltleiter ($R$ steigt mit $T$), NTC = Heißleiter ($R$ sinkt mit $T$). #nachschlagen[Lernskript, #stelle(<a-0-2>); Stromarten: #stelle(<a-1-1-7>)]
-6. Strom sinkt, Leistung sinkt, die Quelle wird weniger belastet. #nachschlagen[Lernskript, #stelle(<a-0-4>)]
-7. AAA 1,5 V; Höchstspannung 380 kV; Drehstrom 400 V; Wechselstrom 230 V; PKW 12 V. #nachschlagen[Lernskript, #stelle(<a-0-1>)]
-8. Silber, vor Kupfer, Gold und Eisen. #nachschlagen[Lernskript, #stelle(<a-0-2>)]
-9. Der Strom ist an beiden gleich; die Spannungen teilen sich im Verhältnis der Widerstände. Die Schaltungsart bestimmt also sehr wohl Strom und Spannung. #nachschlagen[Lernskript, #stelle(<a-0-4>)]
-10. An jedem Widerstand liegt dieselbe Spannung, die Ströme sind verschieden. Je größer der Widerstand, desto kleiner seine Leistung ($P = U^2\/R$). Fällt ein Zweig aus, sinkt der Gesamtstrom. #nachschlagen[Lernskript, #stelle(<a-0-4>)]
-11. $Q = "0,6" thin "A" dot.c "0,03" thin "s" = "0,018" thin "As" = 18 thin "mC"$. #nachschlagen[Lernskript, #stelle(<a-0-1>)]
-12. $R = P\/I^2 = 3\/"0,25" = 12 thin Omega$ (oder $U = P\/I = 6 thin "V"$, $R = 6\/"0,5" = 12 thin Omega$). #nachschlagen[Lernskript, #stelle(<a-0-3>)]
-13. $I = 230\/75 approx "3,07" thin "A"$. #nachschlagen[Lernskript, #stelle(<a-0-2>)]
-14. $U = P\/I = 2500\/"3,75" approx "666,7" thin "V"$. #nachschlagen[Lernskript, #stelle(<a-0-3>)]
-15. a) $R_2 = 180 - 70 = 110 thin Omega$ b) $U_1 = 140 thin "V"$, $U_2 = 220 thin "V"$ c) $U = 360 thin "V"$. Prüfung: $180 thin Omega dot.c 2 thin "A" = 360 thin "V"$. #nachschlagen[Lernskript, #stelle(<a-0-4>)]
-16. a) $R_1 = 36\/"4,5" = 8 thin Omega$, $R_2 = 36\/7 approx "5,14" thin Omega$, $R_3 = 36\/5 = "7,2" thin Omega$ b) $I = "16,5" thin "A"$ c) $R = 36\/"16,5" approx "2,18" thin Omega$, kleiner als der kleinste Einzelwiderstand. #nachschlagen[Lernskript, #stelle(<a-0-4>)]
-17. $U_20 = 35 thin "V" dot.c 100\/115 approx "30,4" thin "V"$. #nachschlagen[Lernskript, #stelle(<a-0-4>)]
-18. a) 2 670 000 µV b) 0,18 mA c) 0,37 MΩ d) 36 200 µA e) 0,0047 Ω f) 50 kA. #nachschlagen[Lernskript, #stelle(<a-0-1>)]
-19. $l = 2 dot.c 25 thin "m" = 50 thin "m"$; $R = "0,0179" dot.c 50\/"1,5" approx "0,60" thin Omega$ (wie V S. 9). Der Strom fließt hin und zurück; beide Leiter liegen in Reihe. #nachschlagen[Lernskript, #stelle(<a-0-2>)]
-20. $A = pi\/4 dot.c ("0,5" thin "mm")^2 approx "0,196" thin "mm"^2$; $R = "0,0178" dot.c 20\/"0,196" approx "1,81" thin Omega$. Gegeben war der Durchmesser, nicht der Querschnitt. #nachschlagen[Lernskript, #stelle(<a-0-2>)]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[21 · Dicke der Kohleschicht]
-*Idee:* Das Kohleband ist ein flacher, langer Leiter mit dem Querschnitt $A = b dot.c d$.
-+ $R = rho l\/A$ nach $A$ umstellen: $A = (rho l)/R = (60 thin Omega thin "mm"^2\/"m" dot.c "0,095" thin "m")/(80 thin 000 thin Omega) approx "7,13" dot.c 10^(-5) thin "mm"^2$
-+ $d = A\/b = "7,13" dot.c 10^(-5) thin "mm"^2 \/ "3,5" thin "mm" approx "2,04" dot.c 10^(-5) thin "mm"$
-*Ergebnis:* $d approx 20 thin "nm"$, wie auf dem Übungsblatt. *Prüfung:* mm² geteilt durch mm ergibt mm; eine hauchdünne Schicht ist für 80 kΩ plausibel.
-#note("Von dir markiert", [„In Prüfung Einheiten richtig mitführen!!“ (Ü-N, PDF-S. 4). Dort steht im Zähler einmal 3,5 mm. Richtig ist die *Länge 95 mm*; 3,5 mm ist die Breite im Nenner. DC, PDF-S. 3, setzt richtig ein.], fill: sand)
-#src([Ü 1a; Ü-N, PDF-S. 4; DC, PDF-S. 3.])
-#nachschlagen[Lernskript, #stelle(<a-0-2>)]
-]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[22 · Aluminium gegen Kupfer]
-a) Gleiche Länge, gleicher Widerstand: $rho_"Al" l\/A_"Al" = rho_"Cu" l\/A_"Cu"$, also $A_"Al"\/A_"Cu" = rho_"Al"\/rho_"Cu" = "0,0278"\/"0,0178" approx "1,56"$. Das Verhältnis der Durchmesser ist $sqrt("1,56") approx "1,25"$.\
-b) Durchmesser 2 : 1 → Querschnitt 4 : 1 → $R_1\/R_2 = 1\/4 = "0,25"$: Der dickere Leiter hat ein Viertel des Widerstands. Deine Lösung R S. 8 kommt ebenfalls auf 1,56 und 1/4.
-#note("Widerspruch in den Unterlagen", [Ü 7a nennt als Lösung 1,25. Das ist das Verhältnis der *Durchmesser*. Das Verhältnis der *Querschnitte* ist 1,56. Schreib in der Klausur beide Zahlen mit Begründung hin.], fill: sand)
-_Eigene Ergänzung, WI-Sicht:_ Aluminium braucht rund 56 % mehr Querschnitt, ist aber leichter und billiger als Kupfer; deshalb bestehen Freileitungen oft aus Aluminium.
-#nachschlagen[Lernskript, #stelle(<a-0-2>)]
-]
-
-23. $P = U^2\/R => U = sqrt(P R) = sqrt("0,125" thin "W" dot.c 4700 thin Omega) approx "24,2" thin "V"$ (R S. 1: 24 V). #nachschlagen[Lernskript, #stelle(<a-0-3>)]
-24. $P' = ("1,1" U)^2\/R = "1,21" dot.c P$: Die Leistung steigt um 21 %, weil $P ∼ U^2$ (R S. 3). #nachschlagen[Lernskript, #stelle(<a-0-3>)]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[25 · Wasserkocher]
-*Annahme:* 1 Liter Wasser hat die Masse 1 kg.
-+ Nötige Wärme: $Q = m c Delta T = 1 thin "kg" dot.c "4,19" thin "kJ/(kg K)" dot.c 85 thin "K" approx "356,2" thin "kJ"$
-+ Nutzleistung: $P_"Nutz" = eta dot.c P = "0,85" dot.c 1500 thin "W" = 1275 thin "W"$
-+ Zeit: $t = Q\/P_"Nutz" = 356 thin 150 thin "Ws" \/ 1275 thin "W" approx 279 thin "s"$
-*Ergebnis:* $t approx 280 thin "s" approx "4,7" thin "min"$ (wie R S. 3, dort über $Q\/eta$ gerechnet). *Prüfung:* Ohne Verluste wären es rund 237 s; mit Verlusten dauert es länger.
-#nachschlagen[Lernskript, #stelle(<a-0-3>); Wirkungsgrad: #stelle(<a-2-4-3>)]
-]
-
-26. $R_"ges" = U\/I = 10 thin "V"\/"75,2" thin "mA" approx 133 thin Omega$; $R_2 = R_3 = (133 - 39)\/2 approx 47 thin Omega$ (R S. 8). #nachschlagen[Lernskript, #stelle(<a-0-4>)]
-27. a) $90 thin "W" dot.c 4 thin "h" dot.c 30 = "10,8" thin "kWh"$ b) $15 thin "W" dot.c 20 thin "h" dot.c 30 = 9 thin "kWh"$ c) $15 thin "W" dot.c 10^7 = 150 thin "MW"$, also $150\/400 = "37,5" thin %$, solange alle Geräte gleichzeitig im Stand-by sind (R S. 9). #nachschlagen[Lernskript, #stelle(<a-0-3>)]
-28. $P_"el" = P_"mech"\/eta = "6,5"\/"0,78" approx "8,33" thin "kW"$; $I = P_"el"\/U approx 8333\/440 approx "18,9" thin "A"$ (R S. 9). #nachschlagen[Lernskript, #stelle(<a-0-3>); Wirkungsgrad: #stelle(<a-2-4-3>)]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[29 · Belasteter Spannungsteiler]
-*Modell:* Ideale 35-V-Quelle, konstante Widerstände, Last parallel zu $R_2$.
-+ Parallelersatz: $R_p = (100 dot.c 100)/(100 + 100) thin "k"Omega = 50 thin "k"Omega$.
-+ Gesamtstrom: $I = 35 thin "V"/(65 thin "k"Omega) approx "0,5385" thin "mA"$; Ausgangsspannung: $U_a = 35 thin "V" dot.c 50/65 approx "26,92" thin "V"$.
-*Ergebnis: 26,92 V.* Die Last verkleinert den unteren Ersatzwiderstand; an $R_1$ fällt mehr Spannung ab. *Prüfung:* In $R_2$ und $R_L$ fließen je rund 0,2692 mA, zusammen der Gesamtstrom. $U_a$ ist kleiner als die Leerlaufspannung 30,43 V.
-#nachschlagen[Lernskript, #stelle(<a-0-6>); Parallelersatz: #stelle(<a-0-4>)]
-]
-
-30. $U(40 thin "mA") = "1,5148" thin "V"$; $U(80 thin "mA") = "1,5096" thin "V"$. Rechnung: jeweils $U = "1,52" thin "V" - I dot.c "0,13" thin Omega$. Doppelter Strom verdoppelt den inneren Spannungsabfall (5,2 → 10,4 mV). *Prüfung:* Beide Klemmenspannungen sind kleiner als 1,52 V. #nachschlagen[Lernskript, #stelle(<a-0-6>)]
-
-#pagebreak()
 = Kapitel 1 · Grundbegriffe: Strom und Quellspannung
 
 Wir bauen ein Bild davon auf, was im Draht passiert, wenn Strom fließt: wie viel Ladung darin steckt, wie schnell sie wandert, wie sie sich auf den Querschnitt verteilt und woran man sie erkennt. Danach klären wir, woher der Antrieb kommt: Eine Quelle trennt Ladungen, chemisch, durch Induktion, eine Temperaturdifferenz, Licht oder eine mechanische Einwirkung. Grundlage ist Skript Kapitel 1.1 bis 1.2.5; hinzu kommen die Randnotizen vom 15. und 22.10.
@@ -586,155 +474,6 @@ $U_D$: Diodenspannung in V; $R$: Serienwiderstand in Ω; $I$: gemeinsamer Strom 
 
 *Der Zusammenhang in Kapitel 1.* Strom beschreibt bewegte Ladung. Die Elektronen driften langsam; das elektrische Feld vermittelt die Wirkung rasch. Stromdichte und Material bestimmen die Erwärmung, Wärme-, Kraft- und chemische Wirkung machen Strom erkennbar. Quellen trennen Ladungen durch Chemie, Flussänderung, Temperaturdifferenz, Licht oder Kraft. Die Randnotizen verbinden diese Grundlagen mit der verzögerten Stromänderung einer Spule und dem Arbeitspunkt einer Diode.
 
-#pagebreak()
-== Verständnisfragen und Rechenaufgaben · Kapitel 1
-#set enum(spacing: 0.85em)
-Erkläre erst selbst, am besten laut und ohne Vorlage. Die Lösungen folgen getrennt.
-
-1. Erkläre die Formel $Q = n e A l$. Was bedeutet jede Größe?
-2. Definiere die Stromstärke in Worten und als Formel. Wie viele Elektronen sind „1 Ampere“?
-3. Was ist der Unterschied zwischen technischer und physikalischer Stromrichtung? Welche benutzt man im Schaltbild?
-4. Die Elektronen driften nur mit etwa 1 mm/s. Warum geht das Licht trotzdem sofort an?
-5. Warum bestimmt die Stromdichte und nicht die Stromstärke die Erwärmung eines Leiters?
-6. Ein Leiter hat links den Querschnitt $A$, rechts $2 A$. Was gilt rechts für Strom und Stromdichte?
-7. Nenne die drei Wirkungen des Stroms mit je einem Anwendungsbeispiel.
-8. Wovon hängt die Lorentzkraft auf einen stromdurchflossenen Leiter ab? Wann ist sie null?
-9. Warum hat ein Drehspulinstrument eine lineare Skala?
-10. Warum überträgt man elektrische Energie über weite Strecken mit Hochspannung?
-11. Was muss in jeder Spannungsquelle passieren, damit eine Quellspannung entsteht? Welche Energieumwandlung findet in Batterie und Generator statt?
-12. Formuliere das Induktionsgesetz in Worten. Was bedeutet das Minuszeichen?
-13. Ein Magnet liegt ruhig in einer Spule. Wird eine Spannung induziert? Und wenn man die Spule aus dem Feld zieht?
-14. In der Lampen-Aufgabe wird S geschlossen. Was passiert mit C, mit dem Batteriestrom, mit A und B und mit der Gesamtleistung?
-15. Durch einen Leiter fließen 2 Minuten lang 0,5 A. a) Welche Ladung? b) Wie viele Elektronen sind das?
-16. Kupferleitung, $A = "1,5" thin "mm"^2$, $I = 16 thin "A"$. a) Stromdichte $S$? Ist das zulässig? b) Driftgeschwindigkeit $v_d$?
-17. Kupferleitung (Daten aus V S. 9): $I = "16,66" thin "A"$, $A = "1,5" thin "mm"^2$. Rechne $A$ in cm² um und bestimme $v_d$.
-18. Durch einen Leiter mit 2,5 mm² fließen 10 A. Wie groß ist die Stromdichte? Liegt sie im zulässigen Bereich?
-19. Ein gerader Leiter liegt auf 20 cm Länge senkrecht in einem Magnetfeld $B = "0,5" thin "T"$ und führt 5 A. Wie groß ist die Kraft?
-20. Ein Drehspulinstrument zeigt bei 2 mA einen Ausschlag von 30°. Welchen Ausschlag zeigt es bei 5 mA?
-21. Lampen-Aufgabe mit $U_q = 9 thin "V"$ und $R = 30 thin Omega$ je Lampe. Berechne Strom, Spannung an A und Leistung von A, jeweils bei offenem und bei geschlossenem Schalter.
-22. Vier gleiche Lampen liegen in Reihe an 12 V. Eine Lampe wird überbrückt. Wie groß ist die Spannung an einer der übrigen Lampen vorher und nachher? Um welchen Faktor ändert sich ihre Leistung?
-23. Netzfrequenz in den USA: 60 Hz. Wie lang ist eine Periode?
-24. Eine Spule mit 500 Windungen; der Fluss steigt in 0,1 s gleichmäßig von 0 auf 2 mWb. Wie groß ist $abs(u_i)$?
-25. Eine Spule mit 500 Windungen und 4 cm² Querschnitt steckt in einem Feld mit $B = "0,4" thin "T"$. Sie wird in 50 ms ganz aus dem Feld gezogen. Wie groß ist $abs(u_i)$ bei gleichmäßiger Änderung?
-26. Eine Powerbank speichert 10 Ah. Ein Gerät zieht konstant 0,8 A. Wie lange reicht die Ladung?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-27. *Auto-Akku, Ü 2 und V S. 7:* In einem vollgeladenen 12-V-Akku sind 36 Ah gespeichert. Wie groß ist die theoretische Entladezeit mit zwei parallelen Scheinwerferlampen zu je 42 W?
-28. *E-Bike-Akku:* 36 V und 14 Ah, der Motor nimmt 250 W auf. a) Welcher Strom fließt? b) Wie lange kann man fahren? c) Wie viel Energie in Wh steckt im Akku?
-29. *Drehspulinstrument:* Vollausschlag 90° bei 1 mA. a) Welcher Strom fließt bei 36°? b) Welche Ladung fließt bei diesem Strom in 5 s durch das Instrument? c) Warum darfst du hier mit einem Dreisatz rechnen?
-
-30. *Thermoeffekt, eigene Ergänzung zu V S. 17:* Ein Cu–Konstantan-Thermoelement hat die Messstelle bei 80 °C, die Vergleichsstelle bei 20 °C. Verwende $K = "0,05" thin "mV/K"$. a) Berechne die Spannung. b) Was ändert sich beim Vertauschen der Temperaturen? c) Was misst du, wenn beide Stellen bei 80 °C liegen?
-31. *Fotoeffekt, eigene Ergänzung zu V S. 18–19:* Silizium hat die Bandlücke 1,12 eV und die Grenzwellenlänge rund 1,11 µm. a) Können Photonen mit 850 nm bzw. 1550 nm im einfachen Bandlückenmodell Elektron-Loch-Paare erzeugen? b) Hilft bei ungeeigneter Wellenlänge einfach mehr Licht? Begründe mit der Energie eines Photons.
-32. *Piezoeffekt, eigene Verständnisfrage zu V S. 19:* Erkläre den direkten und den umgekehrten Effekt jeweils an einer Anwendung. Welche Material- und Richtungsbedingung musst du beachten?
-33. *Grenzwellenlänge, eigene Rechenvariation zu Tabelle 1.1:* Berechne für Germanium mit $W = "0,67" thin "eV"$ die Grenzwellenlänge in µm. Verwende $h = "6,626" dot.c 10^(-34) thin "Js"$, $c = 299792458 thin "m/s"$ und die eV-Umrechnung aus Abschnitt 1.2.4. Vergleiche mit der Tabelle.
-34. *Temperatur aus Spannung, eigene Ergänzung:* Ein Cu–Konstantan-Thermoelement liefert in der gewählten Polung +3 mV. Die Vergleichsstelle hat 25 °C. Wie warm ist die Messstelle bei Verwendung des Skriptkoeffizienten? Welche Annahme steckt darin?
-35. *Schwingquarz, eigene Variation zu V S. 19:* Ein Quarz schwingt mit 32768 Hz. Eine Elektronik teilt diesmal nur durch $2^14$. Welche Taktfrequenz und Periodendauer entstehen? Ändert die Frequenzteilung die mechanische Quarzfrequenz?
-36. *Spule, eigene Rechenaufgabe zu N PDF-S. 3:* Die 12-V-Quelle wird an $R = 10 thin Omega$, $L = 10 thin "mH"$ eingeschaltet; anfangs fließt kein Strom. a) Bestimme Endstrom und Zeitkonstante. b) Berechne Strom und Spulenspannung nach einer Zeitkonstante. c) Was geschieht mit Endstrom und Zeitkonstante, wenn $R$ auf 20 Ω steigt?
-37. *Magnetfeld, FK 28 als offene Frage; am 22.10. bearbeitet:* a) Erzeugt auch ein Strom von 0,5 A ein Magnetfeld? b) Eine Spule und ein Magnetfeld ruhen unverändert gegeneinander: Wird Spannung induziert? c) Kann in einem zeitlich konstanten Magnetfeld trotzdem eine Spannung induziert werden? Nenne eine passende Bewegung und die entscheidende Bedingung.
-38. *Diode, eigene Variation zur 9-V-Randnotiz:* Am Arbeitspunkt liegen an einer Diode 2,1 V. Sie ist mit 330 Ω in Reihe an 9 V angeschlossen. a) Welcher Strom fließt? b) Welcher Vorwiderstand ergibt näherungsweise 10 mA, wenn die Diodenspannung dort ebenfalls mit 2,1 V angesetzt wird? Warum ist der Schnittpunkt der Kennlinien die genauere Methode?
-39. *Fotostrom, eigene Anwendung zu V S. 18:* Im betrachteten Arbeitspunkt fließen 20 µA durch den äußeren Widerstand von 100 kΩ. Welche Spannung und Leistung entstehen dort? Welche Bedingung musst du prüfen, bevor du denselben Strom für einen anderen Lastwiderstand annimmst?
-40. *Magnetfeldmessung, eigene Rechenaufgabe nach V S. 16–17:* Eine Messspule mit 200 Windungen und 4 cm² Fläche wird vollständig aus einem homogenen, senkrecht durch die Spulenfläche gerichteten Magnetfeld gezogen. Gesamtwiderstand 100 Ω, gemessene Ladung 2 µC. a) Wie groß ist der Betrag der Flussdichte? b) Was passiert mit dem Ladungsimpuls bei doppelt so schnellem Herausziehen, wenn alle Modellannahmen bestehen bleiben?
-
-#pagebreak()
-== Lösungen Kapitel 1
-#set enum(spacing: 0.65em)
-1. $n$ = freie Elektronen pro Volumen, $e$ = Ladung eines Elektrons, $A l = V$ = Volumen des Leiterstücks. Das Produkt ist die gesamte bewegliche Ladung im Stück. #nachschlagen[Lernskript, #stelle(<a-1-1-1>)]
-2. Stromstärke = Ladung, die pro Zeit durch den Querschnitt fließt: $I = Q\/t$ bzw. $i = dif Q\/dif t$. 1 A ≈ $"6,25" dot.c 10^18$ Elektronen pro Sekunde. #nachschlagen[Lernskript, #stelle(<a-1-1-2>)]
-3. Technisch: + nach − (Konvention, im Schaltbild). Physikalisch: − nach + (tatsächliche Elektronenbewegung). #nachschlagen[Lernskript, #stelle(<a-1-1-2>)]
-4. Das elektrische Feld breitet sich fast mit Lichtgeschwindigkeit aus; alle Elektronen im Kreis beginnen gleichzeitig zu driften. #nachschlagen[Lernskript, #stelle(<a-1-1-3>)]
-5. Die Erwärmung kommt von der Reibung pro Querschnittsfläche. Derselbe Strom erzeugt in einem dünnen Draht eine viel höhere Stromdichte und damit mehr Wärme als in einem dicken. #nachschlagen[Lernskript, #stelle(<a-1-1-5>)]
-6. Gleicher Strom (Kontinuität), halbe Stromdichte. #nachschlagen[Lernskript, #stelle(<a-1-1-5>)]
-7. Wärme (Heizlüfter), Kraft über das Magnetfeld (Elektromotor), Materialtransport (elektrochemische Prozesse, z. B. Galvanisieren). #nachschlagen[Lernskript, #stelle(<a-1-1-6>)]
-8. $F_L = I l B$: Sie wächst mit Strom, Leiterlänge im Feld und Flussdichte. Liegt der Leiter parallel zum Feld, ist $arrow(l) times arrow(B) = 0$, also keine Kraft. #nachschlagen[Lernskript, #stelle(<a-1-1-6>)]
-9. Weil $phi = N A B\/D^* dot.c I$: Der Ausschlag ist proportional zum Strom. #nachschlagen[Lernskript, #stelle(<a-1-1-6>)]
-10. Die Leitungsverluste $P = I^2 R$ hängen quadratisch vom Strom ab. Bei hoher Spannung braucht man für dieselbe Leistung nur wenig Strom. #nachschlagen[Lernskript, #stelle(<a-1-1-5>)]
-11. Ladungstrennung durch einen physikalischen Effekt. Batterie: chemisch → elektrisch. Generator: mechanisch → elektrisch (Induktion). #nachschlagen[Lernskript, #stelle(<a-1-2-1>); #stelle(<a-1-2-2>)]
-12. Ändert sich der magnetische Fluss durch eine Spule, wird eine Spannung induziert, umso größer, je schneller die Änderung und je mehr Windungen. Das Minus (Lenz): Die Wirkung ist ihrer Ursache entgegengerichtet. #nachschlagen[Lernskript, #stelle(<a-1-2-2>)]
-13. Ruhender Magnet: nein, der Fluss ist konstant, $dif Phi\/dif t = 0$. Spule aus dem Feld ziehen: ja, der Fluss durch die Spule ändert sich. #nachschlagen[Lernskript, #stelle(<a-1-2-2>)]
-14. C erlischt, der Batteriestrom steigt, A und B leuchten heller, die Gesamtleistung steigt. #nachschlagen[Lernskript, #stelle(<a-1-1-7-1>)]
-15. a) $Q = "0,5" thin "A" dot.c 120 thin "s" = 60 thin "As"$ b) $N = Q\/e = 60\/("1,602" dot.c 10^(-19)) approx "3,75" dot.c 10^20$ Elektronen. #nachschlagen[Lernskript, #stelle(<a-1-1-1>)]
-16. a) $S = 16\/"1,5" approx "10,7" thin "A/mm"^2$: deutlich über 6 A/mm², nicht dauerhaft zulässig. b) $v_d = 16\/("8,44" dot.c 10^22 dot.c "1,602" dot.c 10^(-19) dot.c "0,015") thin "cm/s" approx "0,079" thin "cm/s" = "0,79" thin "mm/s"$. #nachschlagen[Lernskript, #stelle(<a-1-1-5>); #stelle(<a-1-1-3>)]
-17. $A = "0,015" thin "cm"^2$; $v_d = "16,66"\/("8,44" dot.c 10^22 dot.c "1,602" dot.c 10^(-19) dot.c "0,015") approx "0,082" thin "cm/s" = "0,82" thin "mm/s"$ (wie V S. 9). #nachschlagen[Lernskript, #stelle(<a-1-1-3>)]
-18. $S = 10\/"2,5" = 4 thin "A/mm"^2$: im Bereich 1 … 6 A/mm², zulässig. #nachschlagen[Lernskript, #stelle(<a-1-1-5>)]
-19. $F = I l B = 5 thin "A" dot.c "0,2" thin "m" dot.c "0,5" thin "T" = "0,5" thin "N"$. #nachschlagen[Lernskript, #stelle(<a-1-1-6>)]
-20. $phi ∼ I$: $30° dot.c 5\/2 = 75°$. #nachschlagen[Lernskript, #stelle(<a-1-1-6>)]
-21. Offen: $I = 9\/90 = "0,1" thin "A"$, $U_A = 3 thin "V"$, $P_A = "0,3" thin "W"$. Geschlossen: $I = 9\/60 = "0,15" thin "A"$, $U_A = "4,5" thin "V"$, $P_A = "0,675" thin "W"$, also das 2,25-Fache. #nachschlagen[Lernskript, #stelle(<a-1-1-7-1>)]
-22. Vorher $12\/4 = 3 thin "V"$, nachher $12\/3 = 4 thin "V"$. Wegen $P ∼ U^2$: Faktor $(4\/3)^2 approx "1,78"$. #nachschlagen[Lernskript, #stelle(<a-1-1-7-1>)]
-#block(breakable: false)[
-23. $T = 1\/(60 thin "Hz") approx "16,7" thin "ms"$. #nachschlagen[Lernskript, #stelle(<a-1-1-7>)]
-]
-24. $abs(u_i) = 500 dot.c (2 dot.c 10^(-3) thin "Vs")\/("0,1" thin "s") = 10 thin "V"$. #nachschlagen[Lernskript, #stelle(<a-1-2-2>)]
-25. $Delta Phi = B A = "0,4" thin "T" dot.c 4 dot.c 10^(-4) thin "m"^2 = "1,6" dot.c 10^(-4) thin "Vs"$; $abs(u_i) = 500 dot.c "1,6" dot.c 10^(-4)\/"0,05" = "1,6" thin "V"$. #nachschlagen[Lernskript, #stelle(<a-1-2-2>)]
-26. $t = Q\/I = 10 thin "Ah"\/"0,8" thin "A" = "12,5" thin "h"$. #nachschlagen[Lernskript, #stelle(<a-1-1-2>)]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[27 · Entladezeit des Auto-Akkus]
-+ Strom je Lampe: $I = P\/U = 42\/12 = "3,5" thin "A"$; beide parallel: $sum I = 7 thin "A"$
-+ Entladezeit: $t = Q_"max"\/sum I = 36 thin "Ah"\/7 thin "A" approx "5,14" thin "h"$
-*Ergebnis:* $t approx 308 thin "min"$, wie auf dem Übungsblatt. *Prüfung:* Ah geteilt durch A ergibt h; die Ladung sinkt linear, weil der Strom konstant ist.
-#nachschlagen[Lernskript, #stelle(<a-1-1-2>)]
-]
-
-28. a) $I = 250\/36 approx "6,94" thin "A"$ b) $t = 14\/"6,94" approx "2,0" thin "h"$ c) $W = 36 thin "V" dot.c 14 thin "Ah" = 504 thin "Wh"$. Leistung aus Kapitel 0, Ladung aus Kapitel 1. #nachschlagen[Lernskript, #stelle(<a-1-1-2>); #stelle(<a-0-3>)]
-29. a) $phi ∼ I$: $I = 1 thin "mA" dot.c 36\/90 = "0,4" thin "mA"$ b) $Q = "0,4" thin "mA" dot.c 5 thin "s" = 2 thin "mAs" = 2 thin "mC"$ c) Weil $phi = N A B\/D^* dot.c I$ linear ist. #nachschlagen[Lernskript, #stelle(<a-1-1-6>)]
-
-#block(breakable: false)[
-30. a) $Delta vartheta = 60 thin "K"$; $U_q = "0,05" thin "mV/K" dot.c 60 thin "K" = 3 thin "mV"$. b) Die Differenz wird −60 K, die Spannung −3 mV: gleiche Größe, umgekehrte Polung. c) $Delta vartheta = 0$, also $U_q = 0$. *Prüfung:* mV/K × K ergibt mV; die Temperaturdifferenz entscheidet. #nachschlagen[Lernskript, #stelle(<a-1-2-3>)]
-]
-#block(breakable: false)[
-31. a) 850 nm = 0,85 µm liegt unter der Grenzwellenlänge: im Modell genügend Energie. 1550 nm = 1,55 µm liegt darüber: zu wenig Energie. b) Mehr Photonen gleicher Wellenlänge ändern die Energie pro Photon $h c/lambda$ nicht; im einfachen Modell reicht mehr langwelliges Licht deshalb nicht. #nachschlagen[Lernskript, #stelle(<a-1-2-4-g>)]
-]
-#block(breakable: false)[
-32. Direkt: Eine mechanische Kraft auf den Kristall erzeugt ein elektrisches Signal, etwa beim Kristallmikrofon. Umgekehrt: Eine Spannung verformt den Kristall, etwa zur Ultraschallerzeugung. Der Kristall muss piezoelektrisch sein und in der passenden Richtung beansprucht werden. #nachschlagen[Lernskript, #stelle(<a-1-2-5>)]
-]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[33 · Grenzwellenlänge für Germanium]
-*Modell:* Ideale Schwelle bei Photonenergie gleich Bandlücke; Bandlücke bei 300 K.
-+ Energie umrechnen: $W = "0,67" dot.c "1,602176634" dot.c 10^(-19) thin "J" approx "1,07346" dot.c 10^(-19) thin "J"$.
-+ Einsetzen: $lambda_g = (h c)/W = ("6,626" dot.c 10^(-34) thin "Js" dot.c 299792458 thin "m/s")/("1,07346" dot.c 10^(-19) thin "J") approx "1,8505" dot.c 10^(-6) thin "m"$.
-*Ergebnis: rund 1,85 µm*, passend zur Tabelle. *Prüfung:* Js × m/s geteilt durch J ergibt m. Germanium hat eine kleinere Bandlücke als Silizium, deshalb liegt die Grenzwellenlänge weiter im Langwelligen.
-#nachschlagen[Lernskript, #stelle(<a-1-2-4-g>)]
-]
-
-#block(breakable: false)[
-34. $Delta vartheta = U_q/K = 3 thin "mV"/("0,05" thin "mV/K") = 60 thin "K"$. Die Messstelle hat *85 °C* ($25 + 60$). Annahmen: korrekte Polung und näherungsweise konstanter Koeffizient im betrachteten Bereich. *Prüfung:* mV geteilt durch mV/K ergibt K. #nachschlagen[Lernskript, #stelle(<a-1-2-3>)]
-]
-#block(breakable: false)[
-35. $f_"Takt" = 32768/16384 thin "Hz" = 2 thin "Hz"$; $T = 1/f_"Takt" = "0,5" thin "s"$. Der Quarz schwingt weiterhin mit 32768 Hz; die Elektronik teilt nur die Frequenz des ausgegebenen Takts. #nachschlagen[Lernskript, #stelle(<a-1-2-5>)]
-]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[36 · Einschalten der Spule]
-*Modell:* Ideale Gleichspannungsquelle, lineare ideale Spule, konstanter Serienwiderstand, $i(0) = 0$.
-+ Endstrom: $I_oo = U_q/R = 12 thin "V"/(10 thin Omega) = "1,2" thin "A"$.
-+ Zeitkonstante: $tau = L/R = "0,010" thin "H"/(10 thin Omega) = 1 thin "ms"$.
-+ Bei $t = tau$: $i = "1,2" (1 - e^(-1)) thin "A" approx "0,759" thin "A"$; $u_L = 12 e^(-1) thin "V" approx "4,415" thin "V"$.
-+ Bei 20 Ω: $I_oo = "0,6" thin "A"$, $tau = "0,5" thin "ms"$. Der Endstrom wird kleiner; sein relativer Aufbau erfolgt schneller.
-*Ergebnis:* Nach 1 ms liegt der Strom bei *rund 0,759 A*. *Prüfung:* $R i + u_L approx "7,585" thin "V" + "4,415" thin "V" = 12 thin "V"$; H/Ω = (Vs/A)/(V/A) = s.
-#nachschlagen[Lernskript, #stelle(<a-1-2-6-l>)]
-]
-
-#block(breakable: false)[
-37. a) Ja, jeder Strom erzeugt ein Magnetfeld; dafür gibt es keine 1-A-Schwelle. b) Nein: Der Fluss bleibt konstant. c) Ja: etwa beim Herausziehen der Spule aus dem Feld oder beim Drehen der Spule. Entscheidend ist die Änderung des magnetischen Flusses durch ihre Fläche; eine Bewegung, bei der der Fluss unverändert bleibt, genügt nicht. #nachschlagen[Lernskript, #stelle(<a-1-1-6>); #stelle(<a-1-2-2>)]
-]
-#block(breakable: false)[
-38. a) $I = (9 - "2,1") thin "V"/(330 thin Omega) approx "0,0209" thin "A" = "20,9" thin "mA"$. b) $R = "6,9" thin "V"/("0,010" thin "A") = 690 thin Omega$. Das ist eine Näherung mit vorgegebener Diodenspannung. Die Kennlinie berücksichtigt, dass diese Spannung vom Strom abhängt. *Prüfung:* Diodenspannung und Widerstandsspannung 6,9 V ergeben zusammen 9 V. #nachschlagen[Lernskript, #stelle(<a-1-2-6-d>)]
-]
-#block(breakable: false)[
-39. $U = I R = 20 thin mu"A" dot.c 100 thin "k"Omega = 2 thin "V"$; $P = U I = 40 thin mu"W"$. Bei anderer Last muss der neue Arbeitspunkt mit der beleuchteten Kennlinie verträglich sein; der Fotostrom ist nicht für jeden Widerstand unverändert vorgegeben. *Prüfung:* A × Ω ergibt V, V × A ergibt W. #nachschlagen[Lernskript, #stelle(<a-1-2-4>); #stelle(<a-1-2-6-d>)]
-]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[40 · Magnetfeld aus dem Ladungsimpuls]
-*Modell:* Spule wird vom ursprünglichen Feld vollständig in den feldfreien Bereich gezogen; Fläche und Orientierung sind definiert, der Gesamtwiderstand ist konstant. Die Formel vernachlässigt Einflüsse der Selbstinduktion während des Messimpulses.
-+ Fläche: $A = 4 thin "cm"^2 = 4 dot.c 10^(-4) thin "m"^2$; Ladung: $Q = 2 dot.c 10^(-6) thin "As"$.
-+ Flussdichte: $B = (R Q)/(N A) = (100 thin Omega dot.c 2 dot.c 10^(-6) thin "As")/(200 dot.c 4 dot.c 10^(-4) thin "m"^2) = "0,0025" thin "T"$.
-*Ergebnis: 2,5 mT.* Schnelleres Herausziehen vergrößert die Impulshöhe und verkürzt die Dauer. Bei gleichem Anfangs- und Endfluss bleibt die Fläche unter der Stromkurve, also $Q$, unverändert. *Prüfung:* Ω × As/m² = Vs/m² = T.
-#nachschlagen[Lernskript, #stelle(<a-1-2-2>)]
-]
-
-#pagebreak()
 = Kapitel 2 · Der Grundstromkreis
 
 Im Skript gehört der Grundstromkreis zu Kapitel 2 „Die Kirchhoffschen Gesetze“ (Abschnitt 2.4.1 bis 2.4.3). In der Vorlesung 3 kam er vorab dran, deine Zusammenfassung rechnet ihn vollständig durch. Die Strategie: Eine reale Quelle wird als ideale Quelle mit Innenwiderstand modelliert. Daraus folgen Strom, Klemmenspannung, Arbeitspunkt, Leistung und Wirkungsgrad. Die übrigen Abschnitte von Kapitel 2 folgen, sobald sie behandelt sind.
@@ -811,88 +550,6 @@ _Eigene Ergänzung:_ In der Nachrichtentechnik (Antenne, Lautsprecher) ist Anpas
 
 *Der Zusammenhang in Kapitel 2.* Das Modell „ideale Quelle plus Innenwiderstand“ erklärt, warum der Kurzschlussstrom endlich ist und die Klemmenspannung unter Last sinkt. Strom und Spannung lassen sich rechnerisch über den Maschenumlauf oder zeichnerisch über den Schnittpunkt zweier Kennlinien bestimmen. Die Leistungsbilanz zeigt, dass der Verbraucher bei $R_a = R_i$ am meisten bekommt, die Quelle dabei aber die Hälfte selbst verheizt.
 
-#pagebreak()
-== Verständnisfragen und Rechenaufgaben · Kapitel 2
-#set enum(spacing: 0.85em)
-Skizziere zuerst das Ersatzschaltbild mit Zählpfeilen. Die Lösungen folgen getrennt.
-
-1. Beschreibe Leerlauf und Kurzschluss: Wie groß sind jeweils $R_a$, $I$, $U_a$ und die Spannung an $R_i$?
-2. Woran merkt man, dass eine reale Quelle einen Innenwiderstand haben muss?
-3. Wie findet man den Arbeitspunkt grafisch? Was passiert mit ihm, wenn $R_a$ kleiner wird?
-4. Welche Steigung hat die Quellenkennlinie, wo schneidet sie die Achsen? Was bedeutet eine steilere Widerstandsgerade?
-5. Was ist Leistungsanpassung? Welcher Wirkungsgrad ergibt sich, wie groß sind dann $U_a$ und $I$, und wo setzt man sie ein bzw. vermeidet sie?
-6. Wie hängt der Wirkungsgrad im Grundstromkreis von $R_a$ ab? Wann ist er null, wann steigt er?
-7. Skizziere das Schaltbild einer idealen und einer realen Spannungsquelle.
-8. Eine Batterie hat $U_l = "12,6" thin "V"$ und $I_k = 420 thin "A"$. a) $R_i$? b) Klemmenspannung, wenn der Anlasser 150 A zieht?
-9. Quelle $U_q = 24 thin "V"$, $R_i = 2 thin Omega$, Last $R_a = 10 thin Omega$. Berechne $I$, $U_a$, $U_i$, $P_a$, $P_i$, $P_q$ und $eta$.
-10. Gleiche Quelle wie in Aufgabe 9: Welches $R_a$ liefert maximale Leistung? Wie groß ist $P_"a,max"$?
-11. Eine Quelle liefert bei 2 A eine Klemmenspannung von 10 V und bei 4 A noch 8 V. Bestimme $R_i$ und $U_q$.
-12. Grundstromkreis: $U_q = 12 thin "V"$, $R_i = "0,5" thin Omega$, $R_a = "5,5" thin Omega$. Bestimme $I$, $U_a$, $U_i$ und $eta$.
-13. Eine Quelle hat 4,5 V Leerlaufspannung. Bei 300 mA misst du an den Klemmen 4,2 V. Bestimme $R_i$ und den angeschlossenen $R_a$.
-14. Eine Batterie hat $U_q = 9 thin "V"$ und $R_i = 2 thin Omega$. Bei welchem $R_a$ gibt sie die größte Leistung ab? Wie groß sind dann $P_"a,max"$, $I$ und $U_a$?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-15. *Innenwiderstand des Netzes, Ü 3 (= V S. 43):* Heizwiderstand 31,2 Ω, Leerlaufspannung 230 V, Klemmenspannung beim Einschalten 218 V. a) Zeichne den Ersatzstromkreis. b) Wie groß ist $R_i$?
-16. *Kohleschicht-Widerstand, Ü 1b:* Der 80-kΩ-Widerstand liegt mit $R_S = 20 thin "k"Omega$ in Reihe an $U_q = 10 thin "V"$. Welche Leistung wird im 80-kΩ-Widerstand in Wärme umgesetzt?
-17. *Starterbatterie, Blatt A 2:* Leerlaufspannung 13,8 V, Innenwiderstand 40 mΩ. Welche Leistung kann der Akku höchstens an einen Verbraucher abgeben? Wie groß muss der Verbraucherwiderstand dafür sein?
-18. *Akku laden, Blatt B 17:* Vier Ni-Cd-Zellen in Reihe haben zusammen 4,8 V Nennspannung und 0,5 Ω Innenwiderstand. Sie werden 16 h lang mit 0,1 A Konstantstrom geladen. Wie viel elektrische Arbeit wird am Akku verrichtet?
-19. *Heizgerät an langer Leitung:* Nenndaten 2 kW / 230 V, angeschlossen über eine 30 m lange Kupferleitung (Hin- und Rückleiter je 1,5 mm², $rho = "0,0178" thin Omega thin "mm"^2\/"m"$). Am Leitungsanfang liegen 230 V, der Heizwiderstand sei konstant. a) Widerstand der Leitung? b) Widerstand des Heizgeräts? c) Strom, Spannung am Gerät, Verlustleistung in der Leitung? d) Stromdichte in der Leitung, zulässig?
-20. *Kennlinien zeichnen:* Eine Quelle hat 12 V Leerlaufspannung und 6 A Kurzschlussstrom. a) $R_i$? b) Welches $R_a$ ergibt Leistungsanpassung, wie groß ist dann $P_a$? c) Wirkungsgrad bei $R_a = 6 thin Omega$? d) Zeichne Quellenkennlinie und Widerstandsgerade für $R_a = 6 thin Omega$ und lies den Arbeitspunkt ab.
-
-#pagebreak()
-== Lösungen Kapitel 2
-#set enum(spacing: 0.65em)
-1. Leerlauf: $R_a = oo$, $I = 0$, $U_a = U_q$, an $R_i$ 0 V. Kurzschluss: $R_a = 0$, $I = I_k = U_q\/R_i$, $U_a = 0$, an $R_i$ liegt ganz $U_q$. #nachschlagen[Lernskript, #stelle(<a-2-4-1>)]
-2. Der Kurzschlussstrom ist endlich, und die Klemmenspannung sinkt unter Last. Bei einer idealen Quelle wäre $I_k$ unendlich. #nachschlagen[Lernskript, #stelle(<a-2-4-1>)]
-3. Quellenkennlinie (von $I_k$ bis $U_q$) und Widerstandsgerade (Ursprungsgerade, Steigung $1\/R_a$) einzeichnen; der Schnittpunkt ist der AP. Kleineres $R_a$: Gerade steiler, AP wandert Richtung Kurzschluss (mehr Strom, weniger Spannung). #nachschlagen[Lernskript, #stelle(<a-2-4-1-k>)]
-4. Steigung $-1\/R_i$; sie schneidet die $I$-Achse bei $I_k$ und die $U$-Achse bei $U_q$. Eine steilere Widerstandsgerade bedeutet einen kleineren Widerstand. #nachschlagen[Lernskript, #stelle(<a-2-4-1-k>)]
-5. $R_a = R_i$: maximale Leistung am Verbraucher, $eta = 50 thin %$, $U_a = U_q\/2$, $I = I_k\/2$. Erwünscht in der Nachrichtentechnik, vermieden in der Energietechnik ($R_a >> R_i$). #nachschlagen[Lernskript, #stelle(<a-2-4-3>)]
-6. $eta = R_a\/(R_i + R_a)$: steigt, je größer $R_a$ gegenüber $R_i$ wird; im Kurzschluss ($R_a = 0$) ist $eta = 0$. Bei Anpassung ist $P_a$ maximal, nicht $eta$. #nachschlagen[Lernskript, #stelle(<a-2-4-3>)]
-7. Ideal: nur die Quelle $U_q$. Real: $U_q$ mit dem Innenwiderstand $R_i$ in Reihe. #nachschlagen[Lernskript, #stelle(<a-2-4-1>)]
-8. a) $R_i = "12,6"\/420 = "0,03" thin Omega = 30 thin "m"Omega$ b) $U = "12,6" - 150 dot.c "0,03" = "8,1" thin "V"$. #nachschlagen[Lernskript, #stelle(<a-2-4-1>)]
-9. $I = 24\/12 = 2 thin "A"$; $U_a = 20 thin "V"$; $U_i = 4 thin "V"$; $P_a = 40 thin "W"$; $P_i = 8 thin "W"$; $P_q = 48 thin "W"$; $eta = 40\/48 approx "83,3" thin %$. #nachschlagen[Lernskript, #stelle(<a-2-4-3>)]
-10. $R_a = R_i = 2 thin Omega$; $P_"a,max" = 24^2\/(4 dot.c 2) = 72 thin "W"$ bei $eta = 50 thin %$. #nachschlagen[Lernskript, #stelle(<a-2-4-3>)]
-11. $10 = U_q - 2 R_i$ und $8 = U_q - 4 R_i$. Subtrahieren: $2 = 2 R_i$, also $R_i = 1 thin Omega$ und $U_q = 12 thin "V"$. #nachschlagen[Lernskript, #stelle(<a-2-4-1>)]
-12. $I = 12\/("0,5" + "5,5") = 2 thin "A"$; $U_a = 11 thin "V"$; $U_i = 1 thin "V"$; $eta = 11\/12 approx "91,7" thin %$ (gleicher Strom, daher $P_a\/P_q = U_a\/U_q$). #nachschlagen[Lernskript, #stelle(<a-2-4-1>); #stelle(<a-2-4-3>)]
-13. $U_i = "4,5" - "4,2" = "0,3" thin "V"$; $R_i = "0,3"\/"0,3" = 1 thin Omega$; $R_a = "4,2"\/"0,3" = 14 thin Omega$. #nachschlagen[Lernskript, #stelle(<a-2-4-2>)]
-14. $R_a = R_i = 2 thin Omega$; $P_"a,max" = 81\/8 approx "10,1" thin "W"$; $I = 9\/4 = "2,25" thin "A"$; $U_a = "4,5" thin "V"$. #nachschlagen[Lernskript, #stelle(<a-2-4-3>)]
-15. a) Grundstromkreis mit $U_q = 230 thin "V"$, $R_i$ gesucht, $R_a = "31,2" thin Omega$. b) $I = 218\/"31,2" approx "6,99" thin "A"$; $R_i = 12 thin "V"\/"6,99" thin "A" approx "1,7" thin Omega$. #nachschlagen[Lernskript, #stelle(<a-2-4-2>)]
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[16 · Leistung im Kohleschicht-Widerstand]
-*Modell:* Ideale 10-V-Quelle; 20 kΩ und 80 kΩ in Reihe, beide Widerstände konstant.
-+ Gesamtwiderstand: $R = 100 thin "k"Omega$; Strom: $I = 10 thin "V"/(100 thin "k"Omega) = "0,1" thin "mA"$.
-+ Teilspannungen: $U_K = I R_K = 8 thin "V"$, $U_S = I R_S = 2 thin "V"$.
-+ Leistungen: $P_K = 8 thin "V" dot.c "0,1" thin "mA" = "0,8" thin "mW"$; $P_S = "0,2" thin "mW"$.
-*Ergebnis: 800 µW im Kohleschicht-Widerstand*, wie in Ü-N und DC. *Prüfung:* $10 - 8 - 2 = 0$ V; die Quelle liefert $10 thin "V" dot.c "0,1" thin "mA" = 1 thin "mW"$, gleich der Summe beider Leistungen. Der äußere Serienwiderstand erfüllt rechnerisch dieselbe Rolle wie ein Innenwiderstand.
-#src([Ü 1b; Ü-N, PDF-S. 4; DC, PDF-S. 3.])
-#nachschlagen[Lernskript, #stelle(<a-2-4-1>); #stelle(<a-0-3>)]
-]
-17. Anpassung: $R_a = R_i = 40 thin "m"Omega$; $P_"max" = U_0^2\/(4 R_i) = ("13,8" thin "V")^2\/(4 dot.c "0,04" thin Omega) approx 1190 thin "W" approx "1,2" thin "kW"$ (R S. 1). #nachschlagen[Lernskript, #stelle(<a-2-4-3>)]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[18 · Arbeit beim Laden]
-*Modell:* Beim Laden fließt der Strom *in* den Akku hinein. Die Klemmenspannung muss deshalb die Quellspannung *und* den Spannungsabfall am Innenwiderstand aufbringen.
-+ $U_i = R_i dot.c I = "0,5" thin Omega dot.c "0,1" thin "A" = "0,05" thin "V"$
-+ $U = U_q + U_i = "4,85" thin "V"$
-+ $W = U dot.c I dot.c t = "4,85" thin "V" dot.c "0,1" thin "A" dot.c 16 thin "h" = "7,76" thin "Wh"$
-*Ergebnis:* $W approx "7,76" thin "Wh"$, wie in R S. 9. *Prüfung:* Ohne Innenwiderstand wären es 7,68 Wh; der kleine Zuschlag ist die Wärme in $R_i$. Achtung: Beim Laden ist das Vorzeichen anders als beim Entladen ($U = U_q - I R_i$).
-#nachschlagen[Lernskript, #stelle(<a-2-4-1>); Energie: #stelle(<a-0-3>)]
-]
-
-#block(breakable: false)[
-#heading(level: 3, outlined: false)[19 · Heizgerät an langer Leitung]
-*Idee:* Die Leitung wirkt wie ein Innenwiderstand vor dem Verbraucher (Kapitel 0, 1 und 2 zusammen).
-+ $R_L = "0,0178" dot.c 60\/"1,5" approx "0,712" thin Omega$ (Hin- und Rückleiter: 60 m)
-+ $R_H = U^2\/P = 230^2\/2000 approx "26,45" thin Omega$
-+ $I = 230\/("26,45" + "0,712") approx "8,47" thin "A"$; $U_H = "8,47" dot.c "26,45" approx 224 thin "V"$; $P_V = "8,47"^2 dot.c "0,712" approx 51 thin "W"$
-+ $S = "8,47"\/"1,5" approx "5,6" thin "A/mm"^2$, gerade noch im Bereich bis 6 A/mm².
-*Prüfung:* $224 thin "V" + "8,47" thin "A" dot.c "0,712" thin Omega approx 230 thin "V"$.
-#nachschlagen[Lernskript, #stelle(<a-2-4-1>); #stelle(<a-0-2>); #stelle(<a-1-1-5>)]
-]
-
-20. a) $R_i = 12\/6 = 2 thin Omega$ b) $R_a = 2 thin Omega$, $P_a = 144\/8 = 18 thin "W"$ c) $eta = 6\/8 = 75 thin %$ d) Quellenkennlinie von (0 V | 6 A) nach (12 V | 0 A), Widerstandsgerade durch (0 | 0) und (6 V | 1 A); Schnittpunkt bei $I = 12\/8 = "1,5" thin "A"$, $U = 9 thin "V"$. #nachschlagen[Lernskript, #stelle(<a-2-4-1-k>); #stelle(<a-2-4-3>)]
-
-#pagebreak()
 = Anhang
 
 == Formelsammlung mit Voraussetzungen
