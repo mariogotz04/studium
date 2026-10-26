@@ -1,0 +1,135 @@
+# Karteikarten · Investitionsrechnung
+
+<!--
+So ist diese Datei aufgebaut (die Webseite liest sie beim Hochladen automatisch ein):
+- "## Kapitel …" beginnt ein Kapitel (Filter auf der Webseite).
+- "### Frage" ist die Vorderseite einer Karte. Alles darunter bis zur nächsten ### ist die Rückseite.
+- Auf der Rückseite gehen Absätze (Leerzeile), Listen (- …), **fett** und *kursiv*.
+- Eine Zeile "Bild: …" erscheint als Merkbild (Analogie im Feynman-Stil) unten auf der Karte.
+- Nur Verständnisfragen, keine Rechenaufgaben. Antworten kurz, einfach, in eigenen Worten.
+- Den Fragetext nur ändern, wenn nötig: Der Lernfortschritt hängt am Wortlaut der Frage.
+-->
+
+## Kapitel 1 · KLR und Deckungsbeitragsrechnung
+
+### Warum kann ein Betrieb viel verkaufen und trotzdem Verlust machen?
+Jedes verkaufte Stück muss erst seine eigenen variablen Kosten bezahlen. Der Rest, der Deckungsbeitrag, muss dann noch die Fixkosten decken. Ist der Deckungsbeitrag zu klein oder die Menge zu gering, bleibt trotz hohem Umsatz ein Verlust.
+
+### Was bedeuten Groß- und Kleinbuchstaben in der Kostenrechnung (z. B. K und k)?
+Großbuchstaben stehen für Beträge der ganzen Menge in einer Periode (z. B. K in €/Monat). Kleinbuchstaben für Beträge je Stück (z. B. k in €/Stück). Beides darf man nicht direkt addieren.
+
+### Mit welchen Preisen rechnet man in der KLR, brutto oder netto?
+Immer mit Nettopreisen. Die Umsatzsteuer ist kein Erlös des Betriebs, sie wird an das Finanzamt weitergegeben. Netto = Brutto / 1,19 bei 19 % USt.
+
+### Warum braucht eine Kapazitätsangabe immer einen Zeitbezug?
+7 000 Stück pro Stunde ist etwas völlig anderes als 7 000 Stück pro Monat. Der Beschäftigungsgrad (genutzte durch mögliche Menge) ist nur sinnvoll, wenn Zähler und Nenner zur selben Periode gehören.
+
+### Was unterscheidet fixe von variablen Kosten?
+Fixe Kosten bleiben im betrachteten Bereich gleich, egal wie viel produziert wird, z. B. Miete. Variable Kosten ändern sich mit der Menge, z. B. Material je Stück.
+
+Test: Ändert sich der Betrag, wenn ich ein Stück mehr herstelle?
+
+Bild: Handyvertrag: Grundgebühr ist fix, jede Minute variabel.
+
+### Warum beweist „je Stück“ allein noch nicht, dass Kosten variabel sind?
+Auch Fixkosten kann man rechnerisch auf Stücke verteilen, z. B. Miete geteilt durch Stückzahl. Entscheidend ist, ob sich der Gesamtbetrag mit der Menge ändert, nicht wie er angegeben ist.
+
+### Was sind Mischkosten, und was muss ich vor dem Rechnen mit ihnen tun?
+Mischkosten enthalten einen fixen und einen variablen Anteil, z. B. die Stromrechnung mit Grundpreis und Verbrauchspreis. Vor dem Rechnen muss ich sie in den fixen und den variablen Teil aufteilen.
+
+### Was sind sprungfixe Kosten?
+Sie bleiben nur innerhalb eines Mengenbereichs konstant. Ab einer Grenze braucht man z. B. eine weitere Maschine oder Schicht, dann springen die Fixkosten auf einen neuen Block. Über so einen Sprung hinweg darf man nicht mit einem unveränderten K_f rechnen.
+
+Bild: Treppe statt Rampe.
+
+### Was beschreibt die Kostenfunktion K(x) = K_f + k_v·x?
+Die Gesamtkosten einer Periode: ein fester Block K_f plus für jedes Stück die variablen Kosten k_v. Im Diagramm eine Gerade, die bei K_f startet und mit k_v ansteigt. Gilt nur, solange die Fixkosten gleich bleiben und die variablen Kosten proportional sind.
+
+### Warum sinken die Stückkosten, wenn die Menge steigt (Fixkostendegression)?
+k = K_f/x + k_v. Die gleichen Fixkosten werden auf mehr Stücke verteilt, der fixe Anteil je Stück sinkt. Der variable Anteil k_v bleibt gleich. Deshalb heißt das auch „Gesetz der Massenproduktion“.
+
+Bild: Eine WG teilt die Miete: zu viert zahlt jeder weniger als zu zweit, das Essen pro Person wird dadurch aber nicht billiger.
+
+### Können die Stückkosten unter die variablen Stückkosten fallen?
+Nein, solange es Fixkosten gibt. k = K_f/x + k_v liegt immer über k_v, der fixe Anteil wird nur kleiner. Bei x = 0 sind Stückkosten gar nicht definiert, obwohl die Fixkosten anfallen.
+
+### Was ist der Stückdeckungsbeitrag?
+db = e − k_v, also Nettoerlös je Stück minus variable Kosten je Stück. Das ist der Betrag, den jedes Stück zur Deckung der Fixkosten beiträgt.
+
+Bild: Die Fixkosten sind ein leerer Eimer. Jedes verkaufte Stück schüttet seinen Deckungsbeitrag hinein. Erst wenn der Eimer voll ist, entsteht Gewinn.
+
+### Warum ist der Stückdeckungsbeitrag noch nicht der Gewinn je Stück?
+Er deckt erst die variablen Kosten des Stücks. Die Fixkosten sind davon noch nicht abgezogen. Erst wenn alle Deckungsbeiträge zusammen die Fixkosten übersteigen, entsteht Gewinn.
+
+### Wie hängen Deckungsbeitrag und Gewinn zusammen?
+G = db·x − K_f = DB I − K_f. Man multipliziert den Stückdeckungsbeitrag mit der Menge und zieht die Fixkosten genau einmal ab. Das ist dieselbe Rechnung wie Erlöse minus Kosten, nur schneller.
+
+### Was ist der Unterschied zwischen einstufiger und mehrstufiger Deckungsbeitragsrechnung?
+Einstufig zieht man alle Fixkosten auf einmal vom gesamten Deckungsbeitrag ab. Mehrstufig ordnet man sie erst dem Produkt, dann der Produktgruppe und zuletzt dem Unternehmen zu. Deshalb kann „DB II“ je nach Schema etwas anderes bedeuten.
+
+### Was ist der Break-Even-Point, und wie leitet man ihn her?
+Die Gewinnschwelle: Die Menge, bei der Erlöse genau alle Kosten decken, der Gewinn ist null. Aus E = K folgt (e − k_v)·x = K_f, also x_BEP = K_f / db.
+
+Anschaulich: Wie viele Deckungsbeiträge brauche ich, um den Fixkosteneimer zu füllen?
+
+### Wann gibt es keine Gewinnschwelle?
+Wenn der Stückdeckungsbeitrag null oder negativ ist. Dann deckt kein Stück auch nur seine variablen Kosten, und mehr Produktion macht die Lage nicht besser, sondern höchstens schlechter.
+
+### Wie rundet man den Break-Even-Point bei ganzen Stückzahlen?
+Ist die exakte Schwelle nicht ganzzahlig, rundet man auf: Die kleinste ganze Menge ohne Verlust. Bei 914,3 Stück sind 914 noch Verlust, 915 schon Gewinn. Eine schon ganzzahlige Schwelle bleibt, wie sie ist.
+
+### Wie liest man ein Break-Even-Diagramm?
+Waagerecht die Menge, senkrecht Euro. Die Erlösgerade startet im Ursprung mit Steigung e. Die Kostengerade startet bei K_f mit Steigung k_v. Der Schnittpunkt ist der BEP. Rechts davon ist der Abstand der Geraden der Gewinn, links der Verlust. Die Kapazität ist eine senkrechte Grenze.
+
+### Wo liegt im linearen Modell das Gewinnmaximum?
+Bei positivem Stückdeckungsbeitrag bringt jedes weitere Stück mehr Gewinn. Das Maximum liegt also an der Kapazitätsgrenze, sofern die Nachfrage so viel abnimmt. Fehlt die Nachfrage, begrenzt sie die Menge.
+
+### Was bedeutet ein hoher Beschäftigungsgrad am Break-Even-Point?
+Man braucht fast die ganze Kapazität, nur um keinen Verlust zu machen. Es bleibt wenig Puffer: Schon ein kleiner Absatzrückgang führt in den Verlust.
+
+### Wie wirken höhere Fixkosten, höhere variable Kosten oder ein anderer Preis auf den Break-Even-Point?
+- Höhere Fixkosten: mehr muss gedeckt werden, der BEP steigt.
+- Höhere variable Kosten: kleinerer db, der BEP steigt.
+- Höherer Preis: größerer db, der BEP sinkt.
+- Niedrigerer Preis: kleinerer db, der BEP steigt.
+
+Alles läuft über x_BEP = K_f / db.
+
+### Was bedeutet es, wenn der Break-Even-Point über der Kapazität liegt?
+Selbst bei voller Auslastung macht der Betrieb Verlust. Stellschrauben: Preis erhöhen, variable Kosten senken, Fixkosten senken oder Kapazität erweitern. Eine Erweiterung kann aber neue Fixkosten bringen, beides muss man zusammen prüfen.
+
+### Was ist bei einer allgemeinen Preissenkung zu beachten?
+Der niedrigere Preis gilt für **alle** Stücke, auch für die bisherigen Kunden. Man verliert auf der alten Menge Deckungsbeitrag, und die zusätzliche Menge muss das erst ausgleichen. Vergleichen muss man den gesamten Gewinn vorher und nachher, mit Kapazität und Nachfrage als Grenze.
+
+### Wann lohnt sich ein einmaliger Zusatzauftrag zu einem niedrigeren Preis?
+Wenn freie Kapazität da ist, die Fixkosten gleich bleiben und der Zusatzpreis über den variablen Stückkosten liegt. Dann steigt der Gewinn um (e_Z − k_v)·x_Z. Die Fixkosten zieht man dabei nicht noch einmal ab, sie fallen ohnehin an.
+
+### Welches Risiko hat ein Zusatzauftrag zu einem Sonderpreis?
+Bisherige Kunden könnten vom niedrigeren Preis erfahren und ihn ebenfalls verlangen. Dann bricht die Preisdifferenzierung zusammen und der Gewinn kann massiv sinken. Außerdem bindet der Auftrag Kapazität.
+
+### Muss ein Betrieb seine Fixkosten schon gedeckt haben, damit ein Zusatzauftrag sinnvoll ist?
+Nein. Jeder positive zusätzliche Deckungsbeitrag verbessert das Ergebnis, auch wenn er nur einen bestehenden Verlust verkleinert.
+
+### Was ist die kurzfristige und was die langfristige Preisuntergrenze?
+Kurzfristig (freie Kapazität, Fixkosten fallen sowieso an): Der Preis muss mindestens die variablen Stückkosten decken, e ≥ k_v. Erst darüber wächst der Gewinn.
+
+Langfristig muss der Preis auch die Fixkosten tragen: e ≥ k, also die vollen Stückkosten.
+
+### Wie bestimmt man variable Stückkosten und Fixkosten aus zwei Perioden?
+Bei gleicher Kostenstruktur kommt der Kostenunterschied nur von der Mengenänderung: k_v = ΔK/Δx. Dann K_f = K₁ − k_v·x₁. Gegenprobe: Mit der zweiten Periode muss dasselbe K_f herauskommen.
+
+Bild: Stromrechnung bei 300 und 400 kWh: Die Differenz zeigt den Preis pro kWh, der Rest ist die Grundgebühr.
+
+### Was ändert sich bei doppelter Menge: K_f, k_f oder k?
+K_f bleibt gleich. k_f = K_f/x halbiert sich. Die gesamten Stückkosten k sinken auch, aber nicht auf die Hälfte, weil k_v gleich bleibt.
+
+### Wie gehe ich an jede KLR-Textaufgabe heran?
+1. Basis: Netto? Gleiche Periode?
+2. Modell: Was ist fix, was variabel? Kommen neue Kosten dazu?
+3. Ansatz: Kosten, Erlöse und DB trennen, nach der gesuchten Größe umstellen.
+4. Machbarkeit: Passt die Menge in Kapazität und Nachfrage?
+5. Prüfung: Einheiten, Vorzeichen, Rundung.
+6. Entscheidung: begründetes Ja oder Nein mit Bedingungen.
+
+### Warum soll man beim Ergebnis ein Vorzeichen schreiben?
+Damit sofort klar ist, ob es ein Gewinn oder Verlust ist: G = +4 000 € oder G = −3 000 €.

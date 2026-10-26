@@ -1,12 +1,13 @@
 # Lernskript-Webseite
 
 Dieser Ordner (`Uni/Webseite/`) ist die Quelle der Webseite https://mariogotz04.github.io/studium/.
-Sie listet alle Module und bietet jedes Lernskript als PDF an. Die PDFs werden auf GitHub aus den
+Sie listet alle Module, bietet jedes Lernskript als PDF an und hat einen zweiten Reiter **Karteikarten**
+zum Üben der Verständnisfragen jedes Moduls. Die PDFs werden auf GitHub aus den
 `.typ`-Dateien kompiliert; hier liegt nur die Seite selbst.
 
 ## Nach jeder Änderung an einem Lernskript hochladen
 
-Wenn du eine `.typ`-Datei (oder ein Bild in `abbildungen/`) eines Moduls geändert hast, lade sie danach hoch:
+Wenn du eine `.typ`-Datei (oder ein Bild in `abbildungen/`) oder die `Karteikarten.md` eines Moduls geändert hast, lade sie danach hoch:
 
 ```bash
 bash "<Pfad zum Uni-Ordner>/Webseite/Webseite aktualisieren.command"
@@ -27,15 +28,26 @@ Vorher prüfen, dass das Skript fehlerfrei kompiliert, falls `typst` installiert
   Die Seite zeigt je Modul: Modulname (Ordnername) · Lernskript · Stand. Der Stand kommt aus der Zeile
   „Stand TT.MM.JJJJ“ im Kopf von `main.typ`; diese also bei jeder Änderung aktualisieren.
   Die PDF heißt beim Download z. B. `FET Lernskript Stand 24.10.2026.pdf`.
+- Pro Modul außerdem `<Modul>/Lernskript aktuell/Karteikarten.md`, falls vorhanden (Format: Kommentar oben in der Datei).
 - Nie hochgeladen werden: `Zum Löschen/`, `Unterlagen/`, `Sonstiges/`, `Physik Praktikum/` und dieser Ordner.
 - Ein neues Modul erscheint automatisch, sobald es `Lernskript aktuell/Typst-Dateien/main.typ` hat.
 
 ## Dateien hier
 
-- `vorlage.html` – Aussehen der Seite (die Daten werden bei `/*DATA*/null` eingesetzt).
+- `vorlage.html` – Aussehen der Seite (die Daten werden bei `/*DATA*/null` eingesetzt, die Karteikarten bei `/*KARTEN*/null`).
 - `build.py` – kompiliert die Skripte und baut die Seite (läuft auf GitHub).
 - Die GitHub Action (`.github/workflows/webseite.yml`) liegt nur im Repository auf GitHub, nicht hier.
 - `Webseite aktualisieren.command` – Upload (Doppelklick oder `bash`).
 
 Änderungen an diesen Dateien werden ebenfalls mit dem Upload-Skript veröffentlicht.
+## Karteikarten
+
+- Quelle: je Modul `Lernskript aktuell/Karteikarten.md`. `## …` beginnt ein Kapitel, `### Frage` eine Karte,
+  alles darunter ist die Rückseite. Eine Zeile `Bild: …` wird als Merkbild (Analogie) angezeigt.
+- `build.py` liest die Dateien ein; jede Karte bekommt eine ID aus Modul und Fragetext. Den Fragetext deshalb
+  nur ändern, wenn nötig, sonst beginnt die Karte wieder als neu.
+- Wiederholung wie bei Anki (SM-2): Bewertung Nochmal/Schwer/Gut/Leicht, Abstände wachsen mit der Leichtigkeit,
+  jede Runde wird gemischt. Der Lernstand liegt im Browser (localStorage) des jeweiligen Geräts und lässt sich auf
+  der Seite eines Moduls als Datei sichern und auf einem anderen Gerät laden.
+
 Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort alles mit dem Stand aus dem Uni-Ordner.
