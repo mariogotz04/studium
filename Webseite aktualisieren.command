@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lädt die aktuellen Typst-Lernskripte, die Karteikarten und die Webseite aus dem Uni-Ordner auf GitHub hoch.
+# Lädt die aktuellen Typst-Lernskripte, Aufgaben, Quizfragen, Karteikarten, den Vorlesungsplan und die Webseite aus dem Uni-Ordner auf GitHub hoch.
 # Doppelklick genügt, oder im Terminal / von Codex: bash "Uni/Webseite/Webseite aktualisieren.command"
 # Die PDFs werden danach auf GitHub automatisch erzeugt (dauert 1–3 Minuten).
 
@@ -12,7 +12,7 @@ ARBEITSKOPIE="$HOME/Studium-Webseite"   # Git-Kopie bewusst außerhalb von iClou
 AUSSCHLIESSEN=("Zum L*schen" "Unterlagen" "Sonstiges" "Physik Praktikum" "Webseite")
 
 # Diese Dateien aus Uni/Webseite gehören zur Seite selbst und werden mit hochgeladen.
-SEITENDATEIEN=("vorlage.html" "build.py" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command")
+SEITENDATEIEN=("vorlage.html" "build.py" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command" "Vorlesungsplan.pdf")
 
 set -e
 SEITE="$(cd "$(dirname "$0")" && pwd)"
@@ -67,10 +67,13 @@ find "$UNI" -mindepth 4 -maxdepth 4 -path "*/Lernskript aktuell/Typst-Dateien/ma
         mkdir -p "$ARBEITSKOPIE/$ziel/$(dirname "$datei")"
         cp -p "$datei" "$ARBEITSKOPIE/$ziel/$datei"
       done)
-    # Die Karteikarten des Moduls liegen daneben: <Modul>/Lernskript aktuell/Karteikarten.md
-    if [ -f "$(dirname "$ordner")/Karteikarten.md" ]; then
-      cp -p "$(dirname "$ordner")/Karteikarten.md" "$ARBEITSKOPIE/$(dirname "$ziel")/Karteikarten.md"
-    fi
+    # Karteikarten und Quiz des Moduls liegen daneben: <Modul>/Lernskript aktuell/Karteikarten.md und Quiz.md
+    # (die Aufgaben stehen in Typst-Dateien/Aufgaben.typ und sind oben schon dabei)
+    for md in Karteikarten.md Quiz.md; do
+      if [ -f "$(dirname "$ordner")/$md" ]; then
+        cp -p "$(dirname "$ordner")/$md" "$ARBEITSKOPIE/$(dirname "$ziel")/$md"
+      fi
+    done
   done
 
 git add -A
