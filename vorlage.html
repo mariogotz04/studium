@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="color-scheme" content="only light">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -14,18 +15,13 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231F6F68'/><path d='M9 8h10l4 4v12H9z' fill='white'/><path d='M12 16h8M12 20h6' stroke='%231F6F68' stroke-width='2'/></svg>">
 <style>
 :root {
+  color-scheme: only light;   /* immer hell, auch wenn Browser/System auf Dunkel stehen */
   /* Design A „Ruhig & klar“: Papierton, Serifen-Überschriften, ein ruhiges Petrol als Akzent */
   --bg: #f6f3ec; --card: #ffffff; --ink: #1f2328; --muted: #5e6670; --line: #e4ded2; --line-strong: #cfc7b8;
   --accent: #1f6f68; --accent-ink: #ffffff; --accent-soft: #e3efec; --teal: #1f6f68; --seg: #ece6da;
   --again: #b4372e; --hard: #9a5b0e; --good: #1f6f68; --easy: #2d5da8; --bild: #fbf4e2; --bild-line: #eadcb4; --bild-ink: #8a6516;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --shadow: 0 10px 30px rgba(60, 50, 30, .06);
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #17150f; --card: #211e18; --ink: #ece7dc; --muted: #a59e90; --line: #36312a; --line-strong: #4a443a;
-          --accent: #6cc2b6; --accent-ink: #0f1a18; --accent-soft: #1f302d; --teal: #6cc2b6; --seg: #2a261f;
-          --again: #ee877d; --hard: #e3a75a; --good: #6cc2b6; --easy: #8fb2ee; --bild: #2a2416; --bild-line: #4a3e1c; --bild-ink: #f2c46d;
-          --shadow: 0 10px 30px rgba(0, 0, 0, .25); }
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
