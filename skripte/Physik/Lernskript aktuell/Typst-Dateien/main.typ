@@ -52,6 +52,43 @@
 }
 #let th(..cells) = table.header(..cells.pos().map(c => table.cell(fill: pale)[#strong(c)]))
 
+// ─── Überblick-Ebenen und Chunkmaps (in allen Modulen gleich) ─────────────────
+// Ebene 0: Seite „Das Modul auf einen Blick“ nach dem Wegweiser (Label <ueberblick>).
+// Ebene 1: unter jeder Kapitelüberschrift (Label <a-n>) #überblick mit #idee-Links und eine #karte oder ein #ablauf.
+// Ebene 2: die Abschnitte; am Ende jedes Abschnitts #hoch(<a-n>, [Kapitelübersicht]).
+// Die Kästen sind keine Überschriften: Inhaltsverzeichnis und PDF-Lesezeichen bleiben unverändert.
+#let chunk(titel, begriffe, ziel: none, fill: pale, stroke: navy) = {
+  let kasten = block(width: 100%, fill: fill, stroke: 0.6pt + stroke, radius: 4pt, inset: (x: 6pt, y: 5pt), breakable: false)[
+    #set par(leading: 0.35em, spacing: 0.35em, justify: false)
+    #set text(hyphenate: true)
+    #text(size: 9pt, weight: "bold", fill: navy, titel)
+    #if begriffe != none [#parbreak() #text(size: 7.8pt, fill: muted, begriffe)]
+  ]
+  if ziel == none { kasten } else { link(ziel, kasten) }
+}
+#let pfeil(beschriftung: none, zeichen: sym.arrow.r) = align(center + horizon, stack(dir: ttb, spacing: 2pt,
+  ..(if beschriftung != none { (text(size: 6.8pt, fill: teal, beschriftung),) } else { () }),
+  text(size: 13pt, fill: teal, zeichen)))
+// Chunkmap als Raster: #karte((1fr, auto, 1fr), chunk(..), pfeil(..), chunk(..))
+#let karte(spalten, ..zellen) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em,
+  grid(columns: spalten, column-gutter: 3pt, row-gutter: 7pt, align: center + horizon, ..zellen))
+// Flussdiagramm von oben nach unten: #ablauf(chunk(..), entscheidung(..), chunk(..))
+#let ablauf(breite: 80%, ..schritte) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em, align(center,
+  stack(dir: ttb, spacing: 2pt, ..schritte.pos().enumerate().map(((i, x)) =>
+    (if i > 0 { (text(size: 12pt, fill: teal, sym.arrow.b),) } else { () }) + (block(width: breite, x),)).flatten())))
+#let entscheidung(frage, ja, nein) = stack(dir: ttb, spacing: 3pt,
+  chunk(frage, none, fill: sand, stroke: teal),
+  grid(columns: (1fr, 1fr), column-gutter: 8pt,
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *ja*]) #ja],
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *nein*]) #nein]))
+#let idee(ziel, kern, satz) = [#link(ziel)[#text(fill: teal, weight: "bold", kern)] #satz]
+#let überblick(titel, ..ideen) = block(width: 100%, fill: pale, inset: (x: 9pt, y: 7pt), above: 0.6em, below: 0.6em, breakable: false)[
+  #text(fill: navy, weight: "bold", titel)
+  #set list(marker: text(fill: teal, sym.arrow.r), spacing: 0.45em)
+  #list(..ideen.pos())
+]
+#let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
+
 #let abbildungen = (
   "alt-harmwelle": "abbildungen/alt-harmwelle.svg",
   "alt-kopplung": "abbildungen/alt-kopplung.svg",
@@ -147,7 +184,7 @@
 ]
 #note("Dein Feynman-Schritt", [Sieh hin, erkläre den Zusammenhang ohne Vorlage und prüfe dann Formel und Voraussetzungen. Bearbeite anschließend eine Aufgabe auf der Lernwebseite. Vergleiche erst danach mit den Lösungsschritten und schließe deine konkrete Lücke.])
 
-Stand *22.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wellen bis zu den eindimensionalen Eigenmoden an der bestätigten Grenze „Ende VL 19.10.“. Die Kapitelnummern 5 und 6 folgen dem Dozentenskript. Vorwissen steht als solches dabei. Stand *26.10.2026*: Aufgaben, ausführliche Lösungen und Quiz stehen auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält nur noch Erklärung und Formelsammlung.
+Stand *26.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wellen bis zu den eindimensionalen Eigenmoden an der bestätigten Grenze „Ende VL 19.10.“. Die Kapitelnummern 5 und 6 folgen dem Dozentenskript. Vorwissen steht als solches dabei. Stand *26.10.2026*: Aufgaben, ausführliche Lösungen und Quiz stehen auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält nur noch Erklärung und Formelsammlung.
 #src[V1, PDF-S. 1–13; VB, PDF-S. 3–22 bis zur Markierung; Bestätigung von Mario am 22.10.2026.]
 
 #pagebreak()
@@ -158,9 +195,47 @@ Stand *22.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wel
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Flossmann, Physik für Ingenieure, Stand 02.10.2026, Gesamt-PDF; V1 = VL1 Physik (13 PDF-Seiten, Skript S. 169–174 und 177–183); VB = VL Physik bisher (22 PDF-Seiten, Skript S. 175–196); Ü = Physik2_Blatt10, Aufgaben 10.1–10.6; R = handschriftliche Lösung Blatt 10; AS = Aufgabensammlung, 23.04.2026, Nummer laut Sammlung; L = bisheriges Lernskript Physik 2, Stand 15.10.2026 (PDF und HTML); LB = Lernblatt VL 1 (Claude-Fassung und annotierter Export); K17/18 = Klausur Physik 1 WIW WS 17/18 mit Musterlösung; K15 = Prüfung Phy_1 (Deckblatt WS 2015/16). „PDF-S.“ zählt ab der ersten PDF-Seite der genannten Datei. Bei V stimmt diese Zählung für die verwendeten Seiten mit dem Seitenaufdruck überein. Alle „Nachschlagen“-Verweise führen zu Abschnitt und echter Seite dieses Lernskripts. Eigene Aufgaben, Umformungen und Darstellungen sind gekennzeichnet.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Flossmann, Physik für Ingenieure, Stand 26.10.2026, Gesamt-PDF; V1 = VL1 Physik (13 PDF-Seiten, Skript S. 169–174 und 177–183); VB = VL Physik bisher (22 PDF-Seiten, Skript S. 175–196); Ü = Physik2_Blatt10, Aufgaben 10.1–10.6; R = handschriftliche Lösung Blatt 10; AS = Aufgabensammlung, 23.04.2026, Nummer laut Sammlung; L = bisheriges Lernskript Physik 2, Stand 26.10.2026 (PDF und HTML); LB = Lernblatt VL 1 (Claude-Fassung und annotierter Export); K17/18 = Klausur Physik 1 WIW WS 17/18 mit Musterlösung; K15 = Prüfung Phy_1 (Deckblatt WS 2015/16). „PDF-S.“ zählt ab der ersten PDF-Seite der genannten Datei. Bei V stimmt diese Zählung für die verwendeten Seiten mit dem Seitenaufdruck überein. Alle „Nachschlagen“-Verweise führen zu Abschnitt und echter Seite dieses Lernskripts. Eigene Aufgaben, Umformungen und Darstellungen sind gekennzeichnet.]
 #pagebreak()
-= Kapitel 5 · Schwingungen
+#heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
+
+Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zusammenhängen.
+
+#karte((1fr, auto, 1fr),
+  chunk([Kapitel 5 · Schwingungen], [Federpendel · Schwebung · Kopplung · Eigenmoden], ziel: <a-5>),
+  pfeil(beschriftung: [führt über Kopplung zu]),
+  chunk([Kapitel 6 · Wellen], [Wellenfunktion · Medium · Intensität · Interferenz · Randbedingungen], ziel: <a-6>),
+)
+
+Eine Schwingung beschreibt die Bewegung an einem Ort. Gekoppelte Schwinger geben die Störung weiter und bilden die Brücke zur Welle. Bei Wellen trennst Du die lokale Teilchenbewegung vom wandernden Muster und seinem Energiefluss. Überlagerung und Randbedingungen bestimmen schließlich, welche stehenden Eigenmoden möglich sind.
+#src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
+
+#pagebreak()
+#pagebreak(weak: true)
+= Kapitel 5 · Schwingungen <a-5>
+
+#überblick([Kapitel 5 auf einen Blick],
+  idee(<a-5-0>, [Der einzelne Schwinger ist der Baustein.], [Rückstellkraft und Trägheit bestimmen seinen Takt.]),
+  idee(<a-5-4-1>, [Nahe Frequenzen erzeugen Schwebung.], [Die Phasendifferenz lässt die gemeinsame Amplitude langsam an- und abschwellen.]),
+  idee(<a-5-4-2>, [Kopplung überträgt Kräfte.], [Gleich- und Gegentakt zerlegen die Bewegung in zwei unabhängige Eigenmoden.]),
+  idee(<a-5-4-3>, [Die Moden ergeben die reale Bewegung.], [Ihre Überlagerung erklärt den langsamen Austausch zwischen den Pendeln.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Federpendel], [Rückstellkraft · Trägheit], ziel: <a-5-0>),
+  pfeil(beschriftung: [Kopplungsfeder ergänzt]),
+  chunk([Gekoppelte Pendel], [Gleichtakt · Gegentakt], ziel: <a-5-4-2>),
+  pfeil(beschriftung: [Überlagerung erklärt]),
+  chunk([Energieaustausch], [Überlagerung der Eigenmoden], ziel: <a-5-4-3>),
+)
+#karte((1fr, auto, 1fr),
+  chunk([Zwei nahe Frequenzen], [Phasen verschieben sich], ziel: <a-5-4-1>),
+  pfeil(beschriftung: [erzeugen]),
+  chunk([Schwebung], [langsame Hülle · schneller Träger], ziel: <a-5-4-1>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Dieses Kapitel setzt bei dem in VL 1 behandelten Abschnitt 5.4 an. Zuerst addieren wir zwei Schwingungen, dann koppeln wir zwei Schwinger mechanisch. Die gleiche Mathematik erklärt dadurch sowohl das langsame An- und Abschwellen eines Tons als auch den Austausch zwischen zwei Pendeln.
 #src[V1, PDF-S. 1–6 (Skript S. 169–174); L, PDF-S. 2–5.]
@@ -175,8 +250,10 @@ $m$ ist die schwingende Masse in kg, $D$ die Federkonstante in N/m, $A$ die Ampl
 
 *Eigene Erklärungshilfe:* Eine Frequenz von 2 Hz bedeutet zwei vollständige Wiederholungen in einer Sekunde. Der Sinus durchläuft dabei $4 pi$ Radiant. Deshalb sind $f$ und $omega$ verschiedene Zahlen für denselben Takt.
 #src[V, PDF-S. 146–150, Gl. 5.1–5.8; L, PDF-S. 2; eigene Erläuterung aus diesen Gleichungen.]
+#hoch(<a-5>, [Kapitelübersicht])
 
-== 5.4 Überlagerung und Kopplung
+
+== 5.4 Überlagerung und Kopplung <a-5-4>
 === 5.4.1 Schwebung · Ein schneller Ton mit langsamem Rhythmus <a-5-4-1>
 Zwei fast gleich gestimmte Stimmgabeln erzeugen zusammen einen Ton, der regelmäßig lauter und leiser wird. Diese *Schwebung* entsteht, weil sich ihre Phasen langsam gegeneinander verschieben: einmal verstärken sich die Auslenkungen, später wirken sie einander entgegen.
 
@@ -268,8 +345,38 @@ Erweitert man das Modell auf $N$ linear gekoppelte Schwinger mit je einem Freihe
 
 *Der Zusammenhang in Kapitel 5.* Beim einzelnen Federpendel liefert die Rückstellwirkung die Eigenfrequenz. Zwei ähnliche Frequenzen erzeugen eine langsame Schwebung. Die gekoppelten Gleichungen lassen sich in zwei solche Einzelbewegungen zerlegen; ihre Rücktransformation erklärt den Austausch zwischen den Massen. Eine lange Kette setzt diese Weitergabe räumlich fort und führt zum Wellenmodell.
 #src[V1, PDF-S. 1–7; eigene Zusammenfassung.]
+#hoch(<a-5>, [Kapitelübersicht])
 
-= Kapitel 6 · Wellen
+
+#pagebreak(weak: true)
+= Kapitel 6 · Wellen <a-6>
+
+#überblick([Kapitel 6 auf einen Blick],
+  idee(<a-6-1>, [Das Muster wandert, die Teilchen schwingen lokal.], [Die Wellenfunktion beschreibt Auslenkung nach Ort und Zeit.]),
+  idee(<a-6-2>, [Ort und Zeit haben je einen Takt.], [Wellenlänge und Frequenz sind über die Ausbreitungsgeschwindigkeit verbunden.]),
+  idee(<a-6-3>, [Das Medium bestimmt die Geschwindigkeit.], [Rückstellwirkung und Trägheit legen den passenden Modellansatz fest.]),
+  idee(<a-6-4>, [Amplitude bestimmt den Energiefluss.], [Im harmonischen Modell wächst die mittlere Intensität quadratisch mit der Amplitude.]),
+  idee(<a-6-5>, [Überlagerung addiert Auslenkungen.], [Gegenläufige Wellen können ein stehendes Muster erzeugen.]),
+  idee(<a-6-7>, [Die Enden wählen die Eigenmoden.], [Knoten und Bäuche begrenzen die erlaubten Wellenlängen und Frequenzen.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Anregung], [Frequenz · Amplitude], ziel: <a-6-2>),
+  pfeil(beschriftung: [bestimmt Takt und Stärke]),
+  chunk([Laufende Welle], [Wellenlänge · Intensität], ziel: <a-6-4>),
+  pfeil(beschriftung: [braucht Modell für c]),
+  chunk([Medium], [Rückstellwirkung · Trägheit · Geschwindigkeit], ziel: <a-6-3>),
+)
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Überlagerung und Reflexion], [hin- und rücklaufende Welle], ziel: <a-6-5>),
+  pfeil(beschriftung: [erzeugen]),
+  chunk([Stehende Welle], [Knoten · Bäuche], ziel: <a-6-6>),
+  pfeil(beschriftung: [Randbedingungen wählen]),
+  chunk([Erlaubte Eigenmoden], [Enden · Länge · Frequenz], ziel: <a-6-7>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Wir verfolgen nun, wie eine Störung von Ort zu Ort weitergegeben wird. Erst lesen wir die Wellenfunktion, dann bestimmen wir Geschwindigkeit und Energiefluss. Zum Schluss zeigt die Überlagerung, welche stehenden Muster zu festen oder freien Enden passen.
 #src[VB, PDF-S. 3–22 bis zur handschriftlichen Grenze; V1, PDF-S. 7–13.]
@@ -304,6 +411,8 @@ $c$ ist die Ausbreitungsgeschwindigkeit in m/s; $Delta x$ die zurückgelegte Str
 #note("In deinen Unterlagen hervorgehoben", [VB, PDF-S. 6: $psi(x,t)=u(x plus.minus c t)$. Prüfe zuerst die *Konstanz des Arguments*, wenn du die Laufrichtung begründest.])
 #note("Gültigkeit", [Das einfache Verschiebungsmodell setzt eine unverändert wandernde Form und konstantes $c$ voraus. Im behandelten Idealmodell werden Dämpfung und eine Verformung des Pulses nicht berücksichtigt.], fill: sand)
 #src[VB, PDF-S. 5–6, Gl. 6.1; V1, PDF-S. 9–10; L, PDF-S. 6–7; Richtungsherleitung: eigene Ableitung.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.2 Harmonische Wellen · Ort und Zeit haben je einen Takt <a-6-2>
 Eine *harmonische Welle* besitzt Sinusform. In einem Ortsbild wiederholt sie sich nach einer Wellenlänge $lambda$; an einem festgehaltenen Ort wiederholt sie sich nach einer Periodendauer $T$. Das sind räumliche und zeitliche Wiederholung desselben Musters.
@@ -343,6 +452,8 @@ Die Ableitung erfolgt bei festem Ort $x$. $s$ und $s_"max"$ haben die Einheit m/
 #bild("map-welle", [Mindmap zu Ortsbild, Zeitbild und Bewegung. Eigene Darstellung.], height: 46mm)
 #note("Selbst erklären", [Warum fliegt ein Luftteilchen nicht mit 343 m/s zum Zuhörer? *Antwort:* Diese Zahl bezeichnet hier die Wanderung des Schwingungsmusters. Das Teilchen bewegt sich lokal hin und her; seine Schnelle folgt aus der Zeitableitung der Auslenkung.])
 #src[VB, PDF-S. 8–9; V1, PDF-S. 12–13; L, PDF-S. 7. Formel für Schnelle und Maximalwert: eigene Ableitung aus Gl. 6.2.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.3 Das Medium bestimmt die Ausbreitungsgeschwindigkeit <a-6-3>
 Die Nachbarteilchen müssen einander eine Bewegung weitergeben. Stärkere Rückstellkräfte erleichtern diese Weitergabe; größere Trägheit erschwert sie. Darum steht in den Formeln der Vorlesung meist ein Verhältnis aus Steifigkeit und Dichte unter einer Quadratwurzel.
@@ -368,6 +479,8 @@ Das Skript nennt für Luft ungefähr 330 m/s bei 0 °C und 343 m/s bei 20 °C. E
 #bild("map-medium", [Mindmap: Rückstellwirkung und Trägheit. Eigene Darstellung.], height: 46mm)
 #note("In deinen Unterlagen hervorgehoben", [VB, PDF-S. 10–12: Geschwindigkeiten nach Gl. 6.4–6.8. Der handschriftliche Beginn der folgenden Vorlesung steht vor Abschnitt 6.3.])
 #src[VB, PDF-S. 10–12, Gl. 6.4–6.8; V, PDF-S. 216 zur Temperaturskala; AS 1.2 und Lösung 4.2, PDF-S. 11 und 46–47; AS 1.1, PDF-S. 10. Skalierungen und Temperaturverhältnis: eigene Ableitungen.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.4 Energietransport · Intensität ist Leistung je Fläche <a-6-4>
 Ein Teilchen erhält durch die Welle vorübergehend Bewegungsenergie $E_"kin"=1/2 m s^2$; über die Kopplung wird Energie weitergegeben. Dabei ist $m$ die Teilchenmasse und $s$ ihre momentane Schnelle. Die *Leistung* $P$ sagt, wie viel Energie pro Zeit eine Fläche durchquert. Die *Intensität* $I$ bezieht diese Leistung zusätzlich auf die Fläche.
@@ -384,6 +497,8 @@ $u$ in Gl. 6.9 ist die *Maximalamplitude*, nicht die momentane Auslenkung und ni
 #note("In deinen Unterlagen hervorgehoben", [VB, PDF-S. 13–14: $I prop u^2$ und $P=I F$. *Einheitenprüfung, eigene Ableitung:* $"kg/m³" · "m/s" · "s"^(-2) · "m²"="kg/s³"="W/m²"$.])
 #bild("map-intensitaet", [Mindmap: Energie, Leistung, Fläche und Amplitude. Eigene Darstellung.], height: 46mm)
 #src[VB, PDF-S. 13–14, Gl. 6.9–6.11. Mittelwertdeutung, Einheitenprüfung und Skalierungsbeispiele: eigene Erläuterung dieser Gleichungen.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.5 Interferenz · Zuerst Auslenkungen addieren <a-6-5>
 Treffen zwei Wellen im gleichen Medium zusammen, addieren sich im linearen Modell an jedem Ort ihre Auslenkungen. Die einzelnen Wellen laufen anschließend weiter. Diese *ungestörte Superposition* heißt bei Wellen auch *Interferenz*.
@@ -407,6 +522,8 @@ $j$ ist eine ganze Zahl. Bei ungleichen Amplituden bleibt auch im destruktiven F
 #note("Fehler vermeiden", [Addiere die *Auslenkungen*, erst danach leitest du die Intensität ab. Aus $A+A=2A$ folgt lokal bei gleicher Phase $I_"res"=4I_"einzeln"$, nicht $2I_"einzeln"$. Das folgt aus der quadratischen Abhängigkeit aus 6.4; eine einzelne lokale Verstärkung ist keine Erzeugung zusätzlicher Energie.], fill: sand)
 #bild("map-interferenz", [Mindmap zur Überlagerung. Eigene Darstellung.], height: 46mm)
 #src[VB, PDF-S. 15–16; Gl. 6.9–6.10; V1, PDF-S. 1 zum Additionstheorem; Ü 10.5 und R, PDF-S. 3; K15, PDF-S. 4, Frage 12. Amplituden- und Phasenformeln: eigene Ableitungen.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.6 Stehende Wellen · Ein Ortsmuster bleibt stehen <a-6-6>
 Zwei gleich große Wellen mit gleicher Frequenz laufen in entgegengesetzte Richtungen. Ihre Summe besitzt einen festen Verlauf der maximalen Auslenkung. Die Teilchen bewegen sich weiter; nur das Muster der möglichen Amplituden bleibt am Ort.
@@ -431,6 +548,8 @@ Eine Welle kann an einem Ende oder einem Übergang des Mediums reflektiert werde
 )
 #note("Selbst erklären", [Warum braucht das feste Ende einen Knoten? *Antwort:* Die Gesamtbewegung muss am festgehaltenen Punkt immer null sein. Die Überlagerung aus hin- und rücklaufender Welle muss diese Bedingung zu jeder Zeit erfüllen.])
 #src[VB, PDF-S. 17–18; eigene Erklärung der Randbedingung.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.7 Eindimensionale Eigenmoden · Die Enden wählen die Wellenlängen <a-6-7>
 Auf einer begrenzten Länge $L$ passt nicht jede beliebige stehende Welle. Die Enden schreiben Knoten oder Bäuche vor. Eine *Eigenmode* ist eine dazu passende räumliche Schwingungsform; ihre Eigenfrequenz ergibt sich anschließend aus $f_n=c/lambda_n$.
@@ -472,6 +591,8 @@ An beiden Enden liegt im behandelten Modell ein Bauch. Die schwingenden Moden be
 
 *Der Zusammenhang in Kapitel 6.* Die Wellenfunktion trennt Ort und Zeit. Die Geschwindigkeit stammt aus dem Medium, die Frequenz aus der Anregung; daraus folgt die Wellenlänge. Die Amplitude bestimmt den Energiefluss quadratisch. Überlagerung erzeugt Verstärkung oder Auslöschung; Reflexion macht daraus stehende Wellen. Erst die Randbedingungen wählen ihre zulässigen Moden aus.
 #src[VB, PDF-S. 5–22; eigene Zusammenfassung.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 = Anhang
 == Formelsammlung mit Voraussetzungen

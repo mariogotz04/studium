@@ -101,6 +101,11 @@ N linear gekoppelte Schwinger mit je einem Freiheitsgrad haben N Eigenmoden. Kop
 Quelle: 5.4.3
 Abbildung: alt-kopplung
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 5 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Das Federpendel verbindet Rückstellkraft und Trägheit zu einer Eigenfrequenz. Zwei nahe Frequenzen erzeugen durch wechselnde Phasendifferenz eine Schwebung. Eine Kopplungsfeder verbindet zwei Pendel; Gleich- und Gegentakt sind ihre Eigenmoden. Deren Überlagerung und Rücktransformation erklären den Energieaustausch und führen zur Idee vieler gekoppelter Schwinger.
+Quelle: 5.0
+
 ## Kapitel 6 · Wellen
 
 ### Was ist eine Welle, und was wandert dabei eigentlich?
@@ -247,3 +252,8 @@ Abbildung: mode-gemischt-quelle
 ### Welche Moden passen bei zwei losen Enden?
 An beiden Enden ist ein Bauch. Es passen dieselben Wellenlängen wie bei zwei festen Enden, $L = n lambda\/2$ mit $n = 1, 2, 3, dots$, nur das Ortsbild ist anders: Knoten liegen innen, Bäuche an den Rändern.
 Quelle: 6.7.3
+
+### Zeichne die Begriffslandkarte zu Kapitel 6 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die Anregung legt Frequenz und Amplitude fest, das Medium liefert die Ausbreitungsgeschwindigkeit; daraus folgt die Wellenlänge. Die Wellenfunktion trennt die lokale Teilchenbewegung vom wandernden Muster. Die Intensität beschreibt den Energiefluss und hängt quadratisch von der Amplitude ab. Überlagerung und Reflexion erzeugen stehende Wellen, deren Knoten und Bäuche zu den Randbedingungen passen müssen; daraus folgen die erlaubten Eigenmoden.
+Quelle: 6.1
+
