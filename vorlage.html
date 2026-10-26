@@ -444,6 +444,7 @@ figure.abb + figure.abb { margin-top: 14px; }
 <script>
 // Zeigt Fehler sichtbar an (auch Syntaxfehler im Hauptskript), damit man sie auf dem iPad ohne Konsole sieht.
 window.addEventListener("error", e => {
+  if (!e.lineno || /^Script error/.test(e.message)) return;   // Fehler fremder Skripte (z. B. vom Browser eingeschleust) ignorieren
   const d = document.createElement("div");
   d.style.cssText = "position:fixed;left:12px;right:12px;bottom:12px;z-index:99;background:#b4372e;color:#fff;padding:12px 16px;border-radius:12px;font:14px/1.4 -apple-system,sans-serif";
   d.textContent = "Fehler auf der Seite: " + e.message + (e.lineno ? " (Zeile " + e.lineno + ":" + e.colno + ")" : "") + ". Bitte Screenshot an Claude schicken.";
