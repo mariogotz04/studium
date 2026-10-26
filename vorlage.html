@@ -198,6 +198,18 @@ img.baustein { display: block; max-width: 100%; height: auto; }
 .bewerten .nein.gewählt { background: var(--no); } .bewerten button.gewählt small { color: inherit; opacity: .85; }
 .topbar { display: flex; align-items: center; gap: 14px; }
 .topbar .back { margin: 0; padding: 10px 4px; white-space: nowrap; }
+/* Probeklausur */
+.probekopf { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  background: var(--bg); padding: 10px 0; margin: 6px 0 12px; border-bottom: 1px solid var(--line); }
+.probekopf .back { margin: 0; }
+.probeuhr { font-family: var(--serif); font-size: clamp(34px, 5vw, 46px); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.probeuhr small { display: block; font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; text-align: center; }
+.probeuhr.knapp { color: var(--warn); } .probeuhr.über { color: var(--again); }
+.akarte + .akarte { margin-top: 16px; }
+.plab { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); }
+.probezeile { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.probezeile:first-of-type { border-top: 0; }
+.abschluss textarea { margin: 6px 0 12px; font-size: 17px; }
 .topbar .bar { flex: 1; margin: 0; }
 .topbar .zahl { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .topbar .pfeile { display: flex; gap: 6px; margin-left: auto; }
@@ -658,6 +670,17 @@ function rest(ts, jetzt = Date.now()) {
   return { zahl: `${min} min`, text: "noch" };
 }
 const ARTEN = { klausur: "Klausur", abgabe: "Abgabe", termin: "Termin" };
+// Klausurtyp und -dauer je Modul (einst:klausur). Transfer: Verstehen und Rechnen, Abfrage: Wissen abrufen.
+const KLAUSURTYPEN = { transfer: "Transfer", gemischt: "Gemischt", abfrage: "Abfrage" };
+const KLAUSUR_STANDARD = { Finanzierung: "gemischt", Investitionsrechnung: "gemischt" };   // alle anderen Module: Transfer
+function klausurInfo(m) {
+  const e = db.get("einst:klausur", {})[m] || {};
+  return { typ: e.typ || KLAUSUR_STANDARD[m] || "transfer", dauer: e.dauer || 90 };
+}
+function klausurSetzen(m, werte) {
+  const e = db.get("einst:klausur", {});
+  db.set("einst:klausur", { ...e, [m]: { ...e[m], ...werte } });
+}
 function fristZeile(f, mitKnöpfen) {
   const r = rest(f.ts);
   return `<div class="frist${f.ts - Date.now() < 7 * 864e5 && f.ts > Date.now() ? " bald" : ""}" data-frist="${esc(f.id)}">
@@ -718,7 +741,8 @@ function vorschläge(tag) {
   const grund = m => {
     const k = klausuren.find(f => f.modul === m);
     const tage = k ? Math.ceil((k.ts - Date.now()) / 864e5) : 99;
-    if (tage <= 35) return { p: tage <= 14 ? 5 : 3, text: `Klausur in ${tage} Tagen` };
+    // Transferklausuren brauchen mehr Vorlauf als Abfrageklausuren
+    if (tage <= { transfer: 42, gemischt: 35, abfrage: 28 }[klausurInfo(m).typ]) return { p: tage <= 14 ? 5 : 3, text: `Klausur in ${tage} Tagen`, tage };
     if (heute.includes(m)) return { p: 3, text: "heute in der Vorlesung" };
     if (gestern.includes(m)) return { p: 2.6, text: "Vorlesung nacharbeiten" };
     if (morgen.includes(m)) return { p: 2, text: "morgen in der Vorlesung" };
@@ -733,6 +757,9 @@ function vorschläge(tag) {
   for (const m of alleModule) {
     const g = grund(m), modul = LERNEN.find(x => x.name === m), deck = DECKS.find(d => d.name === m);
     const jitter = () => g.p + rnd() * 1.2;
+    // Klausurtyp gewichtet: Transfer → mehr Rechnen und Probeklausuren, Abfrage → mehr Quiz und Karteikarten
+    const typ = klausurInfo(m).typ, bonus = { transfer: { r: 0.4, q: 0, k: 0 }, gemischt: { r: 0.1, q: 0.2, k: 0.2 }, abfrage: { r: -0.6, q: 0.6, k: 0.4 } }[typ];
+    const klausurTage = g.tage ?? 99;
     const auf = (modul?.aufgaben || []).filter(a => a.art === "rechnen");
     if (auf.length) {
       const kap = kapitelVon(auf), neu = kap[kap.length - 1];
@@ -740,20 +767,27 @@ function vorschläge(tag) {
       const ausKap = rnd() < 0.6 ? auf.filter(a => a.k === neu) : auf;
       const offen = ausKap.filter(a => aufgabeStand(a)?.s !== "ok");
       const a = wählen(offen.filter(a => aufgabeStand(a)).length && rnd() < 0.5 ? offen.filter(a => aufgabeStand(a)) : offen, rnd) || wählen(ausKap, rnd);
-      if (a) kandidaten.push({ key: `aufgabe:${m}:${a.id}`, p: jitter() + 0.3, modul: m, titel: `Rechenaufgabe: ${a.t}`,
+      if (a) kandidaten.push({ key: `aufgabe:${m}:${a.id}`, p: jitter() + 0.3 + bonus.r, modul: m, titel: `Rechenaufgabe: ${a.t}`,
         text: `${m} · ${g.text}${aufgabeStand(a) ? " · " + { ok: "schon gelöst", hilfe: "letztes Mal mit Hilfe", nein: "letztes Mal nicht geschafft" }[aufgabeStand(a).s] : ""}`,
         link: `#lernen/${encodeURIComponent(m)}/aufgabe/${a.id}` });
     }
+    if (auf.length >= 5 && typ !== "abfrage") {
+      const k = klausurInfo(m), min = Math.round(k.dauer * store.get("probe:tempo", 0.8));
+      if (klausurTage <= 28) kandidaten.push({ key: `probe:${m}`, p: g.p + 1 + rnd() * 0.5, modul: m, titel: `Probeklausur ${m}`,
+        text: `${min} Minuten unter Zeitdruck · ${g.text}`, los: () => { store.set("lernen:teil", "probe"); location.hash = "#lernen/" + encodeURIComponent(m); } });
+      else if (heute.includes(m) || gestern.includes(m) || woche.includes(m)) kandidaten.push({ key: `mix:${m}`, p: jitter() - 0.1 + bonus.r, modul: m,
+        titel: `Mix-Serie ${m}`, text: `5 Aufgaben aus verschiedenen Kapiteln · ${g.text}`, los: () => probeStarten(modul, true) });
+    }
     if (modul?.quiz?.length) {
       const kap = kapitelVon(modul.quiz), k = morgen.includes(m) || rnd() < 0.5 ? "" : wählen(kap, rnd);
-      kandidaten.push({ key: `quiz:${m}:${k}`, p: jitter() - 0.2, modul: m, titel: `Quiz ${m}${k ? ": " + k : ""}`, text: `10 Fragen · ${g.text}`,
+      kandidaten.push({ key: `quiz:${m}:${k}`, p: jitter() - 0.2 + bonus.q, modul: m, titel: `Quiz ${m}${k ? ": " + k : ""}`, text: `10 Fragen · ${g.text}`,
         los: () => quizStarten(modul, { kapitel: k, anzahl: 10, modus: "mix" }) });
     }
     if (deck) {
       const kap = kapitelVon(deck.cards), neu = kap[kap.length - 1];
       const st = kartenStand(deck.name), neuOffen = deck.cards.filter(c => c.k === neu && !st[c.id]).length;
       if (neuOffen && (heute.includes(m) || gestern.includes(m)))
-        kandidaten.push({ key: `karten:${m}:${neu}`, p: jitter(), modul: m, titel: `Neue Karteikarten ${m}: ${neu}`, text: `${neuOffen} neue Karten · ${g.text}`,
+        kandidaten.push({ key: `karten:${m}:${neu}`, p: jitter() + bonus.k, modul: m, titel: `Neue Karteikarten ${m}: ${neu}`, text: `${neuOffen} neue Karten · ${g.text}`,
           los: () => { store.set("karteikarten:kapitel:" + m, neu); location.hash = "#karteikarten/" + encodeURIComponent(m); } });
     }
   }
@@ -765,6 +799,13 @@ function vorschläge(tag) {
     if (k.modul && (proModul[k.modul] || 0) >= (k.p >= 4 ? 2 : 1)) continue;
     proModul[k.modul] = (proModul[k.modul] || 0) + 1;
     gewählt.push(k);
+  }
+  // Interleaving: mindestens zwei verschiedene Module am Tag. Sonst den schwächsten Vorschlag durch den besten aus einem anderen Modul ersetzen.
+  const module = new Set(gewählt.map(k => k.modul).filter(Boolean));
+  const anderes = kandidaten.find(k => k.modul && !module.has(k.modul));
+  if (module.size === 1 && anderes) {
+    const i = gewählt.length >= 4 ? gewählt.findLastIndex(k => k.modul) : gewählt.length;
+    gewählt.splice(i, 1, anderes);
   }
   return gewählt;
 }
@@ -803,6 +844,7 @@ function startSeite() {
           : `<p class="muted">Sobald Aufgaben, Quizfragen oder Karteikarten da sind, schlage ich dir hier jeden Tag passende Übungen vor.</p>`}
         <p class="feynman" style="margin-top:12px">Die Vorschläge richten sich nach deinem Vorlesungsplan, deinen Klausurterminen und danach, was du schon sicher kannst.</p>
       </div>
+      ${jetzt.getHours() >= 17 ? abschlussHtml(tag) : ""}
       <div class="panel"><div class="kasten-titel"><h2>Fristen</h2><a href="#termine">Alle ›</a></div>
         ${fr.length ? fr.slice(0, 3).map(f => fristZeile(f, false)).join("") : `<p class="muted">Noch keine Fristen. Trag deine Klausuren unter <a href="#termine">Termine</a> ein, dann siehst du hier den Countdown.</p>`}</div>
       <div class="panel"><div class="kasten-titel"><h2>To-dos</h2><a href="#termine">Alle ›</a></div>
@@ -820,11 +862,45 @@ function startSeite() {
     v.link ? location.hash = v.link : v.los();
   });
   todoEreignisse(startView, startSeite);
+  $("#ablos")?.addEventListener("click", () => abschlussStarten(tag, $("#abtext").value.trim()));
+  $("#abtext")?.addEventListener("input", e => store.set("abschluss:entwurf", { tag, text: e.target.value }));
+  $("#abneu")?.addEventListener("click", () => { const a = db.get("abschluss:" + tag, {}); abschlussStarten(tag, a.text || ""); });
   $("#todo-schnell").onsubmit = e => {
     e.preventDefault();
     const t = $("#todo-text").value.trim();
     if (t) { db.set("todo:" + neueId(), { text: t, erstellt: Date.now() }); startSeite(); }
   };
+}
+/* Tagesabschluss (ab 17 Uhr): erst frei aus dem Kopf aufschreiben, was hängen geblieben ist, dann 5 Quizfragen aus den
+   Modulen, an denen du heute gearbeitet hast. Abrufen am Ende des Tages festigt das Gelernte (abschluss:<Tag>). */
+function heutigeModule(tag) {
+  const start = new Date(tag + "T04:00:00").getTime(), m = new Set();
+  for (const anfang of ["aufgabe:", "quiz:"])
+    for (const [k, v] of Object.entries(db.objekt(anfang))) if (v.t >= start) m.add(k.split(":")[0]);
+  for (const k of Object.keys(db.objekt("probe:"))) if (+k.split(":").pop() >= start) m.add(k.split(":")[0]);
+  for (const k of Object.keys(db.get("erledigt:" + tag, {}))) m.add(k.split(":")[1]);
+  for (const k of Object.keys(db.get("pomo:" + tag, null)?.module || {})) m.add(k);
+  return LERNEN.filter(l => m.has(l.name) && l.quiz?.length);
+}
+function abschlussHtml(tag) {
+  const a = db.get("abschluss:" + tag, null), entwurf = store.get("abschluss:entwurf", {});
+  const module = heutigeModule(tag);
+  return `<div class="panel abschluss"><div class="kasten-titel"><h2>Tagesabschluss</h2><span class="muted" style="font-size:14px">etwa 5 Minuten</span></div>
+    ${a?.quiz ? `<p style="margin:0">Erledigt: <b>${String(a.quiz.r).replace(".", ",")} von ${a.quiz.n}</b> Fragen richtig.</p>
+        ${a.text ? `<p class="feynman" style="margin-top:10px">${esc(a.text)}</p>` : ""}
+        <div class="row" style="margin-top:12px"><button class="btn" id="abneu">Noch eine Runde</button></div>`
+      : `<p style="margin-top:0">Schreib aus dem Kopf auf, was du heute gelernt hast, ohne nachzuschauen. Danach kommen 5 Fragen aus
+        ${module.length ? module.map(l => esc(l.name)).join(", ") : "deinen Modulen"}.</p>
+        <textarea id="abtext" placeholder="Heute habe ich verstanden, dass …">${esc(a?.text || (entwurf.tag === tag ? entwurf.text : ""))}</textarea>
+        <button class="btn primary" id="ablos">Weiter zu den Fragen</button>`}</div>`;
+}
+function abschlussStarten(tag, text) {
+  let module = heutigeModule(tag);
+  if (!module.length) module = LERNEN.filter(l => tagesliste.some(v => v.modul === l.name) && l.quiz?.length);
+  if (!module.length) module = LERNEN.filter(l => l.quiz?.length);
+  db.set("abschluss:" + tag, { ...db.get("abschluss:" + tag, {}), text });
+  store.set("abschluss:entwurf", null);
+  quizStarten({ name: "abschluss", titel: "Tagesabschluss", abschluss: true, tag, quiz: module.flatMap(l => l.quiz) }, { anzahl: 5, modus: "mix" });
 }
 function begrüßung() {
   const h = new Date().getHours();
@@ -872,6 +948,11 @@ function termineSeite() {
         <label>Uhrzeit (optional)<input type="time" name="zeit" value="${esc(f.zeit || "")}"></label>
         <label>Modul<select name="modul"><option value="">–</option>${alleModule.map(m => `<option${m === f.modul ? " selected" : ""}>${esc(m)}</option>`).join("")}</select></label>
         <label>Notiz<input type="text" name="notiz" placeholder="Raum, Hilfsmittel …" value="${esc(f.notiz || "")}"></label>
+        <div class="ganz" id="klausurfelder"${(f.art || "klausur") === "klausur" && f.modul ? "" : " hidden"}>
+          <div class="row"><span style="font-size:14px;color:var(--muted)">Klausurtyp</span><div class="seg" id="ktyp">${Object.entries(KLAUSURTYPEN).map(([k, n]) =>
+            `<button type="button" data-v="${k}" aria-pressed="${k === klausurInfo(f.modul).typ}">${n}</button>`).join("")}</div>
+            <label style="display:flex;align-items:center;gap:8px">Dauer<select name="kdauer">${[60, 90, 120, 180].map(n => `<option value="${n}"${n === klausurInfo(f.modul).dauer ? " selected" : ""}>${n} min</option>`).join("")}</select></label></div>
+          <p class="muted" style="margin:8px 0 0;font-size:14px">Transfer: Verstehen und Rechnen. Abfrage: Wissen abrufen. Danach richten sich Probeklausur und Tagesvorschläge.</p></div>
         <div class="ganz row"><button class="btn primary">${fristBearbeiten ? "Speichern" : "Eintragen"}</button>
           ${fristBearbeiten ? `<button type="button" class="btn" id="frist-abbrechen">Abbrechen</button><button type="button" class="link" id="frist-löschen">Löschen</button>` : ""}</div>
       </form></div>
@@ -889,15 +970,27 @@ function termineSeite() {
       ${woche()}
     </div>
   </div></div>`;
-  let art = f.art || "klausur";
+  let art = f.art || "klausur", ktyp = klausurInfo(f.modul).typ;
+  const klausurFelder = () => {
+    const modul = $("#frist-neu").modul.value, k = klausurInfo(modul);
+    $("#klausurfelder").hidden = art !== "klausur" || !modul;
+    ktyp = k.typ; $("#frist-neu").kdauer.value = k.dauer;
+    termineView.querySelectorAll("#ktyp button").forEach(x => x.setAttribute("aria-pressed", x.dataset.v === ktyp));
+  };
   termineView.querySelectorAll("#fristart button").forEach(b => b.onclick = () => {
     art = b.dataset.art; termineView.querySelectorAll("#fristart button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    klausurFelder();
+  });
+  $("#frist-neu").modul.onchange = klausurFelder;
+  termineView.querySelectorAll("#ktyp button").forEach(b => b.onclick = () => {
+    ktyp = b.dataset.v; termineView.querySelectorAll("#ktyp button").forEach(x => x.setAttribute("aria-pressed", x === b));
   });
   $("#frist-neu").onsubmit = e => {
     e.preventDefault();
     const fd = Object.fromEntries(new FormData(e.target));
     const alt = fristBearbeiten ? db.get("frist:" + fristBearbeiten, {}) : {};
     db.set("frist:" + (fristBearbeiten || neueId()), { ...alt, titel: fd.titel.trim(), datum: fd.datum, zeit: fd.zeit, modul: fd.modul, notiz: fd.notiz.trim(), art });
+    if (art === "klausur" && fd.modul) klausurSetzen(fd.modul, { typ: ktyp, dauer: +fd.kdauer });
     fristBearbeiten = null; termineSeite(); meldung("Gespeichert");
   };
   $("#frist-abbrechen")?.addEventListener("click", () => { fristBearbeiten = null; termineSeite(); });
@@ -1276,9 +1369,10 @@ function lernenÜbersicht() {
 
 function modulSeite(m, teil) {
   teil = teil || store.get("lernen:teil", "aufgaben");
-  if (!(m.aufgaben || []).length) teil = "quiz";
-  if (!(m.quiz || []).length) teil = "aufgaben";
-  const auf = m.aufgaben || [], quiz = m.quiz || [];
+  const auf = m.aufgaben || [], quiz = m.quiz || [], probe = auf.some(a => a.art === "rechnen");
+  if (teil === "probe" && !probe) teil = "aufgaben";
+  if (teil !== "probe" && !auf.length) teil = "quiz";
+  if (teil !== "probe" && !quiz.length) teil = "aufgaben";
   kopf(m.name, `Lernen · ${auf.length} Aufgaben · ${quiz.length} Quizfragen`);
   const filter = store.get("lernen:filter", "alle");
   const passt = a => filter === "alle" || (filter === "offen" ? aufgabeStand(a)?.s !== "ok" : a.art === filter);
@@ -1298,7 +1392,8 @@ function modulSeite(m, teil) {
       <p class="muted" style="margin-top:18px;font-size:14px"><span class="punkt ok" style="display:inline-block;vertical-align:-2px"></span> selbst gelöst
         <span class="punkt hilfe" style="display:inline-block;vertical-align:-2px;margin-left:12px"></span> mit Hilfe
         <span class="punkt nein" style="display:inline-block;vertical-align:-2px;margin-left:12px"></span> nicht geschafft</p>`;
-  } else {
+  } else if (teil === "probe") inhalt = probeEinstellungen(m);
+  else {
     const qs = quiz.map(f => [f, quizStand(f)]);
     const kq = store.get("quiz:kapitel:" + m.name, "");
     inhalt = `<div class="zwei"><div class="panel"><h2>Quiz starten</h2>
@@ -1319,7 +1414,8 @@ function modulSeite(m, teil) {
   lernView.innerHTML = `<a class="back" href="#lernen">← Lernen</a>
     <div class="row" style="justify-content:space-between;margin:6px 0 4px"><div class="seg" id="teil">
       ${auf.length ? `<button data-t="aufgaben" aria-pressed="${teil === "aufgaben"}">Aufgaben (${auf.length})</button>` : ""}
-      ${quiz.length ? `<button data-t="quiz" aria-pressed="${teil === "quiz"}">Quiz (${quiz.length})</button>` : ""}</div>
+      ${quiz.length ? `<button data-t="quiz" aria-pressed="${teil === "quiz"}">Quiz (${quiz.length})</button>` : ""}
+      ${probe ? `<button data-t="probe" aria-pressed="${teil === "probe"}">Probeklausur</button>` : ""}</div>
       ${m.pdf ? `<a class="btn" href="${m.pdf}" target="_blank" rel="noopener">Lernskript öffnen</a>` : ""}</div>${inhalt}`;
   lernView.querySelectorAll("#teil button").forEach(b => b.onclick = () => { store.set("lernen:teil", b.dataset.t); modulSeite(m, b.dataset.t); });
   lernView.querySelectorAll("#afilter button").forEach(b => b.onclick = () => { store.set("lernen:filter", b.dataset.f); modulSeite(m, "aufgaben"); });
@@ -1332,6 +1428,7 @@ function modulSeite(m, teil) {
   lernView.querySelectorAll("#qanz button").forEach(b => b.onclick = () => { store.set("quiz:anzahl", +b.dataset.n); modulSeite(m, "quiz"); });
   lernView.querySelectorAll("#qmodus button").forEach(b => b.onclick = () => { store.set("quiz:modus", b.dataset.m); modulSeite(m, "quiz"); });
   $("#qlos")?.addEventListener("click", () => quizStarten(m, { kapitel: $("#qkap").value, anzahl: store.get("quiz:anzahl", 10), modus: store.get("quiz:modus", "mix") }));
+  if (teil === "probe") probeEreignisse(m);
 }
 
 // Eine Aufgabe: erst selbst rechnen, dann Tipp, Ergebnis und Lösung Schritt für Schritt aufdecken, am Ende ehrlich bewerten.
@@ -1379,9 +1476,140 @@ function aufgabeSeite(m, a) {
   });
 }
 
+/* Probeklausur: Aufgaben aus möglichst vielen verschiedenen Kapiteln, gemischt, ohne Titel, Kapitel und Tipp, unter Zeitdruck.
+   So musst du wie in der Klausur selbst erkennen, welche Methode passt (Interleaving). Die Mix-Serie ist dasselbe mit
+   fünf Aufgaben und ohne Uhr. Der laufende Versuch liegt nur auf diesem Gerät (probe:lauf), das Ergebnis wird
+   synchronisiert (probe:<Modul>:<Start>), die Bewertung je Aufgabe landet wie sonst unter aufgabe:<Modul>:<id>. */
+const aufgabeMinuten = a => a.min || Math.min(30, Math.max(6, 4 + 3 * a.s.length));
+function probeZiehen(pool, budget, anzahl) {
+  const gewicht = a => ({ nein: 1.8, hilfe: 1.4, ok: 0.45 })[aufgabeStand(a)?.s] || 1;
+  const reihe = l => l.map(a => [a, Math.random() * gewicht(a)]).sort((x, y) => y[1] - x[1]).map(x => x[0]);
+  // je Kapitel eine Schlange (Unsicheres zuerst), dann reihum ziehen: erst jedes Kapitel einmal, dann ein zweites Mal …
+  const schlangen = mischen(kapitelVon(pool)).map(k => reihe(pool.filter(a => a.k === k)));
+  const wahl = []; let zeit = 0;
+  const voll = () => anzahl ? wahl.length >= anzahl : zeit >= budget * 0.9;
+  while (!voll() && schlangen.some(q => q.length)) {
+    for (const q of schlangen) {
+      if (voll()) break;
+      const a = q.shift();
+      if (!a || (!anzahl && wahl.length && zeit + aufgabeMinuten(a) > budget * 1.1)) continue;
+      wahl.push(a); zeit += aufgabeMinuten(a);
+    }
+  }
+  return wahl;
+}
+function probeStarten(m, mix) {
+  const k = klausurInfo(m.name), tempo = store.get("probe:tempo", 0.8), auf = m.aufgaben || [];
+  const rechnen = auf.filter(a => a.art === "rechnen"), verstehen = auf.filter(a => a.art === "verstehen");
+  let wahl;
+  if (mix) wahl = probeZiehen(rechnen, 0, 5);
+  else {
+    const dauer = Math.round(k.dauer * tempo);
+    // Bei gemischten und Abfrageklausuren ein Teil der Zeit für Verständnisfragen
+    const anteil = verstehen.length ? { transfer: 0.1, gemischt: 0.3, abfrage: 0.5 }[k.typ] : 0;
+    wahl = probeZiehen(rechnen, dauer * (1 - anteil));
+    const rest = dauer - wahl.reduce((n, a) => n + aufgabeMinuten(a), 0);
+    if (rest >= 5 && verstehen.length) wahl = wahl.concat(probeZiehen(verstehen, rest));
+  }
+  if (!wahl.length) return meldung("Keine passenden Aufgaben gefunden.");
+  const jetzt = Date.now(), dauer = mix ? 0 : Math.round(k.dauer * tempo);
+  store.set("probe:lauf", { modul: m.name, ids: mischen(wahl).map(a => a.id), start: jetzt, dauer, ende: mix ? 0 : jetzt + dauer * 6e4,
+    klausur: k.dauer, tempo, mix: !!mix, ab: 0, bew: {}, erg: {} });
+  location.hash = `#lernen/${encodeURIComponent(m.name)}/probe`;
+}
+function probeEinstellungen(m) {
+  const k = klausurInfo(m.name), tempo = store.get("probe:tempo", 0.8), lauf = store.get("probe:lauf", null);
+  const alt = Object.entries(db.objekt(`probe:${m.name}:`)).sort((a, b) => b[0] - a[0]).slice(0, 6);
+  const seg = (id, liste, aktiv) => `<div class="seg" id="${id}">${liste.map(([v, n]) => `<button data-v="${v}" aria-pressed="${v == aktiv}">${n}</button>`).join("")}</div>`;
+  return `<div class="zwei"><div class="panel"><h2>Probeklausur</h2>
+      <p style="margin-top:0">Aufgaben aus verschiedenen Kapiteln, gemischt und ohne Überschrift, mit Uhr. Wie in der Klausur erkennst du selbst, welche Methode passt.</p>
+      ${lauf && lauf.modul === m.name ? `<div class="row" style="margin-bottom:12px"><a class="btn${lauf.ab ? "" : " primary gross"}" href="#lernen/${encodeURIComponent(m.name)}/probe">${lauf.ab ? "Letzte Auswertung öffnen" : (lauf.mix ? "Mix-Serie" : "Probeklausur") + " fortsetzen"}</a></div>` : ""}
+      <div class="row"><label class="l">Klausurdauer</label>${seg("pdauer", [60, 90, 120, 180].map(n => [n, n + " min"]), k.dauer)}</div>
+      <div class="row"><label class="l">Tempo</label>${seg("ptempo", [[0.8, "80 % der Zeit"], [1, "volle Zeit"]], tempo)}</div>
+      <div class="row"><label class="l">Klausurtyp</label>${seg("ptyp", Object.entries(KLAUSURTYPEN), k.typ)}</div>
+      <p class="muted" style="margin:14px 0 0">Du hast <b>${Math.round(k.dauer * tempo)} Minuten</b>. ${k.typ === "transfer" ? "Fast nur Rechenaufgaben." : k.typ === "gemischt" ? "Rechenaufgaben und ein Teil Verständnisfragen." : "Etwa die Hälfte Verständnisfragen."}
+        Aufgaben, die noch nicht sitzen, kommen bevorzugt.</p>
+      <div class="row" style="margin-top:18px"><button class="btn primary gross" id="plos">Probeklausur starten</button></div>
+      <p class="feynman" style="margin-top:16px">Rechne auf Papier, ohne Lernskript. Der Klausurtyp gilt auch für die Vorschläge auf der Startseite.</p></div>
+    <div class="panel"><h2>Mix-Serie</h2>
+      <p style="margin-top:0">Fünf Rechenaufgaben aus fünf verschiedenen Kapiteln, ohne Uhr. Gut für zwischendurch.</p>
+      <button class="btn gross" id="pmix">Mix-Serie starten</button>
+      ${alt.length ? `<h2 style="margin-top:24px">Bisherige Versuche</h2>${alt.map(([t, e]) => `<div class="probezeile"><span>${new Date(+t).toLocaleDateString("de-DE", { day: "numeric", month: "short" })} · ${e.mix ? "Mix-Serie" : `Probeklausur ${e.dauer} min`}</span>
+        <span class="muted"><b style="color:var(--ink)">${e.ok}</b> von ${e.n} selbst gelöst${e.mix ? "" : ` · ${e.min} min gebraucht`}</span></div>`).join("")}` : ""}
+    </div></div>`;
+}
+function probeEreignisse(m) {
+  const wahl = (id, f) => lernView.querySelectorAll(`#${id} button`).forEach(b => b.onclick = () => { f(b.dataset.v); modulSeite(m, "probe"); });
+  wahl("pdauer", v => klausurSetzen(m.name, { dauer: +v }));
+  wahl("ptempo", v => store.set("probe:tempo", +v));
+  wahl("ptyp", v => klausurSetzen(m.name, { typ: v }));
+  $("#plos").onclick = () => probeStarten(m, false);
+  $("#pmix").onclick = () => probeStarten(m, true);
+}
+let probeTakt = null;
+function probeUhr() {
+  const l = store.get("probe:lauf", null), el = document.getElementById("puhr");
+  if (!l || l.ab || !el) { clearInterval(probeTakt); probeTakt = null; return; }
+  const rest = Math.round((l.ende - Date.now()) / 1000), a = Math.abs(rest);
+  el.firstChild.textContent = `${rest < 0 ? "+" : ""}${Math.floor(a / 60)}:${pad(a % 60)}`;
+  el.className = "probeuhr" + (rest < 0 ? " über" : rest < 300 ? " knapp" : "");
+  el.querySelector("small").textContent = rest < 0 ? "über der Zeit" : "verbleibend";
+  if (rest === 0) meldung("Die Zeit ist um. Gib ab, sobald du die Aufgabe fertig hast.", 6000);
+}
+function probeSpeichern(l, auf) {
+  const n = auf.length, z = s => auf.filter(a => l.bew[a.id] === s).length;
+  db.set(`probe:${l.modul}:${l.start}`, { n, ok: z("ok"), hilfe: z("hilfe"), nein: z("nein"), mix: l.mix, dauer: l.dauer,
+    min: Math.round((l.ab - l.start) / 6e4) });
+}
+function probeSeite(m) {
+  const l = store.get("probe:lauf", null);
+  const auf = l.ids.map(id => (m.aufgaben || []).find(a => a.id === id)).filter(Boolean);
+  const name = l.mix ? "Mix-Serie" : "Probeklausur", zurück = `#lernen/${encodeURIComponent(m.name)}`;
+  if (!l.ab) {
+    kopf(`${name} ${m.name}`, `${auf.length} Aufgaben${l.mix ? "" : ` · ${l.dauer} Minuten`}`);
+    lernView.innerHTML = `<div class="probekopf"><a class="back" href="${zurück}">← Unterbrechen</a>
+        ${l.mix ? `<b>${name}</b>` : `<div class="probeuhr" id="puhr">–<small>verbleibend</small></div>`}
+        <button class="btn primary" id="pab">Abgeben</button></div>
+      ${auf.map((a, i) => `<div class="akarte"><div class="plab">Aufgabe ${i + 1} von ${auf.length}${l.mix ? "" : ` · etwa ${aufgabeMinuten(a)} min`}</div>
+        <div style="margin-top:10px">${baustein(a.a, "Aufgabe " + (i + 1))}</div></div>`).join("")}
+      <p class="feynman" style="margin-top:18px">Ohne Lernskript und ohne Tipps. Wenn eine Aufgabe hängt: überspringen und später wiederkommen, wie in der echten Klausur.</p>`;
+    let sicher = false;
+    $("#pab").onclick = e => {
+      if (!sicher) { sicher = true; e.target.textContent = "Wirklich abgeben?"; setTimeout(() => { sicher = false; if (e.target.isConnected) e.target.textContent = "Abgeben"; }, 3500); return; }
+      store.set("probe:lauf", { ...l, ab: Date.now() }); probeSeite(m); window.scrollTo(0, 0);
+    };
+    if (!l.mix) { probeUhr(); clearInterval(probeTakt); probeTakt = setInterval(probeUhr, 1000); }
+    return;
+  }
+  // Auswertung: jede Aufgabe ehrlich bewerten, Ergebnis und Lösung aufdecken
+  const min = Math.round((l.ab - l.start) / 6e4), bewertet = auf.filter(a => l.bew[a.id]).length;
+  kopf(`${name} ${m.name}`, "Auswertung");
+  lernView.innerHTML = `<a class="back" href="${zurück}">← ${esc(m.name)}</a>
+    <div class="panel"><h2 style="margin-top:0">${l.mix ? "Mix-Serie geschafft" : `${min} von ${l.dauer} Minuten gebraucht`}</h2>
+      <p style="margin:0">${l.mix ? "" : min > l.dauer ? `Du warst ${min - l.dauer} Minuten über der Zeit. Übe die langsamen Aufgabentypen gezielt. ` : "In der Zeit geblieben. "}
+        Bewerte jetzt jede Aufgabe ehrlich. ${bewertet < auf.length ? `Noch ${auf.length - bewertet} offen.` : "Alles bewertet, die Vorschläge auf der Startseite richten sich danach."}</p></div>
+    ${auf.map((a, i) => `<div class="akarte"><div class="plab">Aufgabe ${i + 1} · ${esc(a.k)}</div><h2>${esc(a.t)}</h2>
+      ${l.erg[a.id] && a.erg ? `<div class="extra erg"><div class="lab">Ergebnis zum Vergleichen</div>${baustein(a.erg, "Ergebnis")}</div>` : ""}
+      <div class="asteuer">${a.erg && !l.erg[a.id] ? `<button class="btn" data-erg="${a.id}">Ergebnis zeigen</button>` : ""}
+        <a class="btn" href="#lernen/${encodeURIComponent(m.name)}/aufgabe/${a.id}">Lösung Schritt für Schritt</a></div>
+      <div class="bewerten">${[["ok", "Selbst gelöst"], ["hilfe", "Mit Fehlern"], ["nein", "Nicht geschafft"]]
+        .map(([k, n]) => `<button class="${k}${l.bew[a.id] === k ? " gewählt" : ""}" data-id="${a.id}" data-s="${k}">${n}</button>`).join("")}</div></div>`).join("")}
+    <div class="row" style="margin-top:18px"><button class="btn primary gross" id="pneu">Neuer Versuch</button><a class="btn gross" href="${zurück}">Fertig</a></div>`;
+  lernView.querySelectorAll("[data-erg]").forEach(b => b.onclick = () => { l.erg[b.dataset.erg] = 1; store.set("probe:lauf", l); probeSeite(m); });
+  lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
+    const a = auf.find(x => x.id === b.dataset.id), alt = aufgabeStand(a) || { n: 0 };
+    l.bew[a.id] = b.dataset.s; store.set("probe:lauf", l);
+    db.set(`aufgabe:${m.name}:${a.id}`, { s: b.dataset.s, n: alt.n + 1, t: Date.now() });
+    probeSpeichern(l, auf);
+    const y = window.scrollY; probeSeite(m); window.scrollTo(0, y);
+  });
+  $("#pneu").onclick = () => { store.set("probe:lauf", null); store.set("lernen:teil", "probe"); location.hash = zurück; };
+}
+
 /* Quiz: Einfachauswahl (sofortige Rückmeldung mit Erklärung zu jeder Antwort), Mehrfachauswahl (prüfen),
    Lückentext und Freitext (werden wie bei NotebookLM am Ende bewertet; Freitext bewertest du selbst). */
 let quizRunde = null;
+const quizZurück = q => q.m.abschluss ? "#start" : `#lernen/${encodeURIComponent(q.m.name)}`;
 function quizStarten(m, { kapitel = "", anzahl = 10, modus = "mix" } = {}) {
   let pool = (m.quiz || []).filter(f => !kapitel || f.k === kapitel);
   if (modus === "falsch") pool = pool.filter(f => quizStand(f) && !quizStand(f).ok);
@@ -1417,7 +1645,7 @@ function quizSeite() {
   const q = quizRunde;
   if (q.fertig) return quizAuswertung();
   const { f, o } = q.fragen[q.i], a = q.antw[q.i];
-  kopf(`Quiz ${q.m.name}`, `${q.fragen.length} Fragen`);
+  kopf(`Quiz ${q.m.titel || q.m.name}`, `${q.fragen.length} Fragen`);
   const beantwortet = a && (a.geprüft || f.typ === "lücke" || f.typ === "frei");
   let körper = "";
   if (f.typ === "einfach" || f.typ === "mehrfach") {
@@ -1440,7 +1668,7 @@ function quizSeite() {
   const frage = f.typ === "lücke"
     ? f.q.map((t, n) => t + (n < f.q.length - 1 ? `<input type="text" data-l="${n}" placeholder="Text eingeben …" autocomplete="off" autocapitalize="off" value="${esc(a?.werte?.[n] || "")}">` : "")).join("")
     : f.q;
-  lernView.innerHTML = `<div class="quiz"><div class="topbar" style="margin-top:8px"><a class="back" href="#lernen/${encodeURIComponent(q.m.name)}">← Beenden</a>
+  lernView.innerHTML = `<div class="quiz"><div class="topbar" style="margin-top:8px"><a class="back" href="${quizZurück(q)}">← Beenden</a>
       <div class="bar"><i style="width:${Math.round(100 * q.i / q.fragen.length)}%"></i></div></div>
     <div class="qkarte"><div class="qnr">${q.i + 1} von ${q.fragen.length}${f.k ? ` · ${esc(f.k)}` : ""}</div>
       <div class="qfrage">${frage}</div>${körper}
@@ -1454,7 +1682,7 @@ function quizSeite() {
     </div></div>`;
   const extra = (html, kl) => { $("#qextra").innerHTML = `<div class="qextra ${kl}">${html}</div>`; };
   $("#qtipp")?.addEventListener("click", () => extra(f.tipp, "tipp"));
-  $("#qerkl")?.addEventListener("click", () => extra((f.erkl || "") + (f.s ? `<a class="quelle" href="${q.m.pdf}#page=${f.s.p}" target="_blank" rel="noopener"><b>Lernskript S. ${f.s.p}</b><span>${esc(f.s.t)}</span></a>` : ""), "erkl"));
+  $("#qerkl")?.addEventListener("click", () => extra((f.erkl || "") + (f.s ? `<a class="quelle" href="${f.m.pdf}#page=${f.s.p}" target="_blank" rel="noopener"><b>Lernskript S. ${f.s.p}</b><span>${esc(f.s.t)}</span></a>` : ""), "erkl"));
   lernView.querySelectorAll(".opt").forEach(b => b.onclick = () => {
     const n = +b.dataset.o;
     if (f.typ === "einfach") {
@@ -1496,8 +1724,9 @@ function quizAuswertung() {
   const q = quizRunde, bewertet = q.antw.filter(a => a && a.richtig !== undefined);
   const punkte = q.antw.reduce((n, a) => n + (a?.richtig === true ? 1 : a?.richtig === "teil" ? 0.5 : 0), 0);
   const falsche = q.fragen.filter((_, n) => q.antw[n]?.richtig !== true).map(x => x.f);
-  kopf(`Quiz ${q.m.name}`, "Auswertung");
-  lernView.innerHTML = `<div class="quiz"><a class="back" href="#lernen/${encodeURIComponent(q.m.name)}">← ${esc(q.m.name)}</a>
+  if (q.m.abschluss) db.set("abschluss:" + q.m.tag, { ...db.get("abschluss:" + q.m.tag, {}), quiz: { r: punkte, n: q.fragen.length } });
+  kopf(`Quiz ${q.m.titel || q.m.name}`, "Auswertung");
+  lernView.innerHTML = `<div class="quiz"><a class="back" href="${quizZurück(q)}">← ${esc(q.m.abschluss ? "Start" : q.m.name)}</a>
     <div class="qkarte qauswertung"><div class="row" style="gap:20px"><div class="ring">${String(punkte).replace(".", ",")}</div>
       <div><b style="font-size:20px">von ${q.fragen.length} Fragen richtig</b><p class="muted" style="margin:2px 0 0">${bewertet.length < q.fragen.length ? "Bewerte unten noch deine Freitext-Antworten." :
         punkte === q.fragen.length ? "Alles richtig. Sehr stark!" : "Schau dir die falschen in Ruhe an: Die Erklärungen zeigen, wo der Denkfehler liegt."}</p></div></div>
@@ -1696,9 +1925,11 @@ function route(oben = true) {
   else if (r === "lernen") {
     const m = LERNEN.find(x => x.name === rest[0]);
     if (rest[0] === "pomodoro") pomodoroSeite();
+    else if (rest[0] === "abschluss") quizRunde?.m.abschluss ? quizSeite() : (location.hash = "#start");
     else if (!m) lernenÜbersicht();
     else if (rest[1] === "aufgabe" && m.aufgaben?.find(a => a.id === rest[2])) aufgabeSeite(m, m.aufgaben.find(a => a.id === rest[2]));
     else if (rest[1] === "quiz" && quizRunde?.m === m) quizSeite();
+    else if (rest[1] === "probe") store.get("probe:lauf", null)?.modul === m.name ? probeSeite(m) : modulSeite(m, "probe");
     else modulSeite(m);
   }
   pomodoro.tick();

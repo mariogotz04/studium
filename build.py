@@ -329,6 +329,8 @@ def aufgaben(typ, modul, abschnitte):
             a["erg"] = baustein(n); n += 1
         a["s"] = [baustein(n + i) for i in range(info["schritte"])]
         n += info["schritte"]
+        if info.get("minuten"):
+            a["min"] = info["minuten"]
         if info.get("quelle"):
             treffer = abschnitt_finden(str(info["quelle"]), abschnitte)
             if treffer:

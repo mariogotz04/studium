@@ -7,7 +7,15 @@ Sie ist Marios Lernplattform mit fünf Reitern:
   Klausurterminen und Lernstand), Countdown zur nächsten Klausur, Fristen, To-dos.
 - **Lernskripte:** jedes Lernskript als PDF (nur Feynman-Zusammenfassung und Formelsammlung, keine Aufgaben).
 - **Karteikarten:** Verständnisfragen je Modul mit Wiederholung wie bei Anki.
-- **Lernen:** Rechenaufgaben und Verständnisfragen mit Lösung Schritt für Schritt, ein Quiz je Modul, Pomodoro-Timer.
+- **Lernen:** Rechenaufgaben und Verständnisfragen mit Lösung Schritt für Schritt, ein Quiz je Modul, Pomodoro-Timer,
+  je Modul eine Probeklausur (Aufgaben aus verschiedenen Kapiteln, gemischt, ohne Titel, mit Uhr, Standard 80 % der
+  Klausurdauer) und eine Mix-Serie (5 Aufgaben aus 5 Kapiteln, ohne Uhr). Die Zeit je Aufgabe kommt aus dem optionalen
+  Feld `minuten:` in `Aufgaben.typ`, sonst wird sie nach der Zahl der Lösungsschritte geschätzt.
+- **Klausurtyp je Modul** (Transfer / Gemischt / Abfrage, plus Dauer): einstellbar beim Eintragen einer Klausur und in der
+  Probeklausur. Standard: Finanzierung und Investitionsrechnung gemischt, alle anderen Transfer. Er gewichtet „Heute dran“
+  (Transfer: mehr Rechnen und Probeklausuren, Abfrage: mehr Quiz und Karteikarten). „Heute dran“ enthält immer mindestens
+  zwei Module. Ab 17 Uhr erscheint auf der Startseite der Tagesabschluss (frei aufschreiben, dann 5 Quizfragen aus den
+  heutigen Modulen).
 - **Termine:** Fristen und Klausuren mit Countdown, To-dos, Wochenplan.
 
 Die PDFs und die Aufgaben werden auf GitHub aus den `.typ`-Dateien gesetzt; hier liegt nur die Seite selbst.

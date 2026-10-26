@@ -9,6 +9,8 @@
 //     tipp: [Was bleibt bei stationärer Strömung gleich?],   (optional) Denkanstoß
 //   )[Aufgabentext][Schritt 1 …][Schritt 2 …][…]
 // art: "rechnen" (Rechenaufgabe) oder "verstehen" (Verständnisfrage). quelle: Abschnitt im Lernskript.
+// minuten: (optional) Bearbeitungszeit in einer Klausur, z. B. minuten: 20. Die Probeklausur auf der Webseite
+// plant damit ihre Zeit; fehlt die Angabe, schätzt sie nach der Zahl der Lösungsschritte.
 // Der Titel muss im Modul eindeutig bleiben: Daran hängt, ob die Aufgabe als gelöst markiert ist.
 // Jeder Schritt beginnt mit einer fetten Kurzüberschrift (*Bilanz aufstellen:*) und erklärt im
 // Feynman-Stil, *warum* man so vorgeht, nicht nur was gerechnet wird. Außerhalb von #aufgabe und
@@ -36,13 +38,13 @@
   _kapitel.update(titel)
   if not web { pagebreak(weak: true); text(size: 20pt, weight: "bold", fill: navy, titel); v(4mm) }
 }
-#let aufgabe(titel: none, art: "rechnen", quelle: none, ergebnis: none, tipp: none, ..teile) = {
+#let aufgabe(titel: none, art: "rechnen", quelle: none, ergebnis: none, tipp: none, minuten: none, ..teile) = {
   assert(titel != none, message: "Jede Aufgabe braucht einen titel")
   assert(art in ("rechnen", "verstehen"), message: "art ist \"rechnen\" oder \"verstehen\": " + titel)
   let teile = teile.pos()
   assert(teile.len() >= 2, message: "Aufgabe ohne Lösungsschritte: " + titel)
   let (text-aufgabe, ..schritte) = teile
-  let info = context [#metadata((titel: titel, art: art, quelle: quelle, kapitel: _kapitel.get(),
+  let info = context [#metadata((titel: titel, art: art, quelle: quelle, minuten: minuten, kapitel: _kapitel.get(),
     schritte: schritte.len(), ergebnis: ergebnis != none, tipp: tipp != none)) <aufgabe>]
   if web {
     // Jede Seite ist ein Baustein der Webseite: Aufgabe, Tipp, Ergebnis, dann die Schritte.
