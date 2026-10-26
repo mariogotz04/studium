@@ -60,13 +60,34 @@ h2 { font-family: var(--serif); font-weight: 700; }
 footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
 
 /* Karteikarten */
-.intro { color: var(--muted); margin: 20px 0 16px; }
+.heute { display: grid; grid-template-columns: auto 1fr; gap: 6px 26px; align-items: center; margin: 26px 0 16px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 24px; }
+.heute-zahl { grid-row: span 2; display: flex; flex-direction: column; line-height: 1.1; }
+.heute-zahl b { font-family: var(--serif); font-size: 52px; color: var(--accent); }
+.heute-zahl span { font-size: 14px; color: var(--muted); }
+.heute p { margin: 0; color: var(--muted); }
+.decks { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.deck { display: flex; flex-direction: column; gap: 8px; background: var(--card); border: 1px solid var(--line);
+  border-radius: 16px; padding: 18px 20px; color: var(--ink); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.deck:active { transform: scale(.99); }
+.deck .title { font-family: var(--serif); font-weight: 600; font-size: 21px; line-height: 1.25; }
+.deck .bar { margin: 6px 0 0; }
+.deck-fuss { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.zahlen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 8px 0 0; }
+.zahlen div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: 14px; }
+.zahlen b { display: block; font-family: var(--serif); font-size: 30px; line-height: 1.1; }
+.zahlen .muted b { color: var(--ink); }
+.deckgrid .seite .feynman { margin-top: 16px; }
+@media (min-width: 1000px) {
+  .deckgrid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+  .deckgrid .seite { position: sticky; top: 20px; }
+  .deckgrid .seite .feynman { margin-top: 8px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--teal);
+    border-radius: 14px; padding: 16px 18px; font-size: 15px; line-height: 1.55; }
+}
 .counts { display: flex; gap: 14px; flex-wrap: wrap; font-size: 14px; margin-top: 4px; }
 .counts b { font-variant-numeric: tabular-nums; }
 .c-due { color: var(--again); } .c-new { color: var(--easy); } .c-ok { color: var(--good); }
 .back { display: inline-block; margin: 20px 0 8px; color: var(--accent); text-decoration: none; font-weight: 600; }
-.deckhead { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
-.deckhead h2 { margin: 0; font-size: 30px; }
 .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; margin: 16px 0; }
 .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .row + .row { margin-top: 12px; }
@@ -162,6 +183,9 @@ select { min-height: 44px; font-size: 16px; }
   .side .a { font-size: 17px; }
   .grade { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .grade button { min-height: 62px; font-size: 17px; }
+  .zahlen { grid-template-columns: repeat(2, 1fr); }
+  .heute { grid-template-columns: 1fr; }
+  .heute-zahl { grid-row: auto; }
 }
 </style>
 </head>
@@ -170,7 +194,7 @@ select { min-height: 44px; font-size: 16px; }
   <header class="kopf">
     <div>
       <div class="datum" id="datum"></div>
-      <h1>Meine Lernskripte</h1>
+      <h1 id="titel">Meine Lernskripte</h1>
       <p id="summary"></p>
     </div>
     <nav class="tabs">
@@ -196,8 +220,12 @@ const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&
 
 document.getElementById("datum").textContent =
   new Date().toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" });
-document.getElementById("summary").textContent =
-  `${DATA.length} Module · Lernskripte als PDF und Karteikarten zum Üben`;
+// Überschrift oben passt sich dem Reiter an (Lernskripte, Karteikarten oder ein Modul).
+function kopf(titel, sub) {
+  document.getElementById("titel").textContent = titel;
+  document.getElementById("summary").textContent = sub;
+  document.title = titel;
+}
 
 function render(query) {
   const q = query.trim().toLowerCase();
@@ -307,13 +335,22 @@ function dauer(s, jetzt = Date.now()) {
 function deckÜbersicht() {
   sitzung = null;
   if (!DECKS.length) { view.innerHTML = `<p class="empty">Noch keine Karteikarten vorhanden.</p>`; return; }
-  view.innerHTML = `<p class="intro">Verständnisfragen je Modul. Fällige Karten kommen zuerst, schwierige öfter, sichere immer seltener.</p>` +
-    `<div class="decks">` + DECKS.map(d => {
-      const z = zählen(d);
-      return `<div class="script"><div><div class="title">${esc(d.name)}</div>
+  const alle = DECKS.map(d => [d, zählen(d)]);
+  const summe = k => alle.reduce((n, [, z]) => n + z[k], 0);
+  const heute = alle.reduce((n, [, z]) => n + z.due + Math.min(z.neu, einstellungen.neu), 0);
+  kopf("Meine Karteikarten", `${summe("gesamt")} Verständnisfragen in ${DECKS.length} Modulen`);
+  view.innerHTML = `<div class="heute"><div class="heute-zahl"><b>${heute}</b><span>Karten heute dran</span></div>
+      <p>Fällige Karten kommen zuerst, schwierige öfter, sichere immer seltener. Erst laut in eigenen Worten erklären, dann umdrehen.</p>
+      <div class="counts"><span class="c-due"><b>${summe("due")}</b> fällig</span><span class="c-new"><b>${summe("neu")}</b> neu</span>
+        <span class="c-ok"><b>${summe("ok")}</b> sicher</span></div></div>` +
+    `<div class="decks">` + alle.map(([d, z]) => {
+      const fertig = z.gesamt ? Math.round(100 * z.ok / z.gesamt) : 0;
+      return `<a class="deck" href="#karteikarten/${encodeURIComponent(d.name)}">
+        <div class="title">${esc(d.name)}</div>
         <div class="counts"><span class="c-due"><b>${z.due}</b> fällig</span><span class="c-new"><b>${z.neu}</b> neu</span>
-        <span class="c-ok"><b>${z.ok}</b> sicher</span><span class="muted">${z.gesamt} Karten</span></div></div>
-        <div class="actions"><a class="btn primary" href="#karteikarten/${encodeURIComponent(d.name)}">Lernen</a></div></div>`;
+          <span class="muted">${z.gesamt} Karten</span></div>
+        <div class="bar"><i style="width:${fertig}%"></i></div>
+        <div class="deck-fuss"><span class="muted">${fertig} % sicher</span><span class="btn primary">Lernen</span></div></a>`;
     }).join("") + `</div>` +
     `<footer>Dein Fortschritt wird nur in diesem Browser gespeichert (je Gerät getrennt).</footer>`;
 }
@@ -325,10 +362,11 @@ function deckSeite(deck) {
   const k = kapitel.includes(gewählt) ? gewählt : "";
   const z = zählen(deck, k);
   const nächste = z.nächste < Infinity ? new Date(z.nächste).toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" }) : "";
+  kopf(deck.name, `Karteikarten · ${deck.cards.length} Verständnisfragen`);
   view.innerHTML = `<a class="back" href="#karteikarten">← Alle Module</a>
-    <div class="deckhead"><h2>${esc(deck.name)}</h2>
-      <div class="counts"><span class="c-due"><b>${z.due}</b> fällig</span><span class="c-new"><b>${z.neu}</b> neu</span>
-      <span class="muted"><b>${z.lern}</b> in Arbeit</span><span class="c-ok"><b>${z.ok}</b> sicher</span></div></div>
+    <div class="deckgrid"><div>
+    <div class="zahlen"><div class="c-due"><b>${z.due}</b>fällig</div><div class="c-new"><b>${z.neu}</b>neu</div>
+      <div class="muted"><b>${z.lern}</b>in Arbeit</div><div class="c-ok"><b>${z.ok}</b>sicher</div></div>
     <div class="panel">
       <div class="row"><label class="l" for="kap">Kapitel</label>
         <select id="kap"><option value="">Alle Kapitel (${deck.cards.length})</option>${kapitel.map(x =>
@@ -340,9 +378,11 @@ function deckSeite(deck) {
         <button class="btn" id="frei">Frei üben (alle ${z.gesamt} gemischt)</button></div>
       ${z.due + z.neu ? "" : `<p class="muted" style="margin:12px 0 0">Für heute ist alles erledigt.${nächste ? ` Nächste Wiederholung: ${nächste}.` : ""} Mit „Frei üben“ kannst du trotzdem alles durchgehen, ohne den Plan zu ändern.</p>`}
     </div>
+    </div><div class="seite">
     <p class="feynman"><b>Feynman-Prinzip:</b> Erklär die Antwort laut und in eigenen, einfachen Worten, als würdest du sie jemandem ohne Vorwissen erklären. Erst dann umdrehen und ehrlich bewerten: Wo deine Erklärung gehakt hat, liegt die Lücke.</p>
     <div class="row" style="margin-top:28px"><button class="link" id="export">Fortschritt sichern</button>
-      <button class="link" id="import">Fortschritt laden</button><button class="link" id="reset">Fortschritt zurücksetzen</button></div>`;
+      <button class="link" id="import">Fortschritt laden</button><button class="link" id="reset">Fortschritt zurücksetzen</button></div>
+    </div></div>`;
   view.querySelector("#kap").onchange = e => { store.set("karteikarten:kapitel:" + deck.name, e.target.value); deckSeite(deck); };
   view.querySelector("#neu").onchange = e => { einstellungen.neu = +e.target.value; store.set("karteikarten:einstellungen", einstellungen); deckSeite(deck); };
   view.querySelector("#start").onclick = () => starten(deck, k, false);
@@ -501,7 +541,7 @@ function route() {
   document.getElementById("tab-skripte").toggleAttribute("aria-current", !karten);
   document.getElementById("tab-karten").toggleAttribute("aria-current", karten);
   document.querySelectorAll(".tabs a[aria-current]").forEach(a => a.setAttribute("aria-current", "page"));
-  if (!karten) return;
+  if (!karten) { kopf("Meine Lernskripte", `${DATA.length} Module · Lernskripte als PDF zum Ansehen und Herunterladen`); return; }
   const deck = DECKS.find(d => d.name === h.slice("karteikarten/".length));
   deck ? deckSeite(deck) : deckÜbersicht();
   window.scrollTo(0, 0);
