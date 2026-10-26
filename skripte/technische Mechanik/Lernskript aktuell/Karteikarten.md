@@ -56,6 +56,11 @@ Abbildung: tm1k01_gerber_frei
 Immer als Zugkraft entlang des Seils, vom Körper weg. Ein Seil kann nicht drücken und keine Querkraft übertragen.
 Quelle: 1.6
 
+
+### Zeichne die Begriffslandkarte zu Kapitel TM1 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Der Freischnitt trennt den betrachteten Körper von seiner Umgebung und ersetzt Bindungen durch Reaktionen. Achsen und Winkelbezug bestimmen die Kraftkomponenten, senkrechte Abstände die Hebelarme. Kraft- und Momentensummen müssen gemeinsam null sein; daraus entstehen die Gleichungen für die unbekannten Kräfte.
+Quelle: 1.3
+
 ## TM1 Kapitel 4 · Streckenlasten und Schwerpunkt
 
 ### Wie ersetzt man eine Streckenlast durch eine Einzelkraft?
@@ -78,6 +83,11 @@ Abbildung: tm2k4_wzf0806_ue10
 Der Schwerpunkt liegt auf jeder Symmetrieachse. Bei einer Achse muss man nur noch eine Koordinate berechnen, bei zwei Achsen liegt er im Schnittpunkt.
 Quelle: 4.2
 Abbildung: tm2k4_wzf0806_ue10
+
+
+### Zeichne die Begriffslandkarte zu Kapitel TM1 4 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Bei der Streckenlast ergibt die Fläche unter dem Lastdiagramm die resultierende Kraft, ihr Schwerpunkt den Angriffspunkt. Bei einem Querschnitt werden Teilflächen und ihre Schwerpunktkoordinaten gewichtet; Löcher zählen negativ. Der Gesamtschwerpunkt legt die gemeinsamen Achsen fest und liefert die Abstände für den späteren Steiner-Anteil.
+Quelle: 4.1
 
 ## TM1 Kapitel 5 · Lager und Lagerreaktionen
 
@@ -107,6 +117,11 @@ Quelle: 5.3.3
 ### Warum prüft man die Lagerreaktionen am Gesamtsystem?
 Das Gesamtsystem liefert drei unabhängige Kontrollgleichungen, die man nicht zum Lösen gebraucht hat. Geht dort etwas nicht auf, steckt irgendwo ein Vorzeichen- oder Hebelarmfehler.
 Quelle: 5.3.3
+
+
+### Zeichne die Begriffslandkarte zu Kapitel TM1 5 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Lagerwertigkeiten liefern die äußeren Reaktionsunbekannten, Verbindungen die inneren. Die Abzählung wird durch eine Prüfung der geometrischen Wirksamkeit ergänzt. Freigeschnittene Teilkörper erhalten entgegengesetzte Gelenkkräfte; ihre Gleichgewichte liefern die Reaktionen. Im Gesamtsystem verschwinden die inneren Kräfte und erlauben eine Kontrolle.
+Quelle: 5.1
 
 ## TM1 Kapitel 6 · Fachwerke
 
@@ -145,6 +160,11 @@ Abbildung: ak24-fachwerk-schnitt
 Damit die Vorzeichen eindeutig sind. Ist das Ergebnis positiv, ist der Stab ein Zugstab. Ist es negativ, ist er ein Druckstab. So muss man nicht vorher raten.
 Quelle: 6.3.3
 Abbildung: ak24-fachwerk-schnitt
+
+
+### Zeichne die Begriffslandkarte zu Kapitel TM1 6 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Das Fachwerkmodell führt jede Stabkraft auf Zug oder Druck entlang des Stabes zurück. Lagerkräfte kommen aus dem Gesamtsystem. Nullstabregeln vereinfachen den betrachteten Lastfall. Das Knotenverfahren verwendet zwei Kraftgleichgewichte je Knoten; ein geeigneter Ritterschnitt nutzt Kraft- und Momentengleichgewicht an einem Teilfachwerk.
+Quelle: 6.1
 
 ## TM1 Kapitel 7 · Schnittgrößen
 
@@ -187,6 +207,11 @@ Quelle: 7.3
 Sie tauschen die Rollen. Was im einen Stab Querkraft ist, wird im anderen Stab Normalkraft, und umgekehrt. Das Moment läuft ohne äußeres Moment unverändert um die Ecke.
 Quelle: 7.3
 
+
+### Zeichne die Begriffslandkarte zu Kapitel TM1 7 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Lagerreaktionen und der richtige Lastfall bilden den Ausgangspunkt. Der Schnitt legt innere Normalkraft, Querkraft und Biegemoment am Teilkörper frei; Bezugsfaser und Schnittufer bestimmen ihre Vorzeichen. Gleichgewicht liefert Punktwerte. Beziehungen zwischen Last, Querkraft und Moment sowie Sprung- und Randbedingungen verbinden und kontrollieren den Verlauf.
+Quelle: 7.1
+
 ## TM1 Kapitel 9 · Reibung
 
 ### Ist die Haftreibungskraft immer μ₀·N?
@@ -210,6 +235,11 @@ Abbildung: ak_ss16_klotz
 Haftreibung wirkt, solange nichts rutscht, und passt sich bis $mu_0 N$ an: $abs(H) <= mu_0 N$. Gleitreibung wirkt, sobald es rutscht, und ist fest $R = mu N$ mit $mu < mu_0$. Deshalb ist es schwerer, etwas loszureißen, als es in Bewegung zu halten.
 Quelle: 9.2
 Abbildung: ak_ss16_klotz
+
+
+### Zeichne die Begriffslandkarte zu Kapitel TM1 9 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Am Kontakt wirken Normalkraft und tangentiale Haftkraft. Das Gleichgewicht bestimmt die tatsächlich benötigte Haftkraft. Ihr Betrag darf den Reibwert mal Normalkraft nicht überschreiten. Erst beim beginnenden Gleiten wird die Haftgrenze ausgeschöpft.
+Quelle: 9.2
 
 ## TM2 Kapitel 1 · Zug, Druck und Wärmedehnung
 
@@ -249,6 +279,11 @@ Quelle: TM2 1.6
 Ein schlanker Druckstab weicht ab einer kritischen Last seitlich aus, obwohl die Spannung noch weit unter der Festigkeit liegt. Es ist ein Stabilitätsversagen, kein Festigkeitsversagen. Deshalb prüft man schlanke Druckstäbe zusätzlich auf Knicken.
 Quelle: TM2 1.6
 
+
+### Zeichne die Begriffslandkarte zu Kapitel TM2 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Normalkraft und Querschnitt liefern die Normalspannung. Das Elastizitätsgesetz ergibt daraus die mechanische Dehnung, Temperaturänderung ergänzt freie Wärmedehnung. Über die Länge entstehen Verformungen. Bei zusätzlichen Bindungen liefert die Verträglichkeit die fehlende Gleichung und erklärt Reaktionskräfte infolge behinderter Wärmedehnung.
+Quelle: TM2 1.1
+
 ## TM2 Kapitel 2 · Spannungszustand
 
 ### Was ist ein ebener Spannungszustand?
@@ -277,6 +312,11 @@ Abbildung: tm2k2_fs_kreis
 Im ebenen Spannungszustand ist die dritte Hauptspannung $sigma_3 = 0$. Haben $sigma_1$ und $sigma_2$ dasselbe Vorzeichen, liegt der größte Kreis zwischen 0 und der betragsgrößten Hauptspannung. Dann ist
 $ tau_max = abs(sigma_1)/2 quad "und nicht" quad (sigma_1 - sigma_2)/2 $
 Quelle: TM2 2.2
+
+
+### Zeichne die Begriffslandkarte zu Kapitel TM2 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Der Spannungstensor beschreibt Normal- und Schubspannungen für gewählte Richtungen. Eine Achsendrehung verändert diese Komponenten, aber nicht die Hauptwerte. Der Mohrsche Kreis stellt dieselbe Transformation zeichnerisch dar. Seine Achsenschnittpunkte liefern Hauptspannungen, sein Radius das ebene Schubmaximum; für das räumliche Maximum gehört die dritte Hauptspannung dazu.
+Quelle: TM2 2.1
 
 ## TM2 Kapitel 3 · Verzerrungen und Hookesches Gesetz
 
@@ -313,6 +353,11 @@ Abbildung: tm2k3_dms_anordnung
 Bei isotropem Material ja. Ohne Schubspannung gibt es keine Gleitung, also sind die Richtungen ohne Schub in beiden Fällen dieselben.
 Quelle: TM2 3.3
 Abbildung: tm2k3_dms_anordnung
+
+
+### Zeichne die Begriffslandkarte zu Kapitel TM2 3 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Drei DMS-Richtungen liefern drei Gleichungen für die beiden Normaldehnungen und die Gleitung. Der Verzerrungskreis verwendet auf der vertikalen Achse die halbe Gleitung und liefert Hauptdehnungen samt Richtungen. Das Elastizitätsgesetz verbindet den Verzerrungszustand mit Spannungen; Material- und Temperaturannahmen müssen dazu passen.
+Quelle: TM2 3.1
 
 ## TM2 Kapitel 4 · Biegung
 
@@ -365,6 +410,11 @@ Quelle: TM2 4.4
 Bei linear elastischem Verhalten darf man Lastfälle einzeln berechnen, zum Beispiel aus der Biegelinientabelle, und die Durchbiegungen addieren. Das spart das Integrieren für jeden Fall.
 Quelle: TM2 4.4
 
+
+### Zeichne die Begriffslandkarte zu Kapitel TM2 4 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Der Schwerpunkt legt gemeinsame Bezugsachsen fest. Steiner führt Eigenmomente der Teilflächen auf diese Achsen; Aussparungen werden abgezogen. Flächenträgheitsmoment und Randabstand ergeben das Widerstandsmoment für die Biegespannung. Die Biegesteifigkeit aus E und I bestimmt zusammen mit Momentenverlauf und Randbedingungen die Verformung; passende lineare Tafelfälle lassen sich überlagern.
+Quelle: TM2 4.2
+
 ## TM2 Kapitel 5 · Torsion
 
 ### Wie ist die Schubspannung bei Torsion einer Vollwelle verteilt?
@@ -402,3 +452,8 @@ Abbildung: ak_2018_torsion
 ### Welche zwei Nachweise führt man bei Torsion?
 Den Spannungsnachweis ($tau_max <= tau_"zul"$) und den Verformungsnachweis (Verdrehwinkel ≤ zulässig). Beide getrennt, denn ein Bauteil kann fest genug, aber zu weich sein, oder umgekehrt.
 Quelle: TM2 5.1
+
+### Zeichne die Begriffslandkarte zu Kapitel TM2 5 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Das Gleichgewicht liefert das Torsionsmoment. Die Querschnittsform entscheidet zwischen Kreisformeln, geschlossenem dünnwandigem Profil und offenem Streifenmodell. Das Widerstandsmoment bestimmt die Schubspannung, die Torsionssteifigkeit die Verdrehung. Bei geschlossenen Profilen zählt die umschlossene Wandmittellinienfläche; ein Schlitz ändert das Modell grundlegend.
+Quelle: TM2 5.1
+

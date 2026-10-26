@@ -52,6 +52,43 @@
 }
 #let th(..cells) = table.header(..cells.pos().map(c => table.cell(fill: pale)[#strong(c)]))
 
+// ─── Überblick-Ebenen und Chunkmaps (in allen Modulen gleich) ─────────────────
+// Ebene 0: Seite „Das Modul auf einen Blick“ nach dem Wegweiser (Label <ueberblick>).
+// Ebene 1: unter jeder Kapitelüberschrift (Label <a-n>) #überblick mit #idee-Links und eine #karte oder ein #ablauf.
+// Ebene 2: die Abschnitte; am Ende jedes Abschnitts #hoch(<a-n>, [Kapitelübersicht]).
+// Die Kästen sind keine Überschriften: Inhaltsverzeichnis und PDF-Lesezeichen bleiben unverändert.
+#let chunk(titel, begriffe, ziel: none, fill: pale, stroke: navy) = {
+  let kasten = block(width: 100%, fill: fill, stroke: 0.6pt + stroke, radius: 4pt, inset: (x: 6pt, y: 5pt), breakable: false)[
+    #set par(leading: 0.35em, spacing: 0.35em, justify: false)
+    #set text(hyphenate: true)
+    #text(size: 9pt, weight: "bold", fill: navy, titel)
+    #if begriffe != none [#parbreak() #text(size: 7.8pt, fill: muted, begriffe)]
+  ]
+  if ziel == none { kasten } else { link(ziel, kasten) }
+}
+#let pfeil(beschriftung: none, zeichen: sym.arrow.r) = align(center + horizon, stack(dir: ttb, spacing: 2pt,
+  ..(if beschriftung != none { (text(size: 6.8pt, fill: teal, beschriftung),) } else { () }),
+  text(size: 13pt, fill: teal, zeichen)))
+// Chunkmap als Raster: #karte((1fr, auto, 1fr), chunk(..), pfeil(..), chunk(..))
+#let karte(spalten, ..zellen) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em,
+  grid(columns: spalten, column-gutter: 3pt, row-gutter: 7pt, align: center + horizon, ..zellen))
+// Flussdiagramm von oben nach unten: #ablauf(chunk(..), entscheidung(..), chunk(..))
+#let ablauf(breite: 80%, ..schritte) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em, align(center,
+  stack(dir: ttb, spacing: 2pt, ..schritte.pos().enumerate().map(((i, x)) =>
+    (if i > 0 { (text(size: 12pt, fill: teal, sym.arrow.b),) } else { () }) + (block(width: breite, x),)).flatten())))
+#let entscheidung(frage, ja, nein) = stack(dir: ttb, spacing: 3pt,
+  chunk(frage, none, fill: sand, stroke: teal),
+  grid(columns: (1fr, 1fr), column-gutter: 8pt,
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *ja*]) #ja],
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *nein*]) #nein]))
+#let idee(ziel, kern, satz) = [#link(ziel)[#text(fill: teal, weight: "bold", kern)] #satz]
+#let überblick(titel, ..ideen) = block(width: 100%, fill: pale, inset: (x: 9pt, y: 7pt), above: 0.6em, below: 0.6em, breakable: false)[
+  #text(fill: navy, weight: "bold", titel)
+  #set list(marker: text(fill: teal, sym.arrow.r), spacing: 0.45em)
+  #list(..ideen.pos())
+]
+#let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
+
 #let abbildungen = (
   "map-klausur-torsion": "abbildungen/map-klausur-torsion.svg",
   "map-klausur-dms": "abbildungen/map-klausur-dms.svg",
@@ -1268,7 +1305,62 @@ Diese Fassung konzentriert sich auf deine Themenliste „Klausur TM“, die neu 
 Die älteren Klausuren bestätigen wiederkehrende Aufgabenmuster; einige stammen aus anderen Studiengängen und von anderen Prüfern. Deine undatierte Themenliste ist die Arbeitsgrundlage, keine verbindliche Zusage für den Zweitversuch. Dessen Termin, Dauer und erlaubte Hilfsmittel sind weiter offen.
 #src[KH S. 1; P1 S. 1 und 50; AK24 S. 1, 18–26; ältere Klausurköpfe.]
 #pagebreak()
+#heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
+
+Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zusammenhängen.
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([TM1 Kapitel 1 · Das Werkzeug für Klausuraufgaben], [Freischnitt · Komponenten · Hebelarm · Gleichgewicht], ziel: <k-tm1-1>),
+  pfeil(beschriftung: [bereitet Lastmodelle vor für]),
+  chunk([TM1 Kapitel 4 · Streckenlasten und Schwerpunkt], [Streckenlast · Resultierende · Angriffspunkt · Schwerpunkt], ziel: <k-tm1-4>),
+  pfeil(beschriftung: [liefert Ersatzlasten für]),
+  chunk([TM1 Kapitel 5 · Lagerreaktionen und statische Bestimmtheit], [Lagerwertigkeit · Teilkörper · Bestimmtheit · Gelenkkräfte], ziel: <k-tm1-5>),
+)
+#align(center)[#text(size: 8pt, fill: teal)[↓ liefert Lagerkräfte für]]
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([TM1 Kapitel 6 · Fachwerke: Nullstäbe und Ritterschnitt], [Fachwerkmodell · Nullstäbe · Knotenverfahren · Ritterschnitt], ziel: <k-tm1-6>),
+  pfeil(beschriftung: [verbindet innere Kräfte mit]),
+  chunk([TM1 Kapitel 7 · Schnittgrößen punktweise bestimmen], [Schnittufer · Normalkraft · Querkraft · Moment · Sprünge], ziel: <k-tm1-7>),
+  pfeil(beschriftung: [ergänzt um Kontaktgrenzen]),
+  chunk([TM1 Kapitel 9 · Haftreibung als kurzer Klausurbaustein], [Kontakt · Normalkraft · Haftreibung · Grenzfall], ziel: <k-tm1-9>),
+)
+#align(center)[#text(size: 8pt, fill: teal)[↓ weiter mit Spannung und Verformung]]
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([TM2 Kapitel 1 · Zug, Druck und Wärmedehnung], [Normalkraft · Spannung · Dehnung · Wärme · Verträglichkeit], ziel: <k-tm2-1>),
+  pfeil(beschriftung: [erweitert auf mehrere Richtungen]),
+  chunk([TM2 Kapitel 2 · Spannungszustand und Mohrscher Kreis], [Spannungstensor · Achsendrehung · Hauptspannung · Mohr], ziel: <k-tm2-2>),
+  pfeil(beschriftung: [wird über Stoffgesetze verknüpft mit]),
+  chunk([TM2 Kapitel 3 · Dehnungen, Elastizitätsgesetz und DMS], [DMS · Dehnung · halbe Gleitung · Hauptwerte · Stoffgesetz], ziel: <k-tm2-3>),
+)
+#align(center)[#text(size: 8pt, fill: teal)[↓ liefert Verformungsgrundlagen für]]
+#karte((1fr, auto, 1fr),
+  chunk([TM2 Kapitel 4 · Biegung, FTM und Biegelinie], [Schwerpunkt · Steiner · Flächenträgheitsmoment · Biegespannung · Biegelinie], ziel: <k-tm2-4>),
+  pfeil(beschriftung: [ergänzt Biegung um Verdrehung]),
+  chunk([TM2 Kapitel 5 · Torsion: Spannung und Verdrehung], [Torsionsmoment · Profilform · Schubspannung · Torsionssteifigkeit · Verdrehung], ziel: <k-tm2-5>),
+)
+
+Der Freischnitt macht äußere Lasten und unbekannte Reaktionen sichtbar. Gleichgewicht liefert Lagerkräfte, Stabkräfte und Schnittgrößen; Schwerpunkt und Reibung ergänzen die passenden Last- und Kontaktmodelle. TM2 übersetzt diese Kräfte in Spannungen und Verformungen. Stoffgesetze, Querschnittswerte und Verträglichkeit verbinden Zug, Biegung und Torsion zu einem prüfbaren Bauteilmodell.
+#src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
+
+#pagebreak()
+
+#pagebreak(weak: true)
 = TM1 Kapitel 1 · Das Werkzeug für Klausuraufgaben <k-tm1-1>
+
+#überblick([Kapitel TM1 1 auf einen Blick],
+  idee(<a-tm1-1-6>, [Der Freischnitt kommt zuerst.], [Jede entfernte Bindung wird durch ihre Wirkung auf den betrachteten Körper ersetzt.]),
+  idee(<a-tm1-1-3>, [Die Skizze legt Komponenten und Vorzeichen fest.], [Winkelbezug und einheitliche Einheiten gehören zum Ansatz.]),
+  idee(<a-tm1-1-4>, [Gleichgewicht verhindert Verschieben und Drehen.], [Kraftsummen und Momentensumme liefern die drei ebenen Bedingungen.]),
+)
+
+#ablauf(
+  chunk([Körper freischneiden], [Lasten und Bindungsreaktionen eintragen], ziel: <a-tm1-1-6>),
+  chunk([Achsen und Hebelarme wählen], [Kräfte zerlegen · Vorzeichen festlegen], ziel: <a-tm1-1-3>),
+  chunk([Gleichgewicht aufstellen], [zwei Kraftsummen · eine Momentensumme], ziel: <a-tm1-1-4>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Du brauchst einen sicheren Umgang mit Kraftkomponenten, Momenten und Freikörperbildern. Diese Grundlagen werden hier unmittelbar für Lager-, Fachwerk- und Schnittgrößenaufgaben eingesetzt.
 
 == 1.3 Kräfte zerlegen und Einheiten wählen <a-tm1-1-3>
@@ -1278,6 +1370,8 @@ $alpha$ ist hier der Winkel zur positiven $x$-Achse. Die Vorzeichen folgen der P
 #bild("tm1k2_mitschrift_zerlegung", [Zerlegung entlang zweier Wirkungslinien; deine Mitschrift, Skript TM1 PDF-S. 69 oben.], height: 45mm)
 #note("Fehler vermeiden", [Schreibe nicht pauschal „horizontal immer Kosinus“. Liegt der Winkel zur Senkrechten, tauschen Sinus und Kosinus ihre Rollen. Rechne Statik z. B. mit kN und m, Festigkeitslehre mit N und mm: $1 "kNm" = 10^6 "Nmm"$.])
 #src[FS TM1 S. 8, 14–15; Skript TM1 S. 69–71; AK24 S. 8–9. Eigene Erklärung.]
+#hoch(<k-tm1-1>, [Kapitelübersicht])
+
 == 1.4 Momente und Gleichgewicht <a-tm1-1-4>
 Eine Tür öffnet sich durch den Hebelarm. Für das Moment zählt der *senkrechte Abstand* von der Wirkungslinie zum Bezugspunkt, nicht irgendeine eingezeichnete Länge.
 #form[$ M_((P)) = F d, quad sum F_x = 0, quad sum F_y = 0, quad sum M_((P)) = 0 $]
@@ -1285,6 +1379,8 @@ $d$ in m bzw. mm, $M$ in Nm bzw. Nmm. In der Ebene stehen pro freiem starren Kö
 #bild("tm1k01_momentdarst", [Kräfte und Momente am Ersatzmodell; Skript TM1 PDF-S. 20 unten.], height: 42mm)
 #note("Selbst erklären", [Warum ist $sum F_y=0$ allein kein Gleichgewicht? Zwei entgegengesetzte, versetzte Kräfte können die Kraftsumme null haben und trotzdem ein Drehmoment erzeugen.])
 #src[FS TM1 S. 21–24; Skript TM1 S. 20, 23–24, 99–109.]
+#hoch(<k-tm1-1>, [Kapitelübersicht])
+
 == 1.6 Freischneiden <a-tm1-1-6>
 Beim *Freischneiden* entfernst du eine Verbindung und zeichnest ihre Wirkung als Kraft oder Moment ein. Das Freikörperbild enthält nur Kräfte, die auf den betrachteten Körper wirken.
 #bild("tm1k01_gerber_frei", [Freischnitt eines mehrteiligen Systems; Skript TM1 PDF-S. 34.], height: 48mm)
@@ -1297,9 +1393,29 @@ Beim *Freischneiden* entfernst du eine Verbindung und zeichnest ihre Wirkung als
 #src[Skript TM1 S. 30–34; FS TM1 S. 10–11, 16–19; KH S. 1.]
 #bild("map-klausur-tm1", [Mindmap: Werkzeuge der Statik. Eigene Darstellung.], height: 43mm)
 *Der Zusammenhang in Kapitel 1.* Die Skizze bestimmt die Kraftkomponenten und Hebelarme. Der Freischnitt macht alle unbekannten Reaktionen sichtbar. Erst danach liefern die drei Gleichgewichtsbedingungen eine prüfbare Rechnung.
+#hoch(<k-tm1-1>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM1 Kapitel 4 · Streckenlasten und Schwerpunkt <k-tm1-4>
+
+#überblick([Kapitel TM1 4 auf einen Blick],
+  idee(<a-tm1-4-1-2>, [Die Lastfläche liefert die Resultierende.], [Ihr Schwerpunkt bestimmt den momentengleichen Angriffspunkt.]),
+  idee(<a-tm1-4-2-3>, [Teilflächen werden gewichtet zusammengeführt.], [Aussparungen zählen mit negativem Vorzeichen.]),
+  idee(<a-tm1-4-2-3>, [Der Gesamtschwerpunkt bestimmt die Bezugsachsen.], [Abstände der Teilflächen zu diesen Achsen werden später für Steiner gebraucht.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Verteilung zerlegen], [Lastdiagramm oder Teilflächen], ziel: <a-tm1-4-1-2>),
+  pfeil(beschriftung: [liefert Beiträge für]),
+  chunk([Gewichtete Summe], [Beträge · Schwerpunktlagen], ziel: <a-tm1-4-2-3>),
+  pfeil(beschriftung: [bestimmt]),
+  chunk([Resultierende Lage], [Lastangriff oder Flächenschwerpunkt], ziel: <a-tm1-4-2-3>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Eine verteilte Last lässt sich für das äußere Gleichgewicht durch eine Einzelkraft ersetzen. Dieselbe Schwerpunktidee wird später für Querschnitte und Flächenträgheitsmomente gebraucht.
 
 == 4.1 Resultierende einer Streckenlast <a-tm1-4-1-2>
@@ -1315,6 +1431,8 @@ $q$ in N/m, $F_R$ in N, $x_R$ in m. Die Resultierende ersetzt die Last für Krä
 #note("Anwendung auf AK24", [Oben: $F_(R 1)=q_0 dot 4a$, Angriff $2a$ rechts von A. Seitlich: $F_(R 2)=q_0 dot 6a/2=3q_0a$, Angriff $2a$ oberhalb von M. Die seitliche Last wirkt horizontal und erzeugt deshalb Momente mit *vertikalen* Hebelarmen.])
 #note("Fehler vermeiden", [Beim Schnitt *innerhalb* einer Streckenlast ersetzt du nur den verbleibenden Lastabschnitt. Bei einer Dreieckslast ändern sich dabei sowohl die Breite als auch die lokale Lasthöhe.])
 #src[FS TM1 S. 25–26; P1 S. 1, Aufgabe 6.4; AK24 S. 1, 3–4.]
+#hoch(<k-tm1-4>, [Kapitelübersicht])
+
 == 4.2 Flächenschwerpunkt <a-tm1-4-2-3>
 Ein Querschnitt wird in einfache Teilflächen zerlegt. Aussparungen zählen als negative Fläche. Ein Hilfsachsensystem hält die Rechnung übersichtlich.
 #form[$ y'_S = frac(sum A_i y'_(S i),sum A_i), quad z'_S = frac(sum A_i z'_(S i),sum A_i) $]
@@ -1328,9 +1446,30 @@ $A_i$ in mm², Koordinaten in mm. Die Summe der Teilflächen muss die tatsächli
 #src[FS TM1 S. 27; P1 S. 1–5; neue Notiz „Flächenträgheitsmomente und Flächenschwerpunkt“, S. 1; FS TM2 S. 24–26.]
 #bild("map-klausur-schwerpunkt", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 4.* Für Lasten wird eine verteilte Kraft durch Fläche und Schwerpunkt zusammengefasst. Für Querschnitte liefert dieselbe gewichtete Mittelung den Gesamtschwerpunkt. Die Abstände zu diesem Punkt werden in TM2 zum entscheidenden Bestandteil der FTM-Rechnung.
+#hoch(<k-tm1-4>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM1 Kapitel 5 · Lagerreaktionen und statische Bestimmtheit <k-tm1-5>
+
+#überblick([Kapitel TM1 5 auf einen Blick],
+  idee(<a-tm1-5-1>, [Jede gesperrte Bewegung erzeugt eine Reaktion.], [Die Lagerart bestimmt Zahl und Richtung der Unbekannten.]),
+  idee(<a-tm1-5-3-2>, [Abzählen ist erst die erste Prüfung.], [Zusätzlich muss die Geometrie eine freie Bewegung verhindern.]),
+  idee(<a-tm1-5-3-3>, [Teilkörper machen Gelenkkräfte berechenbar.], [An beiden Gelenkseiten wirken sie gleich groß und entgegengesetzt.]),
+  idee(<a-tm1-5-4>, [Das Gesamtsystem kontrolliert die Lösung.], [Innere Gelenkkräfte heben sich dort auf.]),
+)
+
+#ablauf(
+  chunk([Lager und Teilkörper erfassen], [Unbekannte · Bindungen · Geometrie], ziel: <a-tm1-5-1>),
+  entscheidung([Ist die Lagerung geometrisch wirksam und statisch bestimmt?],
+    chunk([Teilkörper freischneiden], [Lager- und Gelenkreaktionen ansetzen], ziel: <a-tm1-5-3-3>),
+    chunk([Modell erneut einordnen], [Beweglichkeit oder zusätzliche Verformungsbedingungen prüfen], ziel: <a-tm1-5-3-2>)),
+  chunk([Gleichgewichte lösen und kontrollieren], [Momentenbezug wählen · Gesamtsystem prüfen], ziel: <a-tm1-5-4>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Hier beginnt die große Statikaufgabe: Bindungen erkennen, Körper zählen, Lasten ersetzen und Gleichgewicht aufstellen. Bei mehreren Körpern werden die Gelenkkräfte ausdrücklich mitgerechnet.
 
 == 5.1 Lager und ihre Wertigkeit <a-tm1-5-1>
@@ -1346,6 +1485,8 @@ Die *Wertigkeit* sagt, wie viele unabhängige Bewegungen ein Lager verhindert un
 #bild("tm1k2_lager1", [Festlager, Gelenk und Kontakt mit Reibung; Skript TM1 PDF-S. 76 unten. Weitere Lager: FS TM1 PDF-S. 18–19.], height: 55mm)
 #note("Fehler vermeiden", [Ein seitliches Loslager liefert eine *horizontale* Kraft. Die Pfeilrichtung richtet sich nach der Auflagefläche. „Festlager“ und „feste Einspannung“ sind verschiedene Bindungen.])
 #src[FS TM1 S. 18–19, 30–32; Skript TM1 S. 76, 148–159, 174–177.]
+#hoch(<k-tm1-5>, [Kapitelübersicht])
+
 == 5.3 Mehrteilige Tragwerke <a-tm1-5-3>
 === 5.3.2 Statische Bestimmtheit <a-tm1-5-3-2>
 Ein ebener starrer Körper besitzt drei Freiheitsgrade. Nach dem Trennen in $n$ Körper brauchst du entsprechend drei Gleichgewichtsbedingungen je Körper.
@@ -1365,6 +1506,8 @@ $r$ = Anzahl äußerer Lagerunbekannter, $v$ = Anzahl innerer Verbindungsunbekan
 + Mit dem Gesamtsystem kontrollieren: Innere Gelenkkräfte heben sich dort auf.
 #note("Einfrieren des Fachwerks", [Für die *äußeren* Lager- und Gelenkkräfte darfst du das geometrisch stabile Fachwerk als starre Scheibe betrachten. Erst danach löst du es in einzelne Stäbe auf. Genau so ist AK24 Aufgabe 1 aufgebaut.])
 #src[FS TM1 S. 32; AK24 S. 1, 3–7.]
+#hoch(<k-tm1-5>, [Kapitelübersicht])
+
 == 5.4 Ergänzung: Rechenweg aus SS 2023/24 <a-tm1-5-4>
 #bild("ak24-system", [AK24 PDF-S. 1, 3–5; eigene Darstellung.], height: 67mm)
 Das System hat zwei Teilkörper: den T-Träger und die Scheibe. B und D sind einwertig, C zweiwertig, G überträgt zwei Gelenkkräfte. *$r=4$, $v=2$, $n=2$*, also $4+2=3 dot 2$. Die horizontalen Lager B und D liegen auf verschiedenen Höhen; zusammen mit C ist das System unbeweglich.
@@ -1372,9 +1515,29 @@ Das System hat zwei Teilkörper: den T-Träger und die Scheibe. B und D sind ein
 #bild("map-klausur-lager", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 5.* Lager bestimmen die unbekannten Reaktionen, die Abzählung prüft den Ansatz und die Geometrie dessen Wirksamkeit. Teilkörpergleichgewichte liefern die Gelenkkräfte. Mit genau diesen Reaktionen beginnt die Schnittgrößenrechnung.
 #src[AK24 S. 1–7; FS TM1 S. 30–32. Eigene, nachgerechnete Aufbereitung.]
+#hoch(<k-tm1-5>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM1 Kapitel 6 · Fachwerke: Nullstäbe und Ritterschnitt <k-tm1-6>
+
+#überblick([Kapitel TM1 6 auf einen Blick],
+  idee(<a-tm1-6-1>, [Das Idealmodell kennt nur Stabzug und Stabdruck.], [Lasten greifen an Knoten an und die Stäbe sind zwischen den Knoten unbelastet.]),
+  idee(<a-tm1-6-3-1>, [Nullstabregeln vereinfachen den Lastfall.], [Ein kraftloser Stab kann trotzdem für andere Lasten oder die Stabilität gebraucht werden.]),
+  idee(<a-tm1-6-3-3>, [Das Ziel bestimmt den Freischnitt.], [Knotenverfahren und Ritterschnitt verwenden dasselbe Gleichgewicht an verschiedenen Teilsystemen.]),
+)
+
+#ablauf(
+  chunk([Modell und Lagerkräfte prüfen], [ideale Gelenkstäbe · geometrische Stabilität], ziel: <a-tm1-6-1>),
+  chunk([Nullstäbe erkennen], [Knotensituation für diesen Lastfall beurteilen], ziel: <a-tm1-6-3-1>),
+  entscheidung([Ist eine gezielte Stabkraft über einen geeigneten Schnitt erreichbar?],
+    chunk([Ritterschnitt], [bis zu drei unabhängige unbekannte Stabkräfte], ziel: <a-tm1-6-3-3>),
+    chunk([Knotenverfahren], [am Knoten mit höchstens zwei Unbekannten beginnen], ziel: <a-tm1-6-3-1>)),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Die Lagerkräfte stammen aus dem eingefrorenen Gesamtsystem. Im idealen Fachwerk übertragen gelenkig verbundene Stäbe nur Zug oder Druck; gesucht sind daher skalare Stabkräfte entlang der Stäbe.
 
 == 6.1 Modell und statische Bestimmtheit <a-tm1-6-1>
@@ -1382,6 +1545,8 @@ Die idealen Stäbe sind gerade, an den Enden gelenkig verbunden und zwischen den
 #form[$ s+r=2k $]
 $s$ = Stäbe, $r$ = äußere Reaktionen, $k$ = Knoten. Auch diese Abzählbedingung ist notwendig, aber keine Garantie für geometrische Stabilität.
 #src[FS TM1 S. 33–35; Skript TM1 S. 194–201.]
+#hoch(<k-tm1-6>, [Kapitelübersicht])
+
 == 6.3 Nullstäbe und Stabkräfte <a-tm1-6-3>
 === 6.3.1 Nullstabregeln und Knotenverfahren <a-tm1-6-3-1>
 #tab(columns: (0.4fr, 2fr, 1.4fr), th([Regel], [Knotensituation], [Folgerung]),
@@ -1403,9 +1568,27 @@ Ein *Ritterschnitt* trennt das Fachwerk durch höchstens drei unbekannte Stäbe.
 #src[FS TM1 S. 35; P1 S. 22–24, Aufgabe 9.1; AK24 S. 13, 15–16.]
 #bild("map-klausur-fachwerk", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 6.* Das Fachwerk wird für Lagerkräfte als Ganzes betrachtet, für Stabkräfte gezielt zerlegt. Nullstabregeln vereinfachen das System. Knotenverfahren und Ritterschnitt nutzen dasselbe Gleichgewicht in unterschiedlich großen Teilsystemen.
+#hoch(<k-tm1-6>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM1 Kapitel 7 · Schnittgrößen punktweise bestimmen <k-tm1-7>
+
+#überblick([Kapitel TM1 7 auf einen Blick],
+  idee(<a-tm1-7-1>, [Die Bezugsfaser legt die Vorzeichen fest.], [Normalkraft, Querkraft und Moment werden am gewählten Schnittufer eingetragen.]),
+  idee(<a-tm1-7-2-6>, [Ein Schnitt macht innere Kräfte zu äußeren Kräften.], [Am einfacheren Teilkörper liefert Gleichgewicht die gesuchten Werte.]),
+  idee(<a-tm1-7-3>, [Die Belastung bestimmt den Verlauf.], [Streckenlast, Einzelkraft und Einzelmoment erzeugen unterschiedliche Steigungen oder Sprünge.]),
+)
+
+#ablauf(
+  chunk([Reaktionen und Bezugsfaser übernehmen], [richtigen Lastfall verwenden], ziel: <a-tm1-7-1>),
+  chunk([Links oder rechts der Zielstelle schneiden], [einfacheren Teilkörper wählen · N, Q und M eintragen], ziel: <a-tm1-7-2-6>),
+  chunk([Gleichgewicht und Verlauf prüfen], [Punktwerte · Sprünge · Randbedingungen], ziel: <a-tm1-7-3>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Die Klausur nennt markante Stellen statt einer einzigen langen Funktion. Du bestimmst dort Normalkraft, Querkraft und Moment und verbindest die Werte anschließend mit dem passenden Verlauf.
 
 == 7.1 Schnittufer und Bezugsfaser <a-tm1-7-1>
@@ -1413,6 +1596,8 @@ Die *Normalkraft* $N$ wirkt entlang der Stabachse, die *Querkraft* $Q$ quer dazu
 #bild("tm1k01_mitschrift_schnitt", [Deine Mitschrift zum Schnittufer; Skript TM1 PDF-S. 32.], height: 58mm)
 Im geraden Balken zeigt $x$ entlang der Achse, $z$ zur vorgegebenen Bezugsfaser. Bei Rahmen drehst du dieses lokale System mit dem Stab. Die Pfeile an den beiden Schnittufern sind entgegengesetzt. Ein negativer Zahlenwert ändert die tatsächliche Richtung, nicht die festgelegte Konvention.
 #src[Skript TM1 S. 32, 214–225, 266–274; FS TM1 S. 36–37, 44–45.]
+#hoch(<k-tm1-7>, [Kapitelübersicht])
+
 == 7.2.6 Die punktweise Methode ★ <a-tm1-7-2-6>
 + Lager- und Gelenkreaktionen übernehmen oder vorher berechnen.
 + Schnitt *unmittelbar links oder rechts* der genannten Stelle setzen.
@@ -1421,6 +1606,8 @@ Im geraden Balken zeigt $x$ entlang der Achse, $z$ zur vorgegebenen Bezugsfaser.
 + Drei Gleichgewichte aufstellen und Vorzeichen mit der Bezugsfaser prüfen.
 #note("Von dir markiert", [In deinen Vorlesungsnotizen steht: „In der Prüfung Lager + Gelenkreaktionen bereits bestimmt. Schnittgrößen nur an markanten Stellen bestimmen.“ AK24 gibt für den geänderten Lastfall ebenfalls neue Reaktionen vor. Vermische diese nicht mit den zuvor selbst berechneten Reaktionen.])
 #src[Skript TM1 S. 259–263; KH S. 1; AK24 S. 5, 8–14.]
+#hoch(<k-tm1-7>, [Kapitelübersicht])
+
 == 7.3 Verläufe und Sprünge lesen <a-tm1-7-3>
 #form[$ Q'(x)=-q(x), quad M'(x)=Q(x) $]
 Für den geraden Balken mit der Vorlesungskonvention. Damit lassen sich die punktweisen Ergebnisse verbinden und kontrollieren:
@@ -1433,6 +1620,8 @@ Für den geraden Balken mit der Vorlesungskonvention. Damit lassen sich die punk
 An einem unbelasteten inneren Drehgelenk gilt $M=0$. Am Querkraftgelenk gilt $Q=0$; ein Moment kann dort übertragen werden. An einer Rahmenecke ändern sich die lokalen Richtungen: Global dieselbe Kraft kann im neuen Stab Normalkraft statt Querkraft sein.
 #note("Momentenextremum", [Im glatten Bereich liegen innere Extremstellen von $M$ dort, wo $Q=0$ und sein Vorzeichen wechselt. Prüfe zusätzlich Randstellen und Sprungstellen.])
 #src[FS TM1 S. 37–45; neue Lösung TM1 Nr. 10 S. 1–11; P1 S. 25–49.]
+#hoch(<k-tm1-7>, [Kapitelübersicht])
+
 == 7.4 Ergänzung: Seilrolle und markante Stellen in AK24 <a-tm1-7-4>
 #bild("ak24-fachwerk-schnitt", [AK24 PDF-S. 8, 10, 13; eigene Darstellung.], height: 72mm)
 An der Rolle A wirken $4F$ nach rechts und $8F$ nach unten. Für einen Schnitt im unbelasteten Abschnitt A–E gilt bei $x$ ab A:
@@ -1442,9 +1631,28 @@ Damit ist unmittelbar nach A $M=0$, unmittelbar vor E dagegen $M=-32F a$. Der Ve
 #src[AK24 S. 8–10, 13–14; eigene Nachrechnung.]
 #bild("map-klausur-schnitt", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 7.* Der Freischnitt liefert einzelne Werte, die lokale Faser liefert deren Vorzeichen. Die Beziehungen zwischen Last, Querkraft und Moment bestimmen, wie die Werte verbunden werden. Sprünge zeigen unmittelbar, welche Einzelkraft oder welches Einzelmoment eingeleitet wird.
+#hoch(<k-tm1-7>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM1 Kapitel 9 · Haftreibung als kurzer Klausurbaustein <k-tm1-9>
+
+#überblick([Kapitel TM1 9 auf einen Blick],
+  idee(<a-tm1-9-2>, [Haftreibung passt sich dem Bedarf an.], [Sie ist innerhalb der Haftgrenze keine fest vorgegebene Kraft.]),
+  idee(<a-tm1-9-2>, [Die Normalkraft begrenzt die Haftkraft.], [Der Reibwert verknüpft beide über die Haftbedingung.]),
+  idee(<a-tm1-9-2>, [Gleichheit gilt beim beginnenden Gleiten.], [Zuerst wird der nötige Reibkraftbetrag aus dem Gleichgewicht bestimmt.]),
+)
+
+#ablauf(
+  chunk([Kontakt freischneiden], [Normalkraft und erforderliche Reibkraft aus Gleichgewicht], ziel: <a-tm1-9-2>),
+  entscheidung([Liegt der erforderliche Betrag innerhalb der Haftgrenze?],
+    chunk([Haften möglich], [Gleichheit kennzeichnet den Grenzfall], ziel: <a-tm1-9-2>),
+    chunk([Haftmodell reicht nicht], [ruhendes Gleichgewicht unter diesen Annahmen nicht möglich], ziel: <a-tm1-9-2>)),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Die neue Sammlung enthält Übungsblatt 13; die älteren Klausuren fragen regelmäßig nach dem Grenzfall des Rutschens. Dafür genügen Freischnitt, Gleichgewicht und eine zusätzliche Haftbedingung.
 
 == 9.2 Haftbedingung und Grenzfall <a-tm1-9-2>
@@ -1456,9 +1664,28 @@ $mu_0$ ist dimensionslos, N und H sind Kräfte. Die Gleichheit gilt nur beim ger
 #src[FS TM1 S. 48–49; P1 S. 50, Übung 13; ältere Klausuren PrüfungenTM2 S. 3, 23, 26, 32/37 und TM_Prüfung_2018 S. 7.]
 #bild("map-klausur-haftung", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 9.* Das Gleichgewicht liefert die nötige Tangentialkraft. Die Haftgrenze entscheidet, ob der angenommene Ruhezustand möglich ist. Kontaktrichtung und drohende Bewegung müssen vor der Rechnung festgelegt werden.
+#hoch(<k-tm1-9>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM2 Kapitel 1 · Zug, Druck und Wärmedehnung <k-tm2-1>
+
+#überblick([Kapitel TM2 1 auf einen Blick],
+  idee(<a-tm2-1-1>, [Normalkraft wird über die Fläche zur Spannung.], [Das Stoffgesetz verbindet Spannung und elastische Dehnung.]),
+  idee(<a-tm2-1-4>, [Dehnung führt zur Längenänderung.], [Mechanischer und thermischer Anteil werden entsprechend dem Modell zusammengeführt.]),
+  idee(<a-tm2-1-6>, [Zusätzliche Bindungen brauchen Verträglichkeit.], [Die Verformungen müssen zu derselben geometrischen Lage passen.]),
+  idee(<a-tm2-1-7>, [Wärmedehnung kann eine Reaktionskraft erzeugen.], [Ein behinderter Stab und der angeschlossene Balken verformen sich gemeinsam.]),
+)
+
+#ablauf(
+  chunk([Normalkraft aus Gleichgewicht], [Fläche und Werkstoff erfassen], ziel: <a-tm2-1-1>),
+  chunk([Längenänderung aufstellen], [elastische Dehnung + Wärmeanteil], ziel: <a-tm2-1-4>),
+  chunk([Verträglichkeit schließen], [gemeinsame Anschlusslage von Stab und Umgebung], ziel: <a-tm2-1-6>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Aus der Normalkraft wird eine Spannung, aus Spannung und Temperaturänderung eine Dehnung. Bei zusätzlichen Bindungen reicht Gleichgewicht nicht: Die Bauteile müssen sich auch geometrisch miteinander vertragen.
 
 == TM2 1.1 Spannung, Dehnung und Stoffgesetz <a-tm2-1-1>
@@ -1467,11 +1694,15 @@ Zug ist positiv, Druck negativ. Für einen ausreichend schlanken Stab mit zentri
 $N$ in N, $A$ in mm², $sigma,E$ in N/mm², $alpha_T$ in 1/K, $epsilon$ dimensionslos. Das Stoffgesetz gilt linear elastisch; Temperaturausdehnung und mechanische Dehnung werden überlagert.
 #bild("ak_stab_ax", [Stab mit variablem Querschnitt; ältere Klausursammlung PrüfungenTM2 PDF-S. 12.], height: 40mm)
 #src[FS TM2 S. 4–8; P2 S. 1–10; AK24 S. 24.]
+#hoch(<k-tm2-1>, [Kapitelübersicht])
+
 == TM2 1.4 Längenänderung berechnen <a-tm2-1-4>
 #form[$ Delta l=integral_0^l (N(x)/(E(x) A(x))+alpha_T Delta T(x)) dif x $]
 Für konstante Größen vereinfacht sich das zu $Delta l=N l/(E A)+alpha_T Delta T l$. Bei mehreren Abschnitten werden deren Längenänderungen vorzeichenrichtig addiert. *Dehnung ist nicht Verschiebung*: Eine vorgegebene Einspannung legt erst die Integrationskonstante von u fest.
 #note("Fehler vermeiden", [Erwärmung erzeugt bei freier Ausdehnung zunächst keine Spannung. Wird die Ausdehnung behindert, muss die mechanische Dehnung die Bindung erfüllen; dadurch entsteht bei Erwärmung meist Druck.])
 #src[FS TM2 S. 5–10; P2 S. 4–10.]
+#hoch(<k-tm2-1>, [Kapitelübersicht])
+
 == TM2 1.6 Verträglichkeit bei statischer Unbestimmtheit <a-tm2-1-6>
 Die Zusatzgleichung stammt aus der *Verformung*. Beispiele: festgehaltene Gesamtlänge, gleiche Verschiebung zweier verbundener Teile oder ein ursprünglich vorhandener Spalt.
 + Überzählige Reaktion als unbekannte Kraft X einführen.
@@ -1480,6 +1711,8 @@ Die Zusatzgleichung stammt aus der *Verformung*. Beispiele: festgehaltene Gesamt
 + Geometrische Verträglichkeit aufstellen und X bestimmen.
 #note("Knicken erkennen", [Eine zulässige Druckspannung allein garantiert keine Sicherheit eines schlanken Stabes: Er kann seitlich ausknicken. Die älteren Klausuren fragen danach als Begriff. Eine vollständige Euler-Knickberechnung ist in deiner Themenliste nicht genannt.])
 #src[FS TM2 S. 8–10; P2 S. 7–10; ältere Klausuren PrüfungenTM2 S. 3, 12, 29 und TM_Prüfung_2018 S. 10.]
+#hoch(<k-tm2-1>, [Kapitelübersicht])
+
 == TM2 1.7 Ergänzung: Erwärmter Stab stützt einen Balken <a-tm2-1-7>
 #bild("ak24-waerme", [Klausurmodell AK24 PDF-S. 18 und 24. Eigene Darstellung.], height: 64mm)
 Der Stab will sich um $alpha_T Delta T a$ verlängern. Die positive Druckkraft X verkürzt ihn um $X a/(E A)$. Gleichzeitig biegt X das freie Balkenende nach oben um $X l^3/(3E I)$. Der gemeinsame Gelenkpunkt darf nur eine Lage haben:
@@ -1488,9 +1721,27 @@ Hier bezeichnet X den *positiven Betrag der Druckkraft*, die Stabnormalkraft lau
 #src[AK24 S. 18, 24; FS TM2 S. 8, 30, 46–47; eigene Herleitung und Nachrechnung.]
 #bild("map-klausur-stab", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in TM2 Kapitel 1.* Gleichgewicht liefert N, die Querschnittsfläche macht daraus Spannung. Das Stoffgesetz liefert die Dehnung und ihre Integration die Längenänderung. Zusätzliche Bindungen schließen die Rechnung durch Verträglichkeit.
+#hoch(<k-tm2-1>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM2 Kapitel 2 · Spannungszustand und Mohrscher Kreis <k-tm2-2>
+
+#überblick([Kapitel TM2 2 auf einen Blick],
+  idee(<a-tm2-2-1>, [Spannung gehört zu einer Schnittfläche.], [Normal- und Schubkomponenten beschreiben denselben örtlichen Zustand.]),
+  idee(<a-tm2-2-2>, [Eine Drehung ändert die Komponenten.], [In den Hauptrichtungen verschwindet die Schubspannung.]),
+  idee(<a-tm2-2-2-3>, [Der Mohrsche Kreis macht die Transformation sichtbar.], [Kreiswinkel und Bauteilwinkel sind mit der festgelegten Konvention zuzuordnen.]),
+)
+
+#ablauf(
+  chunk([Spannungskomponenten erfassen], [Normalspannungen · Schubspannung · Vorzeichen], ziel: <a-tm2-2-1>),
+  chunk([Kreis oder Transformation verwenden], [Mittelpunkt · Radius · doppelter Winkel], ziel: <a-tm2-2-2-3>),
+  chunk([Hauptwerte und Richtungen prüfen], [Schubspannung null · räumliches Schubmaximum gesondert prüfen], ziel: <a-tm2-2-2>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Ein schräger Schnitt durch dasselbe Bauteil zeigt andere Normal- und Schubspannungen. Du suchst die größten Werte, ihre Richtungen und eine zeichnerische Kontrolle.
 
 == TM2 2.1 Der ebene Spannungszustand <a-tm2-2-1>
@@ -1498,6 +1749,8 @@ Im dünnen Blech werden die Spannungen senkrecht zur Oberfläche näherungsweise
 #form[$ S=mat(sigma_x,tau_(x y);tau_(x y),sigma_y) $]
 Alle Einträge in N/mm². Normalspannungen wirken senkrecht auf die Schnittfläche, Schubspannungen tangential. Die beiden Nebendiagonaleinträge sind wegen des Momentengleichgewichts gleich.
 #src[FS TM2 S. 11–12; neue Lösungen TM2 Nr. 5 S. 1–5.]
+#hoch(<k-tm2-2>, [Kapitelübersicht])
+
 == TM2 2.2 Transformation und Hauptspannungen <a-tm2-2-2>
 Bei einer Drehung des Achsensystems um $phi$ gilt:
 #form[$ sigma_xi=(sigma_x+sigma_y)/2+(sigma_x-sigma_y)/2 cos(2phi)+tau_(x y) sin(2phi) $
@@ -1507,6 +1760,8 @@ In den *Hauptrichtungen* ist die Schubspannung null. Die beiden Hauptspannungen 
 $phi^*$ allein bestimmt noch nicht, welche Hauptspannung zu der Richtung gehört: in die Transformationsgleichung einsetzen. Die zweite Hauptrichtung liegt um 90° versetzt.
 #note("Schubmaximum richtig benennen", [Der Radius des *ebenen* Kreises ist $tau_("max, Ebene")=(sigma_1-sigma_2)/2$. Für das absolute räumliche Maximum müssen alle drei Hauptspannungen betrachtet werden, im ebenen Spannungszustand also zusätzlich $sigma_3=0$: $tau_("max, räumlich")=(sigma_("größte")-sigma_("kleinste"))/2$.])
 #src[FS TM2 S. 12–15; neue Lösung TM2 Nr. 6 S. 1–5.]
+#hoch(<k-tm2-2>, [Kapitelübersicht])
+
 == TM2 2.2.3 Mohrschen Spannungskreis zeichnen ★ <a-tm2-2-2-3>
 #bild("tm2k2_fs_kreis", [Spannungskreis; FS TM2 PDF-S. 15.], height: 56mm)
 + $sigma$ waagerecht, $tau$ senkrecht mit *gleichem Maßstab* einzeichnen.
@@ -1518,9 +1773,27 @@ $phi^*$ allein bestimmt noch nicht, welche Hauptspannung zu der Richtung gehört
 #src[FS TM2 S. 13–15; WZF 04.05.26 S. 5–6; KH S. 1; AK24 S. 24–25.]
 #bild("map-klausur-tm2", [Mindmap: die Aufgabenbausteine der Elastostatik. Eigene Darstellung.], height: 43mm)
 *Der Zusammenhang in TM2 Kapitel 2.* Der Tensor beschreibt den örtlichen Zustand. Die Drehung verändert seine Komponenten, aber nicht seine Hauptwerte. Die Formeln und der Kreis sind zwei Wege zu denselben Spannungen und Richtungen.
+#hoch(<k-tm2-2>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM2 Kapitel 3 · Dehnungen, Elastizitätsgesetz und DMS <k-tm2-3>
+
+#überblick([Kapitel TM2 3 auf einen Blick],
+  idee(<a-tm2-3-3>, [Ein DMS misst eine Richtungsdehnung.], [Drei Messrichtungen liefern die Komponenten des ebenen Verzerrungszustands.]),
+  idee(<a-tm2-3-1>, [Im Verzerrungskreis steht die halbe Gleitung.], [Einheiten und Skalierung aller Messwerte müssen zusammenpassen.]),
+  idee(<a-tm2-3-2>, [Das Stoffgesetz führt von Dehnung zu Spannung.], [Materialannahmen und thermische Dehnung bestimmen die gültige Umrechnung.]),
+)
+
+#ablauf(
+  chunk([Messrichtungen und Werte lesen], [Winkel · Einheiten · Temperaturanteil], ziel: <a-tm2-3-3>),
+  chunk([Verzerrungszustand bestimmen], [Normaldehnungen und Gleitung · Kreis mit halber Gleitung], ziel: <a-tm2-3-1>),
+  chunk([Spannungen berechnen], [Elastizitätsgesetz mit passenden Voraussetzungen], ziel: <a-tm2-3-2>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Dehnmessstreifen messen Längenänderungen in bestimmten Richtungen. Aus drei Messungen berechnest du den ebenen Verzerrungszustand und daraus mit dem Werkstoffgesetz die Spannungen.
 
 == TM2 3.1 Dehnung und halbe Gleitung <a-tm2-3-1>
@@ -1532,6 +1805,8 @@ Im *Mohrschen Verzerrungskreis* wird $sigma$ durch $epsilon$ ersetzt, $tau$ aber
 Für den Kreis trägst du $P=(epsilon_x,gamma/2)$ und $P'=(epsilon_y,-gamma/2)$ ein. Auch hier gelten gleicher Maßstab, halber Bauteilwinkel und entgegengesetzter Drehsinn.
 #note("Fehler vermeiden", [$1 "‰"=10^(-3)$, $1 "%"=10^(-2)$, $1 "µm/m"=10^(-6)$. Wenn du mit Promille rechnest, müssen *alle* Dehnungen und die Gleitung in derselben Skalierung stehen. Für das Hookesche Gesetz wieder die dimensionslosen Zahlen verwenden.])
 #src[FS TM2 S. 17–18; neue Lösung TM2 Nr. 8 S. 1–7; KH S. 1.]
+#hoch(<k-tm2-3>, [Kapitelübersicht])
+
 == TM2 3.2 Von Dehnungen zu Spannungen <a-tm2-3-2>
 Im linear elastischen, isotropen Material mit ebenem Spannungszustand und ohne Temperaturanteil gilt:
 #form[$ epsilon_x=(sigma_x-nu sigma_y)/E, quad epsilon_y=(sigma_y-nu sigma_x)/E, quad gamma_(x y)=tau_(x y)/G, quad G=E/(2(1+nu)) $]
@@ -1540,6 +1815,8 @@ Umgekehrt:
 Dieselben Formeln gelten in Hauptachsen mit Indizes 1 und 2. Bei Temperaturänderung zunächst die freie thermische Dehnung $alpha_T Delta T$ aus beiden Normaldehnungen abziehen.
 #note("Dritte Dehnung", [Auch bei $sigma_z=0$ ist $epsilon_z=-nu(sigma_x+sigma_y)/E$ im Allgemeinen nicht null. Das ist Querkontraktion. Ein *ebener Spannungszustand* ist deshalb kein ebener Verzerrungszustand.])
 #src[FS TM2 S. 19–21; neue Lösungen TM2 Nr. 5 und 8; ältere Klausur TM_Prüfung_2018 S. 11.]
+#hoch(<k-tm2-3>, [Kapitelübersicht])
+
 == TM2 3.3 DMS-Rosetten auswerten ★ <a-tm2-3-3>
 Ein DMS misst die Dehnung entlang seiner Messrichtung. Für einen Winkel $phi$ gegen die x-Achse gilt:
 #form[$ epsilon_phi=(epsilon_x+epsilon_y)/2+(epsilon_x-epsilon_y)/2 cos(2phi)+gamma_(x y)/2 sin(2phi) $]
@@ -1554,9 +1831,28 @@ Danach folgen Hauptdehnungen samt Richtungszuordnung und schließlich Hauptspann
 #src[Skript TM2 S. 464–480; WZF 18.05.26 S. 6; P2 S. 33–35, Aufgabe 8.3; neue Lösung TM2 Nr. 8 S. 5–7; KH S. 1.]
 #bild("map-klausur-dms", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in TM2 Kapitel 3.* Die Messrichtungen liefern Komponenten des Verzerrungstensors. Der Verzerrungskreis liefert dessen Hauptwerte. Das Elastizitätsgesetz verbindet diese messbaren Verformungen mit dem gesuchten Spannungszustand.
+#hoch(<k-tm2-3>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM2 Kapitel 4 · Biegung, FTM und Biegelinie <k-tm2-4>
+
+#überblick([Kapitel TM2 4 auf einen Blick],
+  idee(<a-tm2-4-3>, [Gemeinsame Schwerpunktachsen kommen zuerst.], [Steiner verschiebt die Teilmomente auf diese Achsen.]),
+  idee(<a-tm2-4-2>, [Moment und Widerstandsmoment bestimmen die Randspannung.], [Achse, Randabstand und Querschnitt müssen zusammenpassen.]),
+  idee(<a-tm2-4-4>, [Biegesteifigkeit bestimmt die Verformung.], [Randbedingungen, Integration oder passende Tafelfälle liefern die Biegelinie.]),
+  idee(<a-tm2-4-7>, [Jede Rechnung braucht ihre eigene Geometriegröße.], [Materialfläche und Wandmittellinie dürfen nicht verwechselt werden.]),
+)
+
+#ablauf(
+  chunk([Schwerpunkt und gemeinsame Achsen], [Teilflächen · Aussparungen · Abstände], ziel: <a-tm2-4-3>),
+  chunk([FTM und Widerstandsmoment], [Steiner · zugehöriger Randabstand], ziel: <a-tm2-4-2>),
+  chunk([Spannung und Verformung getrennt prüfen], [M/W · Biegesteifigkeit EI · Randbedingungen], ziel: <a-tm2-4-4>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Die Biegespannung hängt von Last und Querschnitt ab, die Durchbiegung zusätzlich von der Steifigkeit. Der zentrale Rechenweg lautet: Schwerpunkt → FTM → Widerstandsmoment → Spannung bzw. Verformung.
 
 == TM2 4.2 Biegespannung und Widerstandsmoment <a-tm2-4-2>
@@ -1567,6 +1863,8 @@ $M$ in Nmm, $I$ in mm⁴, $W$ in mm³, $sigma$ in N/mm². Gültig für kleine Ve
 #note("Fehler vermeiden", [Zu $I_y$ gehört der Randabstand in *z-Richtung*. Der Rand mit größtem Abstand zu S ist maßgebend, nicht automatisch die Hälfte der Gesamthöhe. Der Ort des größten Moments entlang des Balkens und der größte Randabstand im Querschnitt sind zwei getrennte Fragen.])
 #note("Zug/Druck und Biegung gemeinsam", [Wirkt zusätzlich eine zentrische Normalkraft, werden im linear elastischen Fall die Normalspannungen addiert: $sigma_x(z)=N/A+M_y z/I_y$. Der Anteil N/A verschiebt den linearen Biegespannungsverlauf. Die Randwerte auf beiden Seiten prüfen; die neutrale Faser liegt dann im Allgemeinen nicht mehr bei z=0.])
 #src[FS TM2 S. 22–23; Skript TM2 S. 538; neue Lösung TM2 Nr. 9 S. 1–5; AK24 S. 24.]
+#hoch(<k-tm2-4>, [Kapitelübersicht])
+
 == TM2 4.3 Flächenträgheitsmomente und Steiner <a-tm2-4-3>
 Ein FTM beschreibt, wie weit die Fläche von einer Achse entfernt liegt. Material weit weg von der Biegeachse trägt wegen des quadratischen Abstands stark bei.
 #form[$ I_y=integral z^2 dif A, quad I_z=integral y^2 dif A, quad I_(y z)=-integral y z dif A $]
@@ -1591,6 +1889,8 @@ Die Zuordnung des Winkels zu I₁ oder I₂ kontrollierst du durch Einsetzen:
 $ I_(eta zeta)=-(I_y-I_z)/2 sin(2phi)+I_(y z) cos(2phi) $]
 Der Mohrsche Trägheitskreis funktioniert analog zum Spannungskreis mit $P=(I_y,I_(y z))$ und $P'=(I_z,-I_(y z))$. Kontrolle: $I_1+I_2=I_y+I_z$.
 #src[FS TM2 S. 26–27; neue Lösung TM2 Nr. 10 S. 9–14.]
+#hoch(<k-tm2-4>, [Kapitelübersicht])
+
 == TM2 4.4 Biegelinie: Randbedingungen und Superposition <a-tm2-4-4>
 #form[$ w''=-M/(E I), quad Q'= -q, quad M'=Q $]
 Für konstantes EI folgt $E I w^(4)=q$. Bei variablem I(x) bleibt $w''=-M/(E I(x))$ gültig; I(x) darf beim Integrieren nicht als Konstante behandelt werden.
@@ -1608,15 +1908,37 @@ Bei kleinen Verformungen und linear elastischem Material darfst du Lastfälle ad
 #form[$ w_("Kragarm,Endkraft")=frac(F L^3,3E I), quad w_("Kragarm,Endmoment")=frac(M_0 L^2,2E I) $]
 Hier stehen die *Beträge* der Enddurchbiegungen. Die Tafel in FS TM2 S. 46–49 enthält auch Lasten an einer inneren Stelle.
 #src[FS TM2 S. 28–30, 46–49; neue Lösung TM2 Nr. 11 S. 1–10; WZF 15.06.26 S. 1–5; AK24 S. 24–26.]
+#hoch(<k-tm2-4>, [Kapitelübersicht])
+
 == TM2 4.7 Ergänzung: Der Querschnitt aus AK24 <a-tm2-4-7>
 Verwendet werden die *äußeren Maße* r=50 mm und t=3,75 mm. Das Hilfssystem liegt am Mittelpunkt des Halbkreises, z′ zeigt nach unten. Die Auswertung in den Aufgaben unten verbindet die Schwerpunktrechnung mit Steiner und dem Spannungsnachweis.
 #note("Richtiges Maß für jede Rechnung", [Für die *exakte Materialfläche und Biege-FTM* rechnest du Außenfläche minus Innenfläche. Für *dünnwandige Torsion* brauchst du dagegen die *Wandmittellinie*. Das sind unterschiedliche Flächen und Radien.])
 #src[AK24 S. 18–24; FS TM2 S. 24–26, 40–41.]
 #bild("map-t2k4", [Mindmap: Schwerpunkt, FTM, Spannung und Biegelinie. Eigene Darstellung.], height: 43mm)
 *Der Zusammenhang in TM2 Kapitel 4.* Der Schwerpunkt legt die Bezugsachsen fest; Steiner führt alle Teilmomente auf diese Achsen. I und W bestimmen die Biegespannung. EI bestimmt die Verformung, die du aus Integration, Randbedingungen oder durch Superposition aus der Tafel berechnest.
+#hoch(<k-tm2-4>, [Kapitelübersicht])
+
 
 #pagebreak()
+#pagebreak(weak: true)
 = TM2 Kapitel 5 · Torsion: Spannung und Verdrehung <k-tm2-5>
+
+#überblick([Kapitel TM2 5 auf einen Blick],
+  idee(<a-tm2-5-1>, [Das Torsionsmoment kommt aus dem Freischnitt.], [Spannung und Verdrehung hängen anschließend von unterschiedlichen Querschnittsgrößen ab.]),
+  idee(<a-tm2-5-2>, [Ein geschlossenes dünnwandiges Profil trägt umlaufenden Schubfluss.], [Die Wandmittellinie und die dünnste Wand bestimmen die maßgebenden Größen.]),
+  idee(<a-tm2-5-3>, [Ein offenes Profil braucht ein anderes Modell.], [Ein Längsschlitz unterbricht den geschlossenen Lastpfad.]),
+)
+
+#ablauf(
+  chunk([Torsionsmoment und Profil einordnen], [Kreisquerschnitt gesondert mit Kreisformeln behandeln], ziel: <a-tm2-5-1>),
+  entscheidung([Ist das dünnwandige Profil geschlossen und einzellig?],
+    chunk([Geschlossenes Profil], [Bredt · umschlossene Mittellinienfläche], ziel: <a-tm2-5-2>),
+    chunk([Offenes Profil prüfen], [dünne Streifen · Voraussetzungen der Näherung], ziel: <a-tm2-5-3>)),
+  chunk([Spannung und Verdrehung prüfen], [Widerstandsmoment · Torsionssteifigkeit · Winkel in rad], ziel: <a-tm2-5-1>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 Ein Torsionsmoment verdreht den Querschnitt. Die passende Formel hängt zuerst von der Form ab: Kreiswelle, dünnwandig geschlossen oder dünnwandig offen.
 
 == TM2 5.1 Kreiswellen und allgemeiner Rechenweg <a-tm2-5-1>
@@ -1628,6 +1950,8 @@ $M_T$ in Nmm, $I_T$ in mm⁴, $W_T$ in mm³, G in N/mm². Die Verdrehung aus die
 Nur beim Kreis bzw. konzentrischen Kreisring stimmt das Torsionsträgheitsmoment mit dem polaren Flächenträgheitsmoment überein. Für andere Querschnitte nicht einfach $I_T=I_y+I_z$ setzen.
 #note("Vorgehen", [Erst Mₜ aus Freischnitt und Hebelarm bestimmen, dann Querschnitt einordnen. Spannung und Verdrehung separat prüfen: Ein zulässiger Spannungswert garantiert noch keine zulässige Verdrehung.])
 #src[FS TM2 S. 37–40; P2 S. 59–63; neue Lösung TM2 Nr. 12 S. 1–3.]
+#hoch(<k-tm2-5>, [Kapitelübersicht])
+
 == TM2 5.2 Dünnwandige geschlossene Profile <a-tm2-5-2>
 Bei einer *geschlossenen einzelligen* Wand kann der Schubfluss einmal rundherum laufen. Für eine dünne Wand gilt die Bredtsche Beziehung:
 #form[$ T=tau(s)t(s)=M_T/(2A_m), quad W_T=2A_m t_("min"), quad I_T=frac(4A_m^2,integral.cont dif s/t(s)) $]
@@ -1635,6 +1959,8 @@ $A_m$ ist die von der *Wandmittellinie* umschlossene Fläche. T ist Schubfluss i
 #bild("ak24-querschnitt", [Geschlossener Querschnitt aus AK24 PDF-S. 18, 23; eigene Darstellung.], height: 55mm)
 #note("Wo liegt die größte Spannung?", [Bei konstantem Torsionsmoment liegt sie an der *dünnsten Wand*. Bei überall gleicher Dicke ist τ entlang des Umfangs gleich groß. Ist außerdem Mₜ entlang des Stabes konstant, gilt das über die ganze Länge, abseits örtlicher Einleitungseinflüsse.])
 #src[FS TM2 S. 40–41; neue Lösung TM2 Nr. 12 S. 4–6; AK24 S. 18, 23.]
+#hoch(<k-tm2-5>, [Kapitelübersicht])
+
 == TM2 5.3 Dünnwandige offene Profile <a-tm2-5-3>
 Ein Längsschlitz unterbricht den umlaufenden Schubfluss. Für schmale Rechteckstreifen mit Länge $b_i$ und Dicke $t_i$ gilt näherungsweise:
 #form[$ I_T approx frac(1,3) sum b_i t_i^3, quad W_T approx I_T/t_("max"), quad tau_("max") approx abs(M_T)t_("max")/I_T $]
@@ -1642,6 +1968,8 @@ Anders als beim geschlossenen Profil liegt die größte Torsionsspannung bei die
 #bild("ak_2018_torsion", [Offene und geschlossene Profile im Vergleich; TM_Prüfung_2018 PDF-S. 10.], height: 43mm)
 #note("Selbst erklären", [Warum kann ein schmaler Schlitz die Verdrehung stark vergrößern, obwohl kaum Material fehlt? Er unterbricht den geschlossenen Lastpfad; dadurch ändert sich das passende Torsionsmodell grundlegend.])
 #src[FS TM2 S. 40–41; neue Lösung TM2 Nr. 12 S. 4; ältere Klausur TM_Prüfung_2018 S. 10.]
+#hoch(<k-tm2-5>, [Kapitelübersicht])
+
 == TM2 5.4 Ergänzung: Torsion des AK24-Profils <a-tm2-5-4>
 Für r=50 mm und t=3,75 mm ist der Mittellinienradius $r_m=r-t/2="48,125" "mm"$. Die gerade Mittellinienhöhe ist $h_m=3r-t/2="148,125" "mm"$.
 #form[$ A_m=2r_m h_m+pi r_m^2/2, quad L_m=2h_m+2r_m+pi r_m $]
@@ -1649,6 +1977,8 @@ Der äußere Radius r ist nicht der Mittellinienradius. Die Materialfläche aus 
 #src[AK24 S. 18, 23; FS TM2 S. 40–41; eigene Aufbereitung.]
 #bild("map-klausur-torsion", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in TM2 Kapitel 5.* Mₜ kommt aus dem Gleichgewicht. Der Querschnitt entscheidet über Iₜ und Wₜ. Wₜ bestimmt die Spannung, GIₜ die Verdrehung; bei geschlossenen Profilen steuert die dünnste Wand den größten Spannungswert.
+#hoch(<k-tm2-5>, [Kapitelübersicht])
+
 
 #pagebreak()
 = Anhang
