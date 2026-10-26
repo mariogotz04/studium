@@ -446,78 +446,115 @@ Nenne vier Zeichnungstypen und erkläre für jeden, welcher Empfänger welche In
 #pagebreak()
 == Lösungen Kapitel 1
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Sie ist der eindeutige Informationsträger zwischen allen, die an einem Produkt arbeiten, auch extern (S. 1). Z. B. Fertigung, Qualitätssicherung, Einkauf (auch Montage, Arbeitsvorbereitung, Zulieferer).
 
-#nachschlagen[Lernskript, #stelle(<a-1-1>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 1; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Nur bei ihr erscheinen Flächen parallel zur Bildebene in wahrer Größe, also maßstäblich. Perspektive verkürzt ferne Kanten, man könnte keine Maße abgreifen (S. 2).
 
-#nachschlagen[Lernskript, #stelle(<a-1-1>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 2; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 DIN = deutsche Norm, DIN EN = europäische Norm (CEN) als DIN übernommen, DIN ISO = internationale Norm (ISO, Genf) als DIN übernommen, DIN EN ISO = international, europäisch und deutsch zugleich. Normen sind Empfehlungen mit technisch-normativer Wirkung, aus sich heraus nicht rechtsverbindlich; wer sie anwendet, verhält sich ordnungsgemäß (S. 3).
 
-#nachschlagen[Lernskript, #stelle(<a-1-2>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 3; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 1 : √2. Nur bei diesem Verhältnis hat die Hälfte eines Blattes wieder dieselbe Form. So kann man Zeichnungen ohne Verzerrung vergrößern oder verkleinern (S. 6).
 
-#nachschlagen[Lernskript, #stelle(<a-1-3>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 4; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Schriftfeld immer unten rechts. A4 nur hoch, alle anderen Formate nur quer. Die Feldeinteilung (Spalten Buchstaben, Zeilen Zahlen) erlaubt es, eine Stelle anzusprechen, z. B. „Feld B6“ (S. 6–7).
 
-#nachschlagen[Lernskript, #stelle(<a-1-3>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 5; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Anlage/System → Gerät/Maschine/Apparat → Baugruppe → Einzelteile (S. 8, Bild 2-3).
 
-#nachschlagen[Lernskript, #stelle(<a-1-4>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 6; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Teil: wird nicht weiter zerlegt, z. B. gekauftes Kugellager. Einzelteil: nicht zerstörungsfrei zerlegbar, z. B. Innenring des Lagers (S. 9).
 
-#nachschlagen[Lernskript, #stelle(<a-1-4>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 7; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Einzelteil: vollständige Bemaßung, Toleranzen, Oberflächen, Werkstoff, Maßstab, Schriftfeld. Gesamtzeichnung: zusammengebauter Zustand, Positionsnummern, Haupt- und Anschlussmaße, Stückliste (S. 9–11).
 
-#nachschlagen[Lernskript, #stelle(<a-1-4>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 8; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Nur Hauptmaße (welchen Platz das Erzeugnis insgesamt braucht) und Anschlussmaße (wie Anschluss- und Befestigungsteile bemessen sind). Sie dienen dem Einbau und der weiteren Montage, nicht der Fertigung der Einzelteile (S. 10–11).
 
-#nachschlagen[Lernskript, #stelle(<a-1-4>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 9; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Mit 1 beginnend in Montagereihenfolge oder im Uhrzeigersinn; dünne Bezugslinie mit Punkt im Teil oder Pfeil an der Kontur, nicht parallel zu anderen Linien; doppelte Maßzahlhöhe, mind. 5 mm; identische Teile nur eine Nummer, nur einmal eingetragen (S. 11–12).
 
-#nachschlagen[Lernskript, #stelle(<a-1-5>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 10; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 Sie ist Grundlage für die Fertigungsvorbereitung und für Kalkulation, Bestellwesen und Lager: Ohne sie weiß niemand, welche Teile in welcher Menge bestellt oder gefertigt werden (S. 12).
 
-#nachschlagen[Lernskript, #stelle(<a-1-5>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 11; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Skizze zum Konstruieren (Ideen, Funktion) und Skizze als Vorlage für Zeichnung/Fertigung. Mittellinien legen Lage und Symmetrie fest; alle weiteren Linien hängen daran (S. 13–14).
 
-#nachschlagen[Lernskript, #stelle(<a-1-6>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 12; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Rechen- oder Konstruktionslösung]
 
 
@@ -530,8 +567,11 @@ A4: 4-mal halbieren → 210 × 297
 
 *Prüfung:* Die Fläche halbiert sich je A-Stufe; alle Längen in derselben Einheit.
 
-#nachschlagen[Lernskript, #stelle(<a-1-3>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 13; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -541,37 +581,54 @@ A1 → A4 sind 3 Halbierungen: 2³ = 8 Blätter. A3 = 1 m² / 2³ = 0,125 m² (2
 
 *Prüfung:* Die Fläche halbiert sich je A-Stufe; alle Längen in derselben Einheit.
 
-#nachschlagen[Lernskript, #stelle(<a-1-3>); ergänzend B S. 1–16. Herkunft: L-alt A1, Frage 14; nach B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Verständnislösung]
 
 Bei orthogonaler Projektion erscheinen Flächen parallel zur Bildebene in wahrer Größe; geneigte Flächen sind verkürzt. Weitere Ansichten ergänzen die fehlenden Raumrichtungen.
 
-#nachschlagen[Lernskript, #stelle(<a-1-1>); ergänzend B S. 1–16. Herkunft: L-alt A1, offene Überarbeitung Frage 15; B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Verständnislösung]
 
 Positionsnummern. Haupt- und Anschlussmaße. eine Stückliste oder einen Verweis darauf.
 
-#nachschlagen[Lernskript, #stelle(<a-1-4>); ergänzend B S. 1–16. Herkunft: L-alt A1, offene Überarbeitung Frage 16; B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Verständnislösung]
 
 bekommen eine Positionsnummer, Menge 5 in der Stückliste.
 
-#nachschlagen[Lernskript, #stelle(<a-1-5>); ergänzend B S. 1–16. Herkunft: L-alt A1, offene Überarbeitung Frage 17; B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Verständnislösung]
 
 Fläche 1 m². 841 mm × 1189 mm.
 
-#nachschlagen[Lernskript, #stelle(<a-1-3>); ergänzend B S. 1–16. Herkunft: L-alt A1, offene Überarbeitung Frage 18; B S. 1–16.]
+#nachschlagen[Lernskript, #stelle(<a-1-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Verständnislösung]
 
 Einzelteilzeichnung: Fertigung erhält Form, Maße und Anforderungen eines Teils. Zusammenbauzeichnung: Montage erkennt Zuordnung und Zusammenwirken. Fertigungszeichnung: enthält alle für den betreffenden Fertigungsschritt nötigen Angaben. Sammelzeichnung: fasst mehrere zusammengehörige Einzelteile auf einem Blatt zusammen.
 
-#nachschlagen[Lernskript, #stelle(<a-1-4>); ergänzend B S. 1–16. Herkunft: AK 1a, PDF-S. 2; B S. 7–12.]
+#nachschlagen[Lernskript, #stelle(<a-1-4>).]
+
+]
 
 #pagebreak()
 = Kapitel 2 · CAD und digitale Produktmodelle
@@ -790,78 +847,115 @@ Erkläre Clash & Clearance an einem eigenen Montagebeispiel.
 #pagebreak()
 == Lösungen Kapitel 2
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Computer Aided Design = rechnerunterstütztes Konstruieren. Hauptvorteil: Durchgängigkeit der Daten von Entwicklung über Konstruktion bis Fertigung (S. 32).
 
-#nachschlagen[Lernskript, #stelle(<a-2-6>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 1; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Linien-, flächen- und volumenbasierte Systeme. Linienbasierte vor allem in der Elektrotechnik (Schaltpläne) (S. 25).
 
-#nachschlagen[Lernskript, #stelle(<a-2-2>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 2; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 B-Rep: Volumen über Begrenzungsflächen plus Materialvektoren, Geometrie liegt explizit vor. CSG: Volumen als Folge Boolescher Operationen auf Grundkörpern (Baum), Flächen werden erst beim Evaluieren berechnet (S. 26–27).
 
-#nachschlagen[Lernskript, #stelle(<a-2-3>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 3; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Es erzeugt auf einer Arbeitsebene den Umriss der Grundgeometrie, der dann extrudiert oder rotiert wird. Die Kontur muss ein geschlossener Linienzug sein (S. 27–28).
 
-#nachschlagen[Lernskript, #stelle(<a-2-4>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 4; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Die Zeichnung dokumentiert den freigegebenen, abgestimmten Stand (Zeichnungs- und Revisionsnummer); Der Änderungsstand muss nachvollziehbar sein. Auf Papier können Parteien per Unterschrift zustimmen (paraphieren). Folgedokumente verweisen auf einen Zeichnungsstand (S. 33–34).
 
-#nachschlagen[Lernskript, #stelle(<a-2-6>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 5; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Abzeichnen und neu modellieren (bei einfachen Teilen meist am besten), Scannen von Zeichnungen, 3D-Scanner (Laser, Punktewolke), Photogrammetrie (bei komplexer, empfindlicher Geometrie) (S. 19–21).
 
-#nachschlagen[Lernskript, #stelle(<a-2-1>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 6; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Am meisten: Variantenkonstruktion (parametrisierbare Modelle), dann Anpassungskonstruktion (Vorlagen schnell ändern). Am wenigsten: Neukonstruktion, weil CAD nicht beim Finden neuer Lösungen hilft (S. 32–33).
 
-#nachschlagen[Lernskript, #stelle(<a-2-6>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 7; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 DXF; STL; STEP; VDAFS (S. 31).
 
-#nachschlagen[Lernskript, #stelle(<a-2-5>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 8; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Visualisierung (Gestalt von allen Seiten), Packaging (Platzverhältnisse), Clash & Clearance (Kollision, Freigängigkeit), Enveloping (Zusatzraum durch Schwingung/Wärme), Virtual Workshop (Platzbedarf bei Montage/Wartung) (S. 34–35).
 
-#nachschlagen[Lernskript, #stelle(<a-2-6>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 9; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Keine Volumenberechnung oder Kollisionsprüfung, oft keine Zeichnungsableitung und kein Datenbaum, kaum nachträglich änderbar, Lückenlosigkeit der Flächen nicht garantiert (S. 29–30).
 
-#nachschlagen[Lernskript, #stelle(<a-2-4>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 10; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 CAD-Modell → STL-Export → Zerlegen in Schichten (Slicen) mit Druckvorschau → schichtweiser Aufbau, ggf. mit Stützstrukturen (S. 22, Bild 3-6).
 
-#nachschlagen[Lernskript, #stelle(<a-2-1>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 11; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Weil die KI nach Wahrscheinlichkeiten antwortet; im Buchtest waren Aussagen teils falsch, pauschal oder irreführend (S. 35–38).
 
-#nachschlagen[Lernskript, #stelle(<a-2-7>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 12; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Rechen- oder Konstruktionslösung]
 
 
@@ -874,8 +968,11 @@ K4 = K3 \\ 6 × Zylinder Ø11 × 15    (Lochkreisbohrungen)
 
 *Prüfung:* Die Boolesche Operation muss das beabsichtigte Material liefern.
 
-#nachschlagen[Lernskript, #stelle(<a-2-3>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 13; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -885,31 +982,45 @@ Durchschnitt: Die Kugel (Radius 25) ragt über die Würfelflächen (Abstand 20 v
 
 *Prüfung:* Die Boolesche Operation muss das beabsichtigte Material liefern.
 
-#nachschlagen[Lernskript, #stelle(<a-2-3>); ergänzend B S. 17–38. Herkunft: L-alt A2, Frage 14; nach B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Verständnislösung]
 
 STL: Dreiecke. STEP: ganzes Produktmodell.
 
-#nachschlagen[Lernskript, #stelle(<a-2-5>); ergänzend B S. 17–38. Herkunft: L-alt A2, offene Überarbeitung Frage 15; B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Verständnislösung]
 
 Sie speichern die Entstehungsgeschichte als Baum. Sie nutzen Grundkörper wie Quader, Zylinder, Kugel. Flächen werden beim Evaluieren abgeleitet.
 
-#nachschlagen[Lernskript, #stelle(<a-2-3>); ergänzend B S. 17–38. Herkunft: L-alt A2, offene Überarbeitung Frage 16; B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Verständnislösung]
 
 Im Buch dient der freigegebene Zeichnungsstand zur nachvollziehbaren Änderungskontrolle. Sie trägt eine Revisionsnummer und Paraphen. Folgedokumente beziehen sich auf einen Zeichnungsstand.
 
-#nachschlagen[Lernskript, #stelle(<a-2-6>); ergänzend B S. 17–38. Herkunft: L-alt A2, offene Überarbeitung Frage 17; B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Verständnislösung]
 
 Kollisionsprüfung und Prüfung der Freigängigkeit.
 
-#nachschlagen[Lernskript, #stelle(<a-2-6>); ergänzend B S. 17–38. Herkunft: L-alt A2, offene Überarbeitung Frage 18; B S. 17–38.]
+#nachschlagen[Lernskript, #stelle(<a-2-6>).]
+
+]
 
 #pagebreak()
 = Kapitel 3 · Werkstücke darstellen
@@ -1199,90 +1310,133 @@ Zeichne einen Würfel mit 30 mm Kantenlänge in technischer Isometrie und Dimetr
 #pagebreak()
 == Lösungen Kapitel 3
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Natürlicher Maßstab 1 : 1: gezeichnete Länge = wirkliche Länge. 1 : 5: fünffach verkleinert (1 mm Papier = 5 mm Wirklichkeit). 5 : 1: fünffach vergrößert (S. 40).
 
-#nachschlagen[Lernskript, #stelle(<a-3-1>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 1; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Nein, nur die Maßstäbe nach DIN ISO 5455 (Tab. 4-1). Hauptmaßstab im Schriftfeld; weitere bei der Einzelheit bzw. dem Schnitt, z. B. „Y 10:1“ (S. 40).
 
-#nachschlagen[Lernskript, #stelle(<a-3-1>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 2; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 a) 1 breite Volllinie; b) 5 schmale Strichlinie; c) 7 Strich-Zweipunktlinie; d) 4 schmale Volllinie; e) 7; f) 4; g) 8 Freihand-/Zickzacklinie; h) 6 schmale Strich-Punktlinie; i) 3 breite Strich-Punktlinie; j) 7; k) 4 (S. 41–43).
 
-#nachschlagen[Lernskript, #stelle(<a-3-2>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 3; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Mittel- und Symmetrielinien, Lochkreise, Teilkreise von Zahnrädern, Bahnlinien. Körperkanten auf A3: Liniengruppe 0,5, also 0,5 mm (schmale Linien 0,25 mm) (S. 43).
 
-#nachschlagen[Lernskript, #stelle(<a-3-2>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 4; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 In Gebrauchslage, sonst in Fertigungslage; Drehteile waagrecht mit dem dünnen Ende nach rechts (S. 44).
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 5; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 So viele wie nötig, um das Teil eindeutig darzustellen: oft eine oder zwei, typisch drei, maximal sechs Standardansichten, bei Bedarf Zusatzansichten (S. 45–46).
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 6; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Methode 1: Draufsicht unten, Seitenansicht von links rechts. Methode 3: Draufsicht oben, Seitenansicht von links links. Kennzeichnung durch das Symbol der Projektionsmethode nahe dem Schriftfeld (Bild 4-6) (S. 46).
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 7; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Wenn Ansichten anders angeordnet werden sollen oder schräge Flächen unverkürzt gezeigt werden müssen. Vorgehen: Blickrichtung jeder Ansicht mit Pfeil und Großbuchstaben festlegen, Ansicht mit demselben Buchstaben bezeichnen (S. 46).
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 8; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Geneigte Linien; schmal; 45° zur Mittellinie/zum Hauptumriss; gleiches Muster für alle Schnittflächen eines Teils; keine verdeckten Kanten (S. 50).
 
-#nachschlagen[Lernskript, #stelle(<a-3-5>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 9; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Vollschnitt bei hohlen Teilen ohne wichtige Außenmerkmale; Halbschnitt bei symmetrischen Teilen, wenn außen auch etwas Darstellenswertes ist. Senkrechte Achse: linke Hälfte Ansicht; waagrechte Achse: obere Hälfte Ansicht (S. 53–54).
 
-#nachschlagen[Lernskript, #stelle(<a-3-5>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 10; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 Wellen, Stifte, Bolzen, Passfedern, Keile, Schrauben, Niete, Kugeln. Sie sind voll (ohne Hohlräume), ein Längsschnitt würde nichts Neues zeigen (S. 56).
 
-#nachschlagen[Lernskript, #stelle(<a-3-6>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 11; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Andere Schraffurrichtung (45° bleibt), sonst anderer Abstand. Stahl und Glas: mit unterschiedlichen, vorher definierten Schraffurmustern (Werkstoffschraffur nach Bild 4-15) (S. 50–51).
 
-#nachschlagen[Lernskript, #stelle(<a-3-5>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 12; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 Breite Strich-Punktlinie an Anfang, Ende und jedem Knickpunkt; Pfeile für die Blickrichtung an Anfang und Ende; Großbuchstaben „A–A“ an Anfang/Ende und über der Schnittdarstellung (S. 56–58).
 
-#nachschlagen[Lernskript, #stelle(<a-3-7>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 13; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Verständnislösung]
 
 Im Buchtext dafür vorgesehen: Halbschnitt (eine Hälfte Ansicht, eine Hälfte Schnitt) und eingeklappte Lochkreise. Ergänzung, nicht im Buchtext erklärt: Nach DIN EN ISO 128-3 darf man symmetrische Teile auch nur zur Hälfte oder zu einem Viertel zeichnen und die Symmetrielinie an den Enden mit zwei kurzen parallelen Strichen kennzeichnen. Das gilt für alle symmetrischen Teile, nicht nur für rotationssymmetrische.
 
-#nachschlagen[Lernskript, #stelle(<a-3-4>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 14; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -1294,8 +1448,11 @@ c) gefordert l\_Z ≥ 25 mm:  M ≥ 25/6 = 4,2  →  genormt 5:1 (Ø6 → 30 mm)
 
 *Prüfung:* Maßzahl und wirkliche Länge müssen übereinstimmen; alle Ansichten müssen denselben Körper zeigen.
 
-#nachschlagen[Lernskript, #stelle(<a-3-1>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 15; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -1305,8 +1462,11 @@ l\_W = l\_Z / M = 37 mm / (1/2) = 74 mm. Abgreifen ist trotzdem unzulässig: Ma�
 
 *Prüfung:* Maßzahl und wirkliche Länge müssen übereinstimmen; alle Ansichten müssen denselben Körper zeigen.
 
-#nachschlagen[Lernskript, #stelle(<a-3-1>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 16; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Rechen- oder Konstruktionslösung]
 
 
@@ -1316,38 +1476,56 @@ Methode 3: Draufsicht über der Vorderansicht (Rechteck 120 × 80 mit Linie bei 
 
 *Prüfung:* Maßzahl und wirkliche Länge müssen übereinstimmen; alle Ansichten müssen denselben Körper zeigen.
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: L-alt B1, Frage 17; nach B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Verständnislösung]
 
 Maßlinien. Schraffur. Mittellinien.
 
-#nachschlagen[Lernskript, #stelle(<a-3-2>); ergänzend B S. 39–64. Herkunft: L-alt B1, offene Überarbeitung Frage 18; B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Verständnislösung]
 
 unter der Vorderansicht.
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: L-alt B1, offene Überarbeitung Frage 19; B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Verständnislösung]
 
 trennt die Mittellinie Schnitt und Ansicht. werden keine verdeckten Kanten gezeichnet. ist bei senkrechter Achse die linke Hälfte Ansicht.
 
-#nachschlagen[Lernskript, #stelle(<a-3-5>); ergänzend B S. 39–64. Herkunft: L-alt B1, offene Überarbeitung Frage 20; B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Verständnislösung]
 
 schmaler Volllinie.
 
-#nachschlagen[Lernskript, #stelle(<a-3-7>); ergänzend B S. 39–64. Herkunft: L-alt B1, offene Überarbeitung Frage 21; B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[22 · Verständnislösung]
 
 vom Ende des Alphabets.
 
-#nachschlagen[Lernskript, #stelle(<a-3-4>); ergänzend B S. 39–64. Herkunft: L-alt B1, offene Überarbeitung Frage 22; B S. 39–64.]
+#nachschlagen[Lernskript, #stelle(<a-3-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[23 · Rechen- oder Konstruktionslösung]
 
 
@@ -1361,8 +1539,11 @@ vom Ende des Alphabets.
 
 *Prüfung:* Maßzahl und wirkliche Länge müssen übereinstimmen; alle Ansichten müssen denselben Körper zeigen.
 
-#nachschlagen[Lernskript, #stelle(<a-3-1>); ergänzend B S. 39–64. Herkunft: L-alt, Zusatzaufgabe L1; eigenes Zahlenbeispiel nach B S. 39–41.]
+#nachschlagen[Lernskript, #stelle(<a-3-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[24 · Rechen- oder Konstruktionslösung]
 
 
@@ -1372,31 +1553,45 @@ lW = 85 · 2 = 170 mm; Maßzahl 170 (S. 39–41).
 
 *Prüfung:* Maßzahl und wirkliche Länge müssen übereinstimmen; alle Ansichten müssen denselben Körper zeigen.
 
-#nachschlagen[Lernskript, #stelle(<a-3-1>); ergänzend B S. 39–64. Herkunft: L-alt A1; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-3-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[25 · Verständnislösung]
 
 Vorderansicht, Draufsicht, Seitenansicht. Die Zeichen aus Kegelstumpf und Kreisansicht kennzeichnen Projektionsmethode 1 beziehungsweise 3. Bei Methode 1 steht die Kreisansicht rechts vom Kegelstumpf, bei Methode 3 links. Damit wird die Zuordnung der Ansichten am Schriftfeld festgelegt.
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: AK 1b/1c, PDF-S. 2; B Bild 4-6, S. 46.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[26 · Verständnislösung]
 
 Beispiele: massive Welle, Schraube, Passfeder; außerdem Stifte, Bolzen, Niete und Wälzkörper. Die vereinfachte Darstellung hält die Baugruppe lesbar. Die Ausnahme betrifft die Längsschnittlage; ein notwendiger Querschnitt zur Darstellung einer Nut ist davon zu unterscheiden.
 
-#nachschlagen[Lernskript, #stelle(<a-3-6>); ergänzend B S. 39–64. Herkunft: AK 1d, PDF-S. 2; B S. 56.]
+#nachschlagen[Lernskript, #stelle(<a-3-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[27 · Verständnislösung]
 
 *Eigene Konstruktionslösung:* 1. Übertrage Achse und Grundkreisdurchmesser in Drauf- und Seitenansicht nach Methode 1. 2. Zerlege den Grundkreis in beispielsweise 12 gleiche Winkel und zeichne Mantellinien zur Spitze. 3. Bestimme in der gegebenen Vorderansicht die Schnittpunkte der Mantellinien mit der schrägen Schnittebene. 4. Projiziere diese Punkte entlang der zugehörigen Projektionslinien in Drauf- und Seitenansicht; gleiche Höhen und Kreiszuordnungen sichern die Lage. 5. Verbinde die Punkte zu einer glatten Schnittkurve, ziehe sichtbare Konturen breit und kennzeichne verdeckte sparsam. Prüfung: Symmetrie zur vertikalen Mittelebene bleibt erhalten; Scheitelpunkte müssen zu den höchsten/niedrigsten Schnittpunkten passen. Die Vorlage hat keine Maßzahlen: eine numerisch bemaßte Musterzeichnung wäre daraus nicht eindeutig ableitbar.
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: AK 2a, PDF-S. 5; eigene Lösung mit B S. 43–47.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[28 · Verständnislösung]
 
 *Eigene Zeichenlösung:* 1. Isometrie: drei Achsen mit 120° gegenseitigem Winkel, eine senkrecht und zwei 30° zur Waagerechten. Trage je 30 mm ab und schließe den Würfel mit achsparallelen Kanten. 2. Übliche technische Dimetrie: eine senkrechte Achse, flache Achse ungefähr 7°, Tiefenachse ungefähr 42°; die Tiefenlänge wird halbiert, also 15 mm, die beiden anderen 30 mm. 3. Sichtbare Kanten nachziehen, verdeckte bei dieser Anschauungsskizze nur bei Bedarf. Prüfung: Kanten derselben Raumrichtung bleiben parallel. Dies sind die technischen Zeichenkonventionen; eine geometrisch streng verkürzte isometrische Projektion hat andere Zeichenlängen.
 
-#nachschlagen[Lernskript, #stelle(<a-3-3>); ergänzend B S. 39–64. Herkunft: AK 2b, PDF-S. 6; ergänzte Zeichenkonventionen.]
+#nachschlagen[Lernskript, #stelle(<a-3-3>).]
+
+]
 
 #pagebreak()
 = Kapitel 4 · Bemaßung und Dokumentation
@@ -1652,84 +1847,124 @@ Bestimme die drei Bemaßungsarten aus AK 1h und nenne vier Angaben eines Schrift
 #pagebreak()
 == Lösungen Kapitel 4
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Geometrische Produktspezifikation: Gesamtkonzept aller Normen, die Idealgeometrie und zulässige Abweichungen festlegen (Maße, Form, Lage, Oberfläche, Kanten). Sie verbindet Spezifikation, Fertigung und Prüfung (GPS-Matrix mit 18 Merkmalen × 6 Kettengliedern, DIN EN ISO 14638) (S. 65–67).
 
-#nachschlagen[Lernskript, #stelle(<a-4-1>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 1; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Linienbreite = 1/10 der Schrifthöhe; Größen 2,5/3,5/5/7 mm mit Stufensprung √2, damit beim Vergrößern/Verkleinern wieder Normgrößen entstehen (S. 67–68).
 
-#nachschlagen[Lernskript, #stelle(<a-4-2>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 2; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Alle zur Herstellung nötigen Maße (vollständig), in mm ohne Einheit, bezogen auf den dargestellten Endzustand, jedes Maß nur einmal (S. 69).
 
-#nachschlagen[Lernskript, #stelle(<a-4-3>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 3; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Ca. 10 mm; mindestens 7 mm; 1–2 mm (S. 69).
 
-#nachschlagen[Lernskript, #stelle(<a-4-3>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 4; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Axiale Maße von einer plangedrehten Bezugsebene aus, radiale als Durchmesser, Fasen/Radien/Einstiche separat. Nach dem Umspannen ist die zweite Stirnseite die neue Bezugsebene, von der aus die Maße dieser Seite abgelesen werden (S. 75–76).
 
-#nachschlagen[Lernskript, #stelle(<a-4-4>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 5; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Bemaßt: Gewinde-Nennmaß (z. B. M8), Tiefe der Kernlochbohrung, nutzbare Gewindelänge, Position. Nicht bemaßt: Kernlochdurchmesser (DIN 13) und Bohrerspitze (120°, nur gezeichnet) (S. 81–82).
 
-#nachschlagen[Lernskript, #stelle(<a-4-4>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 6; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 ( ) Hilfsmaß, ergibt sich aus anderen Maßen; \[ \] Roh- oder Vorbearbeitungsmaß; runder Rahmen: Prüfmaß; rechteckiger Rahmen: theoretisch genaues Maß ohne Toleranz (S. 86–91).
 
-#nachschlagen[Lernskript, #stelle(<a-4-5>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 7; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Ø Durchmesser; M metrisches ISO-Gewinde; Tr Trapezgewinde; R Radius; S Kugel (SØ Kugeldurchmesser); SR Kugelradius; SW Schlüsselweite; □ Quadrat; t = 5 Dicke 5 mm (S. 82–90).
 
-#nachschlagen[Lernskript, #stelle(<a-4-5>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 8; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Nur bei 45°-Fasen dürfen Länge und Winkel gemeinsam stehen („2 × 45°“). Bei anderen Winkeln getrennt: Länge und Winkel (S. 89).
 
-#nachschlagen[Lernskript, #stelle(<a-4-5>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 9; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Parallel: alle Maßlinien parallel bzw. konzentrisch. Steigend: eine Maßlinie je Richtung ab Ursprung 0, Pfeile an jeder Maßhilfslinie. Koordinaten: Punkte als x/y- oder Polarkoordinaten, oft in Tabelle; vereinfacht die NC-Programmierung (S. 94–95).
 
-#nachschlagen[Lernskript, #stelle(<a-4-6>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 10; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 Gesetzlicher Eigentümer, Sachnummer, Ausgabedatum, Blattnummer, Titel, genehmigende Person, Ersteller, Dokumentenart (S. 99–100).
 
-#nachschlagen[Lernskript, #stelle(<a-4-7>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 11; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Lose Stückliste: eigene A4-Blätter, Überschrift oben, von oben nach unten gefüllt, muss bei Zeichnungsänderungen mitgepflegt werden, weil sie auf die Zeichnung verweist. Auf der Zeichnung: auf dem Schriftfeld, Überschrift unten, von unten nach oben (S. 102).
 
-#nachschlagen[Lernskript, #stelle(<a-4-8>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 12; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-8>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 Klein: an der Stelle kennzeichnen (Buchstabe im Kreis), Änderungsindex/Ausgabedatum anpassen. Groß: neue Zeichnung, alte als „zurückgezogen“ kennzeichnen, lose Stückliste anpassen. Nach Freigabe/Verteilung zusätzlich betriebsinterne Abläufe (S. 102).
 
-#nachschlagen[Lernskript, #stelle(<a-4-8>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 13; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-8>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -1742,8 +1977,11 @@ Angabe: 7 × 45° (= 315°), dazu 8 × Ø9 und Lochkreis Ø100
 
 *Prüfung:* Jedes Funktionsmerkmal ist eindeutig bemaßt und auf denselben Bezug zurückführbar.
 
-#nachschlagen[Lernskript, #stelle(<a-4-6>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 14; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -1753,8 +1991,11 @@ a) Werkstoff im Schriftfeld bzw. seiner Erweiterung; b) Maßstab in der Schriftf
 
 *Prüfung:* Jedes Funktionsmerkmal ist eindeutig bemaßt und auf denselben Bezug zurückführbar.
 
-#nachschlagen[Lernskript, #stelle(<a-4-7>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 15; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -1764,37 +2005,54 @@ a) Werkstoff im Schriftfeld bzw. seiner Erweiterung; b) Maßstab in der Schriftf
 
 *Prüfung:* Jedes Funktionsmerkmal ist eindeutig bemaßt und auf denselben Bezug zurückführbar.
 
-#nachschlagen[Lernskript, #stelle(<a-4-3>); ergänzend B S. 65–106. Herkunft: L-alt B2, Frage 16; nach B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Verständnislösung]
 
 Maßlinien sind schmale Volllinien. Maßzahlen werden von unten und von rechts gelesen. Winkel brauchen eine Einheit.
 
-#nachschlagen[Lernskript, #stelle(<a-4-3>); ergänzend B S. 65–106. Herkunft: L-alt B2, offene Überarbeitung Frage 17; B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Verständnislösung]
 
 ein Rohmaß.
 
-#nachschlagen[Lernskript, #stelle(<a-4-5>); ergänzend B S. 65–106. Herkunft: L-alt B2, offene Überarbeitung Frage 18; B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Verständnislösung]
 
 Titel. Sachnummer. Ersteller.
 
-#nachschlagen[Lernskript, #stelle(<a-4-7>); ergänzend B S. 65–106. Herkunft: L-alt B2, offene Überarbeitung Frage 19; B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Verständnislösung]
 
 mittige Nuten brauchen keine Lageangabe. der Fräserweg soll ablesbar sein. Flächen aus dem Werkzeugauslauf werden nicht bemaßt.
 
-#nachschlagen[Lernskript, #stelle(<a-4-4>); ergänzend B S. 65–106. Herkunft: L-alt B2, offene Überarbeitung Frage 20; B S. 65–106.]
+#nachschlagen[Lernskript, #stelle(<a-4-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Verständnislösung]
 
 Die drei Darstellungen unterscheiden Kettenbemaßung (aufeinanderfolgende Abstände), Parallelbemaßung (Maße vom selben Bezug) und steigende Bemaßung (Werte ab markiertem Nullpunkt). Vier mögliche Schriftfeldangaben: Benennung, Zeichnungs-/Sachnummer, Ersteller, Freigabe-/Ausgabedatum; weitere sind Eigentümer und Blattangabe.
 
-#nachschlagen[Lernskript, #stelle(<a-4-6>); ergänzend B S. 65–106. Herkunft: AK 1h/1i, PDF-S. 4; B S. 94–95, 98–101.]
+#nachschlagen[Lernskript, #stelle(<a-4-6>).]
+
+]
 
 #pagebreak()
 = Kapitel 5 · Oberflächen und Kanten
@@ -2165,102 +2423,151 @@ Ein ideales Rechteckprofil springt zwischen +3 µm und −3 µm. Berechne Ra und
 #pagebreak()
 == Lösungen Kapitel 5
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 1. Formabweichung, 2. Welligkeit, 3. Rillen, 4. Riefen/Schuppen/Kuppen, 5. Gefügestruktur. Rauheit = 3. bis 5. Ordnung (S. 108–110).
 
-#nachschlagen[Lernskript, #stelle(<a-5-2>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 1; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Geometrisch: ideal laut Zeichnung. Wirklich: tatsächlich vorhandene Grenze zwischen Werkstück und Umgebung. Ist: gemessenes, angenähertes Abbild der wirklichen Oberfläche (S. 108–109).
 
-#nachschlagen[Lernskript, #stelle(<a-5-2>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 2; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Das gemessene Primärprofil (P) wird gefiltert: langwellige Anteile ergeben das Welligkeitsprofil (W), kurzwellige das Rauheitsprofil (R). Die Einzelmessstrecke ist die Auswertelänge für einen Kennwert; die Messstrecke besteht im Regelfall aus 5 Einzelmessstrecken (S. 110, 115).
 
-#nachschlagen[Lernskript, #stelle(<a-5-2>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 3; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Rp größte Spitze, Rv tiefstes Tal, Rz = Rp + Rv je Einzelmessstrecke, Rt = Rp + Rv über die ganze Messstrecke. Rt ist größer, wenn die höchste Spitze oder das tiefste Tal außerhalb der betrachteten Einzelmessstrecke liegt; ohne andere Angabe gelten sie als identisch (S. 110–111).
 
-#nachschlagen[Lernskript, #stelle(<a-5-3>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 4; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Ra ist die Höhe eines Rechtecks mit gleicher Fläche wie alle Flächen zwischen Profil und Mittellinie. Ra mittelt über alle Punkte, ein einzelner Kratzer fällt kaum ins Gewicht; Rz wird direkt aus dem tiefsten Tal bestimmt (S. 110–111).
 
-#nachschlagen[Lernskript, #stelle(<a-5-3>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 5; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Ra/Rz: aperiodische Profile (Schleifen, Erodieren). RSm: periodische Profile (Drehen, Fräsen, Stoßen) (S. 112).
 
-#nachschlagen[Lernskript, #stelle(<a-5-3>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 6; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Mit Linie am langen Schenkel: alle Verfahren zulässig. Zusätzlich Linie am kurzen Schenkel: Materialabtrag gefordert. Kreis: Materialabtrag unzulässig. 21920-1: ein zusätzlicher Balken, immer das vollständige Symbol, kein Grundsymbol und kein Rundum-Kreis mehr (S. 113).
 
-#nachschlagen[Lernskript, #stelle(<a-5-4>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 7; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 a: Filter/Einzelmessstrecke, Kenngröße, Grenzwert; b: weitere Anforderung; c: Verfahren, Behandlung, Beschichtung; d: Rillenrichtung; e: Bearbeitungszugabe in mm (S. 114, 117).
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 8; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Damit die Anzahl der Einzelmessstrecken (z. B. 1) nicht mit dem Grenzwert verwechselt wird: „Rz1  3,2“ statt „Rz 13,2“ (S. 115).
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 9; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Zwei Werte übereinander, der größere oben. „U“ (upper) und „L“ (lower) sind nötig, wenn verschiedene Kenngrößen verwendet werden; bei gleicher Kenngröße dürfen sie entfallen (S. 115).
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 10; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 Nach DIN EN ISO 1302 ohne Zusatzangabe: annehmbar, wenn höchstens 16 % aller Messwerte den Grenzwert überschreiten. Nach 21920-1 gilt ohne Angabe Tmax: keine Überschreitung (S. 116).
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 11; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Die Zeichnung beschreibt den Endzustand des Bauteils, deshalb „gedreht“, „geschliffen“ (S. 117).
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 12; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 Symbol mit Hauptangabe nahe am Teil bzw. über dem Schriftfeld, dahinter in Klammern die Ausnahmen (oder das Grundsymbol in Klammern); die abweichenden Flächen werden direkt am Teil gekennzeichnet (S. 119).
 
-#nachschlagen[Lernskript, #stelle(<a-5-6>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 13; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Verständnislösung]
 
 Bereich mit breiter Strichpunktlinie außerhalb der Kontur kennzeichnen und bemaßen. Angabe des Endzustands („einsatzgehärtet“ usw.) mit Härtewert und Plustoleranz nahe dem Schriftfeld, ggf. Messstellen und Wärmebehandlungsbild (S. 120–122).
 
-#nachschlagen[Lernskript, #stelle(<a-5-7>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 14; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Verständnislösung]
 
 Partiell: breite Strichpunktlinie. Nicht zulässig: schmale Strich-Zweipunktlinie. Zulässig, aber nicht nötig: breite Strichlinie. Die Bedeutung ist zu erklären (S. 123–124).
 
-#nachschlagen[Lernskript, #stelle(<a-5-8>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 15; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-8>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Verständnislösung]
 
 Außenkante: + Grat zulässig, − gratfrei/Abtragung. Innenkante: + Übergang zulässig, − Abtragung. ± beides zulässig. Sinn: Verletzungsgefahr, Montage, Funktion (Anlage, Dichtung) und Kosten werden eindeutig geregelt (S. 124–126).
 
-#nachschlagen[Lernskript, #stelle(<a-5-9>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 16; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-9>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Rechen- oder Konstruktionslösung]
 
 
@@ -2271,8 +2578,11 @@ Rt = 5 µm + 6 µm = 11 µm                 (ganze Messstrecke)  -\>  Rt \> Rz
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-3>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 17; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Rechen- oder Konstruktionslösung]
 
 
@@ -2283,8 +2593,11 @@ Rz = 1,5 µm + 1,5 µm = 3 µm
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-3>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 18; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Rechen- oder Konstruktionslösung]
 
 
@@ -2294,8 +2607,11 @@ Symbol mit #strong[Kreis] (Materialabtrag unzulässig) und zwei Werten übereina
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 19; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Rechen- oder Konstruktionslösung]
 
 
@@ -2305,8 +2621,11 @@ Symbol „alle Verfahren zulässig“ (nur Linie am langen Schenkel), Position a
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 20; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Rechen- oder Konstruktionslösung]
 
 
@@ -2316,8 +2635,11 @@ a) Rz \> 100 µm bzw. Ra \> 12,5 µm (keine Angabe nötig, außer Sammelangabe).
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 21; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[22 · Rechen- oder Konstruktionslösung]
 
 
@@ -2327,8 +2649,11 @@ Fläche 1: fein (z. B. Ra 1,6), Schraubenkopfauflage. Fläche 3: grob, Schrauben
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-6>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 22; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[23 · Rechen- oder Konstruktionslösung]
 
 
@@ -2338,38 +2663,56 @@ Unnötig teuer: Gussflächen ohne Funktion können roh bleiben (Kreissymbol oder
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, Frage 23; nach B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[24 · Verständnislösung]
 
 Rz = Rp + Rv innerhalb einer Einzelmessstrecke. Rz entspricht dem früheren Ry. Rz bezieht sich auf das Rauheitsprofil.
 
-#nachschlagen[Lernskript, #stelle(<a-5-3>); ergänzend B S. 107–130. Herkunft: L-alt C1, offene Überarbeitung Frage 24; B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[25 · Verständnislösung]
 
 Materialabtrag unzulässig. Oberfläche bleibt z. B. im Gusszustand.
 
-#nachschlagen[Lernskript, #stelle(<a-5-4>); ergänzend B S. 107–130. Herkunft: L-alt C1, offene Überarbeitung Frage 25; B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[26 · Verständnislösung]
 
 Nach der älteren ISO 1302 ist 6,3 µm die obere Grenze und ohne Zusatz gilt die 16-%-Regel. Nach der im Buch beschriebenen ISO 21920-1 gilt ohne Zusatz dagegen Tmax; deshalb sind Normfassung und Zusatz gemeinsam zu lesen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, offene Überarbeitung Frage 26; B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[27 · Verständnislösung]
 
 C. R. P. X.
 
-#nachschlagen[Lernskript, #stelle(<a-5-5>); ergänzend B S. 107–130. Herkunft: L-alt C1, offene Überarbeitung Frage 27; B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[28 · Verständnislösung]
 
 50 µm.
 
-#nachschlagen[Lernskript, #stelle(<a-5-9>); ergänzend B S. 107–130. Herkunft: L-alt C1, offene Überarbeitung Frage 28; B S. 107–130.]
+#nachschlagen[Lernskript, #stelle(<a-5-9>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[29 · Rechen- oder Konstruktionslösung]
 
 
@@ -2379,7 +2722,9 @@ C. R. P. X.
 
 *Prüfung:* Ra und Rz sind Höhenwerte in µm; die genannte Normfassung und Auswertelänge müssen passen.
 
-#nachschlagen[Lernskript, #stelle(<a-5-3>); ergänzend B S. 107–130. Herkunft: L-alt S2; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-5-3>).]
+
+]
 
 #pagebreak()
 = Kapitel 6 · Toleranzen und Passungen
@@ -2763,96 +3108,142 @@ Berechne die fehlenden Grenzmaße und Toleranzen aus AK 4: Ø30 H7 (+21/0 µm), 
 #pagebreak()
 == Lösungen Kapitel 6
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Alle Maß-, Form- und Lagetoleranzen sind unabhängig voneinander einzuhalten. Der Hinweis „Tolerierung ISO 8015“ macht das ausdrücklich; früher war er zwingend, weil ohne ihn die Hüllbedingung galt. Heute gilt ISO 8015 auch ohne Hinweis, der Vermerk ist nur noch sinnvoll gegen Missverständnisse (S. 132, 135).
 
-#nachschlagen[Lernskript, #stelle(<a-6-1>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 1; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Die Oberfläche des einzelnen Größenmaßelements muss die ideale Hülle am Maximum-Material-Maß einhalten. Eine Lageforderung zu anderen Elementen ist damit nicht allgemein festgelegt. Bei gleicher Maßtoleranz bleibt für Formabweichungen nur der nicht genutzte Rest; das erfordert höhere Genauigkeit (S. 133–134).
 
-#nachschlagen[Lernskript, #stelle(<a-6-1>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 2; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Ⓜ Maximum-Material-Bedingung (ungenutzte Maßtoleranz darf für Form/Lage genutzt werden); Ⓛ Minimum-Material-Bedingung (z. B. Mindestwanddicke); Ⓔ Hüllbedingung für dieses Maß (S. 134–135).
 
-#nachschlagen[Lernskript, #stelle(<a-6-1>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 3; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Welle: Höchstmaß. Bohrung: Mindestmaß (S. 133).
 
-#nachschlagen[Lernskript, #stelle(<a-6-1>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 4; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Gutmaß: Grenzmaß, das beim Abtragen zuerst erreicht wird (= Maximum-Material-Maß). Ausschussmaß: das andere; darüber hinaus entsteht Ausschuss. Die Welle muss durch die Gutseite der Rachenlehre passen und darf nicht durch die Ausschussseite gleiten (S. 138).
 
-#nachschlagen[Lernskript, #stelle(<a-6-2>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 5; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Buchstabe: Lage des Toleranzfelds zur Null-Linie; Zahl: Toleranzgrad (Größe des Felds). Großbuchstaben für Bohrungen/Außenteile, Kleinbuchstaben für Wellen/Innenteile (S. 139).
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 6; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 i, l, o, q, w bzw. I, L, O, Q, W, um Verwechslungen (z. B. mit 1 und 0) zu vermeiden (S. 139).
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 7; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 IT01, IT0, IT1 bis IT18 (20 Grade). Drehen liegt in Tab. 7-2 bei den mittleren Toleranzgraden #strong[5 bis 11]; laut Text kommen für normale spanende Verfahren vorwiegend 5 bis 13 zum Einsatz (S. 141).
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 8; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Allgemeintoleranzen Klasse m (mittel) für Längen und Winkel nach 2768-1, Klasse K für Form und Lage nach 2768-2. Nicht für Hilfsmaße in Klammern und theoretisch genaue Maße im Rahmen (S. 146, 153).
 
-#nachschlagen[Lernskript, #stelle(<a-6-4>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 9; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Reine Formforderungen: beispielsweise Geradheit, Ebenheit und Rundheit. Bezogene Forderungen: beispielsweise Parallelität, Rechtwinkligkeit und Rundlauf. Die Originalsymbole zeigt die Vektorübersicht in Abschnitt 6.5 (S. 146–150).
 
-#nachschlagen[Lernskript, #stelle(<a-6-5>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 10; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 In Verlängerung der Maßlinie, wenn eine Achse oder Mittelebene toleriert wird; nicht in Verlängerung, wenn eine Fläche oder Linie toleriert wird (S. 151).
 
-#nachschlagen[Lernskript, #stelle(<a-6-5>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 11; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Lauf: Messung in einzelnen Messebenen (Rundlauf, radial) bzw. Messzylindern (Planlauf, axial). Gesamtlauf: zusätzlich wird die Messuhr axial (Mantel) bzw. radial (Planfläche) über die ganze Fläche verschoben. Rundlauf für Mantelflächen, Planlauf für Stirnflächen (S. 150).
 
-#nachschlagen[Lernskript, #stelle(<a-6-5>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 12; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 Passung: Maßdifferenz von Innen- und Außenpassfläche vor dem Fügen. Grenzpassung: Passung, wenn beide Passflächen an ihren Grenzmaßen liegen (Höchst- und Mindestpassung) (S. 153–154).
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 13; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Verständnislösung]
 
 Spiel: P#sub[O] und P#sub[U] ≥ 0; Übergang: P#sub[O] \> 0, P#sub[U] \< 0; Übermaß: beide ≤ 0 bzw. \< 0. Im Toleranzfeldbild: Bohrungsfeld über, überlappend mit bzw. unter dem Wellenfeld (S. 156).
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 14; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Verständnislösung]
 
 Eine einheitliche Bohrung mit verschiedenen Wellen ist fertigungstechnisch einfacher und billiger. Die Begrenzung der Kombinationen spart Werkzeuge und Lehren (S. 157, 161).
 
-#nachschlagen[Lernskript, #stelle(<a-6-7>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 15; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -2872,8 +3263,11 @@ H7/h6: Welle es = 0  ei = −0,016  Go = 50,000  Gu = 49,984  T = 0,016
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 16; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Rechen- oder Konstruktionslösung]
 
 
@@ -2883,8 +3277,11 @@ H7/h6: Welle es = 0  ei = −0,016  Go = 50,000  Gu = 49,984  T = 0,016
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-7>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 17; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Rechen- oder Konstruktionslösung]
 
 
@@ -2897,8 +3294,11 @@ H7/h6: Welle es = 0  ei = −0,016  Go = 50,000  Gu = 49,984  T = 0,016
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 18; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Rechen- oder Konstruktionslösung]
 
 
@@ -2908,8 +3308,11 @@ Bohrung 0 … +25 µm im Bereich 30–50 = #strong[H7]; Welle +34 … +50 µm = 
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 19; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Rechen- oder Konstruktionslösung]
 
 
@@ -2921,8 +3324,11 @@ Bohrung 0 … +25 µm im Bereich 30–50 = #strong[H7]; Welle +34 … +50 µm = 
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-4>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 20; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Rechen- oder Konstruktionslösung]
 
 
@@ -2932,8 +3338,11 @@ a) Übermaß, z. B. H7/r6 oder H7/s6; b) Übergang, z. B. H7/n6 oder H7/k6; c) H
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-7>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 21; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[22 · Rechen- oder Konstruktionslösung]
 
 
@@ -2943,8 +3352,11 @@ a) Übermaß, z. B. H7/r6 oder H7/s6; b) Übergang, z. B. H7/n6 oder H7/k6; c) H
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-5>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 22; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[23 · Rechen- oder Konstruktionslösung]
 
 
@@ -2954,38 +3366,56 @@ a) Übermaß, z. B. H7/r6 oder H7/s6; b) Übergang, z. B. H7/n6 oder H7/k6; c) H
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-2>); ergänzend B S. 131–168. Herkunft: L-alt C2, Frage 23; nach B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[24 · Verständnislösung]
 
 oberes Abmaß = 0. gilt für Wellen. ist die Grundlage der Einheitswelle.
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt C2, offene Überarbeitung Frage 24; B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[25 · Verständnislösung]
 
 ist die Summe der Maßtoleranzen von Bohrung und Welle. ist PO − PU.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt C2, offene Überarbeitung Frage 25; B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[26 · Verständnislösung]
 
 Parallelität. Rundlauf. Position.
 
-#nachschlagen[Lernskript, #stelle(<a-6-5>); ergänzend B S. 131–168. Herkunft: L-alt C2, offene Überarbeitung Frage 26; B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[27 · Verständnislösung]
 
 Übergangspassung. Passung mit PT = 0,041 mm.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt C2, offene Überarbeitung Frage 27; B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[28 · Verständnislösung]
 
 das Unabhängigkeitsprinzip. DIN EN ISO 8015.
 
-#nachschlagen[Lernskript, #stelle(<a-6-1>); ergänzend B S. 131–168. Herkunft: L-alt C2, offene Überarbeitung Frage 28; B S. 131–168.]
+#nachschlagen[Lernskript, #stelle(<a-6-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[29 · Rechen- oder Konstruktionslösung]
 
 
@@ -3001,8 +3431,11 @@ das Unabhängigkeitsprinzip. DIN EN ISO 8015.
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt L2; B Tab. 7-3, S. 142.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[30 · Rechen- oder Konstruktionslösung]
 
 
@@ -3016,8 +3449,11 @@ das Unabhängigkeitsprinzip. DIN EN ISO 8015.
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt L3; B Tab. 7-3 S. 142 und S. 155.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[31 · Rechen- oder Konstruktionslösung]
 
 
@@ -3027,8 +3463,11 @@ H7 = +30/0 µm, k6 = +21/+2 µm PO = 30 − 2 = +28 µm PU = 0 − 21 = −21 µ
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt S1; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[32 · Rechen- oder Konstruktionslösung]
 
 
@@ -3038,8 +3477,11 @@ H8 = +54/0, h11 = 0/−220 µm (Bereich über 80 bis 100). PO = 54 − (−220) 
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt A2; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[33 · Rechen- oder Konstruktionslösung]
 
 
@@ -3049,8 +3491,11 @@ F8 = +43/+16, h6 = 0/−11 µm. PO = 43 − (−11) = +54 µm; PU = 16 − 0 = +
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: L-alt A3; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[34 · Rechen- oder Konstruktionslösung]
 
 
@@ -3060,8 +3505,11 @@ a) Ø40 H7: 40,000 … 40,025 mm (Tab. 7-3). 25 nach ISO 2768-m: ±0,2 → 24,8 
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-4>); ergänzend B S. 131–168. Herkunft: L-alt G2; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-6-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[35 · Rechen- oder Konstruktionslösung]
 
 
@@ -3071,8 +3519,11 @@ j6 bei Ø50: +11/−5 µm → 49,995 … 50,011 mm. 50,008 liegt dazwischen: gut
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-3>); ergänzend B S. 131–168. Herkunft: L-alt G8; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-6-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[36 · Rechen- oder Konstruktionslösung]
 
 
@@ -3088,7 +3539,9 @@ j6 bei Ø50: +11/−5 µm → 49,995 … 50,011 mm. 50,008 liegt dazwischen: gut
 
 *Prüfung:* Toleranzen sind nicht negativ, und PO ist mindestens so groß wie PU. Abmaße in µm vor Addition zu mm umrechnen.
 
-#nachschlagen[Lernskript, #stelle(<a-6-6>); ergänzend B S. 131–168. Herkunft: AK 4, PDF-S. 8; Tabellenwerte sind in AK vorgegeben.]
+#nachschlagen[Lernskript, #stelle(<a-6-6>).]
+
+]
 
 #pagebreak()
 = Kapitel 7 · Gewinde und Schraubenverbindungen
@@ -3367,78 +3820,115 @@ Zeichne die Sackloch-Schraubverbindung aus AK 3. Verwende M20, Durchgangsbohrung
 #pagebreak()
 == Lösungen Kapitel 7
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Bolzen: Nenn-Ø breit, Kern-Ø schmal. Mutter: Kern-Ø breit, Nenn-Ø schmal. Eselsbrücke (eigene Ergänzung): breit ist die Kante, die den Körper begrenzt und die du mit dem Messschieber greifen kannst (S. 169–170).
 
-#nachschlagen[Lernskript, #stelle(<a-7-1>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 1; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Bolzen: Nenn-Ø voller breiter Kreis, Kern-Ø schmaler ¾-Kreis; Mutter umgekehrt. Die Kernlinie windet sich durch die Steigung nach unten und ist nur etwa über 270° sichtbar (S. 171).
 
-#nachschlagen[Lernskript, #stelle(<a-7-1>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 2; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Das Bolzengewinde. Seine Kanten werden breit gezeichnet, die Schraffur der Mutter endet an der Körperkante des Bolzens (S. 170–171).
 
-#nachschlagen[Lernskript, #stelle(<a-7-1>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 3; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Nutzbare Länge: Anlagefläche bis letzter voller Gang (Ende als breite Linie). Auslauf: herstellungsbedingter Rest mit kleiner werdenden Gängen, ca. 2,5 · P. Grundlochüberhang: zusätzliche Bohrtiefe bei Innengewinden für das Schneiden (S. 172–173).
 
-#nachschlagen[Lernskript, #stelle(<a-7-2>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 4; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Kleinere Steigung, gleiches 60°-Profil. In der Bezeichnung steht die Steigung („M16 × 1,5“); fehlt sie, ist es Regelgewinde (S. 175–176).
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 5; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Mit dem Zusatz „-LH“, z. B. „M16 – LH“ (S. 176).
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 6; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Trapez: Bewegungsgewinde in beide Richtungen (Leitspindeln, Schraubstöcke). Säge: Last nur in einer Richtung (Pressen). Rund: Stöße, Schmutz, Blech (Glühlampen). Beim Trapezgewinde gehören zu jedem Ø zwei oder drei Steigungen (S. 177–179).
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 7; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Toleranzgrad 6, Lage g für ein Außengewinde. Die Zahl steht vorn, damit man die Angabe nicht mit einer normalen Rundpassung verwechselt, deren Werte anders sind (S. 180).
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 8; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Dehnschraube: Schaft auf ca. 90 % des Gewinde-Ø verjüngt, dehnt sich beim Anziehen und wirkt als Feder. Passschraube: Schaft mit Passdurchmesser zur Bohrung; sie hält und positioniert zugleich (S. 184).
 
-#nachschlagen[Lernskript, #stelle(<a-7-4>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 9; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Nein, eine Unterlegscheibe ist keine Sicherung gegen Aufdrehen (S. 187). Federringe gelten bei Fachleuten als unwirksame Sicherung, weil Versuche die Vorspannung nicht sicher nachweisen konnten (S. 188).
 
-#nachschlagen[Lernskript, #stelle(<a-7-5>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 10; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 Im zusammengepressten Zustand, Schlitzseite nach vorn, Schlitzneigung richtig. Geschnitten sähe er wie eine einfache Unterlegscheibe aus (S. 188).
 
-#nachschlagen[Lernskript, #stelle(<a-7-5>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 11; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Ihre Maße sind durch die Norm festgelegt; die Normbezeichnung in der Stückliste reicht für Bestellung und Montage (S. 192).
 
-#nachschlagen[Lernskript, #stelle(<a-7-6>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 12; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Rechen- oder Konstruktionslösung]
 
 
@@ -3450,8 +3940,11 @@ d3 = 10 − 1,22687 · 1,5 = 8,160 mm
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 13; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -3462,8 +3955,11 @@ Weg nach 3 Umdrehungen: 3 · 14 = 42 mm
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 14; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -3473,8 +3969,11 @@ Sechskantschraube ISO 4014 – M12 – LH × 50 – 10.8; Sechskantmutter ISO 40
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-6>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 15; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -3484,8 +3983,11 @@ Aluminium: L ≥ 2 · d = 32 mm. Grauguss: L ≥ 1,25 · 16 = 20 mm (Bild 8-22, 
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-4>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 16; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Rechen- oder Konstruktionslösung]
 
 
@@ -3496,8 +3998,11 @@ Rp0,2 = 0,9 · 1000 =  900 N/mm²   (abgeleitet aus der Regel am Beispiel 8.8)
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-6>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 17; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Rechen- oder Konstruktionslösung]
 
 
@@ -3507,32 +4012,47 @@ x ≈ 2,5 · P = 2,5 · 2 mm = 5 mm   -\>  stimmt mit dem Normwert x = 5 mm übe
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-2>); ergänzend B S. 169–196. Herkunft: L-alt D1, Frage 18; nach B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Verständnislösung]
 
 geht die Schraffur bis zum Kerndurchmesser. ist der Nenndurchmesser eine schmale Linie.
 
-#nachschlagen[Lernskript, #stelle(<a-7-1>); ergänzend B S. 169–196. Herkunft: L-alt D1, offene Überarbeitung Frage 19; B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Verständnislösung]
 
 M20 × 1,5. M8 × 1.
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, offene Überarbeitung Frage 20; B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Verständnislösung]
 
 6H/6g. die Toleranzklasse „mittel“.
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt D1, offene Überarbeitung Frage 21; B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[22 · Verständnislösung]
 
 Kronenmutter mit Splint. Sicherungsblech mit umgebogenem Lappen. selbstsichernde Mutter.
 
-#nachschlagen[Lernskript, #stelle(<a-7-5>); ergänzend B S. 169–196. Herkunft: L-alt D1, offene Überarbeitung Frage 22; B S. 169–196.]
+#nachschlagen[Lernskript, #stelle(<a-7-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[23 · Rechen- oder Konstruktionslösung]
 
 
@@ -3546,8 +4066,11 @@ Kronenmutter mit Splint. Sicherungsblech mit umgebogenem Lappen. selbstsichernde
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt L4; B Bild 8-8, S. 174–175.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[24 · Rechen- oder Konstruktionslösung]
 
 
@@ -3557,8 +4080,11 @@ d2 = 12 − 1,137 = 10,863 mm; d3 = 12 − 2,147 = 9,853 mm; D1 = 12 − 1,894 =
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-3>); ergänzend B S. 169–196. Herkunft: L-alt A4; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-7-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[25 · Rechen- oder Konstruktionslösung]
 
 
@@ -3568,13 +4094,18 @@ a) Grauguss: 1,25 · d = 12,5 mm (S. 184). b) d3 = 10 − 1,22687 · 1,5 = 8,160
 
 *Prüfung:* Durchmesser und Steigung haben dieselbe Einheit; ein Kerndurchmesser bleibt kleiner als der Nenndurchmesser.
 
-#nachschlagen[Lernskript, #stelle(<a-7-4>); ergänzend B S. 169–196. Herkunft: L-alt G4; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-7-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[26 · Verständnislösung]
 
 Eigene Lösung: 1. Lege die gemeinsame Achse sowie Trenn- und Auflageflächen der beiden Bauteile fest. Zeichne die Durchgangsbohrung Ø24 im oberen Teil. 2. Trage die Schraubenlänge 50 mm ab der Kopfauflage ab; davon sind 45 mm nutzbares Außengewinde, 5 mm bleiben Schaft/Übergangsbereich nach Aufgabenvorgabe. 3. Im unteren Teil: Innengewinde M20 mit 45 mm nutzbarer Länge und vorgegebenem Grunddurchmesser 17 mm; Sacklochtiefe 65 mm separat ab dessen Eintrittsfläche eintragen. 4. Schraube im Längsschnitt ungeschraffiert; Bolzenkontur hat im Eingriff Vorrang. Nachbarteile entgegengesetzt schraffieren, freies Innengewinde bis zur breiten Kernlinie schraffieren. 5. Gewindeende, Auslauf und Bohrspitze getrennt darstellen. Prüfung: 65 mm Sacklochtiefe sind nicht 65 mm nutzbares Gewinde. Die Klemmteildicke ist in der Aufgabenzeichnung geometrisch vorgegeben, aber nicht numerisch bemaßt; daraus keine zusätzliche Zahl erfinden. Ø17 ist der explizite Zeichenwert der AK und keine allgemeine Kernlochbohrerempfehlung für M20.
 
-#nachschlagen[Lernskript, #stelle(<a-7-1>); ergänzend B S. 169–196. Herkunft: AK 3, PDF-S. 7; eigene Lösung mit B S. 169–173.]
+#nachschlagen[Lernskript, #stelle(<a-7-1>).]
+
+]
 
 #pagebreak()
 = Kapitel 8 · Elemente an Achsen und Wellen
@@ -3770,66 +4301,97 @@ Nenne fünf mögliche Elemente an Achsen- und Wellenenden. Erkläre anschließen
 #pagebreak()
 == Lösungen Kapitel 8
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Damit nicht jede Kupplung eine Sonderanfertigung ist: gestufte Durchmesser mit zugeordneten Längen. Ø40 liegt unter 50 mm, also k6 (S. 199).
 
-#nachschlagen[Lernskript, #stelle(<a-8-1>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 1; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Anlage (kleiner Radius, r₁ \< r₂), Fertigung (Werkzeugauslauf für Schleifscheibe) und Festigkeit (großer Radius gegen Kerbwirkung). Der Freistich bietet einen definierten Auslauf mit genormtem Radius; ein einfacher kleiner Radius würde Auslauf und Festigkeit nicht erfüllen (S. 199–200).
 
-#nachschlagen[Lernskript, #stelle(<a-8-2>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 2; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 E: keine besonderen Anforderungen an die Planfläche. F: Zylinder und Planfläche werden beide weiterbearbeitet, etwa bei einer Lageranlageschulter (S. 200).
 
-#nachschlagen[Lernskript, #stelle(<a-8-2>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 3; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Geschlichtet: Rz1max 25 bzw. Ra 3,2 (S. 201).
 
-#nachschlagen[Lernskript, #stelle(<a-8-2>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 4; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Für die Führung der Welle im Reitstock beim Drehen, damit sie sich unter Schnittkräften nicht verformt. Eine reicht ohne Umspannen; wird umgespannt, braucht man an beiden Seiten eine (S. 202).
 
-#nachschlagen[Lernskript, #stelle(<a-8-3>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 5; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 A: einfach, günstig. B: Schutzsenkung schützt die Zentrierflächen. R: gewölbt, gleicht Lagefehler aus, kein Kantentragen (S. 203).
 
-#nachschlagen[Lernskript, #stelle(<a-8-3>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 6; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Darf/muss bleiben: wenn die Welle später nachgeschliffen oder zwischen Spitzen geprüft wird, oder die Bohrung die Funktion nicht stört (Beispiele: eigene Ergänzung). Darf nicht bleiben: wenn sie die Funktion stört, z. B. an einer Stirnfläche, die als Anlage oder Dichtfläche dient; dann wird die Welle länger gefertigt und gekürzt (S. 205).
 
-#nachschlagen[Lernskript, #stelle(<a-8-3>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 7; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Gestufte Querschnitte und Normlängen reduzieren die Vielfalt: weniger Fräser, Lagerhaltung und Kosten; die Feder ist ein Katalogteil (S. 207; Begründung abgeleitet).
 
-#nachschlagen[Lernskript, #stelle(<a-8-4>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 8; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Nein, nicht sinnvoll: N2 entsteht mit dem Scheibenfräser und hat auslaufende Enden für geradstirnige Federn (Form B). Für Form A gehört die Nut N1 vom Schaftfräser (S. 207).
 
-#nachschlagen[Lernskript, #stelle(<a-8-4>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 9; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Passfeder: kleine bis mittlere Momente. Vielnut: wesentlich größere. Polygon: höchstes Moment bei gleichem Durchmesser (S. 206, 210, 216).
 
-#nachschlagen[Lernskript, #stelle(<a-8-5>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 10; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Rechen- oder Konstruktionslösung]
 
 
@@ -3840,8 +4402,11 @@ d = 51 mm  (über 50 bis 58):  16 x 10   t1 = 6,0 +0,2   t2 = 4,3 +0,2
 
 *Prüfung:* Querschnitt und Normbezeichnung müssen zum Durchmesserbereich der Tabelle passen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-4>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 11; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Rechen- oder Konstruktionslösung]
 
 
@@ -3851,8 +4416,11 @@ d = 51 mm  (über 50 bis 58):  16 x 10   t1 = 6,0 +0,2   t2 = 4,3 +0,2
 
 *Prüfung:* Querschnitt und Normbezeichnung müssen zum Durchmesserbereich der Tabelle passen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-4>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 12; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Rechen- oder Konstruktionslösung]
 
 
@@ -3862,8 +4430,11 @@ a) DIN 509 – F0,8 × 0,3; b) ISO 6411 – A 4/8,5; c) Passfeder DIN 6885 – A
 
 *Prüfung:* Querschnitt und Normbezeichnung müssen zum Durchmesserbereich der Tabelle passen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-2>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 13; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -3873,8 +4444,11 @@ a) DIN ISO 14 – N 10 × 72 × 78; b) DIN 5481 – W 50 × 55, die Länge wird 
 
 *Prüfung:* Querschnitt und Normbezeichnung müssen zum Durchmesserbereich der Tabelle passen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-5>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 14; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -3885,26 +4459,38 @@ radiale Überdeckung ≈ (d3 − d1) / 2 = (30 − 26,5) / 2 = 1,75 mm   (abgele
 
 *Prüfung:* Querschnitt und Normbezeichnung müssen zum Durchmesserbereich der Tabelle passen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-5>); ergänzend B S. 197–220. Herkunft: L-alt D2, Frage 15; nach B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Verständnislösung]
 
 Freistich Form F. Radius 0,8 mm. Tiefe 0,3 mm.
 
-#nachschlagen[Lernskript, #stelle(<a-8-2>); ergänzend B S. 197–220. Herkunft: L-alt D2, offene Überarbeitung Frage 16; B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Verständnislösung]
 
 trägt mit den Seitenflächen. der Form A wird mit Gesamtlänge bezeichnet.
 
-#nachschlagen[Lernskript, #stelle(<a-8-4>); ergänzend B S. 197–220. Herkunft: L-alt D2, offene Überarbeitung Frage 17; B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Verständnislösung]
 
 Polygonprofil.
 
-#nachschlagen[Lernskript, #stelle(<a-8-5>); ergänzend B S. 197–220. Herkunft: L-alt D2, offene Überarbeitung Frage 18; B S. 197–220.]
+#nachschlagen[Lernskript, #stelle(<a-8-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Rechen- oder Konstruktionslösung]
 
 
@@ -3914,13 +4500,18 @@ Polygonprofil.
 
 *Prüfung:* Querschnitt und Normbezeichnung müssen zum Durchmesserbereich der Tabelle passen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-4>); ergänzend B S. 197–220. Herkunft: L-alt S4; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-8-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Verständnislösung]
 
 Beispiele: Passfedernut, Sicherungsringnut, Gewinde, Zentrierbohrung und Wellenabsatz mit Freistich. Ein Freistich schafft Werkzeugauslauf und Anlagefreiheit. Eine Zentrierbohrung führt die Werkstückspitze bei der Fertigung zwischen Spitzen beziehungsweise mit Reitstock. Die Auswahl muss zur Funktion der konkreten Welle passen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-2>); ergänzend B S. 197–220. Herkunft: AK 1e–1g, PDF-S. 3; B Buchkapitel 9–10.]
+#nachschlagen[Lernskript, #stelle(<a-8-2>).]
+
+]
 
 #pagebreak()
 = Kapitel 9 · Sicherungselemente
@@ -4055,60 +4646,88 @@ Ein Sicherungsring hat s = 1,2 −0,06 mm, die Nut m = 1,3 +0,14 mm. Bestimme da
 #pagebreak()
 == Lösungen Kapitel 9
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Formschlüssige Welle-Nabe-Verbindungen übertragen keine Axialkräfte; Welle und Nabe könnten axial wandern. Ein Wellenbund stützt nur einseitig ab (S. 221).
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 1; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Z. B. Wellenschulter und Distanzhülse, Lagerdeckel am Gehäuse, Klemmhülse/Spannhülse, Endscheibe mit Schraube an der Stirnseite, Presssitz (Beispiele als Ergänzung; im Buch werden Sicherungsring und Nutmutter behandelt).
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 2; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Weil seine radiale Breite zu den Enden hin abnimmt: Eingebaut verformt er sich dadurch rund und liegt mit gleichmäßiger Vorspannung in der Nut (S. 221).
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 3; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Damit der Ring trotz Toleranzen sicher in die Nut passt. Ungünstig wird es, wenn das Bauteil spielfrei sitzen muss: Es klappert, z. B. bei wechselnden Axialkräften oder präzisen Lagerungen (S. 222).
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 4; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Die Nut mit kleinem Radius hat eine hohe Kerbwirkung; an den Enden ist die Biegebeanspruchung gering (S. 222).
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 5; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Immer geschnitten, breite Seite oben im Schnitt, offene Seite unten in Ansicht in die Schnittebene gedreht, mit Umlaufkanten der Nut (S. 223–224).
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 6; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Weil die Welle dort eine Nut hat und der Schnitt der Mutter über diese Nut reicht (S. 228).
 
-#nachschlagen[Lernskript, #stelle(<a-9-2>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 7; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Damit immer das Lager die Verschraubung axial begrenzt, nicht das Nutende (S. 228).
 
-#nachschlagen[Lernskript, #stelle(<a-9-2>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 8; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Sicherungsring: einfach, billig, wenig Bauraum, schnelle Montage. Nutmutter: spielfrei und nachstellbar, höhere Axialkräfte, z. B. für Festlager (S. 222, 227).
 
-#nachschlagen[Lernskript, #stelle(<a-9-2>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 9; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Rechen- oder Konstruktionslösung]
 
 
@@ -4120,8 +4739,11 @@ Spiel max = 1,99 − 1,69 = 0,30 mm
 
 *Prüfung:* Größtes Spiel: größte Nut minus kleinster Ring; kleinstes Spiel umgekehrt.
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 10; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Rechen- oder Konstruktionslösung]
 
 
@@ -4132,8 +4754,11 @@ Sicherungsring DIN 471 – 45 x 1,75
 
 *Prüfung:* Größtes Spiel: größte Nut minus kleinster Ring; kleinstes Spiel umgekehrt.
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 11; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Rechen- oder Konstruktionslösung]
 
 
@@ -4143,20 +4768,29 @@ Nutmutter DIN 981 – M50 × 1,5; Sicherungsblech DIN 5406 – A 50 (Tab. 10-3).
 
 *Prüfung:* Größtes Spiel: größte Nut minus kleinster Ring; kleinstes Spiel umgekehrt.
 
-#nachschlagen[Lernskript, #stelle(<a-9-2>); ergänzend B S. 221–230. Herkunft: L-alt D3, Frage 12; nach B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 werden in Gesamtzeichnungen geschnitten dargestellt. haben die breite Seite oben in der Zeichnung. verursachen eine hohe Kerbwirkung in der Welle.
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt D3, offene Überarbeitung Frage 13; B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Verständnislösung]
 
 Das Blech wird im Vollschnitt dargestellt. Eine äußere Nase greift in eine Nut der Mutter.
 
-#nachschlagen[Lernskript, #stelle(<a-9-2>); ergänzend B S. 221–230. Herkunft: L-alt D3, offene Überarbeitung Frage 14; B S. 221–230.]
+#nachschlagen[Lernskript, #stelle(<a-9-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -4170,8 +4804,11 @@ Das Blech wird im Vollschnitt dargestellt. Eine äußere Nase greift in eine Nut
 
 *Prüfung:* Größtes Spiel: größte Nut minus kleinster Ring; kleinstes Spiel umgekehrt.
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt L5; Buchbeispiel B S. 222.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -4181,7 +4818,9 @@ s = 1,14 … 1,20 mm, m = 1,30 … 1,44 mm; Spiel min = 1,30 − 1,20 = 0,10 mm;
 
 *Prüfung:* Größtes Spiel: größte Nut minus kleinster Ring; kleinstes Spiel umgekehrt.
 
-#nachschlagen[Lernskript, #stelle(<a-9-1>); ergänzend B S. 221–230. Herkunft: L-alt A5; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-9-1>).]
+
+]
 
 #pagebreak()
 = Kapitel 10 · Wälzlager und Lageranordnungen
@@ -4393,66 +5032,97 @@ Eine Getriebewelle trägt ein Rillenkugellager 6006. Die Welle dreht, die Zahnkr
 #pagebreak()
 == Lösungen Kapitel 10
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Gleitlager: direkte Gleitbewegung zwischen Welle und Lager (mit Schmierfilm). Wälzlager: Wälzkörper rollen zwischen den Ringen ab, Rollreibung statt Gleitreibung (S. 231).
 
-#nachschlagen[Lernskript, #stelle(<a-10-1>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 1; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Innenring, Außenring, Wälzkörper, Käfig. Der Käfig hält die Wälzkörper auf Abstand und verteilt sie gleichmäßig (S. 232).
 
-#nachschlagen[Lernskript, #stelle(<a-10-1>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 2; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Immer im Schnitt; beide Ringe gleiche Schraffur; Wälzkörper ungeschnitten; Käfig meist nicht gezeichnet; Kantenradien immer darstellen (S. 234–235).
 
-#nachschlagen[Lernskript, #stelle(<a-10-2>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 3; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Schrägkugellager: niedrige und hohe Schulter, α = 40°, hohe Axialkraft in einer Richtung. Vierpunktlager: zwei Kreisbögen je Rille, vier Berührpunkte, geteilter Innenring, beidseitig axial. Pendelkugellager: hohlkugelige Außenbahn, gleicht bis 4° aus, immer zweireihig, also kein einreihiges (S. 235–236).
 
-#nachschlagen[Lernskript, #stelle(<a-10-3>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 4; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 NJ (eine Richtung) oder NUP (beide Richtungen), weil dort Borde an beiden Ringen die Rollen führen (S. 237–238).
 
-#nachschlagen[Lernskript, #stelle(<a-10-3>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 5; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Radial und axial hoch, axial aber nur in einer Richtung; deshalb paarweise spiegelbildlich, Spiel über Nutmutter einstellbar (S. 239).
 
-#nachschlagen[Lernskript, #stelle(<a-10-3>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 6; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Fest-Fest: Wärmedehnung der Welle verspannt die Lager. Los-Los: Die Welle wäre axial nicht geführt und könnte wandern, Axialkräfte würden nicht aufgenommen (S. 244; zweiter Teil abgeleitet).
 
-#nachschlagen[Lernskript, #stelle(<a-10-6>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 7; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Punktlast: Kraft wirkt immer auf dieselbe Ringstelle. Umfangslast: Kraft läuft relativ zum Ring um. Der Ring mit Umfangslast bekommt den festen Sitz (S. 245).
 
-#nachschlagen[Lernskript, #stelle(<a-10-5>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 8; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Das Loslager muss nur einen Ring leicht halten, dafür reicht ein billiger Sicherungsring. Das Festlager nimmt alle Axialkräfte auf und soll spielfrei sitzen; das schafft nur die Nutmutter (S. 227, 243–244; abgeleitet).
 
-#nachschlagen[Lernskript, #stelle(<a-10-6>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 9; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Ja, es nimmt hohe radiale und axiale Kräfte auf; dann werden beide Ringe beidseitig fixiert (S. 239; abgeleitet).
 
-#nachschlagen[Lernskript, #stelle(<a-10-3>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 10; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Rechen- oder Konstruktionslösung]
 
 
@@ -4462,8 +5132,11 @@ Ja, es nimmt hohe radiale und axiale Kräfte auf; dann werden beide Ringe beidse
 
 *Prüfung:* Die Sitzwahl folgt der Relativbewegung zwischen Last und Ring; Zeichnungsmaße sind keine Belastbarkeitswerte.
 
-#nachschlagen[Lernskript, #stelle(<a-10-4>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 11; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Rechen- oder Konstruktionslösung]
 
 
@@ -4474,8 +5147,11 @@ DW ≈ 6,25 mm   HR ≈ 4,2 mm   R ≈ 1,4 mm
 
 *Prüfung:* Die Sitzwahl folgt der Relativbewegung zwischen Last und Ring; Zeichnungsmaße sind keine Belastbarkeitswerte.
 
-#nachschlagen[Lernskript, #stelle(<a-10-2>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 12; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Rechen- oder Konstruktionslösung]
 
 
@@ -4485,8 +5161,11 @@ Innenring Umfangslast: Welle #strong[k6] (Kugellager bis 100 mm, normale Last). 
 
 *Prüfung:* Die Sitzwahl folgt der Relativbewegung zwischen Last und Ring; Zeichnungsmaße sind keine Belastbarkeitswerte.
 
-#nachschlagen[Lernskript, #stelle(<a-10-5>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 13; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -4496,26 +5175,38 @@ Die Last steht still, der Außenring dreht sich: Außenring #strong[Umfangslast]
 
 *Prüfung:* Die Sitzwahl folgt der Relativbewegung zwischen Last und Ring; Zeichnungsmaße sind keine Belastbarkeitswerte.
 
-#nachschlagen[Lernskript, #stelle(<a-10-5>); ergänzend B S. 231–248. Herkunft: L-alt D4, Frage 14; nach B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Verständnislösung]
 
 Rillenkugellager. Vierpunktlager. zweiseitig wirkendes Axial-Rillenkugellager.
 
-#nachschlagen[Lernskript, #stelle(<a-10-3>); ergänzend B S. 231–248. Herkunft: L-alt D4, offene Überarbeitung Frage 15; B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Verständnislösung]
 
 Bei der klassischen Festlager-Loslager-Anordnung sind Innen- und Außenring des Festlagers axial beidseitig festgelegt. Dieses Lager führt die Welle axial und nimmt ihre Axialkräfte auf; das Loslager lässt den Längenausgleich zu.
 
-#nachschlagen[Lernskript, #stelle(<a-10-6>); ergänzend B S. 231–248. Herkunft: L-alt D4, offene Überarbeitung Frage 16; B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Verständnislösung]
 
 werden Innen- und Außenring gleich schraffiert. werden Wälzkörper nicht schraffiert.
 
-#nachschlagen[Lernskript, #stelle(<a-10-2>); ergänzend B S. 231–248. Herkunft: L-alt D4, offene Überarbeitung Frage 17; B S. 231–248.]
+#nachschlagen[Lernskript, #stelle(<a-10-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Rechen- oder Konstruktionslösung]
 
 
@@ -4525,8 +5216,11 @@ d = 10 · 5 = 50 mm H = (90 − 50) / 2 = 20 mm DW ≈ H/2 = 10 mm HR ≈ H/3 �
 
 *Prüfung:* Die Sitzwahl folgt der Relativbewegung zwischen Last und Ring; Zeichnungsmaße sind keine Belastbarkeitswerte.
 
-#nachschlagen[Lernskript, #stelle(<a-10-2>); ergänzend B S. 231–248. Herkunft: L-alt S3; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-10-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Rechen- oder Konstruktionslösung]
 
 
@@ -4536,8 +5230,11 @@ Die Last steht still, der Außenring dreht sich mit dem Rad unter ihr hindurch: 
 
 *Prüfung:* Die Sitzwahl folgt der Relativbewegung zwischen Last und Ring; Zeichnungsmaße sind keine Belastbarkeitswerte.
 
-#nachschlagen[Lernskript, #stelle(<a-10-5>); ergänzend B S. 231–248. Herkunft: L-alt A7; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-10-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Rechen- oder Konstruktionslösung]
 
 
@@ -4547,7 +5244,9 @@ a) 6006 → d = 6 · 5 = 30 mm. b) Innenring hat Umfangslast → fester Sitz, z.
 
 *Prüfung:* Die Sitzwahl folgt der Relativbewegung zwischen Last und Ring; Zeichnungsmaße sind keine Belastbarkeitswerte.
 
-#nachschlagen[Lernskript, #stelle(<a-10-5>); ergänzend B S. 231–248. Herkunft: L-alt G1; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-10-5>).]
+
+]
 
 #pagebreak()
 = Kapitel 11 · Dichtungen
@@ -4811,84 +5510,124 @@ Unter einem Radial-Wellendichtring hat die Welle Ø40 h11.a) Grenzmaße? b) Wie 
 #pagebreak()
 == Lösungen Kapitel 11
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Stoffverluste vermeiden (Gase, Flüssigkeiten), Vermischung verschiedener Betriebsstoffe verhindern, Verschleiß durch Schmutz, Staub und Feuchtigkeit vermeiden (S. 249).
 
-#nachschlagen[Lernskript, #stelle(<a-11-1>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 1; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Ruhende oder bewegte Bauteile sowie berührend oder berührungsfrei. Berührungsfreie Dichtungen an ruhenden Teilen gibt es nicht (S. 249).
 
-#nachschlagen[Lernskript, #stelle(<a-11-1>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 2; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Die Rauheitsspitzen der Bauteilfläche betten sich in den Dichtungswerkstoff ein. Voraussetzungen: weicherer Dichtungswerkstoff und eine Anpresskraft durch Schrauben oder Betriebsdruck (S. 249–250).
 
-#nachschlagen[Lernskript, #stelle(<a-11-2>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 3; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Nein. Der Faltenbalg ist eine statische, hermetische Dichtung; er kann wegen seiner Form trotzdem bewegte Teile abdichten (S. 250).
 
-#nachschlagen[Lernskript, #stelle(<a-11-2>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 4; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Elastomer: Kreuzschraffur. Kupfer: 45°-Schraffur (oder NE-Metall-Schraffur, wenn der Werkstoff betont werden soll). Sehr dünn: geschwärzt. Dann muss der Werkstoff in der Stückliste stehen (S. 250).
 
-#nachschlagen[Lernskript, #stelle(<a-11-3>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 5; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 O-Ring: verformt zeichnen, weil die Verformung die Anpresskraft erzeugt (S. 252). Filzring: zusammengedrückt in der konischen Nut, mit Abstand zum Nutgrund (S. 254).
 
-#nachschlagen[Lernskript, #stelle(<a-11-4>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 6; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Kunststoffkörper mit Lippe (geschwärzt), Versteifungsring aus Metall (schraffiert), Feder (zwei kleine konzentrische Kreise) (S. 252–253).
 
-#nachschlagen[Lernskript, #stelle(<a-11-6>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 7; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 An der Gleitfläche muss ein Schmierfilm des Mediums vorhanden sein, sonst verschleißt die Lippe schnell. Dieser Film führt langfristig zu geringer Leckage (S. 252).
 
-#nachschlagen[Lernskript, #stelle(<a-11-5>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 8; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Eine zu glatte Welle lässt die Dichtlippe heiß laufen (S. 254).
 
-#nachschlagen[Lernskript, #stelle(<a-11-6>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 9; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Zur Abdichtung von Wälzlagern bei Fettschmierung. Sie sind aus Metall, aber so dünn, dass sie geschwärzt gezeichnet werden (S. 254–255).
 
-#nachschlagen[Lernskript, #stelle(<a-11-7>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 10; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 Stopfbuchsen werden wegen ihrer Vielfalt meist nicht im Detail gezeichnet, die Zeichnung allein reicht also nicht zur Bestellung (S. 256).
 
-#nachschlagen[Lernskript, #stelle(<a-11-8>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 11; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-8>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Strömungsdichtungen werden bei einem Druckunterschied zwischen innen und außen gebraucht und bremsen das Medium z. B. durch ein Labyrinth ab; sie haben immer eine Leckmenge. Schutzdichtungen schützen vor Schmutz ohne nennenswerten Druckunterschied (S. 256–257; Schutzfunktion abgeleitet).
 
-#nachschlagen[Lernskript, #stelle(<a-11-9>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 12; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-9>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 Wenn alle Funktionen klar sind und die Dichtung von untergeordneter Bedeutung ist; sonst immer ausführlich (S. 257).
 
-#nachschlagen[Lernskript, #stelle(<a-11-10>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 13; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-10>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -4898,8 +5637,11 @@ DIN 3771 = Norm, 13,2 = Innendurchmesser d1, 1,8 = Schnurstärke d2, N = Sortenm
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-4>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 14; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -4910,8 +5652,11 @@ Breitenangabe nach Bild 12-3:  7,8 +0,2
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-4>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 15; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -4921,8 +5666,11 @@ Wellendichtring DIN 3760 – A 30 x 47 x 7 NB (Schema S. 254).
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-6>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 16; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Rechen- oder Konstruktionslösung]
 
 
@@ -4932,8 +5680,11 @@ Welle: Fase 15° bis 25°, Kante gerundet und poliert, Ø30 h11, drallfrei gesch
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-6>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 17; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Rechen- oder Konstruktionslösung]
 
 
@@ -4943,26 +5694,38 @@ Filzring DIN 5419 – 50 – M5 (S. 254).
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-7>); ergänzend B S. 249–258. Herkunft: L-alt D5, Frage 18; nach B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Verständnislösung]
 
 Die Feder wird als zwei kleine konzentrische Kreise gezeichnet. Bei Montage mit der Lippe nach hinten genügt an der Welle R ≥ 1 mm.
 
-#nachschlagen[Lernskript, #stelle(<a-11-6>); ergänzend B S. 249–258. Herkunft: L-alt D5, offene Überarbeitung Frage 19; B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Verständnislösung]
 
 sind praktisch verschleißfrei. eignen sich für hohe Drehzahlen. werden als Schutzdichtung aus Stahl mit 45°-Schraffur gezeichnet.
 
-#nachschlagen[Lernskript, #stelle(<a-11-9>); ergänzend B S. 249–258. Herkunft: L-alt D5, offene Überarbeitung Frage 20; B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-9>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Verständnislösung]
 
 stammt aus DIN ISO 9222-1. wird in breiter Volllinie gezeichnet. kann durch einen Pfeil für die Dichtungsrichtung ergänzt werden.
 
-#nachschlagen[Lernskript, #stelle(<a-11-10>); ergänzend B S. 249–258. Herkunft: L-alt D5, offene Überarbeitung Frage 21; B S. 249–258.]
+#nachschlagen[Lernskript, #stelle(<a-11-10>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[22 · Rechen- oder Konstruktionslösung]
 
 
@@ -4972,8 +5735,11 @@ T = 1,5 mm, B = 2,6 mm, Eintrag der Breite mit 2,6 +0,2 (S. 251–252).
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-4>); ergänzend B S. 249–258. Herkunft: L-alt S6; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-11-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[23 · Rechen- oder Konstruktionslösung]
 
 
@@ -4983,8 +5749,11 @@ Wellendichtring DIN 3760 – A 40 x 62 x 8 NB (Schema S. 254).
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-6>); ergänzend B S. 249–258. Herkunft: L-alt A8; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-11-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[24 · Rechen- oder Konstruktionslösung]
 
 
@@ -4994,7 +5763,9 @@ a) h11, Bereich über 30 bis 50: 0/−160 µm → 39,840 … 40,000 mm. b) Zwei 
 
 *Prüfung:* Einbauraum, Toleranz und Oberflächenforderung müssen zur betreffenden Dichtung passen.
 
-#nachschlagen[Lernskript, #stelle(<a-11-6>); ergänzend B S. 249–258. Herkunft: L-alt G5; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-11-6>).]
+
+]
 
 #pagebreak()
 = Kapitel 12 · Zahnräder
@@ -5240,84 +6011,124 @@ Ein Zahnrad m = 2,5 mm, z = 32 sitzt mit Ø25 H7/k6 und einer Passfeder auf der 
 #pagebreak()
 == Lösungen Kapitel 12
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Grobgestalt der Räder und Lage der Wellen. Parallel: Stirnrad; schneidend: Kegelrad; kreuzend: Schnecke, Schraubrad, Hypoid (S. 259–260).
 
-#nachschlagen[Lernskript, #stelle(<a-12-1>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 1; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 m = d/z. Beide Verzahnungen müssen von gleicher Art sein, sonst passen Teilung und Zahnform nicht zusammen (S. 260).
 
-#nachschlagen[Lernskript, #stelle(<a-12-2>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 2; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Die normgerechte Darstellung ist bereits symbolisch und damit vereinfacht; eine ausführliche Darstellung wäre eher nicht normgerecht (S. 259).
 
-#nachschlagen[Lernskript, #stelle(<a-12-3>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 3; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Nur an der strichpunktierten Teilkreislinie (S. 262).
 
-#nachschlagen[Lernskript, #stelle(<a-12-3>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 4; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Kopfkreis: breite Volllinie (Körperkante); Teilkreis: schmale Strichpunktlinie; Fußkreis: schmale Volllinie, nur bei Bedarf (S. 261–262).
 
-#nachschlagen[Lernskript, #stelle(<a-12-3>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 5; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Ungeschnitten; die Schraffur endet an der Fußlinie (S. 261).
 
-#nachschlagen[Lernskript, #stelle(<a-12-3>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 6; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Zwei gegenüberliegende Zähne, auch bei ungerader Zähnezahl (S. 261).
 
-#nachschlagen[Lernskript, #stelle(<a-12-3>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 7; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Durch drei schmale Volllinien in Form und Richtung der Zähne in einer achsparallelen Ansicht. Nicht Pflicht, aber die Steigung muss in den Fertigungsunterlagen stehen (S. 262).
 
-#nachschlagen[Lernskript, #stelle(<a-12-3>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 8; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Stirnradpaar: Ritzel. Kegelradpaar: Ritzel vor Tellerrad. Schneckengetriebe: Schnecke (S. 262, 264, 265).
 
-#nachschlagen[Lernskript, #stelle(<a-12-4>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 9; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Den mittleren Teilkreisdurchmesser, weil die Kegelräder damit berechnet werden (S. 264).
 
-#nachschlagen[Lernskript, #stelle(<a-12-4>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 10; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 1 = höchste, kaum herstellbare Genauigkeit; 12 = gröbste. Üblich sind 5 bis 8 (S. 265).
 
-#nachschlagen[Lernskript, #stelle(<a-12-5>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 11; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Es legt über Zahndickenabmaße das Flankenspiel des montierten Radpaars fest: nicht zu klein (Wärmedehnung), nicht zu groß (Stöße bei Lastwechsel) (S. 266).
 
-#nachschlagen[Lernskript, #stelle(<a-12-5>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 12; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 Auf die Strichpunktlinie des Teilkreises (S. 267).
 
-#nachschlagen[Lernskript, #stelle(<a-12-6>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 13; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Rechen- oder Konstruktionslösung]
 
 
@@ -5329,8 +6140,11 @@ da = d + 2 · ha = 120 + 6 = 126 mm   (abgeleitet)
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-2>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 14; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -5343,8 +6157,11 @@ a   = (45 + 135) / 2 = 90 mm       (Ergänzungsformel)
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-2>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 15; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -5354,8 +6171,11 @@ Nein. Kämmende Räder müssen den gleichen Modul haben (S. 260).
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-2>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 16; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Rechen- oder Konstruktionslösung]
 
 
@@ -5365,8 +6185,11 @@ Kopfkreisdurchmesser, Fußkreisdurchmesser (oder Zahnhöhe), Zahnbreite, Bezugse
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-6>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 17; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Rechen- oder Konstruktionslösung]
 
 
@@ -5376,26 +6199,38 @@ Außenverzahnung, m = 2 mm, z = 30, β = 0°, x = 0. Es fehlen noch: Bezugsprofi
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-6>); ergänzend B S. 259–268. Herkunft: L-alt D6, Frage 18; nach B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Verständnislösung]
 
 Der Teilkreis wird als schmale Strichpunktlinie gezeichnet. Der Fußkreis darf in Ansichten als schmale Volllinie ergänzt werden. In der Ansicht reicht das Rad bis zum Kopfkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-3>); ergänzend B S. 259–268. Herkunft: L-alt D6, offene Überarbeitung Frage 19; B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Verständnislösung]
 
 wird das Ritzel üblicherweise vorne liegend gezeichnet. wird die hintere Verzahnung teilweise verdeckt dargestellt.
 
-#nachschlagen[Lernskript, #stelle(<a-12-4>); ergänzend B S. 259–268. Herkunft: L-alt D6, offene Überarbeitung Frage 20; B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Verständnislösung]
 
 wird in 12 Stufen eingeteilt. liegt bei den meisten Getrieben zwischen 5 und 8. gehört in die Verzahnungstabelle.
 
-#nachschlagen[Lernskript, #stelle(<a-12-5>); ergänzend B S. 259–268. Herkunft: L-alt D6, offene Überarbeitung Frage 21; B S. 259–268.]
+#nachschlagen[Lernskript, #stelle(<a-12-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[22 · Rechen- oder Konstruktionslösung]
 
 
@@ -5411,8 +6246,11 @@ wird in 12 Stufen eingeteilt. liegt bei den meisten Getrieben zwischen 5 und 8. 
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-2>); ergänzend B S. 259–268. Herkunft: L-alt L6; eigene Aufgabe nach B S. 260–261.]
+#nachschlagen[Lernskript, #stelle(<a-12-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[23 · Rechen- oder Konstruktionslösung]
 
 
@@ -5422,8 +6260,11 @@ d1 = 60 mm, d2 = 180 mm, da1 = 66 mm, a = (60 + 180)/2 = 120 mm, i = 60/20 = 3.
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-2>); ergänzend B S. 259–268. Herkunft: L-alt A6; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-12-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[24 · Rechen- oder Konstruktionslösung]
 
 
@@ -5433,7 +6274,9 @@ a) d = 80 mm, da = 2,5 · 34 = 85 mm. b) H7 = +21/0, k6 = +15/+2 → PO = +19 µ
 
 *Prüfung:* Alle Durchmesser in mm; Kopfkreis größer und Fußkreis kleiner als der Teilkreis.
 
-#nachschlagen[Lernskript, #stelle(<a-12-2>); ergänzend B S. 259–268. Herkunft: L-alt G3; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-12-2>).]
+
+]
 
 #pagebreak()
 = Kapitel 13 · Zeichnungen lesen und erstellen
@@ -5683,90 +6526,133 @@ Erstelle die Einzelteilzeichnung des Lagerdeckels Pos. 2 aus AK 5: erforderliche
 #pagebreak()
 == Lösungen Kapitel 13
 
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[1 · Verständnislösung]
 
 Übertragungsgetriebe leiten Leistung (Drehmoment, Drehzahl) weiter und wandeln sie ggf.; Führungsgetriebe führen Punkte eines Körpers auf Bahnen. Erkennbar an drei Wellenenden mit Passfedern (S. 269).
 
-#nachschlagen[Lernskript, #stelle(<a-13-1>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 1; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-1>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[2 · Verständnislösung]
 
 Beide horizontalen Wellenenden gehören zu einer Welle; Antrieb an beiden ist unmöglich, an einem nur bedingt sinnvoll, weil das andere Ende einfach mitdreht (S. 269).
 
-#nachschlagen[Lernskript, #stelle(<a-13-2>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 2; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[3 · Verständnislösung]
 
 Schrägkugellager haben eine Einbaurichtung; 43 und 44 sind gleiche Lager, aber unterschiedlich eingebaut. Rillenkugellager haben keine Einbaurichtung (S. 272).
 
-#nachschlagen[Lernskript, #stelle(<a-13-3>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 3; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[4 · Verständnislösung]
 
 Historisch (Teile geändert und neu nummeriert) oder bewusst freigelassen für spätere Ergänzungen (S. 276–277).
 
-#nachschlagen[Lernskript, #stelle(<a-13-3>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 4; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[5 · Verständnislösung]
 
 Z. B. Liter oder kg für eine Ölfüllung; grundsätzlich SI-Einheiten nach DIN 1301-1 (S. 277).
 
-#nachschlagen[Lernskript, #stelle(<a-13-3>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 5; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[6 · Verständnislösung]
 
 Abdrückgewinde für die Demontage; zwei, damit der Lagerhalter nicht verkantet (S. 279).
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 6; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[7 · Verständnislösung]
 
 Die Welle dreht, der Lagerhalter steht: Der Außenring hat Punktlast und darf locker sitzen (S. 279).
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 7; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[8 · Verständnislösung]
 
 Übergangspassung zur Zentrierung von Lagerhalter und Flanschlager, von Hand montierbar; die Verdrehsicherung übernehmen die Schrauben (S. 279).
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 8; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[9 · Verständnislösung]
 
 Sicherungsblech 53, Innenring des einen Schrägkugellagers, Distanzring 21, Innenring des anderen Schrägkugellagers gegen die Wellenschulter der Ritzelwelle 16 (S. 276).
 
-#nachschlagen[Lernskript, #stelle(<a-13-4>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 9; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[10 · Verständnislösung]
 
 Das Tellerrad benötigt eine sichere Drehmomentübertragung über die Passfeder. H7/k6 allein ist als Übergangspassung kein garantierter Reibschluss. Die Aussage auf B S. 282 wird deshalb nicht als allgemeiner Drehmomentnachweis verwendet (S. 282).
 
-#nachschlagen[Lernskript, #stelle(<a-13-6>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 10; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-6>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[11 · Verständnislösung]
 
 Vollschnitt zeigt alle Innenformen, Draufsicht die Bohrungen; aufgeklappte Schnittebenen bringen Senk- und Gewindebohrung in den Schnitt. In der Untersicht wäre der Senkdurchmesser nur verdeckt darstellbar (S. 284).
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 11; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[12 · Verständnislösung]
 
 Nach Funktion: funktionslos (aber sichtbar) Rz 63, Dichtfläche und Schraubenkopfauflage Rz 16, Lager-, RWDR-Sitz, Zentrierung und Außenmaß Rz 10 (S. 285–286).
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 12; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[13 · Verständnislösung]
 
 Die Sitzfläche des Wälzlagers. Gekrümmte Flächen erhalten Rundlauf, plane Flächen Planlauf (S. 288).
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 13; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[14 · Verständnislösung]
 
 Benennung, Maßstab, Zeichnungsnummer, Werkstoff, Bearbeiter/Datum, Prüfer/Freigabe, Eigentümer, Blattzahl (S. 289).
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 14; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[15 · Rechen- oder Konstruktionslösung]
 
 
@@ -5776,8 +6662,11 @@ H6: EI = 0, ES = +16 µm   -\>   Gu = 40,000 mm   Go = 40,016 mm
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 15; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[16 · Rechen- oder Konstruktionslösung]
 
 
@@ -5790,8 +6679,11 @@ PSO = ES − ei = 25 − (−5) = +30 µm    PÜO = EI − es = 0 − 11 = −11
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 16; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[17 · Rechen- oder Konstruktionslösung]
 
 
@@ -5804,8 +6696,11 @@ max = 24,2 − 5,9 − 9,8  = 8,5 mm
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 17; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[18 · Rechen- oder Konstruktionslösung]
 
 
@@ -5815,8 +6710,11 @@ Toleranz 0,5 mm (51,5 … 52,0). Nach ISO 2768-m: ±0,3, also 0,6 mm Toleranzfel
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 18; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[19 · Rechen- oder Konstruktionslösung]
 
 
@@ -5826,8 +6724,11 @@ Toleranz 0,5 mm (51,5 … 52,0). Nach ISO 2768-m: ±0,3, also 0,6 mm Toleranzfel
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-10-4>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 19; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-10-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[20 · Rechen- oder Konstruktionslösung]
 
 
@@ -5837,26 +6738,38 @@ Passfeder DIN 6885 – A 6 × 6 × 25; O-Ring DIN 3771 – 24 x 3 – N – NBR7
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-8-4>); ergänzend B S. 269–290. Herkunft: L-alt E1, Frage 20; nach B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-8-4>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[21 · Verständnislösung]
 
 Die Antriebswelle ist mit zwei Schrägkugellagern gelagert. Das Getriebe lenkt vor allem um 90° um. Die O-Ringe tragen die Positionsnummern 77 bis 80.
 
-#nachschlagen[Lernskript, #stelle(<a-13-2>); ergänzend B S. 269–290. Herkunft: L-alt E1, offene Überarbeitung Frage 21; B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-2>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[22 · Verständnislösung]
 
 Ø24 H8 ist der Sitz des Radial-Wellendichtrings. Die Allgemeintoleranz lautet kurz ISO 2768-mK.
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: L-alt E1, offene Überarbeitung Frage 22; B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[23 · Verständnislösung]
 
 ist ein Hilfsmaß und nicht maßgeblich. vermeidet eine Doppelbemaßung. wird nicht geprüft (abgeleitet).
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: L-alt E1, offene Überarbeitung Frage 23; B S. 269–290.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[24 · Rechen- oder Konstruktionslösung]
 
 
@@ -5866,8 +6779,11 @@ ist ein Hilfsmaß und nicht maßgeblich. vermeidet eine Doppelbemaßung. wird ni
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt S5; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[25 · Rechen- oder Konstruktionslösung]
 
 
@@ -5877,8 +6793,11 @@ ist ein Hilfsmaß und nicht maßgeblich. vermeidet eine Doppelbemaßung. wird ni
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-13-5>); ergänzend B S. 269–290. Herkunft: L-alt G6; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-13-5>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[26 · Rechen- oder Konstruktionslösung]
 
 
@@ -5888,13 +6807,18 @@ Schrägkugellager haben eine Einbaurichtung; gleiche Lager in verschiedener Rich
 
 *Prüfung:* Maßketten im ungünstigsten Grenzfall prüfen; aus verkleinerten Buchbildern keine Funktionsmaße abgreifen.
 
-#nachschlagen[Lernskript, #stelle(<a-13-3>); ergänzend B S. 269–290. Herkunft: L-alt G7; eigenes Zahlenbeispiel, Tabellenwerte nach B.]
+#nachschlagen[Lernskript, #stelle(<a-13-3>).]
 
+]
+
+#block(breakable: false)[
 #text(fill: teal, weight: "bold")[27 · Verständnislösung]
 
 Eigene Lösung als prüfbarer Zeichenweg: 1. Verfolge Pos. 2 in der Gesamtzeichnung und trenne sie gedanklich von Gehäuse, Schrauben und Lager. Verwende einen axialen Schnitt für Wanddicken, Stufen und Innenkontur sowie eine Stirnansicht für vier gleichmäßig verteilte Befestigungsbohrungen auf dem Lochkreis. 2. Bemaße Funktionsdurchmesser, axiale Stufen, Wanddicken und Lochkreis jeweils eindeutig von geeigneten Bezügen; Bohrungsanzahl 4× zuordnen. 3. Bestimme eine funktionelle Bezugsfläche, beispielsweise die Anlagefläche A, und gegebenenfalls die Zentrierachse B. Eine Ebenheit der Anlagefläche ist eine Formforderung; eine Rechtwinkligkeit oder Position zu A/B ist eine bezogene Lage-/Richtungsforderung. Werte müssen aus Aufgabenangabe oder Funktionsvorgabe stammen. 4. Trage ISO 2768-mK wie in der historischen AK gefordert ein, kennzeichne die abweichende Funktionsoberfläche separat und ergänze Kantenzustand und Schriftfeld. Prüfung: Der Ausschnitt enthält keine vollständigen Zahlenmaße und keine verbindlichen Werte für Rauheit, Form- und Lagetoleranz. Deshalb ist ein vollständig numerisch bestimmtes Einzelteil daraus nicht eindeutig lösbar; die handschriftlichen Ergänzungen sind keine amtlichen Lösungsvorgaben. Die geforderten Angaben und ihre Platzierung sind dagegen vollständig überprüfbar.
 
-#nachschlagen[Lernskript, #stelle(<a-13-7>); ergänzend B S. 269–290. Herkunft: AK 5, PDF-S. 9–10; eigene Lösung mit B Buchkapitel 4–7 und 15.]
+#nachschlagen[Lernskript, #stelle(<a-13-7>).]
+
+]
 
 #pagebreak()
 = Anhang
