@@ -4,6 +4,8 @@
 Aufbau: skripte/<Modul>/Lernskript aktuell/Typst-Dateien/main.typ (genau ein Skript je Modul).
 Andere .typ-Dateien, etwa alte Stände, werden nie veröffentlicht.
 Karteikarten: skripte/<Modul>/Lernskript aktuell/Karteikarten.md (Aufbau steht am Kopf jeder Datei).
+Eine Karte kann mit „Quelle: 1.3“ auf einen Abschnitt des Lernskripts zeigen (die Seite wird beim Bauen
+aus dem Inhaltsverzeichnis der PDF bestimmt) und mit „Abbildung: name“ ein Bild aus abbildungen/ zeigen.
 """
 import hashlib
 import html
@@ -65,6 +67,45 @@ def last_change(path):
     return datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
 
 
+def gliederung(pdf):
+    """Alle Überschriften der PDF (Lesezeichen) mit ihrer Seite, in Reihenfolge."""
+    try:
+        from pypdf import PdfReader
+    except ImportError:
+        return []
+    reader, out = PdfReader(pdf), []
+
+    def gehen(knoten):
+        for k in knoten:
+            if isinstance(k, list):
+                gehen(k)
+            else:
+                out.append((k.title.strip(), reader.get_destination_page_number(k) + 1))
+    gehen(reader.outline)
+    return out
+
+
+def abschnitt_finden(ref, abschnitte):
+    """„1.3“ oder „TM2 1.1“ oder ein Titelanfang → (Titel, Seite) der passenden Überschrift."""
+    for titel, seite in abschnitte:
+        if titel == ref or titel.startswith(ref + " "):
+            return titel, seite
+    for titel, seite in abschnitte:
+        if titel.lower().startswith(ref.lower()):
+            return titel, seite
+    return None
+
+
+def bildunterschriften(typ):
+    """Bildunterschriften aus #bild("name", [Text]) im Lernskript, ohne Typst-Befehle."""
+    out = {}
+    for m in re.finditer(r'#bild\("([^"]+)",\s*\[(.*?)\](?:,|\))', typ.read_text(encoding="utf-8")):
+        t = re.sub(r"#[a-z.]+(\([^)]*\))?", "", m.group(2))
+        t = re.sub(r"\$([^$]*)\$", lambda x: x.group(1).replace(" thin ", " ").replace('"', ""), t)
+        out.setdefault(m.group(1), re.sub(r"[*_]", "", t).strip())
+    return out
+
+
 def page_count(pdf):
     return len(re.findall(rb"/Type\s*/Page[^s]", pdf.read_bytes()))
 
@@ -108,19 +149,46 @@ def antwort_html(zeilen):
     return "".join(teile), inline(" ".join(bild)) if bild else ""
 
 
-def karteikarten(md, modul):
-    """Karteikarten.md lesen: ## Kapitel, ### Frage, darunter die Antwort."""
+def karteikarten(md, modul, abschnitte=(), skript=None):
+    """Karteikarten.md lesen: ## Kapitel, ### Frage, darunter die Antwort (mit Quelle: und Abbildung:)."""
     karten, kapitel, karte = [], "", None
+    ordner = md.parent / "Typst-Dateien" / "abbildungen"
+    unterschriften = bildunterschriften(md.parent / "Typst-Dateien" / "main.typ")
+    ziel = OUT / "img" / re.sub(r"[^A-Za-z0-9.-]+", "_", modul.translate(UMLAUTE))
+    warnen = lambda titel, text: print(f"::warning title={titel}::{modul}: {text}", file=sys.stderr)
 
     def abschließen():
         if not karte or not karte["q"]:
             return
-        a, bild = antwort_html(karte.pop("zeilen"))
-        if a:
-            karte.update(a=a, b=bild)
-            karten.append(karte)
-        else:
-            print(f"::warning title=Karteikarte ohne Antwort::{modul}: {karte['q']}", file=sys.stderr)
+        zeilen, quelle, bilder = [], None, []
+        for z in karte.pop("zeilen"):
+            if m := re.match(r"^Quelle:\s*(.+)$", z.strip()):
+                quelle = m.group(1).strip()
+            elif m := re.match(r"^Abbildung:\s*(.+)$", z.strip()):
+                bilder += [x.strip() for x in m.group(1).split(",") if x.strip()]
+            else:
+                zeilen.append(z)
+        a, bild = antwort_html(zeilen)
+        if not a:
+            warnen("Karteikarte ohne Antwort", karte["q"])
+            return
+        karte.update(a=a, b=bild)
+        if quelle:
+            treffer = abschnitt_finden(quelle, abschnitte)
+            if treffer:
+                karte["s"] = {"t": treffer[0], "p": treffer[1]}
+            elif abschnitte:
+                warnen("Quelle nicht im Lernskript", f"{quelle} ({karte['q']})")
+        for name in bilder:
+            datei = next(iter(sorted(ordner.glob(name + ".*"))), None) if ordner.is_dir() else None
+            if not datei:
+                warnen("Abbildung fehlt", f"{name} ({karte['q']})")
+                continue
+            ziel.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(datei, ziel / datei.name)
+            karte.setdefault("i", []).append({"src": f"img/{ziel.name}/{datei.name}",
+                                              "cap": inline(unterschriften.get(name, ""))})
+        karten.append(karte)
 
     for z in md.read_text(encoding="utf-8").splitlines():
         if z.startswith("### "):
@@ -143,7 +211,7 @@ def main():
         shutil.rmtree(OUT)
     (OUT / "pdf").mkdir(parents=True)
 
-    modules, failed = [], []
+    modules, failed, abschnitte = [], [], {}
     for typ in find_entrypoints():
         rel = typ.relative_to(SRC)
         module = rel.parts[0]
@@ -158,6 +226,7 @@ def main():
             print(result.stderr, file=sys.stderr)
             failed.append(str(rel))
             continue
+        abschnitte[module] = gliederung(pdf)
         titel_setzen(pdf, name)
         modules.append({
             "name": module,
@@ -172,10 +241,12 @@ def main():
     decks = []
     for md in sorted(SRC.glob("*/Lernskript aktuell/Karteikarten.md")):
         modul = md.relative_to(SRC).parts[0]
-        karten = karteikarten(md, modul)
-        print(f"→ {modul}: {len(karten)} Karteikarten")
+        karten = karteikarten(md, modul, abschnitte.get(modul, []))
+        print(f"→ {modul}: {len(karten)} Karteikarten, {sum(1 for k in karten if 'i' in k)} mit Abbildung, "
+              f"{sum(1 for k in karten if 's' in k)} mit Seitenangabe")
         if karten:
-            decks.append({"name": modul, "cards": karten})
+            pdf = next((m["file"] for m in modules if m["name"] == modul), "")
+            decks.append({"name": modul, "pdf": pdf, "cards": karten})
 
     data = sorted(modules, key=lambda m: m["name"].lower())
     decks.sort(key=lambda d: d["name"].lower())
