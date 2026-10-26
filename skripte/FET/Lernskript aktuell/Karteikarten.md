@@ -218,6 +218,11 @@ Die Energie verschwindet nicht. Sie wird z. B. durch Reibung zu innerer Energie 
 Quelle: 1.10
 Abbildung: reversibility
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die Systemgrenze trennt System und Umgebung und entscheidet, ob Masse sowie Energie übertragen werden. Zustandsgrößen beschreiben den Speicher; Wärme und Arbeit beschreiben Übertragungen auf einem Prozessweg. Masse, Stoffmenge und spezifische Größen legen den Bezug fest, Ströme ergänzen den Zeitbezug. Stationarität bedeutet zeitlich unverändert, Gleichgewicht fehlende antreibende Unterschiede; Modellannahmen wie Reversibilität müssen zusätzlich geprüft werden.
+Quelle: 1.0
+
 ## Kapitel 2 · Stoffeigenschaften
 
 ### Warum hat die Erwärmungskurve von Eis zu Dampf waagerechte Abschnitte?
@@ -375,6 +380,11 @@ $v = V\/m$. $V$ bleibt gleich, aber $m$ sinkt. Also wird $v$ größer. „Starr�
 Quelle: 2.13.2
 Abbildung: stickstoff-zustaende
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Energiezufuhr verändert Temperatur oder Phasenanteile. Zuerst wird das Zustandsgebiet bestimmt; daraus ergibt sich die passende Tabelle oder Zustandsgleichung. Im Nassdampfgebiet koppeln Sättigung Druck und Temperatur, während der Dampfgehalt die Massenaufteilung und die gemittelten spezifischen Größen festlegt. Prozessbedingungen wie konstantes Volumen verbinden die Zustände; Interpolation und einheitliche Bezugsgrößen liefern die Werte für die Energiebilanz.
+Quelle: 2.1
+
 ## Kapitel 3 · Erster Hauptsatz
 
 ### Was sagt der erste Hauptsatz in einem Satz?
@@ -447,3 +457,8 @@ Quelle: 3.2.1
 ### Warum muss man bei „die Entropie steigt“ immer die Bezugsgröße nennen?
 Die spezifische Entropie $s$ (pro kg) und die gesamte Entropie $S = m s$ können sich verschieden verhalten. Nach einer Entnahme kann $s$ des Restes steigen, während $S$ sinkt, weil weniger Masse da ist.
 Quelle: 3.2.2
+
+### Zeichne die Begriffslandkarte zu Kapitel 3 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die Systemgrenze bestimmt zuerst, ob eine offene oder geschlossene Energiebilanz gebraucht wird. Im offenen System transportiert der Stoff Enthalpie einschließlich Verschiebearbeit; im geschlossenen System gibt es keinen solchen Massentransport. Wärme, Arbeit und Änderungen der gespeicherten Energie werden mit einheitlichen Vorzeichen bilanziert. Annahmen erlauben erst danach das Streichen einzelner Terme; die instationäre Stickstoffentnahme verbindet Speicheränderung und austretende Enthalpie.
+Quelle: 3.1
+

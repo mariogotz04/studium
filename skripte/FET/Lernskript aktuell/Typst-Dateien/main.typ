@@ -53,6 +53,43 @@
 }
 #let th(..cells) = table.header(..cells.pos().map(c => table.cell(fill: pale)[#strong(c)]))
 
+// ─── Überblick-Ebenen und Chunkmaps (in allen Modulen gleich) ─────────────────
+// Ebene 0: Seite „Das Modul auf einen Blick“ nach dem Wegweiser (Label <ueberblick>).
+// Ebene 1: unter jeder Kapitelüberschrift (Label <a-n>) #überblick mit #idee-Links und eine #karte oder ein #ablauf.
+// Ebene 2: die Abschnitte; am Ende jedes Abschnitts #hoch(<a-n>, [Kapitelübersicht]).
+// Die Kästen sind keine Überschriften: Inhaltsverzeichnis und PDF-Lesezeichen bleiben unverändert.
+#let chunk(titel, begriffe, ziel: none, fill: pale, stroke: navy) = {
+  let kasten = block(width: 100%, fill: fill, stroke: 0.6pt + stroke, radius: 4pt, inset: (x: 6pt, y: 5pt), breakable: false)[
+    #set par(leading: 0.35em, spacing: 0.35em, justify: false)
+    #set text(hyphenate: true)
+    #text(size: 9pt, weight: "bold", fill: navy, titel)
+    #if begriffe != none [#parbreak() #text(size: 7.8pt, fill: muted, begriffe)]
+  ]
+  if ziel == none { kasten } else { link(ziel, kasten) }
+}
+#let pfeil(beschriftung: none, zeichen: sym.arrow.r) = align(center + horizon, stack(dir: ttb, spacing: 2pt,
+  ..(if beschriftung != none { (text(size: 6.8pt, fill: teal, beschriftung),) } else { () }),
+  text(size: 13pt, fill: teal, zeichen)))
+// Chunkmap als Raster: #karte((1fr, auto, 1fr), chunk(..), pfeil(..), chunk(..))
+#let karte(spalten, ..zellen) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em,
+  grid(columns: spalten, column-gutter: 3pt, row-gutter: 7pt, align: center + horizon, ..zellen))
+// Flussdiagramm von oben nach unten: #ablauf(chunk(..), entscheidung(..), chunk(..))
+#let ablauf(breite: 80%, ..schritte) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em, align(center,
+  stack(dir: ttb, spacing: 2pt, ..schritte.pos().enumerate().map(((i, x)) =>
+    (if i > 0 { (text(size: 12pt, fill: teal, sym.arrow.b),) } else { () }) + (block(width: breite, x),)).flatten())))
+#let entscheidung(frage, ja, nein) = stack(dir: ttb, spacing: 3pt,
+  chunk(frage, none, fill: sand, stroke: teal),
+  grid(columns: (1fr, 1fr), column-gutter: 8pt,
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *ja*]) #ja],
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *nein*]) #nein]))
+#let idee(ziel, kern, satz) = [#link(ziel)[#text(fill: teal, weight: "bold", kern)] #satz]
+#let überblick(titel, ..ideen) = block(width: 100%, fill: pale, inset: (x: 9pt, y: 7pt), above: 0.6em, below: 0.6em, breakable: false)[
+  #text(fill: navy, weight: "bold", titel)
+  #set list(marker: text(fill: teal, sym.arrow.r), spacing: 0.45em)
+  #list(..ideen.pos())
+]
+#let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
+
 #let abbildungen = (
   "map-fet": "abbildungen/map-fet.svg",
   "map-tabellenmodell": "abbildungen/map-tabellenmodell.svg",
@@ -194,9 +231,26 @@ Stand: *26.10.2026*. Behandelt sind die Vorlesungsinhalte bis „Ende VL 21.10�
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.10.2026; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
 
 #pagebreak()
+#heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
+
+Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zusammenhängen.
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Kapitel 1 · Grundbegriffe], [Systemgrenze · Zustand · Masse · Ströme · Prozessgrößen], ziel: <a-1>),
+  pfeil(beschriftung: [benennt Größen für]),
+  chunk([Kapitel 2 · Stoffeigenschaften], [Phasen · Zustandsgebiet · Dampfgehalt · Stoffmodell · Dampftafel], ziel: <a-2>),
+  pfeil(beschriftung: [liefert Stoffwerte für]),
+  chunk([Kapitel 3 · Energiebilanzen: Erster Hauptsatz], [Systemart · Energiespeicher · Enthalpie · Wärme · Arbeit], ziel: <a-3>),
+)
+
+Die Systemgrenze legt fest, was Du betrachtest und was über die Grenze fließt. Kapitel 1 gibt dafür die Größen und Bilanzbegriffe vor. Kapitel 2 beschreibt den Stoffzustand mit Modellen und Tabellen. Kapitel 3 verbindet beides zur Energiebilanz: Erst die Grenze wählen, dann die Bilanz aufstellen, Stoffwerte einsetzen und das Ergebnis prüfen.
+#src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
+
+#pagebreak()
+
 #heading(level: 2, outlined: false)[FET als Zusammenhang]
 Die Gesamtübersicht *Big Picture* verbindet Thermodynamik und Strömungsmechanik. Für den bisher behandelten Stoff ergibt sich dieselbe Denkkette: System wählen, Bilanz aufstellen, Zustand mit einem Stoffmodell beschreiben und das Ergebnis prüfen.
 #bild("map-fet", [Zusammenhang des bisher behandelten Stoffes. Eigene Darstellung nach B, PDF-S. 2, 4–5, 8 und 18–20.], height: 43mm)
@@ -254,18 +308,46 @@ Der Abschnitt *c) Wärmeübertragung* ist in K nur als Überschrift vorhanden; d
 #src[K, PDF-S. 1, Abschnitte b–c; Anwendungshinweis: ergänzte Einordnung.]
 
 #pagebreak()
-= Kapitel 1 · Grundbegriffe
+#pagebreak(weak: true)
+= Kapitel 1 · Grundbegriffe <a-1>
+
+#überblick([Kapitel 1 auf einen Blick],
+  idee(<a-1-1>, [Die Grenze bestimmt die Bilanz.], [Offene und geschlossene Systeme unterscheiden sich durch den möglichen Stoffaustausch.]),
+  idee(<a-1-2>, [Stationär und im Gleichgewicht sind verschiedene Aussagen.], [Ein zeitlich unveränderter Betrieb kann weiterhin Ströme enthalten.]),
+  idee(<a-1-4>, [Die Bezugsgröße gehört zur Größe.], [Gesamtwerte, Werte je Masse und Werte je Stoffmenge dürfen nicht verwechselt werden.]),
+  idee(<a-1-5>, [Ströme beschreiben Transport pro Zeit.], [Die Massenbilanz verbindet Dichte, Querschnitt und Geschwindigkeit.]),
+  idee(<a-1-6>, [Zustand und Weg sind zu trennen.], [Zustandsgrößen beschreiben das System, Wärme und Arbeit seine Übertragungen.]),
+  idee(<a-1-10>, [Ein Modell braucht Voraussetzungen.], [Reversibilität und Quasistatik sind unterschiedliche Idealisierungen.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Systemgrenze], [offen · geschlossen · Umgebung], ziel: <a-1-1>),
+  pfeil(beschriftung: [ordnet Austausch zu]),
+  chunk([Bilanzgrößen], [Masse · Energie · Ströme], ziel: <a-1-5>),
+  pfeil(beschriftung: [unterscheidet Speicher und Weg]),
+  chunk([Zustand und Prozess], [Zustandsgrößen · Wärme · Arbeit], ziel: <a-1-6>),
+)
+#karte((1fr, auto, 1fr),
+  chunk([Bezugsgröße], [gesamt · spezifisch · molar], ziel: <a-1-4>),
+  pfeil(beschriftung: [macht Aussagen vergleichbar im]),
+  chunk([Passendes Modell], [stationär · Gleichgewicht · reversibel], ziel: <a-1-10>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Wir bauen eine wiederverwendbare Lösungsstrategie auf: zuerst den betrachteten Ausschnitt festlegen, dann Masse und Energie bilanzieren. Zustandsgrößen und Stoffgesetze übersetzen das Bilanzergebnis anschließend in Druck, Temperatur oder Volumen. Die Prozessbedingungen entscheiden, welche Vereinfachungen erlaubt sind.
 
-== 1.0 Was ist Thermodynamik?
+== 1.0 Was ist Thermodynamik? <a-1-0>
 Eine Fahrradpumpe erwärmt Luft durch Arbeit. Ein Wasserkocher erwärmt Wasser durch Energiezufuhr. Eine Turbine gewinnt Arbeit aus einem Stoffstrom. Wir verfolgen jeweils *Zustand, Masse und Energie*.
 
 Ein *Fluid* ist eine Flüssigkeit oder ein Gas. Unter anhaltender Schubspannung fließt es; ein Festkörper kann eine statische Schubspannung tragen.
 
 Wir beschreiben die Anlage von außen mit messbaren Größen, statt jedes Molekül einzeln zu verfolgen. Die Massenbilanz sagt, wie sich der Stoffbestand verändert. Die Energiebilanz sagt, welche Energieänderung zu den Übertragungen passt. Erst das Stoffmodell verknüpft diese Ergebnisse mit Druck, Temperatur und Volumen.
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.1 Das thermodynamische System
+
+== 1.1 Das thermodynamische System <a-1-1>
 Das *System* ist der betrachtete Ausschnitt. Die reale oder gedachte Grenze trennt ihn von der *Umgebung*. Nur Übertragungen über diese Grenze gehören in seine äußere Bilanz.
 #bild("boundary", [System und Umgebung; innere Übertragungen verschwinden in der gemeinsamen Gesamtbilanz. BT, PDF-S. 34.], height: 35mm)
 
@@ -340,8 +422,10 @@ Mit $H_u=50 thin "MJ/kg"$: $dot(m)_B=dot(Q)_B/H_u approx "30,8" thin "kg/s"$. Be
 
 Jahreskosten: $K_B=k_B dot(Q)_B t_B$. Nur bei *angenommenen* 8760 Volllaststunden und 3 €/GJ ergeben sich etwa 146 Mio. €. Die Leistung allein legt die Betriebszeit nicht fest.
 #src([L 1.1.5, PDF-S. 9; V PDF-S. 16.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.2 Gleichgewicht und stationärer Zustand
+
+== 1.2 Gleichgewicht und stationärer Zustand <a-1-2>
 #tab(columns: (1fr, 2fr),
  th([Begriff], [Anschauliche Bedeutung]),
  [Gleichgewicht], [Kein antreibendes Ungleichgewicht unter den Randbedingungen. Thermisch: Temperaturausgleich; mechanisch: Kräftegleichgewicht; chemisch: keine Nettoänderung durch Reaktion.],
@@ -355,8 +439,10 @@ Jahreskosten: $K_B=k_B dot(Q)_B t_B$. Nur bei *angenommenen* 8760 Volllaststunde
 Ein stationärer Zustand kann nur durch fortlaufenden Austausch aufrechterhalten werden, etwa durch Heizleistung und Wasserströmung im Durchlauferhitzer. Das ist etwas anderes als Gleichgewicht ohne antreibende Temperaturunterschiede. Auch „homogen“ beschreibt eine andere Eigenschaft: Ein ideal gerührtes Bad kann überall dieselbe Temperatur haben und sich trotzdem im Laufe der Zeit erwärmen.
 
 #src([L 1.2, PDF-S. 9–11; V PDF-S. 17–18; BS 1.2, PDF-S. 18–20.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.3 Nullter Hauptsatz und Temperaturmessung
+
+== 1.3 Nullter Hauptsatz und Temperaturmessung <a-1-3>
 Ein Thermometer C kann Temperaturen vergleichen, weil gilt:
 $ T_A=T_C quad "und" quad T_B=T_C quad => quad T_A=T_B $
 Messbar ist beispielsweise Flüssigkeitsausdehnung, elektrischer Widerstand oder eine Thermoelementspannung.
@@ -372,8 +458,10 @@ Modell: Wasser und Heizer geschlossen und nach außen adiabat; konstantes $m,c$;
 #bild("heating-power", [Die Leistung ist proportional zur Steigung oben. Ohne Wassermasse ist nur W/kg bestimmbar.], height: 50mm)
 10 K/h ergeben mit $c=4200 thin "J/(kg K)"$ *11,67 W/kg*. Im ideal adiabaten Halteabschnitt gilt $P=0$; real gleicht eine Halteleistung die Wärmeverluste aus. Vollständige Rechnung: Aufgabe „Wasserbad mit knickfreiem Temperaturverlauf“ auf der Lernwebseite.
 #src([L 1.3, PDF-S. 11–12; L 1.1.1, PDF-S. 5–6; Ü 1.4, PDF-S. 5; T PDF-S. 4–9 (neu abgelegte Datei mit Dateinamensbeginn „2024-09-13“, handschriftlich 15.10.2026); W PDF-S. 1–3.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.4 Stoffmenge, Masse, spezifische und molare Größen
+
+== 1.4 Stoffmenge, Masse, spezifische und molare Größen <a-1-4>
 #bild("division", [Gedankliche Teilung eines homogenen Systems. Gesamtmengen teilen sich; intensive Werte bleiben gleich. V, PDF-S. 25.], height: 45mm)
 #tab(columns: (1.1fr, 1.4fr, 1fr),
  th([Größe], [Definition], [Einheit]),
@@ -387,8 +475,10 @@ Modell: Wasser und Heizer geschlossen und nach außen adiabat; konstantes $m,c$;
 Ein Kilogramm Wasser und ein Kilogramm Luft haben dieselbe Masse, benötigen aber sehr unterschiedliche Volumina. Das erfasst $v$: Es ist keine zusätzliche Stoffmenge, sondern ein Volumen je Kilogramm. Solche spezifischen Größen trennen die Stoffeigenschaft von der Gesamtmenge. Aus $h$ wird beispielsweise erst durch Multiplikation mit $m$ die Gesamtenthalpie $H$.
 
 #src([L 1.4, PDF-S. 12–13; V PDF-S. 21 und 25.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.5 Ströme und Kontinuitätsgleichung
+
+== 1.5 Ströme und Kontinuitätsgleichung <a-1-5>
 #bild("continuity", [Eine Stromröhre begrenzt den transportierten Stoffstrom. BS, PDF-S. 19.], height: 46mm)
 #form[$ dot(V)=A c quad dot(m)=rho A c quad J=dot(m)/A $]
 $A$ in m², $c$ in m/s, $dot(V)$ in m³/s, $dot(m)$ in kg/s; Massenstromdichte $J$ in kg/(m² s).
@@ -417,8 +507,10 @@ $ c_0=sqrt(2 g h) quad quad A (dif h)/(dif t)=-A_0 sqrt(2 g h) $
 Sinkt $h$, sinkt auch der Ausfluss. Der Behälter ist instationär, der lokale Ausfluss wird quasistationär modelliert.
 #bild("drain-plot", [Ü 1.5, vereinfachtes Modell: Die erste Volumenhälfte fließt schneller ab als die zweite. Eigene Rechnung; Aufgabe „Füllstandsabhängiger Ausfluss“.], height: 54mm)
 #src([L: Kontinuität 1.5, PDF-S. 13–14, Druck 1.7, PDF-S. 19–20. Bernoulli ergänzt nach BS 2.1, PDF-S. 48–55; Ü 1.5, PDF-S. 5.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.6 Thermodynamische Zustandsgrößen
+
+== 1.6 Thermodynamische Zustandsgrößen <a-1-6>
 #bild("states", [Zwei Zustände sind zwei Momentaufnahmen. Der Pfeil beschreibt den Prozess dazwischen. V, PDF-S. 37.], height: 35mm)
 *Zustandsgrößen* beschreiben das aktuelle System. Ihre Änderung hängt nur von den Endzuständen ab. *Wärme und Arbeit* beschreiben Übertragungen auf dem Weg.
 
@@ -456,8 +548,10 @@ Isentrop: $s$ konstant; beim idealen Gas mit konstanten Wärmekapazitäten steil
 Das ideale Gasmodell liefert eine anschauliche Ursache-Wirkungs-Beziehung: Bei festem Volumen führt Erwärmen zu höherem Druck. Vereinfacht stoßen die Teilchen stärker gegen die Wand. Bei gleichbleibender Temperatur verringert Vergrößern des Volumens dagegen den Druck. Entscheidend ist immer, welche Größe während der Änderung festgehalten wird; aus „Erwärmen“ allein folgt noch keine eindeutige Druckänderung.
 
 #src([L 1.6.1, PDF-S. 16–19; V PDF-S. 27–33.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.7 Druck
+
+== 1.7 Druck <a-1-7>
 #grid(columns: (0.9fr, 1.1fr), gutter: 6mm,
  [#bild("manometer", [U-Rohr-Manometer, V PDF-S. 35.], height: 63mm)],
  [Druck ist Normalkraft pro Fläche: $p=F_"normal"/A$.
@@ -479,16 +573,20 @@ Beim einfachen U-Rohr mit vernachlässigbarer Gasdichte: $abs(Delta p)=rho_M g D
 Druck ist eine Zustandsgröße; die Druckdifferenz bestimmt, welche mechanische Wirkung zwischen zwei Seiten möglich ist. An einem Kolben zählt beispielsweise die Druckkraft jeder Seite. Für die Gasgleichung brauchst du dagegen den vom Vakuum aus gemessenen Absolutdruck. Die passende Druckangabe ergibt sich also aus der konkreten Gleichung.
 
 #src([L 1.7, PDF-S. 19–20; V PDF-S. 34–35.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.8 Temperatur
+
+== 1.8 Temperatur <a-1-8>
 #bild("kelvin", [Celsius und Kelvin haben dieselbe Schrittweite, aber verschiedene Nullpunkte. Eigene Darstellung.], height: 49mm)
 $ T/"K"=theta/"°C"+"273,15" $
 In der Gasgleichung und in Temperaturverhältnissen braucht man *Kelvin*. Eine Differenz von 10 °C entspricht 10 K. 60 °C ist nicht die dreifache absolute Temperatur von 20 °C.
 
 Fahrenheit als Zahlenwert: $theta_C=(5/9)(theta_F-32)$. Somit entsprechen 68 °F genau 20 °C.
 #src([L 1.8, PDF-S. 20–21; V PDF-S. 36.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.9 Zustandsänderungen und Prozessgrößen
+
+== 1.9 Zustandsänderungen und Prozessgrößen <a-1-9>
 Gleiche Endzustände erlauben verschiedene Wege. Die Zustandsänderung $Delta U$ ist gleich; Wärme und Arbeit können sich unterscheiden.
 #bild("path-work", [Gleiche Punkte 1 und 2; unterschiedliche Flächen unter dem Weg. Geschlossene ideale Gasmenge, quasistatische Volumenarbeit. Eigene Zahlenillustration.], height: 54mm)
 #form[$ W_v=-integral_(V_1)^(V_2) p dif V $]
@@ -498,8 +596,10 @@ Isobar: $W_v=-p(V_2-V_1)$. Isotherm beim idealen Gas: $W_v=m R T ln(V_1/V_2)$.
 
 Ein rechtsläufiger Kreisprozess expandiert bei höherem Druck und komprimiert bei niedrigerem Druck: Nettoarbeit nach außen, also negativ in der Zufuhrkonvention. Auch innere Ausgleichsvorgänge können Teilzustände ändern, ohne äußeren Austausch.
 #src([L 1.9, PDF-S. 21–23; V PDF-S. 37–39.])
+#hoch(<a-1>, [Kapitelübersicht])
 
-== 1.10 Modelle; reversibel und irreversibel
+
+== 1.10 Modelle; reversibel und irreversibel <a-1-10>
 #bild("reversibility", [Heizen und Rühren verändern den Gaszustand. Rückwärtsrühren kann die dissipierte Arbeit nicht wieder zurückholen. V, PDF-S. 43.], height: 58mm)
 *Reversibel* heißt: System *und Umgebung* ließen sich ohne bleibende Änderung zurücksetzen. Reibung und Wärmeübertragung über endliche Temperaturunterschiede verhindern das.
 
@@ -516,12 +616,35 @@ Bei technischen „Verlusten“ verschwindet keine Energie. Reibung kann geordne
 #src([L 1.10, PDF-S. 23–25; V PDF-S. 40–43.])
 
 *Der Zusammenhang in Kapitel 1.* Die Systemgrenze bestimmt die Übertragungen. Die Bilanz bestimmt die Speicherung beziehungsweise den Energieumsatz. Das Stoffmodell verbindet diese Größen mit dem Zustand. Der Prozessweg legt schließlich fest, welche Wärme und Arbeit zwischen den Zuständen übertragen werden.
+#hoch(<a-1>, [Kapitelübersicht])
 
-= Kapitel 2 · Stoffeigenschaften
+
+#pagebreak(weak: true)
+= Kapitel 2 · Stoffeigenschaften <a-2>
+
+#überblick([Kapitel 2 auf einen Blick],
+  idee(<a-2-1>, [Energiezufuhr kann Temperatur oder Phase ändern.], [Beim Verdampfen eines reinen Stoffes hängen Sättigungsdruck und Sättigungstemperatur zusammen.]),
+  idee(<a-2-4>, [Das Zustandsgebiet kommt vor der Rechnung.], [Flüssigkeit, Nassdampf, überhitzter Dampf und überkritische Zustände verlangen passende Beschreibungen.]),
+  idee(<a-2-9>, [Dampfgehalt ist ein Massenanteil.], [Er bestimmt die gemittelten spezifischen Größen im Nassdampfgebiet.]),
+  idee(<a-2-10>, [Die Tabelle muss zum Gebiet passen.], [Sättigungswerte, Überhitzung und Interpolation folgen den gegebenen Zustandsgrößen.]),
+  idee(<a-2-12>, [Stoffmodelle haben einen Gültigkeitsbereich.], [Realgasgleichungen und Gemischgrößen ergänzen das ideale Gasmodell.]),
+  idee(<a-2-13>, [Ein Prozess verbindet Zustände unter Bedingungen.], [Konstante Größen, Bezugsgrößen und Tabellenrichtung steuern den Rechenplan.]),
+)
+
+#ablauf(
+  chunk([Gegebene Größen lesen], [Druck · Temperatur · spezifisches Volumen · Stoff], ziel: <a-2-4>),
+  entscheidung([Liegt der Zustand im Nassdampfgebiet?],
+    chunk([Sättigung und Dampfgehalt], [Strichwerte und Massenanteile verwenden], ziel: <a-2-9>),
+    chunk([Einphasiges Gebiet prüfen], [passende Tabelle oder Zustandsgleichung wählen], ziel: <a-2-10>)),
+  chunk([Stoffwerte bestimmen], [bei Bedarf interpolieren · Bezugsgröße und Einheiten prüfen], ziel: <a-2-13>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Die Bilanzmethode bleibt erhalten. Neu ist, dass Energiezufuhr auch die Phase des Stoffes verändern kann. Deshalb müssen wir vor der Rechnung erkennen, in welchem Zustandsgebiet der Stoff liegt. Die Diagramme liefern dafür die Orientierung; Stoffwerttabellen und Mischungsregeln liefern anschließend die Zahlen.
 
-== 2.1 Die Erwärmungskurve: fest → flüssig → Dampf
+== 2.1 Die Erwärmungskurve: fest → flüssig → Dampf <a-2-1>
 Zugeführte Energie kann die Temperatur erhöhen (*fühlbar*) oder den Phasenanteil verändern (*latent*). Darum zeigt die Erwärmungskurve verschiedene Abschnitte.
 #bild("warming", [1 kg Wasser bei 1 bar: vom Eis bei −15 °C bis zum Dampf bei 200 °C. Vereinfachte Rechenvariante aus Ü 2.2; Aufgabe „Fünf Energieanteile beim Erwärmen“.], height: 59mm)
 #tab(columns: (1.1fr, 1.7fr),
@@ -544,8 +667,10 @@ Nicht einfach den 0→80-Mittelwert mit 74 K multiplizieren. Das Intervall ist e
 Die Wärmekapazität beschreibt den Energiebedarf je Temperaturänderung. Für dieselbe Masse bedeutet größeres $c$: Mehr Energie ist für ein Kelvin Erwärmung erforderlich. Während eines Phasenwechsels reicht diese Beschreibung nicht aus. Dann ändern sich die innere Struktur und gegebenenfalls das Volumen des Stoffes; die zusätzliche Phasenwechselenergie wird durch die passende Enthalpiedifferenz erfasst.
 
 #src([L 2.1, PDF-S. 32–34; Ü 2.2, PDF-S. 13 und Tabelle PDF-S. 19; BT 6.4, PDF-S. 213–214.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.2 Ideales Gas als Teil des realen Verhaltens
+
+== 2.2 Ideales Gas als Teil des realen Verhaltens <a-2-2>
 Der *Realgasfaktor* misst die Abweichung von der idealen thermischen Beziehung:
 #form[$ Z=(p v)/(R T) quad quad p V=m Z R T $]
 Ideal gilt $Z=1$. Real hängt $Z$ vom Zustand ab. Hohe Dichte und die Nähe zur Kondensation machen Abweichungen oft bedeutsam.
@@ -557,15 +682,19 @@ Ein vorgegebener $Z_2$ muss zum Endzustand gehören. Ohne diese Vorgabe kann weg
 $Z$ ist ein Korrekturfaktor der thermischen Zustandsgleichung, kein Wirkungsgrad. Ein Wert unter eins bedeutet bei gleichem $R,T$ ein kleineres Produkt $p v$ als im idealen Modell; ein Wert über eins ein größeres. Daraus folgt nicht pauschal „weniger“ oder „mehr“ Energie. Für Energiebilanzen brauchst du weiterhin kalorische Stoffwerte wie $u$ oder $h$.
 
 #src([L 2.2, PDF-S. 35–36; V PDF-S. 71; Ü 2.5, PDF-S. 13.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.3 Verdampfen auf der Zustandsfläche
+
+== 2.3 Verdampfen auf der Zustandsfläche <a-2-3>
 #bild("pvt", [Eine Zustandsfläche verknüpft p, v und T. Die Projektionen sind p-v-, T-v- und p-T-Diagramme. V, PDF-S. 52.], height: 73mm)
 Im Flüssig-Dampf-Gleichgewicht eines reinen Stoffes sind Druck und Temperatur gekoppelt: $T=T_s(p)$. Der Phasenanteil ist dadurch noch nicht bekannt.
 
 *Feynman-Bild:* Die Sättigung ist wie eine Schiene auf der Landkarte. Der Druck legt die zugehörige Temperatur fest; eine weitere Angabe sagt, wie viel Flüssigkeit und wie viel Dampf vorliegen.
 #src([L 2.3, PDF-S. 36–37; V PDF-S. 52–53.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.4 Zustandsbereiche eines Fluids und kritischer Punkt
+
+== 2.4 Zustandsbereiche eines Fluids und kritischer Punkt <a-2-4>
 #bild("phase-dome", [Flüssig-Dampf-Gebiet im p-v-Diagramm, schematisch und ohne Stoffwertmaßstab. Eigene Darstellung.], height: 62mm)
 #tab(columns: (1.1fr, 1.8fr),
  th([Bereich / Grenze], [Bedeutung]),
@@ -581,8 +710,10 @@ Am kritischen Punkt verschwinden der Unterschied $v''-v'$ und die Verdampfungsen
 Im Nassdampfgebiet verändern unterschiedliche Phasenanteile das spezifische Volumen, obwohl Druck und Temperatur dieselben bleiben. Am kritischen Punkt fallen die Stoffwerte der koexistierenden Phasen zusammen. Dort verlieren die getrennten Bezeichnungen „Flüssigkeitsanteil“ und „Dampfanteil“ ihre bisherige Bedeutung. Der kritische Punkt ist daher keine gewöhnliche Sättigung mit nur besonders hoher Temperatur.
 
 #src([L 2.4, PDF-S. 37–38; V PDF-S. 54 und 68; älterer BT-Datensatz: Tabelle 3.2, PDF-S. 82.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.5 Isobares Verdampfen 1–2–3–4–5
+
+== 2.5 Isobares Verdampfen 1–2–3–4–5 <a-2-5>
 #bild("five-states", [Ein passend belasteter beweglicher Kolben hält den Druck ungefähr konstant. BT, PDF-S. 73.], height: 55mm)
 #tab(columns: (0.4fr, 1.2fr, 1.6fr),
  th([Nr.], [Zustand], [Beim Heizen]),
@@ -595,8 +726,10 @@ Im Nassdampfgebiet verändern unterschiedliche Phasenanteile das spezifische Vol
 $ Q_(2,4)=m(h''-h')=m r $
 Gültig unter den isobaren Modellbedingungen aus 2.1. Kondensieren gibt die entsprechende Energie ab. Wasser siedet bei 1 bar bei etwa 99,6 °C, bei rund 1,013 bar bei etwa 100 °C. Höherer Sättigungsdruck bedeutet höhere Sättigungstemperatur.
 #src([L 2.5, PDF-S. 38–39; V PDF-S. 53–56; BT PDF-S. 72–74.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.6 Überkritischer Weg 1–a–b–5
+
+== 2.6 Überkritischer Weg 1–a–b–5 <a-2-6>
 #bild("supercritical", [Druckerhöhung, Erwärmen bei überkritischem Druck und anschließende Entspannung. BT, PDF-S. 76.], height: 57mm)
 Oberhalb des kritischen Drucks gibt es beim Erwärmen keinen gewöhnlichen Siedevorgang mit zwei getrennten Phasen. Die Eigenschaften ändern sich kontinuierlich von flüssigkeitsähnlich zu gasähnlich.
 
@@ -604,8 +737,10 @@ Oberhalb des kritischen Drucks gibt es beim Erwärmen keinen gewöhnlichen Siede
 Der Unterschied zum isobaren Verdampfen ist der Weg auf der Zustandsfläche. Beim gewöhnlichen Sieden durchläuft man ein Gebiet mit zwei Phasen. Der Weg bei überkritischem Druck umgeht diese Koexistenz. Die Stoffeigenschaften ändern sich dabei weiterhin, deshalb sind auch hier Energiezufuhr und passende reale Stoffwerte erforderlich.
 
 #src([L 2.6, PDF-S. 39–40; V PDF-S. 53 und 55–56; BT PDF-S. 75–76.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.7 Isochore Verdampfung: starrer Behälter
+
+== 2.7 Isochore Verdampfung: starrer Behälter <a-2-7>
 #bild("isochoric", [Senkrechte Wege bei konstantem spezifischem Volumen: Die Füllung bestimmt, welche Seite erreicht wird. V, PDF-S. 57; dessen kritischer Datensatz.], height: 65mm)
 Geschlossen und starr: $m,V$ und damit $v=V/m$ bleiben konstant.
 
@@ -615,8 +750,10 @@ Geschlossen und starr: $m,V$ und damit $v=V/m$ bleiben konstant.
 
 Mehr Wärmezufuhr bedeutet deshalb nicht bei jeder Randbedingung mehr Dampf. Ein starker Druckanstieg ist möglich; eine Explosion folgt nicht zwangsläufig allein aus $v<v_"kr"$.
 #src([L 2.7, PDF-S. 40; V PDF-S. 57.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.8 Polytrope Zustandsänderung mit Verdampfung
+
+== 2.8 Polytrope Zustandsänderung mit Verdampfung <a-2-8>
 Im allgemeinen Folienbeispiel ändern sich $p,V,T$ gleichzeitig. Der Stoff erhält Wärme und gibt bei Expansion Volumenarbeit ab:
 $ Delta U=Q_12+W_12 quad "mit" quad W_v<0 $
 Die Wärme ist daher im Allgemeinen nicht allein gleich $Delta U$.
@@ -624,8 +761,10 @@ Die Wärme ist daher im Allgemeinen nicht allein gleich $Delta U$.
 Eine mathematische Polytrope erfüllt $p v^n="konstant"$ bei konstantem $n$. Ein beliebiger realer Zweiphasenweg erfüllt das nicht automatisch. Die Folienbezeichnung erlaubt also nicht ungeprüft die Formeln idealer Gaspolytropen.
 #bild("map-path", [Mindmap: Die festgehaltene Größe entscheidet über den Zustandsweg. Eigene Darstellung.], height: 48mm)
 #src([L 2.8, PDF-S. 41; V PDF-S. 58. Engere Polytropendefinition ergänzend präzisiert.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.9 Nassdampf und Dampfgehalt
+
+== 2.9 Nassdampf und Dampfgehalt <a-2-9>
 Der *Dampfgehalt* ist ein Massenanteil:
 #form[$ x=m''/(m'+m'') quad m''=x m quad m'=(1-x)m $]
 Weil Dampf pro Kilogramm viel mehr Raum braucht, kann wenig Dampfmasse den größten Teil eines Gefäßes ausfüllen.
@@ -652,8 +791,10 @@ Die Mischungsregel folgt daraus, dass sich die Gesamtmengen von Volumen, innerer
 #bild("heatpipe", [Am warmen Ende verdampft Fluid; am kalten Ende kondensiert es. Die Masse zirkuliert innerhalb der äußeren Grenze. BT, PDF-S. 86.], height: 38mm)
 Das Wärmerohr ist nach außen *geschlossen* und kann dennoch Wärme transportieren. Stationär bleibt sein Energieinhalt konstant, weil Aufnahme und Abgabe einander ausgleichen.
 #src([L 1.1.3, PDF-S. 7–8, und 2.5, PDF-S. 38–39; Anwendung ergänzt nach BT 3.4, PDF-S. 86.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.10 Dampftafel: Werte für Wasser ablesen
+
+== 2.10 Dampftafel: Werte für Wasser ablesen <a-2-10>
 Die Dampftafel ist die Zahlenkarte des realen Stoffes. Zuerst kommt die Gebietsentscheidung:
 #tab(columns: (1.1fr, 1.8fr),
  th([Angaben / Bereich], [Vorgehen]),
@@ -675,8 +816,10 @@ Bei zwei veränderlichen Tabellengrößen zunächst in beiden Spalten interpolie
 Eine Tabellenrechnung beginnt mit zwei unabhängigen Informationen über den Zustand. Einphasig sind das häufig Druck und Temperatur. Im Nassdampf sind diese gekoppelt; dort brauchst du zusätzlich etwa den Dampfgehalt. Interpolieren schließt anschließend nur die Lücke zwischen nahen Tabellenwerten. Es ersetzt weder die Gebietsentscheidung noch eine fehlende Zustandsangabe.
 
 #src([L 2.10, PDF-S. 43–44; V PDF-S. 61–63; Ü 1.10, PDF-S. 7; BT Tabelle 3.2, PDF-S. 82.])
+#hoch(<a-2>, [Kapitelübersicht])
 
-== 2.11 Ergänzung aus der Vorlesung bis 20.10.
+
+== 2.11 Ergänzung aus der Vorlesung bis 20.10. <a-2-11>
 #heading(level: 3, outlined: false)[Wasseranomalie und Tripelpunkt]
 Gewöhnliches Eis benötigt bei gleicher Masse mehr Volumen als flüssiges Wasser: Es ist weniger dicht und schwimmt. Flüssiges Wasser hat bei ungefähr Atmosphärendruck seine größte Dichte nahe 4 °C; das ist die verwandte Dichteanomalie innerhalb der Flüssigkeit.
 #bild("triple", [Eis, flüssiges Wasser und Sattdampf können am Tripelpunkt zugleich im Gleichgewicht vorliegen. V, PDF-S. 68.], height: 52mm)
@@ -691,6 +834,8 @@ Fest → flüssig: *Schmelzen*; zurück: *Erstarren*. Fest → gasförmig: *Subl
 Tripelpunkt und kritischer Punkt beantworten unterschiedliche Fragen. Am Tripelpunkt können drei unterscheidbare Phasen nebeneinander bestehen. Am kritischen Punkt verschwindet gerade der Unterschied zwischen Flüssigkeit und Dampf. Die Clapeyron-Gleichung verbindet dazu den Energiebedarf einer Umwandlung mit ihrer Volumenänderung und erklärt die Richtung der jeweiligen Grenzkurve.
 
 #src([V PDF-S. 64–70; nächster Bezug in L: 2.1, PDF-S. 34, und 2.4–2.5, PDF-S. 37–39. Dichteanomalie bei 4 °C ergänzende Einordnung.])
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.12 Ergänzung aus der Vorlesung 21.10. <a-2-12>
 === 2.12.1 Weitere Zustandsgleichungen für reale Fluide <a-2-12-1>
@@ -731,6 +876,8 @@ $xi_i$: Massenanteil, $psi_i$: Molanteil (Stoffmengenanteil), $M$ in kg/kmol, $R
 #bild("map-mix", [Mindmap: Mengen, Anteile und Gemischgrößen. Eigene Darstellung.], height: 46mm)
 Ein Gemisch wird wie ein „Ersatzstoff“ behandelt: Kennt man die Anteile, ergeben sich eine scheinbare Molmasse $M_g$ und eine Gaskonstante $R_g$. Damit gilt für ein Gemisch idealer Gase wieder $p V=m_g R_g T$. Für Luft ist das genau der bekannte Wert $R approx 287 thin "J/(kg K)"$.
 #src([N S. 2 (Folie 02 Stoffeigenschaften 26) mit Randnotizen; BT 3.7, S. 83–85 (Gl. 3.28–3.35, Beispiel 3.9), PDF-S. 103–105; Partialgrößen ergänzend erklärt nach BT 8.1–8.2, S. 240–243, PDF-S. 258–261. Ab Folie 27 nicht behandelt (N S. 3, Trennblatt).])
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.13 Ergänzung aus Tutorium und WZF 22.–23.10. <a-2-13>
 Die neuen Übungen verbinden Tabellenlesen und Bilanzen. Drei Fragen steuern den Rechenweg: *In welchem Gebiet liegt der Stoff? Welche Bezugsgröße ist gemeint? Was bleibt im Prozess wirklich konstant?*
@@ -795,8 +942,31 @@ $dot(H)$ in kW, $dot(S)$ in kW/K, wenn $dot(m)$ in kg/s, $h$ in kJ/kg und $s$ in
 #src[M1, PDF-S. 1–3; Ü 1.14, PDF-S. 10; BT 3.4, Beispiel 3.4, S. 64–65 / PDF-S. 84–85, und 4.4, Gl. (4.46), (4.49), S. 108 / PDF-S. 128. Tabellenwerte und Rundung nach M1; eigene Nachrechnung.]
 
 *Der Zusammenhang in Kapitel 2.* Zuerst wird das Zustandsgebiet erkannt. Einphasig nutzt du das passende Stoffmodell oder eine p-T-Tabelle; im Nassdampf die Sättigungswerte und einen zusätzlichen Phasenanteil. Danach werden Stoffwerte in die Massen- und Energiebilanz eingesetzt. Der Vergleich von Verdampfer und Entnahmebehälter zeigt, wann ein Massenstrom konstant bleibt und wann sich der Bestand ändert. Die Darstellung im Diagramm hilft, den Rechenweg zu prüfen.
+#hoch(<a-2>, [Kapitelübersicht])
 
-= Kapitel 3 · Energiebilanzen: Erster Hauptsatz
+
+#pagebreak(weak: true)
+= Kapitel 3 · Energiebilanzen: Erster Hauptsatz <a-3>
+
+#überblick([Kapitel 3 auf einen Blick],
+  idee(<a-3-1>, [Energie wird bilanziert.], [Die Änderung gespeicherter Energie entspricht dem Nettozufluss über die Grenze.]),
+  idee(<a-3-1-1>, [Stoffströme tragen Enthalpie mit.], [Im offenen System erfasst sie auch die Verschiebearbeit an Ein- und Austritten.]),
+  idee(<a-3-1-2>, [Ohne Stoffaustausch gilt die geschlossene Bilanz.], [Wärme und Gesamtarbeit verändern innere, Bewegungs- und Lageenergie.]),
+  idee(<a-3-1-3>, [Annahmen streichen Terme.], [Stationär, adiabat oder ruhend bedeuten jeweils etwas anderes und sind einzeln zu begründen.]),
+  idee(<a-3-2>, [Ein starrer Behälter kann instationär sein.], [Bei der Entnahme bleiben Speicheränderung und Enthalpietransport gemeinsam in der Bilanz.]),
+)
+
+#ablauf(
+  chunk([System und Zustände festlegen], [Grenze · Zeitpunkte oder Ein- und Austritt], ziel: <a-3-1>),
+  entscheidung([Strömt Stoff über die Grenze?],
+    chunk([Offene Bilanz], [Enthalpieströme · Speicherterm auf Stationarität prüfen], ziel: <a-3-1-1>),
+    chunk([Geschlossene Bilanz], [gespeicherte Energie · Wärme · Gesamtarbeit], ziel: <a-3-1-2>)),
+  chunk([Annahmen und Stoffwerte einsetzen], [erst vollständige Bilanz, dann begründet vereinfachen], ziel: <a-3-1-3>),
+  chunk([Ergebnis prüfen], [Vorzeichen · Einheit · Bezugsgröße · Plausibilität], ziel: <a-3-2>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Kapitel 1 hat die Bilanzhülle und die Prozessgrößen eingeführt, Kapitel 2 die Stoffwerte. Der erste Hauptsatz (1. HS) verbindet beides: Er sagt, wie viel sich die Energie eines Systems ändert, wenn Wärme und Arbeit über seine Grenze fließen. Im Buch ist das Kapitel 4.
 
@@ -865,6 +1035,8 @@ Einheitencheck: $1 thin "m"^2/"s"^2=1 thin "N m/kg"=1 thin "J/kg"$. Für feste S
 #note("★ Klausur", [„1. HS ist der richtige Ansatz in der Prüfung!!“ (von dir markiert). Immer zuerst System und Zustände ① und ② festlegen, dann alle Terme hinschreiben und erst danach streichen.], fill: sand)
 *Hinweis zum 1. HS:* Er sagt nur, dass die Summe der Zustandsänderungen gleich der Summe der Prozessgrößen ist. Er sagt *nicht*, welche Prozessgröße in welche Zustandsänderung umgewandelt wird. Die Beispiele 2 (Pumpspeicherkraftwerk, adiabate Turbine, $P=7000 thin "kW"$) und 3 (Strahltriebwerk mit Nachbrenner und adiabater Düse) wurden nur genannt, noch nicht gerechnet.
 #src([N S. 11 (Folie 03 Erster Hauptsatz 8) und S. 12 (Tafel, „Ende VL 21.10“). Einheitenkorrektur bei $c_"Pb"$: eigene Ergänzung.])
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 
 #pagebreak()
@@ -908,6 +1080,8 @@ Diese kurze Verdampfungsformel gilt *hier wegen der hergeleiteten Randbedingunge
 #src[Ü 2.1 f–g, PDF-S. 11–12; M2, PDF-S. 4 und 6–8; BT 3.4, S. 60–62 / PDF-S. 80–82, und 4.4, S. 108 / PDF-S. 128.]
 
 *Der Zusammenhang in Kapitel 3.* Erst die Systemart festlegen: Strömt Stoff über die Grenze, arbeitest du mit Enthalpie $h$ und technischer Arbeit $w_t$; ist das System geschlossen, mit innerer Energie $u$ und Gesamtarbeit $w_g$. Dann alle Terme aufschreiben, die Annahmen (stationär, adiabat, reibfrei, ruhend) streichen lassen und die Stoffwerte aus Kapitel 2 einsetzen. Bei instationärer Entnahme bleibt zusätzlich der Speicherterm erhalten; der austretende Stoff trägt Enthalpie mit.
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 = Anhang
 
