@@ -575,7 +575,8 @@ const auth = {
     store.set("auth:passwort", true);
   },
   async linkSenden(email) {
-    await this.anfrage("/auth/v1/otp?redirect_to=" + encodeURIComponent(this.seite()), { email, create_user: true });
+    try { await this.anfrage("/auth/v1/otp?redirect_to=" + encodeURIComponent(this.seite()), { email, create_user: true }); }
+    catch (e) { throw new Error(/rate limit/i.test(e.message) ? "Zu viele E-Mails in kurzer Zeit. Es gehen nur wenige Anmeldelinks pro Stunde raus, versuch es in einer Stunde wieder." : e.message); }
   },
   // Link aus der E-Mail hier einfügen: nötig, wenn die Seite als App auf dem Home-Bildschirm liegt
   // (der Link öffnet sonst Safari, und die Anmeldung landet dort statt in der App).
