@@ -442,6 +442,15 @@ figure.abb + figure.abb { margin-top: 14px; }
 </div>
 <a class="pomopille" id="pomopille" href="#lernen/pomodoro" hidden></a>
 <script>
+// Zeigt Fehler sichtbar an (auch Syntaxfehler im Hauptskript), damit man sie auf dem iPad ohne Konsole sieht.
+window.addEventListener("error", e => {
+  const d = document.createElement("div");
+  d.style.cssText = "position:fixed;left:12px;right:12px;bottom:12px;z-index:99;background:#b4372e;color:#fff;padding:12px 16px;border-radius:12px;font:14px/1.4 -apple-system,sans-serif";
+  d.textContent = "Fehler auf der Seite: " + e.message + (e.lineno ? " (Zeile " + e.lineno + ":" + e.colno + ")" : "") + ". Bitte Screenshot an Claude schicken.";
+  (document.body || document.documentElement).appendChild(d);
+});
+</script>
+<script>
 const DATA = /*DATA*/null || [];
 const DECKS = /*KARTEN*/null || [];
 const LERNEN = /*LERNEN*/null || [];
@@ -804,7 +813,9 @@ function vorschläge(tag) {
   const module = new Set(gewählt.map(k => k.modul).filter(Boolean));
   const anderes = kandidaten.find(k => k.modul && !module.has(k.modul));
   if (module.size === 1 && anderes) {
-    const i = gewählt.length >= 4 ? gewählt.findLastIndex(k => k.modul) : gewählt.length;
+    let i = gewählt.length;
+    if (i >= 4) while (i > 0 && !gewählt[i - 1].modul) i--;
+    if (i >= 4) i--;
     gewählt.splice(i, 1, anderes);
   }
   return gewählt;
