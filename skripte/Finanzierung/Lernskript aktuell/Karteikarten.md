@@ -292,3 +292,11 @@ Abbildung: g-forderungen
 Nein. Die Bilanz bewertet zu Buchwerten mit Fortführungsannahme. Die rechtliche Überschuldungsprüfung hat eigene Voraussetzungen, z. B. die Fortführungsprognose und eventuelle Rangrücktritte.
 Quelle: 1.16
 Abbildung: g-planbilanz
+
+### Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Am Anfang stehen **Ziele** und **Finanzierungsformen**: Herkunft (innen oder außen) und Rechte (Eigen- oder Fremdkapital). Dann trenne ich **Erfolg** von **Zahlung**: Daraus wird der **Cashflow** (direkt oder indirekt, drei Bereiche, Free Cashflow).
+
+Der **Finanzplan** ordnet die Zahlungen nach Termin und zeigt Lücken, die sonst zur **Insolvenz** führen. **Kennzahlen** (Liquiditätsgrade, Kapitalstruktur, Rentabilität) und der **Leverage** zeigen Deckung und Risiko. Die **Glasspinnerei** verbindet alles: Absatz → EBK → NOCF → Finanzplan → Kapitalbedarf und Planbilanz.
+
+Bild: Wie eine Reiseplanung: Erst klären, wer zahlt, dann wann das Geld gebraucht wird, dann ob die Kasse unterwegs reicht.
+Quelle: 1.1

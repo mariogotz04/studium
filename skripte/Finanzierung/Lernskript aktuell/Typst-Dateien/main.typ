@@ -52,6 +52,43 @@
 }
 #let th(..cells) = table.header(..cells.pos().map(c => table.cell(fill: pale)[#strong(c)]))
 
+// ─── Überblick-Ebenen und Chunkmaps (in allen Modulen gleich) ─────────────────
+// Ebene 0: Seite „Das Modul auf einen Blick“ nach dem Wegweiser (Label <ueberblick>).
+// Ebene 1: unter jeder Kapitelüberschrift (Label <a-n>) #überblick mit #idee-Links und eine #karte oder ein #ablauf.
+// Ebene 2: die Abschnitte; am Ende jedes Abschnitts #hoch(<a-n>, [Kapitelübersicht]).
+// Die Kästen sind keine Überschriften: Inhaltsverzeichnis und PDF-Lesezeichen bleiben unverändert.
+#let chunk(titel, begriffe, ziel: none, fill: pale, stroke: navy) = {
+  let kasten = block(width: 100%, fill: fill, stroke: 0.6pt + stroke, radius: 4pt, inset: (x: 6pt, y: 5pt), breakable: false)[
+    #set par(leading: 0.35em, spacing: 0.35em, justify: false)
+    #set text(hyphenate: true)
+    #text(size: 9pt, weight: "bold", fill: navy, titel)
+    #if begriffe != none [#parbreak() #text(size: 7.8pt, fill: muted, begriffe)]
+  ]
+  if ziel == none { kasten } else { link(ziel, kasten) }
+}
+#let pfeil(beschriftung: none, zeichen: sym.arrow.r) = align(center + horizon, stack(dir: ttb, spacing: 2pt,
+  ..(if beschriftung != none { (text(size: 6.8pt, fill: teal, beschriftung),) } else { () }),
+  text(size: 13pt, fill: teal, zeichen)))
+// Chunkmap als Raster: #karte((1fr, auto, 1fr), chunk(..), pfeil(..), chunk(..))
+#let karte(spalten, ..zellen) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em,
+  grid(columns: spalten, column-gutter: 3pt, row-gutter: 7pt, align: center + horizon, ..zellen))
+// Flussdiagramm von oben nach unten: #ablauf(chunk(..), entscheidung(..), chunk(..))
+#let ablauf(breite: 80%, ..schritte) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em, align(center,
+  stack(dir: ttb, spacing: 2pt, ..schritte.pos().enumerate().map(((i, x)) =>
+    (if i > 0 { (text(size: 12pt, fill: teal, sym.arrow.b),) } else { () }) + (block(width: breite, x),)).flatten())))
+#let entscheidung(frage, ja, nein) = stack(dir: ttb, spacing: 3pt,
+  chunk(frage, none, fill: sand, stroke: teal),
+  grid(columns: (1fr, 1fr), column-gutter: 8pt,
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *ja*]) #ja],
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *nein*]) #nein]))
+#let idee(ziel, kern, satz) = [#link(ziel)[#text(fill: teal, weight: "bold", kern)] #satz]
+#let überblick(titel, ..ideen) = block(width: 100%, fill: pale, inset: (x: 9pt, y: 7pt), above: 0.6em, below: 0.6em, breakable: false)[
+  #text(fill: navy, weight: "bold", titel)
+  #set list(marker: text(fill: teal, sym.arrow.r), spacing: 0.45em)
+  #list(..ideen.pos())
+]
+#let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
+
 #let abbildungen = (
   "abgrenzung-auszahlung": "abbildungen/abgrenzung-auszahlung.svg",
   "abgrenzung-einzahlung": "abbildungen/abgrenzung-einzahlung.svg",
@@ -169,7 +206,55 @@
 #text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = „Skript Finanzierung.pdf“; N1 = „1VL Finanzierung.pdf“; N2 = „VL 14.10.pdf“; M = „eigenes Skript Finanzierung.pdf“; BAF = „01VL_BAF Finanzierung.pdf“; G = „Fallstudie Glasspinnerei Straubing AG.pdf“; L15 = altes Claude-Lernskript, Stand 15.10.2026; K = „Klausur 2017.pdf“ (Fotos von Teil II, Klausurseiten 5–10; Hochschule und Prüfer sind auf den Seiten nicht erkennbar; die handschriftlichen Antworten und Korrekturen im Scan werden nicht übernommen). „PDF-S.“ zählt ab der ersten Dateiseite. V hat zwei Folien pro PDF-Seite. Buchangaben auf Folien sind Sekundärnachweise; Bücher wurden nicht verwendet. Gesetzeslinks und BGH sind nur zur ausdrücklich markierten Fehlerklärung ergänzt (Abruf 22.10.2026). „Nachschlagen“ führt mit automatisch berechneter Seite in dieses Lernskript.]
 
 #pagebreak()
-= Kapitel 1 · Grundlagen der Finanzplanung
+#heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
+
+Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu springen.
+
+#karte((1fr,),
+  chunk([Kapitel 1 · Grundlagen der Finanzplanung], [Finanzierungsformen · Liquidität · Erfolg und Zahlung · Cashflow · Finanzplan · Kennzahlen · Leverage · Fallstudie Glasspinnerei], ziel: <a-1>),
+)
+
+*Der rote Faden in Kapitel 1*
+
+#karte((1fr, auto, 1fr, auto, 1fr, auto, 1fr, auto, 1fr),
+  chunk([1.1–1.2 Ziele und Formen], [Herkunft · Rechte · Eigen- oder Fremdkapital], ziel: <a-1-1>),
+  pfeil(),
+  chunk([1.3–1.6 Liquidität und Cashflow], [Erfolg ≠ Zahlung · direkt und indirekt · Free Cashflow], ziel: <a-1-3>),
+  pfeil(),
+  chunk([1.7–1.8 Finanzplan], [Zahlungsfahrplan · Insolvenzgründe · Gegenmaßnahmen], ziel: <a-1-7>),
+  pfeil(),
+  chunk([1.9–1.12 Kennzahlen], [Liquiditätsgrade · Kapitalstruktur · Rentabilität · Leverage], ziel: <a-1-9>),
+  pfeil(),
+  chunk([1.13–1.18 Glasspinnerei], [EBK · NOCF · Planbilanz · Finanzierungslücke], ziel: <a-1-13>),
+)
+
+Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher kommt es?* Dafür trennst Du zuerst Erfolg von Zahlungen, denn Gewinn allein bezahlt keine Rechnung. Cashflow und Finanzplan zeigen, wann Geld fehlt; Kennzahlen und Leverage zeigen, wie riskant die Finanzierung ist. Die Fallstudie Glasspinnerei setzt alles zu einer Kapitalbedarfsrechnung zusammen.
+#src[V, PDF-S. 1–3; G, PDF-S. 1 und 24; Zusammenführung aus Kapitel 1. Eigene Darstellung.]
+
+#pagebreak()
+= Kapitel 1 · Grundlagen der Finanzplanung <a-1>
+
+#überblick([Kapitel 1 auf einen Blick],
+  idee(<a-1-2>, [Herkunft und Rechte unterscheiden.], [Woher das Kapital kommt und welche Rechte daran hängen, ordnet jede Finanzierungsform ein.]),
+  idee(<a-1-4>, [Erfolg ist nicht Zahlung.], [Gewinn kann entstehen, ohne dass Geld fließt, und umgekehrt; deshalb erst trennen, dann planen.]),
+  idee(<a-1-5>, [Der Cashflow zeigt die Zahlungskraft.], [Direkt oder indirekt gerechnet ergibt er dieselbe Größe, aufgeteilt in drei Bereiche.]),
+  idee(<a-1-7>, [Der Finanzplan ist ein Zahlungsfahrplan.], [Er zeigt Betrag und Termin jeder Lücke, bevor sie zur Insolvenz führt.]),
+  idee(<a-1-12>, [Leverage hebelt Rendite und Risiko.], [Mehr Fremdkapital erhöht die Eigenkapitalrendite nur, solange die Gesamtrendite über dem Zins liegt.]),
+  idee(<a-1-13>, [Die Fallstudie führt alles zusammen.], [Aus Absatz, Kosten, Steuern und Investitionen entsteht der Kapitalbedarf.]),
+)
+
+*So entsteht die Kapitalbedarfsrechnung der Glasspinnerei*
+
+#ablauf(
+  chunk([Absatzplanung], [Menge und Preis als Startpunkt, historische Daten], ziel: <a-1-13>),
+  chunk([Kosten und Bestandsbindung], [EBK: Wachstum bindet Geld in Vorräten und Forderungen], ziel: <a-1-14>),
+  chunk([Plan-GuV und NOCF], [Abschreibung und Steuer: Erfolg wird zu Zahlung], ziel: <a-1-15>),
+  chunk([Finanzplan], [NOCF, Investitionen, Ausschüttungen, Kapitalaufnahme und Reserven ergeben den Kapitalbedarf], ziel: <a-1-15>),
+  entscheidung([Ist der Kapitalbedarf gedeckt?],
+    chunk([Planbilanz prüfen], [Verlust und Zahlungsdefizit getrennt lesen], ziel: <a-1-16>),
+    chunk([Lücke schließen], [Finanzierungslücke gezielt verändern], ziel: <a-1-17>)),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
 
 Ein Unternehmen braucht Geld in passender Höhe *zum richtigen Zeitpunkt*. Deshalb beginnen wir mit Zielen und Finanzierungsformen, trennen dann Erfolg von Zahlungen und bauen daraus einen Finanzplan. Kennzahlen zeigen die Struktur; die Glasspinnerei verbindet alles zu einer Kapitalbedarfsrechnung. Die Reihenfolge folgt Teil A der Vorlesung, ergänzt um die behandelte Fallstudie.
 #src[V, PDF-S. 1 und 3; G, PDF-S. 1 und 24.]
@@ -196,6 +281,7 @@ Ein Unternehmen braucht Geld in passender Höhe *zum richtigen Zeitpunkt*. Desha
 Finanzierungsmaßnahmen betreffen auch *Geldäquivalente*, etwa Sacheinlagen oder Rechte. Bei Verträgen sind Gegenleistungen entscheidend: Bedienung, Rückzahlung, Informations-, Kontroll-, Sicherungs- und Sanktionsrechte. Innenfinanzierung kann dagegen aus einbehaltenen Mitteln, zeitlichen Aufwands-/Zahlungsunterschieden und Ausschüttungssperren entstehen.
 #bild("map-ziele", [Mindmap: das Sachziel mit den drei Finanzierungszielen verbinden. Eigene Darstellung nach V, PDF-S. 3–4.], height: 44mm)
 #src[V, PDF-S. 3–4 (Folien 6–8); M, PDF-S. 1; BAF, PDF-S. 1; eigene Beispiele/Vergleiche aus L15, PDF-S. 3–4.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.2 Finanzierungsformen: Herkunft und Rechte trennen <a-1-2>
 
@@ -237,6 +323,7 @@ Zwei Fragen ordnen einen Finanzierungsvorgang: *Woher stammen die Mittel?* Und: 
 Deine Notizen stellen Zins, Gewinnbeteiligung, Rückzahlung, Stimm- und Kündigungsrechte gegenüber. FK-Geber haben im Grundmodell keine Stimmrechte, können aber über vertragliche Kündigungs- oder Verlängerungsentscheidungen faktisch Einfluss ausüben. Eine Bank, die die Verlängerung einer Kreditlinie von Änderungen abhängig macht, illustriert diesen Unterschied.
 #bild("map-formen", [Mindmap: Herkunft der Mittel und Rechtsstellung getrennt prüfen. Eigene Darstellung nach V, PDF-S. 4–6.], height: 45mm)
 #src[V, PDF-S. 4–6 (Folien 8–11); M, PDF-S. 1–2; BAF, PDF-S. 1; L15, PDF-S. 4–5. Eigene Vergleiche und Präzisierungen sind gekennzeichnet.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.3 Liquidität: Betrag und Termin müssen passen <a-1-3>
 
@@ -260,6 +347,7 @@ Die *Bilanz* zeigt Vermögens- und Kapitalbestände am Stichtag; die *GuV* zeigt
 #bild("map-liquiditaet", [Mindmap: Zahlungsfähigkeit, Vermögen und Plan unterscheiden. Eigene Darstellung nach V, PDF-S. 6–9.], height: 45mm)
 #note("Selbst erklären", [Warum kann das längere Wertpapier liquider sein? *Weil der vorzeitige Verkauf möglich ist.* Entscheidend ist, wann Geld tatsächlich verfügbar wird, nicht allein das Laufzeitende.])
 #src[V, PDF-S. 6–9 (Folien 12–17); M, PDF-S. 2; L15, PDF-S. 6–7. Handwerksbeispiel und Präzisierung zur Bilanz: eigene Erklärhilfe.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.4 Erfolg und Zahlung auseinanderhalten <a-1-4>
 
@@ -291,6 +379,7 @@ Beide Salden beziehen sich auf eine Periode, etwa einen Monat. Sie sind Geldbetr
 
 Eine *Rückstellung* erfasst eine ungewisse Verpflichtung; ihre Bildung kann schon Aufwand sein, obwohl die zugehörige Auszahlung später liegt. Im Folienbeispiel ist deshalb die Zuführung zur Pensionsrückstellung vom späteren Auszahlen zu trennen.
 #src[V, PDF-S. 9–11 (Folien 18–22); M, PDF-S. 3; L15, PDF-S. 7–8 und 39. Eigene begriffliche Präzisierungen wie gekennzeichnet.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.5 Cashflow: zwei Wege zu derselben Zahlungsgröße <a-1-5>
 
@@ -323,6 +412,7 @@ Die Kapitalflussrechnung zeigt die Entwicklung der Liquidität sowie wichtige In
 #bild("map-cashflow", [Mindmap: Rechnung, Bereiche und Verwendung zusammenbringen. Eigene Darstellung nach V, PDF-S. 9–13.], height: 45mm)
 #note("In der Altklausur 2017", [Aufgabe 4 verlangt genau diese beiden Wege an einer GuV (5 Punkte) und dazu zwei weitere Formen der Innenfinanzierung (1 Punkt). Übung auf der Lernwebseite: „Klausur: Cashflow der Rhein GmbH“ und „Klausur: weitere Formen der Innenfinanzierung“. K, PDF-S. 6.])
 #src[V, PDF-S. 9 und 11–12 (Folien 18, 21–24); M, PDF-S. 3; L15, PDF-S. 8–10 und 14; K, PDF-S. 6. Varianten und Voraussetzungen: eigene Erklärhilfe.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.6 Drei Cashflow-Bereiche und Free Cashflow <a-1-6>
 
@@ -347,6 +437,7 @@ Für fortgeführte Aktivitäten nennt die Folie 8.415 Mio. € operativen Cashfl
 
 Folie 25 nennt für fortgeführte Aktivitäten −3.741 Mio. € Investitions-Cashflow und −1.946 Mio. € Finanzierungs-Cashflow. Einschließlich nicht fortgeführter Aktivitäten lauten die drei Bereichssalden 8.425, −3.774 und −1.946 Mio. €. Ein negativer Investitions-Cashflow allein ist weder eine Erfolgsgarantie noch ein Insolvenzsignal.
 #src[V, PDF-S. 12–13 (Folien 24–26); M, PDF-S. 3; L15, PDF-S. 9. Rechenvergleich und Präzisierungen: eigene Prüfung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.7 Finanzplanung als Zahlungsfahrplan <a-1-7>
 
@@ -387,6 +478,7 @@ Deine Notiz zu Folie 31 zeigt denselben Unterschied: bei Anfang null und vereinf
 Im Gründungsfall werden 25.000 € EK eingebracht. Nach Anfangsinvestitionen/Gründungsaufwand bleiben 11.500 €. Am Ende der ersten laufenden Periode steht im Plan *−39.181 €*; bis Periode 5 bleiben negative Positionen, obwohl ab Periode 2 Gewinne entstehen. Der erste Verlust von 28.560 € übersteigt das EK; eine Finanzierung und ein Verlustpolster sind getrennt zu prüfen. Der ausgewiesene 30-%-Anteil eines weiteren Kapitalgebers und Förderdarlehen sind Lösungsansätze des Plans, keine bereits beschafften Mittel.
 #note("Von Dir markiert", [Das rote X bei Folie 31 entfernt den Stoff nicht. Die Inhalte und das Zahlungsbeispiel bleiben enthalten. Die frühere Notiz „Glasspinnerei nächste VL“ ist durch die nachgereichte Fallstudie vom 21.10. überholt.])
 #src[V, PDF-S. 14–16 und 20 (Folien 27–31, 39–40); N2, PDF-S. 1 und 6; M, PDF-S. 4; L15, PDF-S. 17–18 und 21. Planfälle/Erklärhilfen wie gekennzeichnet.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.8 Insolvenzgründe und Gegenmaßnahmen <a-1-8>
 
@@ -425,6 +517,7 @@ Gegen einen Zahlungsengpass helfen im Folienmodell frische Mittel, Forderungsver
 #bild("insolvenz-historisch", [Historische IfM-Bonn-Abbildungen der Folien 37–38. V, PDF-S. 19; kein aktueller Insolvenzbericht.], height: 96mm)
 Die zweite Grafik und der Altstand nennen 39 % bereits geschlossene Unternehmen bei Antragstellung; unter den übrigen werden 19 % übertragend und 4 % mit Insolvenzplan fortgeführt. Der Altstand fasst die Dauer juristischer Verfahren mit etwa 45–50 Monaten zusammen. Die Aussagen beziehen sich auf die historische Darstellung mit ihren jeweiligen Bezugsgruppen; daraus wird keine aktuelle Quote oder Kausalbehauptung abgeleitet.
 #src[V, PDF-S. 16–20 (Folien 32–40); N2, PDF-S. 1–5; L15, PDF-S. 19–21 und 39–40. Rechtsabgleich (eigene Ergänzung): #link("https://www.gesetze-im-internet.de/inso/__17.html")[§ 17], #link("https://www.gesetze-im-internet.de/inso/__18.html")[§ 18], #link("https://www.gesetze-im-internet.de/inso/__19.html")[§ 19], #link("https://www.gesetze-im-internet.de/inso/__15a.html")[§ 15a InsO]; #link("https://juris.bundesgerichtshof.de/cgi-bin/rechtsprechung/document.py?Gericht=bgh&Art=en&nr=33452&Blank=1.pdf")[BGH, Urteil 24.05.2005, IX ZR 123/04, Leitsätze b–c, PDF-S. 1]. Abruf 22.10.2026.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.9 Liquiditätsgrade und ihre Grenzen <a-1-9>
 
@@ -441,6 +534,7 @@ Geldeinheiten kürzen sich, das Ergebnis ist ein Prozentwert. Verwende für die 
 #note("Selbst erklären", [Warum beweist ein hoher dritter Grad nicht, dass die Rechnung morgen bezahlt wird? *Weil Vorräte erst verkauft und Forderungen erst eingezogen werden müssen.* Bestände und Fälligkeiten können auseinanderfallen. Eigene Erklärhilfe.])
 Höhere Deckung kann die Situation verbessern. Sehr viel sofort verfügbare Liquidität kann zugleich Rendite kosten. Die genannten Zielwerte sind die Orientierungen der Vorlesung, keine gesetzlichen Garantien.
 #src[V, PDF-S. 21, Folie 42; N2, PDF-S. 6; L15, PDF-S. 21. Grenzen und Einheiten: eigene Erläuterung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.10 Finanzierung, Vermögen und Kapitalstruktur messen <a-1-10>
 
@@ -462,6 +556,7 @@ $"AV"$ = Anlagevermögen. Bestände und Bezugsgrößen müssen zusammenpassen un
 Eine hohe Anlageintensität kann das rasche Verflüssigen erschweren. Eine niedrige kann auf alte, bereits stark abgeschriebene Anlagen hinweisen. Sie ist also nicht automatisch besser. Mehr EK bedeutet unter sonst gleichen Bedingungen ein größeres Verlustpolster und kann die Bonität (*Kreditwürdigkeit*) verbessern; die Quote allein bewertet nicht alle Kreditrisiken.
 #note("Von Dir markiert", [Eigen- und Fremdkapitalquote sind in Deinen Notizen besonders hervorgehoben („am wichtigsten“ im Altstand). Die Nenner sind Gesamtkapital/Gesamtvermögen, nicht nur das Umlaufvermögen.])
 #src[V, PDF-S. 22–23 (Folien 43–46); N2, PDF-S. 7–8; L15, PDF-S. 21–22 und 39–40. Einheiten, Grenzen und Hausvergleich: eigene Erläuterung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.11 Rentabilität und das Risiko der Kapitalstruktur <a-1-11>
 
@@ -486,6 +581,7 @@ Die *Kapitalstruktur* beschreibt die Aufteilung in Eigen- und Fremdkapital. Weni
 )
 A verteilt 80.000 € EK hälftig auf Hubert und Maier, also je 40.000 €. Bei B bleiben die beiden Darlehensansprüche von je 40.000 € bestehen. Der *nicht durch Eigenkapital gedeckte Fehlbetrag* beträgt 8.000 €; er ist kein zusätzlich verwertbarer Vermögensgegenstand. Dasselbe Geschäftsrisiko trifft auf verschiedene Verlustpolster und Zinslasten. Die rechtlichen Voraussetzungen von Abschnitt 1.8 bleiben gesondert zu prüfen.
 #src[V, PDF-S. 24–25 und 27 (Folien 48–50, 54); N2, PDF-S. 9–10 und 12; L15, PDF-S. 22–23. Prüfungsabgrenzung: Marios Hinweise/Bestätigung 22.10.2026.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.12 Leverage: Rendite und Risiko hebeln <a-1-12>
 
@@ -505,6 +601,7 @@ Die Formel lässt sich aus der gewichteten Gesamtrendite herleiten: Mit $"EK"+"F
 #note("Fehler vermeiden", [Hohe EK-Rentabilität ist keine Begründung für beliebig viel Kredit. Zinszahlung und kleines Verlustpolster bleiben; im schlechten Jahr wirkt derselbe Hebel gegen die Eigentümer. Die Formel verspricht weder konstanten FK-Zins bei wachsender Verschuldung noch eine zusätzliche Wertschöpfung.], fill: sand)
 #note("In der Altklausur 2017", [Aufgabe 3 (11 von 40 Punkten im Aufgabenteil) prüft genau diesen Hebel: Gesamtkapitalrentabilität, vier EK-Rentabilitäten, Beschreibung des Effekts und Argumente gegen hohe Verschuldung. Übung auf der Lernwebseite: „Klausur: Gründung mit 800.000 € Kapital“ und „Klausur: Leverage deuten und Risiken der Verschuldung“. K, PDF-S. 4–5.])
 #src[V, PDF-S. 26–27 (Folien 51–53); N2, PDF-S. 11–12; L15, PDF-S. 23–24; K, PDF-S. 4–5. Herleitung, Gültigkeit und Kurven: eigene Erläuterung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 #pagebreak()
 == 1.13 Glasspinnerei: den Kapitalbedarf gemeinsam planen <a-1-13>
@@ -536,6 +633,7 @@ Menge × Preis ergibt Nettoumsatz. Der Materialbedarf hängt sowohl von der Meng
 #bild("g-guv-historie", [Historische Gewinn- und Verlustrechnungen 2002–2004, T€. G, PDF-S. 7, Folie 13.], height: 92mm)
 Die Bilanzsumme 2004 beträgt rund 137,5 Mio. €. Daran gemessen ist die Investition von 85 Mio. € groß. Die historischen Bilanzen liefern Bestände und Finanzierungsverpflichtungen; die GuV liefert die Basis für Preis-, Kosten- und Steuerplanung. Diese Daten werden hier als Originaltabellen erhalten.
 #src[G, PDF-S. 6–7.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.14 EBK und NOCF: Wachstum bindet Geld <a-1-14>
 
@@ -571,6 +669,7 @@ Alle Ströme und die Bestandsänderung in derselben Periode/Geldeinheit; die Abg
 
 Im vereinfachten Plan gilt für die drei Umsatzquoten zunächst $"LB"=9%"NU"$, $"FLei"=13%"NU"$, $"VLei"=10%"NU"$. Der bloße Saldo dieser drei Posten wäre 12 % des Umsatzes. Die Falltabelle enthält darüber hinaus Rückstellungen; deshalb ist ihr EBK nicht einfach jedes Jahr 12 % des Umsatzes. Über 2005–2008 nennt der Fall rund 16 Mio. € zusätzlichen Bedarf aus dem EBK-Wachstum.
 #src[G, PDF-S. 8–12 (Folien 15–24). Formeln, Definitionen und selbst markierter Buchfehler aus den Folien; Rechen-/Notationsprüfung: eigene Ergänzung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.15 Abschreibung, Steuer und Finanzplan zusammenführen <a-1-15>
 
@@ -594,6 +693,7 @@ Nach dem NOCF werden Finanzanlagenausschüttungen, erhaltene Zinsen und Rückzah
 #bild("g-finanzplan", [Tabelle 3.11: der gesamte Finanzplan 2005–2008. G, PDF-S. 15, Folie 29.], height: 104mm)
 Für 2005 nennt der Fall einen *Finanzierungsbedarf von 23,03 Mio. €*. 85 Mio. € Investitionen minus 25 Mio. € neue Kredite sind eben noch nicht der endgültige Bedarf: Das Kerngeschäft und eine EBK-Freisetzung von etwa 2,5 Mio. € liefern weitere Mittel. Die späteren Planjahre zeigen hohe Überschüsse. Eine Zwischenfinanzierung ist im Modell daher denkbar, wenn die Bank die Prognosen für verlässlich hält.
 #src[G, PDF-S. 9–10 und 12–15 (Folien 17–30). Historische Steuer- und Abschreibungsvorgaben ausschließlich als Fallannahmen.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.16 Planbilanz: Verlust und Zahlungsdefizit unterscheiden <a-1-16>
 
@@ -611,6 +711,7 @@ Die Gewinnrücklagen sinken durch die gewünschte Ausschüttung um 3,120 Mio. �
 
 #note("Begriff sauber halten", [Ein negativer handelsbilanzieller Eigenkapitalbetrag ist nicht automatisch die rechtliche Überschuldung. Der Fall weist selbst auf diese Trennung hin. Auch ein qualifizierter Rangrücktritt beseitigt nicht allein durch Umbenennen den handelsbilanziellen Verlust. Aussagen der historischen Fallfolie zur Ausschüttungszulässigkeit werden als damalige Diskussionsansätze verstanden, nicht als pauschale geltende Rechtsfolge.], fill: sand)
 #src[G, PDF-S. 16–19 und 21–22 (Folien 31–38, 42–44); rechtliche begriffliche Präzisierung: eigene Ergänzung nach #link("https://www.gesetze-im-internet.de/inso/__19.html")[§ 19 InsO], Abruf 22.10.2026.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.17 Finanzierungslücke gezielt verändern <a-1-17>
 
@@ -630,6 +731,7 @@ Im Basisplan liegt EBK 2005 bei rund 6,6 Mio. €. Mit der neuen Forderungsquote
 
 *Eigene Kontrollrechnung:* Die beiden Maßnahmen Investitionsstreckung und Forderungsabbau verbessern 2005 zusammen um $17+"9,45"="26,45"$ Mio. €. Das übersteigt die ursprüngliche Lücke von 23,03 Mio. € im Modell um rund 3,42 Mio. €. Ob die Kunden- und Lieferantenbedingungen durchsetzbar sind, bleibt eine Annahme des Falls.
 #src[G, PDF-S. 20–21 (Folien 39–41). Vergleich der Ausgangsbasen und Kontrollrechnung: eigene Ergänzung aus den Folienwerten.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 == 1.18 Bilanzdarstellung, Alternativen und Fazit der Fallstudie <a-1-18>
 
@@ -650,6 +752,7 @@ Die Fallstudie bezeichnet Fortführungsbilanzen bei der Liquiditätsmessung als 
 
 *Der Zusammenhang in Kapitel 1.* Ziele bestimmen die Finanzierungsentscheidung. Herkunft und Rechte erklären die Kapitalformen. Erfolg und Zahlungen sind zu trennen, bevor Cashflow und Finanzplan aufgebaut werden. Kennzahlen und Leverage zeigen Deckung, Verlustpolster und Risiko; die Glasspinnerei führt diese Bausteine mit EBK, Steuern und Investitionen zu einer abgestimmten Kapitalbedarfsrechnung zusammen.
 #src[V, PDF-S. 3–27; G, PDF-S. 4, 7–15 und 24. Eigene Zusammenfassung der genannten Abschnitte.]
+#hoch(<a-1>, [Kapitelübersicht])
 
 
 = Anhang
