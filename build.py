@@ -3,7 +3,10 @@
 
 Aufbau: skripte/<Modul>/Lernskript aktuell/Typst-Dateien/main.typ (genau ein Skript je Modul).
 Andere .typ-Dateien, etwa alte Stände, werden nie veröffentlicht.
+Karteikarten: skripte/<Modul>/Lernskript aktuell/Karteikarten.md (Aufbau steht am Kopf jeder Datei).
 """
+import hashlib
+import html
 import json
 import re
 import shutil
@@ -66,6 +69,75 @@ def page_count(pdf):
     return len(re.findall(rb"/Type\s*/Page[^s]", pdf.read_bytes()))
 
 
+def inline(text):
+    """**fett**, *kursiv* und `Code` in HTML umwandeln (alles andere wird maskiert)."""
+    t = html.escape(text, quote=False)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    t = re.sub(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?![*\w])", r"<em>\1</em>", t)
+    return re.sub(r"`(.+?)`", r"<code>\1</code>", t)
+
+
+def antwort_html(zeilen):
+    """Absätze (Leerzeile), Listen (- …) und eine Merkbild-Zeile (Bild: …) in HTML umwandeln."""
+    teile, absatz, liste, bild = [], [], [], []
+
+    def leeren():
+        if absatz:
+            teile.append(f"<p>{inline(' '.join(absatz))}</p>")
+            absatz.clear()
+        if liste:
+            teile.append("<ul>" + "".join(f"<li>{inline(x)}</li>" for x in liste) + "</ul>")
+            liste.clear()
+
+    for z in zeilen:
+        z = z.strip()
+        if not z:
+            leeren()
+        elif re.match(r"^Bild:\s*", z):
+            leeren()
+            bild.append(re.sub(r"^Bild:\s*", "", z))
+        elif re.match(r"^[-•]\s+", z):
+            if absatz:
+                leeren()
+            liste.append(re.sub(r"^[-•]\s+", "", z))
+        elif liste and not absatz:
+            liste[-1] += " " + z
+        else:
+            absatz.append(z)
+    leeren()
+    return "".join(teile), inline(" ".join(bild)) if bild else ""
+
+
+def karteikarten(md, modul):
+    """Karteikarten.md lesen: ## Kapitel, ### Frage, darunter die Antwort."""
+    karten, kapitel, karte = [], "", None
+
+    def abschließen():
+        if not karte or not karte["q"]:
+            return
+        a, bild = antwort_html(karte.pop("zeilen"))
+        if a:
+            karte.update(a=a, b=bild)
+            karten.append(karte)
+        else:
+            print(f"::warning title=Karteikarte ohne Antwort::{modul}: {karte['q']}", file=sys.stderr)
+
+    for z in md.read_text(encoding="utf-8").splitlines():
+        if z.startswith("### "):
+            abschließen()
+            frage = z[4:].strip()
+            # Die ID hängt nur am Fragetext: solange er gleich bleibt, bleibt der Lernfortschritt erhalten.
+            karte = {"id": hashlib.sha1(f"{modul}|{frage}".encode()).hexdigest()[:10],
+                     "k": kapitel, "q": inline(frage), "zeilen": []}
+        elif z.startswith("## "):
+            abschließen()
+            karte, kapitel = None, z[3:].strip()
+        elif karte is not None:
+            karte["zeilen"].append(z)
+    abschließen()
+    return karten
+
+
 def main():
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -97,9 +169,20 @@ def main():
             "updated": datum.isoformat(),
         })
 
+    decks = []
+    for md in sorted(SRC.glob("*/Lernskript aktuell/Karteikarten.md")):
+        modul = md.relative_to(SRC).parts[0]
+        karten = karteikarten(md, modul)
+        print(f"→ {modul}: {len(karten)} Karteikarten")
+        if karten:
+            decks.append({"name": modul, "cards": karten})
+
     data = sorted(modules, key=lambda m: m["name"].lower())
-    page = TEMPLATE.read_text(encoding="utf-8").replace(
-        "/*DATA*/null", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
+    decks.sort(key=lambda d: d["name"].lower())
+    einsetzen = lambda x: json.dumps(x, ensure_ascii=False).replace("</", "<\\/")
+    page = (TEMPLATE.read_text(encoding="utf-8")
+            .replace("/*DATA*/null", einsetzen(data))
+            .replace("/*KARTEN*/null", einsetzen(decks)))
     (OUT / "index.html").write_text(page, encoding="utf-8")
     (OUT / ".nojekyll").touch()
 
