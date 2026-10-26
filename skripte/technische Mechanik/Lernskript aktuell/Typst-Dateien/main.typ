@@ -1255,7 +1255,7 @@
 #text(size: 12pt, fill: teal)[Freischneiden → Gleichgewicht → Schnittgrößen → Spannung und Verformung]
 ]
 #note("Dein Feynman-Schritt", [Erkläre bei jeder Aufgabe: *Welchen Körper betrachte ich? Welche Bindung ersetzt welche Kraft? Warum gilt mein Ansatz?* Rechne erst danach und prüfe das Ergebnis mit Vorzeichen, Einheit und einem Grenzfall.])
-Diese Fassung konzentriert sich auf deine Themenliste „Klausur TM“, die neu eingereichte Prüfung SS 2023/24 von Bongmba/Sosnowsky und die dazu passenden Übungsblätter. Die ältere Vollfassung ist gesichert. Schwerpunkt sind die Aufgaben aus TM1 ab Übungsblatt 6 sowie die genannten TM2-Themen. Wärme-Verträglichkeit und Tabellen-Superposition sind durch AK24 ausdrücklich belegt. Die Kapitelnummern der Vorlesung bleiben zur Orientierung erhalten; allgemeine Einführung und doppelte Herleitungen sind gekürzt.
+Diese Fassung konzentriert sich auf deine Themenliste „Klausur TM“, die neu eingereichte Prüfung SS 2023/24 von Bongmba/Sosnowsky und die dazu passenden Übungsblätter. Die ältere Vollfassung ist gesichert. Schwerpunkt sind die Aufgaben aus TM1 ab Übungsblatt 6 sowie die genannten TM2-Themen. Wärme-Verträglichkeit und Tabellen-Superposition sind durch AK24 ausdrücklich belegt. Die Kapitelnummern der Vorlesung bleiben zur Orientierung erhalten; allgemeine Einführung und doppelte Herleitungen sind gekürzt. Seit dem 26.10.2026 stehen Aufgaben, ausführliche Lösungen und Quiz auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält Erklärung und Formelsammlung.
 #src[Prüfungshinweise „Klausur TM“, PDF-S. 1; Altklausur SS 24, PDF-S. 1–26. Auswahl und Lernwege: eigene Zusammenstellung.]
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -1298,29 +1298,6 @@ Beim *Freischneiden* entfernst du eine Verbindung und zeichnest ihre Wirkung als
 #bild("map-klausur-tm1", [Mindmap: Werkzeuge der Statik. Eigene Darstellung.], height: 43mm)
 *Der Zusammenhang in Kapitel 1.* Die Skizze bestimmt die Kraftkomponenten und Hebelarme. Der Freischnitt macht alle unbekannten Reaktionen sichtbar. Erst danach liefern die drei Gleichgewichtsbedingungen eine prüfbare Rechnung.
 
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM1 Kapitel 1
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Warum darfst du den Hebelarm nicht einfach als Abstand vom Kraftangriffspunkt zum Bezugspunkt ablesen?
-+ Warum sind Gelenkkräfte im Freikörperbild des Gesamtsystems nicht zu sehen?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *AK24 S. 8–9, Seilrolle:* Die Seilkraft beträgt $5F$. Das schräge Seilstück bildet ein 3–4–5-Dreieck und läuft von A nach rechts unten. Bestimme beide Komponenten und die gesamte Kraft des Seils auf die Rolle A.
-+ *Eigene Aufgabe nach FS TM1 S. 22:* Eine Kraft von 2 kN wirkt senkrecht auf einen Hebel mit 0,3 m Länge. Wie groß ist das Moment in Nm und Nmm?
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM1 Kapitel 1
-+ Nur der senkrechte Abstand zur Wirkungslinie ist der Hebelarm. Gleichwertig kannst du die Kraft zerlegen und die Komponenten mit ihren senkrechten Armen multiplizieren. #nachschlagen[Lernskript, #stelle(<a-tm1-1-4>)]
-+ Im Gesamtsystem bilden die Gelenkkräfte innere, gleich große Gegenkräfte. Betrachtet man die Teile einzeln, werden sie zu äußeren Kräften des jeweiligen Teils. #nachschlagen[Lernskript, #stelle(<a-tm1-1-6>)]
-+ Schräges Seil: $4F$ nach rechts und $3F$ nach unten. Das senkrechte Seil zieht zusätzlich mit $5F$ nach unten. Insgesamt wirken *$4F$ nach rechts und $8F$ nach unten*. Prüfung: Der schräge Anteil hat den Betrag $sqrt((4F)^2+(3F)^2)=5F$. #nachschlagen[Lernskript, #stelle(<a-tm1-1-3>); AK24 S. 8–9, eigene Nachrechnung]
-+ $M=2000 dot "0,3"=600 "Nm"=600000 "Nmm"$. Prüfung: Kraft mal Länge liefert die Momenteneinheit. #nachschlagen[Lernskript, #stelle(<a-tm1-1-4>)]
-
 #pagebreak()
 = TM1 Kapitel 4 · Streckenlasten und Schwerpunkt <k-tm1-4>
 Eine verteilte Last lässt sich für das äußere Gleichgewicht durch eine Einzelkraft ersetzen. Dieselbe Schwerpunktidee wird später für Querschnitte und Flächenträgheitsmomente gebraucht.
@@ -1351,29 +1328,6 @@ $A_i$ in mm², Koordinaten in mm. Die Summe der Teilflächen muss die tatsächli
 #src[FS TM1 S. 27; P1 S. 1–5; neue Notiz „Flächenträgheitsmomente und Flächenschwerpunkt“, S. 1; FS TM2 S. 24–26.]
 #bild("map-klausur-schwerpunkt", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 4.* Für Lasten wird eine verteilte Kraft durch Fläche und Schwerpunkt zusammengefasst. Für Querschnitte liefert dieselbe gewichtete Mittelung den Gesamtschwerpunkt. Die Abstände zu diesem Punkt werden in TM2 zum entscheidenden Bestandteil der FTM-Rechnung.
-
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM1 Kapitel 4
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Wo greift die Resultierende einer Dreieckslast an, und von welcher Seite misst du?
-+ Warum muss eine Aussparung sowohl in der Flächensumme als auch in der Momentsumme abgezogen werden?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *Eigene Zahlen nach P1 Aufgabe 6.4:* $q(x)=q_0(1+x/L)$ mit $q_0=2 "kN/m"$, $L=3 "m"$. Bestimme Resultierende und Angriffspunkt.
-+ *P1 S. 1 / P2 S. 41, Grundidee:* Ein äußeres Rechteck $4a times 6a$ hat eine mittige rechteckige Aussparung $2a times 3a$. Ihre Oberkante liegt um $a$ unter der äußeren Oberkante. Bestimme $z'_S$ von oben.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM1 Kapitel 4
-+ Bei einem Drittel der Länge von der hohen Seite bzw. zwei Dritteln von der Nullseite. Das gilt für eine linear verlaufende Dreieckslast. #nachschlagen[Lernskript, #stelle(<a-tm1-4-1-2>)]
-+ Die Aussparung enthält kein Material und darf weder Fläche noch deren statisches Moment beitragen. Nur den Nenner zu ändern würde einen falschen Schwerpunkt ergeben. #nachschlagen[Lernskript, #stelle(<a-tm1-4-2-3>)]
-+ Rechteck $F_1=q_0L=6 "kN"$ bei 1,5 m; Dreieck $F_2=q_0L/2=3 "kN"$ bei 2 m. *$F_R=9 "kN"$, $x_R=(6 dot "1,5"+3 dot 2)/9=5/3 "m"$.* Prüfung: Der Angriffspunkt liegt wegen der höheren Last rechts der Mitte. #nachschlagen[Lernskript, #stelle(<a-tm1-4-1-2>)]
-+ Außen $A_1=24a^2$, $z'_1=3a$; Loch $A_2=-6a^2$, $z'_2="2,5"a$. *$z'_S=(72-15)a/18=19a/6$*, $y'_S=0$ wegen Symmetrie. Der Schwerpunkt wandert unter die äußere Mitte, weil oben Material fehlt. #nachschlagen[Lernskript, #stelle(<a-tm1-4-2-3>); neue Lösung Übung TM2 Nr. 10 S. 1]
 
 #pagebreak()
 = TM1 Kapitel 5 · Lagerreaktionen und statische Bestimmtheit <k-tm1-5>
@@ -1419,31 +1373,6 @@ Das System hat zwei Teilkörper: den T-Träger und die Scheibe. B und D sind ein
 *Der Zusammenhang in Kapitel 5.* Lager bestimmen die unbekannten Reaktionen, die Abzählung prüft den Ansatz und die Geometrie dessen Wirksamkeit. Teilkörpergleichgewichte liefern die Gelenkkräfte. Mit genau diesen Reaktionen beginnt die Schnittgrößenrechnung.
 #src[AK24 S. 1–7; FS TM1 S. 30–32. Eigene, nachgerechnete Aufbereitung.]
 
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM1 Kapitel 5
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Welche Reaktionen liefern ein seitliches Loslager, ein inneres Drehgelenk und eine feste Einspannung?
-+ Warum beweist $r+v=3n$ allein noch keine statische Bestimmtheit?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *AK24 S. 1, 3–7:* Stelle für das System in 5.4 mit dem dort festgelegten Pfeilsystem alle sechs Gleichgewichtsbedingungen auf. Verwende $F_(R 1)=4q_0a$, $F_(R 2)=3q_0a$. Bestimme für $F=-4q_0a$ die sechs Reaktionen als Vielfache von $q_0a$.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM1 Kapitel 5
-+ Seitliches Loslager: eine horizontale Kraft. Drehgelenk: zwei Kraftkomponenten, kein Moment. Einspannung: zwei Kräfte und ein Moment. #nachschlagen[Lernskript, #stelle(<a-tm1-5-1>)]
-+ Die Gleichungen können geometrisch abhängig sein, etwa bei ungünstig angeordneten Reaktionslinien. Deshalb müssen Beweglichkeit und wirksame Bindungen zusätzlich anschaulich geprüft werden. #nachschlagen[Lernskript, #stelle(<a-tm1-5-3-2>)]
-+ #text(fill: teal, weight: "bold")[Lagerkräfte · SS 2023/24] #parbreak() *Modell:* starre Teilkörper, ideale Lager; Vorzeichen wie in 5.4. *1. Gleichgewicht am T-Träger:*
-$ G_V-4q_0a=0, quad F-B_H+G_H=0, quad 24q_0a^2+3a F-4a B_H=0 $.
-Die Momentengleichung bezieht sich auf G. #parbreak() *2. Scheibe:*
-$ C_V-G_V=0, quad -G_H-D_H-C_H+3q_0a=0, quad 2a G_V+6a G_H+8a D_H-6q_0a^2=0 $.
-Die letzte Summe bezieht sich auf C. #parbreak() *3. Lösen:* $G_V=4q_0a$, $B_H=3q_0a$, $G_H=7q_0a$, $C_V=4q_0a$, $D_H=-11q_0a/2$, $C_H=3q_0a/2$. *D wirkt also entgegen seinem Ansatz nach rechts.* #parbreak() *Prüfung:* außen vertikal $-4+4=0$, horizontal $-4-3+11/2-3/2+3=0$. Alle Reaktionen haben die Einheit $q_0a$, also Kraft. #nachschlagen[Lernskript, #stelle(<a-tm1-5-4>); AK24 S. 3–7, eigene Nachrechnung]
-
 #pagebreak()
 = TM1 Kapitel 6 · Fachwerke: Nullstäbe und Ritterschnitt <k-tm1-6>
 Die Lagerkräfte stammen aus dem eingefrorenen Gesamtsystem. Im idealen Fachwerk übertragen gelenkig verbundene Stäbe nur Zug oder Druck; gesucht sind daher skalare Stabkräfte entlang der Stäbe.
@@ -1474,29 +1403,6 @@ Ein *Ritterschnitt* trennt das Fachwerk durch höchstens drei unbekannte Stäbe.
 #src[FS TM1 S. 35; P1 S. 22–24, Aufgabe 9.1; AK24 S. 13, 15–16.]
 #bild("map-klausur-fachwerk", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 6.* Das Fachwerk wird für Lagerkräfte als Ganzes betrachtet, für Stabkräfte gezielt zerlegt. Nullstabregeln vereinfachen das System. Knotenverfahren und Ritterschnitt nutzen dasselbe Gleichgewicht in unterschiedlich großen Teilsystemen.
-
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM1 Kapitel 6
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Welche drei Voraussetzungen brauchst du für ein ideales Fachwerk?
-+ Warum ist „Stabkraft null“ nicht gleichbedeutend mit „Stab überflüssig“?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *AK24 S. 8, 13, 15–16:* Bestimme die Nullstäbe 1, 2 und 9 und ordne die Regeln zu. Schneide anschließend durch die Stäbe 6, 7 und 8. Gegeben am oberen Teilfachwerk: $D=10F$ nach rechts, $G_H=10F$ nach links und $G_V=5F$ nach unten. Berechne $S_6$, $S_7$, $S_8$.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM1 Kapitel 6
-+ Gerade, zwischen den Knoten unbelastete Stäbe; ideale Gelenke; äußere Kräfte greifen an Knoten an. Dann sind die Stäbe Zwei-Kräfte-Körper. #nachschlagen[Lernskript, #stelle(<a-tm1-6-1>)]
-+ Nullstäbe können die Form stabilisieren und unter geänderter Last beansprucht werden. Im konkreten System müssen Stabilität und Belastungsfall geprüft werden. #nachschlagen[Lernskript, #stelle(<a-tm1-6-3-1>)]
-+ Stäbe *1 und 2*: unbelasteter oberer rechter Knoten, Regel 1. Stab *9*: unbelasteter rechter Zwischenknoten mit zwei kollinearen Vertikalstäben, Regel 3. 1 und 2 bilden hier einen unbelasteten äußeren Anbau; Stab 9 stabilisiert das Innere und darf nicht einfach entfernt werden. Schnittkräfte 6 und 8 zunächst nach unten, 7 schräg links unten ansetzen. Moment um den rechten oberen belasteten Knoten:
-$-D dot 2a+G_V dot 2a+S_6 dot 2a=0 => S_6=D-G_V=5F$.
-Horizontal: $D-G_H-S_7 cos 45°=0 => S_7=0$. Vertikal: $-G_V-S_6-S_8=0 => S_8=-10F$. *Ergebnis: 6 Zug, 7 Nullstab bei diesen Reaktionen, 8 Druck.* Prüfung: vertikal $-5F-5F-(-10F)=0$. #nachschlagen[Lernskript, #stelle(<a-tm1-6-3-3>); AK24 S. 13, 15–16, eigene Nachrechnung]
 
 #pagebreak()
 = TM1 Kapitel 7 · Schnittgrößen punktweise bestimmen <k-tm1-7>
@@ -1537,31 +1443,6 @@ Damit ist unmittelbar nach A $M=0$, unmittelbar vor E dagegen $M=-32F a$. Der Ve
 #bild("map-klausur-schnitt", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 7.* Der Freischnitt liefert einzelne Werte, die lokale Faser liefert deren Vorzeichen. Die Beziehungen zwischen Last, Querkraft und Moment bestimmen, wie die Werte verbunden werden. Sprünge zeigen unmittelbar, welche Einzelkraft oder welches Einzelmoment eingeleitet wird.
 
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM1 Kapitel 7
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Welche Größe springt an einer Einzelkraft, welche an einem Einzelmoment?
-+ Wie unterscheiden sich Drehgelenk und Querkraftgelenk für die Schnittgrößen?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *AK24 S. 8–10:* Bestimme $N,Q,M$ unmittelbar nach A und unmittelbar vor E im Abschnitt A–E.
-+ *AK24 S. 13–14:* Betrachte nur den rechten Teil des Riegels E–G. Am Gelenk wirken auf den T-Träger $G_H=10F$ nach rechts und $G_V=5F$ nach oben. Die Länge E–G beträgt $4a$. Bestimme $N,Q,M$ unmittelbar rechts von E; Bezugsfaser unten.
-+ *Eigene Aufgabe nach neuer Lösung TM1 Nr. 10 S. 1–2:* $Q(x)=6-2x$ in kN bei $x$ in m, $M(0)=0$. Bestimme $M(x)$ und die innere Extremstelle.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM1 Kapitel 7
-+ Eine quer gerichtete Einzelkraft erzeugt einen Sprung in Q; M bleibt stetig und knickt. Ein Einzelmoment erzeugt einen Sprung in M; Q bleibt unverändert. #nachschlagen[Lernskript, #stelle(<a-tm1-7-3>)]
-+ Drehgelenk: M=0, N und Q möglich. Querkraftgelenk: Q=0, N und M möglich. Das gilt ohne eine dort zusätzlich eingeleitete entsprechende Last. #nachschlagen[Lernskript, #stelle(<a-tm1-7-3>)]
-+ Nach A: *$N=-4F$, $Q=-8F$, $M=0$*. Vor E: *$N=-4F$, $Q=-8F$, $M=-32F a$*. Prüfung: Keine Last zwischen A und E, also konstante Kräfte und lineares Moment. #nachschlagen[Lernskript, #stelle(<a-tm1-7-4>)]
-+ Am rechten Teil zeigt der positive N-Pfeil nach links, Q nach oben, M im Uhrzeigersinn. Aus Gleichgewicht folgen *$N=10F$, $Q=-5F$, $M=20F a$*. Prüfung: Die positive Gelenkkraft $G_V$ hat den Arm $4a$ und wird durch das Schnittmoment ausgeglichen. #nachschlagen[Lernskript, #stelle(<a-tm1-7-4>); AK24 S. 13–14]
-+ $M(x)=6x-x^2$ in kNm. $Q=0$ bei *$x=3 "m"$*, dort *$M=9 "kNm"$*. Q wechselt von positiv nach negativ: Maximum. Prüfung: Ableitung von M liefert Q. #nachschlagen[Lernskript, #stelle(<a-tm1-7-3>)]
-
 #pagebreak()
 = TM1 Kapitel 9 · Haftreibung als kurzer Klausurbaustein <k-tm1-9>
 Die neue Sammlung enthält Übungsblatt 13; die älteren Klausuren fragen regelmäßig nach dem Grenzfall des Rutschens. Dafür genügen Freischnitt, Gleichgewicht und eine zusätzliche Haftbedingung.
@@ -1575,25 +1456,6 @@ $mu_0$ ist dimensionslos, N und H sind Kräfte. Die Gleichheit gilt nur beim ger
 #src[FS TM1 S. 48–49; P1 S. 50, Übung 13; ältere Klausuren PrüfungenTM2 S. 3, 23, 26, 32/37 und TM_Prüfung_2018 S. 7.]
 #bild("map-klausur-haftung", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in Kapitel 9.* Das Gleichgewicht liefert die nötige Tangentialkraft. Die Haftgrenze entscheidet, ob der angenommene Ruhezustand möglich ist. Kontaktrichtung und drohende Bewegung müssen vor der Rechnung festgelegt werden.
-
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM1 Kapitel 9
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Welche Richtung hat die Haftkraft, und wann darfst du die Grenzgleichung verwenden?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 2)
-+ *Eigene Zahlen zum Modell der älteren Klausur:* Ein Klotz wiegt 100 N auf horizontalem Boden, $mu_0="0,3"$. Ein waagerechter Seilzug beträgt zunächst 20 N, dann 35 N. Ist Haften möglich?
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM1 Kapitel 9
-+ Entgegen der drohenden Relativbewegung. Gleichheit gilt nur im Grenzfall; sonst prüft man die Ungleichung. #nachschlagen[Lernskript, #stelle(<a-tm1-9-2>)]
-+ $N=100 "N"$, maximal $H=30 "N"$. Bei 20 N ist Haften mit H=20 N möglich; bei 35 N reicht die Haftung nicht. Die Gleitbewegung benötigt anschließend ein eigenes Modell. #nachschlagen[Lernskript, #stelle(<a-tm1-9-2>)]
 
 #pagebreak()
 = TM2 Kapitel 1 · Zug, Druck und Wärmedehnung <k-tm2-1>
@@ -1627,29 +1489,6 @@ Hier bezeichnet X den *positiven Betrag der Druckkraft*, die Stabnormalkraft lau
 #bild("map-klausur-stab", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in TM2 Kapitel 1.* Gleichgewicht liefert N, die Querschnittsfläche macht daraus Spannung. Das Stoffgesetz liefert die Dehnung und ihre Integration die Längenänderung. Zusätzliche Bindungen schließen die Rechnung durch Verträglichkeit.
 
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM2 Kapitel 1
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Kann ein erwärmter Stab länger werden, obwohl seine Spannung null ist?
-+ Welche Gleichung fehlt bei einem statisch unbestimmten Stabsystem zusätzlich zum Gleichgewicht?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *Ältere Klausur, PrüfungenTM2 S. 12:* $A(x)=2l A_0/(l+x)$, konstantes E, Druckkraft F am Ende. Bestimme $sigma(x)$ und $Delta l$ ohne Temperaturänderung.
-+ *AK24 S. 18, 24:* Verwende $a=250 "mm"$, $l=1000 "mm"$, $A=2000 "mm"^2$, $I=10^6 "mm"^4$, $E=210000 "N/mm"^2$, $alpha_T=12 dot 10^(-6) "1/K"$, $Delta T=100 "K"$. Bestimme X, die Verschiebung und das Einspannmoment.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM2 Kapitel 1
-+ Ja: freie Wärmeausdehnung $Delta l=alpha_T Delta T l$. Ohne Behinderung entsteht keine mechanische Spannung. #nachschlagen[Lernskript, #stelle(<a-tm2-1-4>)]
-+ Eine geometrische Verträglichkeitsbedingung, z. B. vorgegebene Gesamtlängenänderung oder gleiche Verschiebung an einer Verbindung. #nachschlagen[Lernskript, #stelle(<a-tm2-1-6>)]
-+ $N=-F$, daher *$sigma(x)=-F(l+x)/(2l A_0)$*. Integration ergibt *$Delta l=-3F l/(4E A_0)$*. Prüfung: Druck ergibt negative Längenänderung; Nl/(EA) hat die Einheit Länge. #nachschlagen[Lernskript, #stelle(<a-tm2-1-4>); ältere Klausur S. 12, eigene Nachrechnung]
-+ #text(fill: teal, weight: "bold")[Verträglichkeit · SS 2023/24] #parbreak() *1. Freie Wärmedehnung:* $alpha_T Delta T a="0,300" "mm"$. #parbreak() *2. Nachgiebigkeiten:* $a/(E A)="0,0000005952" "mm/N"$ und $l^3/(3E I)="0,00158730" "mm/N"$. #parbreak() *3. Verträglichkeit:* *$X="188,93" "N"$ Druck*. Das Balkenende geht um *$"0,29989" "mm"$ nach oben*; mit w nach unten ist w negativ. Aus dem eingezeichneten Momentenansatz in AK24 folgt *$M_A=-X l=-188929 "Nmm"$*. #parbreak() *Prüfung:* Stauchung des Stabes $X a/(E A)="0,0001125" "mm"$; Summe mit der Balkenbewegung ist 0,300 mm. #parbreak() *Fehler der beigefügten Ausarbeitung:* Die Formel auf AK24 S. 24 ist richtig, der dortige Zahlenwert 1851,765 N passt nicht zu den gedruckten Daten. #nachschlagen[Lernskript, #stelle(<a-tm2-1-7>); AK24 S. 24, eigene Nachrechnung]
-
 #pagebreak()
 = TM2 Kapitel 2 · Spannungszustand und Mohrscher Kreis <k-tm2-2>
 Ein schräger Schnitt durch dasselbe Bauteil zeigt andere Normal- und Schubspannungen. Du suchst die größten Werte, ihre Richtungen und eine zeichnerische Kontrolle.
@@ -1679,27 +1518,6 @@ $phi^*$ allein bestimmt noch nicht, welche Hauptspannung zu der Richtung gehört
 #src[FS TM2 S. 13–15; WZF 04.05.26 S. 5–6; KH S. 1; AK24 S. 24–25.]
 #bild("map-klausur-tm2", [Mindmap: die Aufgabenbausteine der Elastostatik. Eigene Darstellung.], height: 43mm)
 *Der Zusammenhang in TM2 Kapitel 2.* Der Tensor beschreibt den örtlichen Zustand. Die Drehung verändert seine Komponenten, aber nicht seine Hauptwerte. Die Formeln und der Kreis sind zwei Wege zu denselben Spannungen und Richtungen.
-
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM2 Kapitel 2
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Was bedeutet „Hauptrichtung“, und wie erkennst du sie im Kreis?
-+ Warum musst du einen am Kreis gemessenen Winkel halbieren?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *AK24 S. 24–25 / Übung 6.2:* $sigma_x="77,5"$, $sigma_y=-"22,5"$, $tau_(x y)=-"37,5"$ N/mm². Zeichne den Kreis und bestimme Mittelpunkt, Radius, Hauptspannungen und die Richtung von $sigma_1$.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM2 Kapitel 2
-+ In der Hauptrichtung verschwindet die Schubspannung. Im Kreis liegen die Hauptspannungen deshalb auf der horizontalen Achse. #nachschlagen[Lernskript, #stelle(<a-tm2-2-2>)]
-+ Die Transformationsgleichungen enthalten den doppelten Winkel 2φ. Außerdem ist der Drehsinn im Kreis entgegengesetzt zum Bauteilwinkel, wenn P wie hier eingetragen wird. #nachschlagen[Lernskript, #stelle(<a-tm2-2-2-3>)]
-+ Mittelpunkt *$sigma_M="27,5" "N/mm"^2$*. Radius *$sqrt(50^2+"37,5"^2)="62,5" "N/mm"^2$*. Daraus *$sigma_1=90$ und $sigma_2=-35 "N/mm"^2$*. Für die Richtung von $sigma_1$ ergibt sich *$phi_1=-"18,435"°$* (gleichwertig 161,565°). Einsetzen liefert 90 N/mm² und τ=0. Zweite Richtung 71,565°. Prüfung: Summe $90-35=55=sigma_x+sigma_y$. Die Handskizze in AK24 S. 25 liefert nur grobe Näherungen 88 und −36; die Rechnung ist die Kontrolle. #nachschlagen[Lernskript, #stelle(<a-tm2-2-2-3>); neue Lösung TM2 Nr. 6 S. 3–5, eigene Nachrechnung]
 
 #pagebreak()
 = TM2 Kapitel 3 · Dehnungen, Elastizitätsgesetz und DMS <k-tm2-3>
@@ -1736,29 +1554,6 @@ Danach folgen Hauptdehnungen samt Richtungszuordnung und schließlich Hauptspann
 #src[Skript TM2 S. 464–480; WZF 18.05.26 S. 6; P2 S. 33–35, Aufgabe 8.3; neue Lösung TM2 Nr. 8 S. 5–7; KH S. 1.]
 #bild("map-klausur-dms", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in TM2 Kapitel 3.* Die Messrichtungen liefern Komponenten des Verzerrungstensors. Der Verzerrungskreis liefert dessen Hauptwerte. Das Elastizitätsgesetz verbindet diese messbaren Verformungen mit dem gesuchten Spannungszustand.
-
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM2 Kapitel 3
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Welche Größe steht auf der senkrechten Achse des Verzerrungskreises?
-+ Warum ist die dritte Dehnung trotz verschwindender dritter Spannung meist nicht null?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *WZF-Rosette, Zahlen passend zu Beispiel 1 (eigene bereinigte Aufbereitung):* $epsilon_0="0,5" "‰"$, $epsilon_45="0,675" "‰"$, $epsilon_90=-"0,15" "‰"$. Bestimme $epsilon_x$, $epsilon_y$, $gamma_(x y)$, Hauptdehnungen, die Richtung von $epsilon_1$ sowie die Hauptspannungen mit $E=210000 "N/mm"^2$, $nu="0,3"$.
-+ *Ältere Klausur SS 2018, S. 11:* $sigma_1=70$, $sigma_2=-30 "N/mm"^2$, $sigma_3=0$, $E=210000 "N/mm"^2$, $nu="0,3"$. Berechne die drei Hauptdehnungen.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM2 Kapitel 3
-+ Die halbe Gleitung γ/2. Wer γ einträgt, erhält einen falschen Radius und falsche Hauptdehnungen. #nachschlagen[Lernskript, #stelle(<a-tm2-3-1>)]
-+ Durch die Querkontraktion wirken die Spannungen in x und y auch auf die Dicke des Blechs. #nachschlagen[Lernskript, #stelle(<a-tm2-3-2>)]
-+ *1. Messwerte:* $epsilon_x="0,5" "‰"$, $epsilon_y=-"0,15" "‰"$, *$gamma="1,0" "‰"$*. #parbreak() *2. Kreis:* Mittelpunkt 0,175 ‰, Radius $sqrt("0,325"^2+"0,5"^2)="0,59634" "‰"$. Daher *$epsilon_1="0,77134" "‰"$, $epsilon_2=-"0,42134" "‰"$*. Die Richtung von ε₁ ist *$"28,49"°$*. #parbreak() *3. Spannungen:* mit dimensionslosen Dehnungen folgen *$sigma_1 approx "148,83" "N/mm"^2$*, *$sigma_2 approx -"43,83" "N/mm"^2$*. Prüfung: Summe ε₁+ε₂=0,35 ‰=εₓ+εᵧ. Die WZF-Mitschrift S. 6 nennt einmal 0,1675 ‰; das passt nicht zur dortigen Gleitung. Hier wird die passend bezeichnete Rosette mit 0,675 ‰ verwendet. #nachschlagen[Lernskript, #stelle(<a-tm2-3-3>); WZF 18.05.26 S. 1–6, eigene Nachrechnung]
-+ *$epsilon_1="0,37619" "‰"$, $epsilon_2=-"0,24286" "‰"$, $epsilon_3=-"0,05714" "‰"$*. Beispiel: $epsilon_1=(70-"0,3" dot (-30))/210000$. Die negative dritte Dehnung bedeutet Dickenabnahme. #nachschlagen[Lernskript, #stelle(<a-tm2-3-2>); ältere Klausur S. 11]
 
 #pagebreak()
 = TM2 Kapitel 4 · Biegung, FTM und Biegelinie <k-tm2-4>
@@ -1820,38 +1615,6 @@ Verwendet werden die *äußeren Maße* r=50 mm und t=3,75 mm. Das Hilfssystem li
 #bild("map-t2k4", [Mindmap: Schwerpunkt, FTM, Spannung und Biegelinie. Eigene Darstellung.], height: 43mm)
 *Der Zusammenhang in TM2 Kapitel 4.* Der Schwerpunkt legt die Bezugsachsen fest; Steiner führt alle Teilmomente auf diese Achsen. I und W bestimmen die Biegespannung. EI bestimmt die Verformung, die du aus Integration, Randbedingungen oder durch Superposition aus der Tafel berechnest.
 
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM2 Kapitel 4
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Warum haben Flächenträgheitsmomente die Einheit mm⁴ und Widerstandsmomente mm³?
-+ Welche Bedingungen gelten an einer Einspannung und an einem unbelasteten freien Ende?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *AK24 S. 18–23:* Bestimme für den Querschnitt in 4.3 die vier vorzeichenbehafteten Flächen, ihre z′-Schwerpunktkoordinaten, den Gesamtschwerpunkt und $I_y$. Prüfe $I_(y z)$.
-+ *AK24 S. 24, eigene Nachrechnung mit den gedruckten Daten:* Verwende $X="188,929" "N"$, $l=1000 "mm"$, $I=10^6 "mm"^4$. Bestimme den maximalen Betrag der Biegespannung am Querschnitt aus Aufgabe 3.
-+ *AK24 S. 25–26:* Kragarm mit Gesamtlänge L=2a, Endkraft F nach unten und einem im Uhrzeigersinn wirkenden Moment M₀ bei x=a. Bestimme die Enddurchbiegung durch Superposition.
-+ *Eigene Übungsaufgabe nach FS TM2 S. 29 und älteren Klausuren:* Ein Balken der Länge L ist links eingespannt und rechts gelenkig gelagert. Eine linear abfallende Last hat links q₀ und rechts null. Schreibe q(x) und die vier Randbedingungen für die vierfache Integration auf; noch nicht integrieren.
-+ *Ältere Klausur, Datum unbekannt, Prüfung_unbekannt S. 1–2:* $I_y=400000$, $I_z=120000$, $I_(y z)=60000 "mm"^4$. Bestimme Hauptmomente und eine zu I₁ gehörige Achsenrichtung.
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM2 Kapitel 4
-+ I enthält Fläche mal Abstand², also mm²·mm². W=I/Randabstand hat mm³. #nachschlagen[Lernskript, #stelle(<a-tm2-4-2>), #stelle(<a-tm2-4-3>)]
-+ Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten verändern die statischen Randbedingungen. #nachschlagen[Lernskript, #stelle(<a-tm2-4-4>)]
-+ #text(fill: teal, weight: "bold")[Schwerpunkt und Steiner · SS 2023/24] #parbreak() *Modell:* Rechteck 1 minus Rechteck 2 plus Halbkreis 3 minus Halbkreis 4; exakte Geometrie. *1. Flächen und Teil-Schwerpunkte:*
-#tab(columns: 3, th([Teil], [$A_i$ / mm²], [$z'_(S i)$ / mm]),
- [1], [15000], [75], [2], [−13528,125], [73,125], [3], [3926,990817], [−21,220659], [4], [−3360,031518], [−19,629110],)
-*2. Schwerpunkt:* $A="2038,834299" "mm"^2$, *$y'_S=0$, $z'_S="58,061096" "mm"$*. #parbreak() *3. Steiner:* $d_i=z'_(S i)-z'_S$. Die Eigenanteile mit Vorzeichen sind 28 125 000; −24 112 825,9277; 685 981,0040; −502 202,6736 mm⁴. Mit $sum A_i d_i^2$ folgt *$I_y="9833140,605" "mm"^4$*. Wegen Symmetrie *$I_(y z)=0$*. #parbreak() *Prüfung:* Alle y-Abstände sind null; die Schwerpunktlage liegt innerhalb der äußeren Höhe. Die beigefügte Zwischenrechnung AK24 S. 22 nennt 9 832 269,405; mit ungerundeten Ausgangsdaten ergibt sich der hier angegebene Wert, der auch auf S. 23 steht. #nachschlagen[Lernskript, #stelle(<a-tm2-4-3>), #stelle(<a-tm2-4-7>); AK24 S. 18–23, eigene Nachrechnung]
-+ Der obere Rand liegt bei z′=−50 mm, der untere bei 150 mm. Daher ist $abs(z_("oben"))="108,061096" "mm"$ größer als unten 91,938904 mm. Mit $abs(M_A)=X l="188929,15" "Nmm"$ folgt *$abs(sigma_("max"))="20,416" "N/mm"^2$*, am oberen Rand an der Einspannung. Prüfung: Nmm·mm/mm⁴=N/mm². Die auf AK24 S. 24 berechnete Spannung beruht auf dem dort falschen X und einem nicht passenden Randabstand. #nachschlagen[Lernskript, #stelle(<a-tm2-4-2>), #stelle(<a-tm2-1-7>); AK24 S. 24, eigene Nachrechnung]
-+ #text(fill: teal, weight: "bold")[Superposition · SS 2023/24] #parbreak() *Modell:* konstantes EI, kleine Verformungen; w nach unten positiv. *1. Endkraft:* $w_F=F(2a)^3/(3E I)$. #parbreak() *2. Inneres Moment bei x=a:* Bis a ist die Krümmung durch das Moment konstant; danach läuft die Biegelinie als Gerade weiter. Daraus folgt $w_M=M_0 a^2/(2E I)+M_0a/E I dot a=3M_0a^2/(2E I)$. #parbreak() *Ergebnis:* *$w(2a)=8F a^3/(3E I)+3M_0a^2/(2E I)$*. Dreht M₀ andersherum, wird sein Beitrag abgezogen. Prüfung: Beide Summanden haben die Einheit Länge; bei M₀=0 bleibt der Kragarm mit Endkraft. #nachschlagen[Lernskript, #stelle(<a-tm2-4-4>); AK24 S. 25–26; FS TM2 S. 46–49, eigene Lösung]
-+ *$q(x)=q_0(1-x/L)$*. Einspannung links: *$w(0)=0$, $w'(0)=0$*. Gelenkiges Endlager rechts ohne Endmoment: *$w(L)=0$, $M(L)=0$*, also bei konstantem EI auch $w''(L)=0$. Prüfung: vier unabhängige Bedingungen für vier Integrationskonstanten. #nachschlagen[Lernskript, #stelle(<a-tm2-4-4>); FS TM2 S. 29]
-+ Mittelwert 260000 mm⁴, Radius $sqrt(140000^2+60000^2)="152315,46" "mm"^4$. *$I_1="412315,46"$, $I_2="107684,54" "mm"^4$*. Aus $tan 2phi=120000/280000$ folgt *$phi_1="11,599"°$*. Einsetzen in Iη ergibt I₁. Prüfung: Summe=520000 mm⁴. #nachschlagen[Lernskript, #stelle(<a-tm2-4-3>); ältere Klausur S. 1–2, eigene Nachrechnung]
-
 #pagebreak()
 = TM2 Kapitel 5 · Torsion: Spannung und Verdrehung <k-tm2-5>
 Ein Torsionsmoment verdreht den Querschnitt. Die passende Formel hängt zuerst von der Form ab: Kreiswelle, dünnwandig geschlossen oder dünnwandig offen.
@@ -1886,29 +1649,6 @@ Der äußere Radius r ist nicht der Mittellinienradius. Die Materialfläche aus 
 #src[AK24 S. 18, 23; FS TM2 S. 40–41; eigene Aufbereitung.]
 #bild("map-klausur-torsion", [Mindmap zum Kapitel; eigene Darstellung.], height: 35mm)
 *Der Zusammenhang in TM2 Kapitel 5.* Mₜ kommt aus dem Gleichgewicht. Der Querschnitt entscheidet über Iₜ und Wₜ. Wₜ bestimmt die Spannung, GIₜ die Verdrehung; bei geschlossenen Profilen steuert die dünnste Wand den größten Spannungswert.
-
-#block(breakable: false)[
-== Verständnisfragen und Rechenaufgaben · TM2 Kapitel 5
-Erkläre zunächst ohne Vorlage. Zeichne bei Rechnungen das Freikörperbild bzw. die Bezugsachsen.
-
-+ Welche zwei unterschiedlichen Geometriegrößen sind Materialfläche A und Mittellinienfläche Aₘ?
-+ Wo liegt die größte Torsionsspannung bei geschlossenen bzw. offenen dünnwandigen Profilen?
-
-#heading(level: 3, outlined: false)[Vertiefende Verständnisfragen und Rechenaufgaben]
-#block[
-#set enum(start: 3)
-+ *AK24 S. 18, 23:* Verwende den Querschnitt mit r=50 mm und t=3,75 mm. Bestimme Aₘ, Lₘ, Iₜ und Wₜ. Berechne für $M_T=20 "kNm"$, $l=1000 "mm"$, $G=81000 "N/mm"^2$ maximale Schubspannung und Verdrehung in Grad.
-+ *Eigene Zahlen zum Modell Übung 12.1:* Vollwelle mit $M_T=1800 "Nm"$, zulässiger Schubspannung $tau_("zul")=45 "N/mm"^2$. Welcher Mindestdurchmesser folgt nur aus der Spannung?
-]
-
-
-]
-#pagebreak()
-== Lösungen · TM2 Kapitel 5
-+ A ist die tatsächlich vorhandene Materialfläche. Aₘ ist die vom mittleren Wandverlauf eingeschlossene Fläche und enthält bei einem Hohlprofil überwiegend den Hohlraum. #nachschlagen[Lernskript, #stelle(<a-tm2-5-2>)]
-+ Geschlossen: dünnste Wand. Offen im schmalen Rechteckstreifenmodell: dickster Teil. Die Voraussetzungen der jeweiligen Formel gehören zur Antwort. #nachschlagen[Lernskript, #stelle(<a-tm2-5-2>), #stelle(<a-tm2-5-3>)]
-+ #text(fill: teal, weight: "bold")[Torsion · SS 2023/24] #parbreak() *Modell:* einzellig, geschlossen, überall gleiche dünne Wand; ungestörte Saint-Venant-Torsion. *1. Mittellinie:* *$A_m="17895,0201" "mm"^2$*, *$L_m="543,6891" "mm"$*. #parbreak() *2. Kennwerte:* *$W_T=2A_m t="134212,6506" "mm"^3$*, *$I_T=4A_m^2t/L_m="8834967,904" "mm"^4$*. #parbreak() *3. Spannung:* mit $20 "kNm"=20000000 "Nmm"$ folgt *$tau_("max")="149,017" "N/mm"^2$*. #parbreak() *4. Verdrehung:* $Delta theta=M_T l/(G I_T)="0,0279473" "rad"$ = *$"1,6013"°$*. Ort: bei konstanter Dicke gleicher τ-Betrag am gesamten Umfang; bei konstantem Mₜ entlang der ganzen Länge außerhalb lokaler Störungen. #parbreak() *Prüfung:* Die Verdrehung vor der Umrechnung ist dimensionslos. Die Ausarbeitung auf AK24 S. 23 nennt eine zu kleine Gradzahl und einen abweichenden Iₜ-Wert; hier wird die Mittellinie vollständig berücksichtigt. #nachschlagen[Lernskript, #stelle(<a-tm2-5-4>); AK24 S. 18, 23, eigene Nachrechnung]
-+ $W_T=pi d^3/16$, also $d>=(16M_T/(pi tau_("zul")))^(1/3)$. Mit $M_T=1800000 "Nmm"$ folgt *$d_("min")="58,84" "mm"$*. Prüfung: Der unter der Kubikwurzel stehende Ausdruck hat mm³. Eine zusätzliche Verdrehungsgrenze kann einen größeren Durchmesser erfordern. #nachschlagen[Lernskript, #stelle(<a-tm2-5-1>); neue Lösung TM2 Nr. 12 S. 1]
 
 #pagebreak()
 = Anhang
