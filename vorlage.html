@@ -8,43 +8,54 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Lernen">
 <title>Meine Lernskripte</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23244f70'/><path d='M9 8h10l4 4v12H9z' fill='white'/><path d='M12 16h8M12 20h6' stroke='%23244f70' stroke-width='2'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231F6F68'/><path d='M9 8h10l4 4v12H9z' fill='white'/><path d='M12 16h8M12 20h6' stroke='%231F6F68' stroke-width='2'/></svg>">
 <style>
 :root {
-  --bg: #f6f8fa; --card: #ffffff; --ink: #1f2a33; --muted: #62717d; --line: #dfe6ec;
-  --accent: #244f70; --accent-ink: #ffffff; --accent-soft: #e8f0f6; --teal: #16746d;
-  --again: #b3392f; --hard: #a86412; --good: #16746d; --easy: #2b5fa8; --bild: #fbf6e9; --bild-line: #e8d9ae;
+  /* Design A „Ruhig & klar“: Papierton, Serifen-Überschriften, ein ruhiges Petrol als Akzent */
+  --bg: #f6f3ec; --card: #ffffff; --ink: #1f2328; --muted: #5e6670; --line: #e4ded2; --line-strong: #cfc7b8;
+  --accent: #1f6f68; --accent-ink: #ffffff; --accent-soft: #e3efec; --teal: #1f6f68; --seg: #ece6da;
+  --again: #b4372e; --hard: #9a5b0e; --good: #1f6f68; --easy: #2d5da8; --bild: #fbf4e2; --bild-line: #eadcb4; --bild-ink: #8a6516;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --shadow: 0 10px 30px rgba(60, 50, 30, .06);
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #11161b; --card: #1a2128; --ink: #e4eaef; --muted: #93a2ae; --line: #2a343d;
-          --accent: #7fb3d9; --accent-ink: #0d1820; --accent-soft: #1f2d39; --teal: #5cc2b3;
-          --again: #ec8178; --hard: #e3a75a; --good: #5cc2b3; --easy: #86aef0; --bild: #252219; --bild-line: #4a4126; }
+  :root { --bg: #17150f; --card: #211e18; --ink: #ece7dc; --muted: #a59e90; --line: #36312a; --line-strong: #4a443a;
+          --accent: #6cc2b6; --accent-ink: #0f1a18; --accent-soft: #1f302d; --teal: #6cc2b6; --seg: #2a261f;
+          --again: #ee877d; --hard: #e3a75a; --good: #6cc2b6; --easy: #8fb2ee; --bild: #2a2416; --bild-line: #4a3e1c; --bild-ink: #f2c46d;
+          --shadow: 0 10px 30px rgba(0, 0, 0, .25); }
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body { margin: 0; background: var(--bg); color: var(--ink);
-  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-.wrap { max-width: 980px; margin: 0 auto; padding: 40px 16px 64px; }
-header h1 { margin: 0 0 4px; font-size: 30px; letter-spacing: -0.02em; }
+  font: 16px/1.55 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: max(40px, env(safe-area-inset-top)) 24px 64px; }
+.kopf { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+.datum { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+header h1 { margin: 0 0 4px; font-family: var(--serif); font-size: clamp(32px, 4.4vw, 44px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
 header p { margin: 0; color: var(--muted); }
-.tabs { display: flex; gap: 4px; margin: 24px 0 0; border-bottom: 1px solid var(--line); }
-.tabs a { padding: 10px 14px; font-weight: 600; color: var(--muted); text-decoration: none;
-  border-bottom: 2px solid transparent; margin-bottom: -1px; }
-.tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
-.search { margin: 20px 0 16px; width: 100%; padding: 12px 14px; font-size: 16px; color: var(--ink);
-  background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+h2 { font-family: var(--serif); font-weight: 700; }
+.tabs { display: flex; gap: 4px; padding: 4px; background: var(--seg); border-radius: 14px; }
+.tabs a { padding: 10px 22px; min-height: 44px; display: flex; align-items: center; border-radius: 10px;
+  font-weight: 600; color: var(--muted); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.tabs a[aria-current="page"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.search { margin: 26px 0 16px; width: 100%; padding: 14px 16px; font: inherit; font-size: 16px; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
 .search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+#list, .decks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 14px; }
 .script { display: flex; gap: 16px; align-items: center; justify-content: space-between;
-  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; }
-.script .title { font-weight: 700; font-size: 18px; }
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.script .title { font-family: var(--serif); font-weight: 600; font-size: 21px; line-height: 1.25; }
 .script .sub { margin-top: 1px; }
 .script .stand { color: var(--teal); font-weight: 600; }
 .script .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
 .actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
-.btn { display: inline-block; padding: 8px 14px; border-radius: 8px; font: inherit; font-size: 14px; font-weight: 600;
-  text-decoration: none; border: 1px solid var(--accent); color: var(--accent); background: none;
+.btn { display: inline-block; padding: 8px 14px; border-radius: 12px; font: inherit; font-size: 14px; font-weight: 600;
+  text-decoration: none; border: 1px solid var(--line-strong); color: var(--ink); background: none;
   white-space: nowrap; cursor: pointer; }
-.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .btn:hover { filter: brightness(1.08); }
 .btn:disabled { opacity: .45; cursor: default; filter: none; }
 .link { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--muted);
@@ -59,15 +70,15 @@ footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
 .c-due { color: var(--again); } .c-new { color: var(--easy); } .c-ok { color: var(--good); }
 .back { display: inline-block; margin: 20px 0 8px; color: var(--accent); text-decoration: none; font-weight: 600; }
 .deckhead { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
-.deckhead h2 { margin: 0; font-size: 24px; }
-.panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin: 16px 0; }
+.deckhead h2 { margin: 0; font-size: 30px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; margin: 16px 0; }
 .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .row + .row { margin-top: 12px; }
 select { font: inherit; font-size: 15px; padding: 7px 10px; color: var(--ink); background: var(--bg);
-  border: 1px solid var(--line); border-radius: 8px; max-width: 100%; }
+  border: 1px solid var(--line); border-radius: 10px; max-width: 100%; }
 label.l { font-size: 14px; color: var(--muted); }
 .feynman { font-size: 14px; color: var(--muted); border-left: 3px solid var(--teal); padding: 2px 0 2px 10px; margin: 0; }
-.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin: 16px 0 6px; }
+.bar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; margin: 16px 0 6px; }
 .bar i { display: block; height: 100%; background: var(--teal); transition: width .3s; }
 .status { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
 /* Lernrunde: aufs iPad zugeschnitten (nur Finger), Karte füllt den Bildschirm */
@@ -85,14 +96,14 @@ body.lernen #view-karten { flex: 1; display: flex; flex-direction: column; min-h
   -webkit-tap-highlight-color: transparent; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
 .flash.flipped { transform: rotateY(180deg); cursor: default; }
 .side { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px 28px 22px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px 32px 22px;
   display: flex; flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch;
-  box-shadow: 0 8px 30px rgba(20, 40, 60, .08); }
+  box-shadow: var(--shadow); }
 .side.back-side { transform: rotateY(180deg); }
-.chap { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.side .q { font-size: clamp(22px, 3.2vw, 32px); font-weight: 650; line-height: 1.3; margin: auto 0; padding: 24px 4%;
+.chap { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.side .q { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 34px); font-weight: 700; line-height: 1.3; margin: auto 0; padding: 24px 4%;
   text-align: center; text-wrap: balance; }
-.side .q-small { font-size: 18px; font-weight: 650; margin: 8px 0 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.side .q-small { font-family: var(--serif); font-size: clamp(20px, 2.6vw, 28px); font-weight: 700; line-height: 1.25; margin: 8px 0 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 .inhalt { display: grid; gap: 18px 26px; align-items: start; }
 .inhalt.mit-bild { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
 .side .a { font-size: 19px; line-height: 1.55; }
@@ -101,29 +112,32 @@ body.lernen #view-karten { flex: 1; display: flex; flex-direction: column; min-h
 .side .a li { margin-bottom: 4px; }
 .side .a code { font-size: .92em; background: var(--accent-soft); padding: 1px 4px; border-radius: 4px; }
 figure.abb { margin: 0; }
-figure.abb button { display: block; width: 100%; padding: 10px; background: #fff; border: 1px solid var(--line);
-  border-radius: 12px; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
+figure.abb button { display: block; width: 100%; padding: 14px; background: #fbfaf7; border: 1px solid var(--line);
+  border-radius: 14px; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
 figure.abb img { display: block; width: 100%; height: auto; max-height: 46vh; object-fit: contain; }
 figure.abb figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
 figure.abb + figure.abb { margin-top: 14px; }
 .fuss { margin-top: auto; padding-top: 16px; display: grid; gap: 10px; }
-.merkbild { background: var(--bild); border: 1px solid var(--bild-line); border-radius: 12px; padding: 12px 14px; font-size: 16px; }
-.merkbild b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
-.quelle { display: flex; align-items: center; gap: 10px; padding: 12px 14px; min-height: 48px; border-radius: 12px;
-  background: var(--accent-soft); color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 600; }
+.merkbild { background: var(--bild); border: 0; border-radius: 14px; padding: 14px 16px; font-size: 16px; }
+.merkbild b { display: block; color: var(--bild-ink); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+.quelle { display: flex; align-items: center; gap: 12px; padding: 14px 18px; min-height: 52px; border-radius: 14px;
+  background: var(--seg); color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 600; }
+.quelle b { font-weight: 700; }
 .quelle span { font-weight: 400; color: var(--muted); }
 .quelle::after { content: "›"; margin-left: auto; font-size: 22px; line-height: 1; }
 .hint { text-align: center; font-size: 15px; color: var(--muted); }
 .mode { font-size: 12px; font-weight: 600; color: var(--hard); }
 #controls { padding-bottom: 4px; }
 .grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.grade button { font: inherit; font-size: 19px; border-radius: 14px; min-height: 76px; padding: 10px 4px; cursor: pointer;
+.grade button { font: inherit; font-size: 19px; border-radius: 16px; min-height: 76px; padding: 10px 4px; cursor: pointer;
   background: var(--card); border: 2px solid currentColor; font-weight: 700; line-height: 1.25;
   touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .grade button:active { transform: scale(.97); }
 .grade button small { display: block; font-weight: 500; font-size: 14px; color: var(--muted); margin-top: 2px; }
-.grade .g1 { color: var(--again); } .grade .g2 { color: var(--hard); } .grade .g3 { color: var(--good); } .grade .g4 { color: var(--easy); }
-.flipbtn { width: 100%; min-height: 76px; font-size: 20px; border-radius: 14px; touch-action: manipulation; }
+.grade .g1 { color: var(--again); } .grade .g2 { color: var(--hard); } .grade .g4 { color: var(--easy); }
+.grade .g3 { color: var(--accent-ink); background: var(--good); border-color: var(--good); }
+.grade .g3 small { color: inherit; opacity: .85; }
+.flipbtn { width: 100%; min-height: 76px; font-size: 20px; border-radius: 16px; touch-action: manipulation; }
 .done h2 { margin: 0 0 6px; }
 .muted { color: var(--muted); }
 /* Bild groß ansehen: antippen öffnet, Finger zum Zoomen, antippen schließt */
@@ -157,14 +171,17 @@ select { min-height: 44px; font-size: 16px; }
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <h1>Meine Lernskripte</h1>
-    <p id="summary"></p>
+  <header class="kopf">
+    <div>
+      <div class="datum" id="datum"></div>
+      <h1>Meine Lernskripte</h1>
+      <p id="summary"></p>
+    </div>
+    <nav class="tabs">
+      <a href="#" id="tab-skripte">Lernskripte</a>
+      <a href="#karteikarten" id="tab-karten">Karteikarten</a>
+    </nav>
   </header>
-  <nav class="tabs">
-    <a href="#" id="tab-skripte">Lernskripte</a>
-    <a href="#karteikarten" id="tab-karten">Karteikarten</a>
-  </nav>
 
   <section id="view-skripte">
     <input class="search" id="q" type="search" placeholder="Modul suchen …" autocomplete="off">
@@ -181,6 +198,8 @@ const fmtSize = b => b > 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : 
 const fmtDate = s => new Date(s + "T12:00:00").toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
+document.getElementById("datum").textContent =
+  new Date().toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" });
 document.getElementById("summary").textContent =
   `${DATA.length} Module · Lernskripte als PDF und Karteikarten zum Üben`;
 
@@ -293,13 +312,13 @@ function deckÜbersicht() {
   sitzung = null;
   if (!DECKS.length) { view.innerHTML = `<p class="empty">Noch keine Karteikarten vorhanden.</p>`; return; }
   view.innerHTML = `<p class="intro">Verständnisfragen je Modul. Fällige Karten kommen zuerst, schwierige öfter, sichere immer seltener.</p>` +
-    DECKS.map(d => {
+    `<div class="decks">` + DECKS.map(d => {
       const z = zählen(d);
       return `<div class="script"><div><div class="title">${esc(d.name)}</div>
         <div class="counts"><span class="c-due"><b>${z.due}</b> fällig</span><span class="c-new"><b>${z.neu}</b> neu</span>
         <span class="c-ok"><b>${z.ok}</b> sicher</span><span class="muted">${z.gesamt} Karten</span></div></div>
         <div class="actions"><a class="btn primary" href="#karteikarten/${encodeURIComponent(d.name)}">Lernen</a></div></div>`;
-    }).join("") +
+    }).join("") + `</div>` +
     `<footer>Dein Fortschritt wird nur in diesem Browser gespeichert (je Gerät getrennt).</footer>`;
 }
 
@@ -379,7 +398,7 @@ function zeigen() {
   document.body.classList.add("lernen");
   const bilder = (c.i || []).map((b, n) => `<figure class="abb"><button type="button" data-bild="${n}" aria-label="Abbildung groß ansehen">
       <img src="${b.src}" alt="${esc(b.cap.replace(/<[^>]+>/g, ""))}" loading="lazy"></button>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`).join("");
-  const quelle = c.s ? `<a class="quelle" href="${s.deck.pdf}#page=${c.s.p}" target="_blank" rel="noopener">📖 Lernskript S. ${c.s.p}
+  const quelle = c.s ? `<a class="quelle" href="${s.deck.pdf}#page=${c.s.p}" target="_blank" rel="noopener"><b>Lernskript S. ${c.s.p}</b>
       <span>${esc(c.s.t)}</span></a>` : "";
   view.innerHTML = `<div class="topbar"><a class="back" href="#karteikarten/${encodeURIComponent(s.deck.name)}">← ${esc(s.deck.name)}</a>
       <div class="bar"><i style="width:${Math.round(100 * s.fertig / (s.fertig + offen))}%"></i></div>
