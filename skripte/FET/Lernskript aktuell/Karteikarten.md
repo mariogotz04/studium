@@ -8,6 +8,7 @@ So ist diese Datei aufgebaut (die Webseite liest sie beim Hochladen automatisch 
 - Eine Zeile "Bild: …" erscheint als Merkbild (Analogie im Feynman-Stil) unten auf der Karte.
 - "Quelle: 1.3" (Nummer des Abschnitts im Lernskript, bei TM2 z. B. "TM2 1.6") zeigt auf der Karte die Seite im aktuellen Lernskript an. Die Seite wird beim Hochladen automatisch bestimmt.
 - "Abbildung: name" zeigt ein Bild aus Typst-Dateien/abbildungen/ (Dateiname ohne Endung, wie bei #bild im Lernskript). Mehrere mit Komma trennen.
+- Formeln in Typst-Schreibweise wie im Lernskript zwischen Dollarzeichen, z. B. $c = sqrt(2 g h)$ oder $p_"abs"$. Eine Zeile nur mit "$ … $" (mit Leerzeichen) wird abgesetzt und groß gesetzt. Ein Schrägstrich ohne Bruch: \/
 - Nur Verständnisfragen, keine Rechenaufgaben. Antworten kurz, einfach, in eigenen Worten.
 - Den Fragetext nur ändern, wenn nötig: Der Lernfortschritt hängt am Wortlaut der Frage.
 -->
@@ -44,7 +45,7 @@ Quelle: 1.1.1
 Abbildung: bath
 
 ### Was bedeutet „stationär“ für eine Bilanz, und was bedeutet es nicht?
-Stationär heißt: Am festen Ort ändert sich nichts mit der Zeit. Die Speicherterme (z. B. dm/dt) sind null.
+Stationär heißt: Am festen Ort ändert sich nichts mit der Zeit. Die Speicherterme (z. B. $(dif m)/(dif t)$) sind null.
 
 Die Ströme verschwinden dabei nicht. Ein Durchlauferhitzer ist stationär, obwohl ständig Wasser durchfließt und Energie zugeführt wird.
 Quelle: 1.1.1
@@ -60,7 +61,7 @@ Quelle: 1.1.2
 Abbildung: transfers
 
 ### Was ist die Enthalpie anschaulich, und warum nutzt man sie bei durchströmten Systemen?
-h = u + pv. Ein Stoffstrom bringt seine innere Energie u mit. Zusätzlich muss er gegen den Druck in den Kontrollraum hineingeschoben werden, das ist die Verschiebearbeit pv.
+$h = u + p v$. Ein Stoffstrom bringt seine innere Energie u mit. Zusätzlich muss er gegen den Druck in den Kontrollraum hineingeschoben werden, das ist die Verschiebearbeit $p v$.
 
 Die Enthalpie packt beides zusammen. Deshalb darf man pv in der Strömungsbilanz nicht noch einmal extra als Arbeit addieren.
 
@@ -100,24 +101,24 @@ Abbildung: expansion
 ### Was unterscheidet extensive, intensive und spezifische Größen?
 Teilungstest: Ich teile einen homogenen Behälter gedanklich in zwei Hälften.
 - **Extensiv** (m, V, U, H): halbiert sich, hängt an der Menge.
-- **Intensiv** (p, T, ρ): bleibt gleich.
-- **Spezifisch** (v = V/m, u, h): Größe pro kg. Bleibt auch gleich, weil Zähler und Nenner gleich schrumpfen.
+- **Intensiv** ($p$, $T$, $rho$): bleibt gleich.
+- **Spezifisch** ($v = V\/m$, $u$, $h$): Größe pro kg. Bleibt auch gleich, weil Zähler und Nenner gleich schrumpfen.
 
 Spezifische Größen trennen die Stoffeigenschaft von der Menge.
 Quelle: 1.4
 Abbildung: division
 
 ### Was sagt die Kontinuitätsgleichung, und warum wird Wasser in einer engen Düse schneller?
-Stationär ohne weitere Zu- oder Abflüsse geht durch jeden Querschnitt dieselbe Masse pro Sekunde: ρ·A·c = konstant.
+Stationär ohne weitere Zu- oder Abflüsse geht durch jeden Querschnitt dieselbe Masse pro Sekunde: $rho A c = "konstant"$.
 
-Bei konstanter Dichte heißt das A·c = konstant. Wird die Fläche kleiner, muss die Geschwindigkeit steigen. Halber Durchmesser gibt ein Viertel der Fläche und die vierfache Geschwindigkeit.
+Bei konstanter Dichte heißt das $A c = "konstant"$. Wird die Fläche kleiner, muss die Geschwindigkeit steigen. Halber Durchmesser gibt ein Viertel der Fläche und die vierfache Geschwindigkeit.
 
 Bild: Gartenschlauch mit Daumen auf der Öffnung.
 Quelle: 1.5
 Abbildung: hose
 
 ### Was ist der Unterschied zwischen einem idealen Gas und einem idealen Fluid?
-Ideales Gas: gehorcht pv = RT, seine Dichte darf sich ändern.
+Ideales Gas: gehorcht $p v = R T$, seine Dichte darf sich ändern.
 
 Ideales Fluid (Strömungslehre): inkompressibel und reibungsfrei.
 
@@ -125,21 +126,21 @@ Aus der Gasgleichung folgt keine Reibungsfreiheit, das sind zwei verschiedene Mo
 Quelle: 1.5
 
 ### Was beschreibt die Bernoulli-Gleichung, und wann gilt sie?
-p/ρ + c²/2 + g·z = konstant. Entlang einer Stromlinie tauschen Druck-, Bewegungs- und Lageenergie untereinander aus.
+$p/rho + c^2/2 + g z = "konstant"$. Entlang einer Stromlinie tauschen Druck-, Bewegungs- und Lageenergie untereinander aus.
 
 Sie gilt nur stationär, inkompressibel, reibungsfrei und ohne Maschinenarbeit.
 
-Bild: Ein Wasserbehälter: Die Höhe des Wasserspiegels wird am Auslass zu Geschwindigkeit (c = √(2gh)).
+Bild: Ein Wasserbehälter: Die Höhe des Wasserspiegels wird am Auslass zu Geschwindigkeit ($c = sqrt(2 g h)$).
 Quelle: 1.5
 Abbildung: bernoulli
 
 ### Warum fließt die erste Hälfte eines Behälters schneller aus als die zweite?
-Die Ausflussgeschwindigkeit hängt von der Füllhöhe ab (c ≈ √(2gh)). Am Anfang drückt eine hohe Wassersäule, später nur noch eine niedrige. Der Ausfluss wird also immer langsamer, und die Kurve h(t) flacht ab.
+Die Ausflussgeschwindigkeit hängt von der Füllhöhe ab ($c approx sqrt(2 g h)$). Am Anfang drückt eine hohe Wassersäule, später nur noch eine niedrige. Der Ausfluss wird also immer langsamer, und die Kurve $h(t)$ flacht ab.
 Quelle: 1.5
 Abbildung: drain-plot
 
 ### Was unterscheidet Zustandsgrößen von Prozessgrößen?
-Zustandsgrößen (p, T, U, H) beschreiben eine Momentaufnahme. Ihre Änderung hängt nur von Anfang und Ende ab, nicht vom Weg.
+Zustandsgrößen ($p$, $T$, $U$, $H$) beschreiben eine Momentaufnahme. Ihre Änderung hängt nur von Anfang und Ende ab, nicht vom Weg.
 
 Prozessgrößen (Wärme Q, Arbeit W) gibt es nur während eines Vorgangs. Sie hängen vom Weg ab.
 
@@ -148,7 +149,7 @@ Quelle: 1.6
 Abbildung: states
 
 ### Warum kann bei gleichem Anfangs- und Endzustand unterschiedlich viel Arbeit übertragen werden?
-Die Volumenarbeit ist die Fläche unter der Kurve im p-V-Diagramm. Verschiedene Wege zwischen denselben Punkten haben verschiedene Flächen. ΔU ist gleich, aber die Aufteilung in Wärme und Arbeit nicht.
+Die Volumenarbeit ist die Fläche unter der Kurve im $p$-$V$-Diagramm. Verschiedene Wege zwischen denselben Punkten haben verschiedene Flächen. $Delta U$ ist gleich, aber die Aufteilung in Wärme und Arbeit nicht.
 Quelle: 1.9
 Abbildung: path-work
 
@@ -158,13 +159,13 @@ Quelle: 1.6
 Abbildung: states
 
 ### Wie viele Angaben legen den Zustand eines einfachen reinen Stoffes fest?
-Im einphasigen Gleichgewicht reichen zwei unabhängige intensive Angaben, z. B. p und T. Die Zustandsfläche ist die Landkarte aller erlaubten Kombinationen, z. B. p = p(v, T).
+Im einphasigen Gleichgewicht reichen zwei unabhängige intensive Angaben, z. B. $p$ und $T$. Die Zustandsfläche ist die Landkarte aller erlaubten Kombinationen, z. B. $p = p(v, T)$.
 Quelle: 1.6.1
 
 ### Welchen Druck und welche Temperatur brauche ich in der idealen Gasgleichung?
 Immer den **Absolutdruck** (vom Vakuum aus gemessen) und die Temperatur in **Kelvin**.
 
-Ein Manometer zeigt meist Überdruck an, dazu kommt der Umgebungsdruck: p_abs = p_e + p_amb.
+Ein Manometer zeigt meist Überdruck an, dazu kommt der Umgebungsdruck: $p_"abs" = p_e + p_"amb"$.
 Quelle: 1.7
 Abbildung: manometer
 
@@ -173,21 +174,21 @@ Es vernachlässigt das Eigenvolumen der Moleküle und ihre Anziehung. Bei hoher 
 Quelle: 1.6.1
 
 ### Warum hat ruhendes Wasser unten einen höheren Druck als oben?
-Jede Schicht muss das Gewicht des Wassers darüber tragen. Der Druck wächst deshalb mit der Tiefe: p = p₀ + ρgh. Etwa 10 m Wasser entsprechen 1 bar.
+Jede Schicht muss das Gewicht des Wassers darüber tragen. Der Druck wächst deshalb mit der Tiefe: $p = p_0 + rho g h$. Etwa 10 m Wasser entsprechen 1 bar.
 
 Mechanisches Gleichgewicht heißt also Kräftegleichgewicht, nicht überall gleicher Druck.
 Quelle: 1.7
 Abbildung: manometer
 
 ### Warum sind Temperaturdifferenzen in K und °C gleich, Verhältnisse aber nicht?
-Beide Skalen haben dieselbe Schrittweite, aber verschiedene Nullpunkte (T = θ + 273,15). Eine Differenz von 10 °C sind daher 10 K.
+Beide Skalen haben dieselbe Schrittweite, aber verschiedene Nullpunkte ($T\/"K" = theta\/"°C" + "273,15"$). Eine Differenz von 10 °C sind daher 10 K.
 
 60 °C ist aber nicht dreimal so warm wie 20 °C: In Kelvin sind es 333 K gegen 293 K, nur etwa 14 % mehr.
 Quelle: 1.8
 Abbildung: kelvin
 
 ### Welches Vorzeichen hat die Volumenarbeit bei Expansion und Kompression, und warum?
-W_v = −∫p dV. Bei Expansion ist dV > 0, also W_v < 0: Das Gas gibt Arbeit ab. Bei Kompression ist W_v > 0: Arbeit wird zugeführt.
+$W_v = -integral p dif V$. Bei Expansion ist $dif V > 0$, also $W_v < 0$: Das Gas gibt Arbeit ab. Bei Kompression ist $W_v > 0$: Arbeit wird zugeführt.
 
 Das Minus sorgt dafür, dass in der Zufuhrkonvention Zugeführtes positiv zählt.
 Quelle: 1.9
@@ -237,39 +238,41 @@ Quelle: 2.5
 Abbildung: five-states
 
 ### Was ist bei einer mittleren Wärmekapazität mit Bezug auf 0 °C zu beachten?
-Der Tabellenwert C_θ gilt für das Intervall von 0 °C bis θ. Für 6 → 80 °C rechnet man daher C₈₀·80 − C₆·6 und nicht einfach C₈₀·74. Das Intervall ist ein anderes.
+Der Tabellenwert $C_theta$ gilt für das Intervall von 0 °C bis $theta$. Für 6 → 80 °C rechnet man daher
+$ C_80 dot 80 - C_6 dot 6 quad "und nicht" quad C_80 dot 74 $
+Das Intervall ist ein anderes.
 Quelle: 2.1
 Abbildung: warming
 
 ### Was misst der Realgasfaktor Z?
-Z = pv/(RT) sagt, wie stark ein reales Gas von der idealen Gasgleichung abweicht. Z = 1 heißt ideal.
+$Z = (p v)/(R T)$ sagt, wie stark ein reales Gas von der idealen Gasgleichung abweicht. $Z = 1$ heißt ideal.
 
-Z hängt vom Zustand ab und muss für jeden Zustand neu bestimmt werden. Er ist ein Korrekturfaktor für die thermische Zustandsgleichung, kein Wirkungsgrad.
+$Z$ hängt vom Zustand ab und muss für jeden Zustand neu bestimmt werden. Er ist ein Korrekturfaktor für die thermische Zustandsgleichung, kein Wirkungsgrad.
 Quelle: 2.2
 Abbildung: oxygen
 
 ### Was ist die Sättigung, und warum sind dort Druck und Temperatur gekoppelt?
-Im Gleichgewicht von Flüssigkeit und Dampf eines reinen Stoffes gehört zu jedem Druck genau eine Siedetemperatur: T = T_s(p).
+Im Gleichgewicht von Flüssigkeit und Dampf eines reinen Stoffes gehört zu jedem Druck genau eine Siedetemperatur: $T = T_s (p)$.
 
-Damit weiß ich aber noch nicht, wie viel Flüssigkeit und wie viel Dampf da sind. Dafür brauche ich eine weitere Angabe, z. B. den Dampfgehalt x.
+Damit weiß ich aber noch nicht, wie viel Flüssigkeit und wie viel Dampf da sind. Dafür brauche ich eine weitere Angabe, z. B. den Dampfgehalt $x$.
 
 Bild: Die Sättigung ist wie eine Schiene: Der Druck legt die Temperatur fest, wie weit man auf der Schiene ist, sagt erst x.
 Quelle: 2.3
 Abbildung: pvt
 
 ### Wodurch unterscheiden sich unterkühlte Flüssigkeit, Nassdampf, Sattdampf und überhitzter Dampf?
-- **Unterkühlte Flüssigkeit:** T < T_s(p).
-- **Siedelinie:** gesättigte Flüssigkeit, x = 0.
+- **Unterkühlte Flüssigkeit:** $T < T_s (p)$.
+- **Siedelinie:** gesättigte Flüssigkeit, $x = 0$.
 - **Nassdampf:** beide Phasen zugleich, 0 < x < 1.
-- **Taulinie / Sattdampf:** x = 1.
-- **Überhitzter Dampf:** T > T_s(p).
+- **Taulinie / Sattdampf:** $x = 1$.
+- **Überhitzter Dampf:** $T > T_s (p)$.
 
 „Unterkühlt“ und „überhitzt“ beziehen sich auf die Siedetemperatur, nicht auf das Gefühl warm oder kalt.
 Quelle: 2.4
 Abbildung: phase-dome
 
 ### Was passiert am kritischen Punkt?
-Flüssigkeit und Dampf werden ununterscheidbar: v″ − v′ und die Verdampfungsenthalpie gehen gegen null. Die Flüssig-Dampf-Grenze endet dort. Wasser: etwa 220,6 bar und 647 K.
+Flüssigkeit und Dampf werden ununterscheidbar: $v'' - v'$ und die Verdampfungsenthalpie gehen gegen null. Die Flüssig-Dampf-Grenze endet dort. Wasser: etwa 220,6 bar und 647 K.
 Quelle: 2.4
 Abbildung: phase-dome
 
@@ -284,31 +287,33 @@ Quelle: 2.6
 Abbildung: supercritical
 
 ### Was entscheidet beim Erwärmen von Nassdampf in einem starren Behälter, ob am Ende Flüssigkeit oder Dampf übrig bleibt?
-Im starren, geschlossenen Behälter bleibt v = V/m konstant. Ist v größer als v_kr, verlässt der Stoff das Nassdampfgebiet zur Dampfseite. Ist v kleiner, endet er auf der Flüssigkeitsseite, danach kann der Druck stark steigen.
+Im starren, geschlossenen Behälter bleibt $v = V\/m$ konstant. Ist $v$ größer als $v_"kr"$, verlässt der Stoff das Nassdampfgebiet zur Dampfseite. Ist $v$ kleiner, endet er auf der Flüssigkeitsseite, danach kann der Druck stark steigen.
 
 Mehr Wärme heißt also nicht immer mehr Dampf.
 Quelle: 2.7
 Abbildung: isochoric
 
 ### Was ist der Dampfgehalt x, und warum ist er kein Volumenanteil?
-x = Dampfmasse / Gesamtmasse. Weil Dampf pro kg viel mehr Platz braucht, kann wenig Dampfmasse den größten Teil des Volumens füllen. Beispiel Ammoniak-Ampulle: 1,2 % der Masse sind Dampf, aber 84 % des Volumens.
+$x = m_"Dampf" \/ m_"gesamt"$. Weil Dampf pro kg viel mehr Platz braucht, kann wenig Dampfmasse den größten Teil des Volumens füllen. Beispiel Ammoniak-Ampulle: 1,2 % der Masse sind Dampf, aber 84 % des Volumens.
 
 Aus „halb mit Dampf gefüllt“ folgt also nicht „halbe Masse Dampf“.
 Quelle: 2.9
 Abbildung: mass-volume
 
 ### Woher kommt die Mischungsregel y = y′ + x·(y″ − y′)?
-Volumen, Enthalpie, innere Energie und Entropie des Gemisches setzen sich aus den Beiträgen beider Phasen zusammen. Teilt man durch die Gesamtmasse, werden die Phasen mit ihren Massenanteilen (1 − x) und x gewichtet. Das gilt für v, u, h und s, nicht für p und T.
+Volumen, Enthalpie, innere Energie und Entropie des Gemisches setzen sich aus den Beiträgen beider Phasen zusammen. Teilt man durch die Gesamtmasse, werden die Phasen mit ihren Massenanteilen $(1 - x)$ und $x$ gewichtet. Das gilt für $v$, $u$, $h$ und $s$, nicht für $p$ und $T$.
 Quelle: 2.9
 Abbildung: mass-volume
 
 ### Was sagt die Hebelregel im p-v-Diagramm?
-Auf der waagerechten Linie im Nassdampfgebiet ist x der Abstand vom Flüssigkeitsrand v′ bis zum Gemischpunkt v, geteilt durch die ganze Breite v″ − v′. In der Mitte ist x = 0,5.
+Auf der waagerechten Linie im Nassdampfgebiet ist $x$ der Abstand vom Flüssigkeitsrand $v'$ bis zum Gemischpunkt $v$, geteilt durch die ganze Breite $v'' - v'$:
+$ x = (v - v')/(v'' - v') $
+In der Mitte ist $x = "0,5"$.
 Quelle: 2.9
 Abbildung: lever
 
 ### Wie prüfe ich, ob ein berechneter Nassdampfwert plausibel ist?
-Für 0 ≤ x ≤ 1 müssen v, h, u und s zwischen ihren Randwerten (′ und ″) liegen. Ein x > 1 ist kein Nassdampf mehr, dann ist der Dampf überhitzt und die Mischungsregel gilt nicht.
+Für $0 <= x <= 1$ müssen $v$, $h$, $u$ und $s$ zwischen ihren Randwerten ($'$ und $''$) liegen. Ein $x > 1$ ist kein Nassdampf mehr, dann ist der Dampf überhitzt und die Mischungsregel gilt nicht.
 Quelle: 2.9
 
 ### Wie transportiert ein Wärmerohr Wärme, obwohl es geschlossen ist?
@@ -317,7 +322,7 @@ Quelle: 2.9
 Abbildung: heatpipe
 
 ### Wie gehe ich beim Ablesen der Dampftafel vor?
-Erst das Zustandsgebiet bestimmen: Bei gegebenem Druck T_s(p) nachschlagen und mit T vergleichen. Unterkühlt oder überhitzt: p-T-Tabelle. Nassdampf: Sättigungstafel plus x.
+Erst das Zustandsgebiet bestimmen: Bei gegebenem Druck $T_s (p)$ nachschlagen und mit $T$ vergleichen. Unterkühlt oder überhitzt: $p$-$T$-Tabelle. Nassdampf: Sättigungstafel plus $x$.
 
 Interpolieren schließt nur Lücken zwischen nahen Tabellenwerten im selben Gebiet, nie über Phasengrenzen hinweg.
 Quelle: 2.10
@@ -334,14 +339,16 @@ Quelle: 2.11
 Abbildung: triple
 
 ### Warum steigt die Dampfdruckkurve, während die Schmelzkurve von Eis fällt?
-Clapeyron: dp/dT = Δh/(T·Δv). Beim Verdampfen ist Δh > 0 und Δv > 0, also steigt die Kurve.
+Clapeyron:
+$ (dif p)/(dif T) = (Delta h)/(T Delta v) $
+Beim Verdampfen ist $Delta h > 0$ und $Delta v > 0$, also steigt die Kurve.
 
-Eis braucht mehr Platz als Wasser. Beim Schmelzen ist Δv < 0, also fällt die Schmelzkurve: Mehr Druck lässt Eis eher schmelzen.
+Eis braucht mehr Platz als Wasser. Beim Schmelzen ist $Delta v < 0$, also fällt die Schmelzkurve: Mehr Druck lässt Eis eher schmelzen.
 Quelle: 2.11
 Abbildung: triple
 
 ### Welche Schwächen der idealen Gasgleichung korrigiert van der Waals?
-Zwei Dinge: Die Moleküle ziehen sich an (Term a/v², verringert den Druck auf die Wand), und sie haben ein Eigenvolumen (Term −b, nimmt Platz weg). Je dichter das Gas, desto wichtiger werden beide Korrekturen.
+Zwei Dinge: Die Moleküle ziehen sich an (Term $a\/v^2$, verringert den Druck auf die Wand), und sie haben ein Eigenvolumen (Term $-b$, nimmt Platz weg). Je dichter das Gas, desto wichtiger werden beide Korrekturen.
 Quelle: 2.12.1
 
 ### Was ist der Unterschied zwischen Partialdruck und Partialvolumen in einem Gasgemisch?
@@ -349,12 +356,12 @@ Partialdruck: der Druck, den eine Komponente allein im ganzen Gemischvolumen hä
 
 Partialvolumen: das Volumen, das eine Komponente allein beim Gemischdruck einnähme. Die Partialvolumina addieren sich zum Gesamtvolumen.
 
-Bei idealen Gasen gilt beides: p_i/p = V_i/V = Molanteil ψ_i.
+Bei idealen Gasen gilt beides: $p_i\/p = V_i\/V = psi_i$ (Molanteil).
 Quelle: 2.12.2
 Abbildung: mixing
 
 ### Warum enthält Luft 23 % Sauerstoff und gleichzeitig 21 % Sauerstoff?
-23 % ist der Massenanteil ξ, 21 % der Molanteil ψ. Sauerstoff-Moleküle sind schwerer als Stickstoff-Moleküle, deshalb ist ihr Massenanteil größer. Eine Prozentangabe braucht immer ihre Bezugsgröße.
+23 % ist der Massenanteil $xi$, 21 % der Molanteil $psi$. Sauerstoff-Moleküle sind schwerer als Stickstoff-Moleküle, deshalb ist ihr Massenanteil größer. Eine Prozentangabe braucht immer ihre Bezugsgröße.
 Quelle: 2.12.2
 Abbildung: mixing
 
@@ -364,7 +371,7 @@ Quelle: 2.13.2
 Abbildung: stickstoff-zustaende
 
 ### Warum bleibt in einem starren Behälter v nicht konstant, wenn Masse austritt?
-v = V/m. V bleibt gleich, aber m sinkt. Also wird v größer. „Starr“ heißt nur, dass das Gesamtvolumen V konstant ist.
+$v = V\/m$. $V$ bleibt gleich, aber $m$ sinkt. Also wird $v$ größer. „Starr“ heißt nur, dass das Gesamtvolumen $V$ konstant ist.
 Quelle: 2.13.2
 Abbildung: stickstoff-zustaende
 
@@ -385,28 +392,28 @@ Quelle: 3.1
 Abbildung: hs-overview
 
 ### Warum steht im ersten Hauptsatz für offene Systeme die Enthalpie h, im geschlossenen die innere Energie u?
-Im offenen System muss der Stoff hinein- und hinausgeschoben werden. Diese Verschiebearbeit pv steckt in h = u + pv.
+Im offenen System muss der Stoff hinein- und hinausgeschoben werden. Diese Verschiebearbeit $p v$ steckt in $h = u + p v$.
 
-Im geschlossenen System geht keine Masse über die Grenze, es gibt keine Verschiebearbeit. Deshalb reicht u.
+Im geschlossenen System geht keine Masse über die Grenze, es gibt keine Verschiebearbeit. Deshalb reicht $u$.
 Quelle: 3.1.1
 Abbildung: hs-open
 
 ### Welche Arbeit gehört zum offenen und welche zum geschlossenen System?
-Offen (durchströmt): technische Arbeit, mit der Druckarbeit ∫v dp. Das Maschinenvolumen ändert sich nicht, aber der Druck.
+Offen (durchströmt): technische Arbeit, mit der Druckarbeit $integral v dif p$. Das Maschinenvolumen ändert sich nicht, aber der Druck.
 
-Geschlossen: Gesamtarbeit, mit der Volumenarbeit −∫p dv. Der Kolben verschiebt sich, das Volumen ändert sich.
+Geschlossen: Gesamtarbeit, mit der Volumenarbeit $-integral p dif v$. Der Kolben verschiebt sich, das Volumen ändert sich.
 Quelle: 3.1.2
 Abbildung: hs-closed
 
 ### Was unterscheidet Q₁₂ von Q̇₁₂?
-Q₁₂ ist eine Energiemenge in J oder kJ, übertragen zwischen zwei Zeitpunkten. Q̇₁₂ ist ein Wärmestrom in W oder kW, also Energie pro Zeit.
+$Q_12$ ist eine Energiemenge in J oder kJ, übertragen zwischen zwei Zeitpunkten. $dot(Q)_12$ ist ein Wärmestrom in W oder kW, also Energie pro Zeit.
 
 Der Punkt bezeichnet den Zeitbezug, nicht die Systemart. Auch ein geschlossenes System kann einen Wärmestrom aufnehmen.
 Quelle: 3.1
 Abbildung: hs-overview
 
 ### Welche Energieformen stehen in der Stoffstromenergie e = h + c²/2 + g·z?
-h ist innere Energie plus Verschiebearbeit, c²/2 die Bewegungsenergie und g·z die Lageenergie, jeweils pro kg. Achtung: c²/2 und g·z kommen in J/kg heraus und müssen für eine Bilanz in kJ/kg durch 1000 geteilt werden.
+$h$ ist innere Energie plus Verschiebearbeit, $c^2\/2$ die Bewegungsenergie und $g z$ die Lageenergie, jeweils pro kg. Achtung: $c^2\/2$ und $g z$ kommen in J/kg heraus und müssen für eine Bilanz in kJ/kg durch 1000 geteilt werden.
 Quelle: 3.1.1
 Abbildung: hs-open
 
@@ -416,12 +423,12 @@ Quelle: 3.1.3
 Abbildung: hs-special
 
 ### Was bleibt vom ersten Hauptsatz für ein abgeschlossenes, ruhendes System übrig?
-Weder Wärme noch Arbeit noch Masse gehen über die Grenze. Also ändert sich die Energie nicht: ΔU = 0, wenn das System auch ruht und seine Höhe gleich bleibt.
+Weder Wärme noch Arbeit noch Masse gehen über die Grenze. Also ändert sich die Energie nicht: $Delta U = 0$, wenn das System auch ruht und seine Höhe gleich bleibt.
 Quelle: 3.1.3
 Abbildung: hs-special
 
 ### Warum erwärmt sich eine Bleikugel beim Aufschlag?
-Ihre Lage- und Bewegungsenergie wird beim Aufprall durch Verformung zu innerer Energie. Im idealen Modell geht nichts an Boden oder Luft, dann steigt ihre Temperatur um (c²/2 + g·z)/c_Pb. Real geht ein Teil an Boden und Umgebung.
+Ihre Lage- und Bewegungsenergie wird beim Aufprall durch Verformung zu innerer Energie. Im idealen Modell geht nichts an Boden oder Luft, dann steigt ihre Temperatur um $(c^2\/2 + g z)\/c_"Pb"$. Real geht ein Teil an Boden und Umgebung.
 Quelle: 3.1.4
 Abbildung: ball
 
@@ -434,9 +441,9 @@ Abbildung: ball
 Quelle: 3.1
 
 ### Warum reicht beim Entnehmen aus einem Behälter Q = ΔU nicht?
-Während der Entnahme ist der Behälterinhalt ein offenes, instationäres System. Die austretende Masse nimmt ihre Enthalpie mit. Richtig ist: ΔU = Q − m_entn·h′. Wer das vergisst, lässt den Energietransport mit der Masse weg.
+Während der Entnahme ist der Behälterinhalt ein offenes, instationäres System. Die austretende Masse nimmt ihre Enthalpie mit. Richtig ist: $Delta U = Q - m_"entn" h'$. Wer das vergisst, lässt den Energietransport mit der Masse weg.
 Quelle: 3.2.1
 
 ### Warum muss man bei „die Entropie steigt“ immer die Bezugsgröße nennen?
-Die spezifische Entropie s (pro kg) und die gesamte Entropie S = m·s können sich verschieden verhalten. Nach einer Entnahme kann s des Restes steigen, während S sinkt, weil weniger Masse da ist.
+Die spezifische Entropie $s$ (pro kg) und die gesamte Entropie $S = m s$ können sich verschieden verhalten. Nach einer Entnahme kann $s$ des Restes steigen, während $S$ sinkt, weil weniger Masse da ist.
 Quelle: 3.2.2

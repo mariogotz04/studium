@@ -8,6 +8,7 @@ So ist diese Datei aufgebaut (die Webseite liest sie beim Hochladen automatisch 
 - Eine Zeile "Bild: …" erscheint als Merkbild (Analogie im Feynman-Stil) unten auf der Karte.
 - "Quelle: 1.3" (Nummer des Abschnitts im Lernskript, bei TM2 z. B. "TM2 1.6") zeigt auf der Karte die Seite im aktuellen Lernskript an. Die Seite wird beim Hochladen automatisch bestimmt.
 - "Abbildung: name" zeigt ein Bild aus Typst-Dateien/abbildungen/ (Dateiname ohne Endung, wie bei #bild im Lernskript). Mehrere mit Komma trennen.
+- Formeln in Typst-Schreibweise wie im Lernskript zwischen Dollarzeichen, z. B. $c = sqrt(2 g h)$ oder $p_"abs"$. Eine Zeile nur mit "$ … $" (mit Leerzeichen) wird abgesetzt und groß gesetzt. Ein Schrägstrich ohne Bruch: \/
 - Nur Verständnisfragen, keine Rechenaufgaben. Antworten kurz, einfach, in eigenen Worten.
 - Den Fragetext nur ändern, wenn nötig: Der Lernfortschritt hängt am Wortlaut der Frage.
 -->
@@ -27,12 +28,14 @@ Quelle: 1.4
 Abbildung: tm1k01_momentdarst
 
 ### Wie viele Gleichgewichtsbedingungen hat ein starrer Körper in der Ebene?
-Drei: ΣF_x = 0, ΣF_y = 0 und ΣM = 0 um einen beliebigen Punkt. Deshalb kann man pro Körper höchstens drei Unbekannte bestimmen.
+Drei:
+$ sum F_x = 0, quad sum F_y = 0, quad sum M = 0 $
+(um einen beliebigen Punkt). Deshalb kann man pro Körper höchstens drei Unbekannte bestimmen.
 Quelle: 1.4
 Abbildung: tm1k01_momentdarst
 
 ### Warum reicht ΣF = 0 allein nicht für Gleichgewicht?
-Zwei gleich große, entgegengesetzte Kräfte auf verschiedenen Wirkungslinien heben sich als Kräfte auf, bilden aber ein Kräftepaar. Das dreht den Körper. Erst mit ΣM = 0 ist auch die Drehung ausgeschlossen.
+Zwei gleich große, entgegengesetzte Kräfte auf verschiedenen Wirkungslinien heben sich als Kräfte auf, bilden aber ein Kräftepaar. Das dreht den Körper. Erst mit $sum M = 0$ ist auch die Drehung ausgeschlossen.
 Quelle: 1.4
 Abbildung: tm1k01_momentdarst
 
@@ -66,7 +69,8 @@ Quelle: 4.1
 Abbildung: ak24-system
 
 ### Wie bestimmt man den Schwerpunkt einer zusammengesetzten Fläche?
-Man zerlegt sie in einfache Teilflächen mit bekannten Schwerpunkten und bildet das flächengewichtete Mittel: x_S = Σ(A_i·x_i)/ΣA_i. Löcher und Ausschnitte zählt man als negative Flächen.
+Man zerlegt sie in einfache Teilflächen mit bekannten Schwerpunkten und bildet das flächengewichtete Mittel:
+$ x_S = (sum A_i x_i)/(sum A_i) $ Löcher und Ausschnitte zählt man als negative Flächen.
 Quelle: 4.2
 Abbildung: tm2k4_wzf0806_ue10
 
@@ -88,12 +92,12 @@ Quelle: 5.1
 Abbildung: tm1k2_lager1
 
 ### Was übertragen ein Gelenk und ein Querkraftgelenk?
-Ein Gelenk überträgt Kräfte in beide Richtungen, aber kein Moment. Deshalb ist dort M = 0. Ein Querkraftgelenk überträgt Normalkraft und Moment, aber keine Querkraft. Deshalb ist dort Q = 0.
+Ein Gelenk überträgt Kräfte in beide Richtungen, aber kein Moment. Deshalb ist dort $M = 0$. Ein Querkraftgelenk überträgt Normalkraft und Moment, aber keine Querkraft. Deshalb ist dort $Q = 0$.
 Quelle: 5.1
 Abbildung: tm1k2_lager1
 
 ### Was sagt die Abzählbedingung r + v = 3n, und was sagt sie nicht?
-r Lagerreaktionen plus v Verbindungsreaktionen müssen der Zahl der Gleichgewichtsbedingungen (3 pro Körper) entsprechen. Das ist notwendig für statische Bestimmtheit, aber nicht hinreichend. Ein System kann die Zahl erfüllen und trotzdem beweglich sein, zum Beispiel wenn sich alle Lagerkräfte in einem Punkt schneiden oder alle parallel sind.
+$r$ Lagerreaktionen plus $v$ Verbindungsreaktionen müssen der Zahl der Gleichgewichtsbedingungen (3 pro Körper) entsprechen. Das ist notwendig für statische Bestimmtheit, aber nicht hinreichend. Ein System kann die Zahl erfüllen und trotzdem beweglich sein, zum Beispiel wenn sich alle Lagerkräfte in einem Punkt schneiden oder alle parallel sind.
 Quelle: 5.3.2
 
 ### Wie geht man bei einem System aus mehreren Körpern mit Gelenk vor?
@@ -115,7 +119,7 @@ Deshalb trägt jeder Stab nur Zug oder Druck entlang seiner Achse.
 Quelle: 6.1
 
 ### Was sagt die Abzählbedingung 2k = s + r beim Fachwerk?
-Jeder Knoten liefert zwei Gleichgewichtsbedingungen (2k Gleichungen). Unbekannt sind s Stabkräfte und r Lagerreaktionen. Stimmen beide Zahlen überein, ist das Fachwerk notwendig statisch bestimmt. Wie bei jeder Abzählung ist das nicht hinreichend.
+Jeder Knoten liefert zwei Gleichgewichtsbedingungen ($2k$ Gleichungen). Unbekannt sind $s$ Stabkräfte und $r$ Lagerreaktionen. Gilt $2k = s + r$, ist das Fachwerk notwendig statisch bestimmt. Wie bei jeder Abzählung ist das nicht hinreichend.
 Quelle: 6.1
 
 ### Wie erkennt man Nullstäbe?
@@ -146,9 +150,9 @@ Abbildung: ak24-fachwerk-schnitt
 
 ### Was sind N, Q und M?
 Die inneren Kräfte, die ein Balken an einer Schnittstelle überträgt:
-- N, die Normalkraft, wirkt entlang der Achse (Zug oder Druck).
-- Q, die Querkraft, wirkt senkrecht zur Achse.
-- M, das Biegemoment, biegt den Balken.
+- $N$, die Normalkraft, wirkt entlang der Achse (Zug oder Druck).
+- $Q$, die Querkraft, wirkt senkrecht zur Achse.
+- $M$, das Biegemoment, biegt den Balken.
 Quelle: 7.1
 Abbildung: tm1k01_mitschrift_schnitt
 
@@ -163,19 +167,20 @@ Quelle: 7.1
 Abbildung: tm1k01_mitschrift_schnitt
 
 ### Wie hängen q, Q und M zusammen?
-Q′ = −q und M′ = Q. Die Streckenlast ist die negative Steigung des Querkraftverlaufs, und die Querkraft ist die Steigung des Momentenverlaufs. Ohne Streckenlast ist Q also konstant und M linear. Bei konstanter Streckenlast ist Q linear und M eine Parabel.
+$ Q' = -q, quad M' = Q $
+Die Streckenlast ist die negative Steigung des Querkraftverlaufs, und die Querkraft ist die Steigung des Momentenverlaufs. Ohne Streckenlast ist $Q$ also konstant und $M$ linear. Bei konstanter Streckenlast ist $Q$ linear und $M$ eine Parabel.
 Quelle: 7.3
 
 ### Was passiert im Q- und M-Verlauf an einer Einzelkraft und an einem Einzelmoment?
-An einer Einzelkraft springt Q um den Betrag der Kraft, und M hat einen Knick. An einem eingeprägten Einzelmoment springt M, und Q bleibt unverändert.
+An einer Einzelkraft springt $Q$ um den Betrag der Kraft, und $M$ hat einen Knick. An einem eingeprägten Einzelmoment springt $M$, und $Q$ bleibt unverändert.
 Quelle: 7.3
 
 ### Wo hat der Momentenverlauf sein Extremum?
-Dort, wo die Querkraft null wird bzw. ihr Vorzeichen wechselt, denn M′ = Q. Das gilt auch an einem Sprung von Q über null hinweg, zum Beispiel unter einer Einzelkraft.
+Dort, wo die Querkraft null wird bzw. ihr Vorzeichen wechselt, denn $M' = Q$. Das gilt auch an einem Sprung von $Q$ über null hinweg, zum Beispiel unter einer Einzelkraft.
 Quelle: 7.3
 
 ### Welche Schnittgrößen sind an einem Gelenk und an einem Querkraftgelenk bekannt?
-Am Gelenk ist M = 0, am Querkraftgelenk ist Q = 0. Diese Stellen sind gute Kontrollpunkte für den Verlauf.
+Am Gelenk ist $M = 0$, am Querkraftgelenk ist $Q = 0$. Diese Stellen sind gute Kontrollpunkte für den Verlauf.
 Quelle: 7.3
 
 ### Was passiert mit N und Q an einer rechtwinkligen Rahmenecke?
@@ -185,7 +190,7 @@ Quelle: 7.3
 ## TM1 Kapitel 9 · Reibung
 
 ### Ist die Haftreibungskraft immer μ₀·N?
-Nein. Sie stellt sich so ein, wie es das Gleichgewicht verlangt, und ist meist kleiner. μ₀·N ist nur die Obergrenze, die Haftgrenze. Erst wenn diese erreicht ist, gilt H = μ₀·N.
+Nein. Sie stellt sich so ein, wie es das Gleichgewicht verlangt, und ist meist kleiner. $mu_0 N$ ist nur die Obergrenze, die Haftgrenze. Erst wenn diese erreicht ist, gilt $H = mu_0 N$.
 
 Bild: Wie ein Freund, der dagegenhält: Er drückt genau so stark wie du, bis seine Kraft nicht mehr reicht.
 Quelle: 9.2
@@ -202,19 +207,20 @@ Quelle: 9.2
 Abbildung: ak_ss16_klotz
 
 ### Wie unterscheiden sich Haftreibung und Gleitreibung?
-Haftreibung wirkt, solange nichts rutscht, und passt sich bis μ₀·N an. Gleitreibung wirkt, sobald es rutscht, und ist fest R = μ·N mit μ < μ₀. Deshalb ist es schwerer, etwas loszureißen, als es in Bewegung zu halten.
+Haftreibung wirkt, solange nichts rutscht, und passt sich bis $mu_0 N$ an: $abs(H) <= mu_0 N$. Gleitreibung wirkt, sobald es rutscht, und ist fest $R = mu N$ mit $mu < mu_0$. Deshalb ist es schwerer, etwas loszureißen, als es in Bewegung zu halten.
 Quelle: 9.2
 Abbildung: ak_ss16_klotz
 
 ## TM2 Kapitel 1 · Zug, Druck und Wärmedehnung
 
 ### Was beschreiben Spannung und Dehnung?
-Die Spannung σ = N/A ist die Kraft pro Fläche im Material. Die Dehnung ε ist die relative Längenänderung Δl/l. Beide machen Bauteile unterschiedlicher Größe vergleichbar.
+Die Spannung $sigma = N\/A$ ist die Kraft pro Fläche im Material. Die Dehnung $epsilon$ ist die relative Längenänderung $Delta l\/l$. Beide machen Bauteile unterschiedlicher Größe vergleichbar.
 Quelle: TM2 1.1
 Abbildung: ak_stab_ax
 
 ### Woraus setzt sich die Dehnung bei Last und Temperaturänderung zusammen?
-ε = σ/E + α_T·ΔT. Der erste Teil kommt aus der Kraft (Hooke), der zweite aus der Wärmedehnung. Beide addieren sich.
+$ epsilon = sigma/E + alpha_T Delta T $
+Der erste Teil kommt aus der Kraft (Hooke), der zweite aus der Wärmedehnung. Beide addieren sich.
 Quelle: TM2 1.1
 Abbildung: ak_stab_ax
 
@@ -246,7 +252,7 @@ Quelle: TM2 1.6
 ## TM2 Kapitel 2 · Spannungszustand
 
 ### Was ist ein ebener Spannungszustand?
-Alle Spannungen liegen in einer Ebene: σ_x, σ_y und τ_xy. Senkrecht dazu ist alles null. Das gilt näherungsweise für dünne Bleche und freie Oberflächen.
+Alle Spannungen liegen in einer Ebene: $sigma_x$, $sigma_y$ und $tau_(x y)$. Senkrecht dazu ist alles null. Das gilt näherungsweise für dünne Bleche und freie Oberflächen.
 Quelle: TM2 2.1
 
 ### Warum hängen die Spannungen davon ab, wie man schneidet?
@@ -258,44 +264,48 @@ Die größte und die kleinste Normalspannung, die bei Drehung des Schnitts auftr
 Quelle: TM2 2.2
 
 ### Wie liest man den Mohrschen Kreis?
-Jeder Punkt auf dem Kreis ist ein Schnitt mit (σ, τ). Der Mittelpunkt liegt bei (σ_x + σ_y)/2. Die Schnittpunkte mit der σ-Achse sind die Hauptspannungen. Der Radius ist die größte Schubspannung in der Ebene.
+Jeder Punkt auf dem Kreis ist ein Schnitt mit $(sigma, tau)$. Der Mittelpunkt liegt bei $(sigma_x + sigma_y)\/2$. Die Schnittpunkte mit der $sigma$-Achse sind die Hauptspannungen. Der Radius ist die größte Schubspannung in der Ebene.
 Quelle: TM2 2.2.3
 Abbildung: tm2k2_fs_kreis
 
 ### Warum ist der Winkel im Mohrschen Kreis doppelt so groß wie am Bauteil?
-Dreht man den Schnitt um 90°, kommt man von der x- zur y-Fläche. Die liegen im Kreis gegenüber, also 180° auseinander. Jede Drehung am Bauteil erscheint im Kreis doppelt, je nach Konvention mit umgekehrtem Drehsinn.
+Dreht man den Schnitt um 90°, kommt man von der $x$- zur $y$-Fläche. Die liegen im Kreis gegenüber, also 180° auseinander. Jede Drehung am Bauteil erscheint im Kreis doppelt, je nach Konvention mit umgekehrtem Drehsinn.
 Quelle: TM2 2.2.3
 Abbildung: tm2k2_fs_kreis
 
 ### Warum kann die größte Schubspannung größer sein als der Radius des Mohrschen Kreises?
-Im ebenen Spannungszustand ist die dritte Hauptspannung σ₃ = 0. Haben σ₁ und σ₂ dasselbe Vorzeichen, liegt der größte Kreis zwischen 0 und der betragsgrößten Hauptspannung. Dann ist τ_max = |σ₁|/2 und nicht (σ₁ − σ₂)/2.
+Im ebenen Spannungszustand ist die dritte Hauptspannung $sigma_3 = 0$. Haben $sigma_1$ und $sigma_2$ dasselbe Vorzeichen, liegt der größte Kreis zwischen 0 und der betragsgrößten Hauptspannung. Dann ist
+$ tau_max = abs(sigma_1)/2 quad "und nicht" quad (sigma_1 - sigma_2)/2 $
 Quelle: TM2 2.2
 
 ## TM2 Kapitel 3 · Verzerrungen und Hookesches Gesetz
 
 ### Was ist der Unterschied zwischen Dehnung und Gleitung?
-Die Dehnung ε ändert Längen. Die Gleitung γ ändert den Winkel zwischen zwei ursprünglich senkrechten Linien, aus dem Rechteck wird ein Parallelogramm.
+Die Dehnung $epsilon$ ändert Längen. Die Gleitung $gamma$ ändert den Winkel zwischen zwei ursprünglich senkrechten Linien, aus dem Rechteck wird ein Parallelogramm.
 Quelle: TM2 3.1
 Abbildung: tm2k3_reine
 
 ### Was steht beim Mohrschen Verzerrungskreis auf der senkrechten Achse?
-γ/2, nicht γ. Nur mit dem halben Gleitwinkel transformieren sich die Verzerrungen genauso wie die Spannungen, und der Kreis funktioniert wie beim Spannungszustand.
+$gamma\/2$, nicht $gamma$. Nur mit dem halben Gleitwinkel transformieren sich die Verzerrungen genauso wie die Spannungen, und der Kreis funktioniert wie beim Spannungszustand.
 Quelle: TM2 2.2.3
 Abbildung: tm2k2_fs_kreis
 
 ### Warum ist ein ebener Spannungszustand kein ebener Verzerrungszustand?
-Wegen der Querkontraktion. Zieht man ein Blech in der Ebene, wird es dünner, obwohl senkrecht dazu keine Spannung wirkt. Es gilt ε_z = −ν/E·(σ_x + σ_y), also ist ε_z ≠ 0.
+Wegen der Querkontraktion. Zieht man ein Blech in der Ebene, wird es dünner, obwohl senkrecht dazu keine Spannung wirkt. Es gilt
+$ epsilon_z = -nu/E (sigma_x + sigma_y) eq.not 0 $
 
 Bild: Ein Gummiband wird beim Ziehen schmaler, obwohl niemand von der Seite drückt.
 Quelle: TM2 3.2
 
 ### Was sagt das Hookesche Gesetz im ebenen Fall?
-Die Dehnung in einer Richtung kommt aus der eigenen Spannung minus der Querkontraktion durch die andere: ε_x = (σ_x − ν·σ_y)/E. Die Gleitung kommt nur aus der Schubspannung: γ = τ/G.
+Die Dehnung in einer Richtung kommt aus der eigenen Spannung minus der Querkontraktion durch die andere:
+$ epsilon_x = (sigma_x - nu sigma_y)/E $
+Die Gleitung kommt nur aus der Schubspannung: $gamma = tau\/G$.
 Quelle: TM2 3.1
 Abbildung: tm2k3_reine
 
 ### Wozu dient eine DMS-Rosette mit 0°, 45° und 90°?
-Ein Dehnungsmessstreifen misst nur die Dehnung in seiner Richtung. Mit drei Richtungen kann man ε_x, ε_y und γ_xy bestimmen. Daraus folgen die Hauptdehnungen und mit Hooke die Spannungen.
+Ein Dehnungsmessstreifen misst nur die Dehnung in seiner Richtung. Mit drei Richtungen kann man $epsilon_x$, $epsilon_y$ und $gamma_(x y)$ bestimmen. Daraus folgen die Hauptdehnungen und mit Hooke die Spannungen.
 Quelle: TM2 3.3
 Abbildung: tm2k3_dms_anordnung
 
@@ -307,40 +317,44 @@ Abbildung: tm2k3_dms_anordnung
 ## TM2 Kapitel 4 · Biegung
 
 ### Wie ist die Biegespannung über den Querschnitt verteilt?
-Linear: null in der neutralen Faser, die durch den Schwerpunkt geht, und am größten am Rand. Auf einer Seite herrscht Zug, auf der anderen Druck: σ = M/I·z.
+Linear: null in der neutralen Faser, die durch den Schwerpunkt geht, und am größten am Rand. Auf einer Seite herrscht Zug, auf der anderen Druck:
+$ sigma = M/I z $
 
 Bild: Biegt man einen Schaumstoffbalken, wird die eine Seite länger, die andere kürzer, und in der Mitte bleibt eine Linie gleich lang.
 Quelle: TM2 4.2
 Abbildung: tm2k4_spannungsverlauf
 
 ### Was ist das Widerstandsmoment, und welcher Rand ist maßgebend?
-W = I/z_max. Es verknüpft direkt Moment und größte Randspannung: σ_max = M/W. Maßgebend ist der Rand mit dem größten Abstand vom Schwerpunkt. Bei unsymmetrischen Profilen sind beide Ränder unterschiedlich weit weg.
+$W = I\/z_max$. Es verknüpft direkt Moment und größte Randspannung:
+$ sigma_max = M/W $ Maßgebend ist der Rand mit dem größten Abstand vom Schwerpunkt. Bei unsymmetrischen Profilen sind beide Ränder unterschiedlich weit weg.
 Quelle: TM2 4.2
 Abbildung: tm2k4_spannungsverlauf
 
 ### Warum hat das Flächenträgheitsmoment die Einheit mm⁴?
-Jedes Flächenstück zählt mit dem Quadrat seines Abstands: I = ∫z² dA, also mm² · mm². Material weit außen zählt deshalb viel mehr. Das ist der Grund, warum I-Träger so effizient sind. W hat entsprechend mm³.
+Jedes Flächenstück zählt mit dem Quadrat seines Abstands: $I = integral z^2 dif A$, also mm² · mm². Material weit außen zählt deshalb viel mehr. Das ist der Grund, warum I-Träger so effizient sind. $W$ hat entsprechend mm³.
 Quelle: TM2 4.3
 Abbildung: ak24-querschnitt
 
 ### Wann braucht man den Satz von Steiner?
-Wenn man das Trägheitsmoment einer Teilfläche um eine Achse braucht, die nicht durch ihren eigenen Schwerpunkt geht: I = I_eigen + a²·A. Der Steiner-Anteil ist immer positiv.
+Wenn man das Trägheitsmoment einer Teilfläche um eine Achse braucht, die nicht durch ihren eigenen Schwerpunkt geht:
+$ I = I_"eigen" + a^2 A $ Der Steiner-Anteil ist immer positiv.
 Quelle: TM2 4.3
 Abbildung: ak24-querschnitt
 
 ### Was folgt aus einer Symmetrieachse für das Deviationsmoment?
-Eine Symmetrieachse ist eine Hauptachse, also ist I_yz = 0. Dann biegt sich der Balken genau in der Ebene der Last, ohne schief auszuweichen.
+Eine Symmetrieachse ist eine Hauptachse, also ist $I_(y z) = 0$. Dann biegt sich der Balken genau in der Ebene der Last, ohne schief auszuweichen.
 Quelle: TM2 4.3
 Abbildung: ak24-querschnitt
 
 ### Wie hängen Biegelinie und Moment zusammen?
-EI·w″ = −M. Die Krümmung der Biegelinie ist proportional zum Moment. Zweimal integrieren liefert die Durchbiegung. Die Integrationskonstanten kommen aus den Randbedingungen.
+$ E I w'' = -M $
+Die Krümmung der Biegelinie ist proportional zum Moment. Zweimal integrieren liefert die Durchbiegung. Die Integrationskonstanten kommen aus den Randbedingungen.
 Quelle: TM2 4.4
 
 ### Welche Randbedingungen gelten an Einspannung, Lager und freiem Ende?
-- Einspannung: w = 0 und w′ = 0.
-- Gelenkiges Lager: w = 0 und M = 0.
-- Freies Ende: M = 0 und Q = 0.
+- Einspannung: $w = 0$ und $w' = 0$.
+- Gelenkiges Lager: $w = 0$ und $M = 0$.
+- Freies Ende: $M = 0$ und $Q = 0$.
 Quelle: TM2 4.4
 
 ### Was braucht man, wenn die Biegelinie in Bereiche aufgeteilt ist?
@@ -354,35 +368,37 @@ Quelle: TM2 4.4
 ## TM2 Kapitel 5 · Torsion
 
 ### Wie ist die Schubspannung bei Torsion einer Vollwelle verteilt?
-Linear über den Radius: null in der Mitte, am größten am Rand: τ = M_T/I_p·r. Das Material in der Mitte trägt wenig, deshalb sind Hohlwellen leichter bei fast gleicher Tragfähigkeit.
+Linear über den Radius: null in der Mitte, am größten am Rand:
+$ tau = M_T/I_p r $ Das Material in der Mitte trägt wenig, deshalb sind Hohlwellen leichter bei fast gleicher Tragfähigkeit.
 Quelle: TM2 5.1
 
 ### Ist das Torsionsträgheitsmoment I_T immer gleich dem polaren Trägheitsmoment I_p?
-Nein, nur beim Kreis- und Kreisringquerschnitt. Bei anderen Querschnitten verwölben sich die Querschnitte, und I_T ist kleiner als I_p.
+Nein, nur beim Kreis- und Kreisringquerschnitt. Bei anderen Querschnitten verwölben sich die Querschnitte, und $I_T$ ist kleiner als $I_p$.
 Quelle: TM2 5.1
 
 ### Was ist der Schubfluss bei einem dünnwandigen geschlossenen Profil?
-T = τ·t ist entlang des Umfangs konstant (Bredt). Wo die Wand dünner ist, muss τ deshalb größer sein. Die größte Schubspannung sitzt an der dünnsten Stelle.
+$T = tau t$ ist entlang des Umfangs konstant (Bredt). Wo die Wand dünner ist, muss $tau$ deshalb größer sein. Die größte Schubspannung sitzt an der dünnsten Stelle.
 
 Bild: Wasser in einem Ringkanal: Die Menge pro Sekunde ist überall gleich, an engen Stellen fließt es schneller.
 Quelle: TM2 5.2
 Abbildung: ak24-querschnitt
 
 ### Was ist A_m in der Bredtschen Formel?
-Die Fläche, die von der Mittellinie der Wand eingeschlossen wird. Gemeint ist weder die Materialfläche noch die Innenfläche. Je größer A_m, desto steifer und tragfähiger ist das Profil gegen Torsion.
+Die Fläche, die von der Mittellinie der Wand eingeschlossen wird. Gemeint ist weder die Materialfläche noch die Innenfläche. Je größer $A_m$, desto steifer und tragfähiger ist das Profil gegen Torsion.
 Quelle: TM2 5.2
 Abbildung: ak24-querschnitt
 
 ### Wo sitzt die größte Schubspannung bei einem dünnwandigen offenen Profil?
-Im dicksten Teil: τ_max = M_T/I_T·t_max. Das ist umgekehrt zum geschlossenen Profil, wo die dünnste Stelle maßgebend ist.
+Im dicksten Teil:
+$ tau_max = M_T/I_T t_max $ Das ist umgekehrt zum geschlossenen Profil, wo die dünnste Stelle maßgebend ist.
 Quelle: TM2 5.3
 Abbildung: ak_2018_torsion
 
 ### Warum verdreht sich ein geschlitztes Rohr so viel stärker als ein geschlossenes?
-Im geschlossenen Profil läuft der Schubfluss einmal um den ganzen Umfang und nutzt die große eingeschlossene Fläche. Im offenen Profil fließt der Schub nur hin und zurück innerhalb der dünnen Wand. I_T schrumpft dadurch drastisch, oft um mehrere Größenordnungen.
+Im geschlossenen Profil läuft der Schubfluss einmal um den ganzen Umfang und nutzt die große eingeschlossene Fläche. Im offenen Profil fließt der Schub nur hin und zurück innerhalb der dünnen Wand. $I_T$ schrumpft dadurch drastisch, oft um mehrere Größenordnungen.
 Quelle: TM2 5.3
 Abbildung: ak_2018_torsion
 
 ### Welche zwei Nachweise führt man bei Torsion?
-Den Spannungsnachweis (τ_max ≤ τ_zul) und den Verformungsnachweis (Verdrehwinkel ≤ zulässig). Beide getrennt, denn ein Bauteil kann fest genug, aber zu weich sein, oder umgekehrt.
+Den Spannungsnachweis ($tau_max <= tau_"zul"$) und den Verformungsnachweis (Verdrehwinkel ≤ zulässig). Beide getrennt, denn ein Bauteil kann fest genug, aber zu weich sein, oder umgekehrt.
 Quelle: TM2 5.1
