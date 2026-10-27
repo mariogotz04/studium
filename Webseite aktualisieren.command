@@ -6,13 +6,16 @@
 GITHUB_REPO="mariogotz04/studium"
 WEBSEITE="https://mariogotz04.github.io/studium/"
 ARBEITSKOPIE="$HOME/Studium-Webseite"   # Git-Kopie bewusst außerhalb von iCloud
+NUR_WEBSEITE=false
+if [ "${1:-}" = "--nur-webseite" ]; then NUR_WEBSEITE=true;
+elif [ "$#" -gt 0 ]; then echo "Unbekannte Option: $1"; exit 1; fi
 
 # Ordner mit diesen Namen werden nie hochgeladen (* statt Umlaut, weil macOS Umlaute
 # unterschiedlich speichern kann).
 AUSSCHLIESSEN=("Zum L*schen" "Unterlagen" "Sonstiges" "Physik Praktikum" "Webseite")
 
 # Diese Dateien aus Uni/Webseite gehören zur Seite selbst und werden mit hochgeladen.
-SEITENDATEIEN=("vorlage.html" "build.py" "zitate.json" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command" "Vorlesungsplan.pdf")
+SEITENDATEIEN=("vorlage.html" "build.py" "zitate.json" "zitate_aktualisieren.py" "zitate_filter.json" "test_zitate.py" "test_zitate.cjs" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command" "Vorlesungsplan.pdf")
 
 set -e
 SEITE="$(cd "$(dirname "$0")" && pwd)"
@@ -40,11 +43,17 @@ fi
 cd "$ARBEITSKOPIE"
 git pull --quiet --rebase
 
+# Automatisch online hinzugekommene Zitate auch in der iCloud-Quelle erhalten.
+# Zusammenführung ist rein lokal und überträgt keinerlei Lernstand.
+python3 "$SEITE/zitate_aktualisieren.py" --merge-from "$ARBEITSKOPIE/zitate.json"
+python3 "$SEITE/zitate_aktualisieren.py" --merge-public
+
 for datei in "${SEITENDATEIEN[@]}"; do
   if [ -e "$SEITE/$datei" ]; then rm -rf "./$datei"; cp -Rp "$SEITE/$datei" "./$datei"; fi
 done
 
 # Alles neu aufbauen, damit gelöschte oder umbenannte Skripte auch online verschwinden.
+if [ "$NUR_WEBSEITE" = false ]; then
 rm -rf skripte
 mkdir skripte
 
@@ -75,6 +84,7 @@ find "$UNI" -mindepth 4 -maxdepth 4 -path "*/Lernskript aktuell/Typst-Dateien/ma
       fi
     done
   done
+fi
 
 git add -A
 if git diff --cached --quiet; then

@@ -969,6 +969,9 @@ def main():
     if not zitate or len({z["id"] for z in zitate}) != len(zitate) or any(
         not all(z.get(k) for k in ("id", "text", "autor", "werk", "quelle")) or not z["quelle"].startswith("https://") for z in zitate):
         raise ValueError("Zitate brauchen eindeutige IDs, Wortlaut, Urheber, Werk und eine überprüfte HTTPS-Quelle")
+    # Öffentliche Zitate, keine Nutzerdaten: Beim nächsten Wochenlauf wieder
+    # einlesen, damit Ergänzungen ohne Schreibrecht auf das Repository erhalten bleiben.
+    (OUT / "zitate.json").write_text(json.dumps(zitate, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     page = (TEMPLATE.read_text(encoding="utf-8")
             .replace("/*DATA*/null", einsetzen(data))
             .replace("/*KARTEN*/null", einsetzen(decks))

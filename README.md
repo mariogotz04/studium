@@ -22,8 +22,15 @@ Die redaktionelle Quelle ist `Lernskript aktuell/Hoerskript.md` je Modul. Sie wi
 
 ## Mein Lerntag
 
-„Mein Warum“ erinnert an die persönliche Richtung. Unter „Meine Richtung“ lassen sich Vision, Identitätssatz, Anti-Vision und ein Wenn-dann-Plan speichern. Tageszitate mit belegter Quelle können favorisiert oder ausgeschaltet werden. Die Eingaben liegen im privaten Lernstand und werden bei Anmeldung synchronisiert.
+„Mein Warum“ erinnert an die persönliche Richtung. Unter „Meine Richtung“ lassen sich Vision, Identitätssatz, Anti-Vision und ein Wenn-dann-Plan speichern. Täglich wechselnde Zitate können favorisiert oder ausgeschaltet werden. Angezeigt werden nur Zitat und Name; Werkangaben und Quellen dienen intern der Prüfung. Die Eingaben liegen im privaten Lernstand und werden bei Anmeldung synchronisiert.
 
 „Heute dran“ behält die Tagesauswahl und hakt Aufgaben nach Bewertung, Quizrunden nach vollständiger Auswertung sowie Kartenrunden, Mix-Serien und Probeklausuren nach tatsächlichem Abschluss automatisch ab. Manuelle Haken bleiben möglich. Bearbeitet bedeutet nicht automatisch beherrscht.
 
 Alle Rechenaufgaben stehen mit den benötigten Zahlenwerten, Einheiten und gegebenenfalls Tabellen/Skizzen direkt in der Aufgabe. Gegeben/Annahmen, Gesucht, Teilfragen und Aufgabennummern gliedern die Übungen. Zitatquellen werden zentral in `zitate.json` gepflegt.
+
+
+Die Zitatdatenbank enthält zunächst 100 Zitate von 28 Personen. Angezeigte Tageszitate werden im privaten Lernstand gemerkt: zuerst unbenutzte Einträge, danach die am längsten nicht gezeigten. Auf der Seite „Meine Richtung“ lassen sich Zitate nach Text oder Person durchsuchen und favorisieren.
+
+Ein GitHub-Workflow sucht wöchentlich nach weiteren passenden Zitaten in den Quellenabschnitten festgelegter Wikiquote-Autorenseiten und ergänzt bis zu zehn neue Einträge mit Werkangabe. Unsichere Zuschreibungen, Dubletten und redaktionell ausgeschlossene Einträge werden ausgelassen. Wenn die Quellen ausfallen oder nichts Neues passt, bleibt die Sammlung erhalten. Quellenprüfung erfolgt beim Import; beim Öffnen der Webseite sind keine Anfragen an Zitatdienste nötig. Online ergänzte Einträge bleiben in der veröffentlichten Datendatei und werden beim nächsten Build oder lokalen Upload übernommen. Der Workflow benötigt dafür keine Schreibrechte auf den Quellcode.
+
+Prüfen: `python3 -m unittest test_zitate.py` und `node test_zitate.cjs`. Beide Prüfungen laufen im GitHub-Build.

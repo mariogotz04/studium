@@ -994,17 +994,31 @@ function richtungEinst() {
 function tagesZitat(tag = heuteIso()) {
   const e = richtungEinst(), favoriten = ZITATE.filter(z => e.favoriten.includes(z.id));
   const auswahl = e.nurFavoriten && favoriten.length ? favoriten : ZITATE;
-  const nummer = Math.floor(Date.parse(tag + "T12:00:00Z") / 864e5);
-  return auswahl.length ? auswahl[((nummer % auswahl.length) + auswahl.length) % auswahl.length] : null;
+  if (!auswahl.length) return null;
+  const gespeichert = db.get("zitat:tag:" + tag, null);
+  const heute = auswahl.find(z => z.id === gespeichert?.id);
+  if (heute) return heute;
+  const historie = Object.entries(db.objekt("zitat:tag:")).filter(([d]) => d < tag).sort(([a], [b]) => a.localeCompare(b));
+  const zuletzt = new Map(historie.map(([d, z]) => [z.id, d]));
+  let kandidaten = auswahl.filter(z => !zuletzt.has(z.id));
+  if (!kandidaten.length) {
+    const ältesterTag = auswahl.map(z => zuletzt.get(z.id)).sort()[0];
+    kandidaten = auswahl.filter(z => zuletzt.get(z.id) === ältesterTag);
+  }
+  const gestern = ZITATE.find(z => z.id === historie[historie.length - 1]?.[1].id);
+  const andereStimmen = kandidaten.filter(z => z.autor !== gestern?.autor);
+  if (andereStimmen.length) kandidaten = andereStimmen;
+  kandidaten.sort((a, b) => a.id.localeCompare(b.id));
+  const z = wählen(kandidaten, zufall("zitat:" + tag));
+  db.set("zitat:tag:" + tag, { id: z.id });
+  return z;
 }
 function zitatHtml(z, stern = true) {
   if (!z) return "";
   const favorit = richtungEinst().favoriten.includes(z.id);
   return `<div class="zitat"><blockquote>„${esc(z.text)}“</blockquote><div class="row" style="justify-content:space-between">
-    <div class="quellenzeile">${esc(z.autor)} · ${esc(z.werk)}${z.uebersetzung ? " · eigene Übersetzung" : ""}<br>
-      <a href="${esc(z.quelle)}" target="_blank" rel="noopener">Quelle nachlesen ↗</a></div>
-    ${stern ? `<button class="btn stern" type="button" data-zitat="${esc(z.id)}" aria-label="${favorit ? "Aus Favoriten entfernen" : "Als Favorit speichern"}" aria-pressed="${favorit}">${favorit ? "★" : "☆"}</button>` : ""}</div>
-    ${z.original ? `<details><summary>Originalwortlaut</summary><p>${esc(z.original)}</p></details>` : ""}</div>`;
+    <div class="quellenzeile">${esc(z.autor)}</div>
+    ${stern ? `<button class="btn stern" type="button" data-zitat="${esc(z.id)}" aria-label="${favorit ? "Aus Favoriten entfernen" : "Als Favorit speichern"}" aria-pressed="${favorit}">${favorit ? "★" : "☆"}</button>` : ""}</div></div>`;
 }
 function zitatEreignisse(root) {
   root.querySelectorAll("[data-zitat]").forEach(b => b.onclick = () => {
@@ -1018,6 +1032,21 @@ function zitatEreignisse(root) {
       b.setAttribute("aria-label", favorit ? "Aus Favoriten entfernen" : "Als Favorit speichern");
     } else startSeite();
   });
+}
+function zitatSammlung(root) {
+  const suche = root.querySelector("#zitatsuche"), liste = root.querySelector("#zitatliste"), mehr = root.querySelector("#zitatmehr");
+  let anzahl = 12;
+  const zeichnen = () => {
+    const s = suche.value.trim().toLocaleLowerCase("de");
+    const treffer = ZITATE.filter(z => (z.text + " " + z.autor).toLocaleLowerCase("de").includes(s));
+    liste.innerHTML = treffer.slice(0, anzahl).map(z => zitatHtml(z)).join("") || `<p class="muted">Kein Zitat gefunden.</p>`;
+    root.querySelector("#zitatanzahl").textContent = `${treffer.length} Zitate`;
+    mehr.hidden = treffer.length <= anzahl;
+    zitatEreignisse(liste);
+  };
+  suche.addEventListener("input", () => { anzahl = 12; zeichnen(); });
+  mehr.onclick = () => { anzahl += 24; zeichnen(); };
+  zeichnen();
 }
 function richtungHtml(tag) {
   const e = richtungEinst();
@@ -1070,14 +1099,16 @@ function richtungSeite() {
     ${[["anzeigen", "Mein Warum auf der Startseite zeigen"], ["zitate", "Täglich ein Zitat anzeigen"], ["impulse", "Kurze Reflexionsimpulse nach Lernrunden anzeigen"], ["nurFavoriten", "Für das Tageszitat bevorzugt meine Favoriten verwenden"]].map(([id, label]) => `<label class="schalter"><input type="checkbox" name="${id}"${e[id] ? " checked" : ""}>${label}</label>`).join("")}
     <p class="muted" style="font-size:13px">Deine Eingaben werden auf diesem Gerät gespeichert und bei bestehender Anmeldung mit deinem Konto synchronisiert.</p>
     <button class="btn primary gross" type="submit">Meine Richtung speichern</button></form></div>
-    <div class="panel"><h2>Zitate für deinen Lerntag</h2><p class="muted">Mit Quelle und Originalwortlaut. Der Stern speichert deine Favoriten.</p>${ZITATE.map(z => zitatHtml(z)).join("")}</div>`;
+    <div class="panel"><h2>Zitate für deinen Lerntag</h2><p class="muted">Jeden Tag ein anderes Zitat. Der Stern speichert deine Favoriten.</p>
+      <div class="row"><input type="search" id="zitatsuche" aria-label="Zitate durchsuchen" placeholder="Zitat oder Person suchen …"><span class="muted" id="zitatanzahl"></span></div>
+      <div id="zitatliste"></div><button class="btn" type="button" id="zitatmehr">Weitere Zitate anzeigen</button></div>`;
   root.querySelector("#richtung-form").onsubmit = event => {
     event.preventDefault(); const form = new FormData(event.currentTarget), neu = { ...richtungEinst() };
     for (const k of ["warum", "vision", "identitaet", "anti", "wenn", "dann"]) neu[k] = String(form.get(k) || "").trim().slice(0, 600);
     for (const k of ["anzeigen", "zitate", "impulse", "nurFavoriten"]) neu[k] = form.has(k);
     db.set("einst:richtung", neu); meldung("Deine Richtung ist gespeichert."); location.hash = "#start";
   };
-  zitatEreignisse(root);
+  zitatSammlung(root);
 }
 
 let tagesliste = [];

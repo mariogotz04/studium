@@ -57,7 +57,7 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
   `/*KARTEN*/null`, Aufgaben und Quiz bei `/*LERNEN*/null`, der Vorlesungsplan bei `/*PLAN*/null`).
 - `Vorlesungsplan.pdf` – aktueller Stundenplan als PDF-Export aus thabella (Mario legt ihn hier ab).
 - `build.py` – kompiliert die Skripte und baut die Seite (läuft auf GitHub).
-- Die GitHub Action (`.github/workflows/webseite.yml`) liegt nur im Repository auf GitHub, nicht hier.
+- `.github/workflows/webseite.yml` – Build/Veröffentlichung und wöchentliche Ergänzung der Zitatdatenbank; diese lokale Quelle wird mit hochgeladen.
 - `Webseite aktualisieren.command` – Upload (Doppelklick oder `bash`).
 
 Änderungen an diesen Dateien werden ebenfalls mit dem Upload-Skript veröffentlicht.
@@ -157,7 +157,12 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 
 - Start zeigt „Mein Warum“ mit dem nächsten offenen Tagesziel und kleinem Einstieg. `#richtung` öffnet den Editor für Warum, Vision, Identitätssatz, Anti-Vision und Wenn-dann-Plan. Alles ist freiwillig und abschaltbar; Anti-Vision bleibt eingeklappt.
 - Private Eingaben und Zitatfavoriten nur unter `einst:richtung` im bestehenden Browser-/Supabase-Zustand speichern, niemals in Git oder Modulquellen. Tagesreflexionen gehören zu `abschluss:<Tag>`.
-- `zitate.json` enthält zentral kuratierte Zitate mit eindeutiger ID, Urheber, Werk/Datum und überprüfter HTTPS-Quelle; Übersetzungen kennzeichnen und den Ausgangswortlaut beilegen. Keine ungeprüften Internetzuschreibungen. Tageszitat rotiert, Favoriten und Ausblenden sind möglich.
+- `zitate.json` enthält die gemeinsame Zitatdatenbank. Werk, HTTPS-Quelle und ggf. Übersetzung/Original bleiben interne Belege. Auf der Oberfläche ausdrücklich nur Zitat und Name anzeigen: keine Quellenlinks, Werkangaben oder aufklappbaren Originalfassungen. Favoriten und Ausblenden erhalten; die Sammlung ist durchsuchbar und lädt weitere Einträge portionsweise.
+- `tagesZitat` speichert die Tagesauswahl unter `zitat:tag:<Datum>` im privaten Sync-Zustand. Gleiches Zitat am selben Tag; zuerst alle unbenutzten Einträge verwenden, danach den am längsten nicht gezeigten. Neue Einträge vor Wiederholungen berücksichtigen und, soweit möglich, die Person wechseln. Favoritenfilter bleibt optional; bei leerem Filter auf die Sammlung zurückfallen.
+- `zitate_aktualisieren.py` liest regelmäßig ausschließlich die Quellenabschnitte einer festgelegten Liste deutschsprachiger, gemeinfreier Autoren bei Wikiquote. Nur vollständige, thematisch passende Zitate mit Werkangabe übernehmen, keine bloßen/zweifelhaften Zuschreibungen, Fremdzitate über die Person oder erkennbare Übersetzungen ohne Originalbeleg. Texte niemals generieren oder frei ergänzen. Doppelte und sehr ähnliche Fassungen vermeiden; redaktionelle Ausschlüsse stehen dauerhaft in `zitate_filter.json`.
+- `.github/workflows/webseite.yml` ergänzt sonntags um 05:23 UTC sowie bei manuellem Workflowstart bis zu zehn passende neue Internetfundstellen, baut die Seite und erhält neue Einträge in der öffentlichen Pages-Datei `zitate.json`. Der Quellcode-Workflow behält `contents: read` und führt keine automatischen Git-Commits/Pushes aus. Kein Geheimnis/API-Schlüssel nötig. Bei Quellenausfällen oder fehlenden neuen passenden Fundstellen bleibt die vorhandene Sammlung unverändert; sie funktioniert unabhängig von den Quellenservern.
+- Reine Webseitenänderungen können mit `bash "Webseite aktualisieren.command" --nur-webseite` veröffentlicht werden; die bereits veröffentlichten Modulquellen bleiben dann in der Git-Kopie bestehen. So werden parallele, noch nicht fertige Modulbearbeitungen nicht mitveröffentlicht. Ohne Option gilt weiterhin der vollständige Standardupload.
+- Vor jedem lokalen Upload führt das Upload-Skript die online hinzugekommenen Zitate in die iCloud-Quelldatei zurück, damit sie nicht durch einen älteren Stand ersetzt werden. Die veröffentlichte Datei enthält ausschließlich öffentliche Zitate und interne Belege, keinen Lernstand. Jeder Build übernimmt zuerst diese Sammlung; Netz-/Datenfehler brechen vor einer Veröffentlichung ab, um keinen älteren Grundbestand auszuliefern. Parser-/Importtests in `test_zitate.py`, Auswahl-/Darstellungstests in `test_zitate.cjs` müssen auch in CI bestehen.
 - Fortschrittsfeedback nur aus gespeicherten Bewertungen ableiten, z. B. heute selbst gelöst nach vorher „mit Hilfe“. Reflexionen nach Lernrunden und im Tagesabschluss fördern eigenes Handeln und Strategieprüfung. Keine Behauptung, Anstrengung beweise Gehirnwachstum.
 
 ## Stabile Tagesliste und automatische Abschlüsse
@@ -179,3 +184,10 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - 688 Aufgaben in sieben Modulen nummeriert, darunter 260 Rechenaufgaben mit Gegeben/Gesucht und ergänzten Eingabedaten, Tabellen oder Skizzen; bestehende Titel und Lösungen erhalten.
 - Tagesliste bleibt stabil und hakt tatsächliche Abschlüsse automatisch ab. Regeln in allen sieben Modul-AGENTS.md ergänzt.
 - Validierung: vollständiger Build aller sieben Lernskripte und Aufgaben ohne Fehler/Warnungen; 688 Aufgaben-/215 Quiz-/462 Karten-IDs und bestehende Lösungsschritte unverändert, Quellenmarkierungen für alle gültig. Abschlussgrenzen, manuelle Haken und Tageswechsel automatisiert geprüft; Scroll-Regressionsprüfung (16 Gesten, 4 Bewertungsbuttons), iPad-/Mobilansicht und PDF-Stichproben aller Module geprüft. Veröffentlichung mit dem bestehenden Upload-Skript.
+
+
+### 27.10.2026 · Große Zitatdatenbank mit Internetergänzung
+- Sammlung auf 100 Zitate von 28 Personen erweitert; 96 gefundene ungeeignete/zweifelhafte oder doppelte Einträge dauerhaft ausgeschlossen. Quellen/Werkangaben intern erhalten, Anzeige auf Zitat und Name reduziert.
+- Tageshistorie verhindert vorzeitige Wiederholungen und hält die Wahl nach Neuladen/Erweiterungen stabil. Suchbare Sammlung, portionsweises Nachladen und Favoriten erhalten.
+- Wöchentlicher Import mit Werkbelegen, Ausfallrückfall, automatischer Veröffentlichung und sicherer Zusammenführung bei lokalen Uploads ergänzt. Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-10-27_vor_Zitatdatenbank/`.
+- Validiert: Parser-/Importtests und JavaScript-Tests für vollständigen Umlauf, Tagesstabilität, Datenbankwachstum, Favoriten und reduzierte Anzeige bestanden. Echter Internetimport gegen eine Testkopie ergänzt genau 10 weitere freigegebene Einträge. Gesamtbuild aller 7 Module ohne Fehler/Warnungen; Browserprüfung von Suche, Favoriten, Entwurfserhalt und Anzeige nur mit Zitat/Name bestanden.
