@@ -91,6 +91,16 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "druckluftmotor-vergleich": "abbildungen/druckluftmotor-vergleich.svg",
+  "kraftwerk-enthalpie": "abbildungen/kraftwerk-enthalpie.svg",
+  "turbine-energie": "abbildungen/turbine-energie.svg",
+  "arbeit-zwei-wege": "abbildungen/arbeit-zwei-wege.svg",
+  "arbeit-nutzanteil": "abbildungen/arbeit-nutzanteil.svg",
+  "arbeit-verschiebung": "abbildungen/arbeit-verschiebung.svg",
+  "map-arbeit": "abbildungen/map-arbeit.svg",
+  "map-waerme-enthalpie": "abbildungen/map-waerme-enthalpie.svg",
+  "druckluftmotor-pv": "abbildungen/druckluftmotor-pv.svg",
+
   "map-fet": "abbildungen/map-fet.svg",
   "map-tabellenmodell": "abbildungen/map-tabellenmodell.svg",
   "interpolation-invers": "abbildungen/interpolation-invers.svg",
@@ -150,6 +160,16 @@
 )
 
 #let bilddeutungen = (
+  "druckluftmotor-vergleich": (titel: "Bild lesen", body: [Druck und Volumen sind auf die Anfangswerte bezogen; beide Wege beginnen bei ①. Grün fällt die reversible Adiabate steiler als die blaue Isotherme. Am selben orange markierten Enddruck endet sie bei kleinerem Volumen. Die graue Fülllinie oben und die orange Ausschiebelinie unten gehören zum idealisierten Gaswechsel. Gezeichnet sind die beiden Modellkurven mit dem Druckverhältnis des Vorlesungsbeispiels.]),
+  "kraftwerk-enthalpie": (titel: "Bild lesen", body: [Von links nach rechts bleibt der Massenstrom gleich. Im Kessel steigt die Enthalpie durch Wärmezufuhr von 128 auf 3150 kJ/kg. In der adiabaten Turbine sinkt sie auf 2350 kJ/kg; diese Differenz wird im Modell als Wellenarbeit abgegeben. Das Schema zeigt eine offene Anlage, keinen geschlossenen Dampfkreislauf.]),
+  "turbine-energie": (titel: "Bild lesen", body: [Links steht die mit dem Höhenunterschied verfügbare Leistung. Sie teilt sich rechts in abgegebene Wellenleistung und Zunahme der inneren Energie des Wassers. Die zweite Größe bleibt im austretenden Wasser; über die adiabate äußere Grenze fließt keine Wärme.]),
+  "arbeit-zwei-wege": (titel: "Bild lesen", body: [Waagerecht steht das auf den Anfangswert bezogene Volumen, senkrecht der entsprechend bezogene Druck. Die Verdichtung läuft von rechts unten nach links oben. Grün folgt einer Isotherme; Orange erst einer Isobare, dann einer Isochore. Die Fläche unter dem jeweiligen Weg ist der Betrag der Volumenarbeit; das senkrechte Teilstück trägt keine bei.]),
+  "arbeit-nutzanteil": (titel: "Bild lesen", body: [Waagerecht steht das Volumen, senkrecht der absolute Druck. Das Gas expandiert hier schematisch bei konstantem Druck. Der graue Flächenanteil unter dem Umgebungsdruck wird zum Verdrängen der Umgebung gebraucht. Nur die grüne Fläche darüber kann zusätzlich nach außen genutzt werden. Die Arbeitsbeträge sind positiv gezeichnet; als Zufuhrgrößen sind die abgegebenen Arbeiten negativ.]),
+  "arbeit-verschiebung": (titel: "Bild lesen", body: [Der mittlere Kasten erfasst Ein- und Ausströmverschiebung mit ihren Vorzeichen. Zusammen mit der Volumenarbeit ergibt sich die Druckarbeit desselben Zustandswegs. Die Kästen sind Energiebeträge derselben Bezugsmasse, keine drei unabhängigen Wärme- oder Arbeitszufuhren.]),
+  "map-arbeit": (titel: "Bild lesen", body: [Die vier Äste trennen die zur Systembeschreibung passenden Arbeitsanteile. Der Prozessweg legt das Integral fest. Die Umgebung nimmt bei einer Expansion einen Teil der abgegebenen Volumenarbeit in Anspruch; Verschiebearbeit verbindet die offene und die geschlossene Beschreibung.]),
+  "map-waerme-enthalpie": (titel: "Bild lesen", body: [Die beiden oberen Äste trennen Übertragung und Speicherung. Links unten ergänzt die Enthalpie den Druck-Volumen-Anteil. Rechts unten entscheidet das Stoffmodell, wie Energieunterschiede berechnet werden. Eine Wärmemenge wird nicht als eigener Wärmebestand gespeichert.]),
+  "druckluftmotor-pv": (titel: "Bild lesen", body: [Beide Diagramme haben Druck nach oben und Volumen nach rechts. Links fällt die reversible Adiabate steiler ab; rechts verläuft die rote Isotherme bis zum gleichen Enddruck und einem größeren Endvolumen. Die Rechtecke der Füllung bei $p_1$ und der Ausschiebung bei $p_2$ ergänzen die Expansionsarbeit zur Arbeit des Gaswechselzyklus. Die schraffierten Flächen veranschaulichen die Druckarbeit.]),
+
   "map-fet": (titel: "Die Mindmap lesen", body: [Die vier Äste bilden einen Rechenweg: Zuerst die Grenze festlegen, dann Ströme und Speicher bilanzieren, den Stoffzustand beschreiben und schließlich das Ergebnis prüfen. Dieselbe Kette verbindet Thermodynamik und die schon verwendeten Strömungsansätze.]),
   "map-tabellenmodell": (titel: "Die Mindmap lesen", body: [Vier Entscheidungen führen vom Zustand zur Rechnung. Erst die Phase erkennen, dann zwischen spezifischer Größe, Gesamtmenge und Strom unterscheiden. Der Tabellenwert verbindet anschließend das Stoffmodell mit der Bilanz; Einheiten und Bezugszustand müssen dazu passen.]),
   "interpolation-invers": (titel: "Die Achsenrolle wechseln", body: [Waagerecht steht das bekannte spezifische Volumen, senkrecht die gesuchte Temperatur bei festem Druck. Grün verbindet die zwei Tabellenpunkte geradlinig. Die orange Hilfslinie bei 0,02300 m³/kg trifft diese Gerade bei rund 106,11 °C. Die Gerade ist eine Näherung zwischen den Punkten.]),
@@ -221,7 +241,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand: *27.10.2026*. Behandelt sind die Vorlesungsinhalte bis „Ende VL 21.10“ und die ergänzenden Übungen aus Tutorium und WZF bis 23.10.; die ältere Altklausurzuordnung und die Gesamtübersicht sind im Wegweiser eingeordnet. Das Skript enthält nur die Erklärungen und im Anhang die Formelsammlung. Aufgaben mit Lösungen Schritt für Schritt und das Quiz stehen auf der Lernwebseite im Reiter „Lernen“; die nur angekündigten Vorlesungsbeispiele zu Pumpspeicher und Strahltriebwerk bleiben offen.
+Stand: *27.10.2026*. Behandelt sind die Vorlesungsunterlagen vom 27.10. einschließlich Turbine, Kraftwerk, Arbeitsformen und Druckluftmotor sowie Tutorium und WZF bis 23.10. Die ältere Altklausurzuordnung bleibt im Wegweiser eingeordnet. Aufgaben mit vollständigen Lösungen, Quiz und Karteikarten stehen unter „Lernen“, die Hörzusammenfassung als EPUB bei den Lernskripten; das Strahltriebwerk ist weiterhin nur angekündigt.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -231,7 +251,7 @@ Stand: *27.10.2026*. Behandelt sind die Vorlesungsinhalte bis „Ende VL 21.10�
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -243,10 +263,10 @@ Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zu
   pfeil(beschriftung: [benennt Größen für]),
   chunk([Kapitel 2 · Stoffeigenschaften], [Phasen · Zustandsgebiet · Dampfgehalt · Stoffmodell · Dampftafel], ziel: <a-2>),
   pfeil(beschriftung: [liefert Stoffwerte für]),
-  chunk([Kapitel 3 · Energiebilanzen: Erster Hauptsatz], [Systemart · Energiespeicher · Enthalpie · Wärme · Arbeit], ziel: <a-3>),
+  chunk([Kapitel 3 · Energiebilanzen: Erster Hauptsatz], [Systemart · Energiespeicher · Turbine · Prozessweg · Arbeitsformen], ziel: <a-3>),
 )
 
-Die Systemgrenze legt fest, was Du betrachtest und was über die Grenze fließt. Kapitel 1 gibt dafür die Größen und Bilanzbegriffe vor. Kapitel 2 beschreibt den Stoffzustand mit Modellen und Tabellen. Kapitel 3 verbindet beides zur Energiebilanz: Erst die Grenze wählen, dann die Bilanz aufstellen, Stoffwerte einsetzen und das Ergebnis prüfen.
+Die Systemgrenze legt fest, was Du betrachtest und was über die Grenze fließt. Kapitel 1 gibt dafür die Größen und Bilanzbegriffe vor. Kapitel 2 beschreibt den Stoffzustand mit Modellen und Tabellen. Kapitel 3 verbindet beides zur Energiebilanz: Erst die Grenze wählen, dann die Bilanz aufstellen, Stoffwerte einsetzen und das Ergebnis prüfen. Turbine und Druckluftmotor zeigen anschließend, wie Prozessweg und Arbeitsform das nutzbare Ergebnis bestimmen.
 #src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
 
 #pagebreak()
@@ -951,11 +971,12 @@ $dot(H)$ in kW, $dot(S)$ in kW/K, wenn $dot(m)$ in kg/s, $h$ in kJ/kg und $s$ in
 = Kapitel 3 · Energiebilanzen: Erster Hauptsatz <a-3>
 
 #überblick([Kapitel 3 auf einen Blick],
-  idee(<a-3-1>, [Energie wird bilanziert.], [Die Änderung gespeicherter Energie entspricht dem Nettozufluss über die Grenze.]),
-  idee(<a-3-1-1>, [Stoffströme tragen Enthalpie mit.], [Im offenen System erfasst sie auch die Verschiebearbeit an Ein- und Austritten.]),
-  idee(<a-3-1-2>, [Ohne Stoffaustausch gilt die geschlossene Bilanz.], [Wärme und Gesamtarbeit verändern innere, Bewegungs- und Lageenergie.]),
-  idee(<a-3-1-3>, [Annahmen streichen Terme.], [Stationär, adiabat oder ruhend bedeuten jeweils etwas anderes und sind einzeln zu begründen.]),
-  idee(<a-3-2>, [Ein starrer Behälter kann instationär sein.], [Bei der Entnahme bleiben Speicheränderung und Enthalpietransport gemeinsam in der Bilanz.]),
+  idee(<a-3-1>, [Erst die Systemart, dann die Bilanz.], [Offen mit Enthalpietransport, geschlossen mit innerer Energie; Annahmen einzeln begründen.]),
+  idee(<a-3-2>, [Ein starrer Behälter kann instationär sein.], [Bei Entnahme bleiben Speicherung und Enthalpietransport in derselben Bilanz.]),
+  idee(<a-3-3>, [Turbine und Kessel erfüllen verschiedene Aufgaben.], [Wellenarbeit und Wärmezufuhr ergeben sich aus passenden Energiedifferenzen.]),
+  idee(<a-3-4>, [Der Weg bestimmt die Volumenarbeit.], [Druckverlauf und Umgebungsdruck entscheiden über Aufwand und Nutzanteil.]),
+  idee(<a-3-5>, [Verschiebearbeit verbindet die Beschreibungen.], [Druckarbeit und Volumenarbeit unterscheiden sich um die Änderung von pv.]),
+  idee(<a-3-7>, [Das Stoffmodell schließt die Bilanz.], [Wärme, innere Energie und Enthalpie #link(<a-3-6>)[trennen]; den Motorprozess adiabat oder isotherm modellieren.]),
 )
 
 #ablauf(
@@ -964,7 +985,8 @@ $dot(H)$ in kW, $dot(S)$ in kW/K, wenn $dot(m)$ in kg/s, $h$ in kJ/kg und $s$ in
     chunk([Offene Bilanz], [Enthalpieströme · Speicherterm auf Stationarität prüfen], ziel: <a-3-1-1>),
     chunk([Geschlossene Bilanz], [gespeicherte Energie · Wärme · Gesamtarbeit], ziel: <a-3-1-2>)),
   chunk([Annahmen und Stoffwerte einsetzen], [erst vollständige Bilanz, dann begründet vereinfachen], ziel: <a-3-1-3>),
-  chunk([Ergebnis prüfen], [Vorzeichen · Einheit · Bezugsgröße · Plausibilität], ziel: <a-3-2>),
+  chunk([Prozessweg und Arbeitsform prüfen], [Druckverlauf · Verschiebearbeit · Wärmeannahme], ziel: <a-3-4>),
+  chunk([Ergebnis prüfen], [Vorzeichen · Einheit · Bezugsgröße · Plausibilität], ziel: <a-3-7>),
 )
 #src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
 #hoch(<ueberblick>, [Modul auf einen Blick])
@@ -994,7 +1016,7 @@ $ dot(H)_2-dot(H)_1+dot(m)[(c_2^2-c_1^2)/2+g(z_2-z_1)]=dot(Q)_12+P_12 $]
 *Einheiten:* spezifisch J/kg oder einheitlich kJ/kg; Ströme entsprechend W oder kW. Mit $c$ in m/s, $z$ in m und $g$ in m/s² ergeben $c^2/2$ und $g z$ zunächst *J/kg*. Für eine Bilanz in kJ/kg teilst du diese Zahlenwerte durch 1000. $dot(m)$ steht in kg/s.
 Links stehen die Änderungen der Zustandsgrößen (innere: Enthalpie; äußere: Bewegungs- und Lageenergie), rechts die Prozessgrößen: *Σ Änderung Zustandsgrößen = Σ Prozessgrößen*. $w_(t,12)$ heißt *technische Arbeit*; im Turbomaschinenbau auch *spezifische Stutzenarbeit* $Y_12$.
 
-*Aufschlüsselung der technischen Arbeit* (Ausblick auf Kap. 3.2.2):
+*Aufschlüsselung der technischen Arbeit* (ausgeführt in Abschnitt 3.5):
 $ w_(t,12)=j_12+w_(p 12)+(c_2^2-c_1^2)/2+g(z_2-z_1) quad "mit" quad w_(p 12)=integral_1^2 v dif p $
 $j_12$: spezifische Streu- oder *Dissipationsarbeit* (von dir markiert), $w_(p 12)$: spezifische *Druckarbeit*, dazu Beschleunigungs- und Hubarbeit.
 #src([N S. 6–7 (Folie 03 Erster Hauptsatz 3–4); BT 4.1, Gl. (4.2), (4.3) und (4.9), S. 92–93, sowie 4.2, Gl. (4.32), S. 103 (PDF-S. 112–113 und 123). Speicherpräzisierung und Einheitenhinweis: ergänzte Einordnung.])
@@ -1033,10 +1055,10 @@ $ c_"Pb" Delta T_12-c_1^2/2-g z_1=0 quad => quad Delta T_12=frac(c_1^2/2+g z_1, 
 $ Delta T_12=1/(130 thin "J/(kg K)")(30^2/2+"9,81" dot 30) thin "m"^2/"s"^2=("450"+"294,3")/130 thin "K" approx "5,73" thin "K" $
 Einheitencheck: $1 thin "m"^2/"s"^2=1 thin "N m/kg"=1 thin "J/kg"$. Für feste Stoffe gilt $u_2-u_1=c Delta T$.
 #note("Modell und Realität", [Die 5,73 K sind der idealisierte Temperaturanstieg mit dem verwendeten konstanten $c_"Pb"$. Reale Verformung ist nicht automatisch Energieabgabe: Dissipation *in der Kugel* kann sie erwärmen. Energie, die an Boden und Umgebung geht oder als andere Speicheränderung verbleibt, steht dagegen nicht vollständig für $m c Delta T$ zur Verfügung.], fill: sand)
-#note("Fehler vermeiden", [In deinem Anschrieb steht $c_"Pb"=130 thin "kJ/(kg K)"$. Richtig ist $130 thin "J/(kg K)"$ (Blei, ca. 0,13 kJ/(kg K)). Nur mit J ergibt sich das Ergebnis 5,73 K; mit kJ wären es 0,0057 K.], fill: sand)
+#note("Fehler vermeiden", [Im älteren Anschrieb N S. 12 steht $c_"Pb"=130 thin "kJ/(kg K)"$; N27, PDF-S. 8, bestätigt inzwischen die Einheit J/(kg K). Richtig ist $130 thin "J/(kg K)"$ (Blei, ca. 0,13 kJ/(kg K)). Nur mit J ergibt sich das Ergebnis 5,73 K; mit kJ wären es 0,0057 K.], fill: sand)
 #note("★ Klausur", [„1. HS ist der richtige Ansatz in der Prüfung!!“ (von dir markiert). Immer zuerst System und Zustände ① und ② festlegen, dann alle Terme hinschreiben und erst danach streichen.], fill: sand)
-*Hinweis zum 1. HS:* Er sagt nur, dass die Summe der Zustandsänderungen gleich der Summe der Prozessgrößen ist. Er sagt *nicht*, welche Prozessgröße in welche Zustandsänderung umgewandelt wird. Die Beispiele 2 (Pumpspeicherkraftwerk, adiabate Turbine, $P=7000 thin "kW"$) und 3 (Strahltriebwerk mit Nachbrenner und adiabater Düse) wurden nur genannt, noch nicht gerechnet.
-#src([N S. 11 (Folie 03 Erster Hauptsatz 8) und S. 12 (Tafel, „Ende VL 21.10“). Einheitenkorrektur bei $c_"Pb"$: eigene Ergänzung.])
+*Hinweis zum 1. HS:* Er sagt nur, dass die Summe der Zustandsänderungen gleich der Summe der Prozessgrößen ist. Er sagt *nicht*, welche Prozessgröße in welche Zustandsänderung umgewandelt wird. Das Pumpspeicherbeispiel ist inzwischen in 3.3 behandelt. Das Strahltriebwerk mit Nachbrenner und adiabater Düse wird in N27, PDF-S. 10, weiterhin nur genannt; zu diesem Beispiel werden keine fehlenden Daten ergänzt.
+#src([N S. 11 (Folie 03 Erster Hauptsatz 8) und S. 12 (Tafel, „Ende VL 21.10“). N27, PDF-S. 8 und 10. Einheitenkorrektur bei $c_"Pb"$: eigene Ergänzung.])
 #hoch(<a-3>, [Kapitelübersicht])
 
 
@@ -1081,10 +1103,138 @@ Diese kurze Verdampfungsformel gilt *hier wegen der hergeleiteten Randbedingunge
 #note("Bezugsgröße mitsprechen", [„Die Entropie steigt“ ist ohne Bezugsgröße unvollständig. Nach der Entnahme kann die spezifische Entropie $s$ des Restes größer und die gesamte Entropie $S=m s$ kleiner sein. Die Aufgabe „Stickstoff: Heizerenergie und Zustandsgrößen“ prüft beides anhand desselben Datensatzes.])
 #src[Ü 2.1 f–g, PDF-S. 11–12; M2, PDF-S. 4 und 6–8; BT 3.4, S. 60–62 / PDF-S. 80–82, und 4.4, S. 108 / PDF-S. 128.]
 
-*Der Zusammenhang in Kapitel 3.* Erst die Systemart festlegen: Strömt Stoff über die Grenze, arbeitest du mit Enthalpie $h$ und technischer Arbeit $w_t$; ist das System geschlossen, mit innerer Energie $u$ und Gesamtarbeit $w_g$. Dann alle Terme aufschreiben, die Annahmen (stationär, adiabat, reibfrei, ruhend) streichen lassen und die Stoffwerte aus Kapitel 2 einsetzen. Bei instationärer Entnahme bleibt zusätzlich der Speicherterm erhalten; der austretende Stoff trägt Enthalpie mit.
 #hoch(<a-3>, [Kapitelübersicht])
 
+#pagebreak()
+== 3.3 Ergänzung 27.10. · Turbine und Kraftwerk <a-3-3>
+Ein Gefälle oder heißer Dampf kann eine Welle antreiben. Entscheidend ist, welche Energie der strömende Stoff zwischen Ein- und Austritt abgibt. Eine *adiabate Turbine* überträgt keine Wärme über ihre Grenze; das bedeutet noch keinen verlustfreien Prozess.
 
+=== 3.3.1 Das Pumpspeicherbeispiel: Wohin geht die Gefälleenergie? <a-3-3-1>
+#bild("turbine-energie", [Energieaufteilung des Vorlesungsbeispiels. Eigene Darstellung nach N27, PDF-S. 9.], height: 53mm)
+Zwischen den freien Wasserspiegeln gilt derselbe Umgebungsdruck. Änderungen der Geschwindigkeit werden vernachlässigt. Bei näherungsweise inkompressiblem Wasser ist dann $Delta h approx c Delta T$ und mit $H=z_1-z_2>0$:
+#form[$ c Delta T-g H=w_t quad eta=frac(abs(P_t),rho dot(V)g H) $]
+$c$ in J/(kg K), $H$ in m, $w_t$ in J/kg; $rho dot(V)=dot(m)$ in kg/s. Die Wellenleistung $P_t$ ist in der Zufuhrkonvention negativ. Der Wirkungsgrad verwendet ihren *positiven Betrag* als Nutzen.
+Die 7 MW Wellenleistung erreichen im Beispiel etwa *89,2 %* der 7,848 MW Gefälleleistung. Die restlichen 0,848 MW erhöhen die innere Energie des Wassers: $Delta T approx "0,0253"$ K. Ein kleiner Temperaturanstieg ist wegen des großen Massenstroms mit erheblicher Leistung verbunden.
+#note("Fehler vermeiden", [„Adiabat“ bedeutet $Q=0$. Die hier fehlende Nutzarbeit verlässt das System nicht als Wärmeverlust, sondern bleibt als erhöhte innere Energie im Wasser. Dagegen würde „ohne Dissipation“ eine zusätzliche Annahme verlangen.], fill: sand)
+#src[N27, PDF-S. 9–10; Bilanz ergänzend BT 4.1, S. 92–93 / PDF-S. 112–113. Energieaufteilung und Zahlen: eigene Nachrechnung des Tafelbeispiels.]
+
+=== 3.3.2 Offene Dampfanlage: Kessel und Turbine getrennt bilanzieren <a-3-3-2>
+#bild("kraftwerk-enthalpie", [Offenes Dampfkraftwerk: Zustandsnummern wie in N27, PDF-S. 11; vereinfachtes eigenes Fließschema.], height: 52mm)
+Im *Dampfkessel* führt Wärme dem Strom Energie zu; technische Arbeit wird dort im Modell nicht übertragen. In der *Turbine* wird dagegen bei vernachlässigten Änderungen von Geschwindigkeit und Höhe ein Enthalpieabfall zu abgegebener Wellenarbeit:
+#form[$ q_12=h_2-h_1 quad w_(t,23)=h_3-h_2 quad dot(Q)_12=dot(m)q_12 quad P_23=dot(m)w_(t,23) $]
+$h,q,w_t$ in kJ/kg und $dot(m)$ in kg/s liefern kW. Bei 100 t/h aus der Vorlesung beträgt die Kesselwärme 3022 kJ/kg, die Turbinenarbeit −800 kJ/kg. Es ergeben sich 83,94 MW Wärmezufuhr und 22,22 MW abgegebene Wellenleistung.
+#form[$ eta_"Anlage"=frac(abs(P_23),dot(Q)_12)=frac(h_2-h_3,h_2-h_1) approx "0,2647" $]
+*Gültigkeit:* genau das gezeigte offene Anlagenmodell. Pumpen-, Generator- und weitere Verluste sind nicht angegeben. Die 26,47 % sind keine zusätzlich berechnete Effizienz eines vollständigen geschlossenen Dampfkreislaufs.
+In einem Fließbild bedeuten Pfeile Stofftransport, ein Kessel die Wärmezufuhr und die Turbine die Wellenabgabe. Ein solcher Plan legt die zu bilanzierenden Bauteile und Zustände fest; er ist keine räumlich maßstäbliche Zeichnung.
+#src[N27, PDF-S. 11–12; Enthalpiebilanz ergänzend BT 4.4, S. 107–109 / PDF-S. 127–129. Zahlen: eigene Nachrechnung.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak()
+== 3.4 Volumenarbeit, Prozessweg und Nutzarbeit <a-3-4>
+Eine Fahrradpumpe lässt sich mit Kühlung anders zusammendrücken als ohne Kühlung. Dieselben Endzustände legen deshalb die Arbeit noch nicht fest: Es kommt auf den Druck *während* der Bewegung an.
+
+=== 3.4.1 Energie, spezifische Energie und Leistung auseinanderhalten <a-3-4-1>
+#tab(columns: (1fr, 1.5fr, 1.4fr),
+ th([Bezugsgröße], [Zusammenhang], [Bedeutung und Einheit]),
+ [Spezifische Arbeit], [$w=W/m$], [Arbeit je Masse, J/kg oder kJ/kg.],
+ [Geschlossene Masse], [$W=m w$], [Energie, J oder kJ.],
+ [Stationärer Stoffstrom], [$P=dot(m)w_t$], [Energie pro Zeit, W oder kW.],
+)
+Gesamtenergien beziehungsweise passende Leistungen lassen sich addieren. Spezifische Werte verschiedener Massen werden massengewichtet; ihr bloßes Addieren würde die Bezugsgröße verlieren.
+#src[N27, PDF-S. 13; Größen und Enthalpiestrom ergänzend BT 4.4, S. 108 / PDF-S. 128.]
+
+=== 3.4.2 Die Fläche unter dem Weg ist die Volumenarbeit <a-3-4-2>
+Die Kraft auf einen Kolben ist Druck mal Fläche. Fläche mal Weg ergibt die Volumenänderung. In der *Zufuhrkonvention* steht daher ein Minus vor dem Integral:
+#form[$ W_(v,12)=-integral_(V_1)^(V_2) p(V) dif V quad w_(v,12)=-integral_(v_1)^(v_2) p(v) dif v $]
+$p$ ist der absolute Systemdruck, $V$ das Gesamtvolumen, $v$ das spezifische Volumen. Pa·m³ ergibt J; Pa·m³/kg ergibt J/kg. *Voraussetzung:* quasistatische Grenzbewegung mit eindeutigem Druck; im reibfreien ruhenden Modell ist dies die gesamte Arbeit. Expansion ergibt $W_v<0$, Kompression $W_v>0$.
+#bild("arbeit-zwei-wege", [Zwei Verdichtungswege mit $epsilon=V_1/V_2=10$. Eigene normierte Darstellung nach N27, PDF-S. 14–16.], height: 61mm)
+Beim idealen Gas gilt isotherm $p V=p_1 V_1$. Alternativ kann zunächst bei $p_1$ isobar verdichtet und danach bei festem $V_2$ bis zum selben Endzustand erwärmt werden:
+#form[$ W_"I"=p_1 V_1 ln(epsilon) quad W_"II"=p_1 V_1(1-1/epsilon) $]
+Für $epsilon=10$ benötigt Weg I etwa *2,56-mal* so viel Volumenarbeit wie Weg II. Beim zweiten Weg wird vor allem bei niedrigerem Druck verdichtet. Das senkrechte, isochore Stück trägt keine Volumenarbeit bei.
+Da Anfangs- und Endtemperatur gleich sind, ist bei idealem Gas $Delta U=0$. Auf *jedem* Weg gilt deshalb $Q=-W_v$, obwohl $Q$ und $W_v$ einzeln verschieden sind. Der erste Hauptsatz legt ihre Summe fest, nicht ihre getrennten Beträge.
+#note("Gültigkeit", [Weniger mechanische Arbeit setzt hier einen anders geführten Wärmeprozess voraus. Daraus folgt noch kein Gesamtwirkungsgrad einer realen Anlage; Aufwand für Kühlung und Erwärmung ist in diesem Wegvergleich nicht bilanziert.], fill: sand)
+#src[N27, PDF-S. 14–16; Volumenarbeit BT 4.2, S. 99 / PDF-S. 119. Normierung und Verhältnis: eigene Nachrechnung.]
+
+=== 3.4.3 Nutzarbeit: Auch die Umgebung muss Platz machen <a-3-4-3>
+#bild("arbeit-nutzanteil", [Nutzbarer Anteil der Volumenarbeit bei Expansion. Eigene schematische Darstellung nach N27, PDF-S. 17.], height: 53mm)
+Eine expandierende Gasportion muss die Umgebung gegen deren Druck verdrängen. Bei konstantem Umgebungsdruck $p_"∞"$ steht für eine zusätzliche Nutzung nur die Druckdifferenz zur Verfügung:
+#form[$ W_"∞"=p_"∞"(V_2-V_1) quad W_(v,n)=-integral_(V_1)^(V_2)(p-p_"∞")dif V=W_v+W_"∞" $]
+$W_"∞"$ ist hier der *positive Verdrängungsaufwand* bei Expansion; $W_(v,n)$ die in der Zufuhrkonvention vorzeichenbehaftete Nutzarbeit. Der Betrag der nutzbaren Abgabe ist daher kleiner als der Betrag der gesamten Volumenarbeitsabgabe. Im Integral für $W_v$ darf der absolute Druck nicht still durch Überdruck ersetzt werden; das ergäbe bereits die Nutzarbeit.
+#bild("map-arbeit", [Mindmap: Arbeit, Prozessweg und Nutzanteil. Eigene Darstellung.], height: 45mm)
+#note("Vorzeichen im Folienbild", [Am kleinen Flächenelement in N27, PDF-S. 17, steht $dif W_v=p(V)dif V$ ohne Minus. Das zeigt eine Flächenbeschriftung; als vorzeichenbehaftete Zufuhrarbeit gilt dagegen $dif W_v=-p dif V$, wie auch die große Integralformel auf derselben Folie angibt.], fill: sand)
+#src[N27, PDF-S. 17. Vorzeichenhinweis und konstante Umgebung ausdrücklich ergänzt.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak()
+== 3.5 Technische Arbeit und Verschiebearbeit <a-3-5>
+Eine Pumpe fördert Stoff in einen höheren Druck hinein. Nicht die Größe des Maschinengehäuses, sondern die Energieänderung des *hindurchströmenden Stoffes* ist entscheidend. Die technische Arbeit enthält dafür mehrere Beiträge.
+#form[$ w_t=j_12+underbrace(integral_1^2 v dif p,w_p)+frac(c_2^2-c_1^2, 2)+g(z_2-z_1) $]
+Alle Terme in J/kg oder einheitlich kJ/kg. $j_12$ ist Dissipationsarbeit, $w_p$ Druckarbeit, $c$ Strömungsgeschwindigkeit und $z$ Höhe. Nur bei $j_12=0$ und vernachlässigten Änderungen äußerer Energie gilt $w_t=w_p$. Beim Druckanstieg einer idealen Pumpe ist $w_p>0$, bei der Expansion in einer idealen Turbine $w_p<0$.
+
+=== 3.5.1 Druckarbeit und Volumenarbeit sind miteinander verbunden <a-3-5-1>
+Aus $dif(p v)=p dif v+v dif p$ folgt für *denselben Zustandsweg*:
+#form[$ w_p=integral_1^2 v dif p=-integral_1^2 p dif v+p_2v_2-p_1v_1=w_v+Delta(p v) $]
+#bild("arbeit-verschiebung", [Zusammenhang für dieselbe Bezugsmasse. Eigene Darstellung nach N27, PDF-S. 19.], height: 48mm)
+Die Einströmverschiebung liefert in dieser Zerlegung den Beitrag $-p_1v_1$, die Ausströmverschiebung $+p_2v_2$. Sie unterscheiden die Druckarbeit von der Volumenarbeit einer geschlossenen Portion entlang desselben Wegs. Dass eine reale Kolbenmaschine und eine reale Strömungsmaschine automatisch denselben Weg durchlaufen, wird damit nicht behauptet.
+
+=== 3.5.2 Flüssigkeit und Gas: Das Volumenmodell entscheidet <a-3-5-2>
+#tab(columns: (1fr, 1.55fr),
+ th([Stoffmodell], [Folge für die ideale Druckarbeit]),
+ [Flüssigkeit, annähernd inkompressibel], [$v approx "konstant"$: $w_p approx v(p_2-p_1)$. Einheiten: m³/kg mal Pa ergibt J/kg.],
+ [Gas, kompressibel], [$v$ ändert sich: $w_p=integral v(p)dif p$. Ohne Prozessgesetz lässt sich $v$ nicht einfach vor das Integral ziehen.],
+ [Ideales Gas, isotherm], [$p v=R T="konstant"$: $Delta(p v)=0$, deshalb $w_p=w_v$ für denselben Weg.],
+)
+#note("Fehler vermeiden", [Eine Flüssigkeit kann bei fast unverändertem spezifischem Volumen erhebliche Pumpenarbeit benötigen. $w_v approx 0$ bedeutet dann nicht $w_p approx 0$: Gerade die Änderung von $p v$ bleibt erhalten.], fill: sand)
+#src[N27, PDF-S. 18–19; BT 4.2, S. 100 und 102–103 / PDF-S. 120 und 122–123, insbesondere Gl. (4.28)–(4.32).]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak()
+== 3.6 Wärme, innere Energie und Enthalpie <a-3-6>
+Wird ein Topf Wasser erhitzt, überquert Energie die Grenze wegen eines Temperaturunterschieds. Diese Übertragung heißt *Wärme*. Im Wasser bleibt kein eigener „Wärmevorrat“, sondern seine Zustandsenergie ändert sich.
+#bild("map-waerme-enthalpie", [Mindmap: Übertragung, Speicherung und Stoffmodell trennen. Eigene Darstellung nach N27, PDF-S. 20.], height: 48mm)
+#form[$ U=m u quad H=m h quad h=u+p v quad dot(H)=dot(m)h $]
+$U,H,Q$ in J oder kJ, $u,h,q$ in J/kg oder kJ/kg; $dot(H)$ ist Leistung in W oder kW. Enthalpie ist eine Zustandsgröße, die Wärme $Q$ eine Prozessgröße. Je nach System und Bedingungen kann eine *Änderung* der Enthalpie gleich einer übertragenen Wärme sein; beides ist nicht grundsätzlich identisch.
+
+=== 3.6.1 Kalorische Stoffmodelle passend wählen <a-3-6-1>
+Für das *ideale Gas* hängen $u$ und $h$ nur von der Temperatur ab:
+#form[$ dif u=c_v dif T quad dif h=c_p dif T quad c_p-c_v=R $]
+Bei annähernd konstanten Wärmekapazitäten folgen $Delta u=c_v Delta T$ und $Delta h=c_p Delta T$. $c_v,c_p,R$ müssen dieselben Einheiten besitzen. Bei größeren Temperaturbereichen sind konstante Werte eine ausdrücklich zu prüfende Modellannahme.
+Für reale Fluide genügt die Temperatur im Allgemeinen nicht: Nutze etwa $u(T,v)$ oder $h(T,p)$ und die passenden Tabellen aus Kapitel 2. Bei näherungsweise inkompressiblen Flüssigkeiten und Feststoffen wird oft $c_p approx c_v approx c$ gesetzt; Druckeinflüsse auf $h$ verschwinden dadurch nicht automatisch.
+
+=== 3.6.2 Die Änderung von pv vollständig mitnehmen <a-3-6-2>
+#form[$ dif u=dif h-p dif v-v dif p quad u_2-u_1=h_2-h_1-(p_2v_2-p_1v_1) $]
+Nur falls $Delta(p v)=0$ gilt auch $Delta u=Delta h$. Die Stickstoffentnahme in 3.2 hält *gesamtes* $p V$ konstant und erlaubt deshalb $Delta U=Delta H$, obwohl die spezifischen Größen und die Masse sich ändern. Die Bezugsgröße gehört immer zur Aussage.
+#src[N27, PDF-S. 20; BT 4.3–4.4, S. 104–109 / PDF-S. 124–129. Ideales kalorisches Modell ergänzend BT 7.5, S. 217 / PDF-S. 236; Bezug zur Entnahme: W23 und M2, jeweils PDF-S. 2–3.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak()
+== 3.7 Druckluftmotor mit Gaswechsel <a-3-7>
+Im Druckluftmotor füllt Druckluft den Zylinder, expandiert und wird anschließend ausgestoßen. Die Vorlesung vergleicht dafür zwei ideale Wege: *reversibel adiabat* (isentrop) und *isotherm*. Eine gleiche Anfangsportion erreicht in beiden Fällen denselben Enddruck, aber verschiedene Endvolumina.
+#bild("druckluftmotor-vergleich", [Vergleich der Expansionswege und der idealisierten Füll-/Ausschiebelinien. Eigene Darstellung nach N27, PDF-S. 21.], height: 65mm)
+
+=== 3.7.1 Zwei Wege, zwei Energiequellen <a-3-7-1>
+Für eine geschlossene Gasportion gilt bei reversibler adiabater Expansion eines idealen Gases mit konstantem $kappa=c_p/c_v$:
+#form[$ p V^kappa="konstant" quad frac(T_2,T_1)=(p_2/p_1)^((kappa-1)/kappa) quad W_v=frac(p_2 V_2-p_1 V_1,kappa-1) $]
+$Q=0$: Die Expansionsarbeit verringert die innere Energie und die Temperatur sinkt. *Adiabat allein* würde noch keine Isentropie begründen; hier kommt ausdrücklich die Reversibilität hinzu.
+Bei isothermer Expansion desselben idealen Gases bleibt dagegen $T_2=T_1$ und damit $Delta U=0$:
+#form[$ p_1 V_1=p_2 V_(2*) quad W_(v,"isoth")=-p_1 V_1 ln(p_1/p_2) quad Q_"isoth"=-W_(v,"isoth")>0 $]
+Die nachströmende Wärme ermöglicht die zusätzliche Arbeitsabgabe. Das größere isotherme Endvolumen und die größere Fläche sind deshalb keine Arbeitsgewinnung ohne zusätzliche Energiezufuhr.
+#src[N27, PDF-S. 21; isentrope Beziehungen ergänzend BT 7.5, Gl. (7.27)–(7.29), S. 217 / PDF-S. 236. Isothermer Weg: N27, PDF-S. 14 und 21.]
+
+#pagebreak()
+=== 3.7.2 Gaswechsel ergänzt die Expansionsarbeit <a-3-7-2>
+Beim Einfüllen schiebt die Zuluft den Kolben bei $p_1$ von null bis $V_1$; beim Ausstoßen wird gegen $p_2$ von $V_2$ bis null zurückgeschoben. Ohne Totvolumen und mit idealisiert konstanten Füll-/Ausschiebedrücken gilt:
+#form[$ W_"Verschiebung"=-p_1 V_1+p_2 V_2 quad W_"Zyklus"=W_v+W_"Verschiebung"=W_p $]
+Die Gesamtarbeit pro Gaswechselzyklus entspricht damit der Druckarbeit entlang des Expansionswegs. Im reversiblen Modell ohne Änderungen äußerer Energie ist sie zugleich die technische Arbeit dieser Gasportion. $P=f W_"Zyklus"$ benötigt die *Arbeitsspiele pro Sekunde* $f$, nicht nur eine Drehzahlangabe.
+#note("Annahmen zur Vorlesungsrechnung", [Die Folie gibt 600 U/min an, aber keine Zahl der Arbeitsspiele je Umdrehung. In der ergänzten Musterrechnung wird *ein Arbeitsspiel je Umdrehung* ausdrücklich angenommen, also $f=10 thin "s"^(-1)$. Für Luft werden als konstantes Idealmodell $R="287,2"$ J/(kg K) und $kappa="1,4"$ verwendet (BT A.4); diese Stoffwerte sind auf der Folie nicht angegeben.], fill: sand)
+Bei $p_(1,"ü")="22,3"$ bar und $p_"∞"="0,91"$ bar ist der Anfangsdruck *23,21 bar absolut*. Die Anfangstemperatur beträgt *297,95 K*. Die Rechnung in „Druckluftmotor: Adiabate und Isotherme mit Gaswechsel“ trennt die Expansions-, Verschiebe- und Zyklusarbeit; ihre Zahlen sind eine eigene Musterrechnung, keine auf der Folie vorhandene Lösung.
+#src[N27, PDF-S. 21; BT A.4, S. 482 / PDF-S. 497 (Luft: R und κ; konstante Werte als Modell), sowie BT 4.2, S. 102 / PDF-S. 122. Arbeitsspielannahme ausdrücklich ergänzt.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 3.* Die Systemgrenze entscheidet über die Bilanz; der Stoffzustand liefert die Energieunterschiede. Bei instationärer Entnahme bleiben Speicheränderung und Enthalpietransport gemeinsam erhalten. Turbine und Kessel zeigen, ob diese Unterschiede mit Arbeit, Wärme oder äußerer Energie verbunden sind. Der Prozessweg bestimmt die Arbeitsintegrale, während die Verschiebearbeit Volumen- und Druckarbeit verknüpft. Der Druckluftmotor führt alles zusammen: Absolutdruck, passendes Gasmodell, Wärmeannahme und Gaswechsel ergeben erst gemeinsam die abgegebene Arbeit und Leistung.
+
+
+#pagebreak(weak: true)
 = Anhang
 
 == Formelsammlung mit Voraussetzungen
@@ -1151,6 +1301,16 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Isobare Flüssigkeitsentnahme], [$Delta m''=frac(v' m_"entn",v''-v')$], [Starrer Behälter, Sättigung, p konstant; Entnahme flüssig.],
  [Instationär, starr, Ausfluss], [$Delta U=E_"zu"-m_"entn" h_"aus"$], [Kein Zufluss; konstantes $h_"aus"$; äußere Energien vernachlässigt.],
  [Stickstoff: Heizerenergie], [$E_"zu"=Delta m''(h''-h')$], [Zusätzlich isobare gesättigte Flüssigkeitsentnahme wie in Ü 2.1.],
+ [Nutzbare Volumenarbeit], [$W_(v,n)=W_v+p_"∞"(V_2-V_1)$], [Konstanter Umgebungsdruck; $W_v$ mit Absolutdruck. Expansion: abgegebene Nutzarbeit negativ.],
+ [Arbeitsformen, gleicher Weg], [$w_p=w_v+p_2 v_2-p_1 v_1$], [Gleicher Zustandsweg und gleiche Massenbasis; $w_t=w_p$ nur bei $j=0$, ohne äußere Energieänderung.],
+ [Flüssigkeitspumpe, ideal], [$w_t approx v(p_2-p_1)$], [Konstantes $v$, reversibel, Änderungen äußerer Energien vernachlässigt; Pa·m³/kg = J/kg.],
+ [Arbeit und Leistung], [$W=m w$; $P=dot(m) w_t$], [Erste Formel konstante Masse; zweite stationärer Stoffstrom. Energie und Leistung trennen.],
+ [Ideales Gas, kalorisch], [$Delta u=c_v Delta T$; $Delta h=c_p Delta T$], [Konstante Wärmekapazitäten im betrachteten Bereich; $c_p-c_v=R$, $kappa=c_p/c_v$.],
+ [Reversible Adiabate, ideales Gas], [$p V^kappa="konstant"$; $T_2/T_1=(p_2/p_1)^((kappa-1)/kappa)$], [Geschlossene Gasportion, $Q=0$, keine Dissipation, konstantes $kappa$.],
+ [Adiabate Expansionsarbeit], [$W_v=(p_2 V_2-p_1 V_1)/(kappa-1)$], [Dieselben Voraussetzungen; $W_v<0$ bei Expansion.],
+ [Gaswechselmotor], [$W_"Zyklus"=-p_1 V_1+W_v+p_2 V_2$; $P=f W_"Zyklus"$], [Kein Totvolumen; Füllung/Ausschiebung bei konstanten Drücken; $f$ Arbeitsspiele pro Sekunde.],
+ [Gefälleleistung und Turbine], [$P_"Gefälle"=rho dot(V)g H$; $eta=abs(P_t)/P_"Gefälle"$], [Gleicher Umgebungsdruck, äußere Geschwindigkeitsänderung vernachlässigt; Nutzleistung eindeutig definieren.],
+ [Kessel und Dampfturbine], [$q_12=h_2-h_1$; $w_(t,23)=h_3-h_2$], [Stationär; Kessel ohne technische Arbeit, Turbine adiabat; äußere Energien vernachlässigt.],
  [Fester Stoff], [$u_2-u_1=c Delta T$], [Inkompressibel; $c$ in J/(kg K).],
 )
 

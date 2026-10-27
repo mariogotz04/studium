@@ -459,6 +459,77 @@ Die spezifische Entropie $s$ (pro kg) und die gesamte Entropie $S = m s$ können
 Quelle: 3.2.2
 
 ### Zeichne die Begriffslandkarte zu Kapitel 3 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-Die Systemgrenze bestimmt zuerst, ob eine offene oder geschlossene Energiebilanz gebraucht wird. Im offenen System transportiert der Stoff Enthalpie einschließlich Verschiebearbeit; im geschlossenen System gibt es keinen solchen Massentransport. Wärme, Arbeit und Änderungen der gespeicherten Energie werden mit einheitlichen Vorzeichen bilanziert. Annahmen erlauben erst danach das Streichen einzelner Terme; die instationäre Stickstoffentnahme verbindet Speicheränderung und austretende Enthalpie.
-Quelle: 3.1
+Die Systemgrenze bestimmt zuerst, ob eine offene oder geschlossene Energiebilanz gebraucht wird. Im offenen System transportiert der Stoff Enthalpie einschließlich Verschiebearbeit; im geschlossenen System gibt es keinen solchen Massentransport. Wärme, Arbeit und Änderungen der gespeicherten Energie werden mit einheitlichen Vorzeichen bilanziert. Annahmen erlauben erst danach das Streichen einzelner Terme; die instationäre Stickstoffentnahme verbindet Speicheränderung und austretende Enthalpie. Turbine und Kessel verknüpfen Energieunterschiede mit Arbeit oder Wärme; Prozessweg und Verschiebearbeit bestimmen die Arbeitsformen. Der Druckluftmotor verbindet diese Begriffe mit dem Gasmodell und dem Gaswechsel.
+Quelle: 3.7.2
 
+### Warum kann sich Wasser in einer adiabaten Turbine erwärmen?
+Adiabat bedeutet nur, dass keine Wärme über die Grenze übertragen wird. Wird nicht die gesamte Gefälleenergie als Wellenarbeit abgegeben, kann der Rest die innere Energie des Wassers erhöhen. Diese Energie verlässt die Turbine mit dem erwärmten Wasser; sie ist kein Wärmeverlust nach außen.
+Quelle: 3.3.1
+Abbildung: turbine-energie
+
+### Warum verwendet der Turbinenwirkungsgrad den Betrag der Wellenleistung?
+In der Zufuhrkonvention ist die abgegebene Wellenleistung negativ. Der Wirkungsgrad vergleicht jedoch einen positiven Nutzen mit einem positiven Aufwand. Deshalb wird hier der Betrag der Wellenleistung durch die verfügbare Gefälleleistung geteilt.
+Quelle: 3.3.1
+Abbildung: turbine-energie
+
+### Wie unterscheiden sich die Energiebilanzen von Dampfkessel und adiabater Turbine?
+Im stationären Kessel ohne technische Arbeit erhöht die Wärmezufuhr die Enthalpie des Stroms. In der adiabaten Turbine führt die Enthalpieabnahme zur Wellenabgabe. Beide Vereinfachungen setzen hier vernachlässigte Änderungen von Bewegungs- und Lageenergie voraus.
+Quelle: 3.3.2
+Abbildung: kraftwerk-enthalpie
+
+### Warum sind spezifische Arbeit und Leistung verschiedene Größen?
+Die spezifische Arbeit ist eine Energie pro Masse. Die Leistung ist dagegen Energie pro Zeit. Bei einem stationären Stoffstrom macht erst die Multiplikation mit dem Massenstrom aus der spezifischen technischen Arbeit eine Leistung: $P=dot(m) w_t$.
+Quelle: 3.4.1
+
+### Warum können zwei Verdichtungen mit denselben Endzuständen unterschiedliche Arbeit benötigen?
+Die Volumenarbeit hängt vom Druck während der Volumenänderung ab. Verschiedene Wege besitzen verschiedene Flächen im Druck-Volumen-Diagramm, auch wenn Anfang und Ende gleich sind. Die Änderung der inneren Energie ist dabei gleich; unterschiedliche Arbeitsbeträge werden in der Energiebilanz durch unterschiedliche Wärmemengen ausgeglichen.
+Quelle: 3.4.2
+Abbildung: arbeit-zwei-wege
+
+### Warum ist die nutzbare Arbeitsabgabe bei Expansion kleiner als die gesamte Volumenarbeitsabgabe?
+Ein Teil der Volumenarbeit verdrängt die Umgebung gegen ihren Druck. Nur der darüber hinausgehende Anteil kann zusätzlich genutzt werden. Bei konstantem Umgebungsdruck gilt in der Zufuhrkonvention $W_(v,n)=W_v+p_"∞"(V_2-V_1)$; bei Expansion sind beide Abgaben negativ, der Nutzbetrag ist kleiner.
+Quelle: 3.4.3
+Abbildung: arbeit-nutzanteil
+
+### Wann ist die technische Arbeit gleich dem Integral von v über den Druck?
+Wenn Dissipation und Änderungen von Bewegungs- und Lageenergie vernachlässigt werden dürfen. Allgemein enthält die technische Arbeit zusätzlich diese Beiträge. Das Druckintegral allein ist daher eine begründete Vereinfachung und keine allgemeine Definition aller technischen Arbeit.
+Quelle: 3.5
+Abbildung: map-arbeit
+
+### Wie hängen Druckarbeit und Volumenarbeit desselben Zustandswegs zusammen?
+Es gilt $w_p=w_v+p_2 v_2-p_1 v_1$. Der Unterschied entsteht durch die Verschiebearbeiten an Ein- und Austritt. Verglichen werden derselbe Zustandsweg und dieselbe Massenbasis; reale offene und geschlossene Maschinen müssen nicht automatisch denselben Weg durchlaufen.
+Quelle: 3.5.1
+Abbildung: arbeit-verschiebung
+
+### Warum braucht eine Flüssigkeitspumpe Arbeit, obwohl das spezifische Volumen fast konstant bleibt?
+Die Pumpe erhöht den Druck des hindurchströmenden Stoffes. Bei annähernd konstantem spezifischem Volumen bleibt $w_p=v(p_2-p_1)$ positiv, obwohl die Volumenarbeit entlang dieses Wegs annähernd null ist. Den Unterschied erklärt die Änderung von $p v$.
+Quelle: 3.5.2
+Abbildung: arbeit-verschiebung
+
+### Warum sagt man fachlich nicht, ein Stoff enthalte Wärme?
+Wärme beschreibt Energieübertragung wegen eines Temperaturunterschieds. Der Stoff speichert innere Energie und besitzt Enthalpie als Zustandsgröße. Eine zugeführte Wärmemenge kann diese Zustandsgrößen verändern, ist aber kein eigener gespeicherter Wärmebestand.
+Quelle: 3.6
+Abbildung: map-waerme-enthalpie
+
+### Warum darf man bei realen Fluiden Energieunterschiede nicht grundsätzlich nur aus der Temperatur berechnen?
+Beim idealen Gas hängen innere Energie und Enthalpie nur von der Temperatur ab. Reale Fluide benötigen im Allgemeinen weitere Zustandsangaben und passende Tabellen. Auch konstante Wärmekapazitäten sind eine Modellannahme für den betrachteten Bereich.
+Quelle: 3.6.1
+Abbildung: map-waerme-enthalpie
+
+### Wann sind die Änderungen der spezifischen Enthalpie und der inneren Energie gleich?
+Wenn sich das Produkt aus Druck und spezifischem Volumen nicht ändert. Allgemein gilt $Delta u=Delta h-Delta(p v)$. Bei veränderlicher Masse muss man davon die Aussage über Gesamtgrößen unterscheiden: Konstantes gesamtes $p V$ bedeutet $Delta U=Delta H$.
+Quelle: 3.6.2
+
+### Warum gibt die isotherme Expansion im Druckluftmotor mehr Arbeit ab als die reversible Adiabate?
+Bei der isothermen Expansion wird Wärme zugeführt, damit die Temperatur trotz Arbeitsabgabe gleich bleibt. Die Adiabate erhält keine Wärme; ihre Arbeit verringert die innere Energie und die Temperatur sinkt. Das größere isotherme Arbeitsvermögen benötigt deshalb zusätzliche Energiezufuhr.
+Quelle: 3.7.1
+Abbildung: druckluftmotor-vergleich
+
+### Warum reicht beim Druckluftmotor die Expansionsarbeit allein nicht für die Arbeit des ganzen Gaswechsels?
+Die Füllung bei hohem Druck und die Ausschiebung bei niedrigem Druck übertragen ebenfalls Arbeit. Ohne Totvolumen ergibt ihre Summe mit der Expansionsarbeit die Druckarbeit des Zyklus: $W_"Zyklus"=W_v-p_1 V_1+p_2 V_2$. Diese Verschiebearbeit ist in einer Enthalpiebilanz bereits enthalten.
+Quelle: 3.7.2
+Abbildung: druckluftmotor-vergleich
+
+### Warum genügt die Drehzahl eines Motors allein nicht, um aus der Arbeit je Zyklus die Leistung zu berechnen?
+Man braucht die Zahl der Arbeitsspiele pro Zeit. Die Drehzahl liefert zunächst nur Umdrehungen pro Zeit; zusätzlich muss bekannt sein, wie viele Arbeitsspiele zu einer Umdrehung gehören. Erst dann gilt $P=f W_"Zyklus"$ mit der richtigen Zyklusfrequenz.
+Quelle: 3.7.2

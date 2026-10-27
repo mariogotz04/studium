@@ -68,7 +68,7 @@ Das spezifische Volumen ist Gesamtvolumen geteilt durch Masse. Die Wand hält zw
 Bei Tabellenarbeit kommt deshalb die Gebietsentscheidung zuerst. Dann wählst Du die passenden Werte, interpolierst bei Bedarf und hältst die Einheiten einheitlich. Bei einer rückwärtigen Interpolation wechseln gesuchte und gegebene Größe ihre Rolle; die physikalische Bedeutung der Tabelle bleibt erhalten.
 
 ## Kapitel 3 · Energiebilanzen: Erster Hauptsatz
-Quelle: 3.1, 3.1.1, 3.1.2, 3.1.3, 3.1.4, 3.2
+Quelle: 3.1, 3.1.1, 3.1.2, 3.1.3, 3.1.4, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7
 
 ### Energie über eine gewählte Grenze verfolgen
 
@@ -91,3 +91,61 @@ Der Stickstoffbehälter ist starr, und während der Entnahme wird geheizt. Warum
 Während der Entnahme ist der betrachtete Inhalt ein offenes, instationäres System. Seine gespeicherte Energie ändert sich, und die austretende Masse trägt Energie mit. Diese Austrittsenergie wird einschließlich Verschiebearbeit über die Enthalpie erfasst. Ohne diesen Beitrag würde die Bilanz einen Teil des Energieabflusses übersehen.
 
 Auch die Grenze um den Heizer muss eindeutig sein. Nur Stickstoff als System erhält vom Heizer Wärme. Stickstoff und Heizer zusammen erhalten über das Kabel elektrische Arbeit. Die vielen gesuchten Zustandsgrößen sind anschließend keine unabhängigen Rätsel: Stoffwerte, Massenanteile und Gesamtgrößen werden systematisch aus demselben Zustandsmodell aufgebaut und durch Additionsprüfungen kontrolliert.
+
+### Turbine und Kessel: Energie nimmt verschiedene Wege
+
+Ein Wasserspeicher liegt höher als die Turbine. Das herabströmende Wasser bringt Lageenergie mit. Ein Teil wird als Wellenarbeit abgegeben. Im Vorlesungsbeispiel reichen die sieben Megawatt Wellenleistung an ungefähr neunundachtzig Prozent der verfügbaren Gefälleleistung heran. Der Rest bleibt im Wasser und erhöht seine innere Energie. Wegen der großen Wassermenge genügt dafür eine Temperaturzunahme von nur ungefähr zweieinhalb Hundertstel Kelvin.
+
+Das ist mit einer adiabaten Grenze vereinbar. Adiabat verbietet einen Wärmestrom durch diese Grenze. Es verbietet keine innere Umverteilung von Energie. Nicht genutzte Wellenarbeit ist hier deshalb kein Wärmeverlust an die Umgebung.
+
+Bei der offenen Dampfanlage erfüllt der Kessel eine andere Aufgabe als die Turbine. Der Kessel erhöht die Enthalpie des Stoffstroms durch Wärmezufuhr. Die adiabate Turbine gibt Wellenarbeit ab, während die Enthalpie sinkt. Wir vernachlässigen dabei Änderungen von Bewegung und Höhe. Beide Komponenten werden getrennt bilanziert und erst danach über denselben Massenstrom verbunden. Nicht angegebene Pumpen- und Generatorverluste gehören nicht zu diesem Modell.
+
+### Der Weg entscheidet über die Arbeit
+
+Stell Dir einen Kolben vor, der Gas zusammendrückt. Je höher der Druck während seiner Bewegung ist, desto größer ist der nötige Kraftaufwand. Im Druck-Volumen-Diagramm beschreibt deshalb die Fläche unter dem Weg den Betrag der Volumenarbeit. Die Zufuhrkonvention macht die Kompressionsarbeit positiv und die Expansionsarbeit negativ.
+
+Die Vorlesung vergleicht eine isotherme Verdichtung mit einem Weg, der erst bei niedrigem konstantem Druck verdichtet und anschließend bei unverändertem Volumen erwärmt. Beide Wege enden bei denselben Zuständen. Trotzdem benötigt der isotherme Weg im gezeigten Vergleich ungefähr das Zweieinhalbfache an Volumenarbeit. Der zweite Weg verdichtet auf einem niedrigeren Druckniveau; seine spätere Drucksteigerung erfolgt ohne weitere Volumenänderung.
+
+Die innere Energie ist am Anfang und Ende gleich, weil das ideale Gas dieselbe Temperatur hat. Daher muss bei jedem Weg die Nettowärme den Arbeitsbetrag ausgleichen. Die Summe aus Wärme und Arbeit ist festgelegt; ihre einzelnen Beträge hängen vom Weg ab. Ein Vergleich der gesamten realen Anlagenkosten würde zusätzlich den Aufwand für Kühlung und Erwärmung benötigen.
+
+Auch die Umgebung beansprucht Arbeit. Wenn das Gas expandiert, muss es die Umgebung gegen deren Druck verdrängen. Nur die Fläche oberhalb des Umgebungsdrucks bleibt zusätzlich nutzbar. Die gesamte Volumenarbeit verwendet den absoluten Druck; eine Rechnung mit der Druckdifferenz zur Umgebung liefert bereits den Nutzanteil.
+
+### Denkpause
+
+Zwei reibfreie Wege bringen dieselbe geschlossene Gasportion in denselben Endzustand. Einer benötigt weniger Arbeit. Warum verletzt das die Energieerhaltung nicht? Halte die Wiedergabe kurz an und erkläre den Ausgleich.
+
+### Auflösung
+
+Die Änderung der inneren Energie ist auf beiden Wegen gleich. Wärme und Arbeit sind jedoch Übertragungen entlang des Wegs. Eine andere Arbeit wird durch eine andere Wärmemenge ausgeglichen. Der erste Hauptsatz verlangt die gleiche Summe, nicht gleiche Einzelbeiträge.
+
+### Technische Arbeit und Verschiebung
+
+Bei einer Strömungsmaschine muss Stoff hinein- und hinausgeschoben werden. Diese Verschiebearbeiten erklären, warum die Druckarbeit eines Zustandswegs von seiner Volumenarbeit abweicht. Der Unterschied ist die Änderung des Produkts aus Druck und spezifischem Volumen.
+
+Bei einem idealen Gas auf einem isothermen Weg bleibt dieses Produkt konstant. Dann stimmen beide Arbeitswerte desselben Wegs überein. Eine Flüssigkeitspumpe zeigt den anderen Fall: Das spezifische Volumen bleibt nahezu gleich, aber der Druck steigt. Die Volumenarbeit ist entlang dieses Wegs fast null, die Druckarbeit bleibt positiv. Das unveränderte Pumpengehäuse ist kein Grund, die benötigte Wellenarbeit zu streichen.
+
+Die technische Arbeit ist außerdem nur dann gleich der Druckarbeit, wenn Dissipation sowie Änderungen der Bewegungs- und Lageenergie vernachlässigt werden dürfen. Spezifische Arbeit ist dabei Energie pro Masse. Erst der Massenstrom macht daraus Leistung, also Energie pro Zeit.
+
+### Wärme ist kein gespeicherter Vorrat
+
+Ein warmer Stoff besitzt innere Energie. Enthalpie ergänzt diese um das Druck-Volumen-Produkt. Wärme beschreibt dagegen den Übertritt von Energie wegen eines Temperaturunterschieds. Sie ist kein eigener Inhalt, der anschließend als Wärmebestand im Stoff liegt.
+
+Beim idealen Gas hängen innere Energie und Enthalpie nur von der Temperatur ab. Mit konstant angesetzten Wärmekapazitäten lassen sich ihre Änderungen direkt aus der Temperaturänderung berechnen. Reale Fluide verlangen im Allgemeinen zusätzliche Zustandsangaben und passende Tabellen. Auch die Annahme konstanter Wärmekapazitäten hat einen begrenzten Gültigkeitsbereich.
+
+### Der Druckluftmotor verbindet die Bausteine
+
+Druckluft wird eingefüllt, expandiert und anschließend ausgestoßen. Die Vorlesung vergleicht eine reversible adiabate Expansion mit einer isothermen Expansion. Adiabat kommt keine Wärme hinzu; die Arbeitsabgabe senkt die innere Energie und kühlt das Gas ab. Reversibel und adiabat zusammen werden hier als isentrop bezeichnet. Adiabat allein wäre dafür nicht ausreichend.
+
+Beim isothermen Weg verhindert Wärmezufuhr diese Abkühlung. Dadurch erreicht dieselbe Anfangsportion beim gleichen Enddruck ein größeres Endvolumen und gibt mehr Arbeit ab. Diese zusätzliche Arbeit benötigt die zusätzliche Wärmezufuhr.
+
+Für den ganzen Gaswechsel müssen wir zur Expansionsarbeit noch Füllung und Ausschiebung berücksichtigen. Ihre Summe entspricht im idealisierten Modell der Druckarbeit. In der Enthalpiebilanz sind die Verschiebearbeiten schon enthalten; sie werden dort kein zweites Mal addiert.
+
+Vor der Rechnung werden Druck und Temperatur absolut eingesetzt. Im Beispiel werden aus zweiundzwanzig Komma drei bar Überdruck mit dem genannten Umgebungsdruck dreiundzwanzig Komma einundzwanzig bar absolut. Die Anfangstemperatur beträgt zweihundertsiebenundneunzig Komma fünfundneunzig Kelvin. Die ergänzte Musterrechnung benutzt konstante ideale Luftwerte und keine Dissipation. Ihre Ergebnisse sind Modellwerte, keine Messwerte eines realen Motors.
+
+### Denkpause
+
+Auf der Folie stehen sechshundert Umdrehungen pro Minute. Warum reicht diese Angabe allein noch nicht aus, um aus der Arbeit eines Gaswechselzyklus die Leistung zu berechnen? Halte die Wiedergabe an und überlege, welche zusätzliche Angabe fehlt.
+
+### Auflösung
+
+Wir brauchen die Zahl der Arbeitsspiele pro Zeit. Dafür muss bekannt sein, wie viele Arbeitsspiele auf eine Umdrehung entfallen. Die ergänzte Lösung nimmt ausdrücklich ein Arbeitsspiel je Umdrehung an und erhält damit zehn Arbeitsspiele pro Sekunde. Eine andere Zahl würde die Leistung entsprechend verändern; die Arbeit je einzelner Füllung bliebe gleich.

@@ -1266,3 +1266,139 @@ $ Delta U_23+m_"entn" h'="117,69434"+1 dot (-"116,15") thin "kJ"="1,54434" thin 
 *Prüfung:* Die kleine Heizerenergie und die deutlich größere Änderung der gespeicherten Enthalpie widersprechen sich nicht: Zusätzlich verlässt Masse das System. $s_3>s_2$, gleichzeitig $S_3<S_2$, weil die verbleibende Masse kleiner ist.
 ]
 
+
+// Ergänzungen aus der Vorlesung 27.10.2026; bestehende Titel bleiben erhalten.
+#aufgabe(titel: "Pumpspeicherturbine: Wirkungsgrad und Wassererwärmung", art: "rechnen", quelle: "3.3.1",
+ ergebnis: [$eta approx "89,2" thin "%"$; $Delta T approx "0,0253" thin "K"$; $P_"Rest"=848 thin "kW"$.],
+ tipp: [Bilanz zwischen den freien Wasserspiegeln: $c Delta T-g H=P_t/dot(m)$.])[
+#if not web [*Aufgabe 59* #linebreak()]
+*Gegeben und Annahmen:* Eine adiabate Turbine gibt 7000 kW Wellenleistung ab, also $P_t=-7000$ kW. Durchfluss $dot(V)=8$ m³/s, Höhendifferenz $H=z_1-z_2=100$ m; $rho=1000$ kg/m³, $c=4190$ J/(kg K), $g="9,81"$ m/s². Beide freien Wasserspiegel stehen unter demselben Umgebungsdruck; Geschwindigkeitsänderungen werden vernachlässigt. Wasser inkompressibel, Stoffwerte konstant; stationär, keine zusätzliche Energieabgabe nach außen.
+
+*Gesucht:*
+#enum(numbering: "a)")[Bestimme Massenstrom und Gefälleleistung.][Berechne den Wirkungsgrad und die nicht als Wellenarbeit genutzte Leistung.][Berechne den Temperaturanstieg des Wassers und erkläre ihn trotz adiabater Grenze.]
+#src[N27, PDF-S. 9; Einheiten und vollständige Modellannahmen redaktionell ergänzt.]
+][
+*Bezugsgröße festlegen:* Der Wasserstrom trägt die Energie. $dot(m)=rho dot(V)=1000 dot 8=8000 thin "kg/s"$. Ein hoher Massenstrom macht auch einen kleinen Energieunterschied pro kg als Leistung sichtbar.
+][
+*Verfügbare Leistung bestimmen:* Pro kg stehen $g H="9,81" dot 100=981$ J/kg Lageenergie zur Verfügung. Somit $P_"Gefälle"=dot(m)g H=8000 dot 981=7848000$ W = 7848 kW.
+][
+*Nutzen ins Verhältnis setzen:* Nutzen ist der positive Betrag der Wellenleistung, nicht ihr negatives Bilanzvorzeichen. $eta=7000/7848 approx "0,891947"= "89,1947" thin "%"$. Die verbleibende Leistung beträgt $P_"Rest"=7848-7000=848$ kW.
+][
+*Energiebilanz aufstellen:* Zwischen den freien Wasserspiegeln ist $Delta p=0$, deshalb $Delta h approx c Delta T$. Adiabat gilt $c Delta T+g(z_2-z_1)=w_t$. Mit $w_t=P_t/dot(m)=-7000000/8000=-875$ J/kg wird daraus $c Delta T-981=-875$ J/kg.
+][
+*Temperatur berechnen:* $Delta T=(981-875)/4190=106/4190 approx "0,0252983"$ K. Die nicht abgegebene mechanische Energie bleibt als innere Energie im Wasser; sie ist kein Wärmestrom über die adiabate Grenze.
+][
+*Prüfen:* $8000 thin "kg/s" dot 4190 thin "J/(kg K)" dot "0,0252983" thin "K" approx 848000$ W. Zusammen mit 7 MW Wellenabgabe ergibt dies die 7,848 MW Gefälleleistung. Der Wirkungsgrad liegt zwischen null und eins, die Wassererwärmung ist positiv und klein.
+]
+
+#aufgabe(titel: "Offene Dampfanlage: Kesselwärme und Turbinenleistung", art: "rechnen", quelle: "3.3.2",
+ ergebnis: [$q_12=3022$ kJ/kg; $w_(t,23)=-800$ kJ/kg; $dot(Q)_12 approx "83,94"$ MW; $P_23 approx -"22,22"$ MW; $eta approx "26,47" thin "%"$.],
+ tipp: [Kessel ①–② ohne Wellenarbeit und Turbine ②–③ ohne Wärme getrennt bilanzieren.])[
+#if not web [*Aufgabe 60* #linebreak()]
+*Gegeben und Annahmen:* Stationäre offene Dampfanlage mit Kessel ①–② und anschließender adiabater Turbine ②–③, $dot(m)=100$ t/h; $1$ t = $1000$ kg, $1$ h = $3600$ s. $h_1=128$, $h_2=3150$, $h_3=2350$ kJ/kg. Der Kessel überträgt keine technische Arbeit. Änderungen von Bewegungs- und Lageenergie sind vernachlässigt; weitere Anlagenverluste werden nicht angesetzt.
+#align(center)[#image("abbildungen/kraftwerk-enthalpie.svg", width: 100%)]
+*Gesucht:*
+#enum(numbering: "a)")[Berechne die spezifische Kesselwärme und Turbinenarbeit.][Bestimme zugehörige Wärme- und Wellenleistung.][Berechne das Verhältnis abgegebener Wellenleistung zu zugeführter Kesselwärme und benenne seine Modellgrenze.]
+#src[N27, PDF-S. 11; Fließschema eigene Darstellung, Annahmen ausdrücklich formuliert.]
+][
+*Massenstrom umrechnen:* $dot(m)=100 dot 1000/3600 approx "27,77778"$ kg/s. kJ/kg mal kg/s liefert kJ/s und damit kW.
+][
+*Kessel bilanzieren:* Ohne technische Arbeit und äußere Energieänderung wird die Wärmezufuhr zur Enthalpiezunahme. $q_12=h_2-h_1=3150-128=3022$ kJ/kg, positiv als Zufuhr.
+][
+*Turbine bilanzieren:* Adiabat wird die Enthalpieabnahme als Wellenarbeit abgegeben. $w_(t,23)=h_3-h_2=2350-3150=-800$ kJ/kg. Das Minus kennzeichnet Abgabe.
+][
+*Leistungen bilden:* $dot(Q)_12="27,77778" dot 3022 approx "83944,44"$ kW = 83,94444 MW; $P_23="27,77778" dot (-800) approx -"22222,22"$ kW = −22,22222 MW. Gerechnet wird mit ungerundetem Massenstrom.
+][
+*Anlagenverhältnis berechnen:* $eta=abs(P_23)/dot(Q)_12=800/3022 approx "0,264725"= "26,4725" thin "%"$. Der Massenstrom kürzt sich; entscheidend sind die spezifischen Energiedifferenzen.
+][
+*Prüfen und eingrenzen:* 800 kJ/kg Wellenabgabe sind weniger als 3022 kJ/kg Kesselzufuhr. Die Enthalpie am Austritt ist gegenüber dem Eintritt weiterhin um 2222 kJ/kg höher; die Gesamtbilanz stimmt mit $3022-800=2222$. Pumpen und Generator sind nicht bilanziert; ein geschlossener Dampfkreislauf wurde nicht berechnet.
+]
+
+#aufgabe(titel: "Verdichtung auf zwei Wegen: gleicher Endzustand, andere Arbeit", art: "rechnen", quelle: "3.4.2",
+ ergebnis: [$W_"I"/(p_1 V_1)=ln(10) approx "2,302585"$; $W_"II"/(p_1 V_1)="0,9"$; $W_"I"/W_"II" approx "2,5584"$. Beide Wege: $Q=-W_v$.],
+ tipp: [Rechne normiert auf $p_1 V_1$. Dann werden keine zusätzlichen Druck- oder Volumenwerte benötigt.])[
+#if not web [*Aufgabe 61* #linebreak()]
+*Gegeben und Annahmen:* Geschlossene Portion eines idealen Gases, quasistatisch und ohne Dissipation, ruhend bei gleicher Höhe. Verdichtungsverhältnis $epsilon=V_1/V_2=10$, Endtemperatur gleich Anfangstemperatur. Weg I: isotherm ①–②. Weg II: zunächst isobar bei $p_1$ von $V_1$ auf $V_2$, danach isochor bis zum selben Zustand ②. $p_1 V_1$ dient als positive Energie-Bezugsgröße; Zahlenwerte für $p_1$ und $V_1$ sind nicht nötig.
+#align(center)[#image("abbildungen/arbeit-zwei-wege.svg", width: 100%)]
+*Gesucht:*
+#enum(numbering: "a)")[Berechne beide Arbeiten jeweils geteilt durch $p_1 V_1$.][Bestimme das Verhältnis der Arbeiten.][Begründe die Änderung der inneren Energie und die Netto-Wärme jedes Wegs.]
+#src[N27, PDF-S. 14–16; normierte Aufgabenfassung zur dortigen Angabe $epsilon=10$.]
+][
+*Isothermen Weg integrieren:* $p(V)=p_1 V_1/V$. Deshalb $W_"I"=-integral_(V_1)^(V_2) p_1 V_1/V dif V=p_1 V_1 ln(V_1/V_2)$. Normiert folgt $W_"I"/(p_1 V_1)=ln(10) approx "2,302585"$.
+][
+*Zweiten Weg zerlegen:* Isobar ist $W=-p_1(V_2-V_1)$. Das isochore Teilstück hat $dif V=0$ und trägt keine Volumenarbeit bei. Damit $W_"II"/(p_1 V_1)=1-V_2/V_1=1-1/10="0,9"$.
+][
+*Arbeitsaufwand vergleichen:* $W_"I"/W_"II"=ln(10)/"0,9" approx "2,55843"$. Beim zweiten Weg wird nur auf niedrigem Druckniveau verdichtet; die anschließende Drucksteigerung geschieht ohne Volumenänderung.
+][
+*Wärme aus der Bilanz bestimmen:* Beim idealen Gas hängt $U$ nur von $T$ ab. Gleiche Anfangs- und Endtemperatur ergibt auf beiden Wegen $Delta U=0$. Also gilt $0=Q+W_v$, folglich $Q_"I"=-W_"I"$ und $Q_"II"=-W_"II"$. Beide Nettowärmemengen sind negativ.
+][
+*Prüfen:* $p_1 V_1$ hat die Einheit Pa·m³ = J; die normierten Arbeiten und ihr Verhältnis sind einheitenlos. Kompressionsarbeiten sind positiv. Gleiche Änderung einer Zustandsgröße bedeutet nicht gleiche Prozessgrößen; die unterschiedlichen Arbeiten werden durch unterschiedliche Wärmemengen ausgeglichen.
+]
+
+#aufgabe(titel: "Expansion: Gesamtarbeit und nutzbare Arbeit unterscheiden", art: "verstehen", quelle: "3.4.3",
+ tipp: [Welche Fläche liegt im p-V-Diagramm unter dem Umgebungsdruck?])[
+#if not web [*Aufgabe 62* #linebreak()]
+Ein Gas expandiert quasistatisch von $V_1$ nach $V_2>V_1$ gegen einen konstanten Umgebungsdruck $p_"∞"$. Erkläre mit der Zufuhrkonvention, warum die nutzbare Arbeitsabgabe kleiner ist als die gesamte Volumenarbeitsabgabe und wie sich beide rechnerisch unterscheiden.
+#src[N27, PDF-S. 17; eigene Verständnisfrage.]
+][
+*Gesamte Grenzarbeit erfassen:* $W_v=-integral_(V_1)^(V_2)p dif V$ verwendet den absoluten Systemdruck und ist bei Expansion negativ. Sie enthält auch das Verdrängen der Umgebung.
+][
+*Umgebungsanteil abziehen:* Als positiver Verdrängungsaufwand gilt $W_"∞"=p_"∞"(V_2-V_1)$. Die vorzeichenbehaftete Nutzarbeit ist $W_(v,n)=W_v+W_"∞"=-integral(p-p_"∞")dif V$. Bei Expansion mit $p>p_"∞"$ ist sie ebenfalls negativ, aber dem Betrag nach kleiner.
+][
+*Grenzfall prüfen:* Bei einer Expansion genau auf Umgebungsdruckniveau verschwindet der zusätzliche Nutzanteil. Arbeit gegen die Umgebung findet trotzdem statt. Das erklärt, weshalb Gesamtarbeit und Nutzarbeit verschiedene Größen sind.
+]
+
+#aufgabe(titel: "Flüssigkeitspumpe: Arbeit trotz nahezu konstantem Volumen", art: "verstehen", quelle: "3.5.2")[
+#if not web [*Aufgabe 63* #linebreak()]
+Eine ideale, stationär betriebene Pumpe erhöht den Druck einer näherungsweise inkompressiblen Flüssigkeit. Dissipation sowie Änderungen von Bewegungs- und Lageenergie werden vernachlässigt. Warum benötigt sie Arbeit, obwohl sich das spezifische Volumen kaum ändert? Vergleiche Druck- und Volumenarbeit desselben Zustandswegs.
+#src[N27, PDF-S. 18–19; eigene Verständnisfrage.]
+][
+*Passende Arbeitsform wählen:* Der Stoff durchströmt ein offenes System. Ohne Dissipation und äußere Energieänderungen gilt $w_t=w_p=integral v dif p$. Bei konstantem $v$ wird daraus $w_p=v(p_2-p_1)>0$.
+][
+*Verschiebearbeit mitnehmen:* Für denselben Weg ist $w_v=-integral p dif v approx 0$, aber $w_p=w_v+Delta(p v) approx v Delta p$. Gerade der Unterschied der Verschiebearbeiten an Ein- und Austritt bleibt erhalten.
+][
+*Plausibilität prüfen:* Der höhere Austrittsdruck erfordert zugeführte Wellenarbeit. Die starre Gehäusegröße ist dafür kein Gegenargument. Die Aussage $dif v approx 0$ darf nur das Volumenintegral vereinfachen, nicht das Druckintegral streichen.
+]
+
+#aufgabe(titel: "Wärme und Enthalpie: Übertragung ist kein Speicher", art: "verstehen", quelle: "3.6")[
+#if not web [*Aufgabe 64* #linebreak()]
+Jemand sagt: „Ein warmer Stoff enthält Wärme, und bei jedem Heizvorgang ist die zugeführte Wärme gleich seiner Enthalpie.“ Erkläre die beiden Begriffsfehler und nenne die Bedingungen, unter denen $Q=Delta H$ gelten kann.
+#src[N27, PDF-S. 20; eigene Verständnisfrage, Bilanzverknüpfung mit 3.3.2.]
+][
+*Übertragung und Zustand trennen:* Wärme $Q$ ist Energieübertragung infolge eines Temperaturunterschieds. Der Stoff besitzt innere Energie $U$ und Enthalpie $H=U+p V$ als Zustandsgrößen. Eine übertragene Wärmemenge ist kein im Stoff vorhandener Wärmebestand.
+][
+*Änderung statt Bestand vergleichen:* Auch wenn Wärme die Enthalpie verändert, ist $Q$ nicht einfach der gesamte Endwert $H_2$. Bei einer passenden Bilanz kann $Q=H_2-H_1$ gelten, also die Änderung und nicht der Bestand.
+][
+*Bedingungen benennen:* Für ein geschlossenes, ruhendes System bei konstantem Druck, alleiniger quasistatischer Volumenarbeit und unveränderter Höhe folgt $Q=Delta U+p Delta V=Delta H$. Für einen stationären Kessel ohne technische Arbeit und ohne Änderungen äußerer Energie gilt entsprechend $dot(Q)=dot(m) Delta h$. Weitere Arbeits- oder Energiebeiträge würden diese Vereinfachung ändern.
+]
+
+#aufgabe(titel: "Druckluftmotor: Adiabate und Isotherme mit Gaswechsel", art: "rechnen", quelle: "3.7",
+ ergebnis: [Je Arbeitsspiel: adiabat $W_v approx -"249,24"$ J, $W_"Verschiebung" approx -"99,70"$ J, $W_p approx -"348,94"$ J, $Q=0$; isotherm $W_v=W_p approx -"534,94"$ J, $W_"Verschiebung"=0$, $Q approx +"534,94"$ J. Bei einem Arbeitsspiel/Umdrehung: $P_"ad" approx -"3,489"$ kW, $P_"isoth" approx -"5,349"$ kW.],
+ tipp: [Zuerst Absolutdruck und Kelvin bilden. Expansionsarbeit allein ist noch nicht die gesamte Gaswechselarbeit.])[
+#if not web [*Aufgabe 65* #linebreak()]
+*Gegeben und Annahmen:* Druckluftmotor ohne Totvolumen, vollständiger Gasaustausch und keine Dissipation. $p_(1,"ü")="22,3"$ bar, $p_2=p_"∞"="0,91"$ bar, $vartheta_1="24,8"$ °C, $V_1="71,16"$ cm³; Drehzahl $N=600$ U/min. $1$ bar = $10^5$ Pa, $1$ cm³ = $10^(-6)$ m³. Vergleiche reversible adiabate und isotherme Expansion einer gleich großen Anfangsportion bis zum selben Enddruck. Füllung bei $p_1$, Ausschiebung bei $p_2$, jeweils konstant; äußere Energien vernachlässigt.
+
+*Ergänztes Stoffmodell:* ideales Gas mit konstanten Werten $R="287,2"$ J/(kg K), $kappa="1,4"$. Konsistent daraus $c_v=R/(kappa-1)=718$ J/(kg K), $c_p=kappa c_v="1005,2"$ J/(kg K). Für die Leistungsrechnung ausdrücklich *ein Arbeitsspiel je Umdrehung* annehmen; diese Angabe fehlt auf der Folie.
+#align(center)[#image("abbildungen/druckluftmotor-pv.svg", width: 100%)]
+*Gesucht:*
+#enum(numbering: "a)")[Bestimme Absolutdruck, Anfangstemperatur und Masse je Arbeitsspiel.][Berechne für beide Modelle Endvolumen und Endtemperatur.][Bestimme Expansions-Volumenarbeit, Netto-Verschiebearbeit, Druckarbeit und Wärmezufuhr je Arbeitsspiel.][Berechne die mittlere Leistung unter der genannten Arbeitsspielannahme und erkläre den Unterschied.]
+#src[N27, PDF-S. 21; Luftwerte R und κ: BT A.4, S. 482 / PDF-S. 497, als konstantes Modell. Eigene vollständige Musterrechnung; Arbeitsspielannahme ergänzt.]
+][
+*Zustandsdaten absolut einsetzen:* $p_1="22,3"+"0,91"="23,21"$ bar = $2321000$ Pa; $p_2=91000$ Pa; $T_1="24,8"+"273,15"="297,95"$ K; $V_1="71,16" dot 10^(-6)$ m³. Überdruck wäre für Gasgleichung und Druckverhältnis falsch.
+][
+*Masse bestimmen:* $m=p_1 V_1/(R T_1)="165,16236"/("287,2" dot "297,95") approx "0,001930115"$ kg. Das sind etwa 1,930 g pro Füllung, nicht ein Massenstrom. $p_1 V_1="165,16236"$ J ist die Energie-Bezugsgröße.
+][
+*Reversible Adiabate beschreiben:* $Q=0$, $p_1 V_1^kappa=p_2 V_2^kappa$. Deshalb $V_2=V_1(p_1/p_2)^(1/kappa) approx "719,4065"$ cm³. Außerdem $T_2=T_1(p_2/p_1)^((kappa-1)/kappa) approx "118,0995"$ K. Die starke Abkühlung folgt aus dem hier idealisierten konstanten Stoffmodell; sie ist kein gemessener Motorwert.
+][
+*Adiabate Arbeitsanteile trennen:* $W_(v,"ad")=(p_2 V_2-p_1 V_1)/(kappa-1) approx -"249,2409"$ J. Die Füllung liefert $-p_1 V_1=-"165,1624"$ J, die Ausschiebung erfordert $+p_2 V_2 approx +"65,4660"$ J. Damit $W_("Verschiebung,ad") approx -"99,6964"$ J.
+][
+*Adiabate Gesamtarbeit bilden:* $W_(p,"ad")=W_(v,"ad")+W_("Verschiebung,ad") approx -"348,9373"$ J. Kontrolle über die offene Beschreibung: $m c_p(T_2-T_1) approx -"348,9373"$ J. Die Enthalpiedifferenz erfasst die Verschiebearbeit bereits; diese darf nicht ein zweites Mal dazuaddiert werden.
+][
+*Isothermen Endzustand bestimmen:* $T_(2*)=T_1="297,95"$ K und $V_(2*)=p_1 V_1/p_2 approx "1814,9710"$ cm³. Die isotherme Expansion endet wegen der Wärmezufuhr bei deutlich größerem Volumen als die Adiabate.
+][
+*Isotherme Arbeit und Wärme berechnen:* $W_(v,"isoth")=-p_1 V_1 ln(p_1/p_2) approx -"534,9434"$ J. Weil $p_2 V_(2*)=p_1 V_1$, ist die Netto-Verschiebearbeit null; $W_(p,"isoth")=W_(v,"isoth")$. Mit $Delta U=0$ folgt $Q_"isoth"=-W_(v,"isoth") approx +"534,9434"$ J. Der höhere Arbeitsbetrag benötigt also Wärmezufuhr.
+][
+*Arbeitsspiele in Leistung umrechnen:* Unter der ausdrücklich ergänzten Annahme gilt $f=600/60=10$ s⁻¹. $P_"ad"=f W_(p,"ad") approx -"3489,373"$ W = −3,489373 kW; $P_"isoth" approx -"5349,434"$ W = −5,349434 kW. Bei $a$ Arbeitsspielen pro Umdrehung wären beide Leistungen mit $a$ zu multiplizieren.
+][
+*Einheiten, Vorzeichen und Grenzen prüfen:* Pa·m³ ergibt J, Arbeit mal s⁻¹ ergibt W. Abgegebene Arbeiten und Leistungen sind negativ, isotherme Wärme ist positiv, adiabate Wärme null. Die Expansionsarbeit erfüllt $Delta U=Q+W_v$; die Gaswechselarbeit erfüllt $Delta H=Q+W_p$. Isotherm ist $Delta U=Delta H=0$, adiabat sind beide negativ. Ein Totvolumen, reale Reibung oder veränderliche Stoffwerte würden das Modell verändern.
+]

@@ -261,3 +261,124 @@ Quelle: 3.2.1
 - [ ] Nein, die Entropie sinkt bei einer Entnahme immer.
   > Ob $S$ sinkt, hängt davon ab, wie stark $m$ sinkt und $s$ steigt.
 Quelle: 3.2.2
+
+### Eine adiabate Wasserturbine gibt weniger Wellenleistung ab als die verfügbare Gefälleleistung. Im betrachteten Modell bleibt der Rest im Wasser. Was folgt?
+- [x] Die Temperatur des Wassers kann steigen.
+  > Adiabat streicht den Wärmestrom über die Grenze. Nicht genutzte Gefälleenergie kann als innere Energie mit dem Wasser austreten.
+- [ ] Die Temperatur muss gleich bleiben, weil die Turbine adiabat ist.
+  > Keine Wärmeübertragung bedeutet nicht unveränderte innere Energie oder unveränderte Temperatur.
+- [ ] Der Rest ist zwangsläufig ein Wärmestrom an die Umgebung.
+  > Ein solcher Wärmestrom widerspräche der hier angenommenen adiabaten Grenze.
+Tipp: Trenne innere Energie im austretenden Stoff von Wärmeübertragung.
+Quelle: 3.3.1
+
+### Im stationären Dampfkessel gibt es keine technische Arbeit; äußere Energieänderungen sind vernachlässigt. Welche Aussage gilt?
+- [x] Die spezifische Wärmezufuhr ist $q_12=h_2-h_1$.
+  > Ohne technische Arbeit erhöht die Wärmezufuhr die Enthalpie des Stroms.
+- [ ] Die spezifische Wärmezufuhr ist grundsätzlich $h_2$.
+  > Benötigt wird der Unterschied zwischen Ein- und Austritt, nicht der Endwert allein.
+- [ ] Die spezifische Wärmezufuhr ist $h_1-h_2$.
+  > Beim Heizen nimmt die Enthalpie zu; die Wärmezufuhr zählt positiv.
+Quelle: 3.3.2
+
+### Welche Aussagen zum Wirkungsgrad der offenen Dampfanlage treffen zu?
+- [x] Die abgegebene Wellenleistung wird als positiver Nutzen eingesetzt.
+  > Das Bilanzvorzeichen der Abgabe ist negativ, der Nutzen im Wirkungsgrad wird als positiver Betrag verwendet.
+- [x] Nicht angegebene Pumpen- und Generatorverluste sind in dieser Rechnung nicht erfasst.
+  > Der Wert gehört zum ausdrücklich beschriebenen offenen Anlagenmodell.
+- [ ] Derselbe Zahlenwert beweist die Effizienz eines vollständigen geschlossenen Dampfkreislaufs.
+  > Ein solcher Kreislauf mit seinen weiteren Komponenten wurde hier nicht bilanziert.
+Quelle: 3.3.2
+
+### Bei einem stationären Stoffstrom wird aus der spezifischen technischen Arbeit durch Multiplikation mit dem ___ eine Leistung.
+Antwort: Massenstrom
+Tipp: kJ/kg muss zu kJ/s werden.
+Erklärung: Der Massenstrom in kg/s liefert den erforderlichen Zeitbezug: $P=dot(m)w_t$.
+Quelle: 3.4.1
+
+### Zwei reibfreie Verdichtungswege eines idealen Gases haben gleiche Anfangs- und Endtemperatur. Was muss gelten?
+- [x] Auf beiden Wegen ist $Delta U=0$.
+  > Beim idealen Gas hängt die innere Energie nur von der Temperatur ab.
+- [ ] Auf beiden Wegen muss die Volumenarbeit gleich sein.
+  > Arbeit ist eine Prozessgröße und hängt von der Fläche unter dem jeweiligen Druck-Volumen-Weg ab.
+- [ ] Auf beiden Wegen muss $Q=0$ sein.
+  > Bei $Delta U=0$ folgt $Q=-W_v$. Gleiche Endtemperatur bedeutet nicht fehlenden Wärmeaustausch.
+Quelle: 3.4.2
+
+### Wie wird die Nutzarbeit einer Expansion bei konstantem Umgebungsdruck in der Zufuhrkonvention bestimmt?
+- [x] $W_(v,n)=W_v+p_"∞"(V_2-V_1)$
+  > Der positive Verdrängungsaufwand reduziert den Betrag der negativen Arbeitsabgabe.
+- [ ] $W_(v,n)=W_v-p_"∞"(V_2-V_1)$
+  > Das würde den Betrag der Abgabe vergrößern, obwohl ein Anteil zum Verdrängen der Umgebung benötigt wird.
+- [ ] $W_(v,n)=W_v$ unabhängig vom Umgebungsdruck.
+  > Der Umgebungsanteil wird damit übersehen; gleich sind die Größen nur in passenden Grenzfällen.
+Quelle: 3.4.3
+
+### Welche Voraussetzungen erlauben $w_t=integral v dif p$?
+- [x] Keine Dissipation
+  > Sonst bleibt der zusätzliche Dissipationsbeitrag in der technischen Arbeit erhalten.
+- [x] Änderungen von Bewegungs- und Lageenergie sind vernachlässigbar.
+  > Andernfalls enthält die technische Arbeit auch diese Beiträge.
+- [ ] Das Maschinengehäuse hat ein unverändertes Volumen; weitere Annahmen sind unnötig.
+  > Die Gehäusegröße allein streicht weder Dissipation noch äußere Energieänderungen des Stoffstroms.
+Quelle: 3.5
+
+### Eine ideale Flüssigkeitspumpe erhöht bei annähernd konstantem spezifischem Volumen den Druck. Welche Aussage stimmt?
+- [x] $w_p approx v(p_2-p_1)>0$
+  > Das Druckintegral bleibt trotz fast unverändertem spezifischem Volumen positiv.
+- [ ] $w_p approx 0$, weil $dif v approx 0$ ist.
+  > Verwechselt werden Druckarbeit mit Integral über dp und Volumenarbeit mit Integral über dv.
+- [ ] Druckarbeit und Volumenarbeit müssen auf jedem Weg denselben Wert haben.
+  > Der Unterschied ist $Delta(p v)$; er verschwindet nicht allgemein.
+Quelle: 3.5.2
+
+### Erkläre, warum Druckarbeit und Volumenarbeit bei einem isothermen Weg eines idealen Gases gleich sein können.
+Antwort: Für dieselbe Gasportion und denselben Weg gilt $w_p=w_v+Delta(p v)$. Beim idealen Gas ist $p v=R T$; isotherm bleibt dieses Produkt konstant. Deshalb verschwindet der Zusatzterm. Ohne diese Voraussetzung sind beide Arbeiten nicht grundsätzlich gleich.
+Tipp: Nutze die Produktänderung von Druck und spezifischem Volumen.
+Quelle: 3.5.1
+
+### Welche Aussage über Wärme und Enthalpie ist richtig?
+- [x] Wärme ist eine Prozessgröße; Enthalpie ist eine Zustandsgröße.
+  > Wärme beschreibt einen Grenzübertritt wegen eines Temperaturunterschieds, Enthalpie beschreibt den Zustand.
+- [ ] Ein warmer Stoff besitzt einen Bestand an Wärme, der gleich seiner Enthalpie ist.
+  > Gespeichert wird Zustandsenergie. Wärme ist kein eigener Bestand, und die Enthalpie ist nicht allgemein eine übertragene Wärmemenge.
+- [ ] Jede Wärmezufuhr ist gleich dem Endwert der Enthalpie.
+  > Selbst wenn eine passende Bilanz Wärme und Enthalpie verknüpft, betrifft sie eine Änderung und benötigt Voraussetzungen.
+Quelle: 3.6
+
+### Für welches Modell darf man die spezifischen Energieänderungen mit konstanten Wärmekapazitäten allein aus der Temperaturänderung berechnen?
+- [x] Ideales Gas mit im betrachteten Bereich konstant angesetzten Wärmekapazitäten
+  > Dann gelten $Delta u=c_v Delta T$ und $Delta h=c_p Delta T$.
+- [ ] Jedes reale Fluid unabhängig von Druck und Phase
+  > Reale Fluide benötigen im Allgemeinen weitere Zustandsangaben und passende Tabellen.
+- [ ] Jeden Stoff allein deshalb, weil die Systemwand starr ist
+  > Die Wandbedingung ersetzt kein kalorisches Stoffmodell.
+Quelle: 3.6.1
+
+### Aus $h=u+p v$ folgt für Zustandsänderungen $Delta u=Delta h$, wenn ___ konstant bleibt.
+Antwort: das Produkt aus Druck und spezifischem Volumen/das Druck-Volumen-Produkt
+Erklärung: Allgemein ist $Delta u=Delta h-Delta(p v)$. Für Gesamtgrößen bei veränderlicher Masse muss stattdessen das gesamte Produkt $p V$ geprüft werden.
+Quelle: 3.6.2
+
+### Warum kann die isotherme Expansion im idealen Druckluftmotor mehr Arbeit abgeben als die reversible Adiabate?
+- [x] Sie erhält Wärme, die den Temperaturabfall verhindert und die zusätzliche Arbeitsabgabe ermöglicht.
+  > Bei idealem Gas bleibt isotherm die innere Energie gleich; abgegebene Arbeit muss durch Wärmezufuhr ausgeglichen werden.
+- [ ] Das Wort isotherm bedeutet, dass keinerlei Energie übertragen wird.
+  > Isotherm beschreibt die Temperatur, nicht die Abwesenheit von Energieübertragung.
+- [ ] Die zusätzliche Arbeit entsteht ohne weiteren Energieaufwand.
+  > Die notwendige Wärmezufuhr würde damit in der Energiebilanz fehlen.
+Quelle: 3.7.1
+
+### Welche Aussagen zum Druckluftmotor mit idealisiertem Gaswechsel sind richtig?
+- [x] Füllung und Ausschiebung ergänzen die Expansionsarbeit um $-p_1 V_1+p_2 V_2$.
+  > Die Rechteckanteile im Druck-Volumen-Diagramm gehören zur gesamten Zyklusarbeit.
+- [x] Eine Leistungsrechnung benötigt die Zahl der Arbeitsspiele je Zeit.
+  > Umdrehungen pro Minute allein bestimmen diese Frequenz noch nicht.
+- [ ] Die Enthalpiebilanz erfordert zusätzlich eine zweite Addition derselben Verschiebearbeit.
+  > Die Enthalpie enthält den pv-Anteil bereits. Eine erneute Addition würde ihn doppelt zählen.
+Quelle: 3.7.2
+
+### Warum müssen beim Druckluftmotor Überdruck und Celsius vor dem Einsetzen in die Gasgleichung umgerechnet werden?
+Antwort: Die Gasgleichung und die verwendeten Zustandsverhältnisse benötigen absolute Drücke und Kelvin. Zum Überdruck wird der Umgebungsdruck addiert; zur Celsius-Temperatur werden 273,15 addiert. Im Vorlesungsbeispiel sind das 23,21 bar absolut und 297,95 Kelvin.
+Tipp: Ein Druckverhältnis aus Überdrücken ist nicht das Verhältnis der absoluten Zustandsdrücke.
+Quelle: 3.7.2
