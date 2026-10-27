@@ -514,13 +514,13 @@ def aufgaben(typ, modul, abschnitte, stellen=None):
         return {"src": f"a/{slug}/{seiten[n].name}", "w": round(b, 1), "h": round(h, 1)}
 
     liste, n, ids = [], 0, set()
-    for info in infos:
+    for nummer, info in enumerate(infos, 1):
         anfang = n
         id_ = hashlib.sha1(f"{modul}|{info['titel']}".encode()).hexdigest()[:10]
         if id_ in ids:
             warnen("Aufgabentitel doppelt", info["titel"])
         ids.add(id_)
-        a = {"id": id_, "t": info["titel"], "art": info["art"], "k": info["kapitel"], "a": baustein(n)}
+        a = {"id": id_, "nr": nummer, "t": info["titel"], "art": info["art"], "k": info["kapitel"], "a": baustein(n)}
         n += 1
         if info["tipp"]:
             a["tipp"] = baustein(n); n += 1
@@ -965,10 +965,15 @@ def main():
     data = sorted(modules, key=lambda m: m["name"].lower())
     decks.sort(key=lambda d: d["name"].lower())
     einsetzen = lambda x: json.dumps(x, ensure_ascii=False).replace("</", "<\\/")
+    zitate = json.loads((ROOT / "zitate.json").read_text(encoding="utf-8"))
+    if not zitate or len({z["id"] for z in zitate}) != len(zitate) or any(
+        not all(z.get(k) for k in ("id", "text", "autor", "werk", "quelle")) or not z["quelle"].startswith("https://") for z in zitate):
+        raise ValueError("Zitate brauchen eindeutige IDs, Wortlaut, Urheber, Werk und eine überprüfte HTTPS-Quelle")
     page = (TEMPLATE.read_text(encoding="utf-8")
             .replace("/*DATA*/null", einsetzen(data))
             .replace("/*KARTEN*/null", einsetzen(decks))
             .replace("/*LERNEN*/null", einsetzen(lernen))
+            .replace("/*ZITATE*/null", einsetzen(zitate))
             .replace("/*PLAN*/null", einsetzen(stundenplan()))
             .replace("/*BUILD*/null", einsetzen(baustand())))
     page = formeln_setzen(page)

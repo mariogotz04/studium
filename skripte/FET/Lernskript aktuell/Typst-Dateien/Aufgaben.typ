@@ -77,6 +77,7 @@
 
 // 0-1
 #aufgabe(titel: "Thermodynamik an der Fahrradpumpe", art: "verstehen", quelle: "1.0")[
+#if not web [*Aufgabe 1* #linebreak()]
 Wie würdest du Thermodynamik an einer Fahrradpumpe erklären?
 ][
 Bei der Pumpe verändert zugeführte Arbeit den Gaszustand. Temperatur, Druck und Volumen beschreiben die Folge; die Energiebilanz erklärt die Energiezufuhr.
@@ -84,6 +85,7 @@ Bei der Pumpe verändert zugeführte Arbeit den Gaszustand. Temperatur, Druck un
 
 // 0-2
 #aufgabe(titel: "Geschlossen und adiabat", art: "verstehen", quelle: "1.1.3")[
+#if not web [*Aufgabe 2* #linebreak()]
 Kann ein geschlossenes System Arbeit übertragen? Und ein adiabates?
 ][
 Ja. Geschlossen verbietet nur Stofftransport; adiabat verbietet nur Wärmeübertragung.
@@ -91,6 +93,7 @@ Ja. Geschlossen verbietet nur Stofftransport; adiabat verbietet nur Wärmeübert
 
 // 0-3
 #aufgabe(titel: "Konstantes Volumen und Arbeitsdichtheit", art: "verstehen", quelle: "1.1.3")[
+#if not web [*Aufgabe 3* #linebreak()]
 Was ist der Unterschied zwischen konstantem Volumen und vollständiger Arbeitsdichtheit?
 ][
 $dif V=0$ schließt Volumenarbeit aus. Rührer- und elektrische Arbeit müssen zusätzlich ausgeschlossen werden, wenn insgesamt keine Arbeit übertragen werden soll.
@@ -98,6 +101,7 @@ $dif V=0$ schließt Volumenarbeit aus. Rührer- und elektrische Arbeit müssen z
 
 // 0-4
 #aufgabe(titel: "Interne Ströme im Kraftwerk", art: "verstehen", quelle: "1.1.3")[
+#if not web [*Aufgabe 4* #linebreak()]
 Warum sind interne Ströme in der Gesamtbilanz eines Kraftwerks nicht sichtbar?
 ][
 Sie verlassen die gemeinsame Bilanzhülle nicht. Eine Abgabe des einen Teils ist die Aufnahme des anderen.
@@ -108,7 +112,16 @@ Sie verlassen die gemeinsame Bilanzhülle nicht. Eine Abgabe des einen Teils ist
   ergebnis: [$dif m\/dif t = -"0,5" thin "kg/s"$; leer nach $1000 thin "s" approx "16,7" thin "min"$],
   tipp: [Was im Tank bleibt, ist Zufluss minus Abfluss. Ist das Ergebnis positiv oder negativ?],
 )[
-Ein Tank enthält $500 thin "kg"$. Es fließen $2 thin "kg/s"$ hinein und $"2,5" thin "kg/s"$ hinaus. Bestimme Änderungsrate und Leerungszeit bei konstanten Strömen.
+#if not web [*Aufgabe 5* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Tank enthält $500 thin "kg"$. Es fließen $2 thin "kg/s"$ hinein und $"2,5" thin "kg/s"$ hinaus.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Änderungsrate und Leerungszeit bei konstanten Strömen.],
+)
 ][
 *Bild:* Der Tank ist wie ein Konto. Die Änderung pro Sekunde ist Einzahlung minus Auszahlung. Massenbilanz: $dif m\/dif t = dot(m)_"zu" - dot(m)_"ab"$.
 ][
@@ -121,6 +134,7 @@ Ein Tank enthält $500 thin "kg"$. Es fließen $2 thin "kg/s"$ hinein und $"2,5"
 
 // 0-6
 #aufgabe(titel: "Stationär und trotzdem ungleich", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 6* #linebreak()]
 Warum kann eine stationäre Strömung räumliche Temperatur- und Geschwindigkeitsunterschiede besitzen?
 ][
 Stationär bedeutet zeitlich unverändert am festen Ort. Ein Teilchen kann auf seinem Weg dennoch andere Werte durchlaufen.
@@ -128,6 +142,7 @@ Stationär bedeutet zeitlich unverändert am festen Ort. Ein Teilchen kann auf s
 
 // 0-7
 #aufgabe(titel: "Extensiv, intensiv, spezifisch", art: "verstehen", quelle: "1.4")[
+#if not web [*Aufgabe 7* #linebreak()]
 Erkläre extensiv, intensiv und spezifisch am Beispiel eines geteilten Wasserbehälters.
 ][
 Gesamtmasse und Gesamtvolumen halbieren sich. Dichte, Temperatur und spezifisches Volumen bleiben bei Teilung eines homogenen Zustands gleich.
@@ -135,6 +150,7 @@ Gesamtmasse und Gesamtvolumen halbieren sich. Dichte, Temperatur und spezifische
 
 // 0-8
 #aufgabe(titel: "Zustandsgröße und Prozessgröße", art: "verstehen", quelle: "1.6")[
+#if not web [*Aufgabe 8* #linebreak()]
 Warum ist der Druck eine Zustandsgröße und die Arbeit eine Prozessgröße?
 ][
 Der Druckunterschied zwischen zwei Zuständen hängt nur von deren Werten ab. Die Arbeit hängt zusätzlich vom Prozessweg ab, also von der Fläche unter der Kurve.
@@ -145,7 +161,17 @@ Der Druckunterschied zwischen zwei Zuständen hängt nur von deren Werten ab. Di
   ergebnis: [$m approx "11,88" thin "kg"$, $p_2 approx "6,02" thin "bar"$ absolut],
   tipp: [Die ideale Gasgleichung braucht Kelvin und Pascal. Im starren Behälter bleiben Masse und Volumen gleich.],
 )[
-Luft: $V=2 thin "m"^3$, $p_1=5 thin "bar"$ absolut, $theta_1=20 thin "°C"$, $R="287,2" thin "J/(kg K)"$. Bestimme die Masse. Der geschlossene starre Behälter wird auf $80 thin "°C"$ erwärmt. Bestimme $p_2$.
+#if not web [*Aufgabe 9* #linebreak()]
+*Gegeben und Annahmen*
+
+Luft: $V=2 thin "m"^3$, $p_1=5 thin "bar"$ absolut, $theta_1=20 thin "°C"$, $R="287,2" thin "J/(kg K)"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die Masse. Der geschlossene starre Behälter wird auf $80 thin "°C"$ erwärmt.],
+[Bestimme $p_2$.],
+)
 ][
 *Einheiten vorbereiten:* Die Gasgleichung $p V = m R T$ funktioniert nur mit absoluten Größen: $p_1 = 5 thin "bar" = 5 dot 10^5 thin "Pa"$, $T_1 = "293,15" thin "K"$, $T_2 = "353,15" thin "K"$.
 ][
@@ -162,7 +188,16 @@ Luft: $V=2 thin "m"^3$, $p_1=5 thin "bar"$ absolut, $theta_1=20 thin "°C"$, $R=
 #aufgabe(titel: "Absoluter Druck aus der Manometeranzeige", art: "rechnen", quelle: "1.7",
   ergebnis: [$p_"abs" = "3,16" thin "bar" = 316 thin 000 thin "Pa"$],
 )[
-Ein Manometer zeigt $"2,2" thin "bar"$, Umgebung $"0,96" thin "bar"$. Welcher Druck gehört in die Gasgleichung?
+#if not web [*Aufgabe 10* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Manometer zeigt $"2,2" thin "bar"$, Umgebung $"0,96" thin "bar"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welcher Druck gehört in die Gasgleichung?],
+)
 ][
 *Was misst ein Manometer?* Es vergleicht den Behälterdruck mit der Umgebung. Es zeigt den *Überdruck*, also wie viel mehr drinnen drückt als draußen.
 ][
@@ -175,7 +210,16 @@ Ein Manometer zeigt $"2,2" thin "bar"$, Umgebung $"0,96" thin "bar"$. Welcher Dr
 #aufgabe(titel: "Halber Rohrdurchmesser", art: "rechnen", quelle: "1.5",
   ergebnis: [Die Geschwindigkeit wird viermal so groß.],
 )[
-Bei stationärer inkompressibler Strömung halbiert sich der Rohrdurchmesser. Wie ändert sich die mittlere Geschwindigkeit?
+#if not web [*Aufgabe 11* #linebreak()]
+*Gegeben und Annahmen*
+
+Bei stationärer inkompressibler Strömung halbiert sich der Rohrdurchmesser.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie ändert sich die mittlere Geschwindigkeit?],
+)
 ][
 *Kontinuität:* Stationär und inkompressibel heißt: Was vorne hineinfließt, muss hinten heraus. Der Volumenstrom $dot(V) = A c$ bleibt überall gleich.
 ][
@@ -188,6 +232,7 @@ Bei stationärer inkompressibler Strömung halbiert sich der Rohrdurchmesser. Wi
 
 // 0-12
 #aufgabe(titel: "Adiabates Rühren", art: "verstehen", quelle: "1.10")[
+#if not web [*Aufgabe 12* #linebreak()]
 Warum kann adiabates Rühren die Temperatur erhöhen, und warum ist es irreversibel?
 ][
 Rührarbeit wird in innere Energie umgewandelt. Die Umkehr der Drehrichtung kehrt die Dissipation nicht um; System und Umgebung lassen sich dadurch nicht spurlos zurücksetzen.
@@ -195,6 +240,7 @@ Rührarbeit wird in innere Energie umgewandelt. Die Umkehr der Drehrichtung kehr
 
 // 0-13
 #aufgabe(titel: "Bestand und zeitlicher Mittelwert", art: "verstehen", quelle: "1.1.1")[
+#if not web [*Aufgabe 13* #linebreak()]
 Warum lässt sich aus $dif m/dif t$ allein die aktuelle Behältermasse nicht bestimmen? Wann darfst du einen zeitlichen Mittelwert als arithmetischen Mittelwert der beiden Randwerte berechnen?
 ][
 Eine Rate sagt nur, *wie schnell sich etwas ändert*. Den aktuellen Bestand erhältst du erst mit einer Anfangsbedingung:
@@ -204,6 +250,7 @@ Der Mittelwert der beiden Randwerte ist nur bei *linearem* Zeitverlauf zugleich 
 
 // 0-14
 #aufgabe(titel: "Ideales Gas, ideales Fluid, Beschleunigung", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 14* #linebreak()]
 Was unterscheidet ein ideales Gas von einem idealen Fluid? Kann ein stationär strömendes Teilchen beschleunigt sein?
 ][
 *Ideales Gas:* $p v=R T$, veränderliche Dichte erlaubt. *Ideales Fluid in BS:* inkompressibel und reibungsfrei.
@@ -213,7 +260,18 @@ Ein Teilchen kann in einer stationären Düse beschleunigen, weil es räumlich v
 
 // 0-15
 #aufgabe(titel: "Zeitabhängige Massenbilanz", art: "rechnen", quelle: "1.1.1")[
-*Zeitabhängiger Behälter, Ü 1.1:* Ein Behälter mit konstanter Fläche $A$ enthält anfangs $m_0=rho A h_0$. Es gelten $dot(m)_"zu"=z t$, $dot(m)_"ab"=a t$ und $rho="konstant"$. Bestimme $m(t)$, $h(t)$, die drei Fälle $z>a$, $z=a$, $z<a$, beide mittleren Massenströme und den mittleren Füllstand im Intervall $t_1$ bis $t_2$.
+#if not web [*Aufgabe 15* #linebreak()]
+*Zeitabhängiger Behälter, Ü 1.1:*
+
+*Gegeben und Annahmen*
+
+Ein Behälter mit konstanter Fläche $A$ enthält anfangs $m_0=rho A h_0$. Es gelten $dot(m)_"zu"=z t$, $dot(m)_"ab"=a t$ und $rho="konstant"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $m(t)$, $h(t)$, die drei Fälle $z>a$, $z=a$, $z<a$, beide mittleren Massenströme und den mittleren Füllstand im Intervall $t_1$ bis $t_2$.],
+)
 ][
 *Modell:* offener Behälter, $rho,A,z,a$ konstant; $m_0=rho A h_0$. Gesucht: Bestand, Pegel, Mittelwerte.
 ][
@@ -233,7 +291,19 @@ Dahinter steckt $overline(h)=integral_(t_1)^(t_2)h(t)dif t/(t_2-t_1)$ und die In
 
 // 0-16
 #aufgabe(titel: "Badewanne vollständig bilanzieren", art: "rechnen", quelle: "1.1.1")[
-*Badewanne, Ü 1.2:* Anfangs leer, $400 thin "l"$ Inhalt, Zuflüsse $30 thin "l/min"$ und $"0,1" thin "l/s"$. Vom maximalen Abfluss $90 thin "l/min"$ bleiben 20 Prozent frei. Jedes Rostloch führt $"0,25" thin "l/min"$ ab. Berechne für ein Loch Massenänderung, Wasserinhalt als Zeitfunktion und Füllzeit. Bestimme den erforderlichen Überlauf bei vollständig blockiertem Bodenabfluss einschließlich Löchern sowie die maximal zulässige Lochzahl bei normalem Teilabfluss, damit der Pegel nicht sinkt. Nutze $rho=1 thin "kg/l"$ und konstante Ströme.
+#if not web [*Aufgabe 16* #linebreak()]
+*Badewanne, Ü 1.2:*
+
+*Gegeben und Annahmen*
+
+Anfangs leer, $400 thin "l"$ Inhalt, Zuflüsse $30 thin "l/min"$ und $"0,1" thin "l/s"$. Vom maximalen Abfluss $90 thin "l/min"$ bleiben 20 Prozent frei. Jedes Rostloch führt $"0,25" thin "l/min"$ ab.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne für ein Loch Massenänderung, Wasserinhalt als Zeitfunktion und Füllzeit.],
+[Bestimme den erforderlichen Überlauf bei vollständig blockiertem Bodenabfluss einschließlich Löchern sowie die maximal zulässige Lochzahl bei normalem Teilabfluss, damit der Pegel nicht sinkt. Nutze $rho=1 thin "kg/l"$ und konstante Ströme.],
+)
 ][
 *Strategie:* alle Ströme in l/min. Bei konstanter Dichte genügt die Volumenbilanz.
 #tab(columns: (1.5fr, 1fr),
@@ -255,7 +325,19 @@ $ t_"voll"=400/"17,75" approx "22,54" thin "min" approx 1352 thin "s" $
 
 // 0-17
 #aufgabe(titel: "Boiler, Mittelwert und Spitzenlast", art: "rechnen", quelle: "1.1.1")[
-*Boiler, Ü 1.3:* $400 thin "l"$ Wasser sollen von 6 auf 80 °C erwärmt werden. Nutze $rho=1 thin "kg/l"$, die Mittelwerte $C_6="4,21037"$ und $C_80="4,18665" thin "kJ/(kg K)"$ mit Bezug auf 0 °C. Bestimme Energie und Leistung für 4 h, 6 h und 0,5 h. Für nachströmendes Kaltwasser mit 6 °C: Welche Dauerleistung deckt 1 l/min, welche 10 l/min? Warum kann ein Speicher den erforderlichen Spitzenwert der elektrischen Anschlussleistung verringern?
+#if not web [*Aufgabe 17* #linebreak()]
+*Boiler, Ü 1.3:*
+
+*Gegeben und Annahmen*
+
+$400 thin "l"$ Wasser sollen von 6 auf 80 °C erwärmt werden. Nutze $rho=1 thin "kg/l"$, die Mittelwerte $C_6="4,21037"$ und $C_80="4,18665" thin "kJ/(kg K)"$ mit Bezug auf 0 °C.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Energie und Leistung für 4 h, 6 h und 0,5 h. Für nachströmendes Kaltwasser mit 6 °C: Welche Dauerleistung deckt 1 l/min, welche 10 l/min?],
+[Warum kann ein Speicher den erforderlichen Spitzenwert der elektrischen Anschlussleistung verringern?],
+)
 ][
 #bild("boiler", [Energie wird im warmen Wasser gespeichert und kann eine kurzzeitige Spitzenlast abdecken. Eigens erzeugte Illustration.], height: 47mm)
 *Modell:* Wasser und Heizer geschlossen und nach außen adiabat; Verluste und Behälterwärmekapazität vernachlässigt. $m=400 thin "kg"$. Den Flüssigkeits-Energieanstieg nähern wir durch die isobare Enthalpiedifferenz an.
@@ -282,7 +364,19 @@ Ein Mittelwert von 1 l/min legt die Kurvenform nicht fest. Ein möglicher Verlau
 
 // 0-18
 #aufgabe(titel: "Wasserbad mit knickfreiem Temperaturverlauf", art: "rechnen", quelle: "1.1.1")[
-*Wasserbad, Ü 1.4, Tutorium und WZF:* Von 6 auf 70 °C wird mit 10 K/h geheizt. Die letzten 20 K bis 90 °C um 12:00 Uhr verlaufen parabolisch, am Übergang knickfrei und am Ende mit Steigung null. Bestimme Parabel, Übergangszeit, Einschaltzeit und spezifische Heizleistung mit $c=4200 thin "J/(kg K)"$. Es ist keine Wassermasse vorgegeben. Erläutere die Systemgrenze und die ideale Halteleistung.
+#if not web [*Aufgabe 18* #linebreak()]
+*Wasserbad, Ü 1.4, Tutorium und WZF:*
+
+*Gegeben und Annahmen*
+
+Von 6 auf 70 °C wird mit 10 K/h geheizt. Die letzten 20 K bis 90 °C um 12:00 Uhr verlaufen parabolisch, am Übergang knickfrei und am Ende mit Steigung null.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Parabel, Übergangszeit, Einschaltzeit und spezifische Heizleistung mit $c=4200 thin "J/(kg K)"$. Es ist keine Wassermasse vorgegeben.],
+[Erläutere die Systemgrenze und die ideale Halteleistung.],
+)
 ][
 *Zeitkoordinate:* $t$ in Stunden seit Mitternacht; $vartheta$ ist der Celsius-Zahlenwert. Die Parabel endet um $t_3=12 thin "h"$ mit Steigung null:
 $ vartheta_"II"=90-a(t-t_3)^2 quad (dif vartheta_"II")/(dif t)=-2a(t-t_3) $
@@ -308,7 +402,19 @@ Vor Beginn und beim ideal adiabaten Halten: null. Ohne Masse keine gesamte Leist
 
 // 0-19
 #aufgabe(titel: "Gartenschlauch und Düse", art: "rechnen", quelle: "1.5")[
-*Gartenschlauch, Ü 1.7:* 25 l füllen einen Eimer in 50 s. Der Schlauchdurchmesser beträgt 20 mm, die Düsenöffnung 8 mm. Bestimme Volumenstrom und beide Geschwindigkeiten. Wie lange dauert das Füllen mit einem anderen Schlauch bei $dot(m)="0,2" thin "kg/s"$? Nutze $rho=1000 thin "kg/m"^3$.
+#if not web [*Aufgabe 19* #linebreak()]
+*Gartenschlauch, Ü 1.7:*
+
+*Gegeben und Annahmen*
+
+25 l füllen einen Eimer in 50 s. Der Schlauchdurchmesser beträgt 20 mm, die Düsenöffnung 8 mm.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Volumenstrom und beide Geschwindigkeiten.],
+[Wie lange dauert das Füllen mit einem anderen Schlauch bei $dot(m)="0,2" thin "kg/s"$? Nutze $rho=1000 thin "kg/m"^3$.],
+)
 ][
 *Strategie:* Füllmenge / Zeit liefert den Volumenstrom; dann $c=dot(V)/A$.
 $ dot(V)=25/50 thin "l/s"="0,5" thin "l/s"=5 times 10^(-4) thin "m"^3/"s" $
@@ -321,7 +427,18 @@ Anderer Schlauch: $dot(V)=dot(m)/rho="0,2" thin "l/s"$, also *$t=25/"0,2"=125 th
 
 // 0-20
 #aufgabe(titel: "Füllstandsabhängiger Ausfluss", art: "rechnen", quelle: "1.1.1")[
-*Freier Ausfluss, vereinfachter Teil von Ü 1.5:* Ein offener zylindrischer Behälter mit $D=1 thin "m"$, Anfangshöhe $H="1,25" thin "m"$ und Auslassdurchmesser $d="12,5" thin "mm"$ wird reibungsfrei entleert. Vernachlässige Auslasshöhe, Luftdichte und Oberflächengeschwindigkeit wie in Teil b der Originalaufgabe. Leite $h(t)$ und die Leerungszeit her. Wann ist die Hälfte des Anfangsvolumens abgeflossen?
+#if not web [*Aufgabe 20* #linebreak()]
+*Freier Ausfluss, vereinfachter Teil von Ü 1.5:*
+
+*Gegeben und Annahmen*
+
+Ein offener zylindrischer Behälter mit $D=1 thin "m"$, Anfangshöhe $H="1,25" thin "m"$ und Auslassdurchmesser $d="12,5" thin "mm"$ wird reibungsfrei entleert. Vernachlässige Auslasshöhe, Luftdichte und Oberflächengeschwindigkeit wie in Teil b der Originalaufgabe. Verwende $g="9,81" thin "m/s"^2$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Leite $h(t)$ und die Leerungszeit her. Wann ist die Hälfte des Anfangsvolumens abgeflossen?],
+)
 ][
 *Modell:* großer offener Zylinder, kleine Öffnung auf Bodenniveau, konstante Dichte, keine Verluste, gleiche Umgebungsdrücke. Der lokale Ausfluss wird quasistationär modelliert.
 ][
@@ -343,7 +460,18 @@ $ t_(1/2)=t_"leer"(1-1/sqrt(2)) approx 946 thin "s"="15,77" thin "min" $
 
 // 0-21
 #aufgabe(titel: "Förderleistung und Wirkungsgrade", art: "rechnen", quelle: "1.1.1")[
-*Förderpumpe, Ü 1.8:* Elektrisch werden 32 kW zugeführt, der Motor gibt 90 Prozent als Wellenleistung ab. Es gelten $dot(V)="0,125" thin "m"^3/"s"$, $rho=800 thin "kg/m"^3$, $Delta p=275 thin "kPa"$, $D_1=100 thin "mm"$, $D_2=150 thin "mm"$. Vernachlässige Höhen- und Temperaturänderung. Berechne Geschwindigkeiten, Netto-Förderleistung, Pumpenwirkungsgrad bezogen auf die Welle und Gesamtwirkungsgrad bezogen auf die elektrische Leistung.
+#if not web [*Aufgabe 21* #linebreak()]
+*Förderpumpe, Ü 1.8:*
+
+*Gegeben und Annahmen*
+
+Elektrisch werden 32 kW zugeführt, der Motor gibt 90 Prozent als Wellenleistung ab. Es gelten $dot(V)="0,125" thin "m"^3/"s"$, $rho=800 thin "kg/m"^3$, $Delta p=275 thin "kPa"$, $D_1=100 thin "mm"$, $D_2=150 thin "mm"$. Vernachlässige Höhen- und Temperaturänderung. Verwende $g="9,81" thin "m/s"^2$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Geschwindigkeiten, Netto-Förderleistung, Pumpenwirkungsgrad bezogen auf die Welle und Gesamtwirkungsgrad bezogen auf die elektrische Leistung.],
+)
 ][
 *Modell:* Höhen- und Temperaturänderung vernachlässigt. Gesucht ist die Nettoleistung für Druck *und* Bewegungsenergie.
 ][
@@ -366,6 +494,7 @@ $ eta_"Pumpe"="24,21"/"28,8" approx "0,841" quad eta_"gesamt"="24,21"/32 approx 
 
 // 1-1
 #aufgabe(titel: "Fünf Abschnitte der Erwärmung", art: "verstehen", quelle: "2.1")[
+#if not web [*Aufgabe 22* #linebreak()]
 Erkläre die fünf Abschnitte der Erwärmung von Eis bis überhitztem Dampf. Warum kann eine Phasenumwandlung im Diagramm waagerecht oder senkrecht erscheinen?
 ][
 Feststoff erwärmen, schmelzen, Flüssigkeit erwärmen, verdampfen, Dampf erwärmen. Beim Phasenwechsel bleibt $T$ unter den genannten isobaren Gleichgewichtsbedingungen konstant. Die Orientierung hängt davon ab, auf welcher Achse $T$ steht.
@@ -373,6 +502,7 @@ Feststoff erwärmen, schmelzen, Flüssigkeit erwärmen, verdampfen, Dampf erwär
 
 // 1-2
 #aufgabe(titel: "Wann Q = m(h″ − h′) gilt", art: "verstehen", quelle: "2.1")[
+#if not web [*Aufgabe 23* #linebreak()]
 Unter welchen Voraussetzungen gilt beim Verdampfen $Q=m(h''-h')$?
 ][
 Reiner Stoff im Gleichgewicht bei konstantem Druck unterhalb des kritischen Drucks; vollständiger Wechsel von gesättigter Flüssigkeit zu gesättigtem Dampf. Für ein geschlossenes System: nur Volumenarbeit, keine wesentlichen äußeren Energieänderungen. Ein passender stationärer Verdampfer liefert dieselbe Wärmebeziehung bei entsprechender Vernachlässigung weiterer Beiträge.
@@ -380,6 +510,7 @@ Reiner Stoff im Gleichgewicht bei konstantem Druck unterhalb des kritischen Druc
 
 // 1-3
 #aufgabe(titel: "Unterkühlt, Nassdampf, Sattdampf, überhitzt", art: "verstehen", quelle: "2.4")[
+#if not web [*Aufgabe 24* #linebreak()]
 Wodurch unterscheiden sich unterkühlte Flüssigkeit, Nassdampf, Sattdampf und überhitzter Dampf?
 ][
 Unterkühlt: $T<T_s(p)$. Nassdampf: beide Phasen. Sattdampf: gesättigter Dampf am Rand $x=1$. Überhitzt: $T>T_s(p)$.
@@ -387,6 +518,7 @@ Unterkühlt: $T<T_s(p)$. Nassdampf: beide Phasen. Sattdampf: gesättigter Dampf 
 
 // 1-4
 #aufgabe(titel: "Nassdampf: p und T reichen nicht", art: "verstehen", quelle: "2.9")[
+#if not web [*Aufgabe 25* #linebreak()]
 Warum reichen $p$ und $T$ im Nassdampfgebiet nicht zur Festlegung des Mischungszustands?
 ][
 Im Zweiphasengleichgewicht gilt $T=T_s(p)$. Die beiden Angaben sind gekoppelt; der Massenanteil der Phasen bleibt unbekannt.
@@ -396,7 +528,16 @@ Im Zweiphasengleichgewicht gilt $T=T_s(p)$. Die beiden Angaben sind gekoppelt; d
 #aufgabe(titel: "Dampfgehalt aus den Massen", art: "rechnen", quelle: "2.9",
   ergebnis: [$x = "0,25"$, $m' = "1,5" thin "kg"$],
 )[
-Ein Behälter enthält $2 thin "kg"$ Gemisch, darunter $"0,5" thin "kg"$ Dampf. Bestimme $x$ und die Flüssigkeitsmasse.
+#if not web [*Aufgabe 26* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Behälter enthält $2 thin "kg"$ Gemisch, darunter $"0,5" thin "kg"$ Dampf.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $x$ und die Flüssigkeitsmasse.],
+)
 ][
 *Definition:* Der Dampfgehalt ist der *Massenanteil* des Dampfes am Gemisch: $x = m''\/m$.
 ][
@@ -412,7 +553,16 @@ Ein Behälter enthält $2 thin "kg"$ Gemisch, darunter $"0,5" thin "kg"$ Dampf. 
   ergebnis: [$h = "1094,75" thin "kJ/kg"$, $v approx "0,50893" thin "m"^3\/"kg"$],
   tipp: [Ein Nassdampf-Wert liegt zwischen dem Flüssigkeits- und dem Dampfwert, und zwar beim Anteil $x$.],
 )[
-Gegeben: $h'="417,5"$, $h''=2675 thin "kJ/kg"$, $v'="0,001043"$, $v''="1,694" thin "m"^3/"kg"$. Bestimme $h$ und $v$ für $x="0,3"$.
+#if not web [*Aufgabe 27* #linebreak()]
+*Gegeben und Annahmen*
+
+Gegeben: $h'="417,5"$, $h''=2675 thin "kJ/kg"$, $v'="0,001043"$, $v''="1,694" thin "m"^3/"kg"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $h$ und $v$ für $x="0,3"$.],
+)
 ][
 *Mischungsregel verstehen:* 1 kg Nassdampf besteht aus $x$ kg Dampf und $1 - x$ kg Flüssigkeit. Jeder Teil bringt seinen spezifischen Wert mit: $h = (1 - x) h' + x h'' = h' + x(h'' - h')$. Das ist ein Hebel zwischen den beiden Randwerten.
 ][
@@ -427,7 +577,16 @@ Gegeben: $h'="417,5"$, $h''=2675 thin "kJ/kg"$, $v'="0,001043"$, $v''="1,694" th
 #aufgabe(titel: "Dampfgehalt aus der Enthalpie", art: "rechnen", quelle: "2.9",
   ergebnis: [$x approx "0,631"$],
 )[
-Welcher Dampfgehalt ergibt sich aus $h=2200$, $h'=1827$ und $h''=2418 thin "kJ/kg"$?
+#if not web [*Aufgabe 28* #linebreak()]
+*Gegeben und Annahmen*
+
+$h=2200 thin "kJ/kg"$, $h'=1827 thin "kJ/kg"$, $h''=2418 thin "kJ/kg"$; Nassdampf im Sättigungszustand.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme den Dampfgehalt $x$.],
+)
 ][
 *Hebelregel rückwärts:* Aus $h = h' + x(h'' - h')$ wird $x = (h - h')\/(h'' - h')$. Gefragt ist: Welcher Bruchteil des Wegs von $h'$ nach $h''$ ist schon zurückgelegt?
 ][
@@ -438,6 +597,7 @@ Welcher Dampfgehalt ergibt sich aus $h=2200$, $h'=1827$ und $h''=2418 thin "kJ/k
 
 // 1-8
 #aufgabe(titel: "Überkritisch erwärmen", art: "verstehen", quelle: "2.6")[
+#if not web [*Aufgabe 29* #linebreak()]
 Warum benötigt auch ein überkritischer Erwärmungsweg Energie, obwohl er keine gewöhnliche Verdampfungsenthalpie besitzt?
 ][
 Seine Enthalpie steigt kontinuierlich. Es entfällt der separate latente Phasensprung, nicht der Energiebedarf für die Zustandsänderung.
@@ -445,6 +605,7 @@ Seine Enthalpie steigt kontinuierlich. Es entfällt der separate latente Phasens
 
 // 1-9
 #aufgabe(titel: "Isochor erwärmen: v gegen v_kr", art: "verstehen", quelle: "2.7")[
+#if not web [*Aufgabe 30* #linebreak()]
 Welche Rolle spielt $v$ im Vergleich zu $v_"kr"$ beim isochoren Erwärmen von Nassdampf?
 ][
 Bei $v>v_"kr"$ Austritt aus dem Zweiphasengebiet zur Dampfseite; bei $v<v_"kr"$ zur Flüssigkeitsseite. Nach vollständiger Raumausfüllung durch Flüssigkeit kann der Druck stark steigen.
@@ -452,6 +613,7 @@ Bei $v>v_"kr"$ Austritt aus dem Zweiphasengebiet zur Dampfseite; bei $v<v_"kr"$ 
 
 // 1-10
 #aufgabe(titel: "Realgasfaktor Z", art: "verstehen", quelle: "2.2")[
+#if not web [*Aufgabe 31* #linebreak()]
 Was bedeutet $Z=1$ und warum darfst du $Z$ nicht für jeden Zustand eines realen Gases gleich wählen?
 ][
 $Z=1$ ist die ideale thermische Gasbeziehung. Der reale Faktor hängt vom Zustand ab; eine unveränderte Übernahme kann falsche Stoffwerte liefern.
@@ -459,6 +621,7 @@ $Z=1$ ist die ideale thermische Gasbeziehung. Der reale Faktor hängt vom Zustan
 
 // 1-11
 #aufgabe(titel: "Kritischer Punkt und Tripelpunkt", art: "verstehen", quelle: "2.4")[
+#if not web [*Aufgabe 32* #linebreak()]
 Was verschwindet am kritischen Punkt? Was koexistiert am Tripelpunkt?
 ][
 Kritischer Punkt: Unterschiede zwischen koexistierender Flüssigkeit und Dampf verschwinden. Tripelpunkt: feste, flüssige und gasförmige Phase koexistieren.
@@ -466,6 +629,7 @@ Kritischer Punkt: Unterschiede zwischen koexistierender Flüssigkeit und Dampf v
 
 // 1-12
 #aufgabe(titel: "Dampfdruckkurve und Schmelzkurve", art: "verstehen", quelle: "2.1")[
+#if not web [*Aufgabe 33* #linebreak()]
 Warum steigt die Dampfdruckkurve, während die Schmelzkurve gewöhnlichen Eises im betrachteten Bereich fällt?
 ][
 Clapeyron: positive Umwandlungsenthalpie geteilt durch $T$ und Volumenänderung. Verdampfung hat positive Volumenänderung; Schmelzen gewöhnlichen Eises hat negative.
@@ -473,6 +637,7 @@ Clapeyron: positive Umwandlungsenthalpie geteilt durch $T$ und Volumenänderung.
 
 // 1-13
 #aufgabe(titel: "Wärmerohr", art: "verstehen", quelle: "1.1.3")[
+#if not web [*Aufgabe 34* #linebreak()]
 Warum kann ein geschlossenes Wärmerohr Wärme transportieren, obwohl seine Gesamtmasse konstant bleibt?
 ][
 Am warmen Ende nimmt Verdampfen Energie auf, am kalten gibt Kondensieren sie ab. Dampf und Kondensat zirkulieren *innerhalb* der geschlossenen Grenze. Stationär bleiben Gesamtmasse und gespeicherte Energie konstant; zugeführte und abgegebene Wärme gleichen sich aus.
@@ -480,6 +645,7 @@ Am warmen Ende nimmt Verdampfen Energie auf, am kalten gibt Kondensieren sie ab.
 
 // 1-14
 #aufgabe(titel: "Tabellenbezug und einheitlicher Datensatz", art: "verstehen", quelle: "2.1")[
+#if not web [*Aufgabe 35* #linebreak()]
 Eine Tabelle nennt bei 80 °C eine mittlere Wärmekapazität mit Bezug auf 0 °C. Darfst du diesen Wert unverändert für 6 → 80 °C verwenden? Warum dürfen Enthalpiewerte verschiedener Tabellen nicht ungeprüft kombiniert werden?
 ][
 Der Mittelwert 0 → 80 °C enthält einen anderen Temperaturbereich. Für 6 → 80 °C wird die Enthalpiezunahme 0 → 6 °C von der Zunahme 0 → 80 °C abgezogen. Unterschiedliche Tabellen können verschiedene Referenznullpunkte für Enthalpie und Entropie verwenden; eine willkürliche Kombination erzeugt dann falsche Differenzen. Innerhalb eines konsistenten Datensatzes fällt ein gemeinsamer Bezugsnullpunkt bei der Differenzbildung heraus.
@@ -487,7 +653,27 @@ Der Mittelwert 0 → 80 °C enthält einen anderen Temperaturbereich. Für 6 →
 
 // 1-15
 #aufgabe(titel: "Einfache und doppelte Interpolation", art: "rechnen", quelle: "2.10")[
-*Interpolation, Ü 1.10 a und c:* Nutze die folgende verkürzte Originaltabelle für R134a. Bestimme bei 100 °C und 1130 kPa die Werte $v,h,s,c_p$. Bestimme außerdem bei 105,3 °C und 1100 kPa die Werte $v,h,c_p$ durch doppelte Interpolation und prüfe beide Reihenfolgen.
+#if not web [*Aufgabe 36* #linebreak()]
+*Interpolation, Ü 1.10 a und c:*
+
+*Gegeben und Annahmen*
+
+R134a, überhitzter Dampf. Verwende die folgenden Originalwerte aus Ü 1.10 (PDF-S. 7). Zwischen den Punkten wird linear interpoliert.
+#tab(columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+ th([p / kPa], [θ / °C], [v / m³/kg], [h / kJ/kg], [s / kJ/(kg K)], [c_p / kJ/(kg K)]),
+ [1000], [100], [0,02756], [483,5], [1,8997], [1,0409],
+ [1200], [100], [0,02245], [481,2], [1,8802], [1,0630],
+ [1000], [110], [0,02859], [493,9], [1,9273], [1,0459],
+ [1200], [110], [0,02335], [491,8], [1,9083], [1,0644],
+)
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme bei 100 °C und 1130 kPa $v,h,s,c_p$.],
+[Bestimme bei 105,3 °C und 1100 kPa $v,h,c_p$ durch doppelte Interpolation.],
+[Prüfe die beiden möglichen Interpolationsreihenfolgen.],
+)
 ][
 *Bei 100 °C:* Der Druckanteil beträgt $f_p=(1130-1000)/(1200-1000)="0,65"$. Für jede Eigenschaft gilt $y=y_1000+"0,65"(y_1200-y_1000)$. Daraus:
 - $v="0,0242385" thin "m"^3/"kg"$.
@@ -509,7 +695,18 @@ Kontrolle in umgekehrter Reihenfolge: Bei 100 °C ergeben sich $v="0,025005"$, $
 
 // 1-16
 #aufgabe(titel: "Ammoniak: wenig Dampfmasse, viel Dampfvolumen", art: "rechnen", quelle: "2.9")[
-*Ammoniak-Ampulle, Ü 2.3:* $V="14,8" thin "cm"^3$, $m="1,63" thin "g"$, $theta=-20 thin "°C"$. Verwende aus BT $v'="0,00150"$ und $v''="0,62280" thin "m"^3/"kg"$. Bestimme Dampfgehalt, Dampfvolumen und Flüssigkeitsvolumenanteil.
+#if not web [*Aufgabe 37* #linebreak()]
+*Ammoniak-Ampulle, Ü 2.3:*
+
+*Gegeben und Annahmen*
+
+$V="14,8" thin "cm"^3$, $m="1,63" thin "g"$, $theta=-20 thin "°C"$. Verwende aus BT $v'="0,00150"$ und $v''="0,62280" thin "m"^3/"kg"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Dampfgehalt, Dampfvolumen und Flüssigkeitsvolumenanteil.],
+)
 ][
 *Erst umrechnen:* $V="14,8" times 10^(-6) thin "m"^3$, $m="1,63" times 10^(-3) thin "kg"$. Das spezifische Gesamtvolumen ist:
 $ v=V/m approx "0,00907975" thin "m"^3/"kg" $
@@ -522,7 +719,18 @@ Somit $V'="14,8"-"12,385" approx "2,415" thin "cm"^3$. Die Flüssigkeit belegt r
 
 // 1-17
 #aufgabe(titel: "Sauerstoffflasche: ideal und real", art: "rechnen", quelle: "1.6.1")[
-*Sauerstoffflasche, Auszug aus Ü 2.5 a–c und e:* $V="58,5" thin "l"$, Überdruck 232 bar bei $T_1=300 thin "K"$, Umgebung 1 bar, Abkühlung auf −18,3 °C. Nutze $R="259,8" thin "J/(kg K)"$. Berechne Masse und Enddruck zuerst ideal, dann mit $Z_1="0,958155"$ und dem für den Endzustand vorgegebenen $Z_2="0,85949475"$. Die Flasche bleibt dicht und starr.
+#if not web [*Aufgabe 38* #linebreak()]
+*Sauerstoffflasche, Auszug aus Ü 2.5 a–c und e:*
+
+*Gegeben und Annahmen*
+
+$V="58,5" thin "l"$, Überdruck 232 bar bei $T_1=300 thin "K"$, Umgebung 1 bar, Abkühlung auf −18,3 °C. Nutze $R="259,8" thin "J/(kg K)"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Masse und Enddruck zuerst ideal, dann mit $Z_1="0,958155"$ und dem für den Endzustand vorgegebenen $Z_2="0,85949475"$. Die Flasche bleibt dicht und starr.],
+)
 ][
 *Vorbereitung:* $p_1=232+1=233 thin "bar"$ absolut; $V="0,0585" thin "m"^3$; $T_2="254,85" thin "K"$. Die geschlossene starre Flasche hat konstante Masse und konstantes spezifisches Volumen.
 
@@ -540,7 +748,20 @@ Der Endüberdruck ist etwa 176,55 bar. Hier ist $Z_2$ bereits als zum Endzustand
 
 // 1-18
 #aufgabe(titel: "Fünf Energieanteile beim Erwärmen", art: "rechnen", quelle: "2.1")[
-*Erwärmungskurve, vereinfachte Ü 2.2:* 1 kg Eis soll bei 1 bar von −15 °C bis zu 200 °C heißem Wasserdampf erwärmt werden. Rechne näherungsweise mit Schmelzen bei 0 °C, Sieden bei 99,603 °C, $c_"Eis"="2,04" thin "kJ/(kg K)"$, $r_"S"="333,5" thin "kJ/kg"$, mittlerem $c_"Wasser"="4,19030" thin "kJ/(kg K)"$, $r_"V"="2257,5" thin "kJ/kg"$ und angenommenem mittlerem $c_"Dampf"="2,0" thin "kJ/(kg K)"$. Bestimme alle fünf Energieanteile und die Summe. Erkläre die Form im Temperatur-Energie-Diagramm.
+#if not web [*Aufgabe 39* #linebreak()]
+*Erwärmungskurve, vereinfachte Ü 2.2:*
+
+*Gegeben und Annahmen*
+
+1 kg Eis soll bei 1 bar von −15 °C bis zu 200 °C heißem Wasserdampf erwärmt werden.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Rechne näherungsweise mit Schmelzen bei 0 °C, Sieden bei 99,603 °C, $c_"Eis"="2,04" thin "kJ/(kg K)"$, $r_"S"="333,5" thin "kJ/kg"$, mittlerem $c_"Wasser"="4,19030" thin "kJ/(kg K)"$, $r_"V"="2257,5" thin "kJ/kg"$ und angenommenem mittlerem $c_"Dampf"="2,0" thin "kJ/(kg K)"$.],
+[Bestimme alle fünf Energieanteile und die Summe.],
+[Erkläre die Form im Temperatur-Energie-Diagramm.],
+)
 ][
 *Modell:* Isobarer Gleichgewichtsweg mit nur Volumenarbeit und vernachlässigbaren äußeren Energieänderungen. Jede Phase wird mit den angegebenen mittleren Wärmekapazitäten berechnet. Das ist eine vereinfachte Rechenvariante, keine zusätzliche exakte Dampftafel.
 
@@ -559,7 +780,18 @@ Insgesamt *$Q approx "3239,76" thin "kJ" approx "3,240" thin "MJ"$*. Der größt
 
 // 1-19
 #aufgabe(titel: "Stickstoff: Volumenanteile und Förderung", art: "rechnen", quelle: "1.7")[
-*Stickstoffgefäß, Auszug aus Ü 2.1 a–b:* Ein Volumen von $"0,05" thin "m"^3$ enthält bei 1 bar zu 90 Volumenprozent Flüssigkeit und zu 10 Prozent Dampf. Es gelten $v'_1="0,0012398"$, $v''_1="0,21947" thin "m"^3/"kg"$. Bestimme Teilmassen, Gesamtmasse, Dampfgehalt und mittleres spezifisches Volumen. Für das Anheben der Flüssigkeit um $"5,143" thin "m"$ gegen 1 bar Umgebung: Prüfe den erforderlichen Behälterdruck näherungsweise mit $v'("1,4" thin "bar")="0,0012611" thin "m"^3/"kg"$; bei diesem Druck ist $T_s="80,21" thin "K"$.
+#if not web [*Aufgabe 40* #linebreak()]
+*Stickstoffgefäß, Auszug aus Ü 2.1 a–b:*
+
+*Gegeben und Annahmen*
+
+Ein Volumen von $"0,05" thin "m"^3$ enthält bei 1 bar zu 90 Volumenprozent Flüssigkeit und zu 10 Prozent Dampf. Es gelten $v'_1="0,0012398"$, $v''_1="0,21947" thin "m"^3/"kg"$. Verwende $g="9,81" thin "m/s"^2$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Teilmassen, Gesamtmasse, Dampfgehalt und mittleres spezifisches Volumen. Für das Anheben der Flüssigkeit um $"5,143" thin "m"$ gegen 1 bar Umgebung: Prüfe den erforderlichen Behälterdruck näherungsweise mit $v'("1,4" thin "bar")="0,0012611" thin "m"^3/"kg"$; bei diesem Druck ist $T_s="80,21" thin "K"$.],
+)
 ][
 *Teilvolumina:* $V'="0,045" thin "m"^3$, $V''="0,005" thin "m"^3$. Wir teilen jeweils durch das spezifische Volumen der betreffenden Phase:
 $ m'=V'/v' approx "36,296" thin "kg" quad quad m''=V''/v'' approx "0,022782" thin "kg" $
@@ -573,7 +805,18 @@ Das ist mit dem verwendeten Sättigungswert bei 1,4 bar konsistent; dort ist $T_
 
 // 1-20
 #aufgabe(titel: "Bottich mit genauer Wärmekapazität", art: "rechnen", quelle: "1.3")[
-*Beheizter Bottich, Ü 2.9:* Wasser füllt einen Bottich mit 45 cm × 30 cm × 10 cm. Von 6 auf 86 °C, $rho=1 thin "kg/l"$, Heizleistung 1,8 kW, Verluste und Behälterwärmekapazität vernachlässigt. Die auf 0 °C bezogenen Mittelwerte bei 1 bar sind $C_6="4,21037"$, $C_86="4,18745" thin "kJ/(kg K)"$. Bestimme Masse, Energie und Aufheizzeit.
+#if not web [*Aufgabe 41* #linebreak()]
+*Beheizter Bottich, Ü 2.9:*
+
+*Gegeben und Annahmen*
+
+Wasser füllt einen Bottich mit 45 cm × 30 cm × 10 cm. Von 6 auf 86 °C, $rho=1 thin "kg/l"$, Heizleistung 1,8 kW, Verluste und Behälterwärmekapazität vernachlässigt. Die auf 0 °C bezogenen Mittelwerte bei 1 bar sind $C_6="4,21037"$, $C_86="4,18745" thin "kJ/(kg K)"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Masse, Energie und Aufheizzeit.],
+)
 ][
 Das Volumen ist $V="0,45" times "0,30" times "0,10"="0,0135" thin "m"^3="13,5" thin "l"$. Damit $m="13,5" thin "kg"$. Bei vernachlässigter Verdunstung, Behälterwärmekapazität und Verlusten landet die elektrische Energie im Wasser.
 
@@ -585,7 +828,18 @@ Mit $P="1,8" thin "kJ/s"$ folgt *$Delta t=E/P approx 2511 thin "s" approx "41,86
 
 // 1-21
 #aufgabe(titel: "Verdampfer: Masse bleibt, Volumenstrom wächst", art: "rechnen", quelle: "1.5")[
-*Verdampfer, Auszug aus Ü 1.14 a–b und c.1–3:* R134a strömt mit $A_1="0,76" thin "cm"^2$ und $c_1="0,035" thin "m/s"$ als Flüssigkeit ein. Nutze $v_1 approx "0,0007" thin "m"^3/"kg"$. Am Austritt: $A_2="3,04" thin "cm"^2$, $x_2="0,88"$, $v'_2="0,0007"$, $v''_2="0,1205" thin "m"^3/"kg"$ aus BT. Berechne Massenstrom, Austrittsgeschwindigkeit sowie die beiden Phasenvolumenströme. Modell: gemeinsame mittlere Phasengeschwindigkeit.
+#if not web [*Aufgabe 42* #linebreak()]
+*Verdampfer, Auszug aus Ü 1.14 a–b und c.1–3:*
+
+*Gegeben und Annahmen*
+
+R134a strömt mit $A_1="0,76" thin "cm"^2$ und $c_1="0,035" thin "m/s"$ als Flüssigkeit ein. Nutze $v_1 approx "0,0007" thin "m"^3/"kg"$. Am Austritt: $A_2="3,04" thin "cm"^2$, $x_2="0,88"$, $v'_2="0,0007"$, $v''_2="0,1205" thin "m"^3/"kg"$ aus BT.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Massenstrom, Austrittsgeschwindigkeit sowie die beiden Phasenvolumenströme. Modell: gemeinsame mittlere Phasengeschwindigkeit.],
+)
 ][
 *Methode:* Am Eintritt bestimmen wir aus Fläche, Geschwindigkeit und spezifischem Volumen den Massenstrom. Stationär bleibt dieser erhalten. Am Austritt verwenden wir die Nassdampfmischung.
 
@@ -601,6 +855,7 @@ Ihre Summe beträgt $"0,0004032712" thin "m"^3/"s"$, rund 0,4033 l/s. Trotz grö
 
 // 1-22
 #aufgabe(titel: "Massenanteil und Molanteil", art: "verstehen", quelle: "2.12.2")[
+#if not web [*Aufgabe 43* #linebreak()]
 Luft enthält „23 %“ und „21 %“ Sauerstoff. Wie passt das zusammen?
 ][
 23 % ist der *Massenanteil* $xi_"O2"$, 21 % der *Molanteil* $psi_"O2"$. Sauerstoffmoleküle sind schwerer als der Durchschnitt der Luft ($32>"28,96" thin "kg/kmol"$), darum ist ihr Massenanteil größer: $xi=psi M_i/M_g="0,2099" dot 32/"28,964" approx "0,232"$.
@@ -611,7 +866,18 @@ Luft enthält „23 %“ und „21 %“ Sauerstoff. Wie passt das zusammen?
   ergebnis: [$psi_"N2" approx "0,667"$, $psi_"O2" approx "0,333"$; $M_g approx "29,344" thin "kg/kmol"$; $xi_"N2" approx "0,6365"$, $xi_"O2" approx "0,3635"$; $R_g approx "283,3" thin "J/(kg K)"$],
   tipp: [Molanteile kommen direkt aus den kmol. Für die Massenanteile brauchst du zuerst die mittlere Molmasse.],
 )[
-*Gemisch:* 2 kmol N#sub[2] und 1 kmol O#sub[2] werden gemischt ($M_"N2"="28,016"$, $M_"O2"=32 thin "kg/kmol"$). Bestimme $psi_i$, $M_g$, $xi_i$ und $R_g$.
+#if not web [*Aufgabe 44* #linebreak()]
+*Gemisch:*
+
+*Gegeben und Annahmen*
+
+2 kmol N#sub[2] und 1 kmol O#sub[2] werden gemischt ($M_"N2"="28,016"$, $M_"O2"=32 thin "kg/kmol"$). Universelle Gaskonstante für diese Rechnung: $R_m="8314,3" thin "J/(kmol K)"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $psi_i$, $M_g$, $xi_i$ und $R_g$.],
+)
 ][
 *Molanteile zählen Teilchen:* Insgesamt 3 kmol. $psi_"N2" = 2\/3 approx "0,6667"$, $psi_"O2" = 1\/3 approx "0,3333"$.
 ][
@@ -628,7 +894,18 @@ Luft enthält „23 %“ und „21 %“ Sauerstoff. Wie passt das zusammen?
 #aufgabe(titel: "Feuchter Stickstoff", art: "rechnen", quelle: "2.12.2",
   ergebnis: [$M_g = "27,08" thin "kg/kmol"$; $xi_"H2O" approx "0,093"$, $xi_"CO2" approx "0,049"$, $xi_"N2" approx "0,858"$],
 )[
-*Feuchter Stickstoff, BT Beispiel 3.9:* 100 kmol Gemisch enthalten 14 kmol Wasserdampf ($M=18$), 3 kmol CO#sub[2] ($M=44$), Rest N#sub[2] ($M=28 thin "kg/kmol"$). Bestimme $M_g$ und die Massenanteile.
+#if not web [*Aufgabe 45* #linebreak()]
+*Feuchter Stickstoff, BT Beispiel 3.9:*
+
+*Gegeben und Annahmen*
+
+100 kmol Gemisch enthalten 14 kmol Wasserdampf ($M=18$), 3 kmol CO#sub[2] ($M=44$), Rest N#sub[2] ($M=28 thin "kg/kmol"$).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $M_g$ und die Massenanteile.],
+)
 ][
 *Rest bestimmen:* $n_"N2" = 100 - 14 - 3 = 83 thin "kmol"$.
 ][
@@ -643,7 +920,19 @@ Luft enthält „23 %“ und „21 %“ Sauerstoff. Wie passt das zusammen?
 
 // 1-25
 #aufgabe(titel: "Partialdruck und Partialvolumen", art: "rechnen", quelle: "2.12.2")[
-*Partialgrößen, eigenes Zahlenbeispiel nach N S. 2:* Ein ideales Gasgemisch enthält 25 Mol-% A bei $p_g=2 thin "bar"$ und $V_g=4 thin "m"^3$. Bestimme den Partialdruck und das Partialvolumen von A. Warum widersprechen sich die Aussagen „gleicher Druck“ und „kleinerer Druck“ hier nicht?
+#if not web [*Aufgabe 46* #linebreak()]
+*Partialgrößen, eigenes Zahlenbeispiel nach N S. 2:*
+
+*Gegeben und Annahmen*
+
+Ein ideales Gasgemisch enthält 25 Mol-% A bei $p_g=2 thin "bar"$ und $V_g=4 thin "m"^3$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme den Partialdruck und das Partialvolumen von A.],
+[Warum widersprechen sich die Aussagen „gleicher Druck“ und „kleinerer Druck“ hier nicht?],
+)
 ][
 *Modell:* ideale Gase bei gemeinsamer Temperatur. $psi_A="0,25"$.
 ][
@@ -656,7 +945,26 @@ Luft enthält „23 %“ und „21 %“ Sauerstoff. Wie passt das zusammen?
 
 // 1-26
 #aufgabe(titel: "Stickstoff: Restmasse und Nachverdampfen", art: "rechnen", quelle: "2.13.2")[
-*Stickstoffgefäß, Ü 2.1 c–d; W23 und M2:* Verwende das Gefäß und die Werte aus „Stickstoff: Volumenanteile und Förderung“ und Abschnitt 2.13.2. Ab dem Entnahmebeginn soll der Druck bei 1,4 bar bleiben. Wie viel Flüssigkeit lässt sich maximal entnehmen, wenn am Ende nur Sattdampf im starren Gefäß bleibt? Wie viel muss für die Entnahme von 1 kg Flüssigkeit verdampfen? Zeige die Massen- und Volumenbilanz und deute das Vorzeichen von $Delta m$ und $Delta m''$.
+#if not web [*Aufgabe 47* #linebreak()]
+*Stickstoffgefäß, Ü 2.1 c–d; W23 und M2:*
+
+*Gegeben und Annahmen*
+
+Starres Stickstoffgefäß: $V="0,05" thin "m"^3$, Masse bei Entnahmebeginn $m_2="36,31895896" thin "kg"$. Während der Entnahme bleibt $p="1,4" thin "bar"$ konstant. Es tritt gesättigte Flüssigkeit aus; für den zweiten Teil werden $1 thin "kg"$ entnommen.
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Größe bei 1,4 bar], [Flüssigkeit ′], [Sattdampf ″]),
+ [v / m³/kg], [0,0012611], [0,16082],
+ [h / kJ/kg], [−116,15], [79,245],
+ [s / kJ/(kg K)], [2,9081], [5,3442],
+)
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie viel Flüssigkeit lässt sich höchstens entnehmen, wenn am Ende nur Sattdampf im Gefäß bleibt?],
+[Wie viel Flüssigkeit muss während der Entnahme von 1 kg nachverdampfen?],
+[Zeige Massen- und Volumenbilanz und deute die Vorzeichen von $Delta m$ und $Delta m''$.],
+)
 ][
 *Modell:* starrer Behälter, ab Zustand ② isobar bei 1,4 bar, Sättigungswerte aus der Originaltabelle. Aus „Stickstoff: Volumenanteile und Förderung“: $m_2=m_1 approx "36,318959"$ kg.
 ][
@@ -675,7 +983,20 @@ $ Delta m''=frac("0,0012611", "0,16082"-"0,0012611") dot 1 thin "kg" $
 
 // 1-27
 #aufgabe(titel: "Sättigungstemperatur prüfen", art: "rechnen", quelle: "2.13.3")[
-*R134a-Verdampfer, Ü 1.14 c.4–10; M1:* Ergänze „Verdampfer: Masse bleibt, Volumenstrom wächst“ mit den Stoffwerten aus 2.13.3. Bestimme am Austritt $h_2$, $dot(H)_2$, $u_2$, $s_2$, $dot(S)_2$ sowie die Enthalpieströme der Flüssigkeit und des Sattdampfes. Prüfe ihre Summe. Warum ist der Eintritt bei −20 °C und 164,2 kPa flüssig? Bestimme außerdem näherungsweise die Sättigungstemperatur durch Interpolation zwischen −15 °C bei 163,90 kPa und −10 °C bei 200,60 kPa.
+#if not web [*Aufgabe 48* #linebreak()]
+*R134a-Verdampfer, Ü 1.14 c.4–10; M1:*
+
+*Gegeben und Annahmen*
+
+R134a-Verdampfer, stationär. $p_1=p_2="164,2" thin "kPa"$, $vartheta_1=-20 thin "°C"$, $x_2="0,88"$, $dot(m)="0,0038" thin "kg/s"$, $v_2="0,106124" thin "m"^3/"kg"$. Stoffwerte aus M1: $h'="180,25"$, $h''="389,83" thin "kJ/kg"$, $s'="0,9259"$, $s''="1,73787" thin "kJ/(kg K)"$. Für die Sättigungstemperatur: −15 °C bei 163,90 kPa; −10 °C bei 200,60 kPa.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme am Austritt $h_2$, $dot(H)_2$, $u_2$, $s_2$ und $dot(S)_2$.],
+[Berechne die Enthalpieströme von Flüssigkeit und Sattdampf und prüfe ihre Summe.],
+[Interpoliere die Sättigungstemperatur bei 164,2 kPa und erkläre damit den flüssigen Eintrittszustand.],
+)
 ][
 *Modell:* stationär, Nassdampf bei 164,2 kPa, $x_2="0,88"$, $dot(m)="0,0038"$ kg/s. Aus der Verdampfer-Aufgabe: $v_2="0,106124"$ m³/kg. Alle Randwerte aus derselben Zeile von M1.
 ][
@@ -703,7 +1024,20 @@ $ s_2="0,9259"+"0,88"("1,73787"-"0,9259")="1,6404336" thin "kJ/(kg K)" $
 
 // 1-28
 #aufgabe(titel: "Temperatur rückwärts aus dem Volumen", art: "rechnen", quelle: "2.13.1")[
-*Rückwärtige Interpolation, Ü 1.10 b; T22:* Bei $p=1200$ kPa ist $v="0,02300"$ m³/kg gegeben. Nutze die Tabelle zu „Einfache und doppelte Interpolation“ und bestimme die Temperatur. Welche Größe gehört auf die Eingabeachse, wenn die Temperatur gesucht wird? Prüfe anschließend durch Einsetzen in die vorwärts gerichtete Interpolation.
+#if not web [*Aufgabe 49* #linebreak()]
+*Rückwärtige Interpolation, Ü 1.10 b; T22:*
+
+*Gegeben und Annahmen*
+
+R134a, $p=1200 thin "kPa"$, gesuchter Zustand mit $v="0,02300" thin "m"^3/"kg"$. Tabellenpunkte bei demselben Druck: $v_1="0,02245" thin "m"^3/"kg"$ bei 100 °C und $v_2="0,02335" thin "m"^3/"kg"$ bei 110 °C. Lineare Näherung im selben einphasigen Gebiet.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die Temperatur durch rückwärtige Interpolation.],
+[Ordne bekannte und gesuchte Größe den Eingabe- und Ausgabeachsen zu.],
+[Prüfe das Ergebnis durch vorwärts gerichtetes Einsetzen.],
+)
 ][
 *Modell:* R134a bei konstant 1200 kPa, einphasig; lineare Näherung zwischen 100 und 110 °C.
 ][
@@ -722,6 +1056,7 @@ $ f=frac("0,02300"-"0,02245", "0,02335"-"0,02245")="0,611111"... $
 
 // 2-1
 #aufgabe(titel: "Erster Hauptsatz mit der Teich-Analogie", art: "verstehen", quelle: "3.1")[
+#if not web [*Aufgabe 50* #linebreak()]
 Erkläre einem Laien mit der Teich-Analogie, was der erste Hauptsatz aussagt und warum Wärme und Arbeit keine Zustandsgrößen sind.
 ][
 Der Wasserstand (gespeicherte Energie) ändert sich um das, was durch die Bäche netto zu- oder abfließt. Ist das Wasser im Teich, weiß man nicht mehr, ob es als „Wärme“ oder „Arbeit“ kam: Gespeichert ist nur Energie. $Q$ und $W$ existieren nur während des Übertragens und hängen vom Weg ab.
@@ -729,6 +1064,7 @@ Der Wasserstand (gespeicherte Energie) ändert sich um das, was durch die Bäche
 
 // 2-2
 #aufgabe(titel: "Enthalpie im offenen System", art: "verstehen", quelle: "3.1.1")[
+#if not web [*Aufgabe 51* #linebreak()]
 Warum steht im 1. HS für offene Systeme die Enthalpie $h$, im geschlossenen System aber die innere Energie $u$?
 ][
 Im offenen System muss Stoff gegen den Druck hinein- und hinausgeschoben werden. Diese Verschiebearbeit $p v$ steckt in $h=u+p v$. Im geschlossenen System fließt kein Stoff über die Grenze, also gibt es keine Verschiebearbeit.
@@ -736,6 +1072,7 @@ Im offenen System muss Stoff gegen den Druck hinein- und hinausgeschoben werden.
 
 // 2-3
 #aufgabe(titel: "Druckarbeit und Volumenarbeit", art: "verstehen", quelle: "3.1.2")[
+#if not web [*Aufgabe 52* #linebreak()]
 Welche Arbeit gehört zum offenen, welche zum geschlossenen System: $integral v dif p$ oder $-integral p dif v$? Wozu dient das Minuszeichen?
 ][
 Offen: Druckarbeit $w_p=integral v dif p$ (Teil von $w_t$). Geschlossen: Volumenarbeit $w_v=-integral p dif v$ (Teil von $w_g$). Bei Kompression ist $dif v<0$; das Minus macht die zugeführte Arbeit positiv.
@@ -743,6 +1080,7 @@ Offen: Druckarbeit $w_p=integral v dif p$ (Teil von $w_t$). Geschlossen: Volumen
 
 // 2-4
 #aufgabe(titel: "Energiemenge und Wärmestrom", art: "verstehen", quelle: "3.1")[
+#if not web [*Aufgabe 53* #linebreak()]
 Was unterscheidet die Energiemenge $Q_12$ von dem Wärmestrom $dot(Q)_12$? Welche Einheiten haben sie, und kann auch ein geschlossenes System einen Wärmestrom aufnehmen?
 ][
 Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunkten: $Q_12$ in kJ. Die offen-stationäre Bilanz verwendet einen Energiestrom: $dot(Q)_12=dot(m)q_12$ in kW. Der Punkt heißt „pro Zeit“; auch ein geschlossenes System kann einen Wärmestrom aufnehmen.
@@ -750,7 +1088,18 @@ Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunk
 
 // 2-5
 #aufgabe(titel: "Fallende Bleikugel erwärmt sich", art: "rechnen", quelle: "3.1.4")[
-*Kugel, Variante:* Dieselbe Bleikugel ($c_"Pb"=130 thin "J/(kg K)"$) fällt aus $z_1=50 thin "m"$ mit $c_1=10 thin "m/s"$. Um wie viel erwärmt sie sich höchstens?
+#if not web [*Aufgabe 54* #linebreak()]
+*Kugel, Variante:*
+
+*Gegeben und Annahmen*
+
+Eine Bleikugel mit $c_"Pb"=130 thin "J/(kg K)"$ fällt aus $z_1=50 thin "m"$ mit Anfangsgeschwindigkeit $c_1=10 thin "m/s"$. $g="9,81" thin "m/s"^2$. Für die maximale Erwärmung werden Lage- und Bewegungsenergie vollständig in innere Energie der Kugel umgewandelt; Endgeschwindigkeit und Endhöhe sind null.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die höchstmögliche Temperaturerhöhung und prüfe die Energiebilanz.],
+)
 ][
 *Modell:* geschlossen, konstante Wärmekapazität; kein Rückprall und keine Energieabgabe an Boden und Umgebung. Die gesamte anfängliche äußere Energie erwärmt die Kugel.
 ][
@@ -765,7 +1114,18 @@ Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunk
 
 // 2-6
 #aufgabe(titel: "Adiabate Turbine: Leistung mit Vorzeichen", art: "rechnen", quelle: "3.1.1")[
-*Turbine (eigenes Zahlenbeispiel):* Eine adiabate Dampfturbine wird stationär mit $dot(m)=10 thin "kg/s"$ durchströmt, $h_1=3200 thin "kJ/kg"$, $h_2=2500 thin "kJ/kg"$. Änderungen von $c$ und $z$ sind vernachlässigbar. Bestimme $P$ und deute das Vorzeichen.
+#if not web [*Aufgabe 55* #linebreak()]
+*Turbine (eigenes Zahlenbeispiel):*
+
+*Gegeben und Annahmen*
+
+Eine adiabate Dampfturbine wird stationär mit $dot(m)=10 thin "kg/s"$ durchströmt, $h_1=3200 thin "kJ/kg"$, $h_2=2500 thin "kJ/kg"$. Änderungen von $c$ und $z$ sind vernachlässigbar.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $P$ und deute das Vorzeichen.],
+)
 ][
 *Modell:* offen, stationär, ein Ein- und Austritt; $dot(Q)=0$, Änderungen von Bewegungs- und Lageenergie vernachlässigt.
 ][
@@ -780,7 +1140,19 @@ Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunk
 
 // 2-7
 #aufgabe(titel: "Rührer im starren Behälter", art: "rechnen", quelle: "3.1.3")[
-*Rührer:* In einen starren, adiabaten Behälter werden mit einem Rührer $50 thin "kJ"$ Arbeit eingebracht. Wie ändert sich $U$? Welcher Sonderfall aus 3.1.3 liegt vor, und warum ist es *kein* abgeschlossenes System?
+#if not web [*Aufgabe 56* #linebreak()]
+*Rührer:*
+
+*Gegeben und Annahmen*
+
+In einen starren, adiabaten Behälter werden mit einem Rührer $50 thin "kJ"$ Arbeit eingebracht.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie ändert sich $U$?],
+[Welcher Sonderfall aus 3.1.3 liegt vor, und warum ist es *kein* abgeschlossenes System?],
+)
 ][
 *Modell:* geschlossen, adiabat und starr; gleiche äußere Bewegungs- und Lageenergie vor und nach dem Rühren. Der Endzustand wird nach dem Abklingen der Strömung betrachtet.
 ][
@@ -795,7 +1167,18 @@ Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunk
 
 // 2-8
 #aufgabe(titel: "Düse: Enthalpie wird Bewegungsenergie", art: "rechnen", quelle: "3.1.1")[
-*Düse:* In einer adiabaten Düse ohne technische Arbeit und ohne Höhenänderung sinkt die Enthalpie um $45 thin "kJ/kg"$. Eintrittsgeschwindigkeit $c_1=50 thin "m/s"$. Bestimme $c_2$.
+#if not web [*Aufgabe 57* #linebreak()]
+*Düse:*
+
+*Gegeben und Annahmen*
+
+In einer adiabaten Düse ohne technische Arbeit und ohne Höhenänderung sinkt die Enthalpie um $45 thin "kJ/kg"$. Eintrittsgeschwindigkeit $c_1=50 thin "m/s"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $c_2$.],
+)
 ][
 *Modell:* offen, stationär, adiabat; keine technische Arbeit und keine Höhenänderung.
 ][
@@ -812,7 +1195,28 @@ Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunk
 
 // 2-9
 #aufgabe(titel: "Stickstoff: Heizerenergie und Zustandsgrößen", art: "rechnen", quelle: "3.2.1")[
-*Stickstoffgefäß, Ü 2.1 e–g; W23 und M2:* Verwende die Daten aus „Stickstoff: Restmasse und Nachverdampfen“ und Abschnitt 2.13.2. Bestimme die Heizerenergie für die Entnahme von 1 kg Flüssigkeit. Stelle für Zustand ② die 13 Größen $p,T,x,mu,v,h,u,s,m,V,H,U,S$ jeweils für Gesamtgemisch, gesättigte Flüssigkeit und Sattdampf zusammen, mit Einheit, Einordnung und Formelzusammenhang. Berechne danach $Delta H_23$ und $Delta S_23$. Prüfe, wie die Änderungen der Gesamtgrößen zu den spezifischen Größen und zur Energiezufuhr passen.
+#if not web [*Aufgabe 58* #linebreak()]
+*Stickstoffgefäß, Ü 2.1 e–g; W23 und M2:*
+
+*Gegeben und Annahmen*
+
+Starres Stickstoffgefäß. Zu Beginn (Zustand ②): $V="0,050" thin "m"^3$, $m_2="36,31895896" thin "kg"$, $p_2="1,4" thin "bar"$. Entnommen wird $m_"entn"=1 thin "kg"$ gesättigte Flüssigkeit bei konstantem $p_3=p_2$; die Sättigungstemperatur beträgt 80,21 K.
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Größe bei 1,4 bar], [Flüssigkeit ′], [Sattdampf ″]),
+ [v / m³/kg], [0,0012611], [0,16082],
+ [h / kJ/kg], [−116,15], [79,245],
+ [s / kJ/(kg K)], [2,9081], [5,3442],
+)
+Heizerspeicherung, Änderungen von Bewegungs-/Lageenergie und weitere Verluste werden vernachlässigt. Kein Zufluss, keine weitere Arbeitsübertragung. Alle Stoffwerte stammen aus derselben Originaltabelle von Ü 2.1.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die während der Entnahme nachverdampfende Masse und die zugeführte Heizerenergie.],
+[Stelle für Zustand ② die 13 Größen $p,T,x,mu,v,h,u,s,m,V,H,U,S$ für Gemisch, Flüssigkeit und Dampf zusammen: mit Einheit, Einordnung und Formelzusammenhang.],
+[Berechne Zustand ③ sowie $Delta H_23$ und $Delta S_23$.],
+[Prüfe und erkläre die Vorzeichen der Gesamtänderungen und den Zusammenhang mit spezifischen Größen und Energiezufuhr.],
+)
 ][
 *Modell:* starrer Gefäßinhalt, offen und instationär beim Entnehmen; $p_2=p_3="1,4"$ bar, $V="0,05"$ m³. Flüssigkeit tritt aus. Heizerspeicherung, äußere Energieänderungen und weitere Verluste werden wie in M2 vernachlässigt. Für Stoffwerte verwenden wir durchgehend die gedruckte Originaltabelle aus Ü 2.1.
 ][

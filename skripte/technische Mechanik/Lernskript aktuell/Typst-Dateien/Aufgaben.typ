@@ -77,6 +77,7 @@
 
 // 0-1
 #aufgabe(titel: "Hebelarm richtig ablesen", art: "verstehen", quelle: "1.4")[
+#if not web [*Aufgabe 1* #linebreak()]
 Warum darfst du den Hebelarm nicht einfach als Abstand vom Kraftangriffspunkt zum Bezugspunkt ablesen?
 ][
 Nur der senkrechte Abstand zur Wirkungslinie ist der Hebelarm. Gleichwertig kannst du die Kraft zerlegen und die Komponenten mit ihren senkrechten Armen multiplizieren.
@@ -84,6 +85,7 @@ Nur der senkrechte Abstand zur Wirkungslinie ist der Hebelarm. Gleichwertig kann
 
 // 0-2
 #aufgabe(titel: "Gelenkkräfte im Gesamtsystem", art: "verstehen", quelle: "1.6")[
+#if not web [*Aufgabe 2* #linebreak()]
 Warum sind Gelenkkräfte im Freikörperbild des Gesamtsystems nicht zu sehen?
 ][
 Im Gesamtsystem bilden die Gelenkkräfte innere, gleich große Gegenkräfte. Betrachtet man die Teile einzeln, werden sie zu äußeren Kräften des jeweiligen Teils.
@@ -94,7 +96,18 @@ Im Gesamtsystem bilden die Gelenkkräfte innere, gleich große Gegenkräfte. Bet
   ergebnis: [$4F$ nach rechts und $8F$ nach unten],
   tipp: [Jedes Seilstück, das die Rolle verlässt, zieht mit der vollen Seilkraft an ihr. Zerlege das schräge Stück mit dem 3–4–5-Dreieck.],
 )[
-*AK24 S. 8–9, Seilrolle:* Die Seilkraft beträgt $5F$. Das schräge Seilstück bildet ein 3–4–5-Dreieck und läuft von A nach rechts unten. Bestimme beide Komponenten und die gesamte Kraft des Seils auf die Rolle A.
+#if not web [*Aufgabe 3* #linebreak()]
+*AK24 S. 8–9, Seilrolle:*
+
+*Gegeben und Annahmen*
+
+Die Seilkraft beträgt $5F$. Das schräge Seilstück bildet ein 3–4–5-Dreieck und läuft von A nach rechts unten. Das zweite Seilstück verlässt die ideale Rolle senkrecht nach unten; beide Seilzüge haben denselben Betrag. Die Rolle ist reibungsfrei.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme beide Komponenten und die gesamte Kraft des Seils auf die Rolle A.],
+)
 ][
 *Bild:* Schneide die Rolle frei. Wo ein Seil die Rolle verlässt, zieht es sie mit der Seilkraft in Seilrichtung, weg von der Rolle. An A gehen zwei Seilstücke ab: eines senkrecht nach unten, eines schräg nach rechts unten. Beide tragen dieselbe Kraft $5F$, weil ein ideales Seil über eine reibungsfreie Rolle die Kraft nicht ändert.
 ][
@@ -112,7 +125,18 @@ Im Gesamtsystem bilden die Gelenkkräfte innere, gleich große Gegenkräfte. Bet
   ergebnis: [$M = 600 thin "Nm" = 600000 thin "Nmm"$],
   tipp: [Moment ist Kraft mal senkrechter Hebelarm. Rechne erst in N und m, dann in mm um.],
 )[
-*Eigene Aufgabe nach FS TM1 S. 22:* Eine Kraft von 2 kN wirkt senkrecht auf einen Hebel mit 0,3 m Länge. Wie groß ist das Moment in Nm und Nmm?
+#if not web [*Aufgabe 4* #linebreak()]
+*Eigene Aufgabe nach FS TM1 S. 22:*
+
+*Gegeben und Annahmen*
+
+Eine Kraft von 2 kN wirkt senkrecht auf einen Hebel mit 0,3 m Länge.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie groß ist das Moment in Nm und Nmm?],
+)
 ][
 *Hebelarm:* Die Kraft steht senkrecht auf dem Hebel. Damit ist die ganze Hebellänge der senkrechte Abstand zur Wirkungslinie, also $r = "0,3" thin "m"$.
 ][
@@ -128,6 +152,7 @@ Im Gesamtsystem bilden die Gelenkkräfte innere, gleich große Gegenkräfte. Bet
 
 // 1-1
 #aufgabe(titel: "Angriffspunkt der Dreieckslast", art: "verstehen", quelle: "4.1")[
+#if not web [*Aufgabe 5* #linebreak()]
 Wo greift die Resultierende einer Dreieckslast an, und von welcher Seite misst du?
 ][
 Bei einem Drittel der Länge von der hohen Seite bzw. zwei Dritteln von der Nullseite. Das gilt für eine linear verlaufende Dreieckslast.
@@ -135,6 +160,7 @@ Bei einem Drittel der Länge von der hohen Seite bzw. zwei Dritteln von der Null
 
 // 1-2
 #aufgabe(titel: "Aussparung im Schwerpunkt", art: "verstehen", quelle: "4.2")[
+#if not web [*Aufgabe 6* #linebreak()]
 Warum muss eine Aussparung sowohl in der Flächensumme als auch in der Momentsumme abgezogen werden?
 ][
 Die Aussparung enthält kein Material und darf weder Fläche noch deren statisches Moment beitragen. Nur den Nenner zu ändern würde einen falschen Schwerpunkt ergeben.
@@ -145,7 +171,18 @@ Die Aussparung enthält kein Material und darf weder Fläche noch deren statisch
   ergebnis: [$F_R = 9 thin "kN"$ bei $x_R = 5\/3 thin "m" approx "1,67" thin "m"$],
   tipp: [Zerlege die Last in ein Rechteck und ein Dreieck. Jede Teillast greift im Schwerpunkt ihrer Fläche an.],
 )[
-*Eigene Zahlen nach P1 Aufgabe 6.4:* $q(x)=q_0(1+x/L)$ mit $q_0=2 "kN/m"$, $L=3 "m"$. Bestimme Resultierende und Angriffspunkt.
+#if not web [*Aufgabe 7* #linebreak()]
+*Eigene Zahlen nach P1 Aufgabe 6.4:*
+
+*Gegeben und Annahmen*
+
+$q(x)=q_0(1+x/L)$ mit $q_0=2 "kN/m"$, $L=3 "m"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Resultierende und Angriffspunkt.],
+)
 ][
 *Bild:* Die Last beginnt links mit $q_0 = 2 thin "kN/m"$ und steigt linear bis rechts auf $2q_0 = 4 thin "kN/m"$. Das ist ein Trapez: unten ein Rechteck der Höhe $q_0$, darauf ein Dreieck, das von 0 auf $q_0$ ansteigt.
 ][
@@ -163,7 +200,18 @@ Die Aussparung enthält kein Material und darf weder Fläche noch deren statisch
   ergebnis: [$z'_S = 19a\/6 approx "3,17" a$ von oben, $y'_S = 0$],
   tipp: [Das Loch zählt als negative Fläche, sowohl im Nenner als auch im Zähler.],
 )[
-*P1 S. 1 / P2 S. 41, Grundidee:* Ein äußeres Rechteck $4a times 6a$ hat eine mittige rechteckige Aussparung $2a times 3a$. Ihre Oberkante liegt um $a$ unter der äußeren Oberkante. Bestimme $z'_S$ von oben.
+#if not web [*Aufgabe 8* #linebreak()]
+*P1 S. 1 / P2 S. 41, Grundidee:*
+
+*Gegeben und Annahmen*
+
+Ein äußeres Rechteck $4a times 6a$ hat eine mittige rechteckige Aussparung $2a times 3a$. Ihre Oberkante liegt um $a$ unter der äußeren Oberkante.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $z'_S$ von oben.],
+)
 ][
 *Bild:* Nimm das volle Rechteck und zieh das Loch ab. Das Loch ist wie eine Fläche mit negativem Gewicht. Beide Teile liegen links-rechts symmetrisch, deshalb ist $y'_S = 0$; gesucht ist nur die Höhe.
 ][
@@ -181,6 +229,7 @@ Die Aussparung enthält kein Material und darf weder Fläche noch deren statisch
 
 // 2-1
 #aufgabe(titel: "Was Loslager, Gelenk und Einspannung übertragen", art: "verstehen", quelle: "5.1")[
+#if not web [*Aufgabe 9* #linebreak()]
 Welche Reaktionen liefern ein seitliches Loslager, ein inneres Drehgelenk und eine feste Einspannung?
 ][
 Seitliches Loslager: eine horizontale Kraft. Drehgelenk: zwei Kraftkomponenten, kein Moment. Einspannung: zwei Kräfte und ein Moment.
@@ -188,6 +237,7 @@ Seitliches Loslager: eine horizontale Kraft. Drehgelenk: zwei Kraftkomponenten, 
 
 // 2-2
 #aufgabe(titel: "Abzählkriterium reicht nicht", art: "verstehen", quelle: "5.3.2")[
+#if not web [*Aufgabe 10* #linebreak()]
 Warum beweist $r+v=3n$ allein noch keine statische Bestimmtheit?
 ][
 Die Gleichungen können geometrisch abhängig sein, etwa bei ungünstig angeordneten Reaktionslinien. Deshalb müssen Beweglichkeit und wirksame Bindungen zusätzlich anschaulich geprüft werden.
@@ -198,7 +248,20 @@ Die Gleichungen können geometrisch abhängig sein, etwa bei ungünstig angeordn
   ergebnis: [$G_V = 4q_0a$, $B_H = 3q_0a$, $G_H = 7q_0a$, $C_V = 4q_0a$, $D_H = -11q_0a\/2$, $C_H = 3q_0a\/2$],
   tipp: [Schneide am Gelenk G. Beginne mit dem Teil, an dem nur drei Unbekannte hängen.],
 )[
-*AK24 S. 1, 3–7:* Stelle für das System in 5.4 mit dem dort festgelegten Pfeilsystem alle sechs Gleichgewichtsbedingungen auf. Verwende $F_(R 1)=4q_0a$, $F_(R 2)=3q_0a$. Bestimme für $F=-4q_0a$ die sechs Reaktionen als Vielfache von $q_0a$.
+#if not web [*Aufgabe 11* #linebreak()]
+*AK24 S. 1, 3–7:*
+
+*Gegeben und Annahmen*
+
+Zwei starre Teilkörper, ideale Lager, Geometrie und Abstände wie in der beigefügten Skizze. $F_(R 1)=4q_0a$, $F_(R 2)=3q_0a$, $F=-4q_0a$; $q_0$ und $a$ bleiben symbolisch. Pfeilansatz am T-Träger: $G_H$ rechts, $G_V$ oben, $B_H$ links. An der Scheibe: Gegenkräfte im Gelenk, $D_H$ und $C_H$ links, $C_V$ oben.
+#align(center)[#image(abbildungen.at("ak24-system"), width: 100%)]
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Stelle für beide Teilkörper je drei unabhängige Gleichgewichte auf.],
+[Bestimme alle sechs Reaktionen als Vielfache von $q_0a$ und prüfe das Gesamtsystem.],
+)
 ][
 *Modell:* starre Teilkörper, ideale Lager; Vorzeichen und Pfeile wie in 5.4. Zwei Körper mit je drei Gleichungen geben sechs Gleichungen für sechs Unbekannte. Am Gelenk G wirken auf beide Teile gleich große, entgegengesetzte Kräfte $G_H$, $G_V$.
 ][
@@ -220,6 +283,7 @@ Die Momentensumme bezieht sich auf C. Mit den bekannten Gelenkkräften: $8q_0a^2
 
 // 3-1
 #aufgabe(titel: "Voraussetzungen des idealen Fachwerks", art: "verstehen", quelle: "6.1")[
+#if not web [*Aufgabe 12* #linebreak()]
 Welche drei Voraussetzungen brauchst du für ein ideales Fachwerk?
 ][
 Gerade, zwischen den Knoten unbelastete Stäbe; ideale Gelenke; äußere Kräfte greifen an Knoten an. Dann sind die Stäbe Zwei-Kräfte-Körper.
@@ -227,6 +291,7 @@ Gerade, zwischen den Knoten unbelastete Stäbe; ideale Gelenke; äußere Kräfte
 
 // 3-2
 #aufgabe(titel: "Nullstab heißt nicht überflüssig", art: "verstehen", quelle: "6.3.1")[
+#if not web [*Aufgabe 13* #linebreak()]
 Warum ist „Stabkraft null“ nicht gleichbedeutend mit „Stab überflüssig“?
 ][
 Nullstäbe können die Form stabilisieren und unter geänderter Last beansprucht werden. Im konkreten System müssen Stabilität und Belastungsfall geprüft werden.
@@ -237,7 +302,20 @@ Nullstäbe können die Form stabilisieren und unter geänderter Last beansprucht
   ergebnis: [Nullstäbe 1, 2, 9; $S_6 = 5F$ (Zug), $S_7 = 0$, $S_8 = -10F$ (Druck)],
   tipp: [Für den Ritterschnitt: Lege den Momentenbezugspunkt in den Schnittpunkt zweier unbekannter Stäbe.],
 )[
-*AK24 S. 8, 13, 15–16:* Bestimme die Nullstäbe 1, 2 und 9 und ordne die Regeln zu. Schneide anschließend durch die Stäbe 6, 7 und 8. Gegeben am oberen Teilfachwerk: $D=10F$ nach rechts, $G_H=10F$ nach links und $G_V=5F$ nach unten. Berechne $S_6$, $S_7$, $S_8$.
+#if not web [*Aufgabe 14* #linebreak()]
+*AK24 S. 8, 13, 15–16:*
+
+*Gegeben und Annahmen*
+
+Ideales Fachwerk mit Nummerierung und Geometrie der beigefügten Skizze. Am oberen Teil: $D=10F$ nach rechts, $G_H=10F$ nach links und $G_V=5F$ nach unten.
+#align(center)[#image(abbildungen.at("ak24-fachwerk-schnitt"), width: 100%)]
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Erkenne die Nullstäbe 1, 2 und 9 und ordne die Regeln zu.],
+[Führe einen Ritterschnitt durch die Stäbe 6, 7 und 8 und bestimme die drei Stabkräfte.],
+)
 ][
 *Nullstäbe:* Stäbe *1 und 2* treffen sich am unbelasteten oberen rechten Knoten, und nur diese zwei Stäbe sind dort; sie liegen nicht auf einer Linie. Regel 1: beide sind null. Stab *9* sitzt am unbelasteten rechten Zwischenknoten, an dem zwei Vertikalstäbe kollinear durchlaufen. Regel 3: der dritte Stab ist null.
 ][
@@ -258,6 +336,7 @@ $-D dot 2a+G_V dot 2a+S_6 dot 2a=0 => S_6=D-G_V=5F$.
 
 // 4-1
 #aufgabe(titel: "Sprünge bei Einzelkraft und Einzelmoment", art: "verstehen", quelle: "7.3")[
+#if not web [*Aufgabe 15* #linebreak()]
 Welche Größe springt an einer Einzelkraft, welche an einem Einzelmoment?
 ][
 Eine quer gerichtete Einzelkraft erzeugt einen Sprung in Q; M bleibt stetig und knickt. Ein Einzelmoment erzeugt einen Sprung in M; Q bleibt unverändert.
@@ -265,6 +344,7 @@ Eine quer gerichtete Einzelkraft erzeugt einen Sprung in Q; M bleibt stetig und 
 
 // 4-2
 #aufgabe(titel: "Drehgelenk und Querkraftgelenk", art: "verstehen", quelle: "7.3")[
+#if not web [*Aufgabe 16* #linebreak()]
 Wie unterscheiden sich Drehgelenk und Querkraftgelenk für die Schnittgrößen?
 ][
 Drehgelenk: M=0, N und Q möglich. Querkraftgelenk: Q=0, N und M möglich. Das gilt ohne eine dort zusätzlich eingeleitete entsprechende Last.
@@ -275,7 +355,19 @@ Drehgelenk: M=0, N und Q möglich. Querkraftgelenk: Q=0, N und M möglich. Das g
   ergebnis: [Nach A: $N=-4F$, $Q=-8F$, $M=0$. Vor E: $N=-4F$, $Q=-8F$, $M=-32F a$],
   tipp: [Ohne Last im Abschnitt bleiben N und Q konstant, und M ändert sich linear mit der Steigung Q.],
 )[
-*AK24 S. 8–10:* Bestimme $N,Q,M$ unmittelbar nach A und unmittelbar vor E im Abschnitt A–E.
+#if not web [*Aufgabe 17* #linebreak()]
+*AK24 S. 8–10:*
+
+*Gegeben und Annahmen*
+
+Gerader, zwischen A und E unbelasteter Riegelabschnitt, Länge $4a$. An A wirkt die resultierende Seilkraft mit $4F$ nach rechts und $8F$ nach unten, ohne eingeprägtes Moment. $x$ läuft von A nach E. Die Bezugsfaser liegt unten; benutze die zugehörige positive Schnittuferkonvention.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $N,Q,M$ unmittelbar nach A und unmittelbar vor E.],
+[Prüfe die Verläufe im unbelasteten Abschnitt.],
+)
 ][
 *Bild:* Schneide den Träger direkt hinter A und betrachte das Stück bis zum Schnitt. Im Lager A greifen die Lagerkräfte an, aber kein Moment, denn A ist ein Gelenklager.
 ][
@@ -293,7 +385,18 @@ Drehgelenk: M=0, N und Q möglich. Querkraftgelenk: Q=0, N und M möglich. Das g
   ergebnis: [$N=10F$, $Q=-5F$, $M=20F a$],
   tipp: [Am rechten Schnittufer zeigen die positiven Schnittgrößen andersherum als am linken. Zeichne sie zuerst ein.],
 )[
-*AK24 S. 13–14:* Betrachte nur den rechten Teil des Riegels E–G. Am Gelenk wirken auf den T-Träger $G_H=10F$ nach rechts und $G_V=5F$ nach oben. Die Länge E–G beträgt $4a$. Bestimme $N,Q,M$ unmittelbar rechts von E; Bezugsfaser unten.
+#if not web [*Aufgabe 18* #linebreak()]
+*AK24 S. 13–14:*
+
+*Gegeben und Annahmen*
+
+Betrachte nur den rechten Teil des Riegels E–G. Am Gelenk wirken auf den T-Träger $G_H=10F$ nach rechts und $G_V=5F$ nach oben. Die Länge E–G beträgt $4a$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $N,Q,M$ unmittelbar rechts von E; Bezugsfaser unten.],
+)
 ][
 *Pfeile festlegen:* Am rechten Teil ist das negative Schnittufer. Hier zeigen die positiven Schnittgrößen so: N nach links, Q nach oben, M im Uhrzeigersinn (Bezugsfaser unten).
 ][
@@ -311,7 +414,18 @@ Drehgelenk: M=0, N und Q möglich. Querkraftgelenk: Q=0, N und M möglich. Das g
   ergebnis: [$M(x) = 6x - x^2$ in kNm; Maximum bei $x = 3 thin "m"$ mit $M = 9 thin "kNm"$],
   tipp: [M ist die Stammfunktion von Q. Wo Q null wird, hat M einen Extremwert.],
 )[
-*Eigene Aufgabe nach neuer Lösung TM1 Nr. 10 S. 1–2:* $Q(x)=6-2x$ in kN bei $x$ in m, $M(0)=0$. Bestimme $M(x)$ und die innere Extremstelle.
+#if not web [*Aufgabe 19* #linebreak()]
+*Eigene Aufgabe nach neuer Lösung TM1 Nr. 10 S. 1–2:*
+
+*Gegeben und Annahmen*
+
+$Q(x)=6-2x$ in kN bei $x$ in m, $M(0)=0$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $M(x)$ und die innere Extremstelle.],
+)
 ][
 *Bild:* Q ist die Steigung von M. Solange Q positiv ist, steigt M; wird Q negativ, fällt M wieder. Der Gipfel liegt genau dort, wo Q das Vorzeichen wechselt.
 ][
@@ -329,6 +443,7 @@ Drehgelenk: M=0, N und Q möglich. Querkraftgelenk: Q=0, N und M möglich. Das g
 
 // 5-1
 #aufgabe(titel: "Richtung der Haftkraft", art: "verstehen", quelle: "9.2")[
+#if not web [*Aufgabe 20* #linebreak()]
 Welche Richtung hat die Haftkraft, und wann darfst du die Grenzgleichung verwenden?
 ][
 Entgegen der drohenden Relativbewegung. Gleichheit gilt nur im Grenzfall; sonst prüft man die Ungleichung.
@@ -339,7 +454,18 @@ Entgegen der drohenden Relativbewegung. Gleichheit gilt nur im Grenzfall; sonst 
   ergebnis: [Bei 20 N haftet er ($H = 20 thin "N" <= 30 thin "N"$), bei 35 N nicht],
   tipp: [Erst die nötige Haftkraft aus dem Gleichgewicht, dann mit der Grenze $mu_0 N$ vergleichen.],
 )[
-*Eigene Zahlen zum Modell der älteren Klausur:* Ein Klotz wiegt 100 N auf horizontalem Boden, $mu_0="0,3"$. Ein waagerechter Seilzug beträgt zunächst 20 N, dann 35 N. Ist Haften möglich?
+#if not web [*Aufgabe 21* #linebreak()]
+*Eigene Zahlen zum Modell der älteren Klausur:*
+
+*Gegeben und Annahmen*
+
+Ein Klotz wiegt 100 N auf horizontalem Boden, $mu_0="0,3"$. Ein waagerechter Seilzug beträgt zunächst 20 N, dann 35 N.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ist Haften möglich?],
+)
 ][
 *Bild:* Die Haftkraft ist keine feste Zahl. Sie ist so groß, wie sie sein muss, um den Klotz festzuhalten, aber höchstens $mu_0 N$. Erst wenn mehr nötig wäre, rutscht der Klotz.
 ][
@@ -357,6 +483,7 @@ Entgegen der drohenden Relativbewegung. Gleichheit gilt nur im Grenzfall; sonst 
 
 // 6-1
 #aufgabe(titel: "Wärmedehnung ohne Spannung", art: "verstehen", quelle: "TM2 1.4")[
+#if not web [*Aufgabe 22* #linebreak()]
 Kann ein erwärmter Stab länger werden, obwohl seine Spannung null ist?
 ][
 Ja: freie Wärmeausdehnung $Delta l=alpha_T Delta T l$. Ohne Behinderung entsteht keine mechanische Spannung.
@@ -364,6 +491,7 @@ Ja: freie Wärmeausdehnung $Delta l=alpha_T Delta T l$. Ohne Behinderung entsteh
 
 // 6-2
 #aufgabe(titel: "Die fehlende Verträglichkeitsbedingung", art: "verstehen", quelle: "TM2 1.6")[
+#if not web [*Aufgabe 23* #linebreak()]
 Welche Gleichung fehlt bei einem statisch unbestimmten Stabsystem zusätzlich zum Gleichgewicht?
 ][
 Eine geometrische Verträglichkeitsbedingung, z. B. vorgegebene Gesamtlängenänderung oder gleiche Verschiebung an einer Verbindung.
@@ -374,7 +502,18 @@ Eine geometrische Verträglichkeitsbedingung, z. B. vorgegebene Gesamtlängenän
   ergebnis: [$sigma(x) = -F(l+x)\/(2l A_0)$, $Delta l = -3F l\/(4E A_0)$],
   tipp: [Die Normalkraft ist überall gleich, nur die Fläche ändert sich. Die Längenänderung ist das Integral der Dehnung.],
 )[
-*Ältere Klausur, PrüfungenTM2 S. 12:* $A(x)=2l A_0/(l+x)$, konstantes E, Druckkraft F am Ende. Bestimme $sigma(x)$ und $Delta l$ ohne Temperaturänderung.
+#if not web [*Aufgabe 24* #linebreak()]
+*Ältere Klausur, PrüfungenTM2 S. 12:*
+
+*Gegeben und Annahmen*
+
+$A(x)=2l A_0/(l+x)$, konstantes E, Druckkraft F am Ende.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $sigma(x)$ und $Delta l$ ohne Temperaturänderung.],
+)
 ][
 *Bild:* Bei $x = 0$ ist $A = 2A_0$, bei $x = l$ nur noch $A_0$. Die gleiche Kraft läuft durch einen immer dünneren Stab, die Spannung nimmt also zum Ende hin zu.
 ][
@@ -393,7 +532,19 @@ $ Delta l = integral_0^l (-F(l+x))\/(2l E A_0) thin d x = -F\/(2l E A_0) dot (l^
   ergebnis: [$X approx "188,93" thin "N"$ Druck, Balkenende $"0,29989" thin "mm"$ nach oben, $M_A = -X l = -188929 thin "Nmm"$],
   tipp: [Der Stab will sich um $alpha_T Delta T a$ verlängern. Diese Länge teilen sich die Stauchung des Stabes und die Durchbiegung des Balkens.],
 )[
-*AK24 S. 18, 24:* Verwende $a=250 "mm"$, $l=1000 "mm"$, $A=2000 "mm"^2$, $I=10^6 "mm"^4$, $E=210000 "N/mm"^2$, $alpha_T=12 dot 10^(-6) "1/K"$, $Delta T=100 "K"$. Bestimme X, die Verschiebung und das Einspannmoment.
+#if not web [*Aufgabe 25* #linebreak()]
+*AK24 S. 18, 24:*
+
+*Gegeben und Annahmen*
+
+Verwende $a=250 "mm"$, $l=1000 "mm"$, $A=2000 "mm"^2$, $I=10^6 "mm"^4$, $E=210000 "N/mm"^2$, $alpha_T=12 dot 10^(-6) "1/K"$, $Delta T=100 "K"$. Ein vertikaler Stab der Länge $a$ stützt das freie Ende eines horizontalen Kragarms der Länge $l$. Der Stab wird um $Delta T$ erwärmt, der Balken nicht. Beide sind linear elastisch, der Balken schubstarr; keine weitere Last.
+#align(center)[#image(abbildungen.at("ak24-waerme"), width: 100%)]
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme X, die Verschiebung und das Einspannmoment.],
+)
 ][
 *Bild:* Der Stab wird warm und möchte länger werden. Der Kragarm hält dagegen wie eine weiche Feder. Es stellt sich eine Kraft X ein, bei der beide zusammenpassen: der Stab wird etwas zusammengedrückt, der Balken etwas hochgebogen.
 ][
@@ -414,6 +565,7 @@ $ X dot (a/(E A) + l^3/(3E I)) = "0,300" thin "mm" => X = "0,300"/("1,58790" dot
 
 // 7-1
 #aufgabe(titel: "Hauptrichtung im Mohrschen Kreis", art: "verstehen", quelle: "TM2 2.2")[
+#if not web [*Aufgabe 26* #linebreak()]
 Was bedeutet „Hauptrichtung“, und wie erkennst du sie im Kreis?
 ][
 In der Hauptrichtung verschwindet die Schubspannung. Im Kreis liegen die Hauptspannungen deshalb auf der horizontalen Achse.
@@ -421,6 +573,7 @@ In der Hauptrichtung verschwindet die Schubspannung. Im Kreis liegen die Hauptsp
 
 // 7-2
 #aufgabe(titel: "Warum der Kreiswinkel halbiert wird", art: "verstehen", quelle: "TM2 2.2.3")[
+#if not web [*Aufgabe 27* #linebreak()]
 Warum musst du einen am Kreis gemessenen Winkel halbieren?
 ][
 Die Transformationsgleichungen enthalten den doppelten Winkel 2φ. Außerdem ist der Drehsinn im Kreis entgegengesetzt zum Bauteilwinkel, wenn P wie hier eingetragen wird.
@@ -431,7 +584,18 @@ Die Transformationsgleichungen enthalten den doppelten Winkel 2φ. Außerdem ist
   ergebnis: [$sigma_M = "27,5"$, $R = "62,5"$, $sigma_1 = 90$, $sigma_2 = -35 thin "N/mm"^2$, $phi_1 = -"18,435"°$],
   tipp: [Mittelpunkt ist der Mittelwert von $sigma_x$ und $sigma_y$. Der Radius kommt aus Pythagoras mit halber Differenz und $tau_(x y)$.],
 )[
-*AK24 S. 24–25 / Übung 6.2:* $sigma_x="77,5"$, $sigma_y=-"22,5"$, $tau_(x y)=-"37,5"$ N/mm². Zeichne den Kreis und bestimme Mittelpunkt, Radius, Hauptspannungen und die Richtung von $sigma_1$.
+#if not web [*Aufgabe 28* #linebreak()]
+*AK24 S. 24–25 / Übung 6.2:*
+
+*Gegeben und Annahmen*
+
+$sigma_x="77,5"$, $sigma_y=-"22,5"$, $tau_(x y)=-"37,5"$ N/mm².
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Zeichne den Kreis und bestimme Mittelpunkt, Radius, Hauptspannungen und die Richtung von $sigma_1$.],
+)
 ][
 *Bild:* Jeder Schnittwinkel durch das Bauteil ist ein Punkt auf dem Kreis. Die Hauptspannungen sind die beiden Punkte, an denen der Kreis die waagerechte Achse schneidet, denn dort ist $tau = 0$.
 ][
@@ -451,6 +615,7 @@ Die Transformationsgleichungen enthalten den doppelten Winkel 2φ. Außerdem ist
 
 // 8-1
 #aufgabe(titel: "Achse des Verzerrungskreises", art: "verstehen", quelle: "TM2 3.1")[
+#if not web [*Aufgabe 29* #linebreak()]
 Welche Größe steht auf der senkrechten Achse des Verzerrungskreises?
 ][
 Die halbe Gleitung γ/2. Wer γ einträgt, erhält einen falschen Radius und falsche Hauptdehnungen.
@@ -458,6 +623,7 @@ Die halbe Gleitung γ/2. Wer γ einträgt, erhält einen falschen Radius und fal
 
 // 8-2
 #aufgabe(titel: "Dickenänderung trotz ebenem Spannungszustand", art: "verstehen", quelle: "TM2 3.2")[
+#if not web [*Aufgabe 30* #linebreak()]
 Warum ist die dritte Dehnung trotz verschwindender dritter Spannung meist nicht null?
 ][
 Durch die Querkontraktion wirken die Spannungen in x und y auch auf die Dicke des Blechs.
@@ -468,7 +634,18 @@ Durch die Querkontraktion wirken die Spannungen in x und y auch auf die Dicke de
   ergebnis: [$gamma = "1,0" "‰"$, $epsilon_1 = "0,77134" "‰"$, $epsilon_2 = -"0,42134" "‰"$, Richtung $"28,49"°$, $sigma_1 approx "148,83"$, $sigma_2 approx -"43,83" thin "N/mm"^2$],
   tipp: [Bei der 0-45-90-Rosette gilt $gamma_(x y) = 2epsilon_45 - epsilon_0 - epsilon_90$. Im Kreis steht $gamma\/2$ auf der senkrechten Achse.],
 )[
-*WZF-Rosette, Zahlen passend zu Beispiel 1 (eigene bereinigte Aufbereitung):* $epsilon_0="0,5" "‰"$, $epsilon_45="0,675" "‰"$, $epsilon_90=-"0,15" "‰"$. Bestimme $epsilon_x$, $epsilon_y$, $gamma_(x y)$, Hauptdehnungen, die Richtung von $epsilon_1$ sowie die Hauptspannungen mit $E=210000 "N/mm"^2$, $nu="0,3"$.
+#if not web [*Aufgabe 31* #linebreak()]
+*WZF-Rosette, Zahlen passend zu Beispiel 1 (eigene bereinigte Aufbereitung):*
+
+*Gegeben und Annahmen*
+
+$epsilon_0="0,5" "‰"$, $epsilon_45="0,675" "‰"$, $epsilon_90=-"0,15" "‰"$. Für die Spannungen: $E=210000 thin "N/mm"^2$, $nu="0,3"$; ebener Spannungszustand, isotrop und linear elastisch, kein Temperaturanteil.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $epsilon_x$, $epsilon_y$, $gamma_(x y)$, Hauptdehnungen, die Richtung von $epsilon_1$ sowie die Hauptspannungen mit $E=210000 "N/mm"^2$, $nu="0,3"$.],
+)
 ][
 *Messwerte deuten:* Der 0°-Streifen misst direkt $epsilon_x = "0,5" "‰"$, der 90°-Streifen $epsilon_y = -"0,15" "‰"$. Der 45°-Streifen enthält zusätzlich die Gleitung: $gamma = 2 dot "0,675" - "0,5" + "0,15" = "1,0" "‰"$.
 ][
@@ -486,7 +663,18 @@ Durch die Querkontraktion wirken die Spannungen in x und y auch auf die Dicke de
   ergebnis: [$epsilon_1 = "0,37619" "‰"$, $epsilon_2 = -"0,24286" "‰"$, $epsilon_3 = -"0,05714" "‰"$],
   tipp: [Jede Dehnung: eigene Spannung minus $nu$ mal die beiden anderen, alles durch E.],
 )[
-*Ältere Klausur SS 2018, S. 11:* $sigma_1=70$, $sigma_2=-30 "N/mm"^2$, $sigma_3=0$, $E=210000 "N/mm"^2$, $nu="0,3"$. Berechne die drei Hauptdehnungen.
+#if not web [*Aufgabe 32* #linebreak()]
+*Ältere Klausur SS 2018, S. 11:*
+
+*Gegeben und Annahmen*
+
+$sigma_1=70$, $sigma_2=-30 "N/mm"^2$, $sigma_3=0$, $E=210000 "N/mm"^2$, $nu="0,3"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die drei Hauptdehnungen.],
+)
 ][
 *Bild:* Zug in eine Richtung macht das Material dort länger und quer dazu schmaler. Jede Dehnung setzt sich deshalb aus der eigenen Spannung und der Querkontraktion durch die anderen zusammen.
 ][
@@ -504,6 +692,7 @@ Durch die Querkontraktion wirken die Spannungen in x und y auch auf die Dicke de
 
 // 9-1
 #aufgabe(titel: "Einheiten von I und W", art: "verstehen", quelle: "TM2 4.2")[
+#if not web [*Aufgabe 33* #linebreak()]
 Warum haben Flächenträgheitsmomente die Einheit mm⁴ und Widerstandsmomente mm³?
 ][
 I enthält Fläche mal Abstand², also mm²·mm². W=I/Randabstand hat mm³.
@@ -511,6 +700,7 @@ I enthält Fläche mal Abstand², also mm²·mm². W=I/Randabstand hat mm³.
 
 // 9-2
 #aufgabe(titel: "Randbedingungen an Einspannung und freiem Ende", art: "verstehen", quelle: "TM2 4.4")[
+#if not web [*Aufgabe 34* #linebreak()]
 Welche Bedingungen gelten an einer Einspannung und an einem unbelasteten freien Ende?
 ][
 Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten verändern die statischen Randbedingungen.
@@ -521,7 +711,21 @@ Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten ve
   ergebnis: [$z'_S = "58,061096" thin "mm"$, $y'_S = 0$, $I_y = "9833140,605" thin "mm"^4$, $I_(y z) = 0$],
   tipp: [Arbeite mit einer Tabelle: Fläche, Schwerpunktlage, Abstand zum Gesamtschwerpunkt, Eigenanteil, Steineranteil.],
 )[
-*AK24 S. 18–23:* Bestimme für den Querschnitt in 4.3 die vier vorzeichenbehafteten Flächen, ihre z′-Schwerpunktkoordinaten, den Gesamtschwerpunkt und $I_y$. Prüfe $I_(y z)$.
+#if not web [*Aufgabe 35* #linebreak()]
+*AK24 S. 18–23:*
+
+*Gegeben und Annahmen*
+
+Querschnitt gemäß Skizze: Radius $r=50 thin "mm"$, konstante Wanddicke $t="3,75" thin "mm"$; äußeres Rechteck $2r times 3r$ und äußerer Halbkreis, innere Aussparung aus Rechteck und Halbkreis. Hilfsursprung in der Mitte der Durchmesserlinie; $z'$ nach unten.
+#align(center)[#image(abbildungen.at("ak24-querschnitt"), width: 100%)]
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die vier vorzeichenbehafteten Teilflächen und ihre $z'$-Schwerpunktkoordinaten.],
+[Berechne Gesamtschwerpunkt und $I_y$ mit Steiner.],
+[Prüfe $I_(y z)$.],
+)
 ][
 *Modell:* Rechteck 1 minus Rechteck 2 plus Halbkreis 3 minus Halbkreis 4; exakte Geometrie. Abgezogene Teile bekommen negative Fläche und negativen Eigenanteil.
 ][
@@ -543,7 +747,18 @@ Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten ve
   ergebnis: [$abs(sigma_("max")) approx "20,416" thin "N/mm"^2$ am oberen Rand an der Einspannung],
   tipp: [Die größte Spannung sitzt am Rand, der am weitesten von der Schwerachse entfernt ist.],
 )[
-*AK24 S. 24, eigene Nachrechnung mit den gedruckten Daten:* Verwende $X="188,929" "N"$, $l=1000 "mm"$, $I=10^6 "mm"^4$. Bestimme den maximalen Betrag der Biegespannung am Querschnitt aus der Aufgabe „Schwerpunkt und Steiner am zusammengesetzten Querschnitt“.
+#if not web [*Aufgabe 36* #linebreak()]
+*AK24 S. 24, eigene Nachrechnung mit den gedruckten Daten:*
+
+*Gegeben und Annahmen*
+
+Verwende $X="188,929" "N"$, $l=1000 "mm"$, $I=10^6 "mm"^4$. Randkoordinaten relativ zum Hilfsursprung: oben −50 mm, unten +150 mm; Schwerpunkt $z'_S="58,061096" thin "mm"$. Der links eingespannte Kragarm wird am freien Ende allein durch X belastet. Der vorgegebene I-Wert dieser Aufgabe bleibt maßgebend.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme den maximalen Betrag der Biegespannung am Querschnitt aus der Aufgabe „Schwerpunkt und Steiner am zusammengesetzten Querschnitt“.],
+)
 ][
 *Bild:* Beim Biegen ist die Schwerachse spannungsfrei, nach außen wächst die Spannung linear. Es zählt also der größere der beiden Randabstände.
 ][
@@ -561,7 +776,18 @@ Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten ve
   ergebnis: [$w(2a) = 8F a^3\/(3E I) + 3M_0 a^2\/(2E I)$],
   tipp: [Rechne beide Lasten getrennt und addiere. Hinter dem Moment läuft die Biegelinie als Gerade weiter.],
 )[
-*AK24 S. 25–26:* Kragarm mit Gesamtlänge L=2a, Endkraft F nach unten und einem im Uhrzeigersinn wirkenden Moment M₀ bei x=a. Bestimme die Enddurchbiegung durch Superposition.
+#if not web [*Aufgabe 37* #linebreak()]
+*AK24 S. 25–26:*
+
+*Gegeben und Annahmen*
+
+Kragarm mit Gesamtlänge L=2a, Endkraft F nach unten und einem im Uhrzeigersinn wirkenden Moment M₀ bei x=a.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die Enddurchbiegung durch Superposition.],
+)
 ][
 *Modell:* konstantes EI, kleine Verformungen; w nach unten positiv. Bei linearem Verhalten darf man Lastfälle einzeln rechnen und die Durchbiegungen addieren.
 ][
@@ -576,6 +802,7 @@ Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten ve
 
 // 9-6
 #aufgabe(titel: "Randbedingungen für die Biegelinie aufstellen", art: "verstehen", quelle: "TM2 4.4")[
+#if not web [*Aufgabe 38* #linebreak()]
 *Eigene Übungsaufgabe nach FS TM2 S. 29 und älteren Klausuren:* Ein Balken der Länge L ist links eingespannt und rechts gelenkig gelagert. Eine linear abfallende Last hat links q₀ und rechts null. Schreibe q(x) und die vier Randbedingungen für die vierfache Integration auf; noch nicht integrieren.
 ][
 *$q(x)=q_0(1-x/L)$*. Einspannung links: *$w(0)=0$, $w'(0)=0$*. Gelenkiges Endlager rechts ohne Endmoment: *$w(L)=0$, $M(L)=0$*, also bei konstantem EI auch $w''(L)=0$. Prüfung: vier unabhängige Bedingungen für vier Integrationskonstanten.
@@ -586,7 +813,18 @@ Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten ve
   ergebnis: [$I_1 approx "412315,46" thin "mm"^4$, $I_2 approx "107684,54" thin "mm"^4$, $phi_1 approx "11,599"°$],
   tipp: [Das funktioniert wie der Mohrsche Kreis für Spannungen: Mittelwert, Radius, Mittelwert plus und minus Radius.],
 )[
-*Ältere Klausur, Datum unbekannt, Prüfung_unbekannt S. 1–2:* $I_y=400000$, $I_z=120000$, $I_(y z)=60000 "mm"^4$. Bestimme Hauptmomente und eine zu I₁ gehörige Achsenrichtung.
+#if not web [*Aufgabe 39* #linebreak()]
+*Ältere Klausur, Datum unbekannt, Prüfung_unbekannt S. 1–2:*
+
+*Gegeben und Annahmen*
+
+$I_y=400000$, $I_z=120000$, $I_(y z)=60000 "mm"^4$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Hauptmomente und eine zu I₁ gehörige Achsenrichtung.],
+)
 ][
 *Bild:* Dreht man die Achsen, ändern sich $I_y$, $I_z$ und $I_(y z)$ wie Spannungen beim Drehen eines Elements. Die Hauptachsen sind die Lage, in der $I_(y z)$ verschwindet.
 ][
@@ -604,6 +842,7 @@ Einspannung: w=0 und w′=0. Unbelastetes freies Ende: Q=0 und M=0. Endlasten ve
 
 // 10-1
 #aufgabe(titel: "Materialfläche und Mittellinienfläche", art: "verstehen", quelle: "TM2 5.2")[
+#if not web [*Aufgabe 40* #linebreak()]
 Welche zwei unterschiedlichen Geometriegrößen sind Materialfläche A und Mittellinienfläche Aₘ?
 ][
 A ist die tatsächlich vorhandene Materialfläche. Aₘ ist die vom mittleren Wandverlauf eingeschlossene Fläche und enthält bei einem Hohlprofil überwiegend den Hohlraum.
@@ -611,6 +850,7 @@ A ist die tatsächlich vorhandene Materialfläche. Aₘ ist die vom mittleren Wa
 
 // 10-2
 #aufgabe(titel: "Ort der größten Torsionsspannung", art: "verstehen", quelle: "TM2 5.2")[
+#if not web [*Aufgabe 41* #linebreak()]
 Wo liegt die größte Torsionsspannung bei geschlossenen bzw. offenen dünnwandigen Profilen?
 ][
 Geschlossen: dünnste Wand. Offen im schmalen Rechteckstreifenmodell: dickster Teil. Die Voraussetzungen der jeweiligen Formel gehören zur Antwort.
@@ -621,7 +861,20 @@ Geschlossen: dünnste Wand. Offen im schmalen Rechteckstreifenmodell: dickster T
   ergebnis: [$A_m = "17895,02" thin "mm"^2$, $L_m = "543,69" thin "mm"$, $W_T approx "134212,65" thin "mm"^3$, $I_T approx "8834967,9" thin "mm"^4$, $tau_("max") approx "149,02" thin "N/mm"^2$, $Delta theta approx "1,60"°$],
   tipp: [Für geschlossene dünne Profile gilt Bredt: $W_T = 2A_m t$ und $I_T = 4A_m^2 t\/L_m$. $A_m$ ist die von der Mittellinie umschlossene Fläche.],
 )[
-*AK24 S. 18, 23:* Verwende den Querschnitt mit r=50 mm und t=3,75 mm. Bestimme Aₘ, Lₘ, Iₜ und Wₜ. Berechne für $M_T=20 "kNm"$, $l=1000 "mm"$, $G=81000 "N/mm"^2$ maximale Schubspannung und Verdrehung in Grad.
+#if not web [*Aufgabe 42* #linebreak()]
+*AK24 S. 18, 23:*
+
+*Gegeben und Annahmen*
+
+Verwende den Querschnitt mit r=50 mm und t=3,75 mm. Konstante Wanddicke; Querschnittsgeometrie mit äußeren Abmessungen 2r und 3r plus Halbkreis wie in der Skizze.
+#align(center)[#image(abbildungen.at("ak24-querschnitt"), width: 100%)]
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Aₘ, Lₘ, Iₜ und Wₜ.],
+[Berechne für $M_T=20 "kNm"$, $l=1000 "mm"$, $G=81000 "N/mm"^2$ maximale Schubspannung und Verdrehung in Grad.],
+)
 ][
 *Modell:* einzellig, geschlossen, überall gleiche dünne Wand; ungestörte Saint-Venant-Torsion. Der Schubfluss läuft wie Wasser im Ring um das Profil, überall gleich groß.
 ][
@@ -641,7 +894,18 @@ Geschlossen: dünnste Wand. Offen im schmalen Rechteckstreifenmodell: dickster T
   ergebnis: [$d_("min") approx "58,84" thin "mm"$],
   tipp: [Setze $tau_("max") = M_T\/W_T$ gleich der zulässigen Spannung und löse nach d auf. Rechne $M_T$ vorher in Nmm um.],
 )[
-*Eigene Zahlen zum Modell Übung 12.1:* Vollwelle mit $M_T=1800 "Nm"$, zulässiger Schubspannung $tau_("zul")=45 "N/mm"^2$. Welcher Mindestdurchmesser folgt nur aus der Spannung?
+#if not web [*Aufgabe 43* #linebreak()]
+*Eigene Zahlen zum Modell Übung 12.1:*
+
+*Gegeben und Annahmen*
+
+Vollwelle mit $M_T=1800 "Nm"$, zulässiger Schubspannung $tau_("zul")=45 "N/mm"^2$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welcher Mindestdurchmesser folgt nur aus der Spannung?],
+)
 ][
 *Bild:* Eine dickere Welle verteilt das Moment auf mehr Material weiter außen. $W_T$ wächst mit $d^3$, deshalb hilft schon ein etwas größerer Durchmesser stark.
 ][

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "einstein-neugier",
+    "text": "Ich habe keine besonderen Talente. Ich bin nur leidenschaftlich neugierig.",
+    "autor": "Albert Einstein",
+    "werk": "Brief an Carl Seelig, 11. März 1952 · Einstein Archive 39-013; englische Fassung bei Alice Calaprice",
+    "quelle": "https://assets.press.princeton.edu/chapters/s6908.pdf",
+    "original": "I have no special talents. I am only passionately curious.",
+    "uebersetzung": true
+  },
+  {
+    "id": "feynman-verstehen",
+    "text": "Was ich nicht erschaffen kann, verstehe ich nicht.",
+    "autor": "Richard Feynman",
+    "werk": "Tafelnotiz bei seinem Tod, 1988",
+    "quelle": "https://feynman.com/fun/quotes/",
+    "original": "What I cannot create I do not understand.",
+    "uebersetzung": true
+  },
+  {
+    "id": "kant-verstand",
+    "text": "Habe Muth dich deines eigenen Verstandes zu bedienen!",
+    "autor": "Immanuel Kant",
+    "werk": "Beantwortung der Frage: Was ist Aufklärung?, 1784, S. 481 · historische Schreibweise",
+    "quelle": "https://de.wikisource.org/wiki/Beantwortung_der_Frage:_Was_ist_Aufkl%C3%A4rung%3F"
+  },
+  {
+    "id": "bacon-studium",
+    "text": "Studien dienen der Freude, der geistigen Zierde und der Befähigung.",
+    "autor": "Francis Bacon",
+    "werk": "Of Studies, Essays, 1625",
+    "quelle": "https://www.gutenberg.org/cache/epub/575/pg575-images.html",
+    "original": "Studies serve for delight, for ornament, and for ability.",
+    "uebersetzung": true
+  },
+  {
+    "id": "aristoteles-tun",
+    "text": "Was wir erst lernen müssen, bevor wir es tun können, lernen wir, indem wir es tun.",
+    "autor": "Aristoteles",
+    "werk": "Nikomachische Ethik, II, 1 · nach der englischen Übersetzung von W. D. Ross",
+    "quelle": "https://classics.mit.edu/Aristotle/nicomachaen.2.ii.html",
+    "original": "For the things we have to learn before we can do them, we learn by doing them.",
+    "uebersetzung": true
+  },
+  {
+    "id": "bacon-schreiben",
+    "text": "Lesen macht den Menschen reich an Wissen, das Gespräch geistesgegenwärtig und Schreiben genau.",
+    "autor": "Francis Bacon",
+    "werk": "Of Studies, Essays, 1625",
+    "quelle": "https://www.gutenberg.org/cache/epub/575/pg575-images.html",
+    "original": "Reading maketh a full man; conference a ready man; and writing an exact man.",
+    "uebersetzung": true
+  }
+]

@@ -77,6 +77,7 @@
 
 // 0-1
 #aufgabe(titel: "Wie eine Schwebung entsteht", art: "verstehen", quelle: "5.4.1")[
+#if not web [*Aufgabe 1* #linebreak()]
 Erkläre, wann eine Schwebung entsteht und warum der Ton abwechselnd lauter und leiser wird.
 ][
 Zwei ähnliche Frequenzen laufen in ihrer Phase langsam auseinander. Gleiche Phase verstärkt die gemeinsame Auslenkung, Gegenphase verringert sie. Dadurch verändert sich der Betrag der Hülle periodisch.
@@ -86,6 +87,7 @@ Zwei ähnliche Frequenzen laufen in ihrer Phase langsam auseinander. Gleiche Pha
 
 // 0-2
 #aufgabe(titel: "Träger, Hülle und Schwebungsfrequenz", art: "verstehen", quelle: "5.4.1")[
+#if not web [*Aufgabe 2* #linebreak()]
 Unterscheide $omega_m$, $omega_d$, $f_s$ und $T_s$. Warum besitzt die hörbare Schwebung den doppelten Takt der vorzeichenbehafteten Kosinushülle?
 ][
 Der Träger hat $omega_m=(omega_1+omega_2)/2$. Die Kosinushülle hat $omega_d=abs(omega_1-omega_2)/2$. Ihr Betrag erreicht in einer Hüllenperiode zweimal ein Maximum; deshalb $f_s=abs(f_1-f_2)$ und $T_s=1/f_s$.
@@ -95,6 +97,7 @@ Der Träger hat $omega_m=(omega_1+omega_2)/2$. Die Kosinushülle hat $omega_d=ab
 
 // 0-3
 #aufgabe(titel: "Saite mit der Stimmgabel stimmen", art: "verstehen", quelle: "5.4.1")[
+#if not web [*Aufgabe 3* #linebreak()]
 Beschreibe das Stimmen einer Saite mit einer Stimmgabel. Was sagt eine langsamer werdende Schwebung aus?
 ][
 Die beiden Töne werden gleichzeitig erzeugt. Eine längere Schwebungsdauer zeigt eine kleinere Frequenzdifferenz. Verschwindet die Schwebung, stimmen die Frequenzen im Idealmodell überein. Aus der Differenz allein erkennt man noch nicht, welcher Ton höher ist.
@@ -104,6 +107,7 @@ Die beiden Töne werden gleichzeitig erzeugt. Eine längere Schwebungsdauer zeig
 
 // 0-4
 #aufgabe(titel: "Bewegungsgleichungen gekoppelter Pendel", art: "verstehen", quelle: "5.4.2")[
+#if not web [*Aufgabe 4* #linebreak()]
 Stelle beide Bewegungsgleichungen für zwei identische gekoppelte Federpendel auf. Warum hängt die mittlere Feder vom Unterschied der Auslenkungen ab?
 ][
 Es gilt $m dot.double(x)_1=-D x_1-D_k(x_1-x_2)$ und $m dot.double(x)_2=-D x_2-D_k(x_2-x_1)$. Die mittlere Feder reagiert auf die relative Abstandsänderung. Bei gleicher Verschiebung beider Massen bleibt ihre Länge gleich.
@@ -113,6 +117,7 @@ Es gilt $m dot.double(x)_1=-D x_1-D_k(x_1-x_2)$ und $m dot.double(x)_2=-D x_2-D_
 
 // 0-5
 #aufgabe(titel: "Summe und Differenz als neue Koordinaten", art: "verstehen", quelle: "5.4.2")[
+#if not web [*Aufgabe 5* #linebreak()]
 Warum verwendet man Summe und Differenz? Beschreibe auch den Weg zurück zu $x_1$ und $x_2$.
 ][
 Mit $psi_1=x_1+x_2$ und $psi_2=x_1-x_2$ entstehen zwei unabhängige harmonische Gleichungen. Ihre Lösungen können getrennt bestimmt werden. Anschließend liefern $x_1=(psi_1+psi_2)/2$ und $x_2=(psi_1-psi_2)/2$ die ursprünglichen Bewegungen.
@@ -122,6 +127,7 @@ Mit $psi_1=x_1+x_2$ und $psi_2=x_1-x_2$ entstehen zwei unabhängige harmonische 
 
 // 0-6
 #aufgabe(titel: "Gleichtakt und Gegentakt", art: "verstehen", quelle: "5.4.2")[
+#if not web [*Aufgabe 6* #linebreak()]
 Vergleiche Gleich- und Gegentakt: Wie bewegen sich die Massen, was macht die mittlere Feder, und woher kommt $2D_k$?
 ][
 Im Gleichtakt ist $x_1=x_2$, die Kopplungsfeder bleibt ungedehnt und $omega_"gl"=sqrt(D/m)$. Im Gegentakt ist $x_1=-x_2$; zu einer Massenauslenkung $x$ gehört eine relative Dehnung von $2x$. Daher $omega_"gg"=sqrt((D+2D_k)/m)>omega_"gl"$ für $D_k>0$.
@@ -131,6 +137,7 @@ Im Gleichtakt ist $x_1=x_2$, die Kopplungsfeder bleibt ungedehnt und $omega_"gl"
 
 // 0-7
 #aufgabe(titel: "Energieaustausch zwischen zwei Pendeln", art: "verstehen", quelle: "5.4.3")[
+#if not web [*Aufgabe 7* #linebreak()]
 Ein Pendel wird ausgelenkt und losgelassen, das zweite ist anfangs in Ruhe. Erkläre den Wechsel der Hüllkurven und die Bedeutung von $T_s$.
 ][
 Beide Eigenmoden sind angeregt. Ihre leicht verschiedenen Frequenzen überlagern sich in jeder Pendelbewegung. Die Hüllen wechseln sich ab; $T_s=2pi/(omega_"gg"-omega_"gl")$ beschreibt einen vollständigen Austauschzyklus. Eine einzelne Auslenkung null ist dabei kein Beweis für Energie null.
@@ -140,6 +147,7 @@ Beide Eigenmoden sind angeregt. Ihre leicht verschiedenen Frequenzen überlagern
 
 // 0-8
 #aufgabe(titel: "Härtere oder weichere Kopplungsfeder", art: "verstehen", quelle: "5.4.3")[
+#if not web [*Aufgabe 8* #linebreak()]
 Was verändert eine härtere oder weichere Kopplungsfeder an beiden Eigenkreisfrequenzen und an der Austauschdauer?
 ][
 Härteres $D_k$ lässt den Gleichtakt unverändert und erhöht den Gegentakt. Die Differenz wächst, $T_s$ sinkt. Eine weichere Kopplung wirkt umgekehrt; für $D_k=0$ sind die Schwinger entkoppelt und es gibt keinen solchen Austausch.
@@ -149,6 +157,7 @@ Härteres $D_k$ lässt den Gleichtakt unverändert und erhöht den Gegentakt. Di
 
 // 0-9
 #aufgabe(titel: "Drei Pendel und die lange Kette", art: "verstehen", quelle: "5.4.3")[
+#if not web [*Aufgabe 9* #linebreak()]
 Wie viele Eigenmoden besitzen drei linear gekoppelte Pendel mit je einem Freiheitsgrad? Was ist beim Übergang zu einer langen Kette der neue Gedanke?
 ][
 Drei Pendel besitzen drei Eigenmoden. Bei einer langen Kette kann eine Störung von Nachbar zu Nachbar weiterwandern. Das führt von der gemeinsamen Schwingungsform zur räumlichen Ausbreitung einer Welle.
@@ -158,6 +167,7 @@ Drei Pendel besitzen drei Eigenmoden. Bei einer langen Kette kann eine Störung 
 
 // 0-10
 #aufgabe(titel: "Schwebung bei ungleichen Amplituden", art: "verstehen", quelle: "5.4.1")[
+#if not web [*Aufgabe 10* #linebreak()]
 Braucht eine Schwebung gleiche Amplituden? Was passiert bei exakt gleichen Frequenzen?
 ][
 Gleiche Amplituden sind für das periodische An- und Abschwellen nicht zwingend, aber für vollständige Auslöschung nötig. Bei exakt gleichen Frequenzen bleibt die Phasendifferenz konstant: Es entsteht keine langsame Schwebung.
@@ -170,7 +180,16 @@ Gleiche Amplituden sind für das periodische An- und Abschwellen nicht zwingend,
   ergebnis: [$f_m = "441,5" thin "Hz"$, $T_s approx "0,333" thin "s"$, $omega_d approx "9,42" thin "s"^(-1)$, 30 Schwebungen in 10 s],
   tipp: [Der Träger liegt in der Mitte der beiden Frequenzen, die hörbare Schwebung beim Abstand.],
 )[
-Stimmgabeln mit 440 Hz und 443 Hz: Bestimme $f_m$, $T_s$, $omega_d$ und die Zahl der Schwebungen in 10 s.
+#if not web [*Aufgabe 11* #linebreak()]
+*Gegeben und Annahmen*
+
+Stimmgabeln mit 440 Hz und 443 Hz
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $f_m$, $T_s$, $omega_d$ und die Zahl der Schwebungen in 10 s.],
+)
 ][
 *Bild:* Zwei fast gleiche Töne laufen wie zwei Läufer mit leicht verschiedenem Tempo. Mal sind sie im Gleichschritt (laut), mal gegeneinander (leise). Was du als Tonhöhe hörst, ist der Mittelwert; das An- und Abschwellen kommt vom Unterschied.
 ][
@@ -189,7 +208,16 @@ Stimmgabeln mit 440 Hz und 443 Hz: Bestimme $f_m$, $T_s$, $omega_d$ und die Zahl
   ergebnis: [438 Hz oder 442 Hz möglich; es war 438 Hz],
   tipp: [Die Schwebung verrät nur den Abstand, nicht die Richtung. Was macht Spannen mit der Frequenz?],
 )[
-Beim Stimmen mit 440 Hz hörst du alle 0,5 s ein Anschwellen. Welche zwei Saitenfrequenzen sind möglich? Beim stärkeren Spannen wird die Schwebung langsamer: Welche war es?
+#if not web [*Aufgabe 12* #linebreak()]
+*Gegeben und Annahmen*
+
+Beim Stimmen mit 440 Hz hörst du alle 0,5 s ein Anschwellen.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche zwei Saitenfrequenzen sind möglich? Beim stärkeren Spannen wird die Schwebung langsamer: Welche war es?],
+)
 ][
 *Abstand bestimmen:* Ein Anschwellen alle 0,5 s heißt $f_s = 1\/"0,5" thin "s" = 2 thin "Hz"$.
 ][
@@ -203,7 +231,16 @@ Beim Stimmen mit 440 Hz hörst du alle 0,5 s ein Anschwellen. Welche zwei Saiten
 
 // 0-13
 #aufgabe(titel: "Eigenfrequenzen gekoppelter Federpendel", art: "rechnen", quelle: "5.4.2")[
-Zwei gekoppelte Federpendel haben $m="0,5" thin "kg"$, $D=50 thin "N/m"$ und $D_k=5 thin "N/m"$. Bestimme beide Eigenkreisfrequenzen, ihre Frequenzen und $T_s$.
+#if not web [*Aufgabe 13* #linebreak()]
+*Gegeben und Annahmen*
+
+Zwei gekoppelte Federpendel haben $m="0,5" thin "kg"$, $D=50 thin "N/m"$ und $D_k=5 thin "N/m"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme beide Eigenkreisfrequenzen, ihre Frequenzen und $T_s$.],
+)
 ][
 *Modell:* identische lineare Schwinger, ungedämpft.
 ][
@@ -222,7 +259,16 @@ $T_s=2pi/(sqrt(120)-10) approx "6,583" thin "s"$.
 
 // 0-14
 #aufgabe(titel: "Kopplungsfeder für 10 s Austausch", art: "rechnen", quelle: "5.4.3")[
-Für $m="0,5" thin "kg"$ und $D=50 thin "N/m"$ soll ein Austauschzyklus 10 s dauern. Bestimme $D_k$.
+#if not web [*Aufgabe 14* #linebreak()]
+*Gegeben und Annahmen*
+
+Für $m="0,5" thin "kg"$ und $D=50 thin "N/m"$ soll ein Austauschzyklus 10 s dauern.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $D_k$.],
+)
 ][
 *Modell:* gleiche Voraussetzungen wie zuvor; $T_s$ ist ein vollständiger Zyklus.
 ][
@@ -241,7 +287,16 @@ Aus $m omega_"gg"^2=D+2D_k$ folgt $D_k=(m omega_"gg"^2-D)/2 approx "3,240" thin 
 #aufgabe(titel: "Schwebung bei 300 und 304 Hz", art: "rechnen", quelle: "5.4.1",
   ergebnis: [$f_m = 302 thin "Hz"$, $T_s = "0,25" thin "s"$, $omega_d = 4 pi thin "s"^(-1)$],
 )[
-Berechne für 300 Hz und 304 Hz die Trägerfrequenz, Schwebungsdauer und $omega_d$.
+#if not web [*Aufgabe 15* #linebreak()]
+*Gegeben und Annahmen*
+
+Zwei harmonische Schwingungen mit 300 Hz und 304 Hz.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Trägerfrequenz, Schwebungsdauer und $omega_d$.],
+)
 ][
 *Träger:* Mittelwert der beiden Frequenzen, $f_m = 302 thin "Hz"$.
 ][
@@ -257,7 +312,16 @@ Berechne für 300 Hz und 304 Hz die Trägerfrequenz, Schwebungsdauer und $omega_
 #aufgabe(titel: "Schwebungen pro Minute", art: "rechnen", quelle: "5.4.1",
   ergebnis: [$f_m = 514 thin "Hz"$, $T_s = "0,25" thin "s"$, 240 Schwebungen pro Minute],
 )[
-Zwei Stimmgabeln haben 512 Hz und 516 Hz. Bestimme die Trägerfrequenz, $T_s$ und die Zahl der Schwebungen pro Minute.
+#if not web [*Aufgabe 16* #linebreak()]
+*Gegeben und Annahmen*
+
+Zwei Stimmgabeln haben 512 Hz und 516 Hz.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die Trägerfrequenz, $T_s$ und die Zahl der Schwebungen pro Minute.],
+)
 ][
 *Träger:* $f_m = (512 + 516)\/2 = 514 thin "Hz"$. Das ist die Tonhöhe, die du hörst.
 ][
@@ -272,7 +336,16 @@ Zwei Stimmgabeln haben 512 Hz und 516 Hz. Bestimme die Trägerfrequenz, $T_s$ un
   ergebnis: [$omega_"gl" = 10 thin "s"^(-1)$, $omega_"gg" approx "10,488" thin "s"^(-1)$, $T_s approx "12,87" thin "s"$],
   tipp: [Im Gleichtakt bleibt die Kopplungsfeder ungedehnt, im Gegentakt wirkt sie doppelt.],
 )[
-Für $m="0,2" thin "kg"$, $D=20 thin "N/m"$ und $D_k=1 thin "N/m"$: Bestimme beide Eigenkreisfrequenzen und die Austauschdauer.
+#if not web [*Aufgabe 17* #linebreak()]
+*Gegeben und Annahmen*
+
+Für $m="0,2" thin "kg"$, $D=20 thin "N/m"$ und $D_k=1 thin "N/m"$
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme beide Eigenkreisfrequenzen und die Austauschdauer.],
+)
 ][
 *Gleichtakt:* Beide Massen bewegen sich gleich, die mittlere Feder wird nicht gedehnt. Jede Masse spürt nur ihre eigene Feder: $omega_"gl" = sqrt(D\/m) = sqrt(20\/"0,2") = 10 thin "s"^(-1)$.
 ][
@@ -288,7 +361,16 @@ Für $m="0,2" thin "kg"$, $D=20 thin "N/m"$ und $D_k=1 thin "N/m"$: Bestimme bei
 #aufgabe(titel: "Zweite Orgelpfeife bestimmen", art: "rechnen", quelle: "5.4.1",
   ergebnis: [217 Hz oder 223 Hz],
 )[
-In 2 s hörst du sechs Schwebungen zweier Orgelpfeifen. Eine Pfeife hat 220 Hz. Welche Frequenzen sind für die zweite möglich?
+#if not web [*Aufgabe 18* #linebreak()]
+*Gegeben und Annahmen*
+
+In 2 s hörst du sechs Schwebungen zweier Orgelpfeifen. Eine Pfeife hat 220 Hz.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche Frequenzen sind für die zweite möglich?],
+)
 ][
 *Schwebungsfrequenz:* Sechs Schwebungen in 2 s sind $f_s = 6\/(2 thin "s") = 3 thin "Hz"$.
 ][
@@ -302,7 +384,16 @@ In 2 s hörst du sechs Schwebungen zweier Orgelpfeifen. Eine Pfeife hat 220 Hz. 
 #aufgabe(titel: "Federkonstanten aus gemessenen Frequenzen", art: "rechnen", quelle: "5.4.2",
   ergebnis: [$D = 36 thin "N/m"$, $D_k = "3,125" thin "N/m"$, $T_s approx "12,57" thin "s"$],
 )[
-Für zwei identische gekoppelte Pendel mit $m=1 thin "kg"$ werden $omega_"gl"=6 thin "s"^(-1)$ und $omega_"gg"="6,5" thin "s"^(-1)$ gemessen. Bestimme $D$, $D_k$ und $T_s$.
+#if not web [*Aufgabe 19* #linebreak()]
+*Gegeben und Annahmen*
+
+Für zwei identische gekoppelte Pendel mit $m=1 thin "kg"$ werden $omega_"gl"=6 thin "s"^(-1)$ und $omega_"gg"="6,5" thin "s"^(-1)$ gemessen.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $D$, $D_k$ und $T_s$.],
+)
 ][
 *Rückwärts denken:* Im Gleichtakt wirkt nur $D$, also $m omega_"gl"^2 = D$: $D = 1 dot 6^2 = 36 thin "N/m"$.
 ][
@@ -318,7 +409,16 @@ Für zwei identische gekoppelte Pendel mit $m=1 thin "kg"$ werden $omega_"gl"=6 
 #aufgabe(titel: "Verstimmung beim Klavier", art: "rechnen", quelle: "5.4.1",
   ergebnis: [Verstimmung 1,25 Hz; 260,35 Hz oder 262,85 Hz; 75-mal pro Minute],
 )[
-Ein Klavierstimmer hört bei einer Referenzsaite von 261,6 Hz eine Schwebungsdauer von 0,8 s. Wie groß ist die Verstimmung, welche Frequenzen sind möglich und wie oft schwillt der Ton pro Minute an?
+#if not web [*Aufgabe 20* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Klavierstimmer hört bei einer Referenzsaite von 261,6 Hz eine Schwebungsdauer von 0,8 s.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie groß ist die Verstimmung, welche Frequenzen sind möglich und wie oft schwillt der Ton pro Minute an?],
+)
 ][
 *Verstimmung:* Die Schwebungsfrequenz ist der Frequenzabstand: $f_s = 1\/"0,8" thin "s" = "1,25" thin "Hz"$.
 ][
@@ -335,7 +435,16 @@ Ein Klavierstimmer hört bei einer Referenzsaite von 261,6 Hz eine Schwebungsdau
   ergebnis: [$D_k approx "5,342" thin "N/m"$],
   tipp: [Aus $T_s$ bekommst du die nötige Differenz der Eigenkreisfrequenzen.],
 )[
-Bei $m="0,4" thin "kg"$ und $D=40 thin "N/m"$ soll ein vollständiger Austauschzyklus 5 s dauern. Wie groß muss $D_k$ sein?
+#if not web [*Aufgabe 21* #linebreak()]
+*Gegeben und Annahmen*
+
+Bei $m="0,4" thin "kg"$ und $D=40 thin "N/m"$ soll ein vollständiger Austauschzyklus 5 s dauern.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie groß muss $D_k$ sein?],
+)
 ][
 *Gleichtakt liegt fest:* $omega_"gl" = sqrt(40\/"0,4") = 10 thin "s"^(-1)$; die Kopplung ändert ihn nicht.
 ][
@@ -351,7 +460,16 @@ Bei $m="0,4" thin "kg"$ und $D=40 thin "N/m"$ soll ein vollständiger Austauschz
 #aufgabe(titel: "Träger und Anschwellrhythmus", art: "rechnen", quelle: "5.4.1",
   ergebnis: [$f_m = 258 thin "Hz"$, $f_s = 4 thin "Hz"$, $T_s = "0,25" thin "s"$],
 )[
-Stimmgabeln mit 256 Hz und 260 Hz: Bestimme den schnellen Träger und den langsamen Anschwellrhythmus.
+#if not web [*Aufgabe 22* #linebreak()]
+*Gegeben und Annahmen*
+
+Stimmgabeln mit 256 Hz und 260 Hz
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme den schnellen Träger und den langsamen Anschwellrhythmus.],
+)
 ][
 *Schneller Träger:* Die Luft schwingt mit dem Mittelwert, $f_m = 258 thin "Hz"$.
 ][
@@ -363,7 +481,16 @@ Stimmgabeln mit 256 Hz und 260 Hz: Bestimme den schnellen Träger und den langsa
 
 // 0-23
 #aufgabe(titel: "Fledermausdetektor", art: "rechnen", quelle: "5.4.1")[
-Ein ruhender Abendsegler erzeugt 20 kHz. Der Fledermausdetektor ist auf einen lokalen Oszillator von 21 kHz eingestellt. Welche Frequenzdifferenz ergibt sich? Ordne sie gegenüber der Trägerfrequenz ein.
+#if not web [*Aufgabe 23* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein ruhender Abendsegler erzeugt 20 kHz. Der Fledermausdetektor ist auf einen lokalen Oszillator von 21 kHz eingestellt.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche Frequenzdifferenz ergibt sich? Ordne sie gegenüber der Trägerfrequenz ein.],
+)
 ][
 Die Differenz beträgt *$f_s=abs(21000-20000)=1000 thin "Hz"$*. Die arithmetische Trägerfrequenz einer reinen Addition wäre 20,5 kHz. Die Aufgabe bezeichnet den im Detektor nutzbaren Differenzanteil als hörbare Schwebung; 1 kHz darf hier nicht mit der Trägerfrequenz verwechselt werden. Prüfung: Es wird kein Doppler-Effekt benötigt, weil die Quelle ruht.
 
@@ -372,7 +499,20 @@ Die Differenz beträgt *$f_s=abs(21000-20000)=1000 thin "Hz"$*. Die arithmetisch
 
 // 0-24
 #aufgabe(titel: "Federsitz: Masse aus der Periodendauer", art: "rechnen", quelle: "5.0")[
-*BMMD, K17/18 Aufgabe 1:* Ein reibungsfreier Sitz von 4 kg ist an einer Feder befestigt. Mit Pete (75 kg) beträgt $T_1=2 thin "s"$. a) Bestimme $D$ und die Periodendauer mit Mary (60 kg). b) Welche Zeitänderung entspricht 1 kg Massenabnahme bei Pete? c) Ändert ein gleichmäßiges Schwerefeld die ideale Periodendauer?
+#if not web [*Aufgabe 24* #linebreak()]
+*BMMD, K17/18 Aufgabe 1:*
+
+*Gegeben und Annahmen*
+
+Ein reibungsfreier Sitz von 4 kg ist an einer Feder befestigt. Mit Pete (75 kg) beträgt $T_1=2 thin "s"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $D$ und die Periodendauer mit Mary (60 kg).],
+[Welche Zeitänderung entspricht 1 kg Massenabnahme bei Pete?],
+[Ändert ein gleichmäßiges Schwerefeld die ideale Periodendauer?],
+)
 ][
 *Modell:* horizontaler linearer Federoszillator; die Sitzmasse schwingt mit.
 ][
@@ -394,6 +534,7 @@ Eine konstante zusätzliche Kraft verschiebt die Gleichgewichtslage, verändert 
 
 // 1-25
 #aufgabe(titel: "Von gekoppelten Pendeln zur Welle", art: "verstehen", quelle: "6.1")[
+#if not web [*Aufgabe 25* #linebreak()]
 Erkläre den Übergang von vielen gekoppelten Pendeln zu einer Welle. Was wird weitergegeben, und was bleibt lokal?
 ][
 Die Kopplung überträgt die Störung und Energie an benachbarte Schwinger. Die Teilchen bewegen sich im behandelten Modell um ihre Ruhelage; sie wandern nicht mit dem Muster durch das ganze Medium.
@@ -403,6 +544,7 @@ Die Kopplung überträgt die Störung und Energie an benachbarte Schwinger. Die 
 
 // 1-26
 #aufgabe(titel: "Longitudinal und transversal", art: "verstehen", quelle: "6.1")[
+#if not web [*Aufgabe 26* #linebreak()]
 Vergleiche longitudinale und transversale Bewegung an Schall, Saite und Festkörper. Warum trägt Luft im behandelten Modell keine mechanische Scherwelle?
 ][
 Longitudinal bedeutet Bewegung parallel zur Ausbreitung, transversal senkrecht dazu. Schall in Luft ist longitudinal, die Seilwelle transversal. Festkörper können beide Arten tragen. Luft besitzt im behandelten Modell keine elastische Scher-Rückstellwirkung für eine solche Transversalwelle.
@@ -412,6 +554,7 @@ Longitudinal bedeutet Bewegung parallel zur Ausbreitung, transversal senkrecht d
 
 // 1-27
 #aufgabe(titel: "Laufrichtung von u(x − ct) und u(x + ct)", art: "verstehen", quelle: "6.1.1")[
+#if not web [*Aufgabe 27* #linebreak()]
 Begründe die Laufrichtung von $u(x-c t)$ und $u(x+c t)$ über einen Punkt gleicher Phase. Welche Modellvoraussetzung steckt in dieser Schreibweise?
 ][
 Für ein festes Argument $a$ gilt zuerst $x=a+c t$: Bewegung nach $+x$. Im zweiten Fall ist $x=a-c t$: Bewegung nach $-x$. Die Form $u$ wird unverändert mit konstantem $c$ verschoben.
@@ -421,6 +564,7 @@ Für ein festes Argument $a$ gilt zuerst $x=a+c t$: Bewegung nach $+x$. Im zweit
 
 // 1-28
 #aufgabe(titel: "Schnelle und Ausbreitungsgeschwindigkeit", art: "verstehen", quelle: "6.2.1")[
+#if not web [*Aufgabe 28* #linebreak()]
 Unterscheide Schnelle und Ausbreitungsgeschwindigkeit. Wie kann ein Teilchen gerade stillstehen, obwohl die Welle weiterläuft?
 ][
 Die Schnelle ist die lokale Zeitableitung der Auslenkung. Am Umkehrpunkt eines Teilchens ist sie null. Die Phase wandert trotzdem mit $c$ weiter, weil benachbarte Orte zeitversetzt denselben Zustand annehmen.
@@ -430,6 +574,7 @@ Die Schnelle ist die lokale Zeitableitung der Auslenkung. Am Umkehrpunkt eines T
 
 // 1-29
 #aufgabe(titel: "λ f = c herleiten", art: "verstehen", quelle: "6.2")[
+#if not web [*Aufgabe 29* #linebreak()]
 Leite $lambda f=c$ her. Was bestimmt das Medium, was die Quelle? Wie ändert sich $lambda$, wenn bei gleichem $f$ das Medium ein größeres $c$ erlaubt?
 ][
 In $T=1/f$ rückt das Muster um $lambda$ vor, also $c=lambda/T=lambda f$. Die Quelle bestimmt den zeitlichen Takt; das Medium im Modell $c$. Bei gleichem $f$ wächst $lambda$ proportional zu $c$.
@@ -439,6 +584,7 @@ In $T=1/f$ rückt das Muster um $lambda$ vor, also $c=lambda/T=lambda f$. Die Qu
 
 // 1-30
 #aufgabe(titel: "Warum harmonische Wellen?", art: "verstehen", quelle: "6.2")[
+#if not web [*Aufgabe 30* #linebreak()]
 Warum untersucht die Vorlesung harmonische Wellen, obwohl auch einzelne Pulse auftreten? Was sagt das Fourier-Theorem dabei aus?
 ][
 Harmonische Wellen sind Bausteine, aus deren Überlagerung nicht sinusförmige Signale dargestellt werden können. Ein Puls muss selbst keine Sinusform besitzen. Das Theorem macht die einzelnen Anteile nützlich, nicht jede Gesamtwelle harmonisch.
@@ -448,6 +594,7 @@ Harmonische Wellen sind Bausteine, aus deren Überlagerung nicht sinusförmige S
 
 // 1-31
 #aufgabe(titel: "Wellengeschwindigkeit auf der Saite verdoppeln", art: "verstehen", quelle: "6.3")[
+#if not web [*Aufgabe 31* #linebreak()]
 Welche Änderung von Zugkraft oder Dichte verdoppelt die Geschwindigkeit auf einer Saite? Begründe mit der Formel.
 ][
 Bei festem $rho A$ muss $F$ vervierfacht werden. Bei festem $F,A$ muss $rho$ auf ein Viertel sinken. Denn $c=sqrt(F/(rho A))$.
@@ -457,6 +604,7 @@ Bei festem $rho A$ muss $F$ vervierfacht werden. Bei festem $F,A$ muss $rho$ auf
 
 // 1-32
 #aufgabe(titel: "Intensität und Leistung", art: "verstehen", quelle: "6.4")[
+#if not web [*Aufgabe 32* #linebreak()]
 Vergleiche Intensität und Leistung. Warum ist bei doppelter Amplitude die Intensität viermal so groß?
 ][
 Intensität ist Leistung pro senkrechter Fläche. Für die harmonische Welle gilt $I=1/2 rho c omega^2 u^2$. Der Faktor $u^2$ macht aus $2u$ den Faktor 4. Leistung ergibt sich bei gleichmäßigem $I$ aus $P=I F$.
@@ -466,6 +614,7 @@ Intensität ist Leistung pro senkrechter Fläche. Für die harmonische Welle gil
 
 // 1-33
 #aufgabe(titel: "Bedingung für Auslöschung", art: "verstehen", quelle: "6.5")[
+#if not web [*Aufgabe 33* #linebreak()]
 Welche Phasenlage und welcher Wegunterschied erzeugen bei gleichphasigen Quellen vollständige Auslöschung? Was muss für die Amplituden gelten?
 ][
 Die relative Phase muss ein ungerades Vielfaches von $pi$ betragen. Ohne zusätzliche Anfangsphase ist $Delta l=(2j+1)lambda/2$. Vollständige Auslöschung braucht gleiche Amplituden am Beobachtungsort.
@@ -475,6 +624,7 @@ Die relative Phase muss ein ungerades Vielfaches von $pi$ betragen. Ohne zusätz
 
 // 1-34
 #aufgabe(titel: "Knoten und Bäuche der stehenden Welle", art: "verstehen", quelle: "6.6")[
+#if not web [*Aufgabe 34* #linebreak()]
 Leite aus $2A sin(k x)cos(omega t)$ Knoten- und Bauchabstände her. Was bedeutet „kein Nettoenergietransport“?
 ][
 Knoten liegen bei $k x=j pi$, also im Abstand $pi/k=lambda/2$. Bäuche liegen dazwischen: Knoten–Bauch ist $lambda/4$. Die gleich starken gegenläufigen gemittelten Energieflüsse gleichen sich aus; Schwingungsenergie ist trotzdem vorhanden.
@@ -484,6 +634,7 @@ Knoten liegen bei $k x=j pi$, also im Abstand $pi/k=lambda/2$. Bäuche liegen da
 
 // 1-35
 #aufgabe(titel: "Reflexion am festen und losen Ende", art: "verstehen", quelle: "6.6.1")[
+#if not web [*Aufgabe 35* #linebreak()]
 Wie unterscheiden sich die Reflexion am festen und am losen Ende? Begründe den Knoten am festen Ende.
 ][
 Am festen Ende kehrt der Puls invertiert zurück; die Gesamtbewegung muss dort zu jeder Zeit null sein. Am losen Ende findet im Idealmodell keine Inversion statt und die stehende Auslenkung besitzt einen Bauch.
@@ -493,6 +644,7 @@ Am festen Ende kehrt der Puls invertiert zurück; die Gesamtbewegung muss dort z
 
 // 1-36
 #aufgabe(titel: "Eigenmoden der drei Randfälle", art: "verstehen", quelle: "6.7.3")[
+#if not web [*Aufgabe 36* #linebreak()]
 Skizziere je drei Moden für fest–fest, fest–lose und lose–lose. Begründe die erlaubten Ordnungen und unterscheide Mode und Oberton.
 ][
 Fest–fest: $sin(n pi x/L)$ mit $n=1,2,3$. Lose–lose: $cos(n pi x/L)$ mit $n=1,2,3$. Fest–lose: $sin(n pi x/(2L))$ mit $n=1,3,5$. Die Enden liefern Knoten oder Bäuche. Die Grundmode ist die niedrigste schwingende Mode; Obertöne sind die darüberliegenden. Siehe die Modenskizze in Abschnitt 6.7.3.
@@ -504,7 +656,16 @@ Fest–fest: $sin(n pi x/L)$ mit $n=1,2,3$. Lose–lose: $cos(n pi x/L)$ mit $n=
 #aufgabe(titel: "Wellenlängen des Hörbereichs", art: "rechnen", quelle: "6.2",
   ergebnis: [1,7 cm bis 17 m],
 )[
-Für den in L angenommenen Hörbereich 20 Hz bis 20 kHz: Welcher Wellenlängenbereich folgt in Luft mit $c=340 thin "m/s"$?
+#if not web [*Aufgabe 37* #linebreak()]
+*Gegeben und Annahmen*
+
+Für den in L angenommenen Hörbereich 20 Hz bis 20 kHz
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welcher Wellenlängenbereich folgt in Luft mit $c=340 thin "m/s"$?],
+)
 ][
 *Grundgleichung:* In einer Periode rückt die Welle um eine Wellenlänge vor, also $c = lambda f$ und $lambda = c\/f$.
 ][
@@ -518,7 +679,16 @@ Für den in L angenommenen Hörbereich 20 Hz bis 20 kHz: Welcher Wellenlängenbe
 
 // 1-38
 #aufgabe(titel: "Wellenfunktion ablesen", art: "rechnen", quelle: "6.2.1")[
-Gegeben ist $psi=2 thin "mm" · sin(4pi thin "m"^(-1)x-600pi thin "s"^(-1)t)$. Bestimme $lambda,f,T,c$, Laufrichtung und maximale Schnelle.
+#if not web [*Aufgabe 38* #linebreak()]
+*Gegeben und Annahmen*
+
+Gegeben ist $psi=2 thin "mm" · sin(4pi thin "m"^(-1)x-600pi thin "s"^(-1)t)$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $lambda,f,T,c$, Laufrichtung und maximale Schnelle.],
+)
 ][
 *Modell:* harmonische laufende Welle.
 ][
@@ -539,7 +709,16 @@ $s_"max"=psi_0 omega approx "3,770" thin "m/s"$.
 #aufgabe(titel: "Geschwindigkeit eines Pulses", art: "rechnen", quelle: "6.2",
   ergebnis: [$c = 24 thin "m/s"$, $lambda = 3 thin "m"$],
 )[
-Ein Puls legt 6 m in 0,25 s zurück. Bestimme $c$ und danach $lambda$ bei harmonischer Anregung mit 8 Hz.
+#if not web [*Aufgabe 39* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Puls legt 6 m in 0,25 s zurück.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $c$ und danach $lambda$ bei harmonischer Anregung mit 8 Hz.],
+)
 ][
 *Geschwindigkeit:* Weg durch Zeit, $c = 6 thin "m"\/"0,25" thin "s" = 24 thin "m/s"$. Sie gehört zum Medium und gilt auch für eine harmonische Welle.
 ][
@@ -553,7 +732,16 @@ Ein Puls legt 6 m in 0,25 s zurück. Bestimme $c$ und danach $lambda$ bei harmon
 #aufgabe(titel: "Kenngrößen einer 50-Hz-Welle", art: "rechnen", quelle: "6.2",
   ergebnis: [$c = 200 thin "m/s"$, $T = 20 thin "ms"$, $k = pi\/2 thin "m"^(-1)$, $omega = 100 pi thin "s"^(-1)$],
 )[
-Eine harmonische Welle besitzt $f=50 thin "Hz"$ und $lambda=4 thin "m"$. Berechne $c,T,k,omega$.
+#if not web [*Aufgabe 40* #linebreak()]
+*Gegeben und Annahmen*
+
+Eine harmonische Welle besitzt $f=50 thin "Hz"$ und $lambda=4 thin "m"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne $c,T,k,omega$.],
+)
 ][
 *Geschwindigkeit:* $c = lambda f = 4 dot 50 = 200 thin "m/s"$.
 ][
@@ -569,7 +757,16 @@ Eine harmonische Welle besitzt $f=50 thin "Hz"$ und $lambda=4 thin "m"$. Berechn
 #aufgabe(titel: "Wellenfunktion nach +x lesen", art: "rechnen", quelle: "6.2",
   ergebnis: [$lambda = 1 thin "m"$, $f = 50 thin "Hz"$, $c = 50 thin "m/s"$, Laufrichtung $+x$],
 )[
-Lies $psi=5 thin "mm" · sin(2pi thin "m"^(-1)x-100pi thin "s"^(-1)t)$: Bestimme $lambda,f,c$ und Laufrichtung.
+#if not web [*Aufgabe 41* #linebreak()]
+*Gegeben und Annahmen*
+
+$psi=5 thin "mm" dot sin(2pi thin "m"^(-1)x-100pi thin "s"^(-1)t)$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $lambda$, $f$, $c$ und die Laufrichtung.],
+)
 ][
 *Muster erkennen:* Vergleiche mit $psi = psi_0 sin(k x - omega t)$: $k = 2 pi thin "m"^(-1)$, $omega = 100 pi thin "s"^(-1)$.
 ][
@@ -585,7 +782,16 @@ Lies $psi=5 thin "mm" · sin(2pi thin "m"^(-1)x-100pi thin "s"^(-1)t)$: Bestimme
 #aufgabe(titel: "Wellenfunktion nach −x aufstellen", art: "rechnen", quelle: "6.2",
   ergebnis: [$psi(x,t) = 1 thin "cm" · sin((2pi\/3) thin "m"^(-1) x + 8 pi thin "s"^(-1) t)$],
 )[
-Eine Seilwelle mit $c=12 thin "m/s"$, $f=4 thin "Hz"$ und $psi_0=1 thin "cm"$ läuft nach $-x$, Anfangsphase null. Stelle eine passende Wellenfunktion auf.
+#if not web [*Aufgabe 42* #linebreak()]
+*Gegeben und Annahmen*
+
+Eine Seilwelle mit $c=12 thin "m/s"$, $f=4 thin "Hz"$ und $psi_0=1 thin "cm"$ läuft nach $-x$, Anfangsphase null.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Stelle eine passende Wellenfunktion auf.],
+)
 ][
 *Bausteine:* $lambda = c\/f = 3 thin "m"$, also $k = 2 pi\/3 thin "m"^(-1)$; $omega = 2 pi f = 8 pi thin "s"^(-1)$.
 ][
@@ -601,7 +807,17 @@ Eine Seilwelle mit $c=12 thin "m/s"$, $f=4 thin "Hz"$ und $psi_0=1 thin "cm"$ l�
 #aufgabe(titel: "Echolot in Wasser und Luft", art: "rechnen", quelle: "6.3",
   ergebnis: [Wasser 2,96 cm, Luft 6,8 mm],
 )[
-Ein Echolot erzeugt 50 kHz. Berechne $lambda$ in Wasser mit 1480 m/s und in Luft mit 340 m/s. Warum bleibt beim ruhenden Medienwechsel die Frequenz erhalten?
+#if not web [*Aufgabe 43* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Echolot erzeugt 50 kHz.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne $lambda$ in Wasser mit 1480 m/s und in Luft mit 340 m/s.],
+[Warum bleibt beim ruhenden Medienwechsel die Frequenz erhalten?],
+)
 ][
 *Wasser:* $lambda = 1480\/50 thin 000 thin "m" = "0,0296" thin "m" = "2,96" thin "cm"$.
 ][
@@ -617,7 +833,16 @@ Ein Echolot erzeugt 50 kHz. Berechne $lambda$ in Wasser mit 1480 m/s und in Luft
 #aufgabe(titel: "Welle nach −x mit maximaler Schnelle", art: "rechnen", quelle: "6.2",
   ergebnis: [$lambda = 4 thin "m"$, $f = 10 thin "Hz"$, $c = 40 thin "m/s"$, Richtung $-x$, $s_"max" approx "0,314" thin "m/s"$],
 )[
-Für $psi="0,5" thin "cm" · sin("0,5" pi thin "m"^(-1)x+20pi thin "s"^(-1)t)$: Bestimme $lambda,f,c$, Laufrichtung und maximale Schnelle.
+#if not web [*Aufgabe 44* #linebreak()]
+*Gegeben und Annahmen*
+
+Für $psi="0,5" thin "cm" · sin("0,5" pi thin "m"^(-1)x+20pi thin "s"^(-1)t)$
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $lambda,f,c$, Laufrichtung und maximale Schnelle.],
+)
 ][
 *Ablesen:* $k = "0,5" pi thin "m"^(-1)$, $omega = 20 pi thin "s"^(-1)$, $psi_0 = "0,005" thin "m"$.
 ][
@@ -633,7 +858,16 @@ Für $psi="0,5" thin "cm" · sin("0,5" pi thin "m"^(-1)x+20pi thin "s"^(-1)t)$: 
 #aufgabe(titel: "Zwei Lautsprecher mit 680 und 684 Hz", art: "rechnen", quelle: "6.2",
   ergebnis: [$lambda_1 = "0,500" thin "m"$, $lambda_2 approx "0,49708" thin "m"$; $f_m = 682 thin "Hz"$, $T_s = "0,25" thin "s"$],
 )[
-Zwei Lautsprecher schwingen mit 680 Hz und 684 Hz, $c=340 thin "m/s"$. Berechne beide Wellenlängen sowie Trägerfrequenz und Anschwellrhythmus.
+#if not web [*Aufgabe 45* #linebreak()]
+*Gegeben und Annahmen*
+
+Zwei Lautsprecher schwingen mit 680 Hz und 684 Hz, $c=340 thin "m/s"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne beide Wellenlängen sowie Trägerfrequenz und Anschwellrhythmus.],
+)
 ][
 *Wellenlängen:* $lambda = c\/f$: $lambda_1 = 340\/680 = "0,500" thin "m"$, $lambda_2 = 340\/684 approx "0,49708" thin "m"$.
 ][
@@ -647,7 +881,16 @@ Zwei Lautsprecher schwingen mit 680 Hz und 684 Hz, $c=340 thin "m/s"$. Berechne 
 #aufgabe(titel: "Welle in einer Pendelkette", art: "rechnen", quelle: "6.1",
   ergebnis: [$c = "2,5" thin "m/s"$, $lambda = "0,5" thin "m"$, longitudinal],
 )[
-In einer Pendelkette beträgt der Abstand 5 cm, die Störung benötigt 0,02 s zum nächsten Pendel. Die Quelle schwingt mit 5 Hz; die Teilchen bewegen sich längs der Kette. Bestimme $c,lambda$ und die Wellenart.
+#if not web [*Aufgabe 46* #linebreak()]
+*Gegeben und Annahmen*
+
+In einer Pendelkette beträgt der Abstand 5 cm, die Störung benötigt 0,02 s zum nächsten Pendel. Die Quelle schwingt mit 5 Hz; die Teilchen bewegen sich längs der Kette.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $c,lambda$ und die Wellenart.],
+)
 ][
 *Geschwindigkeit:* Die Störung springt 5 cm in 0,02 s weiter: $c = "0,05"\/"0,02" = "2,5" thin "m/s"$.
 ][
@@ -663,7 +906,16 @@ In einer Pendelkette beträgt der Abstand 5 cm, die Störung benötigt 0,02 s zu
 #aufgabe(titel: "Frequenz- und Kreisfrequenzdifferenz", art: "rechnen", quelle: "5.4.1",
   ergebnis: [$abs(f_1 - f_2) = 2 thin "Hz"$, $abs(omega_1 - omega_2) = 4 pi thin "s"^(-1) approx "12,566" thin "s"^(-1)$],
 )[
-Bei zwei Stimmgabeln hörst du alle 0,5 s ein Anschwellen. Berechne sowohl $abs(f_1-f_2)$ als auch $abs(omega_1-omega_2)$.
+#if not web [*Aufgabe 47* #linebreak()]
+*Gegeben und Annahmen*
+
+Bei zwei Stimmgabeln hörst du alle 0,5 s ein Anschwellen.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne sowohl $abs(f_1-f_2)$ als auch $abs(omega_1-omega_2)$.],
+)
 ][
 *Frequenzdifferenz:* Der hörbare Rhythmus ist die Frequenzdifferenz: $1\/"0,5" thin "s" = 2 thin "Hz"$.
 ][
@@ -677,7 +929,19 @@ Bei zwei Stimmgabeln hörst du alle 0,5 s ein Anschwellen. Berechne sowohl $abs(
 #aufgabe(titel: "Ton von Wasser in Luft", art: "rechnen", quelle: "6.3",
   ergebnis: [$f = 256 thin "Hz"$ bleibt; $lambda_"Wasser" approx "5,859" thin "m"$, $lambda_"Luft" approx "1,328" thin "m"$; $lambda = 2 thin "m"$],
 )[
-*Medienwechsel, Ü 10.1:* Ein Ton mit 256 Hz breitet sich unter Wasser mit 1500 m/s aus und tritt in Luft mit 340 m/s über. Was geschieht mit Frequenz und Wellenlänge? Berechne zusätzlich die Wellenlänge bei 340 m/s und 170 Hz aus dem bisherigen Lernblatt.
+#if not web [*Aufgabe 48* #linebreak()]
+*Medienwechsel, Ü 10.1:*
+
+*Gegeben und Annahmen*
+
+Ein Ton mit 256 Hz breitet sich unter Wasser mit 1500 m/s aus und tritt in Luft mit 340 m/s über.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Was geschieht mit Frequenz und Wellenlänge?],
+[Berechne zusätzlich die Wellenlänge bei 340 m/s und 170 Hz aus dem bisherigen Lernblatt.],
+)
 ][
 *Frequenz:* Die Grenzfläche gibt den Takt unverändert weiter: $f = 256 thin "Hz"$ in beiden Medien.
 ][
@@ -694,7 +958,18 @@ Bei zwei Stimmgabeln hörst du alle 0,5 s ein Anschwellen. Berechne sowohl $abs(
   ergebnis: [$t approx "4,17" thin "s"$],
   tipp: [Die Amplitude ist eine Ablenkung; für die Laufzeit brauchst du nur die Geschwindigkeit.],
 )[
-*Wasserwellen, Ü 10.2:* Ein Stein erzeugt eine Welle mit Amplitude 5 cm, Frequenz 3 Hz und Wellenlänge 0,4 m. Die Ente ist 5 m entfernt. Wann erreicht die Welle die Ente?
+#if not web [*Aufgabe 49* #linebreak()]
+*Wasserwellen, Ü 10.2:*
+
+*Gegeben und Annahmen*
+
+Wasserwelle: Amplitude 5 cm, Frequenz 3 Hz, Wellenlänge 0,4 m; Abstand zwischen Stein und Ente 5 m.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne, wann die erste Wellenfront die Ente erreicht.],
+)
 ][
 *Geschwindigkeit:* $c = lambda f = "0,4" dot 3 = "1,2" thin "m/s"$.
 ][
@@ -706,7 +981,18 @@ Bei zwei Stimmgabeln hörst du alle 0,5 s ein Anschwellen. Berechne sowohl $abs(
 
 // 1-50
 #aufgabe(titel: "Klapperkiste: Resonanzdrehzahlen", art: "rechnen", quelle: "6.7.2")[
-*Klapperkiste, Ü 10.3 / AS 1.1:* Ein 40-cm-Blech ist zuerst einseitig befestigt. Die erste Resonanz tritt bei 900 U/min auf. Skizziere die ersten drei Moden, bestimme $c$ und alle weiteren Resonanzdrehzahlen bis 6500 U/min. Danach werden beide Enden befestigt: Bestimme erneut Grundresonanz und weitere Resonanzen bis 6500 U/min.
+#if not web [*Aufgabe 50* #linebreak()]
+*Klapperkiste, Ü 10.3 / AS 1.1:*
+
+*Gegeben und Annahmen*
+
+Ein 40-cm-Blech ist zuerst einseitig befestigt. Die erste Resonanz tritt bei 900 U/min auf.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Skizziere die ersten drei Moden, bestimme $c$ und alle weiteren Resonanzdrehzahlen bis 6500 U/min. Danach werden beide Enden befestigt: Bestimme erneut Grundresonanz und weitere Resonanzen bis 6500 U/min.],
+)
 ][
 *Modell:* Aufgabenmodell mit konstantem $c$ und einer Anregung je Umdrehung. Die zweite Schraube verändert nur die Randbedingung.
 ][
@@ -727,7 +1013,19 @@ Nach der Reparatur Knoten–Knoten: erste drei Formen $n=1,2,3$. $lambda_1=2L="0
 
 // 1-51
 #aufgabe(titel: "Klavierstimmer: Zugkraft erhöhen", art: "rechnen", quelle: "6.3")[
-*Klavierstimmer, Ü 10.4:* Eine Saite liegt unter 440 Hz; mit einer 440-Hz-Stimmgabel entsteht $T_s="0,2" thin "s"$. Um wie viel Prozent muss die Zugkraft bei unveränderter Länge und Masse je Länge steigen? Bestimme auch das Verhältnis der Wellengeschwindigkeiten.
+#if not web [*Aufgabe 51* #linebreak()]
+*Klavierstimmer, Ü 10.4:*
+
+*Gegeben und Annahmen*
+
+Eine Saite liegt unter 440 Hz; mit einer 440-Hz-Stimmgabel entsteht $T_s="0,2" thin "s"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Um wie viel Prozent muss die Zugkraft bei unveränderter Länge und Masse je Länge steigen?],
+[Bestimme auch das Verhältnis der Wellengeschwindigkeiten.],
+)
 ][
 *Modell:* gleiche Grundmode, Länge und Masse je Länge unverändert.
 ][
@@ -744,7 +1042,18 @@ Mit $c=sqrt(F/(rho A))$ folgt $F_"nach"/F_"vor"=(440/435)^2 approx "1,02312"$.
 
 // 1-52
 #aufgabe(titel: "Interferenz zweier Lautsprecher", art: "rechnen", quelle: "6.5")[
-*Interferenz, Ü 10.5:* Zwei gleichphasige Lautsprecher liegen 2,6 m auseinander. Der Hörer geht auf einer parallelen Linie in 3 m Abstand vom Mittelpunkt $P_0$ nach $P_1$, das 1,8 m oberhalb $P_0$ liegt. Dort hört er das erste Minimum. Bestimme die Frequenz für $c=340 thin "m/s"$.
+#if not web [*Aufgabe 52* #linebreak()]
+*Interferenz, Ü 10.5:*
+
+*Gegeben und Annahmen*
+
+Zwei gleichphasige Lautsprecher liegen 2,6 m auseinander. Der Hörer geht auf einer parallelen Linie in 3 m Abstand vom Mittelpunkt $P_0$ nach $P_1$, das 1,8 m oberhalb $P_0$ liegt. Dort hört er das erste Minimum.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme die Frequenz für $c=340 thin "m/s"$.],
+)
 ][
 *Modell:* gleiche Frequenz, gleichphasige Quellen; das erste Minimum wird dem Gangunterschied $lambda/2$ zugeordnet.
 ][
@@ -761,7 +1070,20 @@ $lambda=2 Delta l approx "2,54510" thin "m"$; daher *$f=340/lambda approx "133,5
 
 // 1-53
 #aufgabe(titel: "Kalimba: Zungenlänge und Obertöne", art: "rechnen", quelle: "6.7.2")[
-*Kalimba, AS 1.2:* Eine einseitig befestigte Zunge ist 10 cm lang und besitzt den Grundton 440 Hz. Skizziere die ersten drei Moden. Bestimme Grundwellenlänge, $c$, die ersten zwei Obertöne und die Länge einer sonst gleichen Zunge für 495 Hz. Wie lässt sich $c$ im Modell verändern?
+#if not web [*Aufgabe 53* #linebreak()]
+*Kalimba, AS 1.2:*
+
+*Gegeben und Annahmen*
+
+Eine einseitig befestigte Zunge ist 10 cm lang und besitzt den Grundton 440 Hz.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Skizziere die ersten drei Moden.],
+[Bestimme Grundwellenlänge, $c$, die ersten zwei Obertöne und die Länge einer sonst gleichen Zunge für 495 Hz.],
+[Wie lässt sich $c$ im Modell verändern?],
+)
 ][
 *Modell:* fest–lose und gemeinsames konstantes $c$ wie in der Sammlung.
 ][
@@ -782,7 +1104,18 @@ $c$ lässt sich im Materialmodell über Steifigkeit und Dichte beeinflussen. Ein
 
 // 1-54
 #aufgabe(titel: "Abendsegler: Wellenlänge bei 30 °C", art: "rechnen", quelle: "6.3")[
-*Abendsegler, AS 1.3 Teil 1:* Ein 20-kHz-Ruf hat bei 10 °C die Wellenlänge 1,675 cm. Welche Wellenlänge hat er bei 30 °C, wenn dasselbe ideale Gas und dieselbe Frequenz vorliegen?
+#if not web [*Aufgabe 54* #linebreak()]
+*Abendsegler, AS 1.3 Teil 1:*
+
+*Gegeben und Annahmen*
+
+Ein 20-kHz-Ruf hat bei 10 °C die Wellenlänge 1,675 cm.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche Wellenlänge hat er bei 30 °C, wenn dasselbe ideale Gas und dieselbe Frequenz vorliegen?],
+)
 ][
 *Modell:* $kappa$ und molare Masse konstant.
 ][
@@ -801,7 +1134,20 @@ $c_2=335sqrt("303,15"/"283,15") approx "346,63" thin "m/s"$.
 
 // 1-55
 #aufgabe(titel: "Kranführer: Seilschwingung und Last", art: "rechnen", quelle: "6.7.1")[
-*Kranführer, AS 1.4:* Ein 15-m-Stahlseil mit zwei als fest angenommenen Enden schwingt bei 20 Hz im Grundton. Der Durchmesser beträgt 8 mm, die Dichte 7000 kg/m³. Bestimme Grundwellenlänge, $c$, die ersten drei Obertöne und die Lastmasse bei $g="9,81" thin "m/s²"$. Zeichne die Formen. Dann werden 30 % der Last abgeladen; anschließend verkürzt sich das Seil auf 10 m. Bestimme beide neuen Grundtöne.
+#if not web [*Aufgabe 55* #linebreak()]
+*Kranführer, AS 1.4:*
+
+*Gegeben und Annahmen*
+
+Ein 15-m-Stahlseil mit zwei als fest angenommenen Enden schwingt bei 20 Hz im Grundton. Der Durchmesser beträgt 8 mm, die Dichte 7000 kg/m³.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Grundwellenlänge, $c$, die ersten drei Obertöne und die Lastmasse bei $g="9,81" thin "m/s²"$.],
+[Zeichne die Formen. Dann werden 30 % der Last abgeladen; anschließend verkürzt sich das Seil auf 10 m.],
+[Bestimme beide neuen Grundtöne.],
+)
 ][
 *Modell:* gespannte Saite; Seileigengewicht gegenüber der Last vernachlässigt, $F=m g$ und Querschnitt konstant.
 ][
@@ -822,7 +1168,20 @@ Bei 10 m ist $lambda_1=20 thin "m"$: *$f_1 approx "25,10" thin "Hz"$*.
 
 // 1-56
 #aufgabe(titel: "Schiffe versenken: Auslöschung", art: "rechnen", quelle: "6.2")[
-*Schiffe versenken, AS 1.5:* Max patscht bei $(0,0)$ mit 2 Hz. Die erste Welle erreicht das Schiff bei $(5 thin "m",0)$ nach 5 s. a) Bestimme $c$ und $lambda$. b) Welche Frequenz und Wellenlänge braucht Moritz für dauerhafte Auslöschung? c) Moritz steht auf der y-Achse: Bestimme den kleinsten von null verschiedenen Abstand zu Max für gleichphasiges und für gegenphasiges Patschen. Setze gleiche Amplituden am Schiff voraus.
+#if not web [*Aufgabe 56* #linebreak()]
+*Schiffe versenken, AS 1.5:*
+
+*Gegeben und Annahmen*
+
+Max patscht bei $(0,0)$ mit 2 Hz. Die erste Welle erreicht das Schiff bei $(5 thin "m",0)$ nach 5 s.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $c$ und $lambda$.],
+[Welche Frequenz und Wellenlänge braucht Moritz für dauerhafte Auslöschung?],
+[Moritz steht auf der y-Achse: Bestimme den kleinsten von null verschiedenen Abstand zu Max für gleichphasiges und für gegenphasiges Patschen. Setze gleiche Amplituden am Schiff voraus.],
+)
 ][
 *Modell:* Phasenvergleich aus 6.5; gleiche Frequenz und gleiche Amplituden am Beobachtungsort. Die Wege werden geometrisch bestimmt.
 ][
@@ -841,7 +1200,18 @@ Bei gegenphasigem Patschen muss die räumliche Zusatzphase ein ganzes Vielfaches
 
 // 1-57
 #aufgabe(titel: "Akusto-optische Anordnung", art: "rechnen", quelle: "6.7.2")[
-*Akusto-optische Anordnung, AS 1.6 Teile 2–4, mit Ersatzwert:* Verwende ausdrücklich den angegebenen Ersatzwert $d=75 thin "µm"$ sowie $lambda_S=2d$. Eine stehende Ultraschallwelle mit $f="5,00" thin "MHz"$ liegt auf $L="10,0125" thin "mm"$ zwischen Knoten und Bauch. Bestimme $c$, Modenordnung, Knotenzahl und Frequenz/Wellenlänge der nächsthöheren passenden Mode.
+#if not web [*Aufgabe 57* #linebreak()]
+*Akusto-optische Anordnung, AS 1.6 Teile 2–4, mit Ersatzwert:*
+
+*Gegeben und Annahmen*
+
+Verwende ausdrücklich den angegebenen Ersatzwert $d=75 thin "µm"$ sowie $lambda_S=2d$. Eine stehende Ultraschallwelle mit $f="5,00" thin "MHz"$ liegt auf $L="10,0125" thin "mm"$ zwischen Knoten und Bauch.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $c$, Modenordnung, Knotenzahl und Frequenz/Wellenlänge der nächsthöheren passenden Mode.],
+)
 ][
 *Modell:* Der optische Teil 1 wird nicht vorausgesetzt. Hier wird sein angegebener Ersatzwert benutzt; fest–lose und konstantes $c$.
 ][
@@ -865,7 +1235,18 @@ Die nächste Ordnung ist 269. *$f_"neu"="5,00" · 269/267 thin "MHz" approx "5,0
   ergebnis: [$I_2 = 18 thin "W/m²"$, $P = "0,9" thin "W"$],
   tipp: [Wie hängt die Intensität von der Amplitude ab?],
 )[
-*Eigene Rechenaufgabe:* Bei unverändertem Medium und gleicher Frequenz wird die Amplitude von 1 mm auf 3 mm erhöht. Zunächst ist $I_1=2 thin "W/m²"$. Welche Intensität entsteht und welche Leistung empfängt eine senkrechte Fläche von 0,05 m²?
+#if not web [*Aufgabe 58* #linebreak()]
+*Eigene Rechenaufgabe:*
+
+*Gegeben und Annahmen*
+
+Bei unverändertem Medium und gleicher Frequenz wird die Amplitude von 1 mm auf 3 mm erhöht. Zunächst ist $I_1=2 thin "W/m²"$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche Intensität entsteht und welche Leistung empfängt eine senkrechte Fläche von 0,05 m²?],
+)
 ][
 *Abhängigkeit:* $I = 1\/2 rho c omega^2 u^2$. Medium und Frequenz bleiben gleich, also gilt $I ∼ u^2$: Die Energie einer Schwingung wächst mit dem Quadrat der Auslenkung, wie bei einer Feder.
 ][

@@ -77,6 +77,7 @@
 
 // 0-1
 #aufgabe(titel: "Ziele der Finanzierung und Sachziel", art: "verstehen", quelle: "1.1")[
+#if not web [*Aufgabe 1* #linebreak()]
 #text("Nenne die drei Ziele der Finanzierung und das Sachziel mit seinen vier „richtig“.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A1. Verfahren: #stelle(<a-1-1>).]
 ][
@@ -85,6 +86,7 @@
 
 // 0-2
 #aufgabe(titel: "Das magische Dreieck", art: "verstehen", quelle: "1.1")[
+#if not web [*Aufgabe 2* #linebreak()]
 #text("Erkläre das magische Dreieck. Nenne zu jeder Ecke ein Beispiel, warum sie mit einer anderen in Konflikt steht.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A2. Verfahren: #stelle(<a-1-1>).]
 ][
@@ -93,6 +95,7 @@
 
 // 0-3
 #aufgabe(titel: "Außen- und Innenfinanzierung definieren", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 3* #linebreak()]
 #text("Definiere Außen- und Innenfinanzierung in je einem Satz.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A3. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -101,6 +104,7 @@
 
 // 0-4
 #aufgabe(titel: "Vier Unterschiede: außen und innen", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 4* #linebreak()]
 #text("Nenne die vier Unterschiede zwischen Außen- und Innenfinanzierung.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A4. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -109,6 +113,7 @@
 
 // 0-5
 #aufgabe(titel: "Es kommt auf die Gegenleistung an", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 5* #linebreak()]
 #text("„Es kommt immer auf die Gegenleistung an.“ Erkläre den Satz anhand von Zins, Gewinn, Rückzahlung, Stimmrechten und Kündigungsrecht.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A5. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -117,6 +122,7 @@
 
 // 0-6
 #aufgabe(titel: "Einfluss der Bank ohne Leitungsrechte", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 6* #linebreak()]
 #text("Warum kann eine Bank faktisch Einfluss auf ein Unternehmen nehmen, obwohl Fremdkapitalgeber keine Leitungsrechte haben?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A6. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -125,6 +131,7 @@
 
 // 0-7
 #aufgabe(titel: "Sechs Merkmale von Eigen- und Fremdkapital", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 7* #linebreak()]
 #text("Nenne die sechs Merkmale, in denen sich Eigen- und Fremdkapital unterscheiden.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A7. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -133,6 +140,7 @@
 
 // 0-8
 #aufgabe(titel: "Finanzierungsformen nach Drukarczyk zuordnen", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 8* #linebreak()]
 #text("Ordne den Finanzierungsformen nach Drukarczyk zu (Nr. 1–9): a) Bankkredit, b) Darlehen eines GmbHGesellschafters an seine GmbH, c) Kapitalerhöhung durch die bisherigen Gesellschafter, d) Aufnahme eines neuen Gesellschafters, e) Gewinn wird nicht ausgeschüttet, f) Verkauf einer nicht mehr benötigten Lagerhalle.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A8. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -141,6 +149,7 @@
 
 // 0-9
 #aufgabe(titel: "Eigenfinanzierung und Selbstfinanzierung", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 9* #linebreak()]
 #text("Worin unterscheiden sich Eigenfinanzierung und Selbstfinanzierung?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A9. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -149,6 +158,7 @@
 
 // 0-10
 #aufgabe(titel: "Liquidität als oberstes Ziel", art: "verstehen", quelle: "1.3")[
+#if not web [*Aufgabe 10* #linebreak()]
 #text("Definiere Liquidität. Warum hat das Liquiditätsziel die höchste Bedeutung in der Zielhierarchie?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A10. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -157,6 +167,7 @@ Liquidität heißt: fällige Zahlungen fristgerecht und betragsgenau erfüllen k
 
 // 0-11
 #aufgabe(titel: "Gewinn und trotzdem zahlungsunfähig", art: "verstehen", quelle: "1.3")[
+#if not web [*Aufgabe 11* #linebreak()]
 #text("Erkläre an einem Beispiel, wie ein Unternehmen Gewinn machen und trotzdem zahlungsunfähig werden kann.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A11. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -165,6 +176,7 @@ Liquidität heißt: fällige Zahlungen fristgerecht und betragsgenau erfüllen k
 
 // 0-12
 #aufgabe(titel: "Vier Liquiditätsquellen", art: "verstehen", quelle: "1.3")[
+#if not web [*Aufgabe 12* #linebreak()]
 #text("Nenne die vier Liquiditätsquellen aus Folie 14 mit je einem Beispiel.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A12. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -173,6 +185,7 @@ Liquidität heißt: fällige Zahlungen fristgerecht und betragsgenau erfüllen k
 
 // 0-13
 #aufgabe(titel: "Bundesanleihe gegen Sparbrief", art: "verstehen", quelle: "1.3")[
+#if not web [*Aufgabe 13* #linebreak()]
 #text("Warum ist eine 4-jährige Bundesanleihe liquider als ein Sparbrief mit 2 Jahren Restlaufzeit?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A13. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -181,6 +194,7 @@ Liquidität heißt: fällige Zahlungen fristgerecht und betragsgenau erfüllen k
 
 // 0-14
 #aufgabe(titel: "Warum die Bilanz Liquidität schlecht misst", art: "verstehen", quelle: "1.3")[
+#if not web [*Aufgabe 14* #linebreak()]
 #text("Warum ist die Bilanz nur bedingt geeignet, die Liquidität zu messen?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A14. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -189,6 +203,7 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-15
 #aufgabe(titel: "Aufwand, Auszahlung, Ertrag, Einzahlung", art: "verstehen", quelle: "1.4")[
+#if not web [*Aufgabe 15* #linebreak()]
 #text("Erkläre den Unterschied zwischen Aufwand und Auszahlung sowie zwischen Ertrag und Einzahlung mit je einem Beispiel.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A15. Verfahren: #stelle(<a-1-4>).]
 ][
@@ -197,6 +212,7 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-16
 #aufgabe(titel: "Abschreibungen im indirekten Cashflow", art: "verstehen", quelle: "1.5")[
+#if not web [*Aufgabe 16* #linebreak()]
 #text("Warum werden bei der indirekten Cashflow-Methode die Abschreibungen zum Jahresüberschuss addiert?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A16. Verfahren: #stelle(<a-1-5>).]
 ][
@@ -205,6 +221,7 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-17
 #aufgabe(titel: "Was der Cashflow verrät", art: "verstehen", quelle: "1.5")[
+#if not web [*Aufgabe 17* #linebreak()]
 #text("Über welche vier Fähigkeiten eines Unternehmens informiert der Cashflow?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A17. Verfahren: #stelle(<a-1-5>).]
 ][
@@ -213,6 +230,7 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-18
 #aufgabe(titel: "Drei Bereiche der Kapitalflussrechnung", art: "verstehen", quelle: "1.6")[
+#if not web [*Aufgabe 18* #linebreak()]
 #text("Nenne die drei Bereiche der Kapitalflussrechnung. Ist ein negativer Cashflow aus Investitionstätigkeit ein schlechtes Zeichen?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A18. Verfahren: #stelle(<a-1-6>).]
 ][
@@ -221,7 +239,17 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-19
 #aufgabe(titel: "Cashflow der XYZ GmbH direkt und indirekt", art: "rechnen", quelle: "1.5")[
-#text("GuV XYZ GmbH 2008 (Folie 22, Mio. €): Materialaufwand 1.540, Personalaufwand 1.600, Pensionsrückstellungen 200, Abschreibungen 100, Zinsaufwand 200, Jahresüberschuss 648; Umsatzerlöse 4.000, Zinsertrag 288. Berechne den Cashflow direkt und indirekt. Tipp: Prüfe zuerst, ob Aufwand + JÜ = Erträge.")
+#if not web [*Aufgabe 19* #linebreak()]
+*Gegeben und Annahmen*
+
+GuV XYZ GmbH 2008 (Folie 22, Mio. €): Materialaufwand 1.540, Personalaufwand 1.600, Pensionsrückstellungen 200, Abschreibungen 100, Zinsaufwand 200, Jahresüberschuss 648; Umsatzerlöse 4.000, Zinsertrag 288.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne den Cashflow direkt und indirekt. Tipp: Prüfe zuerst, ob Aufwand + JÜ = Erträge.],
+)
+
 #src[V, PDF-S. 11, Folie 22; L15, PDF-S. 10 und 14. Verfahren: #stelle(<a-1-5>).]
 ][
 *Modell:* Zahlungen und Erfolg unterscheiden sich nur durch die genannten Abschreibungen und die Zuführung zu Pensionsrückstellungen; Einheit Mio. €.
@@ -237,7 +265,19 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-20
 #aufgabe(titel: "Jahresüberschuss und Cashflow eines Kleinunternehmens", art: "rechnen", quelle: "1.5")[
-#text("Kleinunternehmen: Umsatzerlöse 900 T€ (alle bezahlt), Materialaufwand 350 T€, Personalaufwand 280 T€, Abschreibungen 60 T€, Zuführung zu Pensionsrückstellungen 40 T€, Zinsaufwand 30 T€ (alles bezahlt). a) Jahresüberschuss? b) Cashflow indirekt? c) Kontrolle direkt?")
+#if not web [*Aufgabe 20* #linebreak()]
+*Gegeben und Annahmen*
+
+Kleinunternehmen: Umsatzerlöse 900 T€ (alle bezahlt), Materialaufwand 350 T€, Personalaufwand 280 T€, Abschreibungen 60 T€, Zuführung zu Pensionsrückstellungen 40 T€, Zinsaufwand 30 T€ (alles bezahlt).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Jahresüberschuss?],
+[Cashflow indirekt?],
+[Kontrolle direkt?],
+)
+
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A20. Verfahren: #stelle(<a-1-5>).]
 ][
 *Modell:* Alle als bezahlt angegebenen Positionen sind zahlungswirksam; AfA und Rückstellungszuführung nicht. Einheit T€.
@@ -253,7 +293,18 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-21
 #aufgabe(titel: "Pizzeria: Lieferwagen und Abschreibung", art: "rechnen", quelle: "1.5")[
-#text("Pizzeria, Variante: Mario kauft einen Lieferwagen für 36.000 €, Nutzungsdauer 6 Jahre (lineare Abschreibung). Sein Gewinn beträgt 3.000 € pro Monat. a) Wie viel Geld bleibt monatlich zusätzlich in der Kasse, wenn er den Gewinn komplett entnimmt? b) Was hat er nach 6 Jahren angespart, und wofür reicht es?")
+#if not web [*Aufgabe 21* #linebreak()]
+*Gegeben und Annahmen*
+
+Pizzeria, Variante: Mario kauft einen Lieferwagen für 36.000 €, Nutzungsdauer 6 Jahre (lineare Abschreibung). Sein Gewinn beträgt 3.000 € pro Monat.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie viel Geld bleibt monatlich zusätzlich in der Kasse, wenn er den Gewinn komplett entnimmt?],
+[Was hat er nach 6 Jahren angespart, und wofür reicht es?],
+)
+
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A21. Verfahren: #stelle(<a-1-5>).]
 ][
 *Modell:* Lineare Abschreibung, bezahlte Umsätze, keine weiteren Abgrenzungen, keine Preissteigerung oder anderweitige Verwendung des zurückbehaltenen Geldes.
@@ -269,6 +320,7 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 
 // 0-22
 #aufgabe(titel: "Auszahlung, Aufwand, Einzahlung oder Ertrag?", art: "verstehen", quelle: "1.4")[
+#if not web [*Aufgabe 22* #linebreak()]
 #text("Zuordnung: Entscheide jeweils: Auszahlung? Aufwand? Einzahlung? Ertrag? (in dieser Periode) a) Barkauf einer Maschine für 100.000 € b) Abschreibung auf diese Maschine 20.000 € c) Lohnzahlung d) Zuführung zu einer Rückstellung e) Verkauf auf Ziel f) erhaltene Kundenanzahlung g) Kreditaufnahme h) Kredittilgung i) Kauf eines Grundstücks")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A22. Verfahren: #stelle(<a-1-4>).]
 ][
@@ -289,7 +341,22 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-23
 #aufgabe(titel: "Kapitalflussrechnung mit Kassenbestand", art: "rechnen", quelle: "1.6")[
-#text("Kapitalflussrechnung (T€): Jahresüberschuss 200, Abschreibungen 80, Erhöhung Pensionsrückstellungen 20, Erhöhung Forderungen L&L 30, Kauf einer Maschine 150, Verkauf eines Grundstücks 40, Kreditaufnahme 100, Tilgung 60, Dividendenzahlung 50, Kassenbestand am Periodenanfang 70. Berechne a) CF aus operativer Tätigkeit, b) CF aus Investitionstätigkeit, c) CF aus Finanzierungstätigkeit, d) den Kassenbestand am Periodenende, e) den Free Cashflow.")
+#if not web [*Aufgabe 23* #linebreak()]
+*Gegeben und Annahmen*
+
+Kapitalflussrechnung (T€): Jahresüberschuss 200, Abschreibungen 80, Erhöhung Pensionsrückstellungen 20, Erhöhung Forderungen L&L 30, Kauf einer Maschine 150, Verkauf eines Grundstücks 40, Kreditaufnahme 100, Tilgung 60, Dividendenzahlung 50, Kassenbestand am Periodenanfang 70.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne],
+[CF aus operativer Tätigkeit,],
+[CF aus Investitionstätigkeit,],
+[CF aus Finanzierungstätigkeit,],
+[den Kassenbestand am Periodenende,],
+[den Free Cashflow.],
+)
+
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A23. Verfahren: #stelle(<a-1-6>).]
 ][
 *Modell:* Drei-Bereiche-Zuordnung der Folien, keine weiteren Zahlungs-/Wechselkurseffekte. Alle Werte T€.
@@ -309,7 +376,18 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-24
 #aufgabe(titel: "Free Cashflow und Dividende", art: "rechnen", quelle: "1.6")[
-#text("Free Cashflow: CF aus operativer Tätigkeit 1.250 T€, Investitionen in Sachanlagen 700 T€. Das Unternehmen möchte 200 T€ Dividende zahlen. a) Free Cashflow? b) Kann die Dividende aus dem Free Cashflow bezahlt werden? Was bleibt übrig?")
+#if not web [*Aufgabe 24* #linebreak()]
+*Gegeben und Annahmen*
+
+Free Cashflow: CF aus operativer Tätigkeit 1.250 T€, Investitionen in Sachanlagen 700 T€. Das Unternehmen möchte 200 T€ Dividende zahlen.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Free Cashflow?],
+[Kann die Dividende aus dem Free Cashflow bezahlt werden? Was bleibt übrig?],
+)
+
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A24. Verfahren: #stelle(<a-1-6>).]
 ][
 *FCF:* $1250-700=550$ T€.
@@ -321,6 +399,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-25
 #aufgabe(titel: "Aufgaben und Prinzipien der Finanzplanung", art: "verstehen", quelle: "1.7")[
+#if not web [*Aufgabe 25* #linebreak()]
 #text("Nenne die Aufgaben der Finanzplanung und die drei Prinzipien eines Finanzplans.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B1. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -329,6 +408,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-26
 #aufgabe(titel: "Über- und Unterliquidität", art: "verstehen", quelle: "1.7")[
+#if not web [*Aufgabe 26* #linebreak()]
 #text("Was sind die Folgen von Über- bzw. Unterliquidität?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B2. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -337,6 +417,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-27
 #aufgabe(titel: "Finanzplanung abstimmen", art: "verstehen", quelle: "1.7")[
+#if not web [*Aufgabe 27* #linebreak()]
 #text("Warum muss die Finanzplanung mit Produktions-, Absatz- und Investitionsplanung abgestimmt werden?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B3. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -345,6 +426,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-28
 #aufgabe(titel: "Drei Insolvenzgründe", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 28* #linebreak()]
 #text("Nenne die drei Insolvenzgründe mit Paragraf. Welcher gilt nur für juristische Personen?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B4. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -353,6 +435,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-29
 #aufgabe(titel: "Zahlungsunfähigkeit nach dem BGH", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 29* #linebreak()]
 #text("Wann ist ein Unternehmen nach der Rechtsprechung des BGH zahlungsunfähig?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B5. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -361,6 +444,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-30
 #aufgabe(titel: "Zahlungsunfähigkeit und Überschuldung", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 30* #linebreak()]
 #text("Erkläre den Unterschied zwischen Zahlungsunfähigkeit und Überschuldung mit eigenen Worten.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B6. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -371,6 +455,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-31
 #aufgabe(titel: "Rechnerisch überschuldet, aber kein Insolvenzgrund", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 31* #linebreak()]
 #text("Wann liegt trotz rechnerischer Überschuldung kein Insolvenzgrund vor?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B7. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -379,6 +464,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-32
 #aufgabe(titel: "Warum ein Kredit gegen Überschuldung nicht hilft", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 32* #linebreak()]
 #text("Warum hilft bei Überschuldung kein neuer Bankkredit? Was hilft stattdessen?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B8. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -389,6 +475,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-33
 #aufgabe(titel: "Frist für den Insolvenzantrag", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 33* #linebreak()]
 #text("Wie lange hat die Geschäftsführung Zeit, den Insolvenzantrag zu stellen, und was droht bei Verspätung?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B9. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -397,6 +484,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-34
 #aufgabe(titel: "Sechs Maßnahmen gegen ein Liquiditätsdefizit", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 34* #linebreak()]
 #text("Nenne die sechs Gruppen von Maßnahmen gegen ein Liquiditätsdefizit mit je einem Beispiel.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B10. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -405,6 +493,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-35
 #aufgabe(titel: "Ausgänge eines Insolvenzverfahrens", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 35* #linebreak()]
 #text("Welche Ausgänge kann ein Insolvenzverfahren nehmen? Was bedeutet „Abweisung mangels Masse“?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B11. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -413,6 +502,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-36
 #aufgabe(titel: "Kennzahlen und Finanzplan", art: "verstehen", quelle: "1.7")[
+#if not web [*Aufgabe 36* #linebreak()]
 #text("Worin unterscheiden sich finanzwirtschaftliche Kennzahlen und Finanzplan?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B12. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -421,6 +511,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-37
 #aufgabe(titel: "Drei Liquiditätsgrade", art: "verstehen", quelle: "1.9")[
+#if not web [*Aufgabe 37* #linebreak()]
 #text("Nenne die drei Liquiditätsgrade mit Formel und Zielwert.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B13. Verfahren: #stelle(<a-1-9>).]
 ][
@@ -429,6 +520,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-38
 #aufgabe(titel: "Goldene Bilanzregel", art: "verstehen", quelle: "1.10")[
+#if not web [*Aufgabe 38* #linebreak()]
 #text("Formuliere die goldene Bilanzregel. Welche Kennzahl prüft sie, und welcher Wert sollte mindestens erreicht werden?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B14. Verfahren: #stelle(<a-1-10>).]
 ][
@@ -437,6 +529,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-39
 #aufgabe(titel: "Anlageintensität zu hoch oder zu gering", art: "verstehen", quelle: "1.10")[
+#if not web [*Aufgabe 39* #linebreak()]
 #text("Warum kann eine zu hohe, aber auch eine zu geringe Anlageintensität problematisch sein?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B15. Verfahren: #stelle(<a-1-10>).]
 ][
@@ -445,6 +538,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-40
 #aufgabe(titel: "Eigenkapitalquote", art: "verstehen", quelle: "1.10")[
+#if not web [*Aufgabe 40* #linebreak()]
 #text("Was sagt die Eigenkapitalquote aus, und welcher Zielwert gilt?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B16. Verfahren: #stelle(<a-1-10>).]
 ][
@@ -453,6 +547,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-41
 #aufgabe(titel: "EK-Rentabilität über dem Marktzins", art: "verstehen", quelle: "1.11")[
+#if not web [*Aufgabe 41* #linebreak()]
 #text("Warum sollte die EK-Rentabilität deutlich über dem Marktzins für langfristige Anlagen liegen?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B17. Verfahren: #stelle(<a-1-11>).]
 ][
@@ -461,6 +556,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-42
 #aufgabe(titel: "Hubert + Maier: Risiko aus der Kapitalstruktur", art: "verstehen", quelle: "1.11")[
+#if not web [*Aufgabe 42* #linebreak()]
 #text("Erkläre am Beispiel Hubert + Maier GmbH, warum das Risiko von Alternative B aus der Kapitalstruktur kommt.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B18. Verfahren: #stelle(<a-1-11>).]
 ][
@@ -469,6 +565,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-43
 #aufgabe(titel: "Leverage-Effekt", art: "verstehen", quelle: "1.12")[
+#if not web [*Aufgabe 43* #linebreak()]
 #text("Was ist der Leverage-Effekt, und unter welcher Bedingung tritt er auf?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B19. Verfahren: #stelle(<a-1-12>).]
 ][
@@ -477,6 +574,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-44
 #aufgabe(titel: "Risikoeffekt", art: "verstehen", quelle: "1.12")[
+#if not web [*Aufgabe 44* #linebreak()]
 #text("Was beschreibt der Risikoeffekt? Warum ist die höhere EK-Rendite „kein zusätzlicher Wert“?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B20. Verfahren: #stelle(<a-1-12>).]
 ][
@@ -485,6 +583,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-45
 #aufgabe(titel: "Warum nicht vollständig fremdfinanzieren", art: "verstehen", quelle: "1.12")[
+#if not web [*Aufgabe 45* #linebreak()]
 #text("Warum ist eine vollständige Fremdfinanzierung trotz Leverage-Effekt keine gute Idee?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B21. Verfahren: #stelle(<a-1-12>).]
 ][
@@ -493,7 +592,19 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-46
 #aufgabe(titel: "Liquiditätsplan über drei Quartale", art: "rechnen", quelle: "1.7")[
-#text("Liquiditätsplan: Anfangsbestand Q1: 8.000 €. Einzahlungen Q1/Q2/Q3: 30.000 / 25.000 / 40.000 €. Auszahlungen: 35.000 / 34.000 / 31.000 €. Kontokorrentlinie 5.000 €. a) Endbestände je Quartal? b) In welchem Quartal reicht die Kreditlinie nicht? Um wie viel? c) Nenne zwei Maßnahmen.")
+#if not web [*Aufgabe 46* #linebreak()]
+*Gegeben und Annahmen*
+
+Liquiditätsplan: Anfangsbestand Q1: 8.000 €. Einzahlungen Q1/Q2/Q3: 30.000 / 25.000 / 40.000 €. Auszahlungen: 35.000 / 34.000 / 31.000 €. Kontokorrentlinie 5.000 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Endbestände je Quartal?],
+[In welchem Quartal reicht die Kreditlinie nicht? Um wie viel?],
+[Nenne zwei Maßnahmen.],
+)
+
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B22. Verfahren: #stelle(<a-1-7>).]
 ][
 *Modell:* Negativer Kontostand wird durch Kontokorrent gedeckt, soweit die Linie reicht. Alle Werte €.
@@ -511,7 +622,18 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-47
 #aufgabe(titel: "Gewinn gegen Kasse", art: "rechnen", quelle: "1.7")[
-#text("Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erzielt einen (zahlungswirksamen) Gewinn von 3.000 €, schüttet 1.500 € aus, kauft eine Maschine für 4.000 € und nimmt einen Kredit über 1.000 € auf. a) Endbestand? b) Welche Vorgänge erscheinen in der GuV?")
+#if not web [*Aufgabe 47* #linebreak()]
+*Gegeben und Annahmen*
+
+Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erzielt einen (zahlungswirksamen) Gewinn von 3.000 €, schüttet 1.500 € aus, kauft eine Maschine für 4.000 € und nimmt einen Kredit über 1.000 € auf.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Endbestand?],
+[Welche Vorgänge erscheinen in der GuV?],
+)
+
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B23. Verfahren: #stelle(<a-1-7>).]
 ][
 *Modell:* Der angegebene Gewinn von 3.000 € ist hier ausdrücklich voll zahlungswirksam.
@@ -525,7 +647,18 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-48
 #aufgabe(titel: "BGH-Regel mit 430.000 €", art: "rechnen", quelle: "1.8")[
-#text("BGH-Regel: Fällige Verbindlichkeiten 500.000 €. Innerhalb der nächsten drei Wochen kann das Unternehmen 430.000 € bezahlen. Ist es zahlungsunfähig? Welchem Zahlbetrag entsprechen 90 %? Warum ist das rechtlich noch keine sichere Freigrenze?")
+#if not web [*Aufgabe 48* #linebreak()]
+*Gegeben und Annahmen*
+
+BGH-Regel: Fällige Verbindlichkeiten 500.000 €. Innerhalb der nächsten drei Wochen kann das Unternehmen 430.000 € bezahlen.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ist es zahlungsunfähig? Welchem Zahlbetrag entsprechen 90 %?],
+[Warum ist das rechtlich noch keine sichere Freigrenze?],
+)
+
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B24. Verfahren: #stelle(<a-1-8>).]
 ][
 *Deckungsquote:* $430000/500000 times 100%=86%$; die Lücke beträgt *14 %*.
@@ -537,7 +670,19 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-49
 #aufgabe(titel: "Verlustpolster und bilanzielle Unterdeckung", art: "rechnen", quelle: "1.8")[
-#text("Überschuldung : Bilanz einer GmbH: Anlagevermögen 300, Umlaufvermögen 200; Eigenkapital 60, Fremdkapital 440 (T€). a) Welchen Verlust kann die GmbH maximal verkraften? b) Durch eine außerplanmäßige Abschreibung entsteht ein Verlust von 80. Liegt eine bilanzielle Unterdeckung vor, und welche zusätzliche rechtliche Prüfung ist nötig? Wie hoch ist der nicht durch EK gedeckte Fehlbetrag? c) Nenne zwei Maßnahmen, um die Antragspflicht zu beseitigen.")
+#if not web [*Aufgabe 49* #linebreak()]
+*Gegeben und Annahmen*
+
+Überschuldung : Bilanz einer GmbH: Anlagevermögen 300, Umlaufvermögen 200; Eigenkapital 60, Fremdkapital 440 (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welchen Verlust kann die GmbH maximal verkraften?],
+[Durch eine außerplanmäßige Abschreibung entsteht ein Verlust von 80. Liegt eine bilanzielle Unterdeckung vor, und welche zusätzliche rechtliche Prüfung ist nötig? Wie hoch ist der nicht durch EK gedeckte Fehlbetrag?],
+[Nenne zwei Maßnahmen, um die Antragspflicht zu beseitigen.],
+)
+
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B25. Verfahren: #stelle(<a-1-8>).]
 ][
 *Modell:* Keine weiteren Wert-/Kapitaländerungen; Einheit T€.
@@ -551,7 +696,17 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-50
 #aufgabe(titel: "Liquiditätsgrade berechnen", art: "rechnen", quelle: "1.9")[
-#text("Liquiditätsgrade: Kasse und Bank 40, Forderungen 120, Vorräte 140, kurzfristiges Fremdkapital 150 (T€). Berechne die drei Liquiditätsgrade und beurteile sie.")
+#if not web [*Aufgabe 50* #linebreak()]
+*Gegeben und Annahmen*
+
+Liquiditätsgrade: Kasse und Bank 40, Forderungen 120, Vorräte 140, kurzfristiges Fremdkapital 150 (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die drei Liquiditätsgrade und beurteile sie.],
+)
+
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B26. Verfahren: #stelle(<a-1-9>).]
 ][
 *L1:* $40/150 times 100% approx "26,7"%$.
@@ -565,7 +720,17 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-51
 #aufgabe(titel: "Kennzahlen-Check", art: "rechnen", quelle: "1.10")[
-#text("Kennzahlen-Check : Anlagevermögen 600, Umlaufvermögen 400; Eigenkapital 250, langfristiges FK 350, kurzfristiges FK 400 (T€). Jahresüberschuss 50, Umsatzerlöse 1.000, Cashflow 125. Berechne Anlagendeckung I und II, EK- und FK-Quote, Anlageintensität, EK-Rentabilität, Umsatzrentabilität, Schuldentilgungsfähigkeit (Verbindlichkeiten = gesamtes FK) und beurteile: Ist die goldene Bilanzregel erfüllt?")
+#if not web [*Aufgabe 51* #linebreak()]
+*Gegeben und Annahmen*
+
+Kennzahlen-Check : Anlagevermögen 600, Umlaufvermögen 400; Eigenkapital 250, langfristiges FK 350, kurzfristiges FK 400 (T€). Jahresüberschuss 50, Umsatzerlöse 1.000, Cashflow 125.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Anlagendeckung I und II, EK- und FK-Quote, Anlageintensität, EK-Rentabilität, Umsatzrentabilität, Schuldentilgungsfähigkeit (Verbindlichkeiten = gesamtes FK) und beurteile: Ist die goldene Bilanzregel erfüllt?],
+)
+
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B27. Verfahren: #stelle(<a-1-10>).]
 ][
 *Modell:* Gesamtkapital $600+400=1000$ T€, FK $350+400=750$ T€; jährlicher CF 125 T€.
@@ -583,7 +748,19 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 
 // 0-52
 #aufgabe(titel: "Leverage im guten und schlechten Jahr", art: "rechnen", quelle: "1.12")[
-#text("Leverage : Ein Projekt erfordert 200.000 € Kapital und bringt einen Gewinn vor Zinsen von 24.000 €. FKZins 6 %. a) Gesamtkapitalrendite? b) EK-Rentabilität bei 100 % EK, 50 % EK und 25 % EK (rechne einmal direkt und einmal mit der Formel). c) Der Gewinn vor Zinsen sinkt auf 8.000 €. Wie hoch ist die EK-Rentabilität jetzt in den drei Fällen? Was zeigt das?")
+#if not web [*Aufgabe 52* #linebreak()]
+*Gegeben und Annahmen*
+
+Leverage : Ein Projekt erfordert 200.000 € Kapital und bringt einen Gewinn vor Zinsen von 24.000 €. FKZins 6 %.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Gesamtkapitalrendite?],
+[EK-Rentabilität bei 100 % EK, 50 % EK und 25 % EK (rechne einmal direkt und einmal mit der Formel).],
+[Der Gewinn vor Zinsen sinkt auf 8.000 €. Wie hoch ist die EK-Rentabilität jetzt in den drei Fällen? Was zeigt das?],
+)
+
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B28. Verfahren: #stelle(<a-1-12>).]
 ][
 *Modell:* Gesamtkapital 200.000 €, FK-Zins 6 %, keine Steuern; EK-Anteile 100 % / 50 % / 25 %.
@@ -601,7 +778,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-53
 #aufgabe(titel: "Cashflow indirekt mit Rückstellungen", art: "rechnen", quelle: "1.5")[
-#text("Cashflow indirekt: JÜ 250, Abschreibungen 90, Zuführung zu Rückstellungen 30, Auflösung von Rückstellungen 10 (T€). Berechne den Cashflow und begründe jedes Vorzeichen.")
+#if not web [*Aufgabe 53* #linebreak()]
+*Gegeben und Annahmen*
+
+Cashflow indirekt: JÜ 250, Abschreibungen 90, Zuführung zu Rückstellungen 30, Auflösung von Rückstellungen 10 (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne den Cashflow und begründe jedes Vorzeichen.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü1. Verfahren: #stelle(<a-1-5>).]
 ][
 *Bereinigen:* $250+90+30-10=360$ T€.
@@ -611,7 +798,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-54
 #aufgabe(titel: "Cashflow direkt", art: "rechnen", quelle: "1.5")[
-#text("Cashflow direkt: Einzahlungen aus Umsatz 1.200, Auszahlungen für Material 500, Personal 350, Zinsen 40 (T€). Berechne den Cashflow.")
+#if not web [*Aufgabe 54* #linebreak()]
+*Gegeben und Annahmen*
+
+Cashflow direkt: Einzahlungen aus Umsatz 1.200, Auszahlungen für Material 500, Personal 350, Zinsen 40 (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne den Cashflow.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü2. Verfahren: #stelle(<a-1-5>).]
 ][
 *Zahlungen saldieren:* $1200-500-350-40=310$ T€.
@@ -621,7 +818,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-55
 #aufgabe(titel: "Endbestand und freie Kreditlinie", art: "rechnen", quelle: "1.7")[
-#text("Liquiditätsplan: Anfangsbestand 5.000 €, Einzahlungen 22.000 €, Auszahlungen 30.000 €, Kontokorrentlinie 6.000 €. Berechne Endbestand und freie Kreditlinie.")
+#if not web [*Aufgabe 55* #linebreak()]
+*Gegeben und Annahmen*
+
+Liquiditätsplan: Anfangsbestand 5.000 €, Einzahlungen 22.000 €, Auszahlungen 30.000 €, Kontokorrentlinie 6.000 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Endbestand und freie Kreditlinie.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü3. Verfahren: #stelle(<a-1-7>).]
 ][
 *Kontostand:* $5000+22000-30000=-3000$ €.
@@ -633,7 +840,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-56
 #aufgabe(titel: "Bilanzielles Verlustpolster", art: "rechnen", quelle: "1.8")[
-#text("Bilanzielles Verlustpolster: AV 120, UV 80, EK 40, FK 160 (T€). Ein Abschreibungsverlust von 50 entsteht. Berechne Vermögen, rechnerisches EK und Fehlbetrag; trenne den bilanziellen Befund von der rechtlichen Prüfung.")
+#if not web [*Aufgabe 56* #linebreak()]
+*Gegeben und Annahmen*
+
+Bilanzielles Verlustpolster: AV 120, UV 80, EK 40, FK 160 (T€). Ein Abschreibungsverlust von 50 entsteht.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Vermögen, rechnerisches EK und Fehlbetrag; trenne den bilanziellen Befund von der rechtlichen Prüfung.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü4. Verfahren: #stelle(<a-1-8>).]
 ][
 *Vermögen:* $(120-50)+80=150$ T€.
@@ -645,7 +862,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-57
 #aufgabe(titel: "EK-Quote und goldene Bilanzregel", art: "rechnen", quelle: "1.10")[
-#text("EK-Quote und goldene Bilanzregel: EK 300, langfristiges FK 200, kurzfristiges FK 500, AV 450, Bilanzsumme 1.000 (T€). Berechne EK-Quote und Anlagendeckung II und vergleiche die Folienziele.")
+#if not web [*Aufgabe 57* #linebreak()]
+*Gegeben und Annahmen*
+
+EK-Quote und goldene Bilanzregel: EK 300, langfristiges FK 200, kurzfristiges FK 500, AV 450, Bilanzsumme 1.000 (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne EK-Quote und Anlagendeckung II und vergleiche die Folienziele.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü5. Verfahren: #stelle(<a-1-10>).]
 ][
 *EK-Quote:* $300/1000 times 100%=30%$.
@@ -657,7 +884,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-58
 #aufgabe(titel: "Leverage-Formel anwenden", art: "rechnen", quelle: "1.12")[
-#text("Leverage: rG = 9 %, rf = 5 %, EK 40, FK 60. Berechne die Eigenkapitalrendite und erläutere den Zuschlag.")
+#if not web [*Aufgabe 58* #linebreak()]
+*Gegeben und Annahmen*
+
+Leverage: rG = 9 %, rf = 5 %, EK 40, FK 60.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die Eigenkapitalrendite und erläutere den Zuschlag.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü6. Verfahren: #stelle(<a-1-12>).]
 ][
 *Verschuldung:* $"FK"/"EK"=60/40="1,5"$.
@@ -669,7 +906,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-59
 #aufgabe(titel: "Bäckerei: Ofen und Abschreibung", art: "rechnen", quelle: "1.5")[
-#text("Bäckerei (Teil A4): Ein Ofen kostet 48.000 €, Nutzungsdauer 8 Jahre (linear). Gewinn 4.000 € pro Monat, der komplett entnommen wird. Wie viel Geld bleibt monatlich zusätzlich in der Kasse, und was ist nach 8 Jahren angespart?")
+#if not web [*Aufgabe 59* #linebreak()]
+*Gegeben und Annahmen*
+
+Bäckerei (Teil A4): Ein Ofen kostet 48.000 €, Nutzungsdauer 8 Jahre (linear). Gewinn 4.000 € pro Monat, der komplett entnommen wird.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie viel Geld bleibt monatlich zusätzlich in der Kasse, und was ist nach 8 Jahren angespart?],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü7. Verfahren: #stelle(<a-1-5>).]
 ][
 *Modell:* Lineare AfA; Gewinne vollständig entnommen; alle Umsätze bezahlt, keine Preissteigerung und keine anderweitige Verwendung.
@@ -685,7 +932,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-60
 #aufgabe(titel: "Kapitalflussrechnung mit Forderungen und Verbindlichkeiten", art: "rechnen", quelle: "1.6")[
-#text("Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderungen L&L 25, Erhöhung Verbindlichkeiten L&L 15, Kauf einer Maschine 90, Kreditaufnahme 50, Dividende 30, Kasse am Anfang 20 (T€). Berechne die drei Cashflows, den Kassenendbestand und den Free Cashflow.")
+#if not web [*Aufgabe 60* #linebreak()]
+*Gegeben und Annahmen*
+
+Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderungen L&L 25, Erhöhung Verbindlichkeiten L&L 15, Kauf einer Maschine 90, Kreditaufnahme 50, Dividende 30, Kasse am Anfang 20 (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die drei Cashflows, den Kassenendbestand und den Free Cashflow.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü8. Verfahren: #stelle(<a-1-6>).]
 ][
 *Modell:* Alle Werte T€, Zuordnung nach Folie 24.
@@ -703,7 +960,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-61
 #aufgabe(titel: "BGH-Regel mit 800.000 €", art: "rechnen", quelle: "1.8")[
-#text("BGH-Regel (Teil A5): Fällige Verbindlichkeiten 800.000 €, in drei Wochen zahlbar 700.000 €. Zahlungsunfähig?")
+#if not web [*Aufgabe 61* #linebreak()]
+*Gegeben und Annahmen*
+
+Fällige Verbindlichkeiten 800 000 €; innerhalb von drei Wochen zahlbar 700 000 €. Historischer Übungsfall zur im Lernskript erläuterten BGH-Regel.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die Liquiditätslücke und ihren Anteil. Ordne den Befund ein und benenne die Grenzen einer rein rechnerischen Beurteilung.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü9. Verfahren: #stelle(<a-1-8>).]
 ][
 *Quote:* $700000/800000 times 100%="87,5"%$; Lücke 12,5 %.
@@ -713,7 +980,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-62
 #aufgabe(titel: "Liquiditätsgrade beurteilen", art: "rechnen", quelle: "1.9")[
-#text("Liquiditätsgrade (Teil A5): Kasse 30, Forderungen 90, Vorräte 120, kurzfristiges FK 200 (T€). Berechne und beurteile die drei Grade.")
+#if not web [*Aufgabe 62* #linebreak()]
+*Gegeben und Annahmen*
+
+Liquiditätsgrade (Teil A5): Kasse 30, Forderungen 90, Vorräte 120, kurzfristiges FK 200 (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne und beurteile die drei Grade.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü10. Verfahren: #stelle(<a-1-9>).]
 ][
 *L1:* $30/200 times 100%=15%$.
@@ -727,7 +1004,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-63
 #aufgabe(titel: "Leverage im schlechten Jahr", art: "rechnen", quelle: "1.12")[
-#text("Leverage im schlechten Jahr (Teil A5): Gesamtkapital 500.000 € (EK 100.000, FK 400.000), Gewinn vor Zinsen 40.000 €, FK-Zins 10 %. EK-Rentabilität? Vergleiche mit reiner EK-Finanzierung.")
+#if not web [*Aufgabe 63* #linebreak()]
+*Gegeben und Annahmen*
+
+Leverage im schlechten Jahr (Teil A5): Gesamtkapital 500.000 € (EK 100.000, FK 400.000), Gewinn vor Zinsen 40.000 €, FK-Zins 10 %. EK-Rentabilität?
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Vergleiche mit reiner EK-Finanzierung.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü11. Verfahren: #stelle(<a-1-12>).]
 ][
 *Gesamtrendite:* $40000/500000 times 100%=8%$.
@@ -741,7 +1028,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-64
 #aufgabe(titel: "Liquiditätsplan einer Gründung", art: "rechnen", quelle: "1.7")[
-#text("Liquiditätsplan einer Gründung (Teil A5): Kasse 10.000 €. Q1: Einzahlungen 15.000, Auszahlungen 28.000. Q2: 30.000 / 26.000. Q3: 35.000 / 25.000. Kontokorrentlinie 5.000 €. Endbestände, freie Kreditlinie je Quartal, Beurteilung.")
+#if not web [*Aufgabe 64* #linebreak()]
+*Gegeben und Annahmen*
+
+Anfangskasse 10 000 €. Ein-/Auszahlungen: Q1 15 000/28 000 €, Q2 30 000/26 000 €, Q3 35 000/25 000 €. Kontokorrentlinie 5 000 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Endbestand und freie Kreditlinie je Quartal und beurteile den Finanzierungsbedarf.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü12. Verfahren: #stelle(<a-1-7>).]
 ][
 *Q1:* $10000+15000-28000=-3000$ €; freie Linie 2.000 €.
@@ -755,7 +1052,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-65
 #aufgabe(titel: "Bilanzanalyse mit allen Kennzahlen", art: "rechnen", quelle: "1.10")[
-#text("Bilanzanalyse (Teil A4/A5): AV 800; Vorräte 200, Forderungen 150, Kasse 50; EK 180, langfr. FK 520, kfr. FK 500 (T€). JÜ 27, Umsatz 1.500, Cashflow 100. Berechne Liquidität 1.–3. Grades, Anlagendeckung I und II, EKQuote, Anlageintensität, EK- und Umsatzrentabilität, Schuldentilgungsfähigkeit (gesamtes FK) und gib ein Gesamturteil.")
+#if not web [*Aufgabe 65* #linebreak()]
+*Gegeben und Annahmen*
+
+Bilanzanalyse (Teil A4/A5): AV 800; Vorräte 200, Forderungen 150, Kasse 50; EK 180, langfr. FK 520, kfr. FK 500 (T€). JÜ 27, Umsatz 1.500, Cashflow 100.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Liquidität 1.–3. Grades, Anlagendeckung I und II, EKQuote, Anlageintensität, EK- und Umsatzrentabilität, Schuldentilgungsfähigkeit (gesamtes FK) und gib ein Gesamturteil.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü13. Verfahren: #stelle(<a-1-10>).]
 ][
 *Modell:* Gesamtkapital $800+200+150+50=1200$ T€; FK 1.020 T€; jährlicher CF 100 T€.
@@ -773,7 +1080,17 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-66
 #aufgabe(titel: "Kapitalstruktur und Risiko in zwei Bilanzen", art: "rechnen", quelle: "1.11")[
-#text("Kapitalstruktur und Risiko (Teil A5, wie Folie 49/50): Eine GmbH kauft eine Maschine für 150.000 € und behält 50.000 € in der Kasse. A: 200.000 € EK. B: 40.000 € EK + 160.000 € FK zu 8 % (Zinsen aus der Kasse bezahlt). Die Maschine verliert 30.000 € an Wert. Stelle beide Bilanzen zum Jahresende auf. Liegt Überschuldung vor?")
+#if not web [*Aufgabe 66* #linebreak()]
+*Gegeben und Annahmen*
+
+Kapitalstruktur und Risiko (Teil A5, wie Folie 49/50): Eine GmbH kauft eine Maschine für 150.000 € und behält 50.000 € in der Kasse. A: 200.000 € EK. B: 40.000 € EK + 160.000 € FK zu 8 % (Zinsen aus der Kasse bezahlt). Die Maschine verliert 30.000 € an Wert.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Stelle beide Bilanzen zum Jahresende auf. Liegt Überschuldung vor?],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü14. Verfahren: #stelle(<a-1-11>).]
 ][
 *Modell:* Wertverlust 30.000 €, Zinsen aus der Kasse; keine sonstigen Veränderungen.
@@ -787,6 +1104,7 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 
 // 0-67
 #aufgabe(titel: "Finanzierungsformen außen, innen, EK, FK", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 67* #linebreak()]
 #text("Finanzierungsformen (Teil A2): Ordne zu (Nr. 1–9 nach Drukarczyk, außen/innen, EK/FK): a) Ausgabe neuer Aktien an neue Aktionäre, b) Gewinn wird einbehalten, c) Verkauf einer nicht mehr benötigten Halle, d) Ausgabe einer Anleihe, e) die bisherigen Gesellschafter erhöhen ihre Einlage.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü15. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -795,6 +1113,7 @@ a) Nr. 4 Beteiligungsfinanzierung: außen, EK. b) Nr. 6 offene Selbstfinanzierun
 
 // 0-68
 #aufgabe(titel: "Insolvenzgrund und Gegenmaßnahme", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 68* #linebreak()]
 #text("Insolvenzgründe (Teil A5): Bestimme Insolvenzgrund und passende Gegenmaßnahme. (i) GmbH: Vermögen 2,0 Mio. €, Schulden 2,3 Mio. €, keine positive Fortführungsprognose. (ii) Unternehmen kann in drei Wochen nur 70 % der fälligen Rechnungen bezahlen. (iii) GmbH erwartet, eine im März fällige Kreditrate nicht bezahlen zu können.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü16. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -803,7 +1122,17 @@ a) Nr. 4 Beteiligungsfinanzierung: außen, EK. b) Nr. 6 offene Selbstfinanzierun
 
 // 0-69
 #aufgabe(titel: "Finanzielle Lage vollständig beurteilen", art: "rechnen", quelle: "1.10")[
-#text("Ein Unternehmen meldet: JÜ 60, Abschreibungen 40, Zuführung zu Pensionsrückstellungen 20. Bilanz: AV 700, UV 300 (davon flüssige Mittel 30, Forderungen 120), EK 200, FK 800 (davon kurzfristig 300) (T€). Beurteile die finanzielle Lage so vollständig wie möglich und schlage zwei Maßnahmen vor.")
+#if not web [*Aufgabe 69* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Unternehmen meldet: JÜ 60, Abschreibungen 40, Zuführung zu Pensionsrückstellungen 20. Bilanz: AV 700, UV 300 (davon flüssige Mittel 30, Forderungen 120), EK 200, FK 800 (davon kurzfristig 300) (T€).
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Beurteile die finanzielle Lage so vollständig wie möglich und schlage zwei Maßnahmen vor.],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü17. Verfahren: #stelle(<a-1-10>).]
 ][
 *CF:* $60+40+20=120$ T€; rechnerische Tilgungsdauer $800/120 approx "6,7"$ Jahre.
@@ -819,6 +1148,7 @@ a) Nr. 4 Beteiligungsfinanzierung: außen, EK. b) Nr. 6 offene Selbstfinanzierun
 
 // 0-70
 #aufgabe(titel: "Gewinn ersetzt keinen Finanzplan", art: "verstehen", quelle: "1.7")[
+#if not web [*Aufgabe 70* #linebreak()]
 #text("Eine Gründerin sagt: „Mein Plan zeigt ab Jahr 1 Gewinn, einen Finanzplan brauche ich nicht.“ Nimm begründet Stellung.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü18. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -827,7 +1157,18 @@ Gewinn ist keine Zahlungsplanung. Die Gründerin muss Anlauf- und Investitionsza
 
 // 0-71
 #aufgabe(titel: "FK-Quote von 50 auf 85 Prozent", art: "rechnen", quelle: "1.12")[
-#text("Ein Unternehmen mit rG = 12 % und rf = 7 % will die EK-Rendite steigern und die FK-Quote von 50 % auf 85 % erhöhen. Wie verändert sich die EK-Rentabilität? Welche Bedenken hast du?")
+#if not web [*Aufgabe 71* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Unternehmen mit rG = 12 % und rf = 7 % will die EK-Rendite steigern und die FK-Quote von 50 % auf 85 % erhöhen.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Wie verändert sich die EK-Rentabilität?],
+[Welche Bedenken hast du?],
+)
+
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü19. Verfahren: #stelle(<a-1-12>).]
 ][
 *Modell:* $r_G=12%$ und $r_f=7%$ bleiben für die Rechnung konstant.
@@ -841,6 +1182,7 @@ Gewinn ist keine Zahlungsplanung. Die Gründerin muss Anlauf- und Investitionsza
 
 // 0-72
 #aufgabe(titel: "Warnsignal oder nicht?", art: "verstehen", quelle: "1.6")[
+#if not web [*Aufgabe 72* #linebreak()]
 #text("Beurteile jeweils, ob das ein Warnsignal ist: a) negativer Cashflow aus Investitionstätigkeit bei hohem operativem Cashflow, b) Gewinn steigt, Kassenbestand sinkt, c) Anlagendeckung II von 80 %.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü20. Verfahren: #stelle(<a-1-6>).]
 ][
@@ -849,6 +1191,7 @@ a) Hoher operativer CF und negativer Investitions-CF können selbst finanzierte 
 
 // 0-73
 #aufgabe(titel: "Neuer Kredit bei Überschuldung", art: "verstehen", quelle: "1.8")[
+#if not web [*Aufgabe 73* #linebreak()]
 #text("Ein Kunde deiner Bank ist bilanziell überschuldet und bittet um einen zusätzlichen Kredit, „um die Lücke zu schließen“. Was antwortest du?")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü21. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -857,6 +1200,7 @@ Ein gewöhnlicher Kredit vergrößert Vermögen und Schulden um denselben Betrag
 
 // 0-74
 #aufgabe(titel: "Glasspinnerei: Finanzplan, Plan-GuV, Planbilanz", art: "verstehen", quelle: "1.13")[
+#if not web [*Aufgabe 74* #linebreak()]
 #text("Warum benötigt die Glasspinnerei gleichzeitig Finanzplan, Plan-GuV und Planbilanz? Erkläre die Rückkopplung über Zinsen, Steuern und Betriebskapital.")
 #src[G, PDF-S. 4 und 7. Verfahren: #stelle(<a-1-13>).]
 ][
@@ -865,7 +1209,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-75
 #aufgabe(titel: "Glasspinnerei: Nettoumsatz und Kapazität", art: "rechnen", quelle: "1.13")[
-#text("Berechne den Nettoumsatz 2005 aus Menge und Preis. Warum kann die Mengensteigerung 2008 nicht unverändert mit 12,5 % fortgesetzt werden?")
+#if not web [*Aufgabe 75* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei: Absatz 2005 20 000 t, Preis 13 500 €/t; Tageskapazität 75 t bei 365 Tagen im Jahr. Geplantes Mengenwachstum zunächst jährlich 12,5 %; 2006 22 500 t, 2007 rund 25 313 t.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne den Nettoumsatz 2005.],
+[Prüfe, ob das Mengenwachstum 2008 unverändert fortgesetzt werden kann.],
+)
+
 #src[G, PDF-S. 3, 5 und 11. Verfahren: #stelle(<a-1-13>).]
 ][
 *Umsatz:* $20000 thin "t" times 13500 thin "€/t"=270000000$ € = *270 Mio. €*.
@@ -877,7 +1232,17 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-76
 #aufgabe(titel: "Glasspinnerei: erweitertes EBK 2004", art: "rechnen", quelle: "1.14")[
-#text("Berechne das erweiterte EBK 2004 aus Lager 23.529, Forderungen 31.564, Lieferverbindlichkeiten 18.884, Rückstellungen Lizenzen/Löhne 7.744 und Steuerrückstellungen 19.348 (T€). Vergleiche mit 2003: −10.914 T€.")
+#if not web [*Aufgabe 76* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei 2004, Werte in T€: Lager 23 529, Forderungen 31 564, Lieferverbindlichkeiten 18 884, Rückstellungen für Lizenzen/Löhne 7 744, Steuerrückstellungen 19 348. Erweitertes EBK 2003: −10 914 T€.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne das erweiterte EBK 2004 und vergleiche mit 2003.],
+)
+
 #src[G, PDF-S. 11–12. Verfahren: #stelle(<a-1-14>).]
 ][
 *Bestand:* $23529+31564-18884-7744-19348=9117$ T€.
@@ -889,7 +1254,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-77
 #aufgabe(titel: "Glasspinnerei: erweitertes EBK 2005", art: "rechnen", quelle: "1.14")[
-#text("Berechne das erweiterte EBK 2005 und seine Änderung: Nettoumsatz 270.000 T€, LB 9 %, FLei 13 %, VLei 10 %, Lizenzrückstellungen 8.775 T€, Steuerrückstellungen 17.000 T€, EBK 2004 = 9.117 T€. Wie wirkt die Änderung auf den NOCF?")
+#if not web [*Aufgabe 77* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei 2005: Nettoumsatz 270 000 T€, LB 9 %, FLei 13 %, VLei 10 %, Lizenzrückstellungen 8 775 T€, Steuerrückstellungen 17 000 T€, EBK 2004 9 117 T€.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne das erweiterte EBK 2005 und seine Änderung.],
+[Erkläre die Wirkung dieser Änderung auf den NOCF.],
+)
+
 #src[G, PDF-S. 8 und 11–12. Verfahren: #stelle(<a-1-14>).]
 ][
 *Modell:* Die ausdrücklich fortgeführte VLei-Quote ist 10 %, trotz des markierten Buchfehlers.
@@ -905,7 +1281,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-78
 #aufgabe(titel: "Glasspinnerei: NOCF vor Steuern 2005", art: "rechnen", quelle: "1.14")[
-#text("Berechne NOCF vor Steuern 2005: Nettoumsatz 270.000, Material 72.000, Löhne 73.828, sonstige betriebliche Aufwendungen 83.359, ΔEBK −2.492 (je T€). Warum darf keine Abschreibung als Auszahlung abgezogen werden?")
+#if not web [*Aufgabe 78* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei 2005, Werte in T€: Nettoumsatz 270 000, Material 72 000, Löhne 73 828, sonstige betriebliche Aufwendungen 83 359, $Delta "EBK"=-2492$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne den NOCF vor Steuern.],
+[Erkläre, weshalb keine Abschreibung als Auszahlung abgezogen wird.],
+)
+
 #src[G, PDF-S. 11–12. Verfahren: #stelle(<a-1-14>).]
 ][
 *Operative Abgrenzung:* $270000-72000-73828-83359=40813$ T€.
@@ -917,7 +1304,17 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-79
 #aufgabe(titel: "Glasspinnerei: Sonderabschreibungen", art: "rechnen", quelle: "1.15")[
-#text("Berechne die Abschreibung neuer Gebäude und Anlagen für 2005 sowie die jährlichen Restabschreibungen. Daten: Gebäude 30 Mio. €, zehn Jahre; Anlagen 55 Mio. €, vier Jahre; im Fall 75 % sofort, Rest linear über die verbleibende Zeit.")
+#if not web [*Aufgabe 79* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei, historische Abschreibungsannahme: neue Gebäude 30 Mio. € bei zehn Jahren Nutzungsdauer; neue Anlagen 55 Mio. € bei vier Jahren. Im Fall werden 75 % sofort abgeschrieben, der Rest linear über die verbleibenden Jahre.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die Abschreibung 2005 und die jährlichen Restabschreibungen beider Investitionen.],
+)
+
 #src[G, PDF-S. 4 und 13. Verfahren: #stelle(<a-1-15>).]
 ][
 *Gebäude:* $30 times "0,75"="22,5"$ Mio. € sofort. Rest 7,5 Mio. € über neun Jahre: rund *0,833 Mio. €/Jahr*.
@@ -929,7 +1326,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-80
 #aufgabe(titel: "Glasspinnerei: Steuer mit Verlustverrechnung", art: "rechnen", quelle: "1.15")[
-#text("Die Plan-GuV nennt 2005 einen Verlust 39.410 T€ und 2006 einen Gewinn vor Verlustverrechnung 45.377 T€. Berechne bei der Fall-Steuerquote von 50 % die Steuer 2006. NOCF vor Steuern 2006: 63.912 T€. Wie hoch ist er danach?")
+#if not web [*Aufgabe 80* #linebreak()]
+*Gegeben und Annahmen*
+
+Die Plan-GuV nennt 2005 einen Verlust 39.410 T€ und 2006 einen Gewinn vor Verlustverrechnung 45.377 T€.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne bei der Fall-Steuerquote von 50 % die Steuer 2006. NOCF vor Steuern 2006: 63.912 T€.],
+[Wie hoch ist er danach?],
+)
+
 #src[G, PDF-S. 14. Verfahren: #stelle(<a-1-15>).]
 ][
 *Modell:* Vollständige Verlustverrechnung entsprechend der Falltabelle, keine heutige steuerrechtliche Behauptung.
@@ -945,7 +1353,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-81
 #aufgabe(titel: "Glasspinnerei: Finanzierungssaldo 2005", art: "rechnen", quelle: "1.15")[
-#text("Rechne den gesamten Finanzierungssaldo 2005: NOCF nach Steuern 43.305, bisherige Zinsen 3.214, neue Kredite 20.000 + 5.000, Investition 85.000, Dividende 3.120 (T€). Sonstige Tilgungs-/Rückzahlungsbeträge sind in der Falltabelle nicht angegeben. Vergleiche die Folgejahre.")
+#if not web [*Aufgabe 81* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei 2005, Werte in T€: NOCF nach Steuern 43 305; bisherige Zinsen 3 214; neue Kredite 20 000 und 5 000; Investitionen 85 000; Dividende 3 120. In dieser Teilrechnung werden keine weiteren Tilgungs-/Rückzahlungen angesetzt. Zum Vergleich vorgegebene Finanzierungssalden 2006–2008: +50 594 / +48 108 / +59 915 T€.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne den Finanzierungssaldo 2005.],
+[Vergleiche den Saldo mit den vorgegebenen Folgejahren und erkläre die zeitliche Finanzierungslücke.],
+)
+
 #src[G, PDF-S. 15. Verfahren: #stelle(<a-1-15>).]
 ][
 *Vorläufige Mittel:* $43305-3214=40091$ T€.
@@ -959,7 +1378,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-82
 #aufgabe(titel: "Glasspinnerei: Bilanzwerte und Gesellschafterdarlehen", art: "rechnen", quelle: "1.16")[
-#text("Leite die Bilanzwerte 2005 für Gebäude und Maschinen her. Erkläre außerdem, warum die zunächst unterstellten zusätzlichen Gesellschafterdarlehen keine gesicherte Lösung sind.")
+#if not web [*Aufgabe 82* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei 2005, Werte in Mio. €: Gebäude-Anfangsbuchwert 38,805; Abschreibung bisheriger Gebäude 3,259; Gebäudezugang 30 mit 75 % Sofortabschreibung. Maschinen-Anfangsbuchwert 16,302; Abschreibung bisheriger Maschinen 10; Maschinenzugang 55 mit 75 % Sofortabschreibung. Bestehende Gesellschafterdarlehen 11; der Plan erhöht sie auf rund 34. Laut Ausgangslage wollen die Eigentümer keine weiteren Mittel geben.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die Bilanzwerte 2005 für Gebäude und Maschinen.],
+[Erkläre, weshalb die zusätzlich geplanten Gesellschafterdarlehen keine gesicherte Finanzierung sind.],
+)
+
 #src[G, PDF-S. 16–19. Verfahren: #stelle(<a-1-16>).]
 ][
 *Gebäude:* $"38,805"-"3,259"+30-"22,5"="43,046"$ Mio. €.
@@ -973,7 +1403,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-83
 #aufgabe(titel: "Glasspinnerei: zwei Liquiditätsmaßnahmen", art: "rechnen", quelle: "1.17")[
-#text("Vergleiche die beiden Liquiditätsmaßnahmen 2005: 20 % der 85-Mio.-Investition auf 2006 verschieben und Forderungsquote bei 270 Mio. € Umsatz von 13 % auf 9,5 % senken. Wie groß ist die zusätzliche Verbesserung gegenüber dem Basisplan? Warum sind die genannten 11,9 Mio. € EBK-Freisetzung ein anderer Vergleich?")
+#if not web [*Aufgabe 83* #linebreak()]
+*Gegeben und Annahmen*
+
+Glasspinnerei 2005: Investition 85 Mio. €, davon sollen 20 % auf 2006 verschoben werden. Bei 270 Mio. € Umsatz soll die Forderungsquote von 13 % auf 9,5 % sinken. Erweitertes EBK 2004: 9,117 Mio. €; Basisplan 2005: 6,625 Mio. €. Der bisherige Finanzierungssaldo 2005 beträgt −23,029 Mio. €. Unter den Maßnahmen wird eine EBK-Freisetzung von rund 11,9 Mio. € gegenüber 2004 genannt.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die zusätzliche Liquiditätsverbesserung beider Maßnahmen gegenüber dem Basisplan.],
+[Unterscheide diese Verbesserung von der genannten EBK-Freisetzung im Maßnahmenplan.],
+)
+
 #src[G, PDF-S. 20–21. Verfahren: #stelle(<a-1-17>).]
 ][
 *Investition:* $"0,20" times 85=17$ Mio. € Verschiebung.
@@ -987,7 +1428,18 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-84
 #aufgabe(titel: "Glasspinnerei: lineare statt Sofortabschreibung", art: "rechnen", quelle: "1.18")[
-#text("Was ändert lineare statt 75-%-Sofortabschreibung bei den neuen Gebäuden? Vergleiche 39,41 Mio. € Verlustvortrag vorher mit dem neuen Betrag. Unterscheide dabei Buchwirkung, Steuerzeitpunkt und heutige Insolvenzprüfung.")
+#if not web [*Aufgabe 84* #linebreak()]
+*Gegeben und Annahmen*
+
+Neue Gebäude der Glasspinnerei: Anschaffung 30 Mio. €, Nutzungsdauer zehn Jahre. Historischer Basisfall: 75 % Sofortabschreibung und Verlustvortrag 39,41 Mio. €. Alternative: vollständige lineare Abschreibung von Beginn an.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Vergleiche beide Abschreibungsbeträge und bestimme den geänderten Verlustvortrag.],
+[Unterscheide Buchwirkung, Steuerzeitpunkt, tatsächliche Auszahlung und die davon getrennte Insolvenzprüfung.],
+)
+
 #src[G, PDF-S. 21–22. Verfahren: #stelle(<a-1-18>).]
 ][
 *Aufwandsunterschied:* $"22,5"-3="19,5"$ Mio. €.
@@ -999,6 +1451,7 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 
 // 0-85
 #aufgabe(titel: "Glasspinnerei: Schlussfolgerung für den Kreditgeber", art: "verstehen", quelle: "1.18")[
+#if not web [*Aufgabe 85* #linebreak()]
 #text("Formuliere die Schlussfolgerung der Glasspinnerei für einen Kreditgeber. Welche Rolle spielen Sonderabschreibungen, künftiger NOCF, die vorübergehende Finanzierungslücke und ein qualifizierter Rangrücktritt?")
 #src[G, PDF-S. 18–24. Verfahren: #stelle(<a-1-18>).]
 ][
@@ -1007,7 +1460,17 @@ Der Kreditgeber braucht eine Überleitung: Der hohe bilanzielle Verlust stammt i
 
 // 0-86
 #aufgabe(titel: "Klausur: Gründung mit 800.000 € Kapital", art: "rechnen", quelle: "1.12")[
-#text("Ein Investor plant eine Unternehmensgründung mit 800.000 € Gesamtkapital. Er kann 300.000 € bis 500.000 € Eigenkapital einbringen, der Rest ist Fremdkapital. Das Unternehmen erwartet jährlich einen Bruttogewinn (Gewinn vor Abzug der Fremdkapitalzinsen) von 70.000 €. Ermittle die Gesamtkapitalrentabilität (in %, 2 Nachkommastellen; 2 P.) und die Eigenkapitalrentabilität des Investors (6 P.) für: (1) 500.000 € EK / 300.000 € FK zu 6 %; (2) 300.000 € EK / 500.000 € FK zu 6 %; (3) 500.000 € EK / 300.000 € FK zu 10,5 %; (4) 300.000 € EK / 500.000 € FK zu 10,5 %.")
+#if not web [*Aufgabe 86* #linebreak()]
+*Gegeben und Annahmen*
+
+Ein Investor plant eine Unternehmensgründung mit 800.000 € Gesamtkapital. Er kann 300.000 € bis 500.000 € Eigenkapital einbringen, der Rest ist Fremdkapital. Das Unternehmen erwartet jährlich einen Bruttogewinn (Gewinn vor Abzug der Fremdkapitalzinsen) von 70.000 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle die Gesamtkapitalrentabilität (in %, 2 Nachkommastellen; 2 P.) und die Eigenkapitalrentabilität des Investors (6 P.) für: (1) 500.000 € EK / 300.000 € FK zu 6 %; (2) 300.000 € EK / 500.000 € FK zu 6 %; (3) 500.000 € EK / 300.000 € FK zu 10,5 %; (4) 300.000 € EK / 500.000 € FK zu 10,5 %.],
+)
+
 #src[K, PDF-S. 4 (Klausurseite 8). Verfahren: #stelle(<a-1-11>), #stelle(<a-1-12>).]
 ][
 *Modell:* Gesamtkapital in allen Fällen 800.000 €; Bruttogewinn 70.000 € = Gewinn vor FK-Zinsen; Zinsen = Zinssatz × FK; keine Steuern.
@@ -1031,6 +1494,7 @@ Rechenweg Fall 2: $(70000 - "0,06" times 500000)/300000 = 40000/300000 = "13,33"
 
 // 0-87
 #aufgabe(titel: "Klausur: Leverage deuten und Risiken der Verschuldung", art: "verstehen", quelle: "1.12")[
+#if not web [*Aufgabe 87* #linebreak()]
 #text("b) Beschreibe den Leverage-Effekt anhand Deiner Ergebnisse aus „Klausur: Gründung mit 800.000 € Kapital“ (2 P.). c) Nenne zwei betriebswirtschaftliche Aspekte, die gegen eine hohe Verschuldung eines Unternehmens sprechen (1 P.).")
 #src[K, PDF-S. 5 (Klausurseite 9). Verfahren: #stelle(<a-1-12>), #stelle(<a-1-11>).]
 ][
@@ -1047,7 +1511,17 @@ Rechenweg Fall 2: $(70000 - "0,06" times 500000)/300000 = 40000/300000 = "13,33"
 
 // 0-88
 #aufgabe(titel: "Klausur: Cashflow der Rhein GmbH", art: "rechnen", quelle: "1.5")[
-#text("Die Rhein GmbH legt für 2015 diese GuV vor (Mio. €): Materialaufwand 21, Personalaufwand 23, Aufwand aus Zuführung zu Pensionsrückstellungen 4, Abschreibungen 7, sonstiger Aufwand 5, Jahresüberschuss 9; Umsatzerlöse 69. Berechne den Cashflow 2015 nach der direkten und nach der indirekten Methode. Alle zahlungswirksamen Positionen waren im Jahr der Verbuchung tatsächlich voll zahlungswirksam.")
+#if not web [*Aufgabe 88* #linebreak()]
+*Gegeben und Annahmen*
+
+Die Rhein GmbH legt für 2015 diese GuV vor (Mio. €): Materialaufwand 21, Personalaufwand 23, Aufwand aus Zuführung zu Pensionsrückstellungen 4, Abschreibungen 7, sonstiger Aufwand 5, Jahresüberschuss 9; Umsatzerlöse 69.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne den Cashflow 2015 nach der direkten und nach der indirekten Methode. Alle zahlungswirksamen Positionen waren im Jahr der Verbuchung tatsächlich voll zahlungswirksam.],
+)
+
 #src[K, PDF-S. 6 (Klausurseite 10). Verfahren: #stelle(<a-1-5>).]
 ][
 *Modell:* Laut Aufgabe sind alle zahlungswirksamen Positionen 2015 voll bezahlt. Nicht zahlungswirksam sind die Abschreibungen (7) und die Zuführung zu den Pensionsrückstellungen (4).
@@ -1063,6 +1537,7 @@ Rechenweg Fall 2: $(70000 - "0,06" times 500000)/300000 = 40000/300000 = "13,33"
 
 // 0-89
 #aufgabe(titel: "Klausur: weitere Formen der Innenfinanzierung", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 89* #linebreak()]
 #text("Nenne zwei weitere Formen der Innenfinanzierung, die einem Unternehmen neben der Selbstfinanzierung zur Verfügung stehen.")
 #src[K, PDF-S. 6 (Klausurseite 10). Verfahren: #stelle(<a-1-2>), #stelle(<a-1-5>).]
 ][

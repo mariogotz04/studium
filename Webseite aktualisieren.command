@@ -12,7 +12,7 @@ ARBEITSKOPIE="$HOME/Studium-Webseite"   # Git-Kopie bewusst außerhalb von iClou
 AUSSCHLIESSEN=("Zum L*schen" "Unterlagen" "Sonstiges" "Physik Praktikum" "Webseite")
 
 # Diese Dateien aus Uni/Webseite gehören zur Seite selbst und werden mit hochgeladen.
-SEITENDATEIEN=("vorlage.html" "build.py" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command" "Vorlesungsplan.pdf")
+SEITENDATEIEN=("vorlage.html" "build.py" "zitate.json" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command" "Vorlesungsplan.pdf")
 
 set -e
 SEITE="$(cd "$(dirname "$0")" && pwd)"

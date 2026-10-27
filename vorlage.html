@@ -162,6 +162,23 @@ label.l { font-size: 14px; color: var(--muted); }
 .vorschlag .was b { display: block; line-height: 1.35; }
 .vorschlag .was span { font-size: 14px; color: var(--muted); }
 .vorschlag.erledigt .was { opacity: .5; } .vorschlag.erledigt .was b { text-decoration: line-through; }
+.richtung { border-top: 3px solid var(--accent); margin-top: 18px; }
+.richtung .augenbraue { color: var(--accent); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+.richtung .warum { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); line-height: 1.35; margin: 10px 0; }
+.richtung details { margin-top: 14px; }
+.richtung summary, .zitat summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+.richtung-form label { display: block; font-weight: 600; margin: 20px 0 6px; }
+.richtung-form textarea { width: 100%; min-height: 86px; box-sizing: border-box; }
+.richtung-form .schalter { margin-top: 12px; font-weight: 400; }
+.zitat { border-left: 3px solid var(--accent); padding-left: 16px; margin-top: 18px; }
+.zitat blockquote { margin: 0 0 8px; font-family: var(--serif); font-size: 19px; line-height: 1.45; }
+.zitat .quellenzeile { font-size: 13px; color: var(--muted); }
+.zitat .stern { min-height: 44px; min-width: 44px; font-size: 19px; }
+.tagesfortschritt { font-size: 14px; color: var(--accent); font-weight: 600; }
+.lernimpuls { margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: var(--accent-soft); line-height: 1.55; }
+.lernimpuls p { margin: 0; }
+.richtung-erfolge { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; font-size: 14px; }
+.richtung-erfolge b { display: block; font-size: 23px; color: var(--accent); }
 .frist { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
 .frist:first-of-type { border-top: 0; }
 .frist .was b { display: block; line-height: 1.35; }
@@ -473,6 +490,7 @@ figure.abb + figure.abb { margin-top: 14px; }
   <section id="view-lernen" hidden></section>
   <section id="view-termine" hidden></section>
   <section id="view-konto" hidden></section>
+  <section id="view-richtung" hidden></section>
   <footer class="stand" id="stand"></footer>
   <div class="pdfansicht" id="pdfansicht" role="dialog" aria-modal="true" aria-labelledby="pdftitel" hidden>
     <div class="pdfleiste"><button class="btn" id="pdfzu" type="button">Schließen</button>
@@ -496,6 +514,7 @@ window.addEventListener("error", e => {
 const DATA = /*DATA*/null || [];
 const DECKS = /*KARTEN*/null || [];
 const LERNEN = /*LERNEN*/null || [];
+const ZITATE = /*ZITATE*/null || [];
 const PLAN = /*PLAN*/null || { termine: [], tage: {} };
 const BUILD = /*BUILD*/null;
 // Stand der Seite ganz unten: wann die Seite zuletzt gebaut wurde
@@ -897,6 +916,170 @@ function vorschläge(tag) {
   }
   return gewählt;
 }
+/* Tagesplan: Vorschläge einmal pro Tag festhalten. Bearbeitet und fachlich sicher sind getrennt.
+   Einzelne Aktivitätsschlüssel lassen Abschlüsse verschiedener Geräte zusammenlaufen. */
+function tagesPlan(tag = heuteIso()) {
+  let plan = db.get("tagesplan:" + tag, null);
+  if (!plan?.items) {
+    const items = vorschläge(tag).map(v => {
+      const [art, modul, ...rest] = v.key.split(":"), kapitel = rest.join(":");
+      const item = { key: v.key, art, modul, kapitel, titel: v.titel, text: v.text, link: v.link || "" };
+      if (art === "quiz") {
+        item.anzahl = Math.min(10, (LERNEN.find(m => m.name === modul)?.quiz || []).filter(f => !kapitel || f.k === kapitel).length);
+        item.text = v.text.replace("10 Fragen", item.anzahl + " Fragen");
+      }
+      if (art === "fällig" || art === "karten") {
+        const d = DECKS.find(d => d.name === modul), st = kartenStand(modul);
+        item.ids = (art === "fällig" ? fälligeKarten(d, "") : d.cards.filter(c => c.k === kapitel && !st[c.id]).slice(0, kartenEinst().neu)).map(c => c.id);
+        item.titel = art === "fällig" ? `${item.ids.length} fällige Karteikarten ${modul} wiederholen` : v.titel;
+        item.text = `${item.ids.length} Karten bewusst bewerten · ${modul}`;
+      }
+      return item;
+    });
+    plan = { erstellt: Date.now(), items };
+    db.set("tagesplan:" + tag, plan);
+  }
+  return plan;
+}
+const tagesAktivitäten = tag => Object.values(db.objekt("aktiv:" + tag + ":"));
+function lernAktivität(art, modul, id, daten = {}, tag = heuteIso()) {
+  const key = `aktiv:${tag}:${art}:${modul}:${id}`;
+  db.set(key, { ...db.get(key, {}), ...daten, art, modul, id, t: Date.now() });
+}
+function vorschlagStand(v, tag = heuteIso()) {
+  const aktiv = tagesAktivitäten(tag).filter(a => a.modul === v.modul);
+  let n = 0, ziel = 1, automatisch = false, zeit = 0;
+  if (v.art === "aufgabe") {
+    const a = aktiv.find(a => a.art === "aufgabe" && a.id === v.kapitel);
+    automatisch = !!a; zeit = a?.t || 0;
+  } else if (v.art === "quiz") {
+    const a = aktiv.filter(a => a.art === "quiz" && a.fertig &&
+      (v.kapitel ? (a.fragen || []).filter(f => f.k === v.kapitel).length : a.anzahl) >= (v.anzahl || 1)).sort((a, b) => b.t - a.t)[0];
+    automatisch = !!a; zeit = a?.t || 0;
+  } else if (v.art === "mix" || v.art === "probe") {
+    const a = aktiv.filter(a => a.art === v.art && a.fertig).sort((a, b) => b.t - a.t)[0];
+    automatisch = !!a; zeit = a?.t || 0;
+  } else if (v.art === "fällig" || v.art === "karten") {
+    const ids = v.ids || [], bewertet = new Set(aktiv.filter(a => a.art === "karte").map(a => a.id));
+    const runden = aktiv.filter(a => a.art === "kartenrunde" && a.fertig);
+    const abgeschlossen = new Set(runden.flatMap(a => a.ids || []));
+    ziel = ids.length; n = ids.filter(id => bewertet.has(id)).length;
+    automatisch = ziel > 0 && ids.every(id => abgeschlossen.has(id));
+    zeit = Math.max(0, ...runden.map(a => a.t));
+  }
+  if (ziel === 1) n = automatisch ? 1 : 0;
+  const manuell = db.get("erledigt:" + tag, {})[v.key];
+  const überschrieben = typeof manuell === "object" && manuell !== null && zeit <= manuell.t;
+  const fertig = überschrieben ? manuell.wert : manuell === true || automatisch;
+  return { fertig, automatisch, n, ziel };
+}
+function vorschlagStarten(v) {
+  if (!v) { location.hash = "#lernen"; return; }
+  const m = LERNEN.find(m => m.name === v.modul);
+  if (v.art === "aufgabe") location.hash = v.link;
+  else if (v.art === "quiz") quizStarten(m, { kapitel: v.kapitel, anzahl: 10, modus: "mix" });
+  else if (v.art === "mix") probeStarten(m, true);
+  else if (v.art === "probe") { store.set("lernen:teil", "probe"); location.hash = "#lernen/" + encodeURIComponent(v.modul); }
+  else {
+    store.set("karteikarten:kapitel:" + v.modul, v.art === "karten" ? v.kapitel : "");
+    location.hash = kartenLink(v.modul);
+  }
+}
+
+/* Persönliche Richtung bleibt im privaten Browser-/Sync-Zustand; keine Eingaben in den Seitendaten. */
+function richtungEinst() {
+  return { warum: "", vision: "", anti: "", identitaet: "", wenn: "", dann: "", anzeigen: true,
+    zitate: true, impulse: true, nurFavoriten: false, favoriten: [], ...db.get("einst:richtung", {}) };
+}
+function tagesZitat(tag = heuteIso()) {
+  const e = richtungEinst(), favoriten = ZITATE.filter(z => e.favoriten.includes(z.id));
+  const auswahl = e.nurFavoriten && favoriten.length ? favoriten : ZITATE;
+  const nummer = Math.floor(Date.parse(tag + "T12:00:00Z") / 864e5);
+  return auswahl.length ? auswahl[((nummer % auswahl.length) + auswahl.length) % auswahl.length] : null;
+}
+function zitatHtml(z, stern = true) {
+  if (!z) return "";
+  const favorit = richtungEinst().favoriten.includes(z.id);
+  return `<div class="zitat"><blockquote>„${esc(z.text)}“</blockquote><div class="row" style="justify-content:space-between">
+    <div class="quellenzeile">${esc(z.autor)} · ${esc(z.werk)}${z.uebersetzung ? " · eigene Übersetzung" : ""}<br>
+      <a href="${esc(z.quelle)}" target="_blank" rel="noopener">Quelle nachlesen ↗</a></div>
+    ${stern ? `<button class="btn stern" type="button" data-zitat="${esc(z.id)}" aria-label="${favorit ? "Aus Favoriten entfernen" : "Als Favorit speichern"}" aria-pressed="${favorit}">${favorit ? "★" : "☆"}</button>` : ""}</div>
+    ${z.original ? `<details><summary>Originalwortlaut</summary><p>${esc(z.original)}</p></details>` : ""}</div>`;
+}
+function zitatEreignisse(root) {
+  root.querySelectorAll("[data-zitat]").forEach(b => b.onclick = () => {
+    const e = richtungEinst(), id = b.dataset.zitat;
+    e.favoriten = e.favoriten.includes(id) ? e.favoriten.filter(x => x !== id) : [...e.favoriten, id];
+    db.set("einst:richtung", e);
+    if (location.hash === "#richtung") {
+      const favorit = e.favoriten.includes(id);
+      b.textContent = favorit ? "★" : "☆";
+      b.setAttribute("aria-pressed", String(favorit));
+      b.setAttribute("aria-label", favorit ? "Aus Favoriten entfernen" : "Als Favorit speichern");
+    } else startSeite();
+  });
+}
+function richtungHtml(tag) {
+  const e = richtungEinst();
+  if (!e.anzeigen) return `<p class="muted" style="margin-top:16px"><a href="#richtung">Meine Richtung bearbeiten</a></p>`;
+  const offen = tagesPlan(tag).items.find(v => !vorschlagStand(v, tag).fertig);
+  return `<div class="panel richtung"><div class="row" style="justify-content:space-between"><span class="augenbraue">Mein Warum</span>
+      <a class="back" href="#richtung">Meine Richtung bearbeiten ›</a></div>
+    <p class="warum">${esc(e.warum || "Wofür möchtest du dir dieses Wissen aneignen?")}</p>
+    ${e.vision ? `<p class="muted">Meine Richtung: ${esc(e.vision)}</p>` : ""}
+    ${e.identitaet ? `<p>${esc(e.identitaet)}</p>` : ""}
+    <p><b>Mein Schritt heute</b><br>${offen ? esc(offen.titel) : "Dein Tagesplan ist bearbeitet. Du entscheidest, ob du vertiefst oder Pause machst."}</p>
+    <div class="row"><button class="btn primary" type="button" id="kurzstart">${offen ? "Mit fünf Minuten anfangen" : "Lernen öffnen"}</button>
+      ${!e.warum ? `<a class="btn" href="#richtung">Mein Warum festhalten</a>` : ""}</div>
+    ${offen ? `<p class="muted" style="font-size:13px;margin-bottom:0">Öffnet deine erste offene Tagesaufgabe. Für den Einstieg darf ein kleiner Schritt reichen.</p>` : ""}
+    ${e.anti || e.wenn || e.dann ? `<details><summary>Wenn ich aufschiebe</summary>${e.anti ? `<p><b>Das möchte ich vermeiden:</b> ${esc(e.anti)}</p>` : ""}
+      ${e.wenn || e.dann ? `<p><b>Mein Plan:</b> Wenn ${esc(e.wenn || "ich aufschiebe")}, dann ${esc(e.dann || "beginne ich mit einem kleinen Schritt")}.</p>` : ""}</details>` : ""}
+    ${e.zitate ? zitatHtml(tagesZitat(tag)) : ""}</div>`;
+}
+function lernImpuls() {
+  if (!richtungEinst().impulse) return "";
+  const texte = ["Welche Strategie hat dir heute geholfen?", "Was kannst du jetzt in eigenen Worten erklären?", "Welchen kleinen Schritt hast du heute selbst übernommen?"];
+  return `<div class="lernimpuls"><p><b>Dein nächster Gedanke</b><br>${texte[new Date().getDate() % texte.length]}</p>
+    <p class="muted" style="margin-top:8px">Aktives Abrufen darf sich anspruchsvoll anfühlen. Vergleiche mit der Erklärung und prüfe, was du beim nächsten Versuch schon selbst kannst.</p></div>`;
+}
+function tagesErfolgeHtml(tag) {
+  const a = tagesAktivitäten(tag), aufgaben = a.filter(x => x.art === "aufgabe"), karten = a.filter(x => x.art === "karte");
+  const quizzes = a.filter(x => x.art === "quiz" && x.fertig);
+  if (!aufgaben.length && !karten.length && !quizzes.length) return "";
+  const besser = aufgaben.filter(x => x.status === "ok" && ["hilfe", "nein"].includes(x.vorher));
+  return `<div class="panel"><h2>Heute selbst bewegt</h2><div class="richtung-erfolge">
+    <span><b>${aufgaben.length}</b>Aufgaben bewertet</span><span><b>${karten.length}</b>verschiedene Karten bewertet</span>
+    <span><b>${quizzes.length}</b>Quizrunden abgeschlossen</span></div>
+    ${besser.length ? `<p>${besser.length === 1 ? "Eine Aufgabe hast" : besser.length + " Aufgaben hast"} du beim vorherigen Versuch mit Hilfe bearbeitet oder noch nicht geschafft und diesmal selbst gelöst.</p>` : ""}
+    <p class="muted" style="margin-bottom:0">Das sind deine gespeicherten Bearbeitungen. Was schon sicher sitzt, zeigen die Bewertungen in deinen Modulen.</p></div>`;
+}
+function richtungSeite() {
+  const e = richtungEinst(), root = document.getElementById("view-richtung");
+  kopf("Meine Richtung", "Dein Warum, deine Ziele und dein nächster Schritt");
+  const feld = (id, titel, beispiel, text) => `<label for="r-${id}">${titel}</label><p class="muted" style="font-size:14px;margin:0 0 6px">${text}</p>
+    <textarea id="r-${id}" name="${id}" maxlength="600" placeholder="${esc(beispiel)}">${esc(e[id])}</textarea>`;
+  root.innerHTML = `<a class="back" href="#start">← Start</a><div class="panel richtung-form"><h2 style="margin-top:0">Was soll dich durch dein Studium tragen?</h2>
+    <p>Deine eigenen Worte zählen. Die Beispiele in den Feldern sind Anregungen. Du kannst alles jederzeit ändern.</p>
+    <form id="richtung-form">
+    ${feld("warum", "Mein Warum", "Ich lerne, weil …", "Was bedeutet dir dein Studium persönlich – auch über Noten und Prüfungen hinaus?")}
+    ${feld("vision", "Meine Vision", "In einigen Jahren möchte ich …", "Welche Lebens- oder Karrierevorstellung gibt dir eine Richtung?")}
+    ${feld("identitaet", "Wer ich durch mein Handeln sein möchte", "Ich bin jemand, der Verständnislücken rechtzeitig angeht.", "Welche Haltung möchtest du mit kleinen, konkreten Entscheidungen leben?")}
+    ${feld("anti", "Meine Anti-Vision", "Ich möchte vermeiden, unvorbereitet und nervös in eine Klausur zu gehen.", "Beschreibe eine konkrete unerwünschte Situation. Verbinde sie darunter mit einer Handlung, die du beeinflussen kannst.")}
+    ${feld("wenn", "Wenn …", "ich morgens das Anfangen aufschiebe", "Welche Situation soll deinen kleinen Einstieg auslösen?")}
+    ${feld("dann", "… dann …", "öffne ich eine Aufgabe und notiere zuerst Gegeben und Gesucht", "Was tust du dann konkret? Ein kleiner erster Schritt reicht.")}
+    ${[["anzeigen", "Mein Warum auf der Startseite zeigen"], ["zitate", "Täglich ein Zitat anzeigen"], ["impulse", "Kurze Reflexionsimpulse nach Lernrunden anzeigen"], ["nurFavoriten", "Für das Tageszitat bevorzugt meine Favoriten verwenden"]].map(([id, label]) => `<label class="schalter"><input type="checkbox" name="${id}"${e[id] ? " checked" : ""}>${label}</label>`).join("")}
+    <p class="muted" style="font-size:13px">Deine Eingaben werden auf diesem Gerät gespeichert und bei bestehender Anmeldung mit deinem Konto synchronisiert.</p>
+    <button class="btn primary gross" type="submit">Meine Richtung speichern</button></form></div>
+    <div class="panel"><h2>Zitate für deinen Lerntag</h2><p class="muted">Mit Quelle und Originalwortlaut. Der Stern speichert deine Favoriten.</p>${ZITATE.map(z => zitatHtml(z)).join("")}</div>`;
+  root.querySelector("#richtung-form").onsubmit = event => {
+    event.preventDefault(); const form = new FormData(event.currentTarget), neu = { ...richtungEinst() };
+    for (const k of ["warum", "vision", "identitaet", "anti", "wenn", "dann"]) neu[k] = String(form.get(k) || "").trim().slice(0, 600);
+    for (const k of ["anzeigen", "zitate", "impulse", "nurFavoriten"]) neu[k] = form.has(k);
+    db.set("einst:richtung", neu); meldung("Deine Richtung ist gespeichert."); location.hash = "#start";
+  };
+  zitatEreignisse(root);
+}
+
 let tagesliste = [];
 function startSeite() {
   const tag = heuteIso(), jetzt = new Date(), m = jetzt.getHours() * 60 + jetzt.getMinutes();
@@ -906,12 +1089,12 @@ function startSeite() {
   const nächste = heute.find(t => minuten(t.von) > m);
   let morgenTag = tagPlus(tag, 1);
   for (let i = 1; i <= 7 && !vorlesungen(morgenTag).length; i++) morgenTag = tagPlus(tag, i + 1);
-  tagesliste = vorschläge(tag);
-  const erledigt = db.get("erledigt:" + tag, {});
+  tagesliste = tagesPlan(tag).items;
+  const stände = tagesliste.map(v => vorschlagStand(v, tag)), erledigt = stände.filter(s => s.fertig).length;
   const fr = fristen(), klausur = fr.find(f => f.art === "klausur" && f.ts > Date.now());
   const todos = offeneTodos().slice(0, 6);
   const pomo = db.get("pomo:" + tag, null);
-  startView.innerHTML = `<div class="zwei" style="margin-top:18px"><div>
+  startView.innerHTML = `${richtungHtml(tag)}<div class="zwei" style="margin-top:18px"><div>
       <div class="panel uhr"><div class="zeit" id="uhrzeit">${pad(jetzt.getHours())}:${pad(jetzt.getMinutes())}<small>${pad(jetzt.getSeconds())}</small></div>
         <div class="tag">${jetzt.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</div>
         ${PLAN.tage[tag] ? `<div class="hinweis">${esc(PLAN.tage[tag])}</div>` : ""}
@@ -924,14 +1107,15 @@ function startSeite() {
         ${planListe(morgenTag, jetzt)}</div>
     </div><div>
       ${klausur ? countdownHtml(klausur) : ""}
-      <div class="panel"><div class="kasten-titel"><h2>Heute dran</h2><span class="muted" style="font-size:14px">wechselt jeden Tag</span></div>
-        ${tagesliste.length ? tagesliste.map((v, i) => `<div class="vorschlag${erledigt[v.key] ? " erledigt" : ""}">
-          <button class="haken${erledigt[v.key] ? " an" : ""}" data-haken="${i}" aria-label="erledigt">✓</button>
-          <div class="was"><b>${esc(v.titel)}</b><span>${esc(v.text)}</span></div>
-          <button class="btn" data-los="${i}">Los</button></div>`).join("")
+      <div class="panel"><div class="kasten-titel"><h2>Heute dran</h2><span class="tagesfortschritt">${erledigt} von ${tagesliste.length} erledigt</span></div>
+        ${tagesliste.length ? tagesliste.map((v, i) => `<div class="vorschlag${stände[i].fertig ? " erledigt" : ""}">
+          <button class="haken${stände[i].fertig ? " an" : ""}" data-haken="${i}" aria-label="${stände[i].fertig ? "Wieder öffnen" : "Als erledigt markieren"}: ${esc(v.titel)}" aria-pressed="${stände[i].fertig}">✓</button>
+          <div class="was"><b>${esc(v.titel)}</b><span>${esc(v.text)}${stände[i].ziel > 1 ? ` · ${stände[i].n}/${stände[i].ziel} bewertet` : ""}</span></div>
+          <button class="btn" data-los="${i}">${stände[i].fertig ? "Noch einmal" : "Los"}</button></div>`).join("")
           : `<p class="muted">Sobald Aufgaben, Quizfragen oder Karteikarten da sind, schlage ich dir hier jeden Tag passende Übungen vor.</p>`}
-        <p class="feynman" style="margin-top:12px">Die Vorschläge richten sich nach deinem Vorlesungsplan, deinen Klausurterminen und danach, was du schon sicher kannst.</p>
+        <p class="feynman" style="margin-top:12px">Deine Auswahl bleibt heute erhalten. Abgeschlossene Bearbeitungen werden automatisch abgehakt. Erledigt heißt bearbeitet; unsichere Inhalte bleiben zur Wiederholung vorgemerkt.</p>
       </div>
+      ${tagesErfolgeHtml(tag)}
       ${jetzt.getHours() >= 17 ? abschlussHtml(tag) : ""}
       <div class="panel"><div class="kasten-titel"><h2>Fristen</h2><a href="#termine">Alle ›</a></div>
         ${fr.length ? fr.slice(0, 3).map(f => fristZeile(f, false)).join("") : `<p class="muted">Noch keine Fristen. Trag deine Klausuren unter <a href="#termine">Termine</a> ein, dann siehst du hier den Countdown.</p>`}</div>
@@ -942,17 +1126,20 @@ function startSeite() {
     </div></div>`;
   startView.querySelectorAll("[data-haken]").forEach(b => b.onclick = () => {
     const v = tagesliste[+b.dataset.haken], e = db.get("erledigt:" + tag, {});
-    e[v.key] ? delete e[v.key] : e[v.key] = true;
+    e[v.key] = { wert: !vorschlagStand(v, tag).fertig, t: Date.now() };
     db.set("erledigt:" + tag, e); startSeite();
   });
   startView.querySelectorAll("[data-los]").forEach(b => b.onclick = () => {
     const v = tagesliste[+b.dataset.los];
-    v.link ? location.hash = v.link : v.los();
+    vorschlagStarten(v);
   });
+  $("#kurzstart")?.addEventListener("click", () => vorschlagStarten(tagesliste.find(v => !vorschlagStand(v, tag).fertig)));
+  zitatEreignisse(startView);
   todoEreignisse(startView, startSeite);
-  $("#ablos")?.addEventListener("click", () => abschlussStarten(tag, $("#abtext").value.trim()));
+  $("#ablos")?.addEventListener("click", () => abschlussStarten(tag, $("#abtext").value.trim(), $("#abstrategie")?.value.trim()));
   $("#abtext")?.addEventListener("input", e => store.set("abschluss:entwurf", { tag, text: e.target.value }));
-  $("#abneu")?.addEventListener("click", () => { const a = db.get("abschluss:" + tag, {}); abschlussStarten(tag, a.text || ""); });
+  $("#abstrategie")?.addEventListener("input", e => store.set("abschluss:strategie:" + tag, e.target.value));
+  $("#abneu")?.addEventListener("click", () => { const a = db.get("abschluss:" + tag, {}); abschlussStarten(tag, a.text || "", a.strategie || ""); });
   $("#todo-schnell").onsubmit = e => {
     e.preventDefault();
     const t = $("#todo-text").value.trim();
@@ -966,7 +1153,8 @@ function heutigeModule(tag) {
   for (const anfang of ["aufgabe:", "quiz:"])
     for (const [k, v] of Object.entries(db.objekt(anfang))) if (v.t >= start) m.add(k.split(":")[0]);
   for (const k of Object.keys(db.objekt("probe:"))) if (+k.split(":").pop() >= start) m.add(k.split(":")[0]);
-  for (const k of Object.keys(db.get("erledigt:" + tag, {}))) m.add(k.split(":")[1]);
+  for (const [k, v] of Object.entries(db.get("erledigt:" + tag, {}))) if (v === true || v?.wert) m.add(k.split(":")[1]);
+  for (const a of tagesAktivitäten(tag)) m.add(a.modul);
   for (const k of Object.keys(db.get("pomo:" + tag, null)?.module || {})) m.add(k);
   return LERNEN.filter(l => m.has(l.name) && l.quiz?.length);
 }
@@ -979,14 +1167,16 @@ function abschlussHtml(tag) {
         <div class="row" style="margin-top:12px"><button class="btn" id="abneu">Noch eine Runde</button></div>`
       : `<p style="margin-top:0">Schreib aus dem Kopf auf, was du heute gelernt hast, ohne nachzuschauen. Danach kommen 5 Fragen aus
         ${module.length ? module.map(l => esc(l.name)).join(", ") : "deinen Modulen"}.</p>
-        <textarea id="abtext" placeholder="Heute habe ich verstanden, dass …">${esc(a?.text || (entwurf.tag === tag ? entwurf.text : ""))}</textarea>
+      <textarea id="abtext" placeholder="Heute habe ich verstanden, dass …">${esc(a?.text || (entwurf.tag === tag ? entwurf.text : ""))}</textarea>
+      <label for="abstrategie">Welche Entscheidung oder Strategie hat dir heute geholfen? <span class="muted">(freiwillig)</span></label>
+      <textarea id="abstrategie" maxlength="600" placeholder="Heute habe ich selbst übernommen, …">${esc(a?.strategie || store.get("abschluss:strategie:" + tag, ""))}</textarea>
         <button class="btn primary" id="ablos">Weiter zu den Fragen</button>`}</div>`;
 }
-function abschlussStarten(tag, text) {
+function abschlussStarten(tag, text, strategie = "") {
   let module = heutigeModule(tag);
   if (!module.length) module = LERNEN.filter(l => tagesliste.some(v => v.modul === l.name) && l.quiz?.length);
   if (!module.length) module = LERNEN.filter(l => l.quiz?.length);
-  db.set("abschluss:" + tag, { ...db.get("abschluss:" + tag, {}), text });
+  db.set("abschluss:" + tag, { ...db.get("abschluss:" + tag, {}), text, strategie });
   store.set("abschluss:entwurf", null);
   quizStarten({ name: "abschluss", titel: "Tagesabschluss", abschluss: true, tag, quiz: module.flatMap(l => l.quiz) }, { anzahl: 5, modus: "mix" });
 }
@@ -1506,7 +1696,7 @@ function starten(deck, kapitel, modus) {
     queue = mischen([...fälligeKarten(deck, kapitel), ...neu]);
   }
   if (!queue.length) return;
-  sitzung = { deck, kapitel, frei, modus, queue, gesehen: new Set(), fertig: 0, start: queue.length, stats: { 1: 0, 2: 0, 3: 0, 4: 0 }, umgedreht: false };
+  sitzung = { deck, kapitel, frei, modus, queue, gesehen: new Set(), fertig: 0, start: queue.length, beginn: Date.now(), tag: heuteIso(), stats: { 1: 0, 2: 0, 3: 0, 4: 0 }, umgedreht: false };
   zeigen();
 }
 
@@ -1568,6 +1758,8 @@ function bewerten(n) {
   const s = sitzung;
   if (!s || !s.umgedreht) return;
   const c = s.queue.shift();
+  s.gesehen.add(c.id);
+  lernAktivität("karte", c.d.name, c.id, { note: n, frei: s.frei }, s.tag);
   s.stats[n]++;
   let nochmal;
   if (s.frei) nochmal = n === 1;
@@ -1586,13 +1778,14 @@ function bewerten(n) {
 
 function ende() {
   const s = sitzung;
+  lernAktivität("kartenrunde", s.deck.name, String(s.beginn), { fertig: true, ids: [...s.gesehen], kapitel: s.kapitel, frei: s.frei }, s.tag);
   document.body.classList.remove("lernen");
   const nochNeu = s.modus === "plan" && zählen(s.deck, s.kapitel).neu > 0;
   view.innerHTML = `<a class="back" href="${kartenLink(s.deck.name)}">← ${esc(s.deck.name)}</a>
     <div class="panel done"><h2>Runde geschafft 🎉</h2>
       <p class="muted">${s.fertig} Karten erledigt · ${s.stats[1]}× Nochmal${s.frei ? "" : ` · ${s.stats[2]}× Schwer · ${s.stats[3]}× Gut · ${s.stats[4]}× Leicht`}</p>
       <p>Die Karten, bei denen deine Erklärung gehakt hat, kommen bald wieder. Die sicheren erst in einigen Tagen.</p>
-      <div class="row">${nochNeu ? `<button class="btn primary" id="mehr">Weitere neue Karten</button>` : ""}
+      ${lernImpuls()}<div class="row">${nochNeu ? `<button class="btn primary" id="mehr">Weitere neue Karten</button>` : ""}
         <button class="btn" id="frei">Frei üben (neu gemischt)</button>
         <a class="btn" href="${kartenLink(s.deck.name)}">Zur Kartenauswahl</a>
         <a class="btn" href="#lernen">Alle Module</a></div></div>`;
@@ -1715,7 +1908,7 @@ let offenAufgabe = null;
 function aufgabeSeite(m, a) {
   const liste = (m.aufgaben || []).filter(x => { const f = store.get("lernen:filter", "alle"); return f === "alle" || (f === "offen" ? aufgabeStand(x)?.s !== "ok" || x === a : x.art === f); });
   const i = liste.indexOf(a), vor = liste[i - 1], nach = liste[i + 1];
-  if (offenAufgabe?.id !== a.id) offenAufgabe = { id: a.id, schritte: 0, tipp: false, erg: false };
+  if (offenAufgabe?.id !== a.id) offenAufgabe = { id: a.id, schritte: 0, tipp: false, erg: false, tag: heuteIso() };
   const o = offenAufgabe, st = aufgabeStand(a);
   kopf(m.name, `Lernen · Aufgabe ${i + 1} von ${liste.length}`);
   const link = x => `#lernen/${encodeURIComponent(m.name)}/aufgabe/${x.id}`;
@@ -1726,12 +1919,12 @@ function aufgabeSeite(m, a) {
         <a class="btn" ${nach ? `href="${link(nach)}"` : "aria-disabled=true style=opacity:.4"} aria-label="nächste">›</a></div></div>
     <div class="akarte" style="margin-top:10px">
       <span class="chip ${a.art}">${a.art === "rechnen" ? "Rechenaufgabe" : "Verständnisfrage"}</span> <span class="muted" style="font-size:14px">${esc(a.k)}</span>
-      <h2>${esc(a.t)}</h2>
+      <h2>Aufgabe ${a.nr || m.aufgaben.indexOf(a) + 1} · ${esc(a.t)}</h2>
       ${baustein(a.a, a.t)}
       ${o.tipp && a.tipp ? `<div class="extra tipp"><div class="lab">Tipp</div>${baustein(a.tipp, "Tipp")}</div>` : ""}
       ${o.erg && a.erg ? `<div class="extra erg"><div class="lab">Ergebnis zum Vergleichen</div>${baustein(a.erg, "Ergebnis")}</div>` : ""}
       ${a.s.slice(0, o.schritte).map((s, n) => `<div class="schritt"><div class="lab">Schritt ${n + 1} von ${a.s.length}</div>${baustein(s, "Schritt " + (n + 1))}</div>`).join("")}
-      ${o.schritte === 0 ? `<p class="feynman" style="margin-top:16px">${a.art === "rechnen" ? "Erst selbst rechnen: Schreib auf, was gegeben und gesucht ist, und überleg, welches Prinzip dahintersteckt. Deck dann Schritt für Schritt auf und vergleiche nach jedem Schritt mit deinem Weg." : "Erklär die Antwort erst laut in eigenen Worten. Deck dann auf und vergleiche."}</p>` : ""}
+      ${o.schritte === 0 ? `<p class="feynman" style="margin-top:16px">${a.art === "rechnen" ? "Prüfe zuerst Gegeben, Gesucht und die Annahmen. Überlege, welches Prinzip passt, und rechne selbst. Deck danach Schritt für Schritt auf und vergleiche mit deinem Weg." : "Erklär die Antwort erst laut in eigenen Worten. Deck dann auf und vergleiche."}</p>` : ""}
       <div class="asteuer">
         ${!fertig ? `<button class="btn primary gross" id="weiter">${o.schritte ? `Nächster Schritt (${o.schritte + 1} von ${a.s.length})` : a.s.length > 1 ? `Lösung Schritt für Schritt (${a.s.length} Schritte)` : "Lösung zeigen"}</button>` : ""}
         ${a.tipp && !o.tipp && !o.schritte ? `<button class="btn gross" id="tipp">Tipp</button>` : ""}
@@ -1751,6 +1944,8 @@ function aufgabeSeite(m, a) {
   lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
     const alt = aufgabeStand(a) || { n: 0 };
     db.set(`aufgabe:${m.name}:${a.id}`, { s: b.dataset.s, n: alt.n + 1, t: Date.now() });
+    lernAktivität("aufgabe", m.name, a.id, { status: b.dataset.s, vorher: alt.s || "", titel: a.t }, o.tag);
+    if (richtungEinst().impulse && b.dataset.s === "ok" && ["hilfe", "nein"].includes(alt.s)) meldung("Beim vorigen Versuch noch mit Hilfe oder offen – diesmal selbst gelöst. Welche Strategie hat dir geholfen?", 6500);
     if (nach) { offenAufgabe = null; location.hash = link(nach); } else { meldung("Gespeichert. Das war die letzte Aufgabe in dieser Liste."); neu(); }
   });
 }
@@ -1793,7 +1988,7 @@ function probeStarten(m, mix) {
   if (!wahl.length) return meldung("Keine passenden Aufgaben gefunden.");
   const jetzt = Date.now(), dauer = mix ? 0 : Math.round(k.dauer * tempo);
   store.set("probe:lauf", { modul: m.name, ids: mischen(wahl).map(a => a.id), start: jetzt, dauer, ende: mix ? 0 : jetzt + dauer * 6e4,
-    klausur: k.dauer, tempo, mix: !!mix, ab: 0, bew: {}, erg: {} });
+    klausur: k.dauer, tempo, mix: !!mix, ab: 0, bew: {}, erg: {}, tag: heuteIso() });
   const ziel = `#lernen/${encodeURIComponent(m.name)}/probe`;
   if (location.hash === ziel) route(); else location.hash = ziel;
 }
@@ -1875,12 +2070,15 @@ function probeSeite(m) {
       <div class="bewerten">${[["ok", "Selbst gelöst"], ["hilfe", "Mit Fehlern"], ["nein", "Nicht geschafft"]]
         .map(([k, n]) => `<button class="${k}${l.bew[a.id] === k ? " gewählt" : ""}" data-id="${a.id}" data-s="${k}">${n}</button>`).join("")}</div>
       ${quellenLink(m.pdf, a.q)}</div>`).join("")}
-    <div class="row" style="margin-top:18px"><button class="btn primary gross" id="pneu">Neuer Versuch</button><a class="btn gross" href="${zurück}">Fertig</a></div>`;
+    ${bewertet === auf.length ? lernImpuls() : ""}<div class="row" style="margin-top:18px"><button class="btn primary gross" id="pneu">Neuer Versuch</button><a class="btn gross" href="${zurück}">Fertig</a></div>`;
   lernView.querySelectorAll("[data-erg]").forEach(b => b.onclick = () => { l.erg[b.dataset.erg] = 1; store.set("probe:lauf", l); probeSeite(m); });
   lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
     const a = auf.find(x => x.id === b.dataset.id), alt = aufgabeStand(a) || { n: 0 };
     l.bew[a.id] = b.dataset.s; store.set("probe:lauf", l);
     db.set(`aufgabe:${m.name}:${a.id}`, { s: b.dataset.s, n: alt.n + 1, t: Date.now() });
+    const tag = l.tag || iso(new Date(l.start));
+    lernAktivität("aufgabe", m.name, a.id, { status: b.dataset.s, vorher: alt.s || "", titel: a.t }, tag);
+    if (auf.every(a => l.bew[a.id])) lernAktivität(l.mix ? "mix" : "probe", m.name, String(l.start), { fertig: true, anzahl: auf.length }, tag);
     probeSpeichern(l, auf);
     const y = window.scrollY; probeSeite(m); window.scrollTo(0, y);
   });
@@ -1900,7 +2098,7 @@ function quizStarten(m, { kapitel = "", anzahl = 10, modus = "mix" } = {}) {
   const gewicht = f => { const s = quizStand(f); return !s ? 1 : s.ok ? 0.35 : 1.6; };
   pool = pool.map(f => [f, Math.random() * gewicht(f)]).sort((a, b) => b[1] - a[1]).map(x => x[0]);
   const fragen = pool.slice(0, anzahl || pool.length).map(f => ({ f, o: f.o ? mischen(f.o.map((x, i) => ({ ...x, i }))) : null }));
-  quizRunde = { m, fragen, i: 0, antw: fragen.map(() => null), fertig: false, ziel: { kapitel, anzahl, modus } };
+  quizRunde = { m, fragen, i: 0, antw: fragen.map(() => null), fertig: false, beginn: Date.now(), tag: heuteIso(), ziel: { kapitel, anzahl, modus } };
   const ziel = `#lernen/${encodeURIComponent(m.name)}/quiz`;
   location.hash === ziel ? route() : location.hash = ziel;
 }
@@ -2003,6 +2201,11 @@ function quizSeite() {
 }
 function quizAuswertung() {
   const q = quizRunde, bewertet = q.antw.filter(a => a && a.richtig !== undefined);
+  if (!q.m.abschluss && bewertet.length === q.fragen.length && !q.protokolliert) {
+    lernAktivität("quiz", q.m.name, String(q.beginn), { fertig: true, kapitel: q.ziel.kapitel,
+      anzahl: q.fragen.length, fragen: q.fragen.map(({ f }) => ({ id: f.id, k: f.k })) }, q.tag);
+    q.protokolliert = true;
+  }
   const punkte = q.antw.reduce((n, a) => n + (a?.richtig === true ? 1 : a?.richtig === "teil" ? 0.5 : 0), 0);
   const falsche = q.fragen.filter((_, n) => q.antw[n]?.richtig !== true).map(x => x.f);
   if (q.m.abschluss) db.set("abschluss:" + q.m.tag, { ...db.get("abschluss:" + q.m.tag, {}), quiz: { r: punkte, n: q.fragen.length } });
@@ -2013,7 +2216,7 @@ function quizAuswertung() {
         punkte === q.fragen.length ? "Alles richtig. Sehr stark!" : "Schau dir die falschen in Ruhe an: Die Erklärungen zeigen, wo der Denkfehler liegt."}</p></div></div>
       <div class="row" style="margin-top:16px">${falsche.length ? `<button class="btn primary" id="qfalsch">Falsche wiederholen (${falsche.length})</button>` : ""}
         <button class="btn" id="qneu">Neues Quiz</button></div>
-      <div class="qliste">${q.fragen.map(({ f, o }, n) => {
+      ${bewertet.length === q.fragen.length ? lernImpuls() : ""}<div class="qliste">${q.fragen.map(({ f, o }, n) => {
         const a = q.antw[n] || {};
         const k = a.richtig === true ? ["ok", "✓ Richtig"] : a.richtig === "teil" ? ["teil", "◐ Teilweise"] : a.richtig === false ? ["no", a.übersprungen ? "– Übersprungen" : "✗ Falsch"] : ["", "Selbst bewerten"];
         let mehr = "";
@@ -2032,7 +2235,7 @@ function quizAuswertung() {
   });
   $("#qfalsch")?.addEventListener("click", () => {
     const fr = falsche.map(f => ({ f, o: f.o ? mischen(f.o.map((x, i) => ({ ...x, i }))) : null }));
-    quizRunde = { ...q, fragen: fr, i: 0, antw: fr.map(() => null), fertig: false }; quizSeite();
+    quizRunde = { ...q, fragen: fr, i: 0, antw: fr.map(() => null), fertig: false, beginn: Date.now(), tag: heuteIso(), protokolliert: false }; quizSeite();
   });
   $("#qneu").onclick = () => quizStarten(q.m, q.ziel);
 }
@@ -2214,7 +2417,7 @@ function kontoSeite() {
 }
 
 /* ───────────── Navigation ───────────── */
-const VIEWS = { start: "view-start", skripte: "view-skripte", hoeren: "view-hoeren", lernen: "view-lernen", termine: "view-termine", konto: "view-konto" };
+const VIEWS = { start: "view-start", skripte: "view-skripte", hoeren: "view-hoeren", lernen: "view-lernen", termine: "view-termine", konto: "view-konto", richtung: "view-richtung" };
 function route(oben = true) {
   if (!pdfAnsicht.hidden) pdfZu();
   const h = decodeURIComponent(location.hash.slice(1));
@@ -2229,7 +2432,7 @@ function route(oben = true) {
   document.body.classList.remove("lernen");
   document.querySelector(".lupe")?.remove();
   for (const [k, id] of Object.entries(VIEWS)) document.getElementById(id).hidden = k !== r;
-  document.querySelectorAll("#tabs a").forEach(a => a.dataset.r === (r === "hoeren" ? "skripte" : r) ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  document.querySelectorAll("#tabs a").forEach(a => a.dataset.r === (r === "hoeren" ? "skripte" : r === "richtung" ? "start" : r) ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
   sitzung = null;
   if (!(r === "lernen" && (rest[1] === "quiz" || rest[0] === "abschluss"))) quizRunde = null;
   if (r === "start") startSeite();
@@ -2237,6 +2440,7 @@ function route(oben = true) {
   else if (r === "hoeren") hoerSeite(DATA.find(m => m.name === rest[0]), rest[1]);
   else if (r === "termine") termineSeite();
   else if (r === "konto") kontoSeite();
+  else if (r === "richtung") richtungSeite();
   else if (r === "lernen") {
     const m = LERNEN.find(x => x.name === rest[0]);
     if (rest[0] === "pomodoro") pomodoroSeite();
@@ -2260,6 +2464,7 @@ const rückkehr = auth.ausAdresse();
 if (rückkehr) kontoHinweis = rückkehr === "ok" ? "Angemeldet. Deine Daten werden jetzt abgeglichen." : "Anmeldung fehlgeschlagen: " + rückkehr;
 // Alte Adresse der Lernskript-Liste (#) zeigt jetzt die Startseite; Lernskripte liegen unter #skripte.
 sync.anzeigen(auth.s ? "an" : "aus");
+tagesPlan();
 route();
 sync.jetzt();
 </script>

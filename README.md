@@ -18,3 +18,12 @@ Nach neuen Vorlesungsunterlagen werden Lernskript, Aufgaben mit Lösungen, Quiz 
 Unter Lernskripte gibt es je Modul eine Feynman-Hörzusammenfassung als EPUB und eine Leseansicht mit aufdeckbaren Denkfragen. Lade die EPUB herunter und importiere sie in ElevenReader. Halte bei Denkpausen selbst kurz an und höre die Auflösung erst nach Deiner eigenen Erklärung. Bei einem neuen Stand die neue Datei erneut importieren.
 
 Die redaktionelle Quelle ist `Lernskript aktuell/Hoerskript.md` je Modul. Sie wird bei neuen Vorlesungsunterlagen mitgepflegt. Der Build erzeugt daraus EPUB-Dateien mit Kapitelnavigation und prüft Kapitel, Quellen sowie den abgeglichenen Skriptstand.
+
+
+## Mein Lerntag
+
+„Mein Warum“ erinnert an die persönliche Richtung. Unter „Meine Richtung“ lassen sich Vision, Identitätssatz, Anti-Vision und ein Wenn-dann-Plan speichern. Tageszitate mit belegter Quelle können favorisiert oder ausgeschaltet werden. Die Eingaben liegen im privaten Lernstand und werden bei Anmeldung synchronisiert.
+
+„Heute dran“ behält die Tagesauswahl und hakt Aufgaben nach Bewertung, Quizrunden nach vollständiger Auswertung sowie Kartenrunden, Mix-Serien und Probeklausuren nach tatsächlichem Abschluss automatisch ab. Manuelle Haken bleiben möglich. Bearbeitet bedeutet nicht automatisch beherrscht.
+
+Alle Rechenaufgaben stehen mit den benötigten Zahlenwerten, Einheiten und gegebenenfalls Tabellen/Skizzen direkt in der Aufgabe. Gegeben/Annahmen, Gesucht, Teilfragen und Aufgabennummern gliedern die Übungen. Zitatquellen werden zentral in `zitate.json` gepflegt.

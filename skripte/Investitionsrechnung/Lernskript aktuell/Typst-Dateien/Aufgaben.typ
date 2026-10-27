@@ -77,6 +77,7 @@
 
 // 0-1
 #aufgabe(titel: "Fixe und variable Kosten", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 1* #linebreak()]
 *Begriffe:* Erkläre fixe und variable Kosten mit je zwei Beispielen aus Ü 1. Weshalb ist „je Stück“ allein noch kein Beweis für variable Kosten? (Ü, PDF-S. 1; L15, PDF-S. 11.)
 ][
 *Fix/variabel:* Miete und Gehälter sind in Ü 1 monatlich fix; RHB-Stoffe und Akkordlohn werden je Packung verursacht. Aber $k_f=K_f/x$ ist ebenfalls ein Stückbetrag, obwohl sein Gesamtbetrag fix ist. Der Kostenanfall, nicht die Schreibweise allein, entscheidet.
@@ -84,6 +85,7 @@
 
 // 0-2
 #aufgabe(titel: "Mischkosten zerlegen", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 2* #linebreak()]
 *Mischkosten:* Was musst Du vor dem Rechnen mit ihnen tun? Erkläre es am Grundpreis einer Stromrechnung. (Ü, PDF-S. 1, Randnotiz; L15, PDF-S. 4.)
 ][
 *Mischkosten:* In einen festen Grundbetrag und einen mengenabhängigen Anteil zerlegen. Beim Strombeispiel ist der Grundpreis fix, der Verbrauchspreis je kWh variabel. Erst danach eine lineare Kostenfunktion aufstellen.
@@ -91,6 +93,7 @@
 
 // 0-3
 #aufgabe(titel: "Sprungfixe Kosten", art: "verstehen", quelle: "1.2")[
+#if not web [*Aufgabe 3* #linebreak()]
 *Sprungfix:* Was ändert sich beim Überschreiten der Grenze in der Randzeichnung? Warum ist ein unverändertes $K_f$ über die Grenze hinweg falsch? (Ü, PDF-S. 1.)
 ][
 *Sprungfix:* Der feste Kostenblock steigt an einer Mengengrenze. Mehr Menge verteilt dann nicht nur dieselben Fixkosten; es kommen neue hinzu. Deshalb musst Du für den neuen Bereich ein neues $K_f$ ansetzen.
@@ -98,13 +101,26 @@
 
 // 0-4
 #aufgabe(titel: "Kapazität und Beschäftigungsgrad", art: "rechnen", quelle: "1.1")[
-*Kapazität:* Weshalb reicht „7 000 Stück“ nicht als vollständige Kapazitätsangabe? Berechne den BG für 4 900 von 7 000 Stück pro Stunde. (K, PDF-S. 1.)
+#if not web [*Aufgabe 4* #linebreak()]
+*Kapazität:*
+
+*Gegeben und Annahmen*
+
+Kapazität 7 000 Stück pro Stunde; tatsächliche Produktion 4 900 Stück pro Stunde.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Erkläre, weshalb die Angabe „7 000 Stück“ allein unvollständig ist.],
+[Berechne den Beschäftigungsgrad.],
+)
 ][
 *Kapazität:* Der Zeitbezug bestimmt das Leistungsvermögen. $4900/7000 dot 100 %=70 %$; 30 % sind in dieser Stunde ungenutzt. Eine Monatsmenge darfst Du nicht direkt durch eine Stundenkapazität teilen.
 ]
 
 // 0-5
 #aufgabe(titel: "Warum die Stückkosten sinken", art: "verstehen", quelle: "1.3")[
+#if not web [*Aufgabe 5* #linebreak()]
 *Stückkosten:* Warum sinkt $k(x)$ bei wachsender Menge? Kann $k$ bei positivem $K_f$ unter $k_v$ fallen? Was passiert bei $x=0$? (Ü 1, PDF-S. 1; L15, PDF-S. 4–5; Präzisierung.)
 ][
 *Stückkosten:* Bei positivem $K_f$ sinkt $K_f/x$ mit wachsendem $x$. $k_v$ bleibt unverändert. Daher liegt $k=K_f/x+k_v$ bei endlichem $x>0$ über $k_v$. Bei $x=0$ ist die Division nicht definiert; $K(0)=K_f$ bleibt sinnvoll.
@@ -112,6 +128,7 @@
 
 // 0-6
 #aufgabe(titel: "Deckungsbeitrag mit dem Eimerbild", art: "verstehen", quelle: "1.4")[
+#if not web [*Aufgabe 6* #linebreak()]
 *Deckungsbeitrag:* Erkläre mit dem Eimerbild, was ein Stückdeckungsbeitrag ist und weshalb er noch nicht der Gewinn je Stück sein muss. (M, PDF-S. 2; L15, PDF-S. 5.)
 ][
 *Stück-DB:* Der Eimer wird mit $e-k_v$ je Stück gefüllt. Dieser Betrag muss zuerst die Fixkosten mittragen. Gewinn je Stück ist erst $d b_"II"=d b_"I"-K_f/x$; er hängt von der Menge ab.
@@ -119,6 +136,7 @@
 
 // 0-7
 #aufgabe(titel: "Schreibweisen des Deckungsbeitrags", art: "verstehen", quelle: "1.4")[
+#if not web [*Aufgabe 7* #linebreak()]
 *Schreibweise:* Unterscheide $d b_"I",d b_"II",D B_"I",D B_"II"$ in der einstufigen Rechnung. Nenne Einheiten und Umrechnung. (M, PDF-S. 1–2; K, PDF-S. 1.)
 ][
 *Stück und gesamt:* $d b_"I"=e-k_v$ und $d b_"II"=d b_"I"-k_f$ sind €/Stück. $D B_"I"=d b_"I" x$ und im einstufigen Schema $D B_"II"=D B_"I"-K_f=G$ sind €/Periode. Multipliziere Stückwerte mit der zugehörigen Menge; umgekehrt teile durch $x>0$.
@@ -126,6 +144,7 @@
 
 // 0-8
 #aufgabe(titel: "Gewinnschwelle herleiten", art: "verstehen", quelle: "1.5")[
+#if not web [*Aufgabe 8* #linebreak()]
 *Gewinnschwelle:* Leite $x_"BEP"$ aus $E=K$ her. Wann ist die Formel sinnvoll? Was gilt am exakten BEP für $G$ und $D B_"I"$? (M, PDF-S. 2; F, PDF-S. 5.)
 ][
 *Herleitung:* $e x=K_f+k_v x => (e-k_v)x=K_f => x=K_f/(e-k_v)$. Für positive Fixkosten wird ein positiver Stück-DB benötigt. Am exakten Schnittpunkt ist $G=0$ und $D B_"I"=K_f$. Bei einer aufgerundeten ganzen Menge kann bereits ein kleiner Gewinn entstehen.
@@ -133,6 +152,7 @@
 
 // 0-9
 #aufgabe(titel: "Wo das Gewinnmaximum liegt", art: "verstehen", quelle: "1.5.1")[
+#if not web [*Aufgabe 9* #linebreak()]
 *Gewinnmaximum:* Unter welchen Voraussetzungen liegt es an der Kapazität? Was ändert sich bei negativem Stück-DB oder fehlender Nachfrage? (K, PDF-S. 1; L15, PDF-S. 6; eigene Präzisierung.)
 ][
 *Maximum:* Bei positivem, konstantem Stück-DB und unveränderten Fixkosten wächst $G$ linear mit der verkauften Menge. Volle Kapazität ist nur dann das Maximum, wenn sie abgesetzt werden kann. Bei negativem DB verschlechtert mehr Menge das Ergebnis; geringere Nachfrage begrenzt den Absatz früher.
@@ -140,6 +160,7 @@
 
 // 0-10
 #aufgabe(titel: "Wie sich der BEP verschiebt", art: "verstehen", quelle: "1.5.1")[
+#if not web [*Aufgabe 10* #linebreak()]
 *Veränderungen:* Wie wirken höhere Fixkosten, höhere variable Stückkosten, höhere bzw. niedrigere Verkaufspreise auf den BEP? Begründe jeweils über den Stück-DB. (L15, PDF-S. 7, aus Ü abgeleitet.)
 ][
 *BEP-Wirkung:* Höhere $K_f$: mehr Beiträge erforderlich, BEP steigt. Höhere $k_v$: weniger Beitrag je Stück, BEP steigt. Höheres $e$: mehr Beitrag, BEP sinkt. Niedrigeres $e$: weniger Beitrag, BEP steigt. Das gilt bei sonst gleichen Werten und weiterhin positivem Stück-DB.
@@ -147,6 +168,7 @@
 
 // 0-11
 #aufgabe(titel: "Kurz- und langfristige Preisuntergrenze", art: "verstehen", quelle: "1.6.2")[
+#if not web [*Aufgabe 11* #linebreak()]
 *Preisuntergrenzen:* Weshalb unterscheiden sich die kurz- und langfristige Grenze im einfachen Modell? Bedeutet $e_"Z"=k_v$ bereits einen zusätzlichen Gewinn? (Ergänzung aus L15, PDF-S. 8.)
 ][
 *Preisgrenzen:* Kurzfristig sind bei den genannten Bedingungen nur die durch den Auftrag entstehenden Kosten zu decken. Bei $e_"Z"=k_v$ ist $Delta G=0$, kein zusätzlicher Gewinn. Langfristig muss die geplante Menge auch $K_f$ decken; im einfachen Modell daher $e>=k(x)$.
@@ -154,6 +176,7 @@
 
 // 0-12
 #aufgabe(titel: "Bedingungen für einen Zusatzauftrag", art: "verstehen", quelle: "1.6.2")[
+#if not web [*Aufgabe 12* #linebreak()]
 *Zusatzauftrag:* Welche Bedingungen brauchst Du für $Delta G=(e_"Z"-k_v)x_"Z"$? Nenne das Kundenrisiko und erkläre, warum nicht nochmals alle Fixkosten abgezogen werden. (Ü 1, PDF-S. 1.)
 ][
 *Zusatzauftrag:* Freie Kapazität, keine Verdrängung, unveränderte Fixkosten und keine unberücksichtigten Zusatzkosten; der bisherige Verkaufspreis bleibt bestehen. $K_f$ fällt in beiden Alternativen ohnehin an und hebt sich im Differenzvergleich auf. Risiko: Bisherige Kunden fordern den niedrigeren Preis; außerdem ist Kapazität gebunden.
@@ -161,6 +184,7 @@
 
 // 0-13
 #aufgabe(titel: "Differenzenansatz für zwei Perioden", art: "verstehen", quelle: "1.7")[
+#if not web [*Aufgabe 13* #linebreak()]
 *Zwei Perioden:* Erkläre den Differenzenansatz für $k_v$. Welche Voraussetzungen und welche Gegenprobe sind nötig? (Ü 3, PDF-S. 2.)
 ][
 *Zwei Perioden:* $(Delta K)/(Delta x)$ ist die Steigung der angenommenen gemeinsamen Kostenlinie. Vorausgesetzt sind derselbe Zeitraum, dasselbe $K_f$ und $k_v$ sowie verschiedene Mengen. Mit $K_f=K-k_v x$ müssen beide Perioden denselben festen Anteil liefern.
@@ -168,6 +192,7 @@
 
 // 0-14
 #aufgabe(titel: "BEP oberhalb der Kapazität", art: "verstehen", quelle: "1.8.1")[
+#if not web [*Aufgabe 14* #linebreak()]
 *Unerreichbare Schwelle:* Was bedeutet BEP > Kapazität? Nenne Stellschrauben und den Haken einer Erweiterung. (Ü 2, PDF-S. 2.)
 ][
 *BEP über Kapazität:* Bei positivem Stück-DB reicht selbst Vollauslastung nicht zur Kostendeckung. Preis erhöhen, variable Kosten oder Fixkosten senken kann die Schwelle senken. Erweiterung erhöht die mögliche Menge, kann aber auch neue Fixkosten erzeugen; beide Wirkungen zusammen prüfen.
@@ -175,6 +200,7 @@
 
 // 0-15
 #aufgabe(titel: "Beschäftigungsgrad als Puffer", art: "verstehen", quelle: "1.5")[
+#if not web [*Aufgabe 15* #linebreak()]
 *Beschäftigungsgrad:* Warum lässt ein hoher BG am BEP wenig Puffer? Unterscheide theoretische Schwelle und kleinste ganze Menge ohne Verlust. (Ü 4, PDF-S. 2; Präzisierung.)
 ][
 *Puffer:* Ein Absatzrückgang erreicht die Verlustzone schneller, wenn der BEP nahe an der Kapazität liegt. Die theoretische Schwelle kann zwischen zwei ganzen Stückzahlen liegen. Die kleinste ganze Menge ohne Verlust ist dann die nächsthöhere Zahl; ihren BG ausdrücklich als ganzzahligen Fall kennzeichnen.
@@ -182,6 +208,7 @@
 
 // 0-16
 #aufgabe(titel: "Von der KLR zur Investitionsrechnung", art: "verstehen", quelle: "1.8.2")[
+#if not web [*Aufgabe 16* #linebreak()]
 *Zusammenhang:* Wie helfen Kostenfunktion und DB beim späteren Beurteilen einer neuen Maschine? Beschreibe nur die Verbindung zur bisherigen Basis. (Gliederung, PDF-S. 1; L15, PDF-S. 1 und 13.)
 ][
 *Verbindung:* Eine neue Maschine kann den festen Kostenblock, die variablen Stückkosten und die mögliche Menge verändern. Die KLR macht diese Folgen vergleichbar. Die Gliederung baut darauf später Kosten-, Gewinn-, Rentabilitäts- und Amortisationsrechnung auf; deren zusätzliche Regeln sind noch nicht Gegenstand dieses Skripts.
@@ -189,6 +216,7 @@
 
 // 0-17
 #aufgabe(titel: "Ein- und mehrstufige DB-Rechnung", art: "verstehen", quelle: "1.4")[
+#if not web [*Aufgabe 17* #linebreak()]
 *Stufen der DB-Rechnung:* Unterscheide das ein- und mehrstufige Abziehen von Fixkosten. Warum kann „DB II“ in beiden Schemata Unterschiedliches bedeuten? (Ü, PDF-S. 1, Randnotiz; L02, PDF-S. 5 und 11.)
 ][
 *Ein-/mehrstufig:* Einstufig wird der gesamte Fixkostenblock vom gesamten DB abgezogen. Mehrstufig werden nacheinander Produkt-, Produktgruppen- und Unternehmensfixkosten abgezogen. Ein DB nach Produktfixkosten ist deshalb noch kein endgültiger Unternehmensgewinn. Die jeweilige Stufe muss benannt sein.
@@ -196,6 +224,7 @@
 
 // 0-18
 #aufgabe(titel: "Menge verdoppeln: was halbiert sich?", art: "verstehen", quelle: "1.3")[
+#if not web [*Aufgabe 18* #linebreak()]
 *Menge verdoppeln:* $K_f$ und $k_v$ bleiben gleich. Welche Größe halbiert sich: $K_f$, $k_f$ oder $k$? Begründe mit einer Formel. (Frühere Auswahlfrage, L15, PDF-S. 12–13, in offene Frage umgestellt.)
 ][
 *Verdoppelung:* $k_f(2x)=K_f/(2x)=k_f(x)/2$; $K_f$ bleibt gleich. Insgesamt $k(2x)=k_f(x)/2+k_v$: Die gesamten Stückkosten halbieren sich bei positivem $k_v$ gerade nicht. Der variable Anteil bleibt bestehen.
@@ -206,7 +235,18 @@
   ergebnis: [$x_"BEP" = 2000$ Stück/Monat],
   tipp: [Wie viel bleibt pro Stück übrig, um die Fixkosten zu bezahlen?],
 )[
-*BEP rechnen:* $K_f=50 000$ €/Monat, $k_v=20$ €/Stück, $e=45$ €/Stück. Ermittle die Gewinnschwelle und prüfe den Gewinn dort. (Frühere Auswahlfrage, L15, PDF-S. 11/13, offen umgestellt.)
+#if not web [*Aufgabe 19* #linebreak()]
+*BEP rechnen:*
+
+*Gegeben und Annahmen*
+
+$K_f=50 000$ €/Monat, $k_v=20$ €/Stück, $e=45$ €/Stück.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle die Gewinnschwelle und prüfe den Gewinn dort. (Frühere Auswahlfrage, L15, PDF-S. 11/13, offen umgestellt.)],
+)
 ][
 *Eimerbild:* Jedes verkaufte Stück bringt 45 € herein; davon gehen sofort 20 € für die variablen Kosten weg. Der Rest, der Stückdeckungsbeitrag, füllt den Eimer der Fixkosten: $d b_"I" = e - k_v = 45 - 20 = 25$ €/Stück.
 ][
@@ -220,7 +260,18 @@
   ergebnis: [$e = 200$ €/Stück],
   tipp: [Brutto ist netto plus 19 %, also netto mal 1,19.],
 )[
-*Netto:* Ein Preis beträgt 238 € brutto bei vorgegebenen 19 % Umsatzsteuer. Welcher Betrag gehört als $e$ in die Erlösfunktion? (L15, PDF-S. 11/13, offen umgestellt.)
+#if not web [*Aufgabe 20* #linebreak()]
+*Netto:*
+
+*Gegeben und Annahmen*
+
+Ein Preis beträgt 238 € brutto bei vorgegebenen 19 % Umsatzsteuer.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welcher Betrag gehört als $e$ in die Erlösfunktion? (L15, PDF-S. 11/13, offen umgestellt.)],
+)
 ][
 *Warum netto?* Die Umsatzsteuer gehört nicht dem Unternehmen; sie wird nur eingesammelt und ans Finanzamt weitergegeben. In die Erlösfunktion gehört deshalb der Nettopreis.
 ][
@@ -233,7 +284,18 @@
 #aufgabe(titel: "Beschäftigungsgrad an der Gewinnschwelle", art: "rechnen", quelle: "1.5.1",
   ergebnis: [$"BG" = 75 %$],
 )[
-*BG am BEP:* Die Monatskapazität beträgt 2 000 Stück, die Schwelle 1 500 Stück. Berechne und deute den BG. (L15, PDF-S. 11/13, offen umgestellt.)
+#if not web [*Aufgabe 21* #linebreak()]
+*BG am BEP:*
+
+*Gegeben und Annahmen*
+
+Die Monatskapazität beträgt 2 000 Stück, die Schwelle 1 500 Stück.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne und deute den BG. (L15, PDF-S. 11/13, offen umgestellt.)],
+)
 ][
 *Definition:* Der Beschäftigungsgrad sagt, welchen Teil der Kapazität eine Menge nutzt: $"BG" = x\/x_"max" dot 100 %$.
 ][
@@ -247,7 +309,18 @@
   ergebnis: [$k_v = 20$ €/Stück, $K_f = 100 000$ €],
   tipp: [Die Fixkosten sind in beiden Monaten gleich. Der Kostenunterschied kann also nur von den zusätzlichen Stücken kommen.],
 )[
-*Kostensteigung:* Monat 1: 10 000 Stück, $K=300 000$ €; Monat 2: 12 000 Stück, $K=340 000$ €. Ermittle $k_v,K_f$ und prüfe beide Punkte. (L15, PDF-S. 12–13, offen umgestellt.)
+#if not web [*Aufgabe 22* #linebreak()]
+*Kostensteigung:*
+
+*Gegeben und Annahmen*
+
+Monat 1: 10 000 Stück, $K=300 000$ €; Monat 2: 12 000 Stück, $K=340 000$ €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle $k_v,K_f$ und prüfe beide Punkte. (L15, PDF-S. 12–13, offen umgestellt.)],
+)
 ][
 *Differenzenidee:* Zwischen den Monaten steigen die Kosten um 40 000 €, die Menge um 2000 Stück. Da die Fixkosten gleich bleiben, verursachen genau diese 2000 Stück die Mehrkosten.
 ][
@@ -260,7 +333,20 @@
 
 // 0-23
 #aufgabe(titel: "VL 1: vorwärts und rückwärts", art: "rechnen", quelle: "1.5")[
-*VL-1-Übung, K PDF-S. 2:* $k_v=7$ €/Stück, $e=10$ €/Stück, $K_f=800$ € je betrachteter Periode, Kapazität 1 300 Stück. a) Gewinnmaximum? b) Exakter BEP und kleinste ganze Menge ohne Verlust? c) Rechne wie in der Mitschrift rückwärts mit „BEP = 267“: Welches $k_v$ ergibt sich bei $e=10,K_f=800$? Welches $K_f$ bei $d b_"I"=3$? Erkläre die Rundungsabweichung.
+#if not web [*Aufgabe 23* #linebreak()]
+*VL-1-Übung, K PDF-S. 2:*
+
+*Gegeben und Annahmen*
+
+$k_v=7$ €/Stück, $e=10$ €/Stück, $K_f=800$ € je betrachteter Periode, Kapazität 1 300 Stück.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Gewinnmaximum?],
+[Exakter BEP und kleinste ganze Menge ohne Verlust?],
+[Rechne wie in der Mitschrift rückwärts mit „BEP = 267“: Welches $k_v$ ergibt sich bei $e=10,K_f=800$? Welches $K_f$ bei $d b_"I"=3$? Erkläre die Rundungsabweichung.],
+)
 ][
 *Modell:* Gleiche betrachtete Periode, lineare Kosten, vollständiger Absatz bis maximal 1 300 Stück; $d b_"I"=10-7=3$ €/Stück.
 ][
@@ -275,7 +361,24 @@
 
 // 0-24
 #aufgabe(titel: "Ü 1: Modelleisenbahn-Zubehör", art: "rechnen", quelle: "1.2")[
-*Ü 1 · Modelleisenbahn-Zubehör, PDF-S. 1:* Kapazität 1 000 Verkaufspackungen/Monat, nur Auftragsproduktion. Die Kostendaten stehen in Abschnitt 1.2. a) Ordne alle acht Kostenarten zu, bilde $K(x)$ und fülle für $x=200,400,600,800,1000$ die Spalten $K_f,K_v,K,k$. b) Gewinn bei 600 Packungen zu 70 € netto? c) BEP und Skizze mit Umsatz an der Schwelle? d) Gewinnmaximum? e) Gewinn bei 800 Packungen? f) Ausgehend von 800 Packungen: Preis allgemein auf 60 €, Nachfrage +200. Lieferbar und sinnvoll? g) Alternativ 800 Packungen zu 70 € und einmalig 200 zusätzliche zu 35 €: annehmen? Welche Gefahr?
+#if not web [*Aufgabe 24* #linebreak()]
+*Ü 1 · Modelleisenbahn-Zubehör, PDF-S. 1:*
+
+*Gegeben und Annahmen*
+
+Kapazität 1 000 Verkaufspackungen/Monat, nur Auftragsproduktion.  Kostendaten: Gehälter 9 000 €/Monat, Miete 1 600 €/Monat, Nebenkosten 400 €/Monat, Fremdkapitalzinsen 3 000 €/Monat, Abschreibungen 6 000 €/Monat; RHB-Stoffe 6 €/Packung, Akkordlöhne 22 €/Packung und Energie 2 €/Packung. Alle genannten Monatsbeträge werden hier mengenunabhängig angesetzt.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ordne alle acht Kostenarten zu, bilde $K(x)$ und fülle für $x=200,400,600,800,1000$ die Spalten $K_f,K_v,K,k$.],
+[Gewinn bei 600 Packungen zu 70 € netto?],
+[BEP und Skizze mit Umsatz an der Schwelle?],
+[Gewinnmaximum?],
+[Gewinn bei 800 Packungen?],
+[Ausgehend von 800 Packungen: Preis allgemein auf 60 €, Nachfrage +200. Lieferbar und sinnvoll?],
+[Alternativ 800 Packungen zu 70 € und einmalig 200 zusätzliche zu 35 €: annehmen? Welche Gefahr?],
+)
 ][
 *Modell:* Packungen pro Monat, Produktion gleich Absatz, Nettopreise; $K_f$ und $k_v$ bleiben bis 1 000 Packungen unverändert. Die beiden Preisentscheidungen sind Alternativen.
 ][
@@ -300,7 +403,21 @@
 
 // 0-25
 #aufgabe(titel: "Ü 2: Verlust, Preis und unerreichbarer BEP", art: "rechnen", quelle: "1.5")[
-*Ü 2 · Kosten und Verlust, PDF-S. 2; Foto Ü 2:* Bei 3 000 Stück entstehen 75 000 € Gesamtkosten, darunter 30 000 € fixe Kosten. Der Verlust ist 12 000 €. a) Ermittle $k_v,E,e$. b) BEP rechnerisch und grafisch? c) Beurteile die Kapazitätsgrenze von 4 500 Stück. d) Eigene vertiefende Ableitung aus L15, PDF-S. 10: Wie müssten jeweils einzeln $e$, $k_v$ oder $K_f$ geändert werden, um bei 4 500 Stück mindestens kostendeckend zu sein?
+#if not web [*Aufgabe 25* #linebreak()]
+*Ü 2 · Kosten und Verlust, PDF-S. 2; Foto Ü 2:*
+
+*Gegeben und Annahmen*
+
+Bei 3 000 Stück entstehen 75 000 € Gesamtkosten, darunter 30 000 € fixe Kosten. Der Verlust ist 12 000 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle $k_v,E,e$.],
+[BEP rechnerisch und grafisch?],
+[Beurteile die Kapazitätsgrenze von 4 500 Stück.],
+[Eigene vertiefende Ableitung aus L15, PDF-S. 10: Wie müssten jeweils einzeln $e$, $k_v$ oder $K_f$ geändert werden, um bei 4 500 Stück mindestens kostendeckend zu sein?],
+)
 ][
 *Modell:* Einproduktfall und unveränderte lineare Kosten, Kapazität 4 500 Stück je betrachteter Periode. Verlust wird als $G=-12 000$ € eingesetzt.
 ][
@@ -319,7 +436,22 @@
 
 // 0-26
 #aufgabe(titel: "Ü 3: Zwei Perioden und Erweiterung", art: "rechnen", quelle: "1.7")[
-*Ü 3 · Oktober/November, PDF-S. 2; Foto Ü 3:* Oktober: 20 000 Stück bei $K=700 000$ €; November: 24 000 Stück bei $K=800 000$ €. $e=40$ €/Stück. a) $k_v,K_v,K_f,k_f$ in beiden Monaten? b) Betriebserfolg bei vollständigem Absatz? c) BEP rechnerisch und grafisch? d) Welchen Einfluss hat eine Erhöhung von $k_v$ auf 30 €/Stück? e) Wieder mit $k_v=25$: Eine Erweiterung erhöht $K_f$ um 40 000 €. Welche Gesamt- und Zusatzmenge hält den Novembergewinn?
+#if not web [*Aufgabe 26* #linebreak()]
+*Ü 3 · Oktober/November, PDF-S. 2; Foto Ü 3:*
+
+*Gegeben und Annahmen*
+
+Oktober: 20 000 Stück bei $K=700 000$ €; November: 24 000 Stück bei $K=800 000$ €. $e=40$ €/Stück.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[$k_v,K_v,K_f,k_f$ in beiden Monaten?],
+[Betriebserfolg bei vollständigem Absatz?],
+[BEP rechnerisch und grafisch?],
+[Welchen Einfluss hat eine Erhöhung von $k_v$ auf 30 €/Stück?],
+[Wieder mit $k_v=25$: Eine Erweiterung erhöht $K_f$ um 40 000 €. Welche Gesamt- und Zusatzmenge hält den Novembergewinn?],
+)
 ][
 *Modell:* In beiden Ausgangsmonaten gleiches $K_f$ und $k_v$, Preis 40 €/Stück und vollständiger Absatz. Änderungen in d) und e) werden getrennt vom Ausgangsfall untersucht.
 ][
@@ -342,7 +474,20 @@ $k_f$ für November ist gerundet; die Kosten und Gewinne werden mit ungerundeten
 
 // 0-27
 #aufgabe(titel: "Ü 4: Holzregale", art: "rechnen", quelle: "1.1")[
-*Ü 4 · Holzregale, PDF-S. 2; Foto Ü 4:* Kapazität 1 200 Regale/Monat; $K_f=64 000$ €/Monat; $k_v=110$ €/Regal; Preis 214,20 € brutto, für diese Aufgabe 19 % Umsatzsteuer. a) BEP? b) BG der Gewinnschwelle, theoretisch und mit ganzen Regalen? c) Betriebsergebnis bei 85 % BG? Ordne Deine rote Randbemerkung zur hohen Auslastung ein.
+#if not web [*Aufgabe 27* #linebreak()]
+*Ü 4 · Holzregale, PDF-S. 2; Foto Ü 4:*
+
+*Gegeben und Annahmen*
+
+Kapazität 1 200 Regale/Monat; $K_f=64 000$ €/Monat; $k_v=110$ €/Regal; Preis 214,20 € brutto, für diese Aufgabe 19 % Umsatzsteuer.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[BEP?],
+[BG der Gewinnschwelle, theoretisch und mit ganzen Regalen?],
+[Betriebsergebnis bei 85 % BG? Ordne Deine rote Randbemerkung zur hohen Auslastung ein.],
+)
 ][
 *Modell:* Monatsbetrachtung, 19 % Umsatzsteuer laut verwendeter Aufgabenlösung; lineare Kosten und vollständiger Absatz der hergestellten Regale.
 ][
@@ -359,7 +504,18 @@ $k_f$ für November ist gerundet; die Kosten und Gewinne werden mit ungerundeten
 
 // 0-28
 #aufgabe(titel: "A13: Dreherei", art: "rechnen", quelle: "1.1")[
-*A13 · KLR, Aufgabe 3, erster Fall, PDF-S. 3:* Kostenstelle Dreherei, Kapazität 10 000 Einheiten je Monat. Mai: 70 % BG, $K=466 000$ €; Juni: 80 %, $K=504 000$ €. Für Juli sind 85 % geplant. Bestimme Juli-Menge, proportionale variable Stückkosten, Fixkosten, variable Gesamtkosten und Gesamtkosten. Nur der KLR-Teil wird verwendet.
+#if not web [*Aufgabe 28* #linebreak()]
+*A13 · KLR, Aufgabe 3, erster Fall, PDF-S. 3:*
+
+*Gegeben und Annahmen*
+
+Kostenstelle Dreherei, Kapazität 10 000 Einheiten je Monat. Mai: 70 % BG, $K=466 000$ €; Juni: 80 %, $K=504 000$ €. Für Juli sind 85 % geplant.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme Juli-Menge, proportionale variable Stückkosten, Fixkosten, variable Gesamtkosten und Gesamtkosten. Nur der KLR-Teil wird verwendet.],
+)
 ][
 *Modell:* Gleiche Monatskostenstruktur von Mai bis Juli; kein Fixkostensprung. Die Kapazität von 10 000 Einheiten/Monat ist 100 %.
 ][
@@ -376,7 +532,19 @@ $k_f$ für November ist gerundet; die Kosten und Gewinne werden mit ungerundeten
 
 // 0-29
 #aufgabe(titel: "A13: Kunststoffbehälter", art: "rechnen", quelle: "1.3")[
-*A13 · KLR, zweiter Fall, PDF-S. 3–4, Teile a–b:* Ein Einproduktbetrieb stellt Kunststoffbehälter für Gartenabfälle her. Preis 200 €/Stück, Fertigungsmaterial 60 €/Stück, Fertigungslohn 20 €/Stück, jährliche Fixkosten 900 000 €. a) Jährliche BEP-Menge und BEP-Umsatz? b) Betriebsergebnis bei 10 000 Stück? Der Teil zur Umsatzrentabilität bleibt dem späteren Kennzahlenstoff vorbehalten.
+#if not web [*Aufgabe 29* #linebreak()]
+*A13 · KLR, zweiter Fall, PDF-S. 3–4, Teile a–b:*
+
+*Gegeben und Annahmen*
+
+Ein Einproduktbetrieb stellt Kunststoffbehälter für Gartenabfälle her. Preis 200 €/Stück, Fertigungsmaterial 60 €/Stück, Fertigungslohn 20 €/Stück, jährliche Fixkosten 900 000 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Jährliche BEP-Menge und BEP-Umsatz?],
+[Betriebsergebnis bei 10 000 Stück? Der Teil zur Umsatzrentabilität bleibt dem späteren Kennzahlenstoff vorbehalten.],
+)
 ][
 *Modell:* Jahresbetrachtung, Material und Fertigungslohn proportional, fixe Jahreskosten konstant; vollständiger Absatz.
 ][
@@ -391,7 +559,18 @@ $k_f$ für November ist gerundet; die Kosten und Gewinne werden mit ungerundeten
 
 // 0-30
 #aufgabe(titel: "A14 I.1: Fixkosten aus dem Gesamt-DB", art: "rechnen", quelle: "1.4")[
-*A14 · Aufgabe I.1, PDF-S. 2, KLR-Auszug:* Die gesamten Deckungsbeiträge der Produkte A–E betragen 4 200 €, 6 460 €, 14 490 €, 6 608 € und 20 085 € im Monat. Das Betriebsergebnis ist +6 350 €. Welche monatlichen Fixkosten hat der Betrieb? Die weiteren Teile zur Engpassplanung sind hier nicht enthalten.
+#if not web [*Aufgabe 30* #linebreak()]
+*A14 · Aufgabe I.1, PDF-S. 2, KLR-Auszug:*
+
+*Gegeben und Annahmen*
+
+Die gesamten Deckungsbeiträge der Produkte A–E betragen 4 200 €, 6 460 €, 14 490 €, 6 608 € und 20 085 € im Monat. Das Betriebsergebnis ist +6 350 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche monatlichen Fixkosten hat der Betrieb? Die weiteren Teile zur Engpassplanung sind hier nicht enthalten.],
+)
 ][
 *Modell:* Die angegebenen DB sind Gesamtbeträge des Monats, keine Stückwerte. Das Betriebsergebnis entsteht nach einmaligem Abzug der gemeinsamen Fixkosten.
 ][
@@ -406,15 +585,26 @@ $k_f$ für November ist gerundet; die Kosten und Gewinne werden mit ungerundeten
 
 // 0-31
 #aufgabe(titel: "A18 I: Vollkosten und Deckungsbeitrag", art: "rechnen", quelle: "1.3")[
-*A18 · Aufgabe I, PDF-S. 1, DB-Übertragung:* Drei Varianten einer Dienstkleidung werden vollständig verkauft. Die Werte stehen unten. a) Berechne mit den gegebenen Vollkosten je Stück die Ergebnisse je Variante und insgesamt. Welche Variante sieht zunächst ungünstig aus? b) Variable Stückkosten sind 35,70 €, 66,30 €, 102,00 €; gemeinsame Fixkosten 240 720 €. Bestimme die drei DB und den Gesamtgewinn. c) Beurteile eine Streichung von Hansa bei unveränderten gemeinsamen Fixkosten. Die Bedingungen der Entscheidung sind ausdrücklich Teil dieser Übertragung.
+#if not web [*Aufgabe 31* #linebreak()]
+*A18 · Aufgabe I, PDF-S. 1, DB-Übertragung:*
+
+*Gegeben und Annahmen*
+
+Drei Varianten einer Dienstkleidung werden vollständig verkauft. Die Werte stehen unten.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne mit den gegebenen Vollkosten je Stück die Ergebnisse je Variante und insgesamt. Welche Variante sieht zunächst ungünstig aus?],
+[Variable Stückkosten sind 35,70 €, 66,30 €, 102,00 €; gemeinsame Fixkosten 240 720 €. Bestimme die drei DB und den Gesamtgewinn.],
+[Beurteile eine Streichung von Hansa bei unveränderten gemeinsamen Fixkosten. Die Bedingungen der Entscheidung sind ausdrücklich Teil dieser Übertragung.
 #tab(columns: (1.3fr, 1fr, 1fr, 1fr),
  th([Variante], [Easy], [Hansa], [Pazifik]),
  [Menge in Stück], [2 500], [3 000], [3 750],
  [Preis €/Stück], [61,20], [112,20], [142,80],
  [Vollkosten €/Stück], [43,86], [114,24], [122,40],
+)],
 )
-
-
 ][
 *Modell:* Gegebene Absatzmengen; für den Streichungsvergleich bleiben die gemeinsamen Fixkosten unverändert, keine Verdrängung oder zusätzlichen Folgewirkungen. Das ist eine Übertragung der bisherigen DB-Logik.
 ][
@@ -437,7 +627,18 @@ $k_f$ für November ist gerundet; die Kosten und Gewinne werden mit ungerundeten
 
 // 0-32
 #aufgabe(titel: "Alte Ü 1: BEP und Beschäftigungsgrad", art: "rechnen", quelle: "1.5")[
-*Alte Ü 1 · BEP und BG:* $K_f=48 000$ €/Monat, $k_v=18$ €/Stück, $e=30$ €/Stück, Kapazität 5 000 Stück/Monat. Ermittle Stück-DB, BEP und BG am BEP.
+#if not web [*Aufgabe 32* #linebreak()]
+*Alte Ü 1 · BEP und BG:*
+
+*Gegeben und Annahmen*
+
+$K_f=48 000$ €/Monat, $k_v=18$ €/Stück, $e=30$ €/Stück, Kapazität 5 000 Stück/Monat.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle Stück-DB, BEP und BG am BEP.],
+)
 ][
 Stück-DB $30-18=12$ €/Stück.
 ][
@@ -450,7 +651,18 @@ Stück-DB $30-18=12$ €/Stück.
 
 // 0-33
 #aufgabe(titel: "Alte Ü 2: Zwei Perioden", art: "rechnen", quelle: "1.7")[
-*Alte Ü 2 · Zwei Perioden:* Januar 8 000 Stück, $K=164 000$ €; Februar 10 000 Stück, $K=190 000$ €. Ermittle $k_v,K_f$ und prüfe mit Februar.
+#if not web [*Aufgabe 33* #linebreak()]
+*Alte Ü 2 · Zwei Perioden:*
+
+*Gegeben und Annahmen*
+
+Januar 8 000 Stück, $K=164 000$ €; Februar 10 000 Stück, $K=190 000$ €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle $k_v,K_f$ und prüfe mit Februar.],
+)
 ][
 *Annahme:* unveränderte Kostenstruktur in beiden Monaten.
 ][
@@ -463,7 +675,18 @@ $k_v=(190 000-164 000)/(10 000-8000)=26 000/2000=13$ €/Stück.
 
 // 0-34
 #aufgabe(titel: "Alte Ü 3: Zusatzauftrag", art: "rechnen", quelle: "1.6.2")[
-*Alte Ü 3 · Zusatzauftrag:* 700 Stück zu 50 €, $k_v=32$ €, $K_f=9 000$ €, Kapazität 900 Stück je Periode. Ein Kunde will einmalig 150 Stück zu 38 €. Prüfe Kapazität, Ergebnisänderung, Entscheidung und Risiko.
+#if not web [*Aufgabe 34* #linebreak()]
+*Alte Ü 3 · Zusatzauftrag:*
+
+*Gegeben und Annahmen*
+
+700 Stück zu 50 €, $k_v=32$ €, $K_f=9 000$ €, Kapazität 900 Stück je Periode. Ein Kunde will einmalig 150 Stück zu 38 €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Prüfe Kapazität, Ergebnisänderung, Entscheidung und Risiko.],
+)
 ][
 *Annahmen:* bisheriger Preis bleibt, keine weiteren auftragsbedingten Kosten oder Verdrängung.
 ][
@@ -478,7 +701,18 @@ Ausgangsgewinn $18 dot 700-9000=3600$ €, neuer Gewinn *4 500 €*: unter den A
 
 // 0-35
 #aufgabe(titel: "Alte Ü 4: Preis aus dem Verlust", art: "rechnen", quelle: "1.8")[
-*Alte Ü 4 · Preis aus Verlust:* Bei 2 500 Stück entstehen 95 000 € Gesamtkosten, darunter 40 000 € Fixkosten. Verlust 7 500 €, Kapazität 3 000 Stück. Bestimme $k_v,e$, BEP und eine begründete Entscheidung.
+#if not web [*Aufgabe 35* #linebreak()]
+*Alte Ü 4 · Preis aus Verlust:*
+
+*Gegeben und Annahmen*
+
+Bei 2 500 Stück entstehen 95 000 € Gesamtkosten, darunter 40 000 € Fixkosten. Verlust 7 500 €, Kapazität 3 000 Stück.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Bestimme $k_v,e$, BEP und eine begründete Entscheidung.],
+)
 ][
 *Modell:* lineare Kosten; Verlust $G=-7500$ €.
 ][
@@ -493,7 +727,18 @@ Exakte Schwelle $40 000/13 approx "3076,923"$; kleinste ganze Menge *3 077 Stüc
 
 // 0-36
 #aufgabe(titel: "Alte Ü 5: Preissenkung", art: "rechnen", quelle: "1.6.1")[
-*Alte Ü 5 · Preissenkung:* $K_f=30 000$ €, $k_v=20$ €, $e=50$ €, Absatz 1 200 Stück, Kapazität 1 500 Stück je Periode. Bei 45 € wären 1 600 Stück nachgefragt. Ist die Senkung sinnvoll?
+#if not web [*Aufgabe 36* #linebreak()]
+*Alte Ü 5 · Preissenkung:*
+
+*Gegeben und Annahmen*
+
+$K_f=30 000$ €, $k_v=20$ €, $e=50$ €, Absatz 1 200 Stück, Kapazität 1 500 Stück je Periode. Bei 45 € wären 1 600 Stück nachgefragt.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ist die Senkung sinnvoll?],
+)
 ][
 *Modell:* neue Nachfrage 1 600, lieferbar höchstens 1 500; sonst unveränderte Kosten.
 ][
@@ -506,7 +751,18 @@ Neu $G=(45-20) dot 1500-30 000=+7500$ €.
 
 // 0-37
 #aufgabe(titel: "Alte Ü 6: Zielgewinn", art: "rechnen", quelle: "1.8")[
-*Alte Ü 6 · Zielgewinn:* $K_f=72 000$ €, $e=60$ €, $k_v=42$ €. Welche Stückzahl bringt mindestens 18 000 € Gewinn im unveränderten Modell? Eine Kapazität ist hier nicht vorgegeben.
+#if not web [*Aufgabe 37* #linebreak()]
+*Alte Ü 6 · Zielgewinn:*
+
+*Gegeben und Annahmen*
+
+$K_f=72 000$ €, $e=60$ €, $k_v=42$ €.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche Stückzahl bringt mindestens 18 000 € Gewinn im unveränderten Modell? Eine Kapazität ist hier nicht vorgegeben.],
+)
 ][
 Stück-DB $60-42=18$ €/Stück.
 ][
@@ -517,7 +773,22 @@ Zielmenge $(72 000+18 000)/18=5000$ Stück.
 
 // 0-38
 #aufgabe(titel: "Alte Ü 7: Fahrradrahmen", art: "rechnen", quelle: "1.1")[
-*Alte Ü 7 / L02 Aufgabe A · Fahrradrahmen:* Kapazität 2 000 Stück/Monat, $K_f=90 000$ €/Monat, $k_v=75$ €/Stück, Preis 154,70 € brutto bei 19 % Umsatzsteuer. Aktuell 1 800 Stück. a) Netto, Stück-DB und BEP? b) BG an der ganzen Schwellenmenge? c) aktueller Gewinn? d) Einmalig 150 Rahmen zu 85 € netto zusätzlich: annehmen und Risiko? e) Alternativ allgemein 120 € netto, Nachfrage +300: sinnvoll?
+#if not web [*Aufgabe 38* #linebreak()]
+*Alte Ü 7 / L02 Aufgabe A · Fahrradrahmen:*
+
+*Gegeben und Annahmen*
+
+Kapazität 2 000 Stück/Monat, $K_f=90 000$ €/Monat, $k_v=75$ €/Stück, Preis 154,70 € brutto bei 19 % Umsatzsteuer. Aktuell 1 800 Stück.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Netto, Stück-DB und BEP?],
+[BG an der ganzen Schwellenmenge?],
+[aktueller Gewinn?],
+[Einmalig 150 Rahmen zu 85 € netto zusätzlich: annehmen und Risiko?],
+[Alternativ allgemein 120 € netto, Nachfrage +300: sinnvoll?],
+)
 ][
 *Modell:* Monatswerte, 19 % Umsatzsteuer vorgegeben; Preisänderungen sind Alternativen.
 ][
@@ -536,7 +807,20 @@ Zielmenge $(72 000+18 000)/18=5000$ Stück.
 
 // 0-39
 #aufgabe(titel: "Alte Ü 8: Zwei Monate", art: "rechnen", quelle: "1.7")[
-*Alte Ü 8 / L02 Aufgabe B · Zwei Monate:* März 5 000 Stück und $K=180 000$ €; April 6 500 Stück und $K=210 000$ €. $e=36$ € netto. a) $k_v,K_f$? b) Gewinne und Besonderheit im März? c) Menge für 40 000 € Gewinn?
+#if not web [*Aufgabe 39* #linebreak()]
+*Alte Ü 8 / L02 Aufgabe B · Zwei Monate:*
+
+*Gegeben und Annahmen*
+
+März 5 000 Stück und $K=180 000$ €; April 6 500 Stück und $K=210 000$ €. $e=36$ € netto.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[$k_v,K_f$?],
+[Gewinne und Besonderheit im März?],
+[Menge für 40 000 € Gewinn?],
+)
 ][
 *Annahme:* gemeinsames lineares Kostenmodell.
 ][
@@ -551,7 +835,20 @@ Stück-DB $36-20=16$ €/Stück. Für 40 000 € Gewinn: *$x=(80 000+40 000)/16=
 
 // 0-40
 #aufgabe(titel: "Alte Ü 9: Preis gesucht", art: "rechnen", quelle: "1.5")[
-*Alte Ü 9 / L13 Rechenaufgabe 19 · Preis gesucht:* $K_f=120 000$ €, $k_v=45$ €, Kapazität 5 000 Stück je Periode. a) Preis, damit 4 000 Stück exakt der BEP sind? b) Preis für 40 000 € Gewinn bei 4 000 Stück? c) Mit Preis b): BEP und BG?
+#if not web [*Aufgabe 40* #linebreak()]
+*Alte Ü 9 / L13 Rechenaufgabe 19 · Preis gesucht:*
+
+*Gegeben und Annahmen*
+
+$K_f=120 000$ €, $k_v=45$ €, Kapazität 5 000 Stück je Periode.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Preis, damit 4 000 Stück exakt der BEP sind?],
+[Preis für 40 000 € Gewinn bei 4 000 Stück?],
+[Mit Preis b): BEP und BG?],
+)
 ][
 *Modell:* 4 000 Stück werden verkauft; $K_f,k_v$ bleiben unverändert.
 ][
@@ -566,7 +863,18 @@ Mit 85 €: $x_"BEP"=120 000/40=3000$ Stück; *BG = 60 %*.
 
 // 0-41
 #aufgabe(titel: "Alte Ü 10: Zwei Kostenlinien", art: "rechnen", quelle: "1.3")[
-*Alte Ü 10 / L13 Rechenaufgabe 20 · Zwei lineare Kostenfunktionen:* Fall 1: $K_1(x)=20 000+12x$; Fall 2: $K_2(x)=35 000+7x$, Kosten jeweils €/Periode, $x$ Stück/Periode. Bei welcher Menge sind die Kosten gleich? Welcher Fall ist bei 2 000 bzw. 4 000 Stück günstiger? Dies ist eine algebraische KLR-Übertragung, noch keine Herleitung eines Investitionsverfahrens.
+#if not web [*Aufgabe 41* #linebreak()]
+*Alte Ü 10 / L13 Rechenaufgabe 20 · Zwei lineare Kostenfunktionen:*
+
+*Gegeben und Annahmen*
+
+Fall 1: $K_1(x)=20 000+12x$; Fall 2: $K_2(x)=35 000+7x$, Kosten jeweils €/Periode, $x$ Stück/Periode. Bei welcher Menge sind die Kosten gleich?
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welcher Fall ist bei 2 000 bzw. 4 000 Stück günstiger? Dies ist eine algebraische KLR-Übertragung, noch keine Herleitung eines Investitionsverfahrens.],
+)
 ][
 *Modell:* Beide linearen Funktionen sind bereits gegeben und im betrachteten Mengenbereich gültig. Es wird ausschließlich deren Kostenhöhe verglichen.
 ][
@@ -581,7 +889,23 @@ Bei 4 000: $K_1=68 000$ €, $K_2=63 000$ €; *Fall 2 ist günstiger*.
 
 // 0-42
 #aufgabe(titel: "Alte Ü 11: Gesamtfall", art: "rechnen", quelle: "1.2")[
-*Alte Ü 11 · Gesamtfall:* März 4 000 Stück, $K=150 000$ €; April 5 000 Stück, $K=175 000$ €. Verkaufspreis 47,60 € brutto bei 19 % Umsatzsteuer, Kapazität 6 000 Stück/Monat. a) $k_v,K_f$? b) BEP und BG? c) Aprilgewinn? d) Zusätzlich zu 5 000 Stück ein Auftrag über 800 zu 30 € netto: annehmen? e) Sind 50 000 € Monatsgewinn möglich? f) Wie werden die Abschreibungen in diesem mengenunabhängigen Modell eingeordnet?
+#if not web [*Aufgabe 42* #linebreak()]
+*Alte Ü 11 · Gesamtfall:*
+
+*Gegeben und Annahmen*
+
+März 4 000 Stück, $K=150 000$ €; April 5 000 Stück, $K=175 000$ €. Verkaufspreis 47,60 € brutto bei 19 % Umsatzsteuer, Kapazität 6 000 Stück/Monat.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[$k_v,K_f$?],
+[BEP und BG?],
+[Aprilgewinn?],
+[Zusätzlich zu 5 000 Stück ein Auftrag über 800 zu 30 € netto: annehmen?],
+[Sind 50 000 € Monatsgewinn möglich?],
+[Wie werden die Abschreibungen in diesem mengenunabhängigen Modell eingeordnet?],
+)
 ][
 *Modell:* Gleiche Kostenstruktur beider Monate; 19 % Umsatzsteuer; Zusatzauftrag ohne Verdrängung, neue Fixkosten oder sonstige Zusatzkosten.
 ][

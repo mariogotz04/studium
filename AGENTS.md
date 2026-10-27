@@ -152,3 +152,30 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Lernstand, Fristen, To-dos und Einstellungen liegen im Browser und werden über Supabase (Projekt „studium“,
   Tabelle `zustand`, eine Zeile je Eintrag, neuere Änderung gewinnt) zwischen Marios Geräten abgeglichen.
   Anmeldung per E-Mail-Link unter „Sync“ oben rechts. Nichts davon steht im Repository.
+
+## Motivation und persönliche Richtung
+
+- Start zeigt „Mein Warum“ mit dem nächsten offenen Tagesziel und kleinem Einstieg. `#richtung` öffnet den Editor für Warum, Vision, Identitätssatz, Anti-Vision und Wenn-dann-Plan. Alles ist freiwillig und abschaltbar; Anti-Vision bleibt eingeklappt.
+- Private Eingaben und Zitatfavoriten nur unter `einst:richtung` im bestehenden Browser-/Supabase-Zustand speichern, niemals in Git oder Modulquellen. Tagesreflexionen gehören zu `abschluss:<Tag>`.
+- `zitate.json` enthält zentral kuratierte Zitate mit eindeutiger ID, Urheber, Werk/Datum und überprüfter HTTPS-Quelle; Übersetzungen kennzeichnen und den Ausgangswortlaut beilegen. Keine ungeprüften Internetzuschreibungen. Tageszitat rotiert, Favoriten und Ausblenden sind möglich.
+- Fortschrittsfeedback nur aus gespeicherten Bewertungen ableiten, z. B. heute selbst gelöst nach vorher „mit Hilfe“. Reflexionen nach Lernrunden und im Tagesabschluss fördern eigenes Handeln und Strategieprüfung. Keine Behauptung, Anstrengung beweise Gehirnwachstum.
+
+## Stabile Tagesliste und automatische Abschlüsse
+
+- `tagesplan:<Tag>` speichert die vorgeschlagene Liste und Karten-IDs beim ersten Aufruf; während des Tages weder fertige Zeilen austauschen noch neue Vorschläge nachschieben.
+- `aktiv:<Tag>:<Art>:<Modul>:<ID>` hält wirkliche Bearbeitungen fest, auch beim Einstieg über die Modulnavigation. Aufgabe erst nach Selbsteinschätzung (auch „nicht geschafft“); Quiz nach Auswertung aller Fragen einschließlich Freitext; Karten nach abgeschlossenen Runden, die alle Zielkarten umfassen; Mix/Probe nach Abgabe und Bewertung sämtlicher Aufgaben.
+- Automatisches Abhaken bedeutet bearbeitet, nicht beherrscht. Unsichere Inhalte bleiben in den bestehenden Wiederholungsplänen. Manuelles Überschreiben mit Zeitstempel unter `erledigt:<Tag>` erhalten. Aktivitäten gehören zum Tag des Runden-/Aufgabenstarts.
+
+## Selbstständige Übungsaufgaben in allen Modulen
+
+- Alle Rechenaufgaben direkt mit Gegeben/Annahmen, Gesucht und Teilfragen a), b), c) schreiben; Zahlen, Einheiten, Konstanten, Tabellenwerte und erforderliche Abbildungen stehen in derselben Aufgabe. Keine Suche nach Daten in anderen Aufgaben verlangen. Quellen- und Modellannahmen korrekt erhalten.
+- Fortlaufende Nummer je Modul liefert `build.py` als `nr`; im Druck enthält der erste Aufgabenblock die bedingte Nummer `#if not web [*Aufgabe N* #linebreak()]`. Mix/Probe zeigen ihre eigene neutrale Nummerierung.
+- Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Kartenbewertung gelten in allen sieben und künftigen Modulen.
+
+## Änderungsprotokoll
+
+### 27.10.2026 · Motivation, vollständige Aufgaben, automatische Tagesliste
+- „Meine Richtung“, belegte Zitate mit Favoriten, Reflexionen und konkrete Fortschrittsanzeige ergänzt; persönliche Daten bleiben privat.
+- 688 Aufgaben in sieben Modulen nummeriert, darunter 260 Rechenaufgaben mit Gegeben/Gesucht und ergänzten Eingabedaten, Tabellen oder Skizzen; bestehende Titel und Lösungen erhalten.
+- Tagesliste bleibt stabil und hakt tatsächliche Abschlüsse automatisch ab. Regeln in allen sieben Modul-AGENTS.md ergänzt.
+- Validierung: vollständiger Build aller sieben Lernskripte und Aufgaben ohne Fehler/Warnungen; 688 Aufgaben-/215 Quiz-/462 Karten-IDs und bestehende Lösungsschritte unverändert, Quellenmarkierungen für alle gültig. Abschlussgrenzen, manuelle Haken und Tageswechsel automatisiert geprüft; Scroll-Regressionsprüfung (16 Gesten, 4 Bewertungsbuttons), iPad-/Mobilansicht und PDF-Stichproben aller Module geprüft. Veröffentlichung mit dem bestehenden Upload-Skript.
