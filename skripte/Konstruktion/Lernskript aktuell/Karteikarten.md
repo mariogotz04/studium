@@ -652,7 +652,7 @@ Quelle: 13.5
 
 ### Nach welchem Prinzip verteilt man Rauheiten an einem Einzelteil?
 Nach der Funktion. Funktionslose, aber sichtbare Flächen bekommen eine grobe Rauheit. Dicht- und Auflageflächen bekommen eine mittlere. Lagersitze, Dichtringsitze und Zentrierungen bekommen die feinste.
-Quelle: 13.6
+Quelle: 13.7
 
 ### Welcher Bezug wird für Lauftoleranzen an einem Flanschlager gewählt?
 Die Sitzfläche des Wälzlagers, weil sie die Drehachse festlegt. Gekrümmte Flächen bekommen Rundlauf, plane Flächen Planlauf.

@@ -407,6 +407,8 @@ Ein durchströmter Kompressor ist *offen*. Die eingeschlossene Luft bei geschlos
 #note("Selbst erklären", [Kann ein geschlossenes, starres, adiabates Gefäß über einen Heizstab wärmer werden? Ja: Wenn der elektrische Anschluss zur Grenze gehört, führt er Arbeit zu.])
 Die vier Eigenschaften in der Mindmap werden einzeln geprüft. „Geschlossen“ beantwortet die Frage nach dem Stoffaustausch; „adiabat“ die nach Wärmeübertragung. Erst zusammen mit der Beweglichkeit der Grenze und möglichen Arbeitsanschlüssen ergibt sich ein vollständiges Modell. Aus einem einzigen dieser Wörter darfst du deshalb nicht alle übrigen Randbedingungen ableiten.
 
+*Die Gesamtgrenze zählt:* Interne Ströme zwischen den Teilanlagen eines Kraftwerks überqueren die gemeinsame äußere Systemgrenze nicht. Was eine Teilanlage abgibt, nimmt die andere auf; diese Beiträge heben sich in der Gesamtbilanz auf. Das ist eine ergänzende Einordnung zur Wahl der Systemgrenze.
+
 #src([L 1.1.3, PDF-S. 7–8; V PDF-S. 12–15. Arbeitsformen ergänzend präzisiert.])
 
 === 1.1.5 Typische Berechnung: Kraftwerk

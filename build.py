@@ -12,12 +12,15 @@ $ … $ wird abgesetzt). Sie werden mit Typst als SVG gesetzt und sehen so aus w
 import hashlib
 import html
 import json
+import math
 import re
 import shutil
 import subprocess
 import sys
 import uuid
+import unicodedata
 import zipfile
+from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -98,6 +101,180 @@ def abschnitt_finden(ref, abschnitte):
         if titel.lower().startswith(ref.lower()):
             return titel, seite
     return None
+
+
+# Die Markierungen gehören zum jeweiligen Verweis, nicht zur PDF. Ihre relativen Zeilenrechtecke
+# werden mit jeder neuen PDF neu ermittelt und passen dadurch auch nach Seitenverschiebungen.
+STOPPWÖRTER = set("aber alle allem allen aller alles also als am an andere auch auf aus bei beim bis da "
+                 "dabei dadurch daher damit dann das dass dem den denn der des die diese diesem diesen dieser "
+                 "dieses doch dort du durch ein eine einem einen einer eines er es etwas für gegen gilt hat "
+                 "haben hier ich im in ins ist ja kann kein keine keinen man mehr mit muss nach nicht noch "
+                 "nur oder ohne pro richtig sein seine sich sie sind so sowie statt über um und uns unter vom "
+                 "von vor warum was welche welcher welches wenn wer werden wie wieder wir wird wo zu zum zur "
+                 "zwischen erklären erkläre beispiel frage antwort schritt prüfen gegeben gesucht bestimmen "
+                 "bestimme berechne berechnen".split())
+
+
+def suchtext(text):
+    """HTML, Typst-Formelplatzhalter und PDF-Trennstriche für den Textvergleich auflösen."""
+    text = re.sub(r"@@F([a-f0-9]+)@@", lambda m: FORMELN.get(m[1], ("",))[0], text)
+    text = html.unescape(re.sub(r"<[^>]+>", " ", text))
+    text = unicodedata.normalize("NFKC", text).casefold().replace("\u00ad", "")
+    text = re.sub(r"(\w)[-‐]\s+(?=[a-zäöü])", r"\1", text)
+    return text
+
+
+def suchwörter(text):
+    wörter = []
+    for wort in re.findall(r"[^\W\d_]{3,}", suchtext(text)):
+        if wort in STOPPWÖRTER:
+            continue
+        wort = wort.translate(UMLAUTE)
+        # Einfache deutsche Flexion: „geschlossenes“ und „geschlossen“ sollen zusammenpassen.
+        if len(wort) > 5:
+            wort = re.sub(r"(?:ern|em|en|er|es|e|n|s)$", "", wort)
+        wörter.append(wort)
+    return Counter(wörter)
+
+
+class Skriptstellen:
+    """Antwortbezogene Textstellen innerhalb des angegebenen Abschnitts, samt PDF-Koordinaten."""
+
+    def __init__(self, datei):
+        import pdfplumber
+        from pypdf import PdfReader
+        self.pdf = pdfplumber.open(datei)
+        reader = PdfReader(datei)
+        self.abschnitte, self.seiten, self.blockcache = [], {}, {}
+
+        def lesen(knoten):
+            for k in knoten:
+                if isinstance(k, list):
+                    lesen(k)
+                else:
+                    p = reader.get_destination_page_number(k) + 1
+                    höhe = float(reader.pages[p - 1].mediabox.height)
+                    self.abschnitte.append((k.title.strip(), p, höhe - float(k.top or höhe)))
+        lesen(reader.outline)
+
+    def schließen(self):
+        self.pdf.close()
+
+    def zeilen(self, n):
+        if n not in self.seiten:
+            seite = self.pdf.pages[n - 1]
+            zeilen = []
+            for z in seite.extract_text_lines():
+                if z["top"] < 40 or z["bottom"] > seite.height - 40:
+                    continue    # Kopf, Fuß und Seitenzahl sind keine Antwortstellen.
+                if max((float(c["size"]) for c in z["chars"]), default=0) < 9:
+                    continue    # Kleine Quellenzeilen und Bildnachweise sind keine fachliche Erklärung.
+                z = {k: z[k] for k in ("text", "x0", "x1", "top", "bottom")}
+                if zeilen and z["top"] < zeilen[-1]["bottom"] - 1:
+                    # Tief-/hochgestellte Formelteile werden oft als eigene überlappende Zeile gelesen.
+                    alt = zeilen[-1]
+                    alt.update(text=alt["text"] + " " + z["text"], x0=min(alt["x0"], z["x0"]),
+                               x1=max(alt["x1"], z["x1"]), bottom=max(alt["bottom"], z["bottom"]))
+                else:
+                    zeilen.append(z)
+            self.seiten[n] = (float(seite.width), float(seite.height), zeilen)
+            seite.close()     # Die umfangreichen Zeichen-Caches pro Seite nicht im Speicher behalten.
+        return self.seiten[n]
+
+    def blöcke(self, titel):
+        if titel in self.blockcache:
+            return self.blockcache[titel]
+        i = next((i for i, a in enumerate(self.abschnitte) if a[0] == titel), None)
+        if i is None:
+            return []
+        _, anfang, oben = self.abschnitte[i]
+        nr = re.match(r"(?:TM[12] )?\d+(?:\.\d+)*", titel)
+        ende, unten = len(self.pdf.pages), float("inf")
+        for t, p, y in self.abschnitte[i + 1:]:
+            if nr and t.startswith(nr[0] + "."):
+                continue     # Bei einem Oberabschnitt auch dessen Unterabschnitte durchsuchen.
+            ende, unten = p, y
+            break
+        titeltexte = {suchtext(t) for t, _, _ in self.abschnitte}
+        blöcke = []
+        for p in range(anfang, ende + 1):
+            w, h, zeilen = self.zeilen(p)
+            block = []
+
+            def ablegen():
+                if block:
+                    text = " ".join(z["text"] for z in block)
+                    blöcke.append({"p": p, "w": w, "h": h, "z": block.copy(), "text": text,
+                                   "wörter": suchwörter(text)})
+                    block.clear()
+
+            for z in zeilen:
+                if (p == anfang and z["top"] < oben) or (p == ende and z["top"] >= unten):
+                    continue
+                normal = suchtext(z["text"])
+                if normal in titeltexte or z["text"].startswith(("Grundlage:", "Zurück zur Kapitelübersicht", "↑")):
+                    ablegen()
+                    continue
+                if block:
+                    vorher = block[-1]
+                    abstand = z["top"] - vorher["bottom"]
+                    if (abstand > 4 or len(block) >= 6 or
+                        (abstand > .8 and vorher["x1"] < w * .8 and z["x0"] < w * .16) or
+                        abs(z["x0"] - vorher["x0"]) > w * .2):
+                        ablegen()
+                block.append(z)
+            ablegen()
+        self.blockcache[titel] = blöcke
+        return blöcke
+
+    def verweis(self, treffer, frage, antwort):
+        quelle = {"t": treffer[0], "p": treffer[1]}
+        blöcke = self.blöcke(treffer[0])
+        if not blöcke:
+            return quelle
+        a, f = suchwörter(antwort), suchwörter(frage)
+        häufigkeit = Counter(w for b in blöcke for w in b["wörter"])
+        gewichte = {w: (2 if w in a else 1) * (1 + math.log(1 + len(blöcke) / (1 + häufigkeit[w])))
+                    for w in a.keys() | f.keys()}
+
+        def bewerten(b):
+            wörter = b["wörter"]
+            # Auch Komposita erkennen, etwa „Bauteilfunktion“ ↔ „Funktion“. Exakte Wörter bleiben stärker.
+            punkte = sum(g * min(wörter[w] or (.35 if len(w) >= 6 and any(
+                len(k) >= 6 and (w in k or k in w) for k in wörter) else 0), 2) for w, g in gewichte.items())
+            # Längere gemeinsame Wortfolgen sind stärker als bloß gleiche Kapitelbegriffe.
+            text = re.sub(r"\s+", " ", suchtext(b["text"]))
+            for teil in re.split(r"[.!?;\n]", suchtext(antwort)):
+                teil = teil.strip(" *-$")
+                if len(teil.split()) >= 5 and teil in text:
+                    punkte += 15
+            return punkte / (1 + .035 * len(wörter))
+
+        index = max(range(len(blöcke)), key=lambda i: bewerten(blöcke[i]))
+        if bewerten(blöcke[index]) <= 0:
+            return quelle     # Keine unpassende Stelle als vermeintliche Antwort markieren.
+        auswahl = [blöcke[index]]
+        def formelblock(b):
+            return (len(b["z"]) <= 3 and len(b["wörter"]) <= 6 and
+                    min(z["x0"] for z in b["z"]) > b["w"] * .22 and re.search(r"[=∑∫]", b["text"]))
+
+        # Die angrenzende abgesetzte Formel mitnehmen: Bei Rechenaufgaben soll neben der
+        # anschaulichen Erklärung auch der zugehörige mathematische Ansatz erkennbar sein.
+        if index + 1 < len(blöcke):
+            b, danach = blöcke[index], blöcke[index + 1]
+            if ((b["text"].rstrip().endswith(":") or formelblock(danach)) and danach["p"] == b["p"] and
+                danach["z"][0]["top"] - b["z"][-1]["bottom"] < 25):
+                auswahl.append(danach)
+        if index:
+            b, davor = blöcke[index], blöcke[index - 1]
+            if (formelblock(davor) and davor["p"] == b["p"] and
+                b["z"][0]["top"] - davor["z"][-1]["bottom"] < 20):
+                auswahl.insert(0, davor)
+        quelle["p"] = auswahl[0]["p"]
+        quelle["h"] = [{"p": b["p"], "r": [[round(z["x0"] / b["w"], 5),
+                           round(z["top"] / b["h"], 5), round((z["x1"] - z["x0"]) / b["w"], 5),
+                           round((z["bottom"] - z["top"]) / b["h"], 5)] for z in b["z"]]} for b in auswahl]
+        return quelle
 
 
 def bildunterschriften(typ):
@@ -215,7 +392,7 @@ def antwort_html(zeilen):
     return "".join(teile), inline(" ".join(bild)) if bild else ""
 
 
-def karteikarten(md, modul, abschnitte=(), skript=None):
+def karteikarten(md, modul, abschnitte=(), skript=None, stellen=None):
     """Karteikarten.md lesen: ## Kapitel, ### Frage, darunter die Antwort (mit Quelle: und Abbildung:)."""
     karten, kapitel, karte = [], "", None
     ordner = md.parent / "Typst-Dateien" / "abbildungen"
@@ -242,7 +419,8 @@ def karteikarten(md, modul, abschnitte=(), skript=None):
         if quelle:
             treffer = abschnitt_finden(quelle, abschnitte)
             if treffer:
-                karte["s"] = {"t": treffer[0], "p": treffer[1]}
+                karte["s"] = (stellen.verweis(treffer, karte["q"], "\n".join(z for z in zeilen if not z.startswith("Bild:")))
+                              if stellen else {"t": treffer[0], "p": treffer[1]})
             elif abschnitte:
                 warnen("Quelle nicht im Lernskript", f"{quelle} ({karte['q']})")
         for name in bilder:
@@ -286,7 +464,7 @@ def svg_größe(datei):
     return float(b.group(1)) if b else AUFGABE_BREITE, float(h.group(1)) if h else 0
 
 
-def aufgaben(typ, modul, abschnitte):
+def aufgaben(typ, modul, abschnitte, stellen=None):
     warnen = lambda titel, text: print(f"::warning title={titel}::{modul}: {text}", file=sys.stderr)
     r = subprocess.run(["typst", "query", "--root", str(typ.parent), "--input", "web=1", str(typ), "<aufgabe>",
                         "--field", "value"], capture_output=True, text=True)
@@ -313,12 +491,31 @@ def aufgaben(typ, modul, abschnitte):
     pdf = OUT / "pdf" / f"{slug}_Aufgaben.pdf"
     subprocess.run(["typst", "compile", "--root", str(typ.parent), str(typ), str(pdf)], capture_output=True)
 
+    texte = []
+    if stellen:
+        # Die SVGs enthalten Schrift als Pfade. Dieselben Bausteine einmal als temporäre PDF setzen,
+        # damit auch Rechenwege und Verständnisantworten (nicht nur Aufgabentitel) zugeordnet werden.
+        import pdfplumber
+        textpdf = ziel / "_text.pdf"
+        subprocess.run(["typst", "compile", "--root", str(typ.parent), "--input", "web=1", str(typ), str(textpdf)],
+                       capture_output=True, check=True)
+        try:
+            with pdfplumber.open(textpdf) as dokument:
+                for seite in dokument.pages:
+                    texte.append(seite.extract_text() or "")
+                    seite.close()
+            if len(texte) != erwartet:
+                raise ValueError(f"{modul}: Textbausteine für die Skriptmarkierungen stimmen nicht überein")
+        finally:
+            textpdf.unlink(missing_ok=True)
+
     def baustein(n):
         b, h = svg_größe(seiten[n])
         return {"src": f"a/{slug}/{seiten[n].name}", "w": round(b, 1), "h": round(h, 1)}
 
     liste, n, ids = [], 0, set()
     for info in infos:
+        anfang = n
         id_ = hashlib.sha1(f"{modul}|{info['titel']}".encode()).hexdigest()[:10]
         if id_ in ids:
             warnen("Aufgabentitel doppelt", info["titel"])
@@ -336,7 +533,8 @@ def aufgaben(typ, modul, abschnitte):
         if info.get("quelle"):
             treffer = abschnitt_finden(str(info["quelle"]), abschnitte)
             if treffer:
-                a["q"] = {"t": treffer[0], "p": treffer[1]}
+                a["q"] = (stellen.verweis(treffer, info["titel"] + " " + texte[anfang], "\n".join(texte[anfang + 1:n]))
+                          if stellen else {"t": treffer[0], "p": treffer[1]})
             elif abschnitte:
                 warnen("Quelle nicht im Lernskript", f"{info['quelle']} ({info['titel']})")
         liste.append(a)
@@ -348,7 +546,7 @@ def aufgaben(typ, modul, abschnitte):
 SCHLÜSSEL = re.compile(r"^(Tipp|Quelle|Antwort|Erklärung):\s*(.*)$")
 
 
-def quiz(md, modul, abschnitte):
+def quiz(md, modul, abschnitte, stellen=None):
     warnen = lambda titel, text: print(f"::warning title={titel}::{modul}: {text}", file=sys.stderr)
     fragen, kapitel, f = [], "", None
     text = re.sub(r"<!--.*?-->", "", md.read_text(encoding="utf-8"), flags=re.S)
@@ -399,7 +597,10 @@ def quiz(md, modul, abschnitte):
             ref = " ".join(felder["Quelle"]).strip()
             treffer = abschnitt_finden(ref, abschnitte)
             if treffer:
-                f["s"] = {"t": treffer[0], "p": treffer[1]}
+                antwort = " ".join(felder.get("Antwort", []) + felder.get("Erklärung", []) +
+                                   [o["t"] + " " + " ".join(o["e"]) for o in opts if o["ok"]])
+                f["s"] = (stellen.verweis(treffer, frage, antwort)
+                          if stellen else {"t": treffer[0], "p": treffer[1]})
             elif abschnitte:
                 warnen("Quelle nicht im Lernskript", f"{ref} ({frage})")
         fragen.append(f)
@@ -705,7 +906,7 @@ def main():
         shutil.rmtree(OUT)
     (OUT / "pdf").mkdir(parents=True)
 
-    modules, failed, abschnitte = [], [], {}
+    modules, failed, abschnitte, stellen = [], [], {}, {}
     for typ in find_entrypoints():
         rel = typ.relative_to(SRC)
         module = rel.parts[0]
@@ -722,6 +923,7 @@ def main():
             continue
         abschnitte[module] = gliederung(pdf)
         titel_setzen(pdf, name)
+        stellen[module] = Skriptstellen(pdf)
         modules.append({
             "name": module,
             "title": doc_title(typ),
@@ -736,7 +938,7 @@ def main():
     decks = []
     for md in sorted(SRC.glob("*/Lernskript aktuell/Karteikarten.md")):
         modul = md.relative_to(SRC).parts[0]
-        karten = karteikarten(md, modul, abschnitte.get(modul, []))
+        karten = karteikarten(md, modul, abschnitte.get(modul, []), stellen=stellen.get(modul))
         print(f"→ {modul}: {len(karten)} Karteikarten, {sum(1 for k in karten if 'i' in k)} mit Abbildung, "
               f"{sum(1 for k in karten if 's' in k)} mit Seitenangabe")
         if karten:
@@ -747,15 +949,18 @@ def main():
     for modul in sorted({m["name"] for m in modules} | {p.relative_to(SRC).parts[0] for p in SRC.glob("*/Lernskript aktuell/*")}, key=str.lower):
         eintrag = {"name": modul, "pdf": next((m["file"] for m in modules if m["name"] == modul), "")}
         typ = SRC / modul / "Lernskript aktuell" / "Typst-Dateien" / "Aufgaben.typ"
-        if typ.exists() and (a := aufgaben(typ, modul, abschnitte.get(modul, []))):
+        if typ.exists() and (a := aufgaben(typ, modul, abschnitte.get(modul, []), stellen=stellen.get(modul))):
             eintrag["aufgaben"], eintrag["apdf"] = a["items"], a["pdf"]
             print(f"→ {modul}: {len(a['items'])} Aufgaben ({sum(x['art'] == 'rechnen' for x in a['items'])} Rechenaufgaben)")
         md = SRC / modul / "Lernskript aktuell" / "Quiz.md"
         if md.exists():
-            eintrag["quiz"] = quiz(md, modul, abschnitte.get(modul, []))
+            eintrag["quiz"] = quiz(md, modul, abschnitte.get(modul, []), stellen=stellen.get(modul))
             print(f"→ {modul}: {len(eintrag['quiz'])} Quizfragen")
         if "aufgaben" in eintrag or "quiz" in eintrag or any(d["name"] == modul for d in decks):
             lernen.append(eintrag)
+
+    for index in stellen.values():
+        index.schließen()
 
     data = sorted(modules, key=lambda m: m["name"].lower())
     decks.sort(key=lambda d: d["name"].lower())

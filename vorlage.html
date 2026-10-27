@@ -89,7 +89,7 @@ body.lernen footer.stand { display: none; }
 .neustand { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 60;
   min-height: 48px; padding: 0 20px; border: 0; border-radius: 24px; background: var(--accent); color: var(--accent-ink);
   font: inherit; font-weight: 600; box-shadow: 0 4px 14px rgba(0,0,0,.18); cursor: pointer; }
-/* PDF-Ansicht für die Home-Bildschirm-App (dort gibt es keinen Zurück-Knopf) */
+/* PDF-Ansicht für Skriptverweise und die Home-Bildschirm-App */
 .pdfansicht { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; background: #e9e5dc; }
 .pdfansicht[hidden] { display: none; }
 .pdfleiste { display: flex; align-items: center; gap: 8px; padding: 8px 12px; padding-top: max(8px, env(safe-area-inset-top));
@@ -98,6 +98,10 @@ body.lernen footer.stand { display: none; }
 .pdfseiten { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 12px 12px calc(24px + env(safe-area-inset-bottom)); }
 .pdfseite { position: relative; max-width: 900px; margin: 0 auto 12px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
 .pdfseite canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pdfmarkierung { position: absolute; z-index: 2; pointer-events: none; background: rgba(255, 220, 0, .4);
+  border-bottom: 2px solid rgba(225, 174, 0, .65); border-radius: 2px; mix-blend-mode: multiply; box-sizing: border-box; }
+.pdfhinweis { padding: 7px 12px; color: #635000; background: #fff5bd; font-size: 13px; }
+.pdfhinweis[hidden] { display: none; }
 .pdfinfo { text-align: center; color: var(--muted); margin-top: 40px; }
 .muted { color: var(--muted); }
 p a, .muted a { color: var(--accent); font-weight: 600; }
@@ -470,9 +474,10 @@ figure.abb + figure.abb { margin-top: 14px; }
   <section id="view-termine" hidden></section>
   <section id="view-konto" hidden></section>
   <footer class="stand" id="stand"></footer>
-  <div class="pdfansicht" id="pdfansicht" hidden>
+  <div class="pdfansicht" id="pdfansicht" role="dialog" aria-modal="true" aria-labelledby="pdftitel" hidden>
     <div class="pdfleiste"><button class="btn" id="pdfzu" type="button">Schließen</button>
       <span class="titel" id="pdftitel"></span><button class="btn primary" id="pdfsichern" type="button">Download</button></div>
+    <div class="pdfhinweis" id="pdfhinweis" role="status" hidden></div>
     <div class="pdfseiten" id="pdfseiten"></div>
   </div>
 </div>
@@ -1210,7 +1215,15 @@ async function pdfSichern(href, knopf) {
     knopf.textContent = text;
   } catch { knopf.textContent = text; if (!APP) location.href = href; }
 }
-let pdfjs = null, pdfDok = null, pdfBeobachter = null;
+// Jeder Quellenlink trägt nur die Markierungen seiner Antwort. Auch bei schnellem Schließen oder
+// erneutem Öffnen darf eine ältere PDF-Ladung die aktuelle Ansicht nicht überschreiben.
+function quellenLink(datei, quelle) {
+  if (!datei || !quelle) return "";
+  return `<a class="quelle" href="${esc(datei)}#page=${quelle.p}" data-skriptquelle
+    data-markierung="${esc(JSON.stringify(quelle.h || []))}" target="_blank" rel="noopener"
+    aria-label="Lernskript Seite ${quelle.p}: ${esc(quelle.t)} – passende Stelle ansehen"><b>Lernskript S. ${quelle.p}</b><span>${esc(quelle.t)}</span></a>`;
+}
+let pdfjs = null, pdfDok = null, pdfLadung = null, pdfBeobachter = null, pdfAnfrage = 0, pdfFokus = null;
 function pdfjsLaden() {
   return pdfjs = pdfjs || new Promise((ok, fehler) => {
     const s = Object.assign(document.createElement("script"), { src: PDFJS + "pdf.min.js" });
@@ -1220,65 +1233,121 @@ function pdfjsLaden() {
   });
 }
 const pdfAnsicht = document.getElementById("pdfansicht"), pdfSeiten = document.getElementById("pdfseiten");
-async function pdfOeffnen(href, titel) {
+async function pdfOeffnen(href, titel, markierungen = []) {
   const [datei, anker] = href.split("#");
   const start = +((anker || "").match(/page=(\d+)/) || [])[1] || 1;
+  const fokus = document.activeElement;
+  pdfZu();
+  pdfFokus = fokus;
+  const anfrage = pdfAnfrage;
   pdfAnsicht.hidden = false; pdfAnsicht.dataset.href = datei;
   document.documentElement.style.overflow = "hidden";
   document.getElementById("pdftitel").textContent = titel || pdfDateiname(datei).replace(/\.pdf$/i, "");
+  const hinweis = document.getElementById("pdfhinweis");
+  hinweis.hidden = true; hinweis.textContent = "";
   pdfSeiten.innerHTML = `<p class="pdfinfo">Lädt …</p>`;
+  document.getElementById("pdfzu").focus({ preventScroll: true });
   try {
     const lib = await pdfjsLaden();
-    pdfZu(true);
-    const dok = pdfDok = await lib.getDocument(datei).promise;
+    if (anfrage !== pdfAnfrage) return;
+    const ladung = pdfLadung = lib.getDocument(datei);
+    const dok = await ladung.promise;
+    if (anfrage !== pdfAnfrage) return;
+    pdfDok = dok;
     const vp = (await dok.getPage(1)).getViewport({ scale: 1 });
-    if (dok !== pdfDok) return;
+    if (anfrage !== pdfAnfrage) return;
     pdfSeiten.innerHTML = "";
     for (let i = 1; i <= dok.numPages; i++) {
       const d = Object.assign(document.createElement("div"), { className: "pdfseite" });
       d.dataset.n = i; d.innerHTML = `<div style="padding-top:${vp.height / vp.width * 100}%"></div>`;
+      for (const m of markierungen.filter(m => m.p === i)) {
+        for (const r of m.r || []) {
+          if (r.length !== 4 || !r.every(v => Number.isFinite(v) && v >= 0 && v <= 1)) continue;
+          const gelb = Object.assign(document.createElement("span"), { className: "pdfmarkierung" });
+          gelb.setAttribute("aria-hidden", "true");
+          Object.assign(gelb.style, { left: `${r[0] * 100}%`, top: `${r[1] * 100}%`,
+            width: `${r[2] * 100}%`, height: `${r[3] * 100}%` });
+          d.appendChild(gelb);
+        }
+      }
       pdfSeiten.appendChild(d);
+    }
+    const ersteMarkierung = pdfSeiten.querySelector(".pdfmarkierung");
+    if (ersteMarkierung) {
+      hinweis.textContent = `Passende Stelle gelb markiert · S. ${ersteMarkierung.parentElement.dataset.n}`;
+      hinweis.hidden = false;
     }
     // Nur Seiten in der Nähe zeichnen und entfernte wieder freigeben (iPad-Speicher für Canvas ist knapp)
     pdfBeobachter = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? seiteZeichnen(e.target, dok) : seiteFreigeben(e.target)),
       { root: pdfSeiten, rootMargin: "800px 0px" });
     [...pdfSeiten.children].forEach(d => pdfBeobachter.observe(d));
-    pdfSeiten.children[start - 1]?.scrollIntoView();
+    const ziel = ersteMarkierung || pdfSeiten.children[Math.min(start, dok.numPages) - 1];
+    if (ziel) pdfSeiten.scrollTop += ziel.getBoundingClientRect().top - pdfSeiten.getBoundingClientRect().top - 60;
   } catch {
-    pdfSeiten.innerHTML = `<p class="pdfinfo">Das Lernskript ließ sich hier nicht anzeigen. Prüf die Internetverbindung und versuch es noch einmal.</p>`;
+    if (anfrage !== pdfAnfrage) return;
+    pdfSeiten.innerHTML = `<p class="pdfinfo">Das Lernskript ließ sich hier nicht anzeigen. Prüf die Internetverbindung und versuch es noch einmal.
+      <br><a href="${esc(href)}" data-pdf-direkt target="_blank" rel="noopener">PDF direkt öffnen</a></p>`;
   }
 }
 async function seiteZeichnen(d, dok) {
   if (d.dataset.status) return;
   d.dataset.status = "läuft";
-  const seite = await dok.getPage(+d.dataset.n);
-  const breite = seite.getViewport({ scale: 1 }).width;
-  const vp = seite.getViewport({ scale: d.clientWidth / breite * Math.min(2, window.devicePixelRatio || 1) });
-  const c = Object.assign(document.createElement("canvas"), { width: Math.floor(vp.width), height: Math.floor(vp.height) });
-  await seite.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
-  if (dok !== pdfDok || d.dataset.status !== "läuft") { c.width = c.height = 0; return; }
-  d.dataset.status = "fertig"; d.appendChild(c);
+  const lauf = d.pdfLauf = {};
+  let c, auftrag;
+  try {
+    const seite = await dok.getPage(+d.dataset.n);
+    if (dok !== pdfDok || !d.isConnected || d.pdfLauf !== lauf) return;
+    const breite = seite.getViewport({ scale: 1 }).width;
+    const vp = seite.getViewport({ scale: d.clientWidth / breite * Math.min(2, window.devicePixelRatio || 1) });
+    c = Object.assign(document.createElement("canvas"), { width: Math.floor(vp.width), height: Math.floor(vp.height) });
+    auftrag = d.pdfRender = seite.render({ canvasContext: c.getContext("2d"), viewport: vp });
+    await auftrag.promise;
+    if (dok !== pdfDok || !d.isConnected || d.pdfLauf !== lauf) { c.width = c.height = 0; return; }
+    d.dataset.status = "fertig"; d.appendChild(c);
+  } catch {
+    if (c) c.width = c.height = 0;
+    if (d.pdfLauf === lauf) delete d.dataset.status;
+  }
 }
 function seiteFreigeben(d) {
+  d.pdfRender?.cancel(); delete d.pdfRender;
+  delete d.pdfLauf;
   const c = d.querySelector("canvas");
   if (c) { c.width = c.height = 0; c.remove(); }
   delete d.dataset.status;
 }
-function pdfZu(nurDokument) {
+function pdfZu() {
+  pdfAnfrage++;
   pdfBeobachter?.disconnect(); pdfBeobachter = null;
-  pdfSeiten.querySelectorAll("canvas").forEach(c => { c.width = c.height = 0; });
-  if (pdfDok) { pdfDok.destroy(); pdfDok = null; }
-  if (nurDokument === true) return;
+  pdfSeiten.querySelectorAll(".pdfseite").forEach(seiteFreigeben);
+  if (pdfLadung) { pdfLadung.destroy().catch(() => {}); pdfLadung = null; }
+  pdfDok = null;
   pdfSeiten.innerHTML = ""; pdfAnsicht.hidden = true;
+  document.getElementById("pdfhinweis").hidden = true;
   document.documentElement.style.overflow = "";
+  if (pdfFokus?.isConnected) pdfFokus.focus({ preventScroll: true });
+  pdfFokus = null;
 }
 document.getElementById("pdfzu").addEventListener("click", () => pdfZu());
 document.getElementById("pdfsichern").addEventListener("click", e => pdfSichern(pdfAnsicht.dataset.href, e.currentTarget));
+document.addEventListener("keydown", e => {
+  if (pdfAnsicht.hidden) return;
+  if (e.key === "Escape") { e.preventDefault(); pdfZu(); }
+  if (e.key === "Tab") {
+    const knöpfe = [...pdfAnsicht.querySelectorAll("button, a[href]")];
+    if (e.shiftKey && document.activeElement === knöpfe[0]) { e.preventDefault(); knöpfe.at(-1).focus(); }
+    else if (!e.shiftKey && document.activeElement === knöpfe.at(-1)) { e.preventDefault(); knöpfe[0].focus(); }
+  }
+});
 document.addEventListener("click", e => {
   const a = e.isTrusted && e.target.closest("a[href]");   // von Skripten ausgelöste Klicks (Blob-Downloads) durchlassen
-  if (!a) return;
+  if (!a || a.hasAttribute("data-pdf-direkt")) return;
   const href = a.getAttribute("href");
   if (a.hasAttribute("data-epub")) { e.preventDefault(); epubSichern(href, a); }
+  else if (a.hasAttribute("data-skriptquelle")) {
+    e.preventDefault();
+    pdfOeffnen(href, null, JSON.parse(a.dataset.markierung || "[]"));
+  }
   else if (a.hasAttribute("download")) { e.preventDefault(); pdfSichern(href, a); }
   else if (APP && /\.pdf(#|$)/i.test(href)) {
     e.preventDefault();
@@ -1453,8 +1522,7 @@ function zeigen() {
   document.body.classList.add("lernen");
   const bilder = (c.i || []).map((b, n) => `<figure class="abb"><button type="button" data-bild="${n}" aria-label="Abbildung groß ansehen">
       <img src="${b.src}" alt="${esc(ohneTags(b.cap))}" loading="lazy"></button>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`).join("");
-  const quelle = c.s ? `<a class="quelle" href="${c.d.pdf}#page=${c.s.p}" target="_blank" rel="noopener"><b>Lernskript S. ${c.s.p}</b>
-      <span>${esc(c.s.t)}</span></a>` : "";
+  const quelle = quellenLink(c.d.pdf, c.s);
   view.innerHTML = `<div class="topbar"><a class="back" href="${zurück}">← ${esc(s.deck.name)}</a>
       <div class="bar"><i style="width:${Math.round(100 * s.fertig / (s.fertig + offen))}%"></i></div>
       <span class="zahl">${s.fertig} / ${s.fertig + offen}</span></div>
@@ -1680,7 +1748,7 @@ function aufgabeSeite(m, a) {
       ${fertig ? `<p class="hint" style="margin:20px 0 0">Wie lief es?</p><div class="bewerten">
         ${[["ok", "Selbst gelöst", "kommt seltener"], ["hilfe", "Mit Hilfe", "kommt wieder"], ["nein", "Nicht geschafft", "kommt bald wieder"]]
           .map(([k, n, s]) => `<button class="${k}${st?.s === k ? " gewählt" : ""}" data-s="${k}">${n}<small>${s}</small></button>`).join("")}</div>` : ""}
-      ${a.q ? `<a class="quelle" href="${m.pdf}#page=${a.q.p}" target="_blank" rel="noopener"><b>Lernskript S. ${a.q.p}</b><span>${esc(a.q.t)}</span></a>` : ""}
+      ${quellenLink(m.pdf, a.q)}
     </div>`;
   const neu = () => aufgabeSeite(m, a);
   $("#weiter")?.addEventListener("click", () => { o.schritte++; neu(); lernView.querySelectorAll(".schritt")[o.schritte - 1]?.scrollIntoView({ behavior: "smooth", block: "start" }); });
@@ -1733,7 +1801,8 @@ function probeStarten(m, mix) {
   const jetzt = Date.now(), dauer = mix ? 0 : Math.round(k.dauer * tempo);
   store.set("probe:lauf", { modul: m.name, ids: mischen(wahl).map(a => a.id), start: jetzt, dauer, ende: mix ? 0 : jetzt + dauer * 6e4,
     klausur: k.dauer, tempo, mix: !!mix, ab: 0, bew: {}, erg: {} });
-  location.hash = `#lernen/${encodeURIComponent(m.name)}/probe`;
+  const ziel = `#lernen/${encodeURIComponent(m.name)}/probe`;
+  if (location.hash === ziel) route(); else location.hash = ziel;
 }
 function probeEinstellungen(m) {
   const k = klausurInfo(m.name), tempo = store.get("probe:tempo", 0.8), lauf = store.get("probe:lauf", null);
@@ -1811,7 +1880,8 @@ function probeSeite(m) {
       <div class="asteuer">${a.erg && !l.erg[a.id] ? `<button class="btn" data-erg="${a.id}">Ergebnis zeigen</button>` : ""}
         <a class="btn" href="#lernen/${encodeURIComponent(m.name)}/aufgabe/${a.id}">Lösung Schritt für Schritt</a></div>
       <div class="bewerten">${[["ok", "Selbst gelöst"], ["hilfe", "Mit Fehlern"], ["nein", "Nicht geschafft"]]
-        .map(([k, n]) => `<button class="${k}${l.bew[a.id] === k ? " gewählt" : ""}" data-id="${a.id}" data-s="${k}">${n}</button>`).join("")}</div></div>`).join("")}
+        .map(([k, n]) => `<button class="${k}${l.bew[a.id] === k ? " gewählt" : ""}" data-id="${a.id}" data-s="${k}">${n}</button>`).join("")}</div>
+      ${quellenLink(m.pdf, a.q)}</div>`).join("")}
     <div class="row" style="margin-top:18px"><button class="btn primary gross" id="pneu">Neuer Versuch</button><a class="btn gross" href="${zurück}">Fertig</a></div>`;
   lernView.querySelectorAll("[data-erg]").forEach(b => b.onclick = () => { l.erg[b.dataset.erg] = 1; store.set("probe:lauf", l); probeSeite(m); });
   lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
@@ -1900,7 +1970,7 @@ function quizSeite() {
     </div></div>`;
   const extra = (html, kl) => { $("#qextra").innerHTML = `<div class="qextra ${kl}">${html}</div>`; };
   $("#qtipp")?.addEventListener("click", () => extra(f.tipp, "tipp"));
-  $("#qerkl")?.addEventListener("click", () => extra((f.erkl || "") + (f.s ? `<a class="quelle" href="${f.m.pdf}#page=${f.s.p}" target="_blank" rel="noopener"><b>Lernskript S. ${f.s.p}</b><span>${esc(f.s.t)}</span></a>` : ""), "erkl"));
+  $("#qerkl")?.addEventListener("click", () => extra((f.erkl || "") + quellenLink(f.m.pdf, f.s), "erkl"));
   lernView.querySelectorAll(".opt").forEach(b => b.onclick = () => {
     const n = +b.dataset.o;
     if (f.typ === "einfach") {
@@ -1959,7 +2029,7 @@ function quizAuswertung() {
             `<button class="btn klein" data-bew="${n}" data-v="${v}">${t}</button>`).join("")}</div>`;
         else if (f.typ === "lücke") mehr = `<div class="vergleich"><div><b>Deine Antwort</b>${esc((a.werte || []).join(" · ") || "–")}</div><div><b>Richtig</b>${esc(f.ok.join(" · ").replace(/\//g, " oder "))}</div></div>`;
         else if (a.richtig !== true) mehr = `<div style="margin-top:6px;font-size:15px"><b>Richtig:</b> ${o.filter(x => x.ok).map(x => x.t).join("; ")}</div>`;
-        return `<div class="qitem"><div class="k ${k[0]}">${k[1]}</div><div>${f.typ === "lücke" ? f.q.join(" ___ ") : f.q}</div>${mehr}${a.richtig !== true && f.erkl ? `<div class="muted" style="margin-top:6px;font-size:15px">${f.erkl}</div>` : ""}</div>`;
+        return `<div class="qitem"><div class="k ${k[0]}">${k[1]}</div><div>${f.typ === "lücke" ? f.q.join(" ___ ") : f.q}</div>${mehr}${a.richtig !== true && f.erkl ? `<div class="muted" style="margin-top:6px;font-size:15px">${f.erkl}</div>` : ""}${quellenLink(f.m.pdf, f.s)}</div>`;
       }).join("")}</div></div></div>`;
   lernView.querySelectorAll("[data-bew]").forEach(b => b.onclick = () => {
     const n = +b.dataset.bew, v = b.dataset.v === "true" ? true : b.dataset.v === "teil" ? "teil" : false;
@@ -2153,6 +2223,7 @@ function kontoSeite() {
 /* ───────────── Navigation ───────────── */
 const VIEWS = { start: "view-start", skripte: "view-skripte", hoeren: "view-hoeren", lernen: "view-lernen", termine: "view-termine", konto: "view-konto" };
 function route(oben = true) {
+  if (!pdfAnsicht.hidden) pdfZu();
   const h = decodeURIComponent(location.hash.slice(1));
   const [teil, ...rest] = h.split("/");
   // Alte Lesezeichen führen zur Kartenauswahl im jeweiligen Modul.

@@ -68,6 +68,14 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 - Jede Karte bekommt eine Zeile `Quelle: 1.3` (Abschnittsnummer im Lernskript, bei TM2 z. B. `Quelle: TM2 1.6`).
   `build.py` sucht den Abschnitt in den PDF-Lesezeichen und zeigt auf der Karte einen Link „Lernskript S. N“.
   Die Seite stimmt so auch, wenn das Lernskript wächst. Wird der Abschnitt nicht gefunden, warnt der Build.
+- Alle Quellenlinks bei Karteikarten, Rechenaufgaben, Verständnisfragen und Quizantworten (auch in der
+  Auswertung von Quiz, Probeklausur und Mix-Serie) öffnen die integrierte PDF-Ansicht im Browser und in der
+  Home-Bildschirm-App. `build.py` ordnet anhand von Frage und Antwort bzw. Lösungsweg eine Textstelle innerhalb
+  des angegebenen Abschnitts zu und speichert relative Zeilenrechtecke im jeweiligen Quellenfeld `h`.
+  Die Seitenangabe zeigt auf die gefundene Stelle. Bei jedem Build werden die Positionen aus der aktuellen PDF
+  neu bestimmt. Nur die Markierungen des angeklickten Verweises werden gelb eingeblendet und beim Schließen
+  oder Navigieren entfernt; die herunterladbare PDF bleibt unverändert. Eine Zuordnung ohne Texttreffer öffnet
+  den Abschnitt ohne Markierung. Keine dauerhaft eingefärbten PDFs erzeugen und keine Markierungen im Lernstand speichern.
 - Gibt es im Lernskript eine passende Abbildung, `Abbildung: name` (oder `name1, name2`) ergänzen; `name` ist die
   Datei `Typst-Dateien/abbildungen/<name>.svg`. Die Bildunterschrift wird aus `#bild("name", [...])` übernommen.
 - Formeln in den Antworten in Typst-Schreibweise zwischen `$…$` schreiben (z. B. `$c = sqrt(2 g h)$`), eine Zeile nur
