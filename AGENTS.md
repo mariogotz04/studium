@@ -1,13 +1,13 @@
 # Lernskript-Webseite
 
 Dieser Ordner (`Uni/Webseite/`) ist die Quelle der Webseite https://mariogotz04.github.io/studium/.
-Sie ist Marios Lernplattform mit fünf Reitern:
+Sie ist Marios Lernplattform mit vier Reitern:
 
 - **Start:** Uhr, heutiger und morgiger Vorlesungsplan, „Heute dran“ (täglich wechselnde Lernvorschläge aus Plan,
   Klausurterminen und Lernstand), Countdown zur nächsten Klausur, Fristen, To-dos.
 - **Lernskripte:** jedes Lernskript als PDF (nur Feynman-Zusammenfassung und Formelsammlung, keine Aufgaben).
-- **Karteikarten:** Verständnisfragen je Modul mit Wiederholung wie bei Anki.
 - **Lernen:** Rechenaufgaben und Verständnisfragen mit Lösung Schritt für Schritt, ein Quiz je Modul, Pomodoro-Timer,
+  Karteikarten je Modul als Auswahl neben Aufgaben, Quiz und Probeklausur (Wiederholung wie bei Anki),
   je Modul eine Probeklausur (Aufgaben aus verschiedenen Kapiteln, gemischt, ohne Titel, mit Uhr, Standard 80 % der
   Klausurdauer) und eine Mix-Serie (5 Aufgaben aus 5 Kapiteln, ohne Uhr). Die Zeit je Aufgabe kommt aus dem optionalen
   Feld `minuten:` in `Aufgaben.typ`, sonst wird sie nach der Zahl der Lösungsschritte geschätzt.
@@ -73,8 +73,11 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 - Formeln in den Antworten in Typst-Schreibweise zwischen `$…$` schreiben (z. B. `$c = sqrt(2 g h)$`), eine Zeile nur
   mit `$ … $` wird abgesetzt. `build.py` setzt sie mit Typst als SVG (Ordner `f/`), sie sehen aus wie im Lernskript.
   Den Fragetext dafür nicht ändern (Lernstand hängt daran), Formeln gehören in die Antwort.
-- Startseite der Karteikarten: „fällige lernen“ mischt fällige Karten aller Module (reihum, höchstens die eingestellte
-  Anzahl pro Runde). Auf der Modulseite gibt es „Nur fällige“ ohne neue Karten.
+- Karteikarten liegen unter **Lernen → Modul → Karteikarten**, neben Aufgaben, Quiz und Probeklausur.
+  Jede Runde bleibt in einem Modul. Es gibt keinen separaten Karteikarten-Reiter und keine Kartenrunde über alle Module.
+  Auf der Modulseite gibt es „Nur fällige“ ohne neue Karten; „Heute dran“ verlinkt fällige Karten je Modul.
+  Modulwechsel im Lerntag übernimmt die bestehende Interleaving-Auswahl von „Heute dran“.
+  Alte Adressen `#karteikarten/<Modul>` werden zu `#lernen/<Modul>/karteikarten` weitergeleitet, `#karteikarten` zu `#lernen`.
   Die Karteikarten sind für das iPad und Bedienung mit dem Finger gemacht (keine Tastatur).
 - `build.py` liest die Dateien ein; jede Karte bekommt eine ID aus Modul und Fragetext. Den Fragetext deshalb
   nur ändern, wenn nötig, sonst beginnt die Karte wieder als neu.
@@ -103,6 +106,19 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
   einer Erklärung zu *jeder* Antwort, Lückentext und Freitext (Musterantwort). Wie bei NotebookLM.
 - Gute Quizfragen prüfen Verständnis und typische Denkfehler; die falschen Antworten sollen plausibel sein
   und ihre Erklärung sagt, wo genau der Denkfehler liegt.
+
+## Alle Lernformate wachsen mit den Vorlesungsunterlagen
+
+- Nach jeder Einarbeitung neuer Vorlesungsunterlagen das Lernskript **und** `Aufgaben.typ` (Rechenaufgaben und
+  Verständnisfragen samt Ergebnis, Tipp und Lösungsschritten), `Quiz.md` (richtige Antworten, Musterantworten und
+  Erklärungen jeder Option) sowie `Karteikarten.md` (Rückseiten, Quellen, Abbildungen) gemeinsam abgleichen.
+- Zu neu behandeltem Stoff passende Aufgaben, Quizfragen und Karten ergänzen; fehlende Dateien im vorgesehenen
+  Format anlegen. Vorhandene Antworten nur ändern, wenn sie falsch, unvollständig oder durch die Unterlagen überholt sind.
+  Eine reine Layout- oder Übersichtsänderung erfordert keine neuen fachlichen Antworten.
+- Titel und Fragetexte möglichst unverändert lassen, damit der Lernstand erhalten bleibt. Abschnittsverweise nach
+  jeder Skriptänderung prüfen; Seitenzahlen werden beim Build aus der aktuellen PDF neu bestimmt.
+- Alle Formate zusammen prüfen und mit dem Upload-Skript veröffentlichen. Das ist redaktionelle Pflege durch die KI
+  bei der Bearbeitung der Unterlagen; der Webseiten-Build selbst erzeugt keine neuen Fragen.
 
 ## Vorlesungsplan
 

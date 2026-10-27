@@ -587,7 +587,7 @@ def main():
         if md.exists():
             eintrag["quiz"] = quiz(md, modul, abschnitte.get(modul, []))
             print(f"→ {modul}: {len(eintrag['quiz'])} Quizfragen")
-        if "aufgaben" in eintrag or "quiz" in eintrag:
+        if "aufgaben" in eintrag or "quiz" in eintrag or any(d["name"] == modul for d in decks):
             lernen.append(eintrag)
 
     data = sorted(modules, key=lambda m: m["name"].lower())

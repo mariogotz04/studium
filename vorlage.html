@@ -332,7 +332,7 @@ img.baustein { display: block; max-width: 100%; height: auto; }
 body.lernen header { display: none; }
 body.lernen .wrap { max-width: 1040px; padding: max(14px, env(safe-area-inset-top)) 20px max(14px, env(safe-area-inset-bottom));
   min-height: 100dvh; display: flex; flex-direction: column; }
-body.lernen #view-karten { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+body.lernen #view-lernen { flex: 1; display: flex; flex-direction: column; min-height: 0; }
 .stage { perspective: 2000px; margin: 12px 0 14px; flex: 1; min-height: 360px; display: flex; }
 .flash { position: relative; flex: 1; transform-style: preserve-3d; transition: transform .45s; cursor: pointer;
   -webkit-tap-highlight-color: transparent; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
@@ -436,7 +436,6 @@ figure.abb + figure.abb { margin-top: 14px; }
       <nav class="tabs" id="tabs">
         <a href="#" data-r="start">Start</a>
         <a href="#skripte" data-r="skripte">Lernskripte</a>
-        <a href="#karteikarten" data-r="karteikarten">Karteikarten</a>
         <a href="#lernen" data-r="lernen">Lernen</a>
         <a href="#termine" data-r="termine">Termine</a>
       </nav>
@@ -450,7 +449,6 @@ figure.abb + figure.abb { margin-top: 14px; }
     <main id="list"></main>
     <footer>PDFs werden automatisch aus den Typst-Dateien erzeugt.</footer>
   </section>
-  <section id="view-karten" hidden></section>
   <section id="view-lernen" hidden></section>
   <section id="view-termine" hidden></section>
   <section id="view-konto" hidden></section>
@@ -500,7 +498,7 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
 // Zeilen, das regelt die Datenbank (Row Level Security).
 const SUPABASE = { url: "https://rqouznmfasdvrlsxtlxj.supabase.co", key: "sb_publishable_eERiCReLijLdOeypAmKwEg_GFSw58z8" };
 
-DECKS.forEach(d => d.cards.forEach(c => c.d = d));   // jede Karte kennt ihr Modul (für gemischte Runden)
+DECKS.forEach(d => d.cards.forEach(c => c.d = d));   // jede Karte kennt ihr Modul und dessen Lernskript
 LERNEN.forEach(m => { (m.aufgaben || []).forEach(a => a.m = m); (m.quiz || []).forEach(f => f.m = m); });
 const fmtSize = b => b > 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : Math.round(b / 1e3) + " KB";
 const fmtDate = s => new Date(s + "T12:00:00").toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" });
@@ -811,11 +809,6 @@ function vorschläge(tag) {
     if (woche.includes(m)) return { p: 1.5, text: "diese Woche dran gewesen" };
     return { p: 0.8, text: "Wiederholen" };
   };
-  // fällige Karteikarten aus allen Modulen
-  const fälligSumme = DECKS.reduce((n, d) => n + zählen(d).due, 0);
-  if (fälligSumme) kandidaten.push({ key: "fällig", p: fälligSumme >= 10 ? 4.5 : 3, modul: "",
-    titel: `${Math.min(fälligSumme, kartenEinst().mix)} fällige Karteikarten wiederholen`, text: "Alle Module gemischt · Wiederholung nach Plan",
-    los: () => { location.hash = "#karteikarten"; setTimeout(() => starten(null, "", "fällig"), 0); } });
   for (const m of alleModule) {
     const g = grund(m), modul = LERNEN.find(x => x.name === m), deck = DECKS.find(d => d.name === m);
     const jitter = () => g.p + rnd() * 1.2;
@@ -846,11 +839,15 @@ function vorschläge(tag) {
         los: () => quizStarten(modul, { kapitel: k, anzahl: 10, modus: "mix" }) });
     }
     if (deck) {
+      const due = zählen(deck).due;
+      if (due) kandidaten.push({ key: `fällig:${m}`, p: Math.max(g.p, due >= 10 ? 4.5 : 3) + rnd() * 0.4 + bonus.k,
+        modul: m, titel: `${due} fällige Karteikarten ${m} wiederholen`, text: `${m} · Wiederholung nach Plan`,
+        los: () => { store.set("karteikarten:kapitel:" + m, ""); location.hash = kartenLink(m); } });
       const kap = kapitelVon(deck.cards), neu = kap[kap.length - 1];
       const st = kartenStand(deck.name), neuOffen = deck.cards.filter(c => c.k === neu && !st[c.id]).length;
       if (neuOffen && (heute.includes(m) || gestern.includes(m)))
         kandidaten.push({ key: `karten:${m}:${neu}`, p: jitter() + bonus.k, modul: m, titel: `Neue Karteikarten ${m}: ${neu}`, text: `${neuOffen} neue Karten · ${g.text}`,
-          los: () => { store.set("karteikarten:kapitel:" + m, neu); location.hash = "#karteikarten/" + encodeURIComponent(m); } });
+          los: () => { store.set("karteikarten:kapitel:" + m, neu); location.hash = kartenLink(m); } });
     }
   }
   // die vier wichtigsten, höchstens zwei je Modul und je Art nur einmal pro Modul
@@ -1211,9 +1208,10 @@ render("");
 const TAG = 864e5;
 const LERNSCHRITTE = 2;                          // so oft „Gut“, bis eine neue Karte in die Wiederholung kommt
 const ABSTAND = { 1: 3, 2: 5, 3: 9 };             // nach so vielen Karten kommt eine Lernkarte in der Runde wieder
-const view = document.getElementById("view-karten");
+const view = document.getElementById("view-lernen");
 const kartenStand = name => db.objekt(`karte:${name}:`);
-const kartenEinst = () => ({ neu: 20, mix: 50, ...db.get("einst:karten", {}) });
+const kartenEinst = () => ({ neu: 20, ...db.get("einst:karten", {}) });
+const kartenLink = name => `#lernen/${encodeURIComponent(name)}/karteikarten`;
 const einstellungAendern = (k, v) => db.set("einst:karten", { ...kartenEinst(), [k]: v });
 let sitzung = null;
 
@@ -1275,33 +1273,6 @@ function dauer(s, jetzt = Date.now()) {
   return `${(t / 365).toFixed(1).replace(".", ",")} J`;
 }
 
-function deckÜbersicht() {
-  sitzung = null;
-  if (!DECKS.length) { view.innerHTML = `<p class="empty">Noch keine Karteikarten vorhanden.</p>`; return; }
-  const einst = kartenEinst();
-  const alle = DECKS.map(d => [d, zählen(d)]);
-  const summe = k => alle.reduce((n, [, z]) => n + z[k], 0);
-  const due = summe("due"), runde = Math.min(due, einst.mix);
-  kopf("Meine Karteikarten", `${summe("gesamt")} Verständnisfragen in ${DECKS.length} Modulen`);
-  view.innerHTML = `<div class="heute"><div class="heute-zahl"><b>${due}</b><span>Karten fällig</span></div>
-      <div class="heute-text"><b>Fällige Karten aus allen Modulen gemischt</b>
-        <p>Nur Wiederholungen, keine neuen Karten. Weil die Module durcheinander kommen, musst du jedes Mal neu einordnen, wo du gerade bist.</p></div>
-      <div class="heute-start"><button class="btn primary" id="mix"${due ? "" : " disabled"}>${due ? `${runde} fällige lernen` : "Gerade nichts fällig"}</button>
-        <label class="l">höchstens <select id="mixmax">${[20, 30, 50, 80, 120].map(n => `<option${n === einst.mix ? " selected" : ""}>${n}</option>`).join("")}</select> pro Runde</label></div></div>` +
-    `<div class="decks">` + alle.map(([d, z]) => {
-      const fertig = z.gesamt ? Math.round(100 * z.ok / z.gesamt) : 0;
-      return `<a class="deck" href="#karteikarten/${encodeURIComponent(d.name)}">
-        <div class="title">${esc(d.name)}</div>
-        <div class="counts"><span class="c-due"><b>${z.due}</b> fällig</span><span class="c-new"><b>${z.neu}</b> neu</span>
-          <span class="muted">${z.gesamt} Karten</span></div>
-        <div class="bar"><i style="width:${fertig}%"></i></div>
-        <div class="deck-fuss"><span class="muted">${fertig} % sicher</span><span class="btn primary">Lernen</span></div></a>`;
-    }).join("") + `</div>` +
-    `<footer>${auth.s ? "Dein Fortschritt wird über alle angemeldeten Geräte abgeglichen." : `Dein Fortschritt liegt in diesem Browser. Unter <a href="#konto">Sync einrichten</a> gleichst du ihn mit deinen anderen Geräten ab.`}</footer>`;
-  view.querySelector("#mix").onclick = () => starten(null, "", "fällig");
-  view.querySelector("#mixmax").onchange = e => { einstellungAendern("mix", +e.target.value); deckÜbersicht(); };
-}
-
 function deckSeite(deck) {
   sitzung = null;
   const einst = kartenEinst();
@@ -1310,9 +1281,7 @@ function deckSeite(deck) {
   const k = kapitel.includes(gewählt) ? gewählt : "";
   const z = zählen(deck, k);
   const nächste = z.nächste < Infinity ? new Date(z.nächste).toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" }) : "";
-  kopf(deck.name, `Karteikarten · ${deck.cards.length} Verständnisfragen`);
-  view.innerHTML = `<a class="back" href="#karteikarten">← Alle Module</a>
-    <div class="deckgrid"><div>
+  view.querySelector("#karteninhalt").innerHTML = `<div class="deckgrid"><div>
     <div class="zahlen"><div class="c-due"><b>${z.due}</b>fällig</div><div class="c-new"><b>${z.neu}</b>neu</div>
       <div class="muted"><b>${z.lern}</b>in Arbeit</div><div class="c-ok"><b>${z.ok}</b>sicher</div></div>
     <div class="panel">
@@ -1362,7 +1331,7 @@ function deckSeite(deck) {
 }
 
 // modus: "plan" = fällige + neue, "fällig" = nur fällige, "frei" = alles ohne Plan.
-// deck = null heißt: fällige Karten aus allen Modulen gemischt, höchstens einstellungen.mix.
+// Jede Runde gehört genau zu einem Modul.
 function fälligeKarten(d, kapitel) {
   const st = kartenStand(d.name);
   return d.cards.filter(c => (!kapitel || c.k === kapitel) && fällig(st[c.id])).sort((a, b) => st[a.id].due - st[b.id].due);
@@ -1370,14 +1339,8 @@ function fälligeKarten(d, kapitel) {
 function starten(deck, kapitel, modus) {
   const frei = modus === "frei", einst = kartenEinst();
   let queue;
-  if (!deck) {
-    // Reihum aus jedem Modul die am längsten fälligen Karten nehmen, damit kein Modul die Runde füllt.
-    const stapel = DECKS.map(d => fälligeKarten(d)).filter(x => x.length);
-    queue = [];
-    while (queue.length < einst.mix && stapel.some(x => x.length))
-      for (const x of stapel) if (x.length && queue.length < einst.mix) queue.push(x.shift());
-    queue = mischen(queue);
-  } else if (frei) queue = mischen(deck.cards.filter(c => !kapitel || c.k === kapitel));
+  if (!deck) return;
+  if (frei) queue = mischen(deck.cards.filter(c => !kapitel || c.k === kapitel));
   else {
     const st = kartenStand(deck.name);
     const neu = modus === "fällig" ? [] : deck.cards.filter(c => (!kapitel || c.k === kapitel) && !st[c.id]).slice(0, einst.neu);
@@ -1393,7 +1356,7 @@ function zeigen() {
   if (!s.queue.length) return ende();
   const c = s.queue[0];
   const st = s.frei ? null : kartenStand(c.d.name)[c.id];
-  const zurück = s.deck ? `#karteikarten/${encodeURIComponent(s.deck.name)}` : "#karteikarten";
+  const zurück = kartenLink(s.deck.name);
   s.umgedreht = false;
   const vorschau = s.frei ? ["heute nochmal", "", "", ""] : [1, 2, 3, 4].map(n => dauer(planen(st, n)));
   const offen = s.queue.length;
@@ -1402,10 +1365,10 @@ function zeigen() {
       <img src="${b.src}" alt="${esc(ohneTags(b.cap))}" loading="lazy"></button>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`).join("");
   const quelle = c.s ? `<a class="quelle" href="${c.d.pdf}#page=${c.s.p}" target="_blank" rel="noopener"><b>Lernskript S. ${c.s.p}</b>
       <span>${esc(c.s.t)}</span></a>` : "";
-  view.innerHTML = `<div class="topbar"><a class="back" href="${zurück}">← ${esc(s.deck ? s.deck.name : "Alle Module")}</a>
+  view.innerHTML = `<div class="topbar"><a class="back" href="${zurück}">← ${esc(s.deck.name)}</a>
       <div class="bar"><i style="width:${Math.round(100 * s.fertig / (s.fertig + offen))}%"></i></div>
       <span class="zahl">${s.fertig} / ${s.fertig + offen}</span></div>
-    <div class="status"><span>${s.deck ? "" : `<b class="modul">${esc(c.d.name)}</b>`}${esc(c.k)}</span>
+    <div class="status"><span>${esc(c.k)}</span>
       <span>${s.frei ? `<span class="mode">Frei üben – ändert den Plan nicht</span>` : !st ? "neue Karte" : st.typ === "wdh" ? "Wiederholung" : "im Lernen"}</span></div>
     <div class="stage"><div class="flash" id="flash">
       <div class="side"><div class="q">${c.q}</div>
@@ -1473,16 +1436,15 @@ function bewerten(n) {
 function ende() {
   const s = sitzung;
   document.body.classList.remove("lernen");
-  const nochNeu = s.deck && s.modus === "plan" && zählen(s.deck, s.kapitel).neu > 0;
-  const nochFällig = !s.deck && DECKS.some(d => fälligeKarten(d).length);
-  view.innerHTML = `<a class="back" href="${s.deck ? `#karteikarten/${encodeURIComponent(s.deck.name)}` : "#karteikarten"}">← ${esc(s.deck ? s.deck.name : "Alle Module")}</a>
+  const nochNeu = s.modus === "plan" && zählen(s.deck, s.kapitel).neu > 0;
+  view.innerHTML = `<a class="back" href="${kartenLink(s.deck.name)}">← ${esc(s.deck.name)}</a>
     <div class="panel done"><h2>Runde geschafft 🎉</h2>
       <p class="muted">${s.fertig} Karten erledigt · ${s.stats[1]}× Nochmal${s.frei ? "" : ` · ${s.stats[2]}× Schwer · ${s.stats[3]}× Gut · ${s.stats[4]}× Leicht`}</p>
       <p>Die Karten, bei denen deine Erklärung gehakt hat, kommen bald wieder. Die sicheren erst in einigen Tagen.</p>
       <div class="row">${nochNeu ? `<button class="btn primary" id="mehr">Weitere neue Karten</button>` : ""}
-        ${nochFällig ? `<button class="btn primary" id="mehr">Weitere fällige Karten</button>` : ""}
-        ${s.deck ? `<button class="btn" id="frei">Frei üben (neu gemischt)</button>` : ""}
-        <a class="btn" href="#karteikarten">Alle Module</a></div></div>`;
+        <button class="btn" id="frei">Frei üben (neu gemischt)</button>
+        <a class="btn" href="${kartenLink(s.deck.name)}">Zur Kartenauswahl</a>
+        <a class="btn" href="#lernen">Alle Module</a></div></div>`;
   sitzung = null;
   view.querySelector("#mehr")?.addEventListener("click", () => starten(s.deck, s.kapitel, s.modus));
   view.querySelector("#frei")?.addEventListener("click", () => starten(s.deck, s.kapitel, "frei"));
@@ -1506,7 +1468,7 @@ const baustein = (b, alt = "") => `<img class="baustein" src="${b.src}" alt="${e
 function lernenÜbersicht() {
   const tag = heuteIso(), pomo = db.get("pomo:" + tag, null);
   const summe = (f) => LERNEN.reduce((n, m) => n + f(m), 0);
-  kopf("Lernen", `${summe(m => (m.aufgaben || []).length)} Aufgaben und ${summe(m => (m.quiz || []).length)} Quizfragen`);
+  kopf("Lernen", `${summe(m => (m.aufgaben || []).length)} Aufgaben · ${summe(m => (m.quiz || []).length)} Quizfragen · ${DECKS.reduce((n, d) => n + d.cards.length, 0)} Karteikarten`);
   lernView.innerHTML = `<div class="panel pomokarte" style="margin-top:22px"><div class="zahl">🍅</div>
       <div><b style="font-family:var(--serif);font-size:20px">Pomodoro-Timer</b>
         <p class="muted" style="margin:2px 0 0">${pomodoro.läuft() ? `Läuft gerade: ${pomodoro.phaseName()} · ${pomodoro.anzeige()}` :
@@ -1514,12 +1476,14 @@ function lernenÜbersicht() {
       <a class="btn primary" href="#lernen/pomodoro">${pomodoro.läuft() ? "Öffnen" : "Timer starten"}</a></div>
     <div class="modgrid">${LERNEN.map(m => {
       const auf = m.aufgaben || [], quiz = m.quiz || [];
+      const deck = DECKS.find(d => d.name === m.name), z = deck && zählen(deck);
       const gelöst = auf.filter(a => aufgabeStand(a)?.s === "ok").length;
       const qs = quiz.map(quizStand).filter(Boolean), richtig = qs.filter(s => s.ok).length;
       return `<a class="modkarte" href="#lernen/${encodeURIComponent(m.name)}"><div class="title">${esc(m.name)}</div>
         <div class="zeilen"><span><b>${auf.filter(a => a.art === "rechnen").length}</b> Rechenaufgaben · <b>${auf.filter(a => a.art === "verstehen").length}</b> Verständnisfragen</span>
           <span><b>${gelöst}</b> von ${auf.length} sicher gelöst</span>
-          <span><b>${quiz.length}</b> Quizfragen${qs.length ? ` · zuletzt <b>${richtig}</b> von ${qs.length} richtig` : ""}</span></div>
+          <span><b>${quiz.length}</b> Quizfragen${qs.length ? ` · zuletzt <b>${richtig}</b> von ${qs.length} richtig` : ""}</span>
+          ${z ? `<span><b>${z.gesamt}</b> Karteikarten · <b>${z.due}</b> fällig · <b>${z.neu}</b> neu</span>` : ""}</div>
         <div class="bar"><i style="width:${auf.length ? Math.round(100 * gelöst / auf.length) : 0}%"></i></div></a>`;
     }).join("") || `<p class="empty">Noch keine Aufgaben vorhanden.</p>`}</div>`;
 }
@@ -1527,10 +1491,10 @@ function lernenÜbersicht() {
 function modulSeite(m, teil) {
   teil = teil || store.get("lernen:teil", "aufgaben");
   const auf = m.aufgaben || [], quiz = m.quiz || [], probe = auf.some(a => a.art === "rechnen");
-  if (teil === "probe" && !probe) teil = "aufgaben";
-  if (teil !== "probe" && !auf.length) teil = "quiz";
-  if (teil !== "probe" && !quiz.length) teil = "aufgaben";
-  kopf(m.name, `Lernen · ${auf.length} Aufgaben · ${quiz.length} Quizfragen`);
+  const deck = DECKS.find(d => d.name === m.name);
+  const teile = [auf.length && "aufgaben", quiz.length && "quiz", probe && "probe", deck?.cards.length && "karteikarten"].filter(Boolean);
+  if (!teile.includes(teil)) teil = teile[0] || "aufgaben";
+  kopf(m.name, `Lernen · ${auf.length} Aufgaben · ${quiz.length} Quizfragen${deck ? ` · ${deck.cards.length} Karteikarten` : ""}`);
   const filter = store.get("lernen:filter", "alle");
   const passt = a => filter === "alle" || (filter === "offen" ? aufgabeStand(a)?.s !== "ok" : a.art === filter);
   const kapitel = kapitelVon([...auf, ...quiz]);
@@ -1549,7 +1513,8 @@ function modulSeite(m, teil) {
       <p class="muted" style="margin-top:18px;font-size:14px"><span class="punkt ok" style="display:inline-block;vertical-align:-2px"></span> selbst gelöst
         <span class="punkt hilfe" style="display:inline-block;vertical-align:-2px;margin-left:12px"></span> mit Hilfe
         <span class="punkt nein" style="display:inline-block;vertical-align:-2px;margin-left:12px"></span> nicht geschafft</p>`;
-  } else if (teil === "probe") inhalt = probeEinstellungen(m);
+  } else if (teil === "karteikarten") inhalt = `<div id="karteninhalt"></div>`;
+  else if (teil === "probe") inhalt = probeEinstellungen(m);
   else {
     const qs = quiz.map(f => [f, quizStand(f)]);
     const kq = store.get("quiz:kapitel:" + m.name, "");
@@ -1572,9 +1537,14 @@ function modulSeite(m, teil) {
     <div class="row" style="justify-content:space-between;margin:6px 0 4px"><div class="seg" id="teil">
       ${auf.length ? `<button data-t="aufgaben" aria-pressed="${teil === "aufgaben"}">Aufgaben (${auf.length})</button>` : ""}
       ${quiz.length ? `<button data-t="quiz" aria-pressed="${teil === "quiz"}">Quiz (${quiz.length})</button>` : ""}
-      ${probe ? `<button data-t="probe" aria-pressed="${teil === "probe"}">Probeklausur</button>` : ""}</div>
+      ${probe ? `<button data-t="probe" aria-pressed="${teil === "probe"}">Probeklausur</button>` : ""}
+      ${deck?.cards.length ? `<button data-t="karteikarten" aria-pressed="${teil === "karteikarten"}">Karteikarten (${deck.cards.length})</button>` : ""}</div>
       ${m.pdf ? `<a class="btn" href="${m.pdf}" target="_blank" rel="noopener">Lernskript öffnen</a>` : ""}</div>${inhalt}`;
-  lernView.querySelectorAll("#teil button").forEach(b => b.onclick = () => { store.set("lernen:teil", b.dataset.t); modulSeite(m, b.dataset.t); });
+  lernView.querySelectorAll("#teil button").forEach(b => b.onclick = () => {
+    store.set("lernen:teil", b.dataset.t);
+    const ziel = `#lernen/${encodeURIComponent(m.name)}/${b.dataset.t}`;
+    location.hash === ziel ? modulSeite(m, b.dataset.t) : location.hash = ziel;
+  });
   lernView.querySelectorAll("#afilter button").forEach(b => b.onclick = () => { store.set("lernen:filter", b.dataset.f); modulSeite(m, "aufgaben"); });
   $("#zufall")?.addEventListener("click", () => {
     const liste = auf.filter(passt), offen = liste.filter(a => aufgabeStand(a)?.s !== "ok");
@@ -1586,6 +1556,7 @@ function modulSeite(m, teil) {
   lernView.querySelectorAll("#qmodus button").forEach(b => b.onclick = () => { store.set("quiz:modus", b.dataset.m); modulSeite(m, "quiz"); });
   $("#qlos")?.addEventListener("click", () => quizStarten(m, { kapitel: $("#qkap").value, anzahl: store.get("quiz:anzahl", 10), modus: store.get("quiz:modus", "mix") }));
   if (teil === "probe") probeEreignisse(m);
+  if (teil === "karteikarten") deckSeite(deck);
 }
 
 // Eine Aufgabe: erst selbst rechnen, dann Tipp, Ergebnis und Lösung Schritt für Schritt aufdecken, am Ende ehrlich bewerten.
@@ -2090,20 +2061,25 @@ function kontoSeite() {
 }
 
 /* ───────────── Navigation ───────────── */
-const VIEWS = { start: "view-start", skripte: "view-skripte", karteikarten: "view-karten", lernen: "view-lernen", termine: "view-termine", konto: "view-konto" };
+const VIEWS = { start: "view-start", skripte: "view-skripte", lernen: "view-lernen", termine: "view-termine", konto: "view-konto" };
 function route(oben = true) {
   const h = decodeURIComponent(location.hash.slice(1));
   const [teil, ...rest] = h.split("/");
+  // Alte Lesezeichen führen zur Kartenauswahl im jeweiligen Modul.
+  if (teil === "karteikarten") {
+    const name = rest.join("/");
+    location.replace(name && DECKS.some(d => d.name === name) ? kartenLink(name) : "#lernen");
+    return;
+  }
   const r = VIEWS[teil] ? teil : "start";
   document.body.classList.remove("lernen");
   document.querySelector(".lupe")?.remove();
   for (const [k, id] of Object.entries(VIEWS)) document.getElementById(id).hidden = k !== r;
   document.querySelectorAll("#tabs a").forEach(a => a.dataset.r === r ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
-  if (r !== "karteikarten") sitzung = null;
-  if (!(r === "lernen" && rest[1] === "quiz")) quizRunde = null;
+  sitzung = null;
+  if (!(r === "lernen" && (rest[1] === "quiz" || rest[0] === "abschluss"))) quizRunde = null;
   if (r === "start") startSeite();
   else if (r === "skripte") kopf("Meine Lernskripte", `${DATA.length} Module · Lernskripte als PDF zum Ansehen und Herunterladen`);
-  else if (r === "karteikarten") { const deck = DECKS.find(d => d.name === rest.join("/")); deck ? deckSeite(deck) : deckÜbersicht(); }
   else if (r === "termine") termineSeite();
   else if (r === "konto") kontoSeite();
   else if (r === "lernen") {
@@ -2114,7 +2090,7 @@ function route(oben = true) {
     else if (rest[1] === "aufgabe" && m.aufgaben?.find(a => a.id === rest[2])) aufgabeSeite(m, m.aufgaben.find(a => a.id === rest[2]));
     else if (rest[1] === "quiz" && quizRunde?.m === m) quizSeite();
     else if (rest[1] === "probe") store.get("probe:lauf", null)?.modul === m.name ? probeSeite(m) : modulSeite(m, "probe");
-    else modulSeite(m);
+    else modulSeite(m, rest[1]);
   }
   pomodoro.tick();
   if (oben) window.scrollTo(0, 0);
