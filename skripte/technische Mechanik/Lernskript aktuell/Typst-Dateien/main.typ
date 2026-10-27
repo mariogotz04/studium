@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -1286,7 +1286,7 @@
 #text(size: 14pt, fill: navy)[TM1 Statik · TM2 Elastostatik]
 #v(4mm)
 #text(size: 20pt, fill: navy)[Feynman-Lernskript]
-#text(size: 13pt, fill: teal)[Klausurfassung · Stand 26.10.2026]
+#text(size: 13pt, fill: teal)[Klausurfassung · Stand 27.10.2026]
 #v(4mm)
 #bild("cover", [Schematische Illustration; eigens erzeugt, nicht maßstäblich.], height: 57mm)
 #text(size: 12pt, fill: teal)[Freischneiden → Gleichgewicht → Schnittgrößen → Spannung und Verformung]

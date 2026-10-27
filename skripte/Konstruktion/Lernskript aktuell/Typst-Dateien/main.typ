@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -51,6 +51,43 @@
  table(inset: 6pt, stroke: 0.35pt + rgb("cfdae2"), ..args)
 }
 #let th(..cells) = table.header(..cells.pos().map(c => table.cell(fill: pale)[#strong(c)]))
+
+// ─── Überblick-Ebenen und Chunkmaps (in allen Modulen gleich) ─────────────────
+// Ebene 0: Seite „Das Modul auf einen Blick“ nach dem Wegweiser (Label <ueberblick>).
+// Ebene 1: unter jeder Kapitelüberschrift (Label <a-n>) #überblick mit #idee-Links und eine #karte oder ein #ablauf.
+// Ebene 2: die Abschnitte; am Ende jedes Abschnitts #hoch(<a-n>, [Kapitelübersicht]).
+// Die Kästen sind keine Überschriften: Inhaltsverzeichnis und PDF-Lesezeichen bleiben unverändert.
+#let chunk(titel, begriffe, ziel: none, fill: pale, stroke: navy) = {
+  let kasten = block(width: 100%, fill: fill, stroke: 0.6pt + stroke, radius: 4pt, inset: (x: 6pt, y: 5pt), breakable: false)[
+    #set par(leading: 0.35em, spacing: 0.35em, justify: false)
+    #set text(hyphenate: true)
+    #text(size: 9pt, weight: "bold", fill: navy, titel)
+    #if begriffe != none [#parbreak() #text(size: 7.8pt, fill: muted, begriffe)]
+  ]
+  if ziel == none { kasten } else { link(ziel, kasten) }
+}
+#let pfeil(beschriftung: none, zeichen: sym.arrow.r) = align(center + horizon, stack(dir: ttb, spacing: 2pt,
+  ..(if beschriftung != none { (text(size: 6.8pt, fill: teal, beschriftung),) } else { () }),
+  text(size: 13pt, fill: teal, zeichen)))
+// Chunkmap als Raster: #karte((1fr, auto, 1fr), chunk(..), pfeil(..), chunk(..))
+#let karte(spalten, ..zellen) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em,
+  grid(columns: spalten, column-gutter: 3pt, row-gutter: 7pt, align: center + horizon, ..zellen))
+// Flussdiagramm von oben nach unten: #ablauf(chunk(..), entscheidung(..), chunk(..))
+#let ablauf(breite: 80%, ..schritte) = block(width: 100%, breakable: false, above: 0.7em, below: 0.7em, align(center,
+  stack(dir: ttb, spacing: 2pt, ..schritte.pos().enumerate().map(((i, x)) =>
+    (if i > 0 { (text(size: 12pt, fill: teal, sym.arrow.b),) } else { () }) + (block(width: breite, x),)).flatten())))
+#let entscheidung(frage, ja, nein) = stack(dir: ttb, spacing: 3pt,
+  chunk(frage, none, fill: sand, stroke: teal),
+  grid(columns: (1fr, 1fr), column-gutter: 8pt,
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *ja*]) #ja],
+    [#align(center, text(size: 8pt, fill: teal)[#sym.arrow.b *nein*]) #nein]))
+#let idee(ziel, kern, satz) = [#link(ziel)[#text(fill: teal, weight: "bold", kern)] #satz]
+#let überblick(titel, ..ideen) = block(width: 100%, fill: pale, inset: (x: 9pt, y: 7pt), above: 0.6em, below: 0.6em, breakable: false)[
+  #text(fill: navy, weight: "bold", titel)
+  #set list(marker: text(fill: teal, sym.arrow.r), spacing: 0.45em)
+  #list(..ideen.pos())
+]
+#let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
   "b-projektionen": "abbildungen/b-projektionen.svg",
@@ -224,7 +261,7 @@
 #text(size: 12pt, fill: teal)[Form → Darstellung → Bemaßung → Funktion]
 ]
 #note("Dein Feynman-Schritt", [Sieh Dir die Zeichnung an. Erkläre ohne Vorlage: *Was sehe ich? Warum ist es so gezeichnet? Welche Angabe brauche ich für Fertigung und Prüfung?* Vergleiche erst anschließend mit der Erklärung und prüfe Dich an einer Aufgabe auf der Lernwebseite.])
-Stand: *26.10.2026*. Grundlage sind die fachlichen Kapitel 1–15 des Buchs, der vollständig überarbeitete alte Lernskript-Stand und die Altklausur WS20/21. Weil es keine Vorlesungsskripte gibt, wird auf Deinen Auftrag das Buch breit abgedeckt; die Gliederung folgt seiner Reihenfolge, mit zusammengefassten Grundlagen- und Anwendungskapiteln. Aufgaben, ausführliche Lösungen und Quiz stehen auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält Erklärung und im Anhang die Formelsammlung.
+Stand: *27.10.2026*. Grundlage sind die fachlichen Kapitel 1–15 des Buchs, der vollständig überarbeitete alte Lernskript-Stand und die Altklausur WS20/21. Weil es keine Vorlesungsskripte gibt, wird auf Deinen Auftrag das Buch breit abgedeckt; die Gliederung folgt seiner Reihenfolge, mit zusammengefassten Grundlagen- und Anwendungskapiteln. Aufgaben, ausführliche Lösungen und Quiz stehen auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält Erklärung und im Anhang die Formelsammlung.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -237,7 +274,71 @@ Stand: *26.10.2026*. Grundlage sind die fachlichen Kapitel 1–15 des Buchs, der
 #text(size: 8.5pt, fill: muted)[*Quellenkürzel:* B = Labisch/Wählisch, Technisches Zeichnen, 7. Auflage 2025. Gedruckte S. 1–291 = PDF-S. minus 11; Sachwortverzeichnis S. 293–297 = PDF-S. minus 10. AK = Konstruktion Prüfung WS20/21, 03.02.2021; Seiten dort sind PDF-Seiten. L-alt = Claude-Lernskript Stand 15.10.2026; überarbeitete Vorarbeit, keine Dozentenquelle. Ü bezeichnet eine Buchübung. Eigene Beispiele, Herleitungen und Lösungen sind gekennzeichnet; es liegen keine amtlichen Lösungen zu AK vor. Normbezeichnungen folgen der jeweils genannten Buch-/Aufgabenfassung; ältere und neuere Schreibweisen werden unterschieden. Ergänzende Herstellerquellen sind direkt im Abschnitt verlinkt.]
 
 #pagebreak()
-= Kapitel 1 · Grundlagen und Zeichnungserstellung
+#heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
+
+Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zusammenhängen.
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Kapitel 1 · Grundlagen und Zeichnungserstellung], [Zeichnungssprache · Normen · Blatt · Zeichnungsart · Stückliste], ziel: <a-1>),
+  pfeil(beschriftung: [wird digital erstellt mit]),
+  chunk([Kapitel 2 · CAD und digitale Produktmodelle], [CAD · Volumenmodell · Modellierschritte · Schnittstellen · Freigabe], ziel: <a-2>),
+  pfeil(beschriftung: [liefert Geometrie für]),
+  chunk([Kapitel 3 · Werkstücke darstellen], [Maßstab · Linien · Ansichten · Projektion · Schnitt], ziel: <a-3>),
+)
+#align(center)[#text(size: 8pt, fill: teal)[↓ wird maßlich festgelegt durch]]
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Kapitel 4 · Bemaßung und Dokumentation], [Funktion · Bezug · Maße · Sonderzeichen · Dokumentstand], ziel: <a-4>),
+  pfeil(beschriftung: [wird ergänzt durch]),
+  chunk([Kapitel 5 · Oberflächen und Kanten], [Funktion · Rauheit · Kennwert · Oberflächensymbol · Kante], ziel: <a-5>),
+  pfeil(beschriftung: [braucht passende Grenzangaben aus]),
+  chunk([Kapitel 6 · Toleranzen und Passungen], [Nennmaß · Abmaß · Grenzmaß · Passung · Form und Lage], ziel: <a-6>),
+)
+#align(center)[#text(size: 8pt, fill: teal)[↓ sichert die Funktion von]]
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Kapitel 7 · Gewinde und Schraubenverbindungen], [Gewindeprofil · Darstellung · Nutzlänge · Schraube · Normbezeichnung], ziel: <a-7>),
+  pfeil(beschriftung: [ergänzt Verbindungen an]),
+  chunk([Kapitel 8 · Elemente an Achsen und Wellen], [Wellenende · Freistich · Zentrierung · Passfeder · Profilwelle], ziel: <a-8>),
+  pfeil(beschriftung: [braucht axiale Sicherung aus]),
+  chunk([Kapitel 9 · Sicherungselemente], [Axialsicherung · Sicherungsring · Nut · Nutmutter · Sicherungsblech], ziel: <a-9>),
+)
+#align(center)[#text(size: 8pt, fill: teal)[↓ sichert Bauteile in]]
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Kapitel 10 · Wälzlager und Lageranordnungen], [Last · Lagerbauform · Sitz · Festlager · Loslager], ziel: <a-10>),
+  pfeil(beschriftung: [wird abgedichtet durch]),
+  chunk([Kapitel 11 · Dichtungen], [Medium · Relativbewegung · Dichtprinzip · Einbauraum · Oberfläche], ziel: <a-11>),
+  pfeil(beschriftung: [steht im Getriebe neben]),
+  chunk([Kapitel 12 · Zahnräder], [Zahnradart · Modul · Zähnezahl · Teilkreis · Verzahnungstabelle], ziel: <a-12>),
+)
+#align(center)[#text(size: 8pt, fill: teal)[↓ wird zusammengeführt in]]
+#karte((1fr,),
+  chunk([Kapitel 13 · Zeichnungen lesen und erstellen], [Gesamtzeichnung · Funktion · Stückliste · Montage · Einzelteilzeichnung], ziel: <a-13>),
+)
+
+Die Form eines Bauteils muss für andere eindeutig lesbar werden. Grundlagen, CAD und Darstellungsregeln führen vom räumlichen Modell zur Zeichnung; Bemaßung, Oberflächen und Toleranzen beschreiben die nötige Funktion. Gewinde, Wellenverbindungen, Sicherungen, Lager, Dichtungen und Zahnräder wenden diese Sprache auf Maschinenelemente an. Am Ende werden Baugruppen über ihre Funktion und Montage verstanden und daraus vollständige Einzelteilzeichnungen erstellt.
+#src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
+
+#pagebreak()
+
+#pagebreak(weak: true)
+= Kapitel 1 · Grundlagen und Zeichnungserstellung <a-1>
+
+#überblick([Kapitel 1 auf einen Blick],
+  idee(<a-1-1>, [Die Zeichnung vermittelt eine eindeutige technische Aussage.], [Fertigung und Montage müssen dieselbe Form und Funktion erkennen können.]),
+  idee(<a-1-2>, [Normen vereinbaren die Sprache.], [Zeichen, Formate und Angaben werden dadurch einheitlich lesbar.]),
+  idee(<a-1-4>, [Die Zeichnungsart folgt dem Zweck.], [Einzelteil und Gesamtzeichnung geben unterschiedliche Informationen weiter.]),
+  idee(<a-1-5>, [Positionsnummern verknüpfen Bauteil und Liste.], [Die Stückliste ordnet jeder Position die benötigten Teile zu.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Zweck und Funktion], [Was muss der Empfänger wissen?], ziel: <a-1-1>),
+  pfeil(beschriftung: [bestimmt]),
+  chunk([Zeichnungsart], [Einzelteil · Baugruppe · Skizze], ziel: <a-1-4>),
+  pfeil(beschriftung: [braucht]),
+  chunk([Geordnete Information], [Normen · Blatt · Positionen · Stückliste], ziel: <a-1-5>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Eine Technische Zeichnung ist eine #strong[Sprache]: Der Konstrukteur schreibt, Fertigung, Einkauf, Montage und Zulieferer lesen. Damit alle dasselbe verstehen, ist diese Sprache #strong[genormt]. In diesem Teil geht es um die Grundbegriffe: warum orthogonale Ansichten für die eindeutige Fertigungsdarstellung eingesetzt werden, welche Normen es gibt, welche Blattformate erlaubt sind, welche Zeichnungsarten es gibt und wie Gesamtzeichnung, Positionsnummern und Stückliste zusammenhängen.
 
@@ -267,6 +368,8 @@ Ein Produkt entsteht nicht an einem Ort. Konstruktion, Arbeitsvorbereitung, Fert
 #note("Merke", [Die senkrechte Parallelprojektion ist #strong[maßstäblich]: Eine Fläche parallel zur Bildebene erscheint unverzerrt. Deshalb besteht eine Technische Zeichnung aus mehreren solchen Ansichten (mehr dazu in Kapitel 3).])
 
 #src[B S. 1–2; L-alt A1, überarbeitet.]
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.2 Normen: DIN, EN, ISO <a-1-2>
 
@@ -283,6 +386,8 @@ Eine Zeichnung ist ein stark vereinfachtes, zweidimensionales Abbild eines dreid
 #note("Achtung", [Gleiche Nummer heißt nicht gleicher Inhalt. DIN 228 und DIN EN ISO 228 sind verschiedene Normen (S. 4). Die Norm immer vollständig mit Präfix nennen.], fill: sand)
 
 #src[B S. 3–4; L-alt A1, überarbeitet.]
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.3 Blattformate und Blattaufteilung <a-1-3>
 
@@ -320,6 +425,8 @@ x = kurze Seite, y = lange Seite. Fläche von An: $ A _("An")  = 1 thin "m" ^(2)
 - #strong[Feldeinteilung] (Bild 2-2): Die Spalten bekommen Großbuchstaben, die Zeilen Zahlen, wie beim Schachbrett. So kann man am Telefon sagen: „Die Bohrung in Feld B6“.
 
 #src[B S. 5–7; L-alt A1, überarbeitet.]
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.4 Zeichnungsarten <a-1-4>
 
@@ -346,6 +453,8 @@ Ein Erzeugnis wird von oben nach unten zerlegt: #strong[Anlage/System → Gerät
 Wird eine Zeichnung zu groß und damit für Werkstatt oder Archiv unhandlich, teilt man sie auf #strong[mehrere Blätter] auf: Alle Blätter haben dieselbe Benennung und Zeichnungsnummer, werden durch einen Untertitel unterschieden, und das erste Blatt enthält eine Übersicht aller zusammengehörenden Blätter (S. 10).
 
 #src[B S. 7–12; L-alt A1, überarbeitet.]
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.5 Positionsnummern und Stückliste <a-1-5>
 
@@ -359,6 +468,8 @@ In der Gesamtzeichnung bekommt jedes Teil eine #strong[Positionsnummer]. Über d
 Die #strong[Stückliste] ist das nach Positionsnummern geordnete Verzeichnis aller Einzelteile und neben der Zeichnung das wichtigste Ergebnis der Konstruktion (S. 12). Sie ist Grundlage für die Fertigungsvorbereitung und für kaufmännische Bereiche wie Kalkulation, Bestellwesen und Lager. Die Spalten folgen in Kapitel 4. Eine #strong[Explosionszeichnung] zeigt die Teile auseinandergezogen, meist perspektivisch; man braucht sie z. B. für Kataloge und Montageanleitungen (S. 12, Bild 2-6; Beispiel in Kapitel 13).
 
 #src[B S. 11–12; L-alt A1, überarbeitet.]
+#hoch(<a-1>, [Kapitelübersicht])
+
 
 == 1.6 Skizzen <a-1-6>
 
@@ -375,8 +486,27 @@ Eine Skizze ist eine Freihandzeichnung. Es gibt zwei Arten (S. 13–14):
 
 *Der Zusammenhang in Kapitel 1.* Eine Zeichnung wird eindeutig, wenn Formdarstellung, genormte Angaben und Dokumentorganisation zusammenpassen. Zeichnungsart und Stückliste verbinden die Information über das Einzelteil mit seiner Rolle in der Baugruppe.
 #src[B S. 1–16; eigene Zusammenfassung.]
+#hoch(<a-1>, [Kapitelübersicht])
 
-= Kapitel 2 · CAD und digitale Produktmodelle
+
+#pagebreak(weak: true)
+= Kapitel 2 · CAD und digitale Produktmodelle <a-2>
+
+#überblick([Kapitel 2 auf einen Blick],
+  idee(<a-2-3>, [Das CAD-Modell beschreibt Geometrie intern.], [B-Rep und CSG organisieren Volumen auf unterschiedliche Weise.]),
+  idee(<a-2-4>, [Das Modell entsteht aus gezielten Schritten.], [Skizzen und Modellieroperationen bauen die gewünschte Bauteilform auf.]),
+  idee(<a-2-5>, [Das Austauschformat folgt dem Verwendungszweck.], [Geometrie, bearbeitbare Informationen und Darstellungsdaten werden unterschiedlich übertragen.]),
+  idee(<a-2-6>, [Dokumentation braucht einen verbindlichen Stand.], [Modell und Zeichnung müssen zum freigegebenen Produkt passen.]),
+)
+
+#ablauf(
+  chunk([Geometrie und Aufbau planen], [Skizze · Bezug · Volumenmodell], ziel: <a-2-3>),
+  chunk([Bauteil modellieren], [gezielte Operationen und passende Arbeitstechnik], ziel: <a-2-4>),
+  chunk([Daten weitergeben und dokumentieren], [Schnittstelle wählen · verbindlichen Stand sichern], ziel: <a-2-6>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Heute wird fast nur noch am Rechner konstruiert. Trotzdem bleibt die Technische Zeichnung wichtig, weil sie den #strong[verbindlichen Stand] einer Konstruktion dokumentiert (S. 17, 33). In diesem Teil lernst du, wie ein 3D-CAD-System intern arbeitet (Volumenmodell aus Grundkörpern und Booleschen Operationen), wie man Bauteile aus der realen Welt in den Rechner bringt (Scanner, Photogrammetrie) und wieder heraus (3D-Druck), welche Austauschformate es gibt und wofür ein Digital Mock-Up gut ist. Für Wirtschaftsingenieure besonders wichtig: wo CAD wirtschaftlich stark ist und wo nicht (eigene Ergänzung: WI-Sicht).
 
@@ -417,6 +547,8 @@ Ablauf: CAD-Modell → Export als #strong[STL] (Dreiecksfacetten) → Programm z
 )
 
 #src[B S. 17–25; L-alt A2, überarbeitet.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.2 Wie eine CAD-Software aufgebaut ist <a-2-2>
 
@@ -425,6 +557,8 @@ CAD-Software ist im Kern ein Verwaltungsprogramm: #strong[Eingabebaustein] → #
 Es gibt #strong[linien-, flächen- und volumenbasierte] Systeme. Linienbasierte Systeme sind im Maschinenbau unüblich und werden heute vor allem in der Elektrotechnik für Schaltpläne genutzt (S. 25).
 
 #src[B S. 25; L-alt A2, überarbeitet.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.3 Volumenmodelle: B-Rep und CSG <a-2-3>
 
@@ -447,6 +581,8 @@ Gespeichert wird die #strong[Entstehungsgeschichte]: welche Grundkörper (Quader
 #note("Beispiel (eigene Ergänzung)", [Eine Lochscheibe = Zylinder Ø80 × 10 #strong[minus] Zylinder Ø20 (Mittelbohrung) #strong[minus] 4 Zylinder Ø9 (Schraubenlöcher). Eine Welle mit Bund = Zylinder Ø30 × 100 #strong[vereinigt] mit Zylinder Ø40 × 10.])
 
 #src[B S. 25–27; L-alt A2, überarbeitet.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.4 Arbeitstechnik im 3D-CAD <a-2-4>
 
@@ -464,6 +600,8 @@ Gespeichert wird die #strong[Entstehungsgeschichte]: welche Grundkörper (Quader
 Grundelement ist die (auch gekrümmte) Fläche, beschrieben über #strong[NURBS] und verändert über #strong[Kontrollpunkte]. Ideal für Design und Freiformflächen. Nachteile: keine volumenbezogenen Operationen wie Volumenberechnung oder Kollisionsprüfung, oft keine Zeichnungsableitung und kein Datenbaum, und es ist nicht garantiert, dass die Flächen lückenlos schließen (was für den 3D-Druck nötig wäre).
 
 #src[B S. 27–28, Bild 3-10/3-11; L-alt A2, überarbeitet.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.5 Schnittstellen <a-2-5>
 
@@ -481,6 +619,8 @@ Daten müssen zwischen CAD, Berechnung, Arbeitsplanung, 3D-Druck und Firmen flie
 #note("Merkhilfe (eigene Ergänzung)", [DXF = #strong[D]rawing (2D-Zeichnung) · STEP = #strong[E]verything (ganzes Produkt) · STL = #strong[T]riangles (3D-Druck) · VDAFS = #strong[V]DA (Auto).])
 
 #src[B S. 30–31; L-alt A2, überarbeitet.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.6 Rechnerunterstützte Konstruktion und Dokumentation <a-2-6>
 
@@ -515,6 +655,8 @@ Daten müssen zwischen CAD, Berechnung, Arbeitsplanung, 3D-Druck und Firmen flie
 Außerdem lassen sich aus dem Modell Stücklisten, Illustrationen und NC-Programme ableiten (S. 35).
 
 #src[B S. 32–35; L-alt A2, überarbeitet.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.7 KI beim Technischen Zeichnen <a-2-7>
 
@@ -526,8 +668,29 @@ KI-Antworten sind nicht wissensbasiert, sondern beruhen auf #strong[Wahrscheinli
 
 *Der Zusammenhang in Kapitel 2.* Das interne Geometriemodell entsteht aus gezielten Modellierschritten. Passende Schnittstellen und ein freigegebener Dokumentationsstand machen es für andere Beteiligte nutzbar.
 #src[B S. 17–38; eigene Zusammenfassung.]
+#hoch(<a-2>, [Kapitelübersicht])
 
-= Kapitel 3 · Werkstücke darstellen
+
+#pagebreak(weak: true)
+= Kapitel 3 · Werkstücke darstellen <a-3>
+
+#überblick([Kapitel 3 auf einen Blick],
+  idee(<a-3-1>, [Der Maßstab ändert die Darstellung.], [Das eingetragene Maß beschreibt weiterhin die wirkliche Größe.]),
+  idee(<a-3-2>, [Die Linienart trägt Bedeutung.], [Sichtbare, verdeckte und gedankliche Elemente werden unterschiedlich gekennzeichnet.]),
+  idee(<a-3-3>, [Ansichten müssen räumlich zusammenpassen.], [Projektionsmethode und Anordnung bestimmen die Zuordnung.]),
+  idee(<a-3-5>, [Ein Schnitt macht innere Formen lesbar.], [Schnittverlauf, Schraffur und Ausnahmen gehören zusammen.]),
+)
+
+#ablauf(
+  chunk([Ansichten und Maßstab wählen], [so viele wie zur eindeutigen Form nötig], ziel: <a-3-3>),
+  entscheidung([Sind innere Merkmale ausreichend erkennbar?],
+    chunk([Ansichten ausarbeiten], [passende Linienarten verwenden], ziel: <a-3-2>),
+    chunk([Schnitt ergänzen], [Schnittverlauf · Schraffur · Ausnahmen prüfen], ziel: <a-3-5>)),
+  chunk([Räumliche Übereinstimmung kontrollieren], [alle Ansichten beschreiben denselben Körper], ziel: <a-3-3>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Hier lernst du das „Alphabet“ der Zeichnung: in welchem #strong[Maßstab] gezeichnet wird, welche #strong[Linie] was bedeutet, wie die #strong[Ansichten] angeordnet werden und wie man mit #strong[Schnitten] ins Innere eines Bauteils schaut. Dieser Teil ist die Grundlage für alles Weitere und wird in der vorliegenden Altklausur mit Verständnis- und Zeichenaufgaben geprüft.
 
@@ -569,6 +732,8 @@ l#sub[Z], l#sub[W] in mm. 1 : 2 heißt: 1 mm auf dem Papier = 2 mm in Wirklichke
 #note("Beispiel (eigene Ergänzung)", [Eine Welle ist 480 mm lang. Auf A3 (420 mm breit) passt sie 1 : 1 nicht. Im Maßstab 1 : 2 ist sie 240 mm lang gezeichnet; an der Maßlinie steht trotzdem „480“. Eine kleine Nut von 1,2 mm Breite zeichnest du zusätzlich als Einzelheit „Z 5:1“, dort ist sie 6 mm breit.])
 
 #src[B S. 39–41; L-alt B1, überarbeitet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 == 3.2 Linienarten <a-3-2>
 
@@ -593,6 +758,8 @@ Nach #strong[DIN EN ISO 128-2] gibt es nur zwei Linienbreiten: #strong[breit] un
 #note("Merkhilfe (eigene Ergänzung)", [#strong[Breit] = was man am Teil sieht oder was besonders wichtig ist (Kanten, Schnittverlauf, Behandlungszonen). #strong[Schmal] = alles „Drumherum“ (Maße, Schraffur, Mittellinien, Verdecktes, Nachbarteile). Strich-#strong[Zwei]punkt = „das #strong[zweite] Teil“: Nachbarteil, zweite Stellung, zweiter Zustand (Rohteil).])
 
 #src[B S. 41–43, Tab. 4-2, Bild 4-2; L-alt B1, überarbeitet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 == 3.3 Anordnung der Ansichten <a-3-3>
 
@@ -634,6 +801,8 @@ Damit niemand die Methoden verwechselt, wird die Projektionsmethode durch ein #s
 #note("Achtung", [Bei Methode 3 liegt die Seitenansicht #strong[von links] auch #strong[links]. Bei Methode 1 liegt sie rechts. Wer das vertauscht, zeichnet das Teil spiegelverkehrt.], fill: sand)
 
 #src[B S. 43–46, Bild 4-3 bis 4-6; L-alt B1, überarbeitet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 == 3.4 Vereinfachungen in Ansichten <a-3-4>
 
@@ -648,6 +817,8 @@ Damit niemand die Methoden verwechselt, wird die Projektionsmethode durch ein #s
 )
 
 #src[B S. 47–49; L-alt B1, überarbeitet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 == 3.5 Schnitte und Schraffur <a-3-5>
 
@@ -689,6 +860,8 @@ Verdeckte Kanten machen eine Zeichnung schnell unübersichtlich. Besser: Man #st
 #strong[Profilschnitte] (Querschnitte, Bild 4-24): in die Ansicht #strong[hineingedreht] mit #strong[schmalen] Volllinien, #strong[neben] die Ansicht gezeichnet mit #strong[breiten] Volllinien (S. 54–55).
 
 #src[B S. 49–53; L-alt B1, überarbeitet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 == 3.6 Was nicht geschnitten wird <a-3-6>
 
@@ -699,6 +872,8 @@ Ein Schnitt soll Inneres zeigen. Teile, die #strong[in Längsrichtung] getroffen
 #note("Merkhilfe „WeSBo-PaKS-NiKu“ (eigene Ergänzung)", [#strong[We]llen, #strong[S]tifte, #strong[Bo]lzen, #strong[Pa]ssfedern, #strong[K]eile, #strong[S]chrauben, #strong[Ni]ete, #strong[Ku]geln.])
 
 #src[B S. 56, Bild 4-25/4-26; L-alt B1, überarbeitet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
 
 == 3.7 Schnittlinien und Schnittverlauf <a-3-7>
 
@@ -716,8 +891,27 @@ Ein Schnitt soll Inneres zeigen. Teile, die #strong[in Längsrichtung] getroffen
 
 *Der Zusammenhang in Kapitel 3.* Maßstab und Linien bilden das Alphabet. Ansichten ordnen die Raumrichtungen zu, Schnitte machen verborgene Merkmale lesbar; alle Darstellungen müssen denselben Körper beschreiben.
 #src[B S. 39–64; eigene Zusammenfassung.]
+#hoch(<a-3>, [Kapitelübersicht])
 
-= Kapitel 4 · Bemaßung und Dokumentation
+
+#pagebreak(weak: true)
+= Kapitel 4 · Bemaßung und Dokumentation <a-4>
+
+#überblick([Kapitel 4 auf einen Blick],
+  idee(<a-4-1>, [Die Funktion bestimmt die nötigen Angaben.], [Geometrische Produktspezifikation verknüpft Gestalt und Anforderungen.]),
+  idee(<a-4-3>, [Maße müssen vollständig und eindeutig sein.], [Doppelte oder widersprüchliche Festlegungen erschweren Fertigung und Prüfung.]),
+  idee(<a-4-4>, [Der Bezug folgt Funktion und Fertigung.], [Die Maße sollen mit dem vorgesehenen Herstellungsablauf zusammenpassen.]),
+  idee(<a-4-7>, [Der Dokumentstand gehört zur technischen Aussage.], [Schriftfeld, Stückliste und Änderungen ordnen die Angaben eindeutig zu.]),
+)
+
+#ablauf(
+  chunk([Funktion und Bezug klären], [wichtige Merkmale und Fertigungsablauf], ziel: <a-4-4>),
+  chunk([Maße und Sonderzeichen eintragen], [vollständig · eindeutig · gut lesbar], ziel: <a-4-3>),
+  chunk([Dokumentation prüfen], [Schriftfeld · Stückliste · Änderungsstand], ziel: <a-4-7>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Die Bemaßung sagt, #strong[wie groß] jedes Formelement ist. Sie muss vollständig und eindeutig sein und soll sich nach der #strong[Fertigung] richten: Wer an der Drehmaschine steht, soll jedes Maß direkt ablesen können, ohne zu rechnen. Dazu kommen Sonderzeichen (Ø, R, SW, M …), die Regeln für Schriftfeld und Stückliste und der Umgang mit Änderungen. Für Wirtschaftsingenieure wichtig: Schriftfeld und Stückliste sind die Schnittstelle zu Einkauf, Kalkulation und Dokumentenverwaltung (eigene Ergänzung: WI-Sicht).
 
@@ -732,6 +926,8 @@ Die #strong[GPS-Matrix] hat 18 Zeilen (Merkmale: Maß, Abstand, Radius, Winkel, 
 #note("Beispiel (eigene Ergänzung)", [„Ø40 h6“ auf der Zeichnung ist Kettenglied 1–2. Wie der Prüfer den Ist-Durchmesser mit dem Sollmaß vergleicht (Zweipunktmessung? Hüllzylinder?), regeln Kettenglied 3–4. Womit er misst (Bügelmessschraube) und wie diese kalibriert ist, regeln 5–6.])
 
 #src[B S. 65–67; L-alt B2, überarbeitet.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 
 == 4.2 Normschrift <a-4-2>
 
@@ -740,6 +936,8 @@ Die #strong[GPS-Matrix] hat 18 Zeilen (Merkmale: Maß, Abstand, Radius, Winkel, 
 - Nenngrößen #strong[2,5 – 3,5 – 5 – 7 mm] (Linienbreiten 0,25 – 0,35 – 0,5 – 0,7 mm), gestuft mit √2, damit beim Vergrößern (141 %) oder Verkleinern (70,7 %) wieder Normgrößen entstehen. Mindestens 2,5 mm.
 
 #src[B S. 67–68; L-alt B2, überarbeitet.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 
 == 4.3 Grundregeln der Maßeintragung <a-4-3>
 
@@ -781,6 +979,8 @@ Einzelteilzeichnungen sind meist Fertigungszeichnungen, also #strong[fertigungsb
 - 6, 9, 66, 99 dürfen einen Punkt bekommen („6.“), damit man sie nicht verwechselt. Bei kurzen Maßlinien Pfeile und notfalls Zahl nach außen (möglichst rechts) setzen (Bild 5-6).
 
 #src[B S. 68–71; L-alt B2, überarbeitet.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 
 == 4.4 Fertigungsgerechte Bemaßung <a-4-4>
 
@@ -798,6 +998,8 @@ Fertigungsgerecht heißt: Die Bemaßung folgt den #strong[Bearbeitungsschritten]
 #note("Beispiel Drehteil (Bild 5-9)", [Rohteil absägen (1–2 mm Aufmaß) → einspannen → Stirnseite plandrehen = Bezugsebene „0“ → Absatz auf Ø drehen, Länge von der Bezugsebene messen → Fasen → Nut einstechen → umspannen, andere Stirnseite plandrehen = neue Bezugsebene → großen Ø, kleinen Absatz, Fasen. Deshalb hat die Zeichnung zwei Bezugsebenen.])
 
 #src[B S. 71–82; L-alt B2, überarbeitet.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 
 == 4.5 Sonderzeichen (Eigenschaftsindikatoren) <a-4-5>
 
@@ -830,6 +1032,8 @@ Das Zeichen steht #strong[vor] der Maßzahl und hat dieselbe Linienbreite wie di
 #note("Achtung", [Runde Klammern ( ) = Hilfsmaß, eckige Klammern \[ \] = Rohmaß. Rahmen mit #strong[runden] Ecken = Prüfmaß, #strong[eckiger] Rahmen = theoretisch genaues Maß. Diese vier werden in Klausuren gern verwechselt.], fill: sand)
 
 #src[B S. 82–92; L-alt B2, überarbeitet.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 
 == 4.6 Vereinfachungen und Bemaßungsarten <a-4-6>
 
@@ -849,6 +1053,8 @@ Das Zeichen steht #strong[vor] der Maßzahl und hat dieselbe Linienbreite wie di
 #strong[3D-Bemaßung] nach ISO 16792: Maße direkt am 3D-Modell. Die Beschriftung muss beim Drehen lesbar bleiben, darf sich nicht überlappen und das Modell nicht verdecken; Modelle haben mindestens ein Koordinatensystem; Mittellinien sind optional. Vorher muss klar sein, ob Zeichnung, Datensatz oder Modell das führende „Originaldokument“ ist (S. 96–97).
 
 #src[B S. 92–97; L-alt B2, überarbeitet.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 
 == 4.7 Schriftfeld nach DIN EN ISO 7200 <a-4-7>
 
@@ -868,6 +1074,8 @@ Das Schriftfeld identifiziert Zeichnung, Bauteil und Eigentümer und enthält Ve
 Maßstab, Projektionsmethode, Toleranz- und Oberflächenangaben sind keine Pflichtfelder; sie stehen außerhalb oder in einer #strong[Erweiterung] des Schriftfelds (S. 98). Die #strong[technische Referenz] muss zur Organisation des Eigentümers gehören und darf ohne Revision geändert werden (S. 100). Ohne Änderungsindex müssen sich Versionen über das Ausgabedatum unterscheiden lassen (S. 99).
 
 #src[B S. 98–101; L-alt B2, überarbeitet.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 
 == 4.8 Stückliste und Zeichnungsänderungen <a-4-8>
 
@@ -894,8 +1102,29 @@ Grundspalten nach S. 102; Werte angelehnt an Tab. 14-1, S. 274. Erweiterbar z. B
 
 *Der Zusammenhang in Kapitel 4.* Die Funktion legt fest, was maßlich bestimmt sein muss. Fertigungsablauf und Bezugssystem bestimmen eine eindeutige Maßeintragung; Schriftfeld und Stückliste ordnen sie dem richtigen Stand zu.
 #src[B S. 65–106; eigene Zusammenfassung.]
+#hoch(<a-4>, [Kapitelübersicht])
 
-= Kapitel 5 · Oberflächen und Kanten
+
+#pagebreak(weak: true)
+= Kapitel 5 · Oberflächen und Kanten <a-5>
+
+#überblick([Kapitel 5 auf einen Blick],
+  idee(<a-5-1>, [Die Funktion bestimmt die benötigte Oberfläche.], [Eine feinere Forderung muss technisch begründet sein.]),
+  idee(<a-5-3>, [Rauheitskennwerte beschreiben verschiedene Eigenschaften.], [Messgröße und Auswertung entscheiden darüber, was der Zahlenwert aussagt.]),
+  idee(<a-5-4>, [Das Symbol übersetzt die Forderung in die Zeichnung.], [Kennwert, Eintragungsstelle und verwendete Normfassung müssen zusammenpassen.]),
+  idee(<a-5-9>, [Kanten und Behandlungen ergänzen die Oberfläche.], [Kantenzustand, Wärmebehandlung und Beschichtung sind eigene Anforderungen.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Funktion], [Reibung · Dichtung · Herstellung], ziel: <a-5-1>),
+  pfeil(beschriftung: [bestimmt]),
+  chunk([Oberflächenforderung], [Kennwert · Messung · Symbol], ziel: <a-5-3>),
+  pfeil(beschriftung: [wird lesbar als]),
+  chunk([Zeichnungseintrag], [Oberfläche · Kante · Behandlung], ziel: <a-5-6>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Maße allein reichen nicht: Eine Lagerstelle muss glatt sein, eine Gussfläche darf rau bleiben. Buchkapitel 6 zeigt, wie man #strong[Rauheit] misst (Ra, Rz), wie man sie mit dem #strong[Oberflächensymbol] in die Zeichnung schreibt und wie man #strong[Wärmebehandlung], #strong[Beschichtung] und #strong[Kantenzustand] angibt. Für Wirtschaftsingenieure ist der Kostenaspekt zentral (eigene Ergänzung: WI-Sicht): Jede feinere Oberfläche bedeutet einen zusätzlichen, teuren Arbeitsgang. Deshalb gilt: #strong[„So grob wie möglich, so fein wie nötig“] (S. 117).
 
@@ -906,6 +1135,8 @@ Maße allein reichen nicht: Eine Lagerstelle muss glatt sein, eine Gussfläche d
 Die Oberfläche bestimmt, ob ein Bauteil seine Funktion erfüllt. Das Buch nennt als Beispiele (S. 107): die Lauffläche einer #strong[Kolbenstange im Hydraulikzylinder] (Dichtung darf nicht verschleißen), die Lauffläche eines #strong[Radial-Wellendichtrings], #strong[Wälzlagersitze], Dichtflächen von #strong[Flanschen], #strong[medizinische Instrumente] (Reinigbarkeit) und die #strong[Spaltmaße an Karosserien] (Optik). Die Oberfläche beeinflusst Verschleiß, Reibung, Dichtheit, Verschmutzungsneigung und Beschichtbarkeit (S. 112).
 
 #src[B S. 107; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.2 Oberflächen und Gestaltabweichungen (DIN 4760) <a-5-2>
 
@@ -942,6 +1173,8 @@ Ein Tastschnittgerät fährt mit einer feinen Nadel über die Oberfläche und ze
 Die #strong[Einzelmessstrecke] $ l _(r) $ ist die Länge, auf der eine Kenngröße einmal ausgewertet wird. Die #strong[Messstrecke] $ l _(n) $ besteht im Regelfall aus #strong[5 Einzelmessstrecken] (S. 110, 115).
 
 #src[B S. 108–110; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.3 Rauheitskenngrößen Rz, Rt, Ra, RSm <a-5-3>
 
@@ -989,6 +1222,8 @@ Gleiches Rz, aber halbes Ra: #strong[Ra und Rz lassen sich nicht ineinander umre
 #note("Achtung", [Gleiche Kennwerte heißen nicht gleiche Oberfläche. Bild 6-6 zeigt zwei Profile mit Rz = 10 µm, Ra = 2,5 µm und RSm = 5 µm, aber Rp = 2 µm bzw. Rp = 8 µm. Das Profil mit den spitzen, hohen Spitzen verschleißt ganz anders. Wenn es darauf ankommt, gibt man mehrere Kenngrößen an; DIN EN ISO 21920 erlaubt dazu auch eine #strong[Materialanteilkurve] (S. 112).], fill: sand)
 
 #src[B S. 110–112; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.4 Das Oberflächensymbol <a-5-4>
 
@@ -1009,6 +1244,8 @@ Das Grundsymbol nach DIN EN ISO 1302 (zurückgezogen, ersetzt durch DIN EN ISO 2
 #note("Merke: 21920-1 gegenüber 1302 (S. 113)", [Nach DIN EN ISO 21920-1 ist das Symbol immer das #strong[vollständige] Symbol mit einem zusätzlichen Balken; ein reines Grundsymbol gibt es dort nicht mehr. Weil die Praxis noch mit 1302 arbeitet, erklärt das Buch beide.])
 
 #src[B S. 112–114; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.5 Angaben am Symbol: Positionen a bis e <a-5-5>
 
@@ -1094,6 +1331,8 @@ Angaben auf Position c stehen in der #strong[Vergangenheitsform], weil die Zeich
 In der Praxis werden Kennwert und Grenzwert meist #strong[aus Erfahrung] festgelegt; bei Normteilen helfen die Herstellerkataloge, bei Sonderteilen oder Prototypen muss man schätzen oder probieren (S. 117). Die #strong[Bearbeitungszugabe] (Position e) gibt man an, wenn mehrere Verfahrensstufen in derselben Zeichnung stehen, immer in #strong[mm] (S. 117).
 
 #src[B S. 114–117; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.6 Eintragung in die Zeichnung <a-5-6>
 
@@ -1111,6 +1350,8 @@ Gilt für die meisten Flächen dieselbe Beschaffenheit, steht ein Symbol #strong
 #note("Beispiel (eigene Ergänzung)", [Über dem Schriftfeld steht „Ra 6,3 ( Ra 1,6 , Rz 6,3 )“. Heißt: alle Flächen Ra 6,3 µm, außer den direkt gekennzeichneten Flächen mit Ra 1,6 bzw. Rz 6,3 µm. Bei Platzmangel nutzt man Buchstaben-Symbole (z. B. ein Symbol mit „x“), deren Bedeutung nahe am Schriftfeld erklärt wird (S. 119–120). Soll nur ein Teil einer Fläche gelten, wird der Bereich durch ein Maß begrenzt (S. 120).])
 
 #src[B S. 118–120; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.7 Wärmebehandlung (DIN 17014) <a-5-7>
 
@@ -1122,6 +1363,8 @@ Gilt für die meisten Flächen dieselbe Beschaffenheit, steht ein Symbol #strong
 - Bei vielen Angaben gibt es ein eigenes „#strong[Wärmebehandlungsbild]“ nahe dem Schriftfeld.
 
 #src[B S. 120–122; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.8 Beschichtung (DIN 50960) <a-5-8>
 
@@ -1137,6 +1380,8 @@ Ein komplett beschichtetes Teil erhält ein Oberflächensymbol nahe der Position
 Die Bedeutung der verwendeten Linien muss in der Zeichnung erklärt werden (S. 124).
 
 #src[B S. 122–124; L-alt C1, überarbeitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
 
 == 5.9 Kantenzustand (DIN ISO 13715) <a-5-9>
 
@@ -1165,8 +1410,29 @@ Kanten mit #strong[undefinierter] Form (Grat, Abtragung, scharf) werden mit eine
 
 *Der Zusammenhang in Kapitel 5.* Die Funktion entscheidet, welche Oberflächeneigenschaft nötig ist. Messung, Kennwert, Symbol und Normfassung müssen dieselbe Forderung beschreiben; Kantenzustand und Behandlung ergänzen sie.
 #src[B S. 107–130; eigene Zusammenfassung.]
+#hoch(<a-5>, [Kapitelübersicht])
 
-= Kapitel 6 · Toleranzen und Passungen
+
+#pagebreak(weak: true)
+= Kapitel 6 · Toleranzen und Passungen <a-6>
+
+#überblick([Kapitel 6 auf einen Blick],
+  idee(<a-6-2>, [Toleranz begrenzt zulässige Abweichung.], [Nennmaß und Abmaße ergeben die Grenzmaße.]),
+  idee(<a-6-3>, [Das ISO-System beschreibt Lage und Breite des Feldes.], [Buchstabe und Toleranzgrad erfüllen unterschiedliche Aufgaben.]),
+  idee(<a-6-6>, [Die Extremkombination entscheidet über die Passungsart.], [Größte und kleinste Bohrung werden mit den Wellengrenzmaßen verglichen.]),
+  idee(<a-6-5>, [Ein Größenmaß sichert nicht jede geometrische Funktion.], [Form- und Lagetoleranzen legen zusätzliche Anforderungen fest.]),
+  idee(<a-6-7>, [Die Passungsauswahl folgt der Funktion.], [Fertigungs- und Montagebedingungen gehören zur Entscheidung.]),
+)
+
+#ablauf(
+  chunk([Funktion und Toleranzangaben lesen], [Nennmaß · Feldlage · Toleranzgrad], ziel: <a-6-3>),
+  chunk([Grenzmaße bilden], [obere und untere Abmaße zuordnen], ziel: <a-6-2>),
+  chunk([Extremfälle der Passung vergleichen], [Spiel · Übergang · Übermaß], ziel: <a-6-6>),
+  chunk([Geometrische Funktion zusätzlich prüfen], [Form · Lage · Bezugssystem], ziel: <a-6-5>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Kein Maß lässt sich exakt fertigen. Die #strong[Toleranz] sagt, wie weit das Istmaß vom Nennmaß abweichen darf. Wenn zwei tolerierte Teile ineinander gesteckt werden (Welle in Bohrung), ergibt sich eine #strong[Passung]: Spiel, Übergang oder Übermaß. Dazu kommen #strong[Form- und Lagetoleranzen] (Rundheit, Parallelität, Rundlauf …). Dieses Kapitel verbindet Zeichnungsangaben mit Grenzmaß- und Passungsrechnungen. Auch wirtschaftlich zentral: Der Konstrukteur steht immer zwischen #strong[Funktion] (kleine Toleranzen helfen) und #strong[Kosten] (kleine Toleranzen sind teuer) (S. 131).
 
@@ -1191,6 +1457,8 @@ Maß-, Form- und Lagetoleranzen beeinflussen sich gegenseitig. Wie, regelt der #
 #note("Merke: Warum Unabhängigkeitsprinzip? (S. 134)", [Die Hüllbedingung verlangt bei gleicher Maßtoleranz eine viel höhere Genauigkeit, ist nur für einfache Elemente (Zylinder, parallele Ebenen) definiert und lässt offen, wie sich der Resttoleranzraum auf Geradheit und Rundheit verteilt. Das Unabhängigkeitsprinzip spart deshalb #strong[Kosten].])
 
 #src[B S. 131–135; L-alt C2, überarbeitet.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.2 Maßtoleranzen: Grundbegriffe <a-6-2>
 
@@ -1236,6 +1504,8 @@ Das #strong[Gutmaß] ist das Grenzmaß, das beim Materialabtragen #strong[zuerst
 )
 
 #src[B S. 135–139; L-alt C2, überarbeitet.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.3 ISO-Toleranzsystem <a-6-3>
 
@@ -1281,6 +1551,8 @@ Gleicher Grad 6 heißt im gleichen Bereich gleiche Toleranz: k6, j6, h6, r6 und 
 #strong[Eintragung] (S. 144): Toleranzklasse hinter das Nennmaß („Ø40 k6“). Bei gepaarten Teilen steht die Bohrung (Großbuchstabe) #strong[über] oder #strong[vor] der Welle: „Ø40 H7/r6“. Die Grenzabmaße schreibt man zur Erleichterung der Fertigung entweder in Klammern dahinter oder, übersichtlicher, in eine #strong[Passmaßtabelle] nahe dem Schriftfeld.
 
 #src[B S. 139–144; L-alt C2, überarbeitet.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.4 Allgemeintoleranzen (DIN ISO 2768) <a-6-4>
 
@@ -1301,6 +1573,8 @@ Für #strong[Form und Lage] gibt DIN ISO 2768-2:1989 die Klassen #strong[H] (gen
 #note("Merke: Eintrag am Schriftfeld (S. 146, 153)", [„#strong[ISO 2768-mK]“ = Längen und Winkel Klasse #strong[m] (mittel), Form und Lage Klasse #strong[K]. Allgemeintoleranzen gelten #strong[nicht] für Hilfsmaße in Klammern und nicht für theoretisch genaue Maße im Rechteckrahmen.])
 
 #src[B S. 144–146, 152–153; L-alt C2, überarbeitet.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.5 Form- und Lagetoleranzen (DIN EN ISO 1101) <a-6-5>
 
@@ -1356,6 +1630,8 @@ Der #strong[Toleranzrahmen] (schmale Linie) hat bei Formtoleranzen 2 Felder: #st
 #note("Achtung", [Der Toleranzwert im Rahmen steht in #strong[mm] (0,005), nicht in µm (5). Die Klausurfrage „In welcher Einheit?“ (Buch 7.30) zielt genau darauf.], fill: sand)
 
 #src[B S. 146–153; L-alt C2, überarbeitet.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.6 Passungen: Begriffe und Berechnung <a-6-6>
 
@@ -1396,6 +1672,8 @@ Höchstübermaß  PÜU = 50,000 − 50,011 = −0,011 mm      -\> + / −  = Üb
 Passtoleranz   PT  = 0,030 − (−0,011) = 0,041 mm  = 0,025 + 0,016  ✓])
 
 #src[B S. 153–157; L-alt C2, überarbeitet.]
+#hoch(<a-6>, [Kapitelübersicht])
+
 
 == 6.7 Pass-Systeme und Passungsauswahl <a-6-7>
 
@@ -1426,8 +1704,29 @@ Nicht jede Kombination ist sinnvoll: Die Vielfalt wird aus #strong[Wirtschaftlic
 
 *Der Zusammenhang in Kapitel 6.* Aus Nennmaß und Abmaßen entstehen Grenzmaße. Deren Extremkombination ergibt die Passungsart; zusätzliche Form- und Lageforderungen sichern geometrische Funktionen, die ein Durchmesser allein nicht beschreibt.
 #src[B S. 131–168; eigene Zusammenfassung.]
+#hoch(<a-6>, [Kapitelübersicht])
 
-= Kapitel 7 · Gewinde und Schraubenverbindungen
+
+#pagebreak(weak: true)
+= Kapitel 7 · Gewinde und Schraubenverbindungen <a-7>
+
+#überblick([Kapitel 7 auf einen Blick],
+  idee(<a-7-1>, [Die Gewindedarstellung vereinfacht die reale Form.], [Breite und schmale Linien müssen der Gewindeart und Ansicht entsprechen.]),
+  idee(<a-7-2>, [Nutzbare Länge und Auslauf sind verschieden.], [Die Verbindung braucht genügend wirksames Gewinde und passenden Freiraum.]),
+  idee(<a-7-3>, [Die Gewindeart folgt der Aufgabe.], [Profil und Bezeichnung legen die Verbindung eindeutig fest.]),
+  idee(<a-7-6>, [Die vollständige Bezeichnung macht Normteile bestellbar.], [Schraube, Mutter und Sicherung müssen zur vorgesehenen Montage passen.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Verbindungsaufgabe], [Gewindeart · Schraube · Mutter], ziel: <a-7-3>),
+  pfeil(beschriftung: [bestimmt]),
+  chunk([Zeichnung], [Linien · Nutzlänge · Auslauf], ziel: <a-7-1>),
+  pfeil(beschriftung: [wird eindeutig durch]),
+  chunk([Montage und Bestellung], [vollständige Normbezeichnung], ziel: <a-7-6>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Die Schraube ist das wichtigste Maschinenelement (S. 181). Buchkapitel 8 zeigt, wie man Gewinde #strong[vereinfacht zeichnet] (welche Linie breit, welche schmal), welche #strong[Gewindearten] es gibt, wie man Gewinde #strong[bezeichnet] und toleriert, welche Schrauben, Muttern und Sicherungen üblich sind und wie die #strong[Normbezeichnung] in der Stückliste aussieht. Normteile werden nicht bemaßt, sondern nur über ihre Bezeichnung bestellt: Für Einkauf und Lager ist diese Bezeichnung daher entscheidend (S. 192).
 
@@ -1452,6 +1751,8 @@ Alle Gewindearten werden in der Zeichnung #strong[gleich] dargestellt; unterschi
 - Bolzen- und Muttergewinde erhalten eine #strong[Fase], sonst wird das Einschrauben ein Geduldsspiel. Die Fase wird als Körperkante gezeichnet (S. 170).
 
 #src[B S. 169–171; L-alt D1, überarbeitet.]
+#hoch(<a-7>, [Kapitelübersicht])
+
 
 == 7.2 Gewindelänge, Auslauf und Freistich <a-7-2>
 
@@ -1461,6 +1762,8 @@ Alle Gewindearten werden in der Zeichnung #strong[gleich] dargestellt; unterschi
 - #strong[Gewindefreistich] (DIN 76): Einstich am Gewindeende, damit das Gegenstück bis ganz heran geschraubt werden kann. M16 außen (Form A): g1 ≥ 4,5 mm, g2 ≤ 7 mm, d#sub[g] = 13 h13; innen (Form C): g1 ≥ 8 mm, g2 ≤ 10,3 mm, d#sub[g] = 16,5 H13.
 
 #src[B S. 172–173; L-alt D1, überarbeitet.]
+#hoch(<a-7>, [Kapitelübersicht])
+
 
 == 7.3 Gewindearten <a-7-3>
 
@@ -1524,6 +1827,8 @@ Trapezgewinde: Flankenüberdeckung #strong[H₁ = 0,5 · P], Kopfspiel a#sub[c] 
 - Ohne Angabe gilt Klasse #strong[„mittel“: 6g (Bolzen) und 6H (Mutter)] (S. 181).
 
 #src[B S. 174–179; L-alt D1, überarbeitet.]
+#hoch(<a-7>, [Kapitelübersicht])
+
 
 == 7.4 Schrauben und Muttern <a-7-4>
 
@@ -1556,6 +1861,8 @@ Schrauben unterscheidet man nach #strong[Kopfform], #strong[Schaftform] und #str
 ohne])
 
 #src[B S. 181–186; L-alt D1, überarbeitet.]
+#hoch(<a-7>, [Kapitelübersicht])
+
 
 == 7.5 Scheiben und Schraubensicherungen <a-7-5>
 
@@ -1573,6 +1880,8 @@ ohne])
 Das Buch nennt beim Federring DIN 267 (Bild 8-28). Bekannter ist der Federring unter DIN 127 (zurückgezogen). Falls in der Vorlesung eine bestimmte Norm genannt wird, nimm diese.
 
 #src[B S. 187–192; L-alt D1, überarbeitet.]
+#hoch(<a-7>, [Kapitelübersicht])
+
 
 == 7.6 Normbezeichnung (DIN 962) <a-7-6>
 
@@ -1600,6 +1909,8 @@ $ R _("p0,2")  = 0","8  dot  R _(m)  = 640 thin frac("N", "mm" ^(2)) $
 erste Zahl × 100 = Nennzugfestigkeit $ R _(m) $ · zweite Zahl / 10 = Streckgrenzenverhältnis · Mutter „8“: B S. 193 nennt als Beispiel eine Prüfspannung 800 N/mm²; die tatsächliche Zuordnung erfordert die passende Normtabelle (DIN EN ISO 898-2). Die Werte für 8.8 stehen im Buch, die Rechenregel ist daraus abgeleitet.
 
 #src[B S. 192–193; L-alt D1, überarbeitet.]
+#hoch(<a-7>, [Kapitelübersicht])
+
 
 == 7.7 Vereinfachte Darstellung (DIN ISO 6410-3) <a-7-7>
 
@@ -1613,8 +1924,28 @@ erste Zahl × 100 = Nennzugfestigkeit $ R _(m) $ · zweite Zahl / 10 = Streckgre
 
 *Der Zusammenhang in Kapitel 7.* Die vereinfachten Linien stehen für eine genormte Geometrie. Nutzbare Länge, Toleranz und vollständige Bezeichnung sorgen dafür, dass gezeichnete Schraubverbindung, Montage und Bestellung zusammenpassen.
 #src[B S. 169–196; eigene Zusammenfassung.]
+#hoch(<a-7>, [Kapitelübersicht])
 
-= Kapitel 8 · Elemente an Achsen und Wellen
+
+#pagebreak(weak: true)
+= Kapitel 8 · Elemente an Achsen und Wellen <a-8>
+
+#überblick([Kapitel 8 auf einen Blick],
+  idee(<a-8-1>, [Das Wellenende bildet die Anschlussstelle.], [Seine Form muss zur anzuschließenden Nabe passen.]),
+  idee(<a-8-2>, [Freistiche und Zentrierungen unterstützen die Herstellung.], [Werkzeugauslauf, Anlage und Einspannung brauchen passende Geometrie.]),
+  idee(<a-8-4>, [Die Welle-Nabe-Verbindung überträgt Drehmoment.], [Passfeder und Profilwelle erfordern jeweils eigene Darstellung und Bezeichnung.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Fertigung und Anschluss], [Wellenende · Freistich · Zentrierung], ziel: <a-8-2>),
+  pfeil(beschriftung: [ermöglicht Zusammenbau von]),
+  chunk([Welle und Nabe], [Passfeder oder Profilverbindung], ziel: <a-8-4>),
+  pfeil(beschriftung: [wird beschrieben durch]),
+  chunk([Drehmomentübertragung], [Nut · Querschnitt · Bezeichnung], ziel: <a-8-5>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Eine Welle ist nicht einfach ein Zylinder. Sie hat #strong[genormte Enden] für Kupplungen, #strong[Freistiche] an den Absätzen, #strong[Zentrierbohrungen] zum Einspannen und #strong[Welle-Nabe-Verbindungen] (Passfeder, Vielnut, Passverzahnung, Polygon), die das Drehmoment auf Zahnräder und Scheiben übertragen. Für alle diese Elemente gibt es Normbezeichnungen und meist eine vereinfachte Darstellung. Das Kapitel behandelt nur die Darstellung, nicht die Berechnung (S. 197).
 
@@ -1634,6 +1965,8 @@ Wellenenden treten aus Getriebe oder Maschine aus und nehmen z. B. eine Kupplung
 #note("Merke (S. 199)", [„Wellenende DIN 748 – 45 × 110“ = zylindrisch, d₁ = 45 mm, l₁ = 110 mm. Toleranz bis d₁ = 50 mm: #strong[k6], von 55 bis 630 mm: #strong[m6].])
 
 #src[B S. 197–199; L-alt D2, überarbeitet.]
+#hoch(<a-8>, [Kapitelübersicht])
+
 
 == 8.2 Freistiche (DIN 509) <a-8-2>
 
@@ -1661,6 +1994,8 @@ Die Lösung ist der genormte #strong[Freistich]: eine kleine Einstechung mit def
 - Im Freistichgrund gilt ohne Angabe eine #strong[geschlichtete] Oberfläche: Rz1max 25 bzw. Ra 3,2 (S. 201).
 
 #src[B S. 199–202; L-alt D2, überarbeitet.]
+#hoch(<a-8>, [Kapitelübersicht])
+
 
 == 8.3 Zentrierbohrungen <a-8-3>
 
@@ -1680,6 +2015,8 @@ Lange Wellen werden beim Drehen auf der einen Seite im #strong[Futter], auf der 
 - Das Symbol sagt, ob die Bohrung #strong[am Fertigteil erforderlich] ist, #strong[verbleiben darf] oder #strong[nicht verbleiben darf] (dann wird die Welle zunächst länger gefertigt und anschließend gekürzt) (Bild 9-11, S. 205).
 
 #src[B S. 202–205; L-alt D2, überarbeitet.]
+#hoch(<a-8>, [Kapitelübersicht])
+
 
 == 8.4 Passfedern (DIN 6885) <a-8-4>
 
@@ -1713,6 +2050,8 @@ Sie trägt nur mit den #strong[Seitenflächen]; oben hat sie #strong[Rückenspie
 #note("Merke: Bezeichnung (S. 209)", [„#strong[Passfeder DIN 6885 – A 12 × 8 × 40]“ = Form A, b = 12, h = 8, l = 40 mm. Bei Form A ist l die #strong[Gesamtlänge inklusive der Rundungen], obwohl nur die geraden Seitenflächen tragen. Eine vereinfachte Darstellung von Passfedern gibt es nicht.])
 
 #src[B S. 205–209; L-alt D2, überarbeitet.]
+#hoch(<a-8>, [Kapitelübersicht])
+
 
 == 8.5 Profilwellen: Vielnut, Passverzahnung, Polygon <a-8-5>
 
@@ -1734,8 +2073,28 @@ Kennbuchstaben: N = Nabe, W = Welle; bei Polygon A = Welle, B = Nabe. Die Länge
 
 *Der Zusammenhang in Kapitel 8.* Wellenenden, Freistiche und Zentrierungen machen Fertigung und Anlage möglich. Welle-Nabe-Verbindungen übertragen Drehmoment; Querschnitt, Bezeichnung und Nutdarstellung folgen der gewählten Verbindung.
 #src[B S. 197–220; eigene Zusammenfassung.]
+#hoch(<a-8>, [Kapitelübersicht])
 
-= Kapitel 9 · Sicherungselemente
+
+#pagebreak(weak: true)
+= Kapitel 9 · Sicherungselemente <a-9>
+
+#überblick([Kapitel 9 auf einen Blick],
+  idee(<a-9-1>, [Drehmomentübertragung ersetzt keine Axialsicherung.], [Ein Sicherungselement begrenzt die Verschiebung entlang der Welle.]),
+  idee(<a-9-1>, [Der Sicherungsring sitzt in einer Nut.], [Seine Funktion und das konstruktive Spiel müssen zur Lagerung passen.]),
+  idee(<a-9-2>, [Die Nutmutter verbindet Einstellung mit axialem Halt.], [Das Sicherungsblech verhindert das unerwünschte Verdrehen der Mutter.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Axiale Lage sichern], [Bewegung entlang der Welle begrenzen], ziel: <a-9-1>),
+  pfeil(beschriftung: [möglich durch]),
+  chunk([Sicherungsring], [Nut · konstruktives Spiel], ziel: <a-9-1>),
+  pfeil(beschriftung: [Alternative ist]),
+  chunk([Nutmutter mit Sicherungsblech], [Einstellung · axialer Halt · Verdrehschutz], ziel: <a-9-2>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Passfedern und Profilwellen übertragen das Drehmoment, halten die Nabe aber #strong[nicht axial] fest. Ein Wellenbund stützt nur auf einer Seite ab. Für die andere Seite braucht man ein #strong[Sicherungselement]: am häufigsten den #strong[Sicherungsring] (billig, schnell, mit etwas Spiel) oder die #strong[Nutmutter mit Sicherungsblech] (aufwändiger, dafür spielfrei) (S. 221, 227). Allgemein ist ein Sicherungselement jedes Element, das die Position eines anderen sichert (auch Gewindestift, Kontermutter, Splint).
 
@@ -1767,6 +2126,8 @@ Das Spiel ist gewollt (der Ring muss in die Nut passen), kann aber zu #strong[Kl
 - Weitere Ringe: mit Lappen (DIN 983/984), Runddraht-Sprengringe (DIN 7993, zurückgezogen), Sicherungsscheiben (DIN 6799).
 
 #src[B S. 221–225; L-alt D3, überarbeitet.]
+#hoch(<a-9>, [Kapitelübersicht])
+
 
 == 9.2 Nutmuttern mit Sicherungsblech <a-9-2>
 
@@ -1808,8 +2169,27 @@ Die Tabelle fasst S. 222 und S. 227 zusammen; die Fertigungsschritte sind aus de
 
 *Der Zusammenhang in Kapitel 9.* Ein Sicherungsring begrenzt axiale Bewegung mit konstruktivem Spiel. Nutmutter und Sicherungsblech übernehmen Einstellung und Verdrehschutz; die gewählte Lösung muss in Montage und Darstellung erkennbar sein.
 #src[B S. 221–230; eigene Zusammenfassung.]
+#hoch(<a-9>, [Kapitelübersicht])
 
-= Kapitel 10 · Wälzlager und Lageranordnungen
+
+#pagebreak(weak: true)
+= Kapitel 10 · Wälzlager und Lageranordnungen <a-10>
+
+#überblick([Kapitel 10 auf einen Blick],
+  idee(<a-10-1>, [Das Lager überträgt Kräfte zwischen Welle und Gehäuse.], [Wälzkörper ermöglichen die relative Drehbewegung.]),
+  idee(<a-10-3>, [Die Bauform muss zum Lastfall passen.], [Radiale und axiale Lastanteile bestimmen die geeignete Lagerfunktion.]),
+  idee(<a-10-5>, [Der Lastumlauf bestimmt die Sitzanforderung.], [Die Relativbewegung der Last zum Ring ist dafür entscheidend.]),
+  idee(<a-10-6>, [Die Anordnung braucht Führung und Längenausgleich.], [Fest- und Loslageraufgaben müssen gemeinsam erfüllt sein.]),
+)
+
+#ablauf(
+  chunk([Kräfte und Bewegung erfassen], [radial · axial · Relativbewegung], ziel: <a-10-1>),
+  chunk([Bauform und Sitze wählen], [Last zum Ring · Toleranzen der Anschlussteile], ziel: <a-10-5>),
+  chunk([Lageranordnung prüfen], [axiale Führung · Längenausgleich · Sicherung], ziel: <a-10-6>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Lager übertragen Kräfte zwischen sich drehenden Teilen und dem Gehäuse und sollen dabei wenig Reibung erzeugen. Wälzlager übertragen Lasten über #strong[rollende Wälzkörper]. Gleitanteile bleiben möglich. Sie sind fertige Katalogteile; der Konstrukteur wählt die #strong[Bauform], legt die #strong[Anordnung] (Festlager/Loslager) fest und toleriert die #strong[Anschlussteile] (Welle, Gehäuse). Dieses Kapitel verbindet mehrere Themen, weil es Darstellung (Buchkapitel 4), Passungen (Buchkapitel 7) und Sicherungen (Buchkapitel 10) zusammenführt.
 
@@ -1837,6 +2217,8 @@ Wälzkörper: #strong[Kugel, Zylinder (Rolle), Nadel, Kegelrolle, Tonne]; sie ge
 
 
 #src[B S. 231–234; L-alt D4, überarbeitet.]
+#hoch(<a-10>, [Kapitelübersicht])
+
 
 == 10.2 Darstellung <a-10-2>
 
@@ -1851,6 +2233,8 @@ Wälzkörper: #strong[Kugel, Zylinder (Rolle), Nadel, Kegelrolle, Tonne]; sie ge
 DW ≈ H/2 = 10 mm      HR ≈ H/3 ≈ 6,7 mm      R ≈ H/9 ≈ 2,2 mm])
 
 #src[B S. 234–235; L-alt D4, überarbeitet.]
+#hoch(<a-10>, [Kapitelübersicht])
+
 
 == 10.3 Bauformen <a-10-3>
 
@@ -1870,6 +2254,8 @@ DW ≈ H/2 = 10 mm      HR ≈ H/3 ≈ 6,7 mm      R ≈ H/9 ≈ 2,2 mm])
 )
 
 #src[B S. 234–241; L-alt D4, überarbeitet.]
+#hoch(<a-10>, [Kapitelübersicht])
+
 
 == 10.4 Kurzzeichen (DIN 623) <a-10-4>
 
@@ -1891,6 +2277,8 @@ Die Regel „Bohrungskennzahl × 5 = d“ (für die üblichen codierten Größen
 
 
 #src[Ergänzte Kennzeichen: #link("https://cdn.skfmediahub.skf.com/api/public/0901d196802809de/pdf_preview_medium/0901d196802809de_pdf_preview_medium.pdf")[SKF Rolling bearings, S. 392, Nachsetzzeichen B]; #link("https://www.nsk.com/tools-resources/abc-bearings/fits-and-internal-clearance/")[NSK, Fits and Internal Clearance, Kennzeichen C3]; Abruf 24.10.2026.]
+#hoch(<a-10>, [Kapitelübersicht])
+
 
 == 10.5 Toleranzen der Anschlussteile <a-10-5>
 
@@ -1921,6 +2309,8 @@ Beim Loslager mit äußerer Verschiebung kann der Ring mit Punktlast axial gleit
 Eine feste Passung allein sichert den Ring #strong[nicht axial]: Zusätzlich braucht man Wellenschultern, Sicherungsringe, Nutmuttern bzw. im Gehäuse Absätze, Deckel oder Sicherungsringe (S. 243).
 
 #src[B S. 242–245; L-alt D4, überarbeitet.]
+#hoch(<a-10>, [Kapitelübersicht])
+
 
 == 10.6 Lageranordnung <a-10-6>
 
@@ -1932,6 +2322,8 @@ Eine feste Passung allein sichert den Ring #strong[nicht axial]: Zusätzlich bra
 - #strong[Stützlagerung]: Jedes Lager nimmt die Axialkraft in einer Richtung auf. Mit Axialspiel bzw. Zylinderrollenlagern heißt das #strong[schwimmende Lagerung], mit Schrägkugellagern in O- oder X-Anordnung #strong[angestellte Lagerung] (S. 245–246).
 
 #src[B S. 243–246; L-alt D4, überarbeitet.]
+#hoch(<a-10>, [Kapitelübersicht])
+
 
 == 10.7 Vereinfachte Darstellung (DIN ISO 8826) <a-10-7>
 
@@ -1945,8 +2337,29 @@ Eine feste Passung allein sichert den Ring #strong[nicht axial]: Zusätzlich bra
 
 *Der Zusammenhang in Kapitel 10.* Bauform und Lastverlauf bestimmen die Lagerfunktion. Relativbewegung der Last zum Ring legt die Sitzart nahe; die Lageranordnung muss zusätzlich die axiale Führung und den Längenausgleich ermöglichen.
 #src[B S. 231–248; eigene Zusammenfassung.]
+#hoch(<a-10>, [Kapitelübersicht])
 
-= Kapitel 11 · Dichtungen
+
+#pagebreak(weak: true)
+= Kapitel 11 · Dichtungen <a-11>
+
+#überblick([Kapitel 11 auf einen Blick],
+  idee(<a-11-1>, [Die Dichtaufgabe legt fest, was getrennt werden muss.], [Medium und Umgebung bestimmen die Anforderung.]),
+  idee(<a-11-2>, [Die Relativbewegung ordnet das Dichtprinzip ein.], [Ruhende und bewegte Kontaktstellen brauchen unterschiedliche Lösungen.]),
+  idee(<a-11-6>, [Das Gegenstück gehört zur Dichtfunktion.], [Einbauraum, Kanten und Oberflächen müssen zur gewählten Dichtung passen.]),
+  idee(<a-11-9>, [Berührungsfreie Dichtungen sind ein eigenes Prinzip.], [Ihre Wirkung muss zur konkreten Betriebsbedingung passen.]),
+)
+
+#ablauf(
+  chunk([Medium und Bewegungsart bestimmen], [drinnen halten · draußen halten · Stoffe trennen], ziel: <a-11-1>),
+  entscheidung([Bewegen sich die abzudichtenden Teile relativ zueinander?],
+    chunk([Dynamisches Prinzip prüfen], [Drehung oder Längsbewegung unterscheiden], ziel: <a-11-5>),
+    chunk([Statische Dichtung prüfen], [passende Flächen und Einbauraum], ziel: <a-11-2>)),
+  chunk([Einbau und Zeichnung abstimmen], [Dichtstelle · Kanten · Rauheit · Werkstoff], ziel: <a-11-6>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Dichtungen halten etwas #strong[drin] (Öl, Gas, Hydraulikflüssigkeit) oder etwas #strong[draußen] (Schmutz, Staub, Feuchtigkeit) und trennen verschiedene Betriebsstoffe voneinander (S. 249). Für die Zeichnung ist wichtig: Dichtungen werden fast immer #strong[im Schnitt] gezeichnet, ihr Werkstoff zeigt sich in der #strong[Schraffur] oder steht in der Stückliste, und manche Dichtungen brauchen an Welle und Gehäuse #strong[besondere Fertigungsangaben] (Fasen, Toleranzen, Rauheit).
 
@@ -1965,6 +2378,8 @@ Dichtheit wird gefordert, um #strong[Stoffverluste] zu vermeiden (Pneumatik, Hyd
 #note("Merke", [Zwei Einteilungen werden kombiniert: #strong[ruhend / bewegt] und #strong[berührend / berührungsfrei]. Die Kombination „berührungsfrei an ruhenden Teilen“ wird nicht verwirklicht (S. 249).])
 
 #src[B S. 249; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.2 Statische Dichtungen <a-11-2>
 
@@ -1978,6 +2393,8 @@ Werkstoffe: Elastomere (Kautschuke), Thermoplaste, fluorhaltige Kunststoffe und 
 Beispiele (Bild 12-1, S. 250): #strong[Runddichtring (O-Ring)] in einer Nut, #strong[Flachdichtung] am Flansch, #strong[Faltenbalg]. Der Faltenbalg ist eine hermetische Dichtung und kann wegen seiner Form auch bewegte Teile abdichten.
 
 #src[B S. 249–250; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.3 Darstellung von Dichtungen <a-11-3>
 
@@ -1988,6 +2405,8 @@ Beispiele (Bild 12-1, S. 250): #strong[Runddichtring (O-Ring)] in einer Nut, #st
 #note("Achtung", [Ein O-Ring wird im eingebauten Zustand #strong[verformt] gezeichnet, nicht kreisrund. Die Verformung erzeugt erst die Anpresskraft (S. 252).], fill: sand)
 
 #src[B S. 250; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.4 Runddichtring (O-Ring, DIN 3771) <a-11-4>
 
@@ -2026,12 +2445,16 @@ Tabelle 12-1 (S. 252), Rechtecknut bei radialer Verformung. Weitere Maße stehen
 Nutbreite B = 5,2 mm    -\>  Zeichnungsangabe: 5,2 +0,2])
 
 #src[B S. 251–252; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.5 Dynamische Dichtungen: Grundprinzip <a-11-5>
 
 Dynamische Dichtungen dichten zwischen #strong[bewegten] Teilen ab. Meist presst eine #strong[Feder] eine Kunststofflippe an das bewegte Teil. Bei Flüssigkeiten bildet sich ein #strong[Schmierfilm] an der Gleitfläche; er verhindert schnellen Verschleiß, führt aber langfristig zu #strong[kleinen Leckverlusten] (S. 252).
 
 #src[B S. 252; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.6 Radial-Wellendichtring (RWDR, DIN 3760) <a-11-6>
 
@@ -2069,6 +2492,8 @@ Wellendichtring DIN 3760 – A 25 x 40 x 7 NB
 d1 = Wellendurchmesser, d2 = Gehäusedurchmesser, B = Breite. Ergänzung: NB steht für Nitrilkautschuk (NBR).
 
 #src[B S. 252–254; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.7 Filzring und federnde Abdeckscheibe <a-11-7>
 
@@ -2078,6 +2503,8 @@ d1 = Wellendurchmesser, d2 = Gehäusedurchmesser, B = Breite. Ergänzung: NB ste
 - Abdeckscheiben sind aus Metall, aber so dünn, dass sie #strong[geschwärzt] gezeichnet werden (S. 255).
 
 #src[B S. 254–255; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.8 Abdichtung bei Längsbewegungen <a-11-8>
 
@@ -2086,6 +2513,8 @@ d1 = Wellendurchmesser, d2 = Gehäusedurchmesser, B = Breite. Ergänzung: NB ste
 - #strong[Formdichtungen] (S. 256): #strong[Lippendichtungen] arbeiten wie der RWDR mit vorgespannter oder gefederter Lippe; #strong[Kompaktdichtungen] sind selbst radial verpresst.
 
 #src[B S. 255–256; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.9 Berührungsfreie Dichtungen <a-11-9>
 
@@ -2100,6 +2529,8 @@ Sie dichten über einen #strong[engen Spalt]. Weil nichts schleift, sind sie pra
 )
 
 #src[B S. 256–257; L-alt D5, überarbeitet.]
+#hoch(<a-11>, [Kapitelübersicht])
+
 
 == 11.10 Vereinfachte Darstellung (DIN ISO 9222) <a-11-10>
 
@@ -2118,8 +2549,29 @@ Sie dichten über einen #strong[engen Spalt]. Weil nichts schleift, sind sie pra
 
 *Der Zusammenhang in Kapitel 11.* Dichtungsart und Bewegung legen das Wirkprinzip fest. Einbauraum, Montagekanten, Passungen und Oberflächen bestimmen gemeinsam, ob die Dichtlippe oder der Ring die vorgesehene Funktion erfüllen kann.
 #src[B S. 249–258; eigene Zusammenfassung.]
+#hoch(<a-11>, [Kapitelübersicht])
 
-= Kapitel 12 · Zahnräder
+
+#pagebreak(weak: true)
+= Kapitel 12 · Zahnräder <a-12>
+
+#überblick([Kapitel 12 auf einen Blick],
+  idee(<a-12-1>, [Wellenlage und Bewegungsübertragung bestimmen die Bauart.], [Stirnrad, Kegelrad und Schnecke beschreiben unterschiedliche Getriebeprinzipien.]),
+  idee(<a-12-2>, [Modul und Zähnezahl bestimmen wesentliche Größen.], [Die verwendeten Formeln müssen zur behandelten Verzahnungsgeometrie passen.]),
+  idee(<a-12-3>, [Symbolische Linien ersetzen das Zeichnen aller Zähne.], [Kopf- und Teilkreis machen die vereinfachte Darstellung lesbar.]),
+  idee(<a-12-6>, [Die Tabelle ergänzt die Geometrie.], [Verzahnungsdaten und Qualitätsangaben machen die Zeichnung vollständig.]),
+)
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Getriebeprinzip], [Wellenlage · Zahnradart], ziel: <a-12-1>),
+  pfeil(beschriftung: [bestimmt Modell für]),
+  chunk([Geometrie], [Modul · Zähnezahl · Kreise], ziel: <a-12-2>),
+  pfeil(beschriftung: [wird übermittelt durch]),
+  chunk([Zeichnung und Tabelle], [symbolische Linien · Verzahnungsdaten], ziel: <a-12-6>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Zahnräder exakt zu zeichnen wäre viel zu aufwendig. Deshalb gibt es feste #strong[Symbolregeln] (DIN ISO 2203): Ein Zahnrad sieht in der Zeichnung aus wie eine Scheibe bis zum Kopfkreis, und nur die #strong[strichpunktierte Teilkreislinie] verrät, dass es ein Zahnrad ist (S. 261–262). Eine zusätzliche „vereinfachte Darstellung“ gibt es nicht, weil die normgerechte Darstellung schon die vereinfachte ist (S. 259). Rechnerisch dreht sich alles um den #strong[Modul m].
 
@@ -2141,6 +2593,8 @@ Man teilt nach der #strong[Grobgestalt der Räder] (Zylinder, Kegel, Schnecke) u
 Die Zahnform ist für die Kraftübertragung wichtig. In der Praxis am weitesten verbreitet ist die #strong[Evolventenverzahnung]; alle Erklärungen beziehen sich darauf (S. 260).
 
 #src[B S. 259–260; L-alt D6, überarbeitet.]
+#hoch(<a-12>, [Kapitelübersicht])
+
 
 == 12.2 Kenngrößen einer Verzahnung <a-12-2>
 
@@ -2192,6 +2646,8 @@ p  = π · m        = 9,42 mm])
 Das Buch nennt als Beispiel für das Kopfspiel einen Bruchteil von m (S. 261). In Aufgaben gilt der Wert, den die Vorlesung oder Aufgabe vorgibt.
 
 #src[B S. 260–261; L-alt D6, überarbeitet.]
+#hoch(<a-12>, [Kapitelübersicht])
+
 
 == 12.3 Darstellungsregeln nach DIN ISO 2203 <a-12-3>
 
@@ -2215,6 +2671,8 @@ Das Buch nennt als Beispiel für das Kopfspiel einen Bruchteil von m (S. 261). I
 #note("Merke: Radpaare (S. 262)", [Gegenseitige Verdeckungen werden normalerweise #strong[nicht] berücksichtigt. Ausnahmen: (1) Liegt ein Rad in der Ansicht vollständig vor dem anderen, gilt das hintere als verdeckt. (2) Sind beide Räder im Achsschnitt gezeichnet, wird eine Verzahnung als „vorne liegend“ angenommen, die andere teilweise verdeckt (Strichlinie). Üblich: das #strong[Ritzel] (kleineres Rad) liegt vorne.])
 
 #src[B S. 261–262; L-alt D6, überarbeitet.]
+#hoch(<a-12>, [Kapitelübersicht])
+
 
 == 12.4 Stirnräder, Kegelräder, Schnecken <a-12-4>
 
@@ -2229,6 +2687,8 @@ Das Buch nennt als Beispiel für das Kopfspiel einen Bruchteil von m (S. 261). I
 Fußnote S. 262: Beveloidräder sind eine Ausnahme unter den Stirnrädern; ihre Außenform ist durch eine spezielle Verzahnung kegelstumpfförmig.
 
 #src[B S. 262–265; L-alt D6, überarbeitet.]
+#hoch(<a-12>, [Kapitelübersicht])
+
 
 == 12.5 Verzahnungsqualität und Toleranzen <a-12-5>
 
@@ -2240,6 +2700,8 @@ Fußnote S. 262: Beveloidräder sind eine Ausnahme unter den Stirnrädern; ihre 
 #note("Merke", [Wie bei ISO-Toleranzen gilt: kleine Zahl = genau. Andere Kennzahlen als im ISO-System sollen Verwechslungen vermeiden (S. 266).])
 
 #src[B S. 265–266; L-alt D6, überarbeitet.]
+#hoch(<a-12>, [Kapitelübersicht])
+
 
 == 12.6 Angaben in der Zahnradzeichnung (DIN 3966-1) <a-12-6>
 
@@ -2275,8 +2737,27 @@ Ergänzung zur Lesart „8 e 26“: Qualität 8, Kennbuchstabe e für das obere 
 
 *Der Zusammenhang in Kapitel 12.* Wellenlage und Zahnradart legen das Prinzip fest. Modul und Zähnezahl beschreiben die Größe; vereinfachte Zeichnung und Verzahnungstabelle vermitteln die Geometrie ohne jeden Zahn vollständig zu konstruieren.
 #src[B S. 259–268; eigene Zusammenfassung.]
+#hoch(<a-12>, [Kapitelübersicht])
 
-= Kapitel 13 · Zeichnungen lesen und erstellen
+
+#pagebreak(weak: true)
+= Kapitel 13 · Zeichnungen lesen und erstellen <a-13>
+
+#überblick([Kapitel 13 auf einen Blick],
+  idee(<a-13-1>, [Die Baugruppe wird zuerst als Funktion verstanden.], [Ansichten, Schnitte und Kraftwege erklären das Zusammenwirken der Teile.]),
+  idee(<a-13-3>, [Die Stückliste identifiziert die Bestandteile.], [Normteile und eigene Bauteile werden den Positionen zugeordnet.]),
+  idee(<a-13-4>, [Die Montagefolge erklärt Anschlüsse und Sicherungen.], [Unterbaugruppen machen den Zusammenbau übersichtlich.]),
+  idee(<a-13-7>, [Die Einzelteilzeichnung folgt aus der Bauteilfunktion.], [Ansichten und Anforderungen müssen Fertigung und Prüfung eindeutig ermöglichen.]),
+)
+
+#ablauf(
+  chunk([Gesamtzeichnung erschließen], [Funktion · Kraftweg · Lagerung], ziel: <a-13-1>),
+  chunk([Teile und Montage zuordnen], [Stückliste · Normteile · Unterbaugruppen], ziel: <a-13-4>),
+  chunk([Einzelteil vollständig beschreiben], [Ansichten · Maße · Toleranzen · Oberfläche], ziel: <a-13-7>),
+)
+#src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
 
 Hier wird alles aus Grundlagen und Maschinenelementen #strong[zusammen angewendet]. Buchkapitel 14 zeigt, wie man eine fremde, komplexe #strong[Gesamtzeichnung erschließt]: mit einfachen Leitfragen, über die Stückliste und über die Montagereihenfolge. Buchkapitel 15 geht den umgekehrten Weg und baut für ein Einzelteil, das #strong[Flanschlager], Schritt für Schritt eine vollständige #strong[Einzelteilzeichnung] auf (S. 269, 283).
 
@@ -2303,6 +2784,8 @@ Das Buch erschließt das Getriebe mit Fragen, die bewusst #strong[allgemein] geh
 #note("Merke: Bauteile in der Gesamtzeichnung finden (S. 277)", [Folge der #strong[Schraffur]: Ein Bauteil hat in der ganzen Zeichnung dieselbe Schraffurrichtung und denselben Abstand, und keine andere Fläche darf diese Kombination nochmal verwenden (vgl. Kapitel 4). Das Buch empfiehlt, das Teil farbig nachzuziehen. Vorsicht bei ähnlichen Schraffuren (Lagerhalter 9 und Distanzring 21).])
 
 #src[B S. 269–272; L-alt E1, überarbeitet.]
+#hoch(<a-13>, [Kapitelübersicht])
+
 
 == 13.2 Funktion des Spiralkegelgetriebes <a-13-2>
 
@@ -2317,6 +2800,8 @@ Das Buch erschließt das Getriebe mit Fragen, die bewusst #strong[allgemein] geh
 Ergebnis: Das Getriebe #strong[lenkt Drehmoment und Drehzahl um 90° um], es wandelt kaum. Der Herstellerkatalog bestätigt: beliebige Drehrichtung, in jeder Lage einsetzbar, Befestigungsgewinde auf allen sechs Flächen (S. 271).
 
 #src[B S. 269–272; L-alt E1, überarbeitet.]
+#hoch(<a-13>, [Kapitelübersicht])
+
 
 == 13.3 Normteile und Stückliste <a-13-3>
 
@@ -2342,6 +2827,8 @@ Das Buch nennt als Sicherung nur Pos. 53. Verschlussschraube 73 und Ölauge 76 s
 Hinweis zu Explosionszeichnungen (Fußnote S. 272): Sie unterliegen nicht der strengen Zeichnungsnormung und werden oft als 3D-Darstellung ausgeführt.
 
 #src[B S. 272–274, 277; L-alt E1, überarbeitet.]
+#hoch(<a-13>, [Kapitelübersicht])
+
 
 == 13.4 Montage mit Unterbaugruppen <a-13-4>
 
@@ -2365,6 +2852,8 @@ danach die Unterbaugruppe Antriebswelle montieren],
 #note("Was verspannt die Nutmutter 52? (S. 276)", [Sicherungsblech (53), Innenring Schrägkugellager, Distanzring (21) und Innenring des anderen Schrägkugellagers, der sich an einer #strong[Schulter der Ritzelwelle] (16) abstützt. Das ist genau das spielfreie Verspannen aus Kapitel 9.])
 
 #src[B S. 274–276, 281–282; L-alt E1, überarbeitet.]
+#hoch(<a-13>, [Kapitelübersicht])
+
 
 == 13.5 Einzelteil Lagerhalter (Pos. 9) <a-13-5>
 
@@ -2390,6 +2879,8 @@ max   = (19,5 + 0,2) − (5 − 0,1) − (9,5 − 0,2) = 5,5 mm])
 #note("Merke: Maßkette", [Das #strong[Kleinstmaß] des Restmaßes entsteht, wenn das Gesamtmaß am kleinsten und alle abgezogenen Maße am größten sind; beim #strong[Größtmaß] umgekehrt. Die Toleranzen addieren sich: 0,4 + 0,2 + 0,4 = 1,0 mm (abgeleitet aus S. 281).])
 
 #src[B S. 277–281; L-alt E1, überarbeitet.]
+#hoch(<a-13>, [Kapitelübersicht])
+
 
 == 13.6 Einzelteil Abtriebswelle (Pos. 20) <a-13-6>
 
@@ -2403,6 +2894,8 @@ PSO = ES − ei = 18 − 1  = +17 µm  (größtes Spiel)
 PÜO = EI − es = 0 − 12  = −12 µm  (größtes Übermaß)   -\>  Übergangspassung])
 
 #src[B S. 280–282; L-alt E1, überarbeitet.]
+#hoch(<a-13>, [Kapitelübersicht])
+
 
 == 13.7 Repetitorium: Einzelteilzeichnung Flanschlager (Pos. 3) <a-13-7>
 
@@ -2430,6 +2923,8 @@ Buchkapitel 15 wiederholt das ganze Buch an einem Teil. Gehe die Schritte in die
 
 *Der Zusammenhang in Kapitel 13.* Zuerst wird die Baugruppe über Kraft-, Lager- und Montageweg verstanden. Danach wird das einzelne Teil mit passenden Ansichten und funktionsgerechten Anforderungen so beschrieben, dass Fertigung und Prüfung es eindeutig lesen können.
 #src[B S. 269–290; eigene Zusammenfassung.]
+#hoch(<a-13>, [Kapitelübersicht])
+
 
 = Anhang
 == Formelsammlung mit Voraussetzungen

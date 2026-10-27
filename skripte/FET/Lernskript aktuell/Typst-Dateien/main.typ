@@ -12,7 +12,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -221,7 +221,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand: *26.10.2026*. Behandelt sind die Vorlesungsinhalte bis „Ende VL 21.10“ und die ergänzenden Übungen aus Tutorium und WZF bis 23.10.; die ältere Altklausurzuordnung und die Gesamtübersicht sind im Wegweiser eingeordnet. Das Skript enthält nur die Erklärungen und im Anhang die Formelsammlung. Aufgaben mit Lösungen Schritt für Schritt und das Quiz stehen auf der Lernwebseite im Reiter „Lernen“; die nur angekündigten Vorlesungsbeispiele zu Pumpspeicher und Strahltriebwerk bleiben offen.
+Stand: *27.10.2026*. Behandelt sind die Vorlesungsinhalte bis „Ende VL 21.10“ und die ergänzenden Übungen aus Tutorium und WZF bis 23.10.; die ältere Altklausurzuordnung und die Gesamtübersicht sind im Wegweiser eingeordnet. Das Skript enthält nur die Erklärungen und im Anhang die Formelsammlung. Aufgaben mit Lösungen Schritt für Schritt und das Quiz stehen auf der Lernwebseite im Reiter „Lernen“; die nur angekündigten Vorlesungsbeispiele zu Pumpspeicher und Strahltriebwerk bleiben offen.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -231,7 +231,7 @@ Stand: *26.10.2026*. Behandelt sind die Vorlesungsinhalte bis „Ende VL 21.10�
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.10.2026; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>

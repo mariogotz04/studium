@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -184,7 +184,7 @@
 ]
 #note("Dein Feynman-Schritt", [Sieh hin, erkläre den Zusammenhang ohne Vorlage und prüfe dann Formel und Voraussetzungen. Bearbeite anschließend eine Aufgabe auf der Lernwebseite. Vergleiche erst danach mit den Lösungsschritten und schließe deine konkrete Lücke.])
 
-Stand *26.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wellen bis zu den eindimensionalen Eigenmoden an der bestätigten Grenze „Ende VL 19.10.“. Die Kapitelnummern 5 und 6 folgen dem Dozentenskript. Vorwissen steht als solches dabei. Stand *26.10.2026*: Aufgaben, ausführliche Lösungen und Quiz stehen auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält nur noch Erklärung und Formelsammlung.
+Stand *27.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wellen bis zu den eindimensionalen Eigenmoden an der bestätigten Grenze „Ende VL 19.10.“. Die Kapitelnummern 5 und 6 folgen dem Dozentenskript. Vorwissen steht als solches dabei. Stand *27.10.2026*: Aufgaben, ausführliche Lösungen und Quiz stehen auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält nur noch Erklärung und Formelsammlung.
 #src[V1, PDF-S. 1–13; VB, PDF-S. 3–22 bis zur Markierung; Bestätigung von Mario am 22.10.2026.]
 
 #pagebreak()
@@ -195,7 +195,7 @@ Stand *26.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wel
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Flossmann, Physik für Ingenieure, Stand 26.10.2026, Gesamt-PDF; V1 = VL1 Physik (13 PDF-Seiten, Skript S. 169–174 und 177–183); VB = VL Physik bisher (22 PDF-Seiten, Skript S. 175–196); Ü = Physik2_Blatt10, Aufgaben 10.1–10.6; R = handschriftliche Lösung Blatt 10; AS = Aufgabensammlung, 23.04.2026, Nummer laut Sammlung; L = bisheriges Lernskript Physik 2, Stand 26.10.2026 (PDF und HTML); LB = Lernblatt VL 1 (Claude-Fassung und annotierter Export); K17/18 = Klausur Physik 1 WIW WS 17/18 mit Musterlösung; K15 = Prüfung Phy_1 (Deckblatt WS 2015/16). „PDF-S.“ zählt ab der ersten PDF-Seite der genannten Datei. Bei V stimmt diese Zählung für die verwendeten Seiten mit dem Seitenaufdruck überein. Alle „Nachschlagen“-Verweise führen zu Abschnitt und echter Seite dieses Lernskripts. Eigene Aufgaben, Umformungen und Darstellungen sind gekennzeichnet.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Flossmann, Physik für Ingenieure, Stand 02.10.2026, Gesamt-PDF; V1 = VL1 Physik (13 PDF-Seiten, Skript S. 169–174 und 177–183); VB = VL Physik bisher (22 PDF-Seiten, Skript S. 175–196); Ü = Physik2_Blatt10, Aufgaben 10.1–10.6; R = handschriftliche Lösung Blatt 10; AS = Aufgabensammlung, 23.04.2026, Nummer laut Sammlung; L = bisheriges Lernskript Physik 2, Stand 15.10.2026 (PDF und HTML); LB = Lernblatt VL 1 (Claude-Fassung und annotierter Export); K17/18 = Klausur Physik 1 WIW WS 17/18 mit Musterlösung; K15 = Prüfung Phy_1 (Deckblatt WS 2015/16). „PDF-S.“ zählt ab der ersten PDF-Seite der genannten Datei. Bei V stimmt diese Zählung für die verwendeten Seiten mit dem Seitenaufdruck überein. Alle „Nachschlagen“-Verweise führen zu Abschnitt und echter Seite dieses Lernskripts. Eigene Aufgaben, Umformungen und Darstellungen sind gekennzeichnet.]
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
 

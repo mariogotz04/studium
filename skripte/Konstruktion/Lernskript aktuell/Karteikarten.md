@@ -72,6 +72,11 @@ Quelle: 1.5
 Sie legen Symmetrie und Lage fest, und alle Ansichten richten sich daran aus. Danach kommen dünne Hilfslinien, erst zum Schluss werden die sichtbaren Kanten breit nachgezogen.
 Quelle: 1.6
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die technische Zeichnung übermittelt Form und Funktion in einer vereinbarten Sprache. Normen vereinheitlichen Zeichen und Angaben. Der Zweck entscheidet über Skizze, Einzelteil- oder Gesamtzeichnung; Blattaufteilung organisiert den Inhalt. Positionsnummern verbinden die gezeigten Bauteile mit der Stückliste.
+Quelle: 1.1
+
 ## Kapitel 2 · CAD und digitale Produktmodelle
 
 ### Was ist der Hauptvorteil von CAD?
@@ -112,6 +117,11 @@ Quelle: 2.6
 ### Warum muss man KI-Erklärungen zu Technischen Zeichnungen immer prüfen?
 Die KI antwortet nach Wahrscheinlichkeiten, nicht nach Normwissen. Im Test des Buchs waren Aussagen teils falsch, pauschal oder irreführend.
 Quelle: 2.7
+
+
+### Zeichne die Begriffslandkarte zu Kapitel 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+CAD baut Geometrie aus Skizzen und Modellieroperationen auf. B-Rep beschreibt die begrenzenden Flächen, CSG die Verknüpfung von Grundkörpern. Die Verwendung entscheidet über die passende Datenschnittstelle. Ein freigegebener Dokumentationsstand verbindet das digitale Modell mit der verbindlichen technischen Zeichnung.
+Quelle: 2.1
 
 ## Kapitel 3 · Werkstücke darstellen
 
@@ -171,6 +181,11 @@ Quelle: 3.6
 Mit einer breiten Strich-Punktlinie an Anfang, Ende und jedem Knick, Pfeilen für die Blickrichtung an Anfang und Ende und Großbuchstaben (A–A) an den Enden und über der Schnittdarstellung.
 Quelle: 3.7
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 3 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Maßstab und Linienarten bilden die Grundsprache der Darstellung. Zugeordnete Ansichten beschreiben dieselbe räumliche Form aus verschiedenen Richtungen. Ist das Innere nicht eindeutig lesbar, ergänzt ein Schnitt die Darstellung. Schnittlinien, Schraffur und die Regeln für ungeschnittene Elemente müssen zu diesem Schnitt passen.
+Quelle: 3.1
+
 ## Kapitel 4 · Bemaßung und Dokumentation
 
 ### Was ist die Geometrische Produktspezifikation (GPS)?
@@ -215,6 +230,11 @@ Abbildung: b-bemassungsarten
 ### Wie geht man bei kleinen und großen Zeichnungsänderungen vor?
 Klein: Die Stelle mit einem Buchstaben im Kreis kennzeichnen und Änderungsindex und Datum anpassen. Groß: neue Zeichnung erstellen, die alte als »zurückgezogen« kennzeichnen und die lose Stückliste anpassen.
 Quelle: 4.8
+
+
+### Zeichne die Begriffslandkarte zu Kapitel 4 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Funktion und geometrische Produktspezifikation bestimmen die nötigen Merkmale. Der Bezug und die Maßeintragung sollen zur Fertigung und Prüfung passen. Maße, Sonderzeichen und Bemaßungsarten beschreiben Formelemente eindeutig. Schriftfeld, Stückliste und Änderungsangaben sichern die Zuordnung zum richtigen Dokumentstand.
+Quelle: 4.1
 
 ## Kapitel 5 · Oberflächen und Kanten
 
@@ -273,6 +293,11 @@ Quelle: 5.1
 An einer Außenkante heißt + Grat zulässig und − gratfrei bzw. Abtragung. An einer Innenkante heißt + Übergang zulässig und − Abtragung. ± lässt beides zu. So sind Verletzungsgefahr, Montage, Funktion und Kosten eindeutig geregelt.
 Quelle: 5.9
 Abbildung: b-kanten
+
+
+### Zeichne die Begriffslandkarte zu Kapitel 5 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die Bauteilfunktion begründet die nötige Oberflächeneigenschaft. Messung und Rauheitskennwert beschreiben diese Forderung zahlenmäßig; unterschiedliche Kennwerte sind nicht beliebig austauschbar. Das Oberflächensymbol trägt die passende Angabe in die Zeichnung. Kantenzustand, Wärmebehandlung und Beschichtung ergänzen die Anforderungen.
+Quelle: 5.1
 
 ## Kapitel 6 · Toleranzen und Passungen
 
@@ -336,6 +361,11 @@ Abbildung: alt-c2-2
 - Von Hand fügbar: Spielpassung, zum Beispiel H7/h6.
 Quelle: 6.7
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 6 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Nennmaß und oberes beziehungsweise unteres Abmaß ergeben die Grenzmaße. Im ISO-Toleranzsystem beschreibt der Buchstabe die Feldlage und der Toleranzgrad die Feldbreite. Die Extremkombinationen von Bohrung und Welle ergeben Spiel, Übergang oder Übermaß. Zusätzliche Form- und Lagetoleranzen sichern Eigenschaften, die ein Größenmaß allein nicht festlegt.
+Quelle: 6.1
+
 ## Kapitel 7 · Gewinde und Schraubenverbindungen
 
 ### Welche Durchmesser zeichnet man beim Gewinde breit und welche schmal?
@@ -377,6 +407,11 @@ Quelle: 7.5
 Ihre Maße sind durch die Norm festgelegt. Die Normbezeichnung in der Stückliste reicht für Bestellung und Montage.
 Quelle: 7.6
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 7 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die Verbindungsaufgabe führt zur Gewindeart und zu passenden Schrauben, Muttern und Sicherungen. Die vereinfachte Zeichnung steht für die reale Gewindegeometrie. Nutzbare Länge, Auslauf und Freistich müssen die Montage ermöglichen. Eine vollständige Normbezeichnung verknüpft Darstellung und Bestellung.
+Quelle: 7.1
+
 ## Kapitel 8 · Elemente an Achsen und Wellen
 
 ### Warum sind Wellenenden genormt?
@@ -416,6 +451,11 @@ Abbildung: alt-d2-1
 Die Passfeder überträgt kleine bis mittlere Momente. Ein Vielnutprofil überträgt wesentlich größere. Das Polygonprofil überträgt bei gleichem Durchmesser das höchste Moment, weil es keine Kerbe durch eine Nut hat.
 Quelle: 8.5
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 8 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Wellenenden schaffen den Anschluss zur Nabe. Freistiche erlauben Werkzeugauslauf und Anlage, Zentrierbohrungen unterstützen die Fertigung. Passfedern und Profilverbindungen übertragen das Drehmoment zwischen Welle und Nabe. Darstellung, Nut und Bezeichnung müssen zur gewählten Verbindung passen; die axiale Sicherung wird gesondert betrachtet.
+Quelle: 8.1
+
 ## Kapitel 9 · Sicherungselemente
 
 ### Warum braucht man überhaupt axiale Sicherungen?
@@ -446,6 +486,11 @@ Abbildung: b-nutmutter
 Damit immer das Lager die Verschraubung axial begrenzt und nicht das Nutende. Sonst könnte die Mutter am Nutende anstehen, bevor sie das Lager festspannt.
 Quelle: 9.2
 Abbildung: b-nutmutter
+
+
+### Zeichne die Begriffslandkarte zu Kapitel 9 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Drehmomentübertragende Verbindungen halten die Nabe nicht automatisch axial fest. Ein Sicherungsring begrenzt die Verschiebung über seine Nut mit konstruktivem Spiel. Eine Nutmutter ermöglicht axialen Halt und Einstellung; das Sicherungsblech schützt sie gegen unerwünschtes Verdrehen. Auswahl, Darstellung und Montage müssen dieselbe Lösung beschreiben.
+Quelle: 9.1
 
 ## Kapitel 10 · Wälzlager und Lageranordnungen
 
@@ -488,6 +533,11 @@ Das Loslager muss nur einen Ring leicht halten, dafür reicht ein billiger Siche
 Quelle: 10.6
 Abbildung: b-stuetzlagerung
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 10 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Lager übertragen radiale und gegebenenfalls axiale Kräfte zwischen Welle und Gehäuse. Der Lastfall führt zur geeigneten Bauform. Die Relativbewegung der Last zum jeweiligen Ring bestimmt die Sitzanforderung. Die gesamte Anordnung muss axiale Führung und Längenausgleich ermöglichen; Passungen und Sicherungen ergänzen die Lagerfunktion.
+Quelle: 10.1
+
 ## Kapitel 11 · Dichtungen
 
 ### Wozu braucht man Dichtungen?
@@ -522,6 +572,11 @@ Quelle: 11.9
 ### Warum eignen sich berührungsfreie Dichtungen für hohe Drehzahlen?
 Es gibt keinen Kontakt, also keine Reibung, keine Wärme und praktisch keinen Verschleiß. Dafür sind sie nie ganz dicht.
 Quelle: 11.9
+
+
+### Zeichne die Begriffslandkarte zu Kapitel 11 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die Dichtaufgabe nennt die zu trennenden Medien. Relativbewegung unterscheidet statische und dynamische Dichtstellen; weitere Betriebsbedingungen bestimmen das geeignete Wirkprinzip. Dichtung und Gegenstücke bilden gemeinsam die Funktion. Einbauraum, Montagekanten, Passungen und Oberflächen müssen deshalb ebenso zur Auswahl passen wie die zeichnerische Darstellung.
+Quelle: 11.1
 
 ## Kapitel 12 · Zahnräder
 
@@ -568,6 +623,11 @@ Quelle: 12.5
 H7/k6 ist eine Übergangspassung und garantiert keinen Presssitz. Das Drehmoment muss deshalb formschlüssig über die Passfeder übertragen werden.
 Quelle: 13.6
 
+
+### Zeichne die Begriffslandkarte zu Kapitel 12 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Wellenlage und Übertragungsaufgabe führen zur Zahnradart. Modul und Zähnezahl legen wesentliche Geometriegrößen fest, wobei die Formelvoraussetzungen zu beachten sind. Die normgerechte symbolische Darstellung zeigt die nötigen Kreise statt jedes einzelnen Zahns. Verzahnungs- und Qualitätsangaben in der Tabelle vervollständigen die Fertigungsinformation.
+Quelle: 12.1
+
 ## Kapitel 13 · Zeichnungen lesen und erstellen
 
 ### Was ist der Unterschied zwischen Übertragungs- und Führungsgetrieben?
@@ -598,3 +658,8 @@ Quelle: 13.6
 Die Sitzfläche des Wälzlagers, weil sie die Drehachse festlegt. Gekrümmte Flächen bekommen Rundlauf, plane Flächen Planlauf.
 Quelle: 13.7
 Abbildung: b-flanschlager
+
+### Zeichne die Begriffslandkarte zu Kapitel 13 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Zuerst wird die Gesamtzeichnung über Funktion, Kraftfluss und Lagerung erschlossen. Positionsnummern und Stückliste identifizieren die Bauteile. Die Montagefolge zeigt, wie Anschlüsse, Unterbaugruppen und Sicherungen zusammenwirken. Daraus entstehen für einzelne Teile passende Ansichten sowie vollständige, funktionsgerechte Maß-, Toleranz- und Oberflächenangaben.
+Quelle: 13.1
+

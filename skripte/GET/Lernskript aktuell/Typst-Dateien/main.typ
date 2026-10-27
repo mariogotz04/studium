@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -185,7 +185,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand 26.10.2026: Enthalten sind Skript Kapitel 1.1 bis 1.2.5, deine Randnotizen zu Spule und Diode sowie der Grundstromkreis aus der Zusammenfassung (Skript 2.4.1 bis 2.4.3). Die neuen Markierungen belegen den 15.10. auf Skript S. 16–17 und den 22.10. auf S. 18–19; die Nummern dieser Vorlesungen sind offen. Das Skript enthält nur noch die Erklärungen und im Anhang die Formelsammlung. Alle Rechenaufgaben und Verständnisfragen mit Lösungen Schritt für Schritt stehen auf der Lernwebseite im Reiter „Lernen“, das Quiz ebenfalls dort.
+Stand 27.10.2026: Enthalten sind Skript Kapitel 1.1 bis 1.2.5, deine Randnotizen zu Spule und Diode sowie der Grundstromkreis aus der Zusammenfassung (Skript 2.4.1 bis 2.4.3). Die neuen Markierungen belegen den 15.10. auf Skript S. 16–17 und den 22.10. auf S. 18–19; die Nummern dieser Vorlesungen sind offen. Das Skript enthält nur noch die Erklärungen und im Anhang die Formelsammlung. Alle Rechenaufgaben und Verständnisfragen mit Lösungen Schritt für Schritt stehen auf der Lernwebseite im Reiter „Lernen“, das Quiz ebenfalls dort.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
