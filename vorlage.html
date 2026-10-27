@@ -644,8 +644,13 @@ const sync = {
     if (!token) throw new Error("nicht angemeldet");
     const r = await fetch(SUPABASE.url + "/rest/v1/" + pfad, { ...opt,
       headers: { apikey: SUPABASE.key, Authorization: "Bearer " + token, "Content-Type": "application/json", ...(opt.headers || {}) } });
-    if (!r.ok) throw new Error((await r.json().catch(() => ({}))).message || `Fehler ${r.status}`);
-    return r.status === 204 || r.status === 201 ? null : r.json();
+    // Antwort als Text lesen: Das Hochladen antwortet mit leerem Inhalt (Status 200), und r.json() bricht daran
+    // in Safari mit „The string did not match the expected pattern.“ ab, obwohl alles gespeichert wurde.
+    const text = await r.text();
+    let j = null;
+    try { j = text ? JSON.parse(text) : null; } catch {}
+    if (!r.ok) throw new Error(j?.message || `Fehler ${r.status}`);
+    return j;
   },
   async jetzt() {
     if (!auth.s || this.läuft) return;
@@ -655,7 +660,7 @@ const sync = {
       // 1. Abholen, was andere Geräte seit dem letzten Abgleich geschrieben haben (mit etwas Überlappung)
       let ab = new Date(Date.parse(this.stand) - 10e3).toISOString();
       for (;;) {
-        const zeilen = await this.rest(`zustand?select=schluessel,wert,geaendert,server_zeit&server_zeit=gt.${encodeURIComponent(ab)}&order=server_zeit.asc&limit=1000`);
+        const zeilen = (await this.rest(`zustand?select=schluessel,wert,geaendert,server_zeit&server_zeit=gt.${encodeURIComponent(ab)}&order=server_zeit.asc&limit=1000`)) || [];
         for (const z of zeilen) {
           const t = Date.parse(z.geaendert);
           if (t > db.zeit(z.schluessel)) { db.set(z.schluessel, z.wert, t, true); this.offen.delete(z.schluessel); geändert = true; }
