@@ -51,6 +51,22 @@ h2 { font-family: var(--serif); font-weight: 700; }
 #list, .decks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 14px; }
 .script { display: flex; gap: 16px; align-items: center; justify-content: space-between;
   background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.script { flex-direction: column; align-items: stretch; justify-content: flex-start; }
+.hoerangebot { border-top: 1px solid var(--line); padding-top: 14px; }
+.hoerangebot h3 { font-family: var(--serif); font-size: 19px; margin: 0 0 4px; }
+.hoerangebot p { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+.hoertext { max-width: 760px; margin: 0 auto; }
+.hoertext h2, .hoertext h3 { font-family: var(--serif); line-height: 1.25; }
+.hoertext h3 { font-size: 22px; margin: 30px 0 10px; }
+.hoertext p { max-width: 68ch; }
+.hoertext .denkpause { border-left: 3px solid var(--accent); padding: 0 0 0 18px; margin: 28px 0; }
+.denkpause h3 { color: var(--accent); margin-top: 0; }
+.denkpause summary { min-height: 48px; padding: 12px 14px; border: 1px solid var(--line-strong);
+  border-radius: 12px; cursor: pointer; font-weight: 600; background: var(--card); }
+.denkpause details[open] summary { margin-bottom: 12px; }
+.denkpause summary:focus-visible, .hoertext a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.hoernavigation { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.epubstatus { color: var(--again); font-size: 14px; margin: 8px 0 0; }
 .script .title { font-family: var(--serif); font-weight: 600; font-size: 21px; line-height: 1.25; }
 .script .sub { margin-top: 1px; }
 .script .stand { color: var(--teal); font-weight: 600; }
@@ -447,8 +463,9 @@ figure.abb + figure.abb { margin-top: 14px; }
   <section id="view-skripte" hidden>
     <input class="search" id="q" type="search" placeholder="Modul suchen …" autocomplete="off">
     <main id="list"></main>
-    <footer>PDFs werden automatisch aus den Typst-Dateien erzeugt.</footer>
+    <footer>Zum Vorlesen: EPUB herunterladen und in ElevenReader importieren. Bei einem neuen Stand die Datei erneut importieren.</footer>
   </section>
+  <section id="view-hoeren" hidden></section>
   <section id="view-lernen" hidden></section>
   <section id="view-termine" hidden></section>
   <section id="view-konto" hidden></section>
@@ -1082,15 +1099,82 @@ function woche() {
 }
 
 /* ───────────── Lernskripte ───────────── */
+const hoerLink = (m, kapitel = "kap-0") => `#hoeren/${encodeURIComponent(m.name)}/${kapitel}`;
+const epubLink = m => `<a class="btn primary" data-epub href="${esc(m.hoeren.file)}" download="${esc(m.hoeren.download)}">EPUB herunterladen</a>`;
 function render(query) {
   const q = query.trim().toLowerCase();
   const html = DATA.filter(m => !q || m.name.toLowerCase().includes(q) || m.title.toLowerCase().includes(q))
     .map(m => `<div class="script"><div><div class="title">${esc(m.name)}</div>
       <div class="sub">Lernskript · <span class="stand">Stand ${fmtDate(m.updated)}</span></div>
       <div class="meta">${m.pages} Seiten · ${fmtSize(m.size)}</div></div>
-      <div class="actions"><a class="btn" href="${m.file}" target="_blank" rel="noopener">Ansehen</a>
-      <a class="btn primary" href="${m.file}" download="${esc(m.download)}">Download</a></div></div>`).join("");
+      <div class="actions"><a class="btn" href="${m.file}" target="_blank" rel="noopener">PDF ansehen</a>
+      <a class="btn" href="${m.file}" download="${esc(m.download)}">PDF herunterladen</a></div>
+      ${m.hoeren ? `<div class="hoerangebot"><h3>Hörzusammenfassung</h3>
+        <p>Feynman-Erklärungen mit ${m.hoeren.questions} Denkpausen · Stand ${fmtDate(m.hoeren.updated)}</p>
+        <div class="actions">${epubLink(m)}<a class="btn" href="${hoerLink(m)}">Lesen &amp; nachdenken</a></div></div>` : ""}</div>`).join("");
   document.getElementById("list").innerHTML = html || `<p class="empty">Nichts gefunden.</p>`;
+}
+function hoerSeite(m, id) {
+  if (!m?.hoeren) { location.replace("#skripte"); return; }
+  const h = m.hoeren, index = Math.max(0, h.chapters.findIndex(k => k.id === id)), k = h.chapters[index];
+  const p = text => `<p>${esc(text)}</p>`;
+  const inhalt = k.blocks.map(b => b.type === "heading" ? `<h3>${esc(b.text)}</h3>` :
+    b.type === "paragraph" ? p(b.text) : `<section class="denkpause"><h3>Denkpause</h3>${b.question.map(p).join("")}
+      <p class="muted">Erkläre es erst in eigenen Worten. Decke danach die Auflösung auf.</p>
+      <details><summary>Auflösung zeigen</summary>${b.answer.map(p).join("")}</details></section>`).join("");
+  const quelle = k.sources?.[0];
+  kopf("Hörzusammenfassung", m.name);
+  document.getElementById("view-hoeren").innerHTML = `<div class="hoertext">
+    <a class="back" href="#skripte">← Alle Lernskripte</a>
+    <div class="panel"><div class="actions">${epubLink(m)}</div>
+      <p class="muted">In ElevenReader als Datei importieren. Bei Denkpausen hältst Du die Wiedergabe selbst an; die Auflösung folgt danach. Bei einem neuen Stand erneut importieren.</p>
+      <label class="l" for="hoerkapitel">Kapitel</label><br><select id="hoerkapitel">
+        ${h.chapters.map(x => `<option value="${x.id}" ${x === k ? "selected" : ""}>${esc(x.title)}</option>`).join("")}</select></div>
+    <h2>${esc(k.title)}</h2>${inhalt}
+    ${quelle ? `<a class="back" href="${esc(m.file)}#page=${quelle.p}" target="_blank" rel="noopener">Im Lernskript nachlesen · S. ${quelle.p}</a>` : ""}
+    <nav class="hoernavigation" aria-label="Hörkapitel">
+      ${index > 0 ? `<a class="btn" href="${hoerLink(m, h.chapters[index-1].id)}">← Vorheriges Kapitel</a>` : ""}
+      ${index + 1 < h.chapters.length ? `<a class="btn" href="${hoerLink(m, h.chapters[index+1].id)}">Nächstes Kapitel →</a>` : ""}</nav></div>`;
+  document.getElementById("hoerkapitel").onchange = e => { location.hash = hoerLink(m, e.target.value); };
+}
+// EPUB muss beim Teilen seinen eigenen Dateityp behalten; die PDF-Ansicht ist dafür nicht zuständig.
+const epubDateien = new Map();
+async function epubSichern(href, knopf) {
+  if (knopf.getAttribute("aria-busy") === "true") return;
+  const h = DATA.find(m => m.hoeren?.file === href)?.hoeren;
+  if (!h) return;
+  const original = knopf.dataset.original || knopf.textContent;
+  knopf.dataset.original = original;
+  const bereich = knopf.closest(".script, .hoertext");
+  bereich?.querySelector(".epubstatus")?.remove();
+  try {
+    let datei = epubDateien.get(href);
+    if (!datei) {
+      knopf.setAttribute("aria-busy", "true"); knopf.textContent = "Lädt …";
+      const antwort = await fetch(href);
+      if (!antwort.ok) throw new Error("EPUB nicht erreichbar");
+      datei = new File([await antwort.blob()], h.download, { type: "application/epub+zip" });
+      epubDateien.set(href, datei);
+    }
+    if (APP && navigator.share && navigator.canShare?.({ files: [datei] })) {
+      try { await navigator.share({ files: [datei] }); }
+      catch (err) {
+        if (err.name === "NotAllowedError") { knopf.textContent = "Jetzt teilen"; return; }
+        if (err.name !== "AbortError") throw err;
+      }
+    } else {
+      const url = APP ? href : URL.createObjectURL(datei);
+      const a = Object.assign(document.createElement("a"), { href: url, download: h.download });
+      document.body.appendChild(a); a.click(); a.remove();
+      if (!APP) setTimeout(() => URL.revokeObjectURL(url), 60000);
+    }
+    knopf.textContent = original;
+  } catch {
+    knopf.textContent = original;
+    const hinweis = document.createElement("p"); hinweis.className = "epubstatus"; hinweis.setAttribute("role", "alert");
+    hinweis.textContent = "Die EPUB ließ sich nicht laden. Prüfe die Internetverbindung und tippe erneut auf Herunterladen.";
+    bereich?.appendChild(hinweis);
+  } finally { knopf.removeAttribute("aria-busy"); }
 }
 // In der Home-Bildschirm-App öffnet Safari PDFs ohne Zurück-Knopf und kann keine Blob-Downloads.
 // Dort zeigt die Seite Lernskripte deshalb in einer eigenen Ansicht (pdf.js) und sichert sie über das Teilen-Menü.
@@ -1194,7 +1278,8 @@ document.addEventListener("click", e => {
   const a = e.isTrusted && e.target.closest("a[href]");   // von Skripten ausgelöste Klicks (Blob-Downloads) durchlassen
   if (!a) return;
   const href = a.getAttribute("href");
-  if (a.hasAttribute("download")) { e.preventDefault(); pdfSichern(href, a); }
+  if (a.hasAttribute("data-epub")) { e.preventDefault(); epubSichern(href, a); }
+  else if (a.hasAttribute("download")) { e.preventDefault(); pdfSichern(href, a); }
   else if (APP && /\.pdf(#|$)/i.test(href)) {
     e.preventDefault();
     const titel = a.closest(".script")?.querySelector(".title")?.textContent;
@@ -2066,7 +2151,7 @@ function kontoSeite() {
 }
 
 /* ───────────── Navigation ───────────── */
-const VIEWS = { start: "view-start", skripte: "view-skripte", lernen: "view-lernen", termine: "view-termine", konto: "view-konto" };
+const VIEWS = { start: "view-start", skripte: "view-skripte", hoeren: "view-hoeren", lernen: "view-lernen", termine: "view-termine", konto: "view-konto" };
 function route(oben = true) {
   const h = decodeURIComponent(location.hash.slice(1));
   const [teil, ...rest] = h.split("/");
@@ -2080,11 +2165,12 @@ function route(oben = true) {
   document.body.classList.remove("lernen");
   document.querySelector(".lupe")?.remove();
   for (const [k, id] of Object.entries(VIEWS)) document.getElementById(id).hidden = k !== r;
-  document.querySelectorAll("#tabs a").forEach(a => a.dataset.r === r ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  document.querySelectorAll("#tabs a").forEach(a => a.dataset.r === (r === "hoeren" ? "skripte" : r) ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
   sitzung = null;
   if (!(r === "lernen" && (rest[1] === "quiz" || rest[0] === "abschluss"))) quizRunde = null;
   if (r === "start") startSeite();
-  else if (r === "skripte") kopf("Meine Lernskripte", `${DATA.length} Module · Lernskripte als PDF zum Ansehen und Herunterladen`);
+  else if (r === "skripte") kopf("Meine Lernskripte", `${DATA.length} Module · PDF-Lernskripte und EPUB-Hörzusammenfassungen`);
+  else if (r === "hoeren") hoerSeite(DATA.find(m => m.name === rest[0]), rest[1]);
   else if (r === "termine") termineSeite();
   else if (r === "konto") kontoSeite();
   else if (r === "lernen") {

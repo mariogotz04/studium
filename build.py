@@ -16,6 +16,8 @@ import re
 import shutil
 import subprocess
 import sys
+import uuid
+import zipfile
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -534,6 +536,170 @@ def baustand():
     return {"zeit": jetzt.strftime("%d.%m.%Y, %H:%M"), "was": r.stdout.strip()[:100] if r.returncode == 0 else ""}
 
 
+def hoerkapitel(titel):
+    """Stabile Kapitelkennung, auch für die getrennten TM1-/TM2-Kapitel."""
+    m = re.match(r"^((?:TM[12] )?Kapitel \d+)\b", titel)
+    return m.group(1) if m else None
+
+
+def hoerskript_lesen(md, modul, skriptstand, abschnitte):
+    """Redaktionellen Hörtext lesen; Denkpausen bleiben Frage/Auflösung-Paare."""
+    if not md.exists():
+        raise ValueError(f"{modul}: {md.name} fehlt; Hörfassung zusammen mit dem Lernskript pflegen")
+    text = re.sub(r"<!--.*?-->", "", md.read_text(encoding="utf-8"), flags=re.S)
+    meta, kapitel, aktuell, pause, bereich, puffer = {}, [], None, None, None, []
+
+    def absatz():
+        if not puffer:
+            return
+        s = " ".join(puffer).strip()
+        puffer.clear()
+        if "$" in s or re.search(r"#(?:let|form|bild)\b|\\(?:frac|sqrt)\b", s):
+            raise ValueError(f"{modul}: Formeln im Hörtext in gesprochene Worte übersetzen: {s[:90]}")
+        if bereich:
+            pause[bereich].append(s)
+        elif aktuell is not None:
+            aktuell["blocks"].append({"type": "paragraph", "text": s})
+        else:
+            raise ValueError(f"{modul}: Text vor dem ersten Kapitel in {md.name}")
+
+    for zeile in text.splitlines():
+        z = zeile.strip()
+        if z.startswith("## "):
+            absatz()
+            aktuell = {"id": f"kap-{len(kapitel)}", "title": z[3:], "blocks": [], "refs": []}
+            kapitel.append(aktuell)
+            pause, bereich = None, None
+        elif z.startswith("### "):
+            absatz()
+            if aktuell is None:
+                raise ValueError(f"{modul}: Zwischenüberschrift ohne Kapitel")
+            titel = z[4:]
+            if titel == "Denkpause":
+                pause = {"type": "pause", "question": [], "answer": []}
+                aktuell["blocks"].append(pause)
+                bereich = "question"
+            elif titel == "Auflösung":
+                if pause is None or bereich != "question":
+                    raise ValueError(f"{modul}: Auflösung ohne unmittelbar vorangehende Denkpause")
+                bereich = "answer"
+            else:
+                pause, bereich = None, None
+                aktuell["blocks"].append({"type": "heading", "text": titel})
+        elif z.startswith("# "):
+            if kapitel or "title" in meta:
+                raise ValueError(f"{modul}: Genau ein Titel vor dem ersten Kapitel ist erforderlich")
+            meta["title"] = z[2:]
+        elif m := re.match(r"^(Stand|Skriptstand):\s*(.+)$", z):
+            if aktuell is not None:
+                raise ValueError(f"{modul}: Datumsfelder gehören vor die Kapitel")
+            meta[m.group(1)] = datetime.strptime(m.group(2), "%d.%m.%Y").date()
+        elif z.startswith("Quelle:"):
+            absatz()
+            if aktuell is None:
+                raise ValueError(f"{modul}: Quellenangabe ohne Kapitel")
+            aktuell["refs"] += [r.strip() for r in z[7:].split(",") if r.strip()]
+        elif not z:
+            absatz()
+        else:
+            puffer.append(z)
+    absatz()
+    if not all(k in meta for k in ("title", "Stand", "Skriptstand")):
+        raise ValueError(f"{modul}: Titel, Stand oder Skriptstand fehlt in {md.name}")
+    if meta["Skriptstand"] != skriptstand:
+        raise ValueError(f"{modul}: Hörfassung mit Skriptstand {skriptstand:%d.%m.%Y} abgleichen und Skriptstand aktualisieren")
+    erwartet = [hoerkapitel(t) for t, _ in abschnitte if hoerkapitel(t)]
+    vorhanden = [hoerkapitel(k["title"]) for k in kapitel if hoerkapitel(k["title"])]
+    if vorhanden != erwartet:
+        raise ValueError(f"{modul}: Hörkapitel passen nicht zur Skriptgliederung: {vorhanden!r} statt {erwartet!r}")
+    if not kapitel or hoerkapitel(kapitel[0]["title"]):
+        raise ValueError(f"{modul}: Der Modulüberblick muss vor den Hörkapiteln stehen")
+    for k in kapitel:
+        if not k["blocks"]:
+            raise ValueError(f"{modul}: Leeres Hörkapitel {k['title']}")
+        pausen = [b for b in k["blocks"] if b["type"] == "pause"]
+        if hoerkapitel(k["title"]) and (not pausen or not k["refs"]):
+            raise ValueError(f"{modul}: {k['title']} braucht Denkpause mit Auflösung und Abschnittsquellen")
+        for b in pausen:
+            if not b["question"] or not b["answer"]:
+                raise ValueError(f"{modul}: Unvollständige Denkpause in {k['title']}")
+        k["sources"] = []
+        for ref in k.pop("refs"):
+            treffer = abschnitt_finden(ref, abschnitte)
+            if not treffer:
+                raise ValueError(f"{modul}: Hörtext-Quelle {ref!r} nicht im Lernskript gefunden")
+            k["sources"].append({"t": treffer[0], "p": treffer[1]})
+    return meta, kapitel
+
+
+def hoerfassung(md, modul, skriptstand, abschnitte):
+    """EPUB 3 ohne Bilder, Skripte oder Formelsatz: geeignet zum Vorlesen."""
+    meta, kapitel = hoerskript_lesen(md, modul, skriptstand, abschnitte)
+    name = f"{modul} Hörzusammenfassung Stand {meta['Stand']:%d.%m.%Y}"
+    ziel = OUT / "epub"
+    ziel.mkdir(parents=True, exist_ok=True)
+    datei = ziel / (re.sub(r"[^A-Za-z0-9.-]+", "_", name.translate(UMLAUTE)) + ".epub")
+    esc = html.escape
+    pause_text = "Halte die Wiedergabe jetzt kurz an. Erkläre Deine Antwort in eigenen Worten. Wenn Du bereit bist, höre die Auflösung an."
+
+    def dokument(titel, body):
+        return ('<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE html>\n'
+                '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" '
+                'lang="de-DE" xml:lang="de-DE"><head><meta charset="utf-8"/>'
+                f'<title>{esc(titel)}</title><link rel="stylesheet" href="style.css"/></head><body>{body}</body></html>')
+
+    dateien, manifest, spine = {}, [], []
+    for i, k in enumerate(kapitel):
+        body = f'<h1>{esc(k["title"])}</h1>'
+        if i == 0:
+            body += (f'<p>{esc(modul)}. Feynman-Hörzusammenfassung. Stand {meta["Stand"]:%d.%m.%Y}.</p>'
+                     '<p>Diese Hörfassung erklärt den Stoff in Worten. Bei jeder Denkpause hältst Du selbst kurz an '
+                     'und erklärst den Gedanken, bevor Du die Auflösung hörst. Formeln, genaue Zeichnungen und '
+                     'sämtliche Originalquellen findest Du im Lernskript.</p>')
+        for b in k["blocks"]:
+            if b["type"] == "heading":
+                body += f'<h2>{esc(b["text"])}</h2>'
+            elif b["type"] == "paragraph":
+                body += f'<p>{esc(b["text"])}</p>'
+            else:
+                body += '<section><h2>Denkpause</h2>' + ''.join(f'<p>{esc(p)}</p>' for p in b["question"])
+                body += f'<p>{pause_text}</p><h2>Auflösung</h2>' + ''.join(f'<p>{esc(p)}</p>' for p in b["answer"]) + '</section>'
+        pfad = f'kapitel-{i}.xhtml'
+        dateien[pfad] = dokument(k["title"], body)
+        manifest.append(f'<item id="k{i}" href="{pfad}" media-type="application/xhtml+xml"/>')
+        spine.append(f'<itemref idref="k{i}"/>')
+    nav = '<nav epub:type="toc" id="toc"><h1>Inhalt</h1><ol>'
+    nav += ''.join(f'<li><a href="kapitel-{i}.xhtml">{esc(k["title"])}</a></li>' for i, k in enumerate(kapitel)) + '</ol></nav>'
+    dateien["nav.xhtml"] = dokument("Inhalt", nav)
+    dateien["style.css"] = 'body { line-height: 1.6; margin: 5%; } h1, h2 { line-height: 1.25; } p { margin: .8em 0; } .quelle { font-size: .85em; }'
+    geändert = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    kennung = uuid.uuid5(uuid.NAMESPACE_URL, "https://mariogotz04.github.io/studium/hoeren/" + modul)
+    skriptname = f"{modul} Lernskript Stand {skriptstand:%d.%m.%Y}"
+    skriptdatei = re.sub(r"[^A-Za-z0-9.-]+", "_", skriptname.translate(UMLAUTE)) + ".pdf"
+    opf = ('<?xml version="1.0" encoding="UTF-8"?>'
+           '<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="buch-id" xml:lang="de-DE">'
+           '<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">'
+           f'<dc:identifier id="buch-id">urn:uuid:{kennung}</dc:identifier><dc:title>{esc(name)}</dc:title>'
+           '<dc:language>de-DE</dc:language><dc:creator>Lernplattform Studium</dc:creator>'
+           f'<dc:source>https://mariogotz04.github.io/studium/pdf/{skriptdatei}</dc:source>'
+           f'<meta property="dcterms:modified">{geändert}</meta></metadata><manifest>'
+           '<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>'
+           '<item id="stil" href="style.css" media-type="text/css"/>' + ''.join(manifest) + '</manifest><spine>'
+           + ''.join(spine) + '</spine></package>')
+    with zipfile.ZipFile(datei, "w") as z:
+        z.writestr("mimetype", "application/epub+zip", compress_type=zipfile.ZIP_STORED)
+        z.writestr("META-INF/container.xml", '<?xml version="1.0" encoding="UTF-8"?>'
+                   '<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">'
+                   '<rootfiles><rootfile full-path="EPUB/package.opf" media-type="application/oebps-package+xml"/></rootfiles></container>',
+                   compress_type=zipfile.ZIP_DEFLATED)
+        for pfad, inhalt in {"package.opf": opf, **dateien}.items():
+            z.writestr("EPUB/" + pfad, inhalt, compress_type=zipfile.ZIP_DEFLATED)
+    fragen = sum(b["type"] == "pause" for k in kapitel for b in k["blocks"])
+    print(f"→ {modul}: Hörfassung mit {len(kapitel)-1} Kapiteln und {fragen} Denkpausen als EPUB")
+    return {"file": f"epub/{datei.name}", "download": name + ".epub", "updated": meta["Stand"].isoformat(),
+            "source_updated": skriptstand.isoformat(), "size": datei.stat().st_size, "questions": fragen, "chapters": kapitel}
+
+
 def main():
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -564,6 +730,7 @@ def main():
             "pages": page_count(pdf),
             "size": pdf.stat().st_size,
             "updated": datum.isoformat(),
+            "hoeren": hoerfassung(typ.parent.parent / "Hoerskript.md", module, datum, abschnitte[module]),
         })
 
     decks = []
