@@ -92,6 +92,9 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 - Wiederholung wie bei Anki (SM-2): Bewertung Nochmal/Schwer/Gut/Leicht, Abstände wachsen mit der Leichtigkeit,
   jede Runde wird gemischt. Der Lernstand wird synchronisiert (siehe unten) und lässt sich zusätzlich auf
   der Seite eines Moduls als Datei sichern und laden.
+- Im Antwortfeld darf Scrollen oder Wischen keine Karte bewerten und keinen Kartenwechsel auslösen.
+  Bewertungen erfolgen bewusst über die Bewertungsbuttons oder die vorhandenen Tastaturkürzel 1–4.
+  Keine automatische Bewertung durch Touch- oder Wischgesten einbauen; das gilt auch beim freien Üben.
 
 Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort alles mit dem Stand aus dem Uni-Ordner.
 
