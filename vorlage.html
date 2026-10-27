@@ -70,6 +70,9 @@ h2 { font-family: var(--serif); font-weight: 700; }
 footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
 footer.stand { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); text-align: center; padding-bottom: env(safe-area-inset-bottom); }
 body.lernen footer.stand { display: none; }
+.neustand { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 60;
+  min-height: 48px; padding: 0 20px; border: 0; border-radius: 24px; background: var(--accent); color: var(--accent-ink);
+  font: inherit; font-weight: 600; box-shadow: 0 4px 14px rgba(0,0,0,.18); cursor: pointer; }
 /* PDF-Ansicht für die Home-Bildschirm-App (dort gibt es keinen Zurück-Knopf) */
 .pdfansicht { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; background: #e9e5dc; }
 .pdfansicht[hidden] { display: none; }
@@ -477,6 +480,22 @@ const PLAN = /*PLAN*/null || { termine: [], tage: {} };
 const BUILD = /*BUILD*/null;
 // Stand der Seite ganz unten: wann die Seite zuletzt gebaut wurde
 if (BUILD) document.getElementById("stand").textContent = `Stand der Seite: ${BUILD.zeit} Uhr`;
+// GitHub Pages hält die Seite bis zu 10 Minuten im Zwischenspeicher, und die Home-Bildschirm-App lädt nie von selbst neu.
+// Deshalb fragt die Seite beim Öffnen und bei jeder Rückkehr in die App am Zwischenspeicher vorbei nach dem neuesten Stand.
+async function neuerStand() {
+  if (!BUILD || document.getElementById("neustand")) return;
+  try {
+    const text = await (await fetch(location.pathname + "?stand=" + Date.now(), { cache: "no-store" })).text();
+    const neu = JSON.parse((text.match(/const BUILD = (\{.*?\});/) || [])[1] || "null");
+    if (!neu || (neu.zeit === BUILD.zeit && neu.was === BUILD.was)) return;
+    const b = Object.assign(document.createElement("button"), { id: "neustand", type: "button", className: "neustand",
+      textContent: `Neuer Stand vom ${neu.zeit} Uhr · Tippen zum Laden` });
+    b.onclick = () => location.replace(location.pathname + "?v=" + Date.now() + location.hash);
+    document.body.appendChild(b);
+  } catch {}
+}
+neuerStand();
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") neuerStand(); });
 // Synchronisation über Supabase (Projekt „studium“). Der Schlüssel ist öffentlich gedacht: Jeder sieht nur seine eigenen
 // Zeilen, das regelt die Datenbank (Row Level Security).
 const SUPABASE = { url: "https://rqouznmfasdvrlsxtlxj.supabase.co", key: "sb_publishable_eERiCReLijLdOeypAmKwEg_GFSw58z8" };
