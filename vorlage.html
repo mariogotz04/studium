@@ -742,7 +742,7 @@ window.addEventListener("online", () => sync.jetzt());
 // Wenn ein anderes Gerät etwas geändert hat: Ansicht neu aufbauen, aber keine laufende Runde unterbrechen.
 function neuZeichnen() {
   if (sitzung || quizRunde || document.activeElement?.matches("input, textarea, select")) return;
-  if (/^#lernen\/[^/]+\/aufgabe\//.test(location.hash)) return;
+  if (/^#lernen\/[^/]+\/(?:probe\/)?aufgabe\//.test(location.hash)) return;
   route(false);
 }
 
@@ -1936,21 +1936,26 @@ function modulSeite(m, teil) {
 
 // Eine Aufgabe: erst selbst rechnen, dann Tipp, Ergebnis und Lösung Schritt für Schritt aufdecken, am Ende ehrlich bewerten.
 let offenAufgabe = null;
-function aufgabeSeite(m, a) {
-  const liste = (m.aufgaben || []).filter(x => { const f = store.get("lernen:filter", "alle"); return f === "alle" || (f === "offen" ? aufgabeStand(x)?.s !== "ok" || x === a : x.art === f); });
+function aufgabeSeite(m, a, probe = null) {
+  const liste = probe ? probe.ids.map(id => (m.aufgaben || []).find(x => x.id === id)).filter(Boolean) :
+    (m.aufgaben || []).filter(x => { const f = store.get("lernen:filter", "alle"); return f === "alle" || (f === "offen" ? aufgabeStand(x)?.s !== "ok" || x === a : x.art === f); });
   const i = liste.indexOf(a), vor = liste[i - 1], nach = liste[i + 1];
-  if (offenAufgabe?.id !== a.id) offenAufgabe = { id: a.id, schritte: 0, tipp: false, erg: false, tag: heuteIso() };
-  const o = offenAufgabe, st = aufgabeStand(a);
-  kopf(m.name, `Lernen · Aufgabe ${i + 1} von ${liste.length}`);
-  const link = x => `#lernen/${encodeURIComponent(m.name)}/aufgabe/${x.id}`;
+  const kontext = `${m.name}:${probe?.start || "einzeln"}`;
+  if (offenAufgabe?.id !== a.id || offenAufgabe?.kontext !== kontext) offenAufgabe = { id: a.id, kontext, schritte: 0, tipp: false, erg: false, tag: probe ? probe.tag || iso(new Date(probe.start)) : heuteIso() };
+  const o = offenAufgabe, status = probe ? probe.bew[a.id] : aufgabeStand(a)?.s;
+  const name = probe ? probe.mix ? "Mix-Serie" : "Probeklausur" : "Lernen";
+  const zurück = `#lernen/${encodeURIComponent(m.name)}${probe ? "/probe" : ""}`;
+  const rücktext = probe ? probe.mix ? "Zur Mix-Übersicht" : "Zur Auswertung" : m.name;
+  kopf(m.name, `${name} · Aufgabe ${i + 1} von ${liste.length}`);
+  const link = x => `${zurück}/aufgabe/${x.id}`;
   const fertig = o.schritte >= a.s.length;
-  lernView.innerHTML = `<div class="topbar" style="margin-top:8px"><a class="back" href="#lernen/${encodeURIComponent(m.name)}">← ${esc(m.name)}</a>
+  lernView.innerHTML = `<div class="topbar" style="margin-top:8px;flex-wrap:wrap"><a class="back" href="${zurück}">← ${esc(rücktext)}</a>
       <span class="zahl">${i + 1} / ${liste.length}</span>
       <div class="pfeile"><a class="btn" ${vor ? `href="${link(vor)}"` : "aria-disabled=true style=opacity:.4"} aria-label="vorherige">‹</a>
         <a class="btn" ${nach ? `href="${link(nach)}"` : "aria-disabled=true style=opacity:.4"} aria-label="nächste">›</a></div></div>
     <div class="akarte" style="margin-top:10px">
       <span class="chip ${a.art}">${a.art === "rechnen" ? "Rechenaufgabe" : "Verständnisfrage"}</span> <span class="muted" style="font-size:14px">${esc(a.k)}</span>
-      <h2>Aufgabe ${a.nr || m.aufgaben.indexOf(a) + 1} · ${esc(a.t)}</h2>
+      <h2>Aufgabe ${probe ? i + 1 : a.nr || m.aufgaben.indexOf(a) + 1} · ${esc(a.t)}</h2>
       ${baustein(a.a, a.t)}
       ${o.tipp && a.tipp ? `<div class="extra tipp"><div class="lab">Tipp</div>${baustein(a.tipp, "Tipp")}</div>` : ""}
       ${o.erg && a.erg ? `<div class="extra erg"><div class="lab">Ergebnis zum Vergleichen</div>${baustein(a.erg, "Ergebnis")}</div>` : ""}
@@ -1963,16 +1968,22 @@ function aufgabeSeite(m, a) {
         ${!fertig && a.s.length > 1 ? `<button class="btn gross" id="alle">Alles zeigen</button>` : ""}
       </div>
       ${fertig ? `<p class="hint" style="margin:20px 0 0">Wie lief es?</p><div class="bewerten">
-        ${[["ok", "Selbst gelöst", "kommt seltener"], ["hilfe", "Mit Hilfe", "kommt wieder"], ["nein", "Nicht geschafft", "kommt bald wieder"]]
-          .map(([k, n, s]) => `<button class="${k}${st?.s === k ? " gewählt" : ""}" data-s="${k}">${n}<small>${s}</small></button>`).join("")}</div>` : ""}
+        ${[["ok", "Selbst gelöst", "kommt seltener"], ["hilfe", probe ? "Selbst gelöst mit Fehlern" : "Mit Hilfe", "kommt wieder"], ["nein", "Nicht geschafft", "kommt bald wieder"]]
+          .map(([k, n, s]) => `<button class="${k}${status === k ? " gewählt" : ""}" data-s="${k}">${n}<small>${s}</small></button>`).join("")}</div>` : ""}
       ${quellenLink(m.pdf, a.q)}
-    </div>`;
-  const neu = () => aufgabeSeite(m, a);
+    </div>${probe ? `<div class="row" style="margin-top:18px"><a class="btn gross" href="${zurück}">${esc(rücktext)}</a></div>` : ""}`;
+  const neu = () => aufgabeSeite(m, a, probe);
   $("#weiter")?.addEventListener("click", () => { o.schritte++; neu(); lernView.querySelectorAll(".schritt")[o.schritte - 1]?.scrollIntoView({ behavior: "smooth", block: "start" }); });
   $("#tipp")?.addEventListener("click", () => { o.tipp = true; neu(); });
   $("#erg")?.addEventListener("click", () => { o.erg = true; neu(); });
   $("#alle")?.addEventListener("click", () => { o.schritte = a.s.length; neu(); });
   lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
+    if (probe) {
+      probeBewerten(m, a, b.dataset.s);
+      offenAufgabe = null;
+      location.hash = zurück;
+      return;
+    }
     const alt = aufgabeStand(a) || { n: 0 };
     db.set(`aufgabe:${m.name}:${a.id}`, { s: b.dataset.s, n: alt.n + 1, t: Date.now() });
     lernAktivität("aufgabe", m.name, a.id, { status: b.dataset.s, vorher: alt.s || "", titel: a.t }, o.tag);
@@ -2067,6 +2078,18 @@ function probeSpeichern(l, auf) {
   db.set(`probe:${l.modul}:${l.start}`, { n, ok: z("ok"), hilfe: z("hilfe"), nein: z("nein"), mix: l.mix, dauer: l.dauer,
     min: Math.round((l.ab - l.start) / 6e4) });
 }
+function probeBewerten(m, a, status) {
+  const l = store.get("probe:lauf", null);
+  if (!l?.ab || l.modul !== m.name || !l.ids.includes(a.id)) return;
+  const auf = l.ids.map(id => (m.aufgaben || []).find(x => x.id === id)).filter(Boolean);
+  const alt = aufgabeStand(a) || { n: 0 }, tag = l.tag || iso(new Date(l.start));
+  l.bew[a.id] = status;
+  store.set("probe:lauf", l);
+  db.set(`aufgabe:${m.name}:${a.id}`, { s: status, n: alt.n + 1, t: Date.now() });
+  lernAktivität("aufgabe", m.name, a.id, { status, vorher: alt.s || "", titel: a.t }, tag);
+  if (auf.every(x => l.bew[x.id])) lernAktivität(l.mix ? "mix" : "probe", m.name, String(l.start), { fertig: true, anzahl: auf.length }, tag);
+  probeSpeichern(l, auf);
+}
 function probeSeite(m) {
   const l = store.get("probe:lauf", null);
   const auf = l.ids.map(id => (m.aufgaben || []).find(a => a.id === id)).filter(Boolean);
@@ -2097,20 +2120,14 @@ function probeSeite(m) {
     ${auf.map((a, i) => `<div class="akarte"><div class="plab">Aufgabe ${i + 1} · ${esc(a.k)}</div><h2>${esc(a.t)}</h2>
       ${l.erg[a.id] && a.erg ? `<div class="extra erg"><div class="lab">Ergebnis zum Vergleichen</div>${baustein(a.erg, "Ergebnis")}</div>` : ""}
       <div class="asteuer">${a.erg && !l.erg[a.id] ? `<button class="btn" data-erg="${a.id}">Ergebnis zeigen</button>` : ""}
-        <a class="btn" href="#lernen/${encodeURIComponent(m.name)}/aufgabe/${a.id}">Lösung Schritt für Schritt</a></div>
-      <div class="bewerten">${[["ok", "Selbst gelöst"], ["hilfe", "Mit Fehlern"], ["nein", "Nicht geschafft"]]
+        <a class="btn" href="#lernen/${encodeURIComponent(m.name)}/probe/aufgabe/${a.id}">Lösung Schritt für Schritt</a></div>
+      <div class="bewerten">${[["ok", "Selbst gelöst"], ["hilfe", "Selbst gelöst mit Fehlern"], ["nein", "Nicht geschafft"]]
         .map(([k, n]) => `<button class="${k}${l.bew[a.id] === k ? " gewählt" : ""}" data-id="${a.id}" data-s="${k}">${n}</button>`).join("")}</div>
       ${quellenLink(m.pdf, a.q)}</div>`).join("")}
     ${bewertet === auf.length ? lernImpuls() : ""}<div class="row" style="margin-top:18px"><button class="btn primary gross" id="pneu">Neuer Versuch</button><a class="btn gross" href="${zurück}">Fertig</a></div>`;
   lernView.querySelectorAll("[data-erg]").forEach(b => b.onclick = () => { l.erg[b.dataset.erg] = 1; store.set("probe:lauf", l); probeSeite(m); });
   lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
-    const a = auf.find(x => x.id === b.dataset.id), alt = aufgabeStand(a) || { n: 0 };
-    l.bew[a.id] = b.dataset.s; store.set("probe:lauf", l);
-    db.set(`aufgabe:${m.name}:${a.id}`, { s: b.dataset.s, n: alt.n + 1, t: Date.now() });
-    const tag = l.tag || iso(new Date(l.start));
-    lernAktivität("aufgabe", m.name, a.id, { status: b.dataset.s, vorher: alt.s || "", titel: a.t }, tag);
-    if (auf.every(a => l.bew[a.id])) lernAktivität(l.mix ? "mix" : "probe", m.name, String(l.start), { fertig: true, anzahl: auf.length }, tag);
-    probeSpeichern(l, auf);
+    probeBewerten(m, auf.find(x => x.id === b.dataset.id), b.dataset.s);
     const y = window.scrollY; probeSeite(m); window.scrollTo(0, y);
   });
   $("#pneu").onclick = () => { store.set("probe:lauf", null); store.set("lernen:teil", "probe"); location.hash = zurück; };
@@ -2479,7 +2496,13 @@ function route(oben = true) {
     else if (!m) lernenÜbersicht();
     else if (rest[1] === "aufgabe" && m.aufgaben?.find(a => a.id === rest[2])) aufgabeSeite(m, m.aufgaben.find(a => a.id === rest[2]));
     else if (rest[1] === "quiz" && quizRunde?.m === m) quizSeite();
-    else if (rest[1] === "probe") store.get("probe:lauf", null)?.modul === m.name ? probeSeite(m) : modulSeite(m, "probe");
+    else if (rest[1] === "probe") {
+      const l = store.get("probe:lauf", null);
+      const a = l?.modul === m.name && l.ab && rest[2] === "aufgabe" && l.ids.includes(rest[3]) && m.aufgaben?.find(x => x.id === rest[3]);
+      if (a) aufgabeSeite(m, a, l);
+      else if (l?.modul === m.name) probeSeite(m);
+      else modulSeite(m, "probe");
+    }
     else modulSeite(m, rest[1]);
   }
   pomodoro.tick();

@@ -170,6 +170,7 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - `tagesplan:<Tag>` speichert die vorgeschlagene Liste und Karten-IDs beim ersten Aufruf; während des Tages weder fertige Zeilen austauschen noch neue Vorschläge nachschieben.
 - `aktiv:<Tag>:<Art>:<Modul>:<ID>` hält wirkliche Bearbeitungen fest, auch beim Einstieg über die Modulnavigation. Aufgabe erst nach Selbsteinschätzung (auch „nicht geschafft“); Quiz nach Auswertung aller Fragen einschließlich Freitext; Karten nach abgeschlossenen Runden, die alle Zielkarten umfassen; Mix/Probe nach Abgabe und Bewertung sämtlicher Aufgaben.
 - Automatisches Abhaken bedeutet bearbeitet, nicht beherrscht. Unsichere Inhalte bleiben in den bestehenden Wiederholungsplänen. Manuelles Überschreiben mit Zeitstempel unter `erledigt:<Tag>` erhalten. Aktivitäten gehören zum Tag des Runden-/Aufgabenstarts.
+- In der Auswertung von Mix-Serie und Probeklausur bleibt die Schritt-für-Schritt-Lösung im selben Versuch. Zurück führt zur Übersicht derselben Aufgaben; Pfeile wechseln nur innerhalb dieser Auswahl. Bewertungen aus Übersicht und Lösung gemeinsam speichern, offene Bewertungen weiterzählen und den Versuch erst nach allen Bewertungen abschließen. `node test_mix.cjs` prüft diesen Ablauf.
 
 ## Selbstständige Übungsaufgaben in allen Modulen
 

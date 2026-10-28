@@ -26,6 +26,8 @@ Die redaktionelle Quelle ist `Lernskript aktuell/Hoerskript.md` je Modul. Sie wi
 
 „Heute dran“ behält die Tagesauswahl und hakt Aufgaben nach Bewertung, Quizrunden nach vollständiger Auswertung sowie Kartenrunden, Mix-Serien und Probeklausuren nach tatsächlichem Abschluss automatisch ab. Manuelle Haken bleiben möglich. Bearbeitet bedeutet nicht automatisch beherrscht.
 
+Nach Abgabe einer Mix-Serie führt „Lösung Schritt für Schritt“ zur Lösung innerhalb derselben Serie. „Zur Mix-Übersicht“ öffnet wieder dieselben fünf Aufgaben mit ihren bisherigen Bewertungen und aufgedeckten Ergebnissen. Bewertungen in der Lösung zählen ebenfalls für die Serie; abgeschlossen ist sie nach Bewertung aller Aufgaben. Dasselbe gilt für die Auswertung einer Probeklausur. Prüfen: `node test_mix.cjs`.
+
 Alle Rechenaufgaben stehen mit den benötigten Zahlenwerten, Einheiten und gegebenenfalls Tabellen/Skizzen direkt in der Aufgabe. Gegeben/Annahmen, Gesucht, Teilfragen und Aufgabennummern gliedern die Übungen. Zitatquellen werden zentral in `zitate.json` gepflegt.
 
 

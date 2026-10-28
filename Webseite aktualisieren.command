@@ -15,7 +15,7 @@ elif [ "$#" -gt 0 ]; then echo "Unbekannte Option: $1"; exit 1; fi
 AUSSCHLIESSEN=("Zum L*schen" "Unterlagen" "Sonstiges" "Physik Praktikum" "Webseite")
 
 # Diese Dateien aus Uni/Webseite gehören zur Seite selbst und werden mit hochgeladen.
-SEITENDATEIEN=("vorlage.html" "build.py" "zitate.json" "zitate_aktualisieren.py" "zitate_filter.json" "test_zitate.py" "test_zitate.cjs" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command" "Vorlesungsplan.pdf")
+SEITENDATEIEN=("vorlage.html" "build.py" "zitate.json" "zitate_aktualisieren.py" "zitate_filter.json" "test_zitate.py" "test_zitate.cjs" "test_mix.cjs" "README.md" "AGENTS.md" ".gitignore" ".github" "Webseite aktualisieren.command" "Vorlesungsplan.pdf")
 
 set -e
 SEITE="$(cd "$(dirname "$0")" && pwd)"
