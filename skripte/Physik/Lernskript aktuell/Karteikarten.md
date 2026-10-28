@@ -254,6 +254,95 @@ An beiden Enden ist ein Bauch. Es passen dieselben Wellenlängen wie bei zwei fe
 Quelle: 6.7.3
 
 ### Zeichne die Begriffslandkarte zu Kapitel 6 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-Die Anregung legt Frequenz und Amplitude fest, das Medium liefert die Ausbreitungsgeschwindigkeit; daraus folgt die Wellenlänge. Die Wellenfunktion trennt die lokale Teilchenbewegung vom wandernden Muster. Die Intensität beschreibt den Energiefluss und hängt quadratisch von der Amplitude ab. Überlagerung und Reflexion erzeugen stehende Wellen, deren Knoten und Bäuche zu den Randbedingungen passen müssen; daraus folgen die erlaubten Eigenmoden.
+Die Quelle gibt Takt und Amplitude vor, das Medium die Geschwindigkeit; daraus folgt die Wellenlänge. Überlagerung und Ränder wählen stehende Eigenmoden, auf Flächen mit Knotenlinien. Im Raum bestimmt die Frontgeometrie die Intensitätsabnahme; Huygens verbindet Fronten mit Interferenz, Beugung, Reflexion und Brechung. Eine bewegte Quelle verändert die Frontabstände und damit den ankommenden Takt: Doppler-Effekt.
 Quelle: 6.1
 
+
+### Was sind Knotenlinien einer zweidimensionalen Eigenmode?
+Linien auf einer schwingenden Fläche, die während der gesamten Bewegung unausgelenkt bleiben. Dazwischen schwingen Flächenbereiche. Die Form der Fläche und ihre Randbedingungen bestimmen, welche Eigenmoden möglich sind.
+Quelle: 6.7.4
+Abbildung: membran-knoten-quelle
+
+### Warum sammelt sich Sand auf Knotenlinien einer schwingenden Platte?
+Von schwingenden Bereichen wird Sand fortbewegt. An den ruhenden Knotenlinien sammelt er sich bevorzugt. So wird die räumliche Eigenmode sichtbar; ein momentaner Nulldurchgang allein wäre noch kein Knoten.
+Quelle: 6.7.4
+Abbildung: membran-knoten-quelle
+
+### Wie unterscheiden sich ebene, Kugel- und Zylinderwellen?
+Ihre Fronten sind parallele Ebenen, konzentrische Kugelflächen beziehungsweise Zylindermäntel. Dazu passen eine idealisierte flächige, punktförmige beziehungsweise lange linienförmige Quelle. Die Geometrie entscheidet, wie sich die Leistung beim Ausbreiten auf Flächen verteilt.
+Quelle: 6.8.1
+Abbildung: map-raumwellen
+
+### Warum sinkt die Intensität einer Kugelwelle auch ohne Absorption?
+Dieselbe Leistung verteilt sich auf Kugelflächen, die mit dem Quadrat des Radius wachsen: $I=P/(4 pi r^2)$. Bei doppeltem Abstand beträgt die Intensität nur ein Viertel. Die gesamte Leistung durch die Kugelfläche bleibt erhalten; es wird keine Energie vernichtet.
+Quelle: 6.8.1
+Abbildung: map-raumwellen
+
+### Wie ändern sich Amplitude und Intensität einer Kugelwelle mit dem Abstand?
+Im verlustfreien isotropen Modell gilt $I prop 1/r^2$. Bei festem Medium und Takt gilt zugleich $I prop u^2$, also $u prop 1/r$. Doppelte Entfernung halbiert damit die Amplitude, viertelt aber die Intensität.
+Quelle: 6.8.1
+
+### Warum nimmt die Intensität einer Zylinderwelle langsamer ab als die einer Kugelwelle?
+Bei einer festen Länge der idealen Linienquelle wächst der Zylindermantel nur proportional zum Radius. Deshalb gilt $I prop 1/r$ statt $1/r^2$. Die Näherung einer sehr langen Linienquelle darf nicht beliebig weit von einer realen endlichen Quelle weg fortgesetzt werden.
+Quelle: 6.8.1
+Abbildung: map-raumwellen
+
+### Was sagt das Huygenssche Prinzip über eine Wellenfront?
+Jeder Punkt der alten Front wird als Ausgangspunkt einer Elementarwelle betrachtet. Nach derselben Zeit bildet die gemeinsame vordere Einhüllende dieser Elementarwellen die neue Front. Der Radius jeder Elementarwelle ist im homogenen Medium $c Delta t$.
+Quelle: 6.8.2
+Abbildung: huygens-quelle
+
+### Was ergänzt Fresnel zur geometrischen Konstruktion nach Huygens?
+Die Wellenfunktion am Ziel entsteht aus der Superposition aller Elementarwellen. Dabei müssen deren Phasen berücksichtigt werden, damit Verstärkung und Auslöschung richtig beschrieben werden. Die Einhüllende allein ist noch keine Berechnung der Intensität.
+Quelle: 6.8.2
+Abbildung: map-huygens
+
+### Bedeutet ein zeitstabiles Interferenzmuster, dass die Teilchen nicht mehr schwingen?
+Nein. Bei gleicher Frequenz und fester relativer Phase können die Orte der Verstärkung und Auslöschung beziehungsweise die gemittelte Intensitätsverteilung fest bleiben. Die momentane Auslenkung schwingt weiterhin. Gleiche Frequenz allein garantiert noch keine feste relative Phase.
+Quelle: 6.8.2
+
+### Warum darf man eine Phasendifferenz nicht direkt zu einer Weglänge addieren?
+Weglängen stehen in Metern, Phasen in Radiant. Der Weg muss in Phase umgerechnet werden: $Delta phi=2 pi Delta s/lambda+Delta phi_0$. Alternativ entspricht die Anfangsphase der Wegverschiebung $lambda Delta phi_0/(2 pi)$.
+Quelle: 6.8.3
+
+### Wann darf man beim Doppelspalt mit dem Wegunterschied d mal Sinus des Winkels rechnen?
+Nur im Fernfeld: Der Beobachtungsabstand muss viel größer als der Quellenabstand sein, damit die Wege nahezu parallel sind. Dann gilt $Delta s approx d sin(alpha)$. Im Nahfeld berechnet man beide Wege aus der tatsächlichen Geometrie und bildet ihre Differenz.
+Quelle: 6.8.3
+Abbildung: doppelspalt-quelle
+
+### Warum garantiert eine Gegenphase noch keine vollständige Auslöschung?
+Die Auslenkungen müssen zusätzlich am Beobachtungsort gleich große Amplituden besitzen. Bei unterschiedlichen Beträgen bleibt eine Restamplitude. Ein Interferenzminimum darf deshalb nicht automatisch mit vollständiger Stille gleichgesetzt werden.
+Quelle: 6.8.3
+
+### Was ist Beugung, und wie erklärt Huygens Wellen im Schatten?
+Beugung ist die Ausbreitung von Wellen in den geometrischen Schatten eines Hindernisses. Die Elementarwellen der nicht blockierten Front an Öffnungen und Kanten reichen auch dorthin. Ihre Interferenz bestimmt die Stärke; die Kante erzeugt keine zusätzliche Energie.
+Quelle: 6.8.4
+Abbildung: beugung-quelle
+
+### Wie hängen Beugung und Interferenz zusammen?
+Beugung beschreibt, dass die Welle nicht auf gerade Strahlen beschränkt bleibt. Das Beugungsbild entsteht durch Interferenz der Elementarwellen mit ihren unterschiedlichen Phasen. Es sind zwei Blickwinkel auf dieselbe Ausbreitung, keine widersprüchlichen Erklärungen.
+Quelle: 6.8.4
+
+### Wie misst man die Winkel bei Reflexion und Brechung?
+Zwischen der Ausbreitungsrichtung, also der Wellennormale, und dem Lot auf die Grenzfläche. Bei Reflexion sind Einfalls- und Ausfallswinkel betragsgleich. Misst man stattdessen zur Oberfläche oder zur Wellenfront, verwendet man andere Winkel und darf sie nicht unverändert in dieselben Formeln einsetzen.
+Quelle: 6.8.5
+Abbildung: reflexion-3d-quelle
+
+### Was ändert sich bei Brechung in ein langsameres Medium, und was bleibt gleich?
+An einer ruhenden Grenzfläche bleibt die Frequenz gleich. Die Wellenlänge wird im Verhältnis der Geschwindigkeiten kleiner: $lambda_2/lambda_1=c_2/c_1$. Bei schrägem Einfall wird die Wellennormale zum Lot hin gebrochen; bei senkrechtem Einfall ändert sie ihre Richtung nicht.
+Quelle: 6.8.5
+Abbildung: brechung-quelle
+
+### Was verursacht den Doppler-Effekt bei bewegter Quelle und ruhendem Empfänger?
+Der Sender rückt zwischen den Emissionen weiter. Vor ihm liegen die Fronten enger, hinter ihm weiter auseinander. Bei unverändertem $c$ zählt der ruhende Empfänger deshalb vorne mehr und hinten weniger Fronten pro Sekunde; der eigene Takt des Senders muss sich nicht ändern.
+Quelle: 6.9.1
+Abbildung: doppler-quelle
+
+### Wie prüfst du beim Doppler-Effekt das richtige Vorzeichen?
+Annäherung muss den Ton erhöhen: $f_"an"=f_S/(1-v_S/c)$ mit einem Nenner kleiner als eins. Entfernen senkt den Ton: $f_"ent"=f_S/(1+v_S/c)$. Für $v_S=0$ müssen beide Formeln wieder $f_S$ ergeben.
+Quelle: 6.9.1
+Abbildung: map-doppler
+
+### Welche Voraussetzungen hat die Dopplerformel für die bewegte Quelle?
+Der Empfänger ruht im ruhenden Medium, der Sender bewegt sich mit $v_S<c$ auf ihn zu oder von ihm weg. Die angegebenen Geschwindigkeitsbeträge gelten entlang der Verbindungslinie. Die Formel darf weder auf Licht noch ungeprüft auf einen bewegten Empfänger oder den seitlichen Moment einer Vorbeifahrt übertragen werden.
+Quelle: 6.9.1

@@ -1041,7 +1041,7 @@ Mit $c=sqrt(F/(rho A))$ folgt $F_"nach"/F_"vor"=(440/435)^2 approx "1,02312"$.
 ]
 
 // 1-52
-#aufgabe(titel: "Interferenz zweier Lautsprecher", art: "rechnen", quelle: "6.5")[
+#aufgabe(titel: "Interferenz zweier Lautsprecher", art: "rechnen", quelle: "6.8.3")[
 #if not web [*Aufgabe 52* #linebreak()]
 *Interferenz, Ü 10.5:*
 
@@ -1065,7 +1065,7 @@ $lambda=2 Delta l approx "2,54510" thin "m"$; daher *$f=340/lambda approx "133,5
 ][
 *Prüfung:* Die Wege müssen aus der Geometrie berechnet werden; 3 m sind keine hinreichende Fernfeldnäherung. Im Aufgabentext steht einmal $P_2$ statt $P_0$; die Skizze und R zeigen die gemeinte 1,8-m-Verschiebung. Die in R gerundeten 133 Hz entstehen durch frühes Runden der Wege.
 
-#src[Ü 10.5, PDF-S. 2; R, PDF-S. 3; eigene geometrisch überprüfte Rechnung.]
+#src[Ü 10.5, PDF-S. 2; R, PDF-S. 3; ÜN, PDF-S. 3 bestätigt den gerundeten Wert 134 Hz; eigene geometrisch überprüfte Rechnung.]
 ]
 
 // 1-53
@@ -1157,17 +1157,17 @@ $A=pi ("0,008" thin "m")^2/4 approx "5,02655" · 10^(-5) thin "m²"$.
 ][
 $m_1=c^2 rho A/g approx 12912 thin "kg"= "12,91" thin "t"$.
 ][
-Nach dem Abladen $m_2=0,7m_1$, daher $c_2=c sqrt("0,7") approx "502,0" thin "m/s"$. Bei 15 m bleibt $lambda_1=30 thin "m"$: *$f_1 approx "16,73" thin "Hz"$*.
+Nach dem Abladen $m_2="0,7" m_1$, daher $c_2=c sqrt("0,7") approx "502,0" thin "m/s"$. Bei 15 m bleibt $lambda_1=30 thin "m"$: *$f_1 approx "16,73" thin "Hz"$*.
 ][
 Bei 10 m ist $lambda_1=20 thin "m"$: *$f_1 approx "25,10" thin "Hz"$*.
 ][
 *Prüfung:* Weniger Spannung senkt $c$; kürzere Länge erhöht bei gleichem $c$ die Frequenz. Die Rückstellwirkung ist die Seilspannung, kein Pendelmodell.
 
-#src[AS 1.4 und 4.4, PDF-S. 13 und 50–51; eigene geprüfte Rechnung.]
+#src[AS 1.4 und 4.4, PDF-S. 13 und 50–51; ASN, PDF-S. 1–2; eigene geprüfte Rechnung.]
 ]
 
 // 1-56
-#aufgabe(titel: "Schiffe versenken: Auslöschung", art: "rechnen", quelle: "6.2")[
+#aufgabe(titel: "Schiffe versenken: Auslöschung", art: "rechnen", quelle: "6.8.3")[
 #if not web [*Aufgabe 56* #linebreak()]
 *Schiffe versenken, AS 1.5:*
 
@@ -1195,7 +1195,7 @@ Bei gegenphasigem Patschen muss die räumliche Zusatzphase ein ganzes Vielfaches
 ][
 *Prüfung:* Bei $y=0$ wären beide am selben Ort, was die Aufgabe ausschließt. Die zwei positiven Ergebnisse stimmen mit der Sammlung überein. Deren Formulierung zu gleichen Amplituden wird hier ausdrücklich auf vollständige Auslöschung beschränkt.
 
-#src[AS 1.5 und 4.5, PDF-S. 14 und 52–53; Anwendung des behandelten Phasenvergleichs.]
+#src[AS 1.5 und 4.5, PDF-S. 14 und 52–53; ASN, PDF-S. 3–4; Anwendung des behandelten Phasenvergleichs.]
 ]
 
 // 1-57
@@ -1258,3 +1258,167 @@ Bei unverändertem Medium und gleicher Frequenz wird die Amplitude von 1 mm auf 
 #src[Eigene Ergänzung nach VB, PDF-S. 13–14, Gl. 6.9–6.11.]
 ]
 
+
+// Ergänzungen zur Vorlesung vom 26.10.2026; bestehende Titel bleiben erhalten.
+#aufgabe(titel: "Knotenlinien auf dem Trommelfell", art: "verstehen", quelle: "6.7.4",
+  tipp: [Übertrage den Begriff des ruhenden Knotens von einer Strecke auf eine Fläche.],
+  ergebnis: [Knotenlinien bleiben immer unausgelenkt; der Sand macht das Muster sichtbar.],
+)[
+#if not web [*Aufgabe 59* #linebreak()]
+Warum sammelt sich feiner Sand bei einer schwingenden Platte auf bestimmten Linien? Was unterscheidet diese Linien von einer Linie, die nur in einer Momentaufnahme gerade Auslenkung null hat?
+#src[V26, PDF-S. 1–2, Abb. 6.10–6.11.]
+][
+*Begriff klären:* Eine Knotenlinie besteht aus Punkten, die während der ganzen Schwingung ruhen. Zwischen den Linien bewegen sich die Flächenbereiche.
+][
+*Experiment erklären:* Von schwingenden Bereichen wird Sand fortbewegt; an den ruhenden Linien sammelt er sich bevorzugt. Das Muster zeigt die Eigenmode, nicht die Bahn eines einzelnen Sandkorns.
+][
+*Abgrenzen:* Beim gemeinsamen Nulldurchgang einer stehenden Mode können auch schwingende Bereiche kurz unausgelenkt sein. Ein einzelnes Foto bei Auslenkung null beweist deshalb noch keine Knotenlinie.
+]
+
+#aufgabe(titel: "Kugelwelle bei doppeltem Abstand", art: "rechnen", quelle: "6.8.1",
+  ergebnis: [$I_2/I_1=1/4$, $u_2/u_1=1/2$; gesamte Leistung unverändert],
+  tipp: [Vergleiche zuerst die Kugelflächen, dann die Intensitäten.],
+)[
+#if not web [*Aufgabe 60* #linebreak()]
+*Gegeben und Annahmen*
+Eine kompakte Quelle strahlt im Kugelwellenmodell gleichmäßig in alle Richtungen. Es gibt keine Absorption oder Reflexion; Frequenz und Medium sind konstant. Zwei Messorte liegen bei $r_1=r>0$ und $r_2=2r$; die insgesamt abgestrahlte Leistung ist $P$.
+
+*Gesucht*
+#enum(numbering: "a)")[Bestimme $I_2/I_1$.][Bestimme das Verhältnis der Auslenkungsamplituden $u_2/u_1$.][Geht auf dem Weg Leistung verloren?]
+#src[Eigene Verhältnisaufgabe nach V26, PDF-S. 4–5 und VB, PDF-S. 13–14.]
+][
+*Fläche bestimmen:* Die Kugelfläche ist $A=4pi r^2$. Mit doppeltem Radius wird sie viermal so groß; dieselbe Leistung muss diese größere Fläche durchqueren.
+][
+*Intensität berechnen:* $I_2/I_1=(r_1/r_2)^2=(1/2)^2=1/4$. Die Einheit W/m² kürzt sich im Verhältnis heraus.
+][
+*Amplitude ableiten:* Bei gleichem Medium und Takt ist $I prop u^2$. Deshalb $u_2/u_1=sqrt(1/4)=1/2$.
+][
+*Energie prüfen:* $I_2 A_2=(I_1/4)(4A_1)=I_1 A_1=P$. Die Intensität sinkt geometrisch, nicht durch einen Leistungsverlust.
+]
+
+#aufgabe(titel: "Zylinderwelle und Kugelwelle vergleichen", art: "rechnen", quelle: "6.8.1",
+  ergebnis: [Zylinder: $I_2/I_1=1/2$; Kugel: $I_2/I_1=1/4$],
+  tipp: [Bei derselben betrachteten Quellenlänge wächst der Zylindermantel linear mit dem Radius.],
+)[
+#if not web [*Aufgabe 61* #linebreak()]
+*Gegeben und Annahmen*
+Vergleiche zwei verlustfreie Idealmodelle im selben Medium: eine sehr lange Linienquelle und eine isotrope Punktquelle. Für beide wird der Abstand von $r$ auf $2r$ vergrößert. Beim Zylindermodell wird dieselbe Quellenlänge $ell$ und deren konstante Leistung betrachtet; Endeffekte bleiben unberücksichtigt.
+
+*Gesucht*
+#enum(numbering: "a)")[Bestimme für beide Modelle $I(2r)/I(r)$.][Erkläre, warum die Abnahme verschieden ist.]
+#src[Eigene Verhältnisaufgabe nach V26, PDF-S. 4–5.]
+][
+*Geometrie wählen:* Der Zylindermantel ist $2pi r ell$. Doppeltes $r$ verdoppelt ihn. Die Kugelfläche $4pi r^2$ vervierfacht sich dagegen.
+][
+*Leistung verteilen:* Aus $I=P/A$ folgt für den Zylinder $I(2r)/I(r)=1/2$, für die Kugel $1/4$. Bei beiden bleibt die jeweilige gesamte Leistung gleich.
+][
+*Gültigkeit prüfen:* Eine endliche Linienquelle wirkt nicht bei beliebig großem Abstand weiterhin wie eine unendlich lange Linie. Die unterschiedlichen Potenzen sind geometrische Idealmodelle, kein unterschiedlicher Energieerhaltungssatz.
+]
+
+#aufgabe(titel: "Eine neue Wellenfront konstruieren", art: "verstehen", quelle: "6.8.2",
+  ergebnis: [Elementarwellen mit Radius $c Delta t$; die neue Front ist die gemeinsame vordere Einhüllende.],
+)[
+#if not web [*Aufgabe 62* #linebreak()]
+Erkläre die Konstruktion einer neuen Front aus einer alten Front in einem homogenen Medium. Warum ist ihr Abstand nicht automatisch eine Wellenlänge? Was ergänzt Fresnel?
+#src[V26, PDF-S. 7, Abb. 6.18; eigene Anwendung von $r=c Delta t$.]
+][
+*Startpunkte wählen:* Jeder Punkt der alten Front dient als Ausgangspunkt einer Elementarwelle. Alle müssen für denselben Zeitraum $Delta t$ weiterentwickelt werden.
+][
+*Front verbinden:* Nach dieser Zeit haben sie den Radius $c Delta t$. Die gemeinsame vordere Einhüllende bildet die neue Front. Eine Wellenlänge wird nur bei $Delta t=T$ erreicht.
+][
+*Auslenkungen überlagern:* Fresnel bezieht die Phasen und die Superposition der Elementarwellen ein. Die Einhüllende beschreibt die Geometrie; für Intensitäten muss auch die Überlagerung berücksichtigt werden.
+]
+
+#aufgabe(titel: "Phase ist keine zusätzliche Weglänge", art: "verstehen", quelle: "6.8.3",
+  tipp: [Vergleiche die Einheiten von Metern und Radiant.],
+  ergebnis: [$Delta phi=2pi Delta s/lambda+Delta phi_0$; äquivalente Wegverschiebung $lambda Delta phi_0/(2pi)$],
+)[
+#if not web [*Aufgabe 63* #linebreak()]
+In Gl. 6.19 werden eine Phasenverschiebung und zwei Weglängen direkt addiert. Erkläre den Dimensionsfehler und gib eine korrekte Form an. Genügt gleiche Frequenz für ein zeitstabiles Interferenzmuster?
+#src[V26, PDF-S. 6–8, insbesondere Gl. 6.19; eigene Dimensionsprüfung.]
+][
+*Einheiten vergleichen:* Weglängen stehen in Metern, die Anfangsphase in Radiant. Eine Phasenangabe kann nicht unverändert als Strecke behandelt werden.
+][
+*Umrechnen:* Eine Wellenlänge entspricht $2pi$ rad. Deshalb lautet die Gesamtphase $Delta phi=2pi Delta s/lambda+Delta phi_0$. Alternativ wird die Anfangsphase durch $lambda Delta phi_0/(2pi)$ in eine äquivalente Wegverschiebung umgerechnet.
+][
+*Zeitverhalten prüfen:* Neben gleicher Frequenz muss die relative Phase fest bleiben. Dann bleibt das gemittelte Interferenzmuster ortsfest; die momentane Auslenkung schwingt weiterhin.
+]
+
+#aufgabe(titel: "Doppelspalt ohne Fernfeld rechnen?", art: "verstehen", quelle: "6.8.3",
+  ergebnis: [Im Nahfeld beide Wege exakt berechnen; $d sin(alpha)$ ist eine Fernfeldnäherung.],
+)[
+#if not web [*Aufgabe 64* #linebreak()]
+Zwei gleichphasige Quellen liegen im Abstand $d$. Wann darfst du $Delta s approx d sin(alpha)$ benutzen? Wie gehst du sonst vor, und warum bedeutet ein Minimum nicht zwangsläufig vollständige Stille?
+#src[V26, PDF-S. 8–10; ÜN, PDF-S. 3 zu Ü 10.5.]
+][
+*Näherung prüfen:* Der Beobachtungsabstand muss viel größer als $d$ sein, damit die beiden Strahlen nahezu parallel verlaufen. Bei Ü 10.5 ist 3 m gegenüber 2,6 m kein großer Fernfeldabstand.
+][
+*Exakte Wege wählen:* Aus der konkreten Geometrie berechnest du $s_1$ und $s_2$, beispielsweise mit Pythagoras. Anschließend vergleichst du $abs(s_1-s_2)$ mit ganzen oder ungeraden halben Wellenlängen.
+][
+*Amplitude berücksichtigen:* Gegenphase erzeugt ein Minimum. Nur bei gleichen Amplituden am Beobachtungsort ist die resultierende Amplitude null; ungleiche Wege können unterschiedliche Teilamplituden bedeuten.
+]
+
+#aufgabe(titel: "Warum hinter der Kante noch Wellen ankommen", art: "verstehen", quelle: "6.8.4",
+  ergebnis: [Beugung und Interferenz der Elementarwellen erklären Wellen im geometrischen Schatten.],
+)[
+#if not web [*Aufgabe 65* #linebreak()]
+Eine gerade Verbindung zur Quelle ist durch ein Hindernis blockiert. Erkläre mit Huygens, warum trotzdem eine Welle im Schattenbereich auftreten kann. Liefert die Kante dafür neue Energie?
+#src[V26, PDF-S. 7 und 11, Abb. 6.22.]
+][
+*Strahlenbild erweitern:* Die ungehinderten Frontpunkte an der Öffnung oder am Rand tragen Elementarwellen bei. Diese breiten sich auch in den geometrischen Schatten aus; das ist Beugung.
+][
+*Superposition berücksichtigen:* Am Beobachtungsort addieren sich die Auslenkungen der Beiträge mit ihren Phasen. So entstehen stärkere und schwächere Bereiche. Die Kante erzeugt keine zusätzliche Energie, sondern verändert das Ausbreitungsmuster.
+]
+
+#aufgabe(titel: "Brechung ohne Änderung des Quelltakts", art: "verstehen", quelle: "6.8.5",
+  ergebnis: [$f_2=f_1$; bei $c_2<c_1$ wird $lambda$ kleiner und die Normale zum Lot hin gebrochen.],
+)[
+#if not web [*Aufgabe 66* #linebreak()]
+Eine Welle trifft schräg auf eine ruhende Grenze zu einem langsameren Medium. Erkläre die Änderung von Frequenz, Wellenlänge und Richtung. Was gilt bei senkrechtem Einfall und bei der Reflexion?
+#src[V26, PDF-S. 12–13, Gl. 6.22–6.24.]
+][
+*Takt erhalten:* An der ruhenden Grenzfläche bleibt die Frequenz gleich. Mit $lambda=c/f$ verkleinert sich die Wellenlänge im Verhältnis $c_2/c_1$.
+][
+*Winkel begründen:* Aus $sin(alpha_2)=(c_2/c_1)sin(alpha_1)$ folgt ein kleinerer Brechungswinkel zum Lot. Die Normale dreht zum Lot hin; bei senkrechtem Einfall bleiben beide Winkel null.
+][
+*Reflexion abgrenzen:* Der reflektierte Anteil bleibt im ursprünglichen Medium. Seine Ausbreitungsrichtung liegt auf der anderen Seite des Lots, der Winkelbetrag bleibt gleich dem Einfallswinkel.
+]
+
+#aufgabe(titel: "Raserei: Geschwindigkeit aus der Quint", art: "rechnen", quelle: "6.9.1",
+  ergebnis: [$v_S=c/5="68,6" thin "m/s"="246,96" thin "km/h" approx 247 thin "km/h"$],
+  tipp: [Bilde den Quotienten der beiden gehörten Frequenzen. Die unbekannte Senderfrequenz kürzt sich.],
+)[
+#if not web [*Aufgabe 67* #linebreak()]
+*Raserei, Ü 10.6*
+
+*Gegeben und Annahmen*
+Ein Fahrzeug fährt mit konstanter Geschwindigkeit $v_S<c$ an einem im Medium ruhenden Zuhörer vorbei. In Luft gilt $c=343 thin "m/s"$. Das Verhältnis der gehörten Frequenzen bei Annäherung und Entfernung ist $f_"an"/f_"ent"=3/2$ (Quint). Der Motor läuft mit 7000 U/min. Im Aufgabenmodell bleibt der emittierte Ton gleich; betrachtet werden die annähernd geradlinige Annäherung und Entfernung, nicht der seitliche Moment am Zuhörer.
+
+*Gesucht*
+#enum(numbering: "a)")[Bestimme die Fahrzeuggeschwindigkeit in m/s und km/h.][Erkläre, ob die Motordrehzahl für diese Rechnung gebraucht wird.]
+#src[Ü 10.6, PDF-S. 2; ÜN, PDF-S. 4; V26, PDF-S. 14–15 bis zur Endmarkierung.]
+][
+*Modell wählen:* Der Sender bewegt sich, der Empfänger ruht. Die Frontabstände ändern sich. Deshalb gelten $f_"an"=f_S/(1-v_S/c)$ und $f_"ent"=f_S/(1+v_S/c)$; dieselbe Senderfrequenz muss in beiden stehen.
+][
+*Quotient bilden:* Mit $beta=v_S/c$ wird $3/2=(1+beta)/(1-beta)$. Der unbekannte Quelltakt kürzt sich, deshalb brauchen wir weder die 7000 U/min noch eine Annahme über die Zahl der Schallimpulse pro Umdrehung.
+][
+*Auflösen:* $3(1-beta)=2(1+beta)$, also $3-3beta=2+2beta$. Damit $beta=1/5$ und $v_S=343/5 thin "m/s"="68,6" thin "m/s"$.
+][
+*Umrechnen:* $1 thin "m/s"="3,6" thin "km/h"$. Somit $v_S="68,6" dot "3,6"="246,96" thin "km/h" approx 247 thin "km/h"$.
+][
+*Prüfen:* $v_S/c="0,2"<1$, also liegt Unterschall vor. Die Faktoren sind $f_"an"/f_S=1/"0,8"="1,25"$ und $f_"ent"/f_S=1/"1,2"=5/6$. Ihr Verhältnis ist $"1,25"/(5/6)="1,5"$, wie verlangt. Die Mitschrift ÜN, PDF-S. 4 bestätigt das Ergebnis.
+]
+
+#aufgabe(titel: "Doppler: Warum nicht die Schallgeschwindigkeit steigt", art: "verstehen", quelle: "6.9.1",
+  ergebnis: [Die Quelle verändert die Frontabstände, nicht $c$ im ruhenden Medium.],
+)[
+#if not web [*Aufgabe 68* #linebreak()]
+Eine Quelle nähert sich einem ruhenden Empfänger mit konstantem eigenen Takt. Warum hört er sie höher, obwohl die Schallgeschwindigkeit gleich bleibt? Prüfe den Grenzfall $v_S=0$ und erkläre, warum die Formel nicht auf Licht übertragen werden darf.
+#src[V26, PDF-S. 14–15 bis zur Endmarkierung.]
+][
+*Frontabstand erklären:* Zwischen zwei Emissionen rückt die Quelle um $v_S/f_S$ weiter. Vor ihr liegen die Fronten deshalb nur $(c-v_S)/f_S$ auseinander. Ein ruhender Empfänger wird pro Sekunde von mehr Fronten erreicht.
+][
+*Grenzfall prüfen:* Bei $v_S=0$ ist der Abstand $c/f_S$ und die gehörte Frequenz gleich $f_S$. Bei Annäherung mit $0<v_S<c$ ist der Nenner $1-v_S/c$ kleiner als eins und der Ton höher.
+][
+*Gültigkeit abgrenzen:* Die Formel benutzt die Geschwindigkeiten relativ zum Ausbreitungsmedium. Für Licht ist eine relativistische Dopplerbeschreibung nötig; die hier behandelte Formel gilt dafür nicht.
+]

@@ -292,3 +292,116 @@ Quelle: 6.7.2
 - [ ] $n = 1$
   > $n = 1$ ist die Grundmode, also die erste.
 Quelle: 6.7.2
+
+### Was unterscheidet eine Knotenlinie auf einer Membran von einem momentanen Nulldurchgang?
+- [x] Auf der Knotenlinie bleibt die Auslenkung während der ganzen Schwingung null.
+  > Die Linie gehört zur räumlichen Eigenmode und ruht jederzeit.
+- [ ] Jede gerade unausgelenkte Stelle ist dauerhaft ein Knoten.
+  > Ein schwingender Bereich durchläuft ebenfalls die Ruhelage. Ein einzelner Zeitpunkt genügt nicht.
+- [ ] Auf der Knotenlinie ist die Amplitude am größten.
+  > Dort ist sie null; maximale Amplitude findet man in den Bauchbereichen.
+Quelle: 6.7.4
+
+### Warum kann Sand die Eigenmode einer schwingenden Platte sichtbar machen?
+Antwort: Schwingende Bereiche bewegen den Sand fort; an ruhenden Knotenlinien sammelt er sich bevorzugt. Das Linienmuster zeigt die räumliche Eigenmode. Es ist weder eine Wellenfront einer laufenden Welle noch die Bahn eines einzelnen Sandkorns.
+Quelle: 6.7.4
+
+### Eine verlustfreie Kugelwelle wird im doppelten Abstand gemessen. Welche Aussagen stimmen?
+- [x] Die Intensität beträgt ein Viertel des ursprünglichen Werts.
+  > Die Kugelfläche wächst mit dem Quadrat des Radius; dieselbe Leistung verteilt sich auf die vierfache Fläche.
+- [x] Die Auslenkungsamplitude halbiert sich bei gleichem Medium und Takt.
+  > Aus $I prop u^2$ folgt die Wurzel aus dem Intensitätsverhältnis, also $sqrt(1/4)=1/2$.
+- [ ] Drei Viertel der abgestrahlten Leistung wurden vernichtet.
+  > Die gesamte Leistung durch die größere Kugelfläche bleibt gleich. Nur die Leistung je Fläche sinkt.
+Quelle: 6.8.1
+
+### Bei welcher idealisierten Quelle fällt die Intensität ohne Absorption wie $1/r$ statt wie $1/r^2$?
+- [ ] Bei einer isotropen Punktquelle
+  > Deren Kugelfläche wächst mit $r^2$, daher gilt $I prop 1/r^2$.
+- [x] Bei einer unendlich langen Linienquelle
+  > Die Zylindermantelfläche einer festen Quellenlänge wächst linear mit $r$.
+- [ ] Bei jeder ebenen Welle
+  > Im verlustfreien ebenen Idealmodell wächst die Transportfläche nicht; die Intensität bleibt konstant.
+Quelle: 6.8.1
+
+### Wie entsteht die neue Front nach dem Huygensschen Prinzip?
+- [x] Als gemeinsame vordere Einhüllende der Elementarwellen der alten Front
+  > Alle Ausgangspunkte werden für denselben Zeitraum weiterentwickelt; die berührende Hüllfläche ergibt die neue Front.
+- [ ] Als Linie durch die Mittelpunkte der Elementarwellen
+  > Die Mittelpunkte liegen auf der alten Front und beschreiben nicht die fortgeschrittene Front.
+- [ ] Indem die Intensitäten aller Elementarwellen ohne Phasen addiert werden
+  > Für Interferenz addiert man Auslenkungen mit ihren Phasen, nicht einfach Intensitäten.
+Quelle: 6.8.2
+
+### Gleiche Frequenz bedeutet, dass die gemeinsame Auslenkung zeitlich stillsteht. Stimmt das?
+- [ ] Ja, die Sinusschwingungen verlieren dann ihre Zeitabhängigkeit.
+  > Gleiche Frequenz beseitigt die Schwingung nicht. Die momentane Auslenkung ändert sich weiterhin.
+- [x] Nein; bei fester relativer Phase kann das gemittelte Interferenzmuster ortsfest sein.
+  > Zeitstabil sind dann die Orte von Verstärkung und Auslöschung, nicht die momentane Auslenkung.
+- [ ] Nein; ein zeitstabiles Interferenzmuster ist grundsätzlich unmöglich.
+  > Gleiche Frequenz und feste Phasenbeziehung ermöglichen gerade ein stabiles Intensitätsmuster.
+Quelle: 6.8.2
+
+### Wie wird eine Anfangsphasendifferenz $Delta phi_0$ korrekt mit einer Wegdifferenz $Delta s$ kombiniert?
+- [ ] $Delta s + Delta phi_0$ ist ohne Umrechnung eine Weglänge.
+  > Meter und Radiant dürfen nicht direkt als gleichartige Größen addiert werden; dies ist die Falle in Gl. 6.19.
+- [x] $Delta phi = 2 pi Delta s/lambda + Delta phi_0$
+  > Beide Summanden sind dann Phasen. Alternativ entspricht die Anfangsphase der Wegverschiebung $lambda Delta phi_0/(2 pi)$.
+- [ ] Die Anfangsphase ist bei gleicher Frequenz immer unwichtig.
+  > Gleiche Frequenz legt die relative Anfangsphase nicht fest; sie kann Maxima und Minima vertauschen.
+Quelle: 6.8.3
+
+### Wann ist $Delta s approx d sin(alpha)$ für zwei Quellen geeignet?
+- [x] Wenn der Beobachtungsabstand viel größer als der Quellenabstand ist
+  > Im Fernfeld sind die beiden Verbindungswege nahezu parallel; daraus entsteht diese Näherung.
+- [ ] Sobald beide Quellen dieselbe Frequenz haben
+  > Das ist eine Interferenzvoraussetzung, aber keine geometrische Fernfeldbedingung.
+- [ ] Auch direkt neben einer der beiden Quellen ohne Einschränkung
+  > Im Nahbereich müssen beide Wege aus der tatsächlichen Geometrie bestimmt werden.
+Erklärung: Die Doppelspalt-Minimawinkel gelten außerdem nicht ungeprüft für einen beliebigen Mehrfachspalt. Zusätzliche Quellen ändern die Auslöschungsbedingungen.
+Quelle: 6.8.3
+
+### Wie heißt die Ausbreitung einer Welle in den geometrischen Schatten eines Hindernisses?
+Antwort: Beugung
+Erklärung: Elementarwellen der nicht blockierten Front reichen auch hinter Kanten und in Schattenbereiche.
+Quelle: 6.8.4
+
+### Welche Aussage verbindet Beugung und Interferenz richtig?
+- [x] Beugungsbilder entstehen durch Überlagerung der Elementarwellen.
+  > Beugung beschreibt die räumliche Ausbreitungserscheinung; Interferenz beschreibt die Addition der Beiträge mit ihren Phasen.
+- [ ] Beugung bedeutet, dass eine Kante neue Energie erzeugt.
+  > Die Kante verändert die Ausbreitung vorhandener Wellen; sie ist keine zusätzliche Energiequelle.
+- [ ] Interferenz kann im geometrischen Schatten nicht auftreten.
+  > Gerade dort können sich die gebeugten Beiträge verstärken oder abschwächen.
+Quelle: 6.8.4
+
+### Eine Welle tritt schräg in ein langsameres Medium ein. Was gilt an einer ruhenden Grenzfläche?
+- [x] Die Frequenz bleibt gleich und die Wellenlänge wird kleiner.
+  > Der Takt bleibt erhalten; aus $lambda=c/f$ folgt bei kleinerem $c$ eine kleinere Wellenlänge.
+- [x] Die Wellennormale wird zum Lot hin gebrochen.
+  > $sin(alpha_2)=(c_2/c_1)sin(alpha_1)$ liefert bei $c_2<c_1$ einen kleineren Winkel zum Lot.
+- [ ] Die Frequenz sinkt im gleichen Verhältnis wie die Geschwindigkeit.
+  > Nicht die Frequenz, sondern die Wellenlänge passt sich an die geänderte Geschwindigkeit an.
+Quelle: 6.8.5
+
+### Von welcher Linie aus werden Einfalls-, Reflexions- und Brechungswinkel gemessen?
+- [ ] Von der Grenzfläche selbst
+  > Dann wären es die Ergänzungswinkel. Die angegebenen Gesetze verwenden die Winkel der Ausbreitungsrichtungen zum Lot.
+- [x] Vom Lot auf die Grenzfläche
+  > Ein- und Ausfallswinkel sind betragsgleich; das Brechungsgesetz verwendet ebenfalls die Winkel zum Lot.
+- [ ] Von der jeweiligen Wellenfront aus
+  > Die Wellenfront steht senkrecht zur Ausbreitungsrichtung. Front und Wellennormale dürfen nicht verwechselt werden.
+Quelle: 6.8.5
+
+### Warum hört ein ruhender Empfänger eine sich nähernde Quelle höher?
+- [ ] Weil der Schall vor der Quelle mit $c+v_S$ durch das Medium läuft
+  > Im ruhenden Medium bleibt die Schallgeschwindigkeit $c$. Die Senderbewegung ändert die Frontabstände.
+- [x] Weil die Fronten vor der Quelle enger beieinanderliegen
+  > Bei gleichem $c$ treffen mehr Fronten pro Sekunde ein; es gilt $f_"an"=f_S/(1-v_S/c)$.
+- [ ] Weil der Sender bei Annäherung zwingend schneller schwingt
+  > Sein eigener Takt kann konstant bleiben. Die Frequenzverschiebung entsteht bereits durch seine Ortsänderung.
+Quelle: 6.9.1
+
+### Bei der Raserei-Aufgabe gilt $f_"an"/f_"ent"=3/2$. Warum wird die Motordrehzahl nicht benötigt?
+Antwort: Beide gehörten Frequenzen enthalten dieselbe Senderfrequenz als Faktor. Im Quotienten kürzt sie sich: $3/2=(1+v_S/c)/(1-v_S/c)$. Daraus folgt $v_S/c=1/5$, unabhängig von der Motordrehzahl. Voraussetzung sind ein gleichbleibender Quelltakt und die betrachtete Annäherung beziehungsweise Entfernung entlang der Verbindungslinie bei ruhendem Empfänger.
+Quelle: 6.9.1

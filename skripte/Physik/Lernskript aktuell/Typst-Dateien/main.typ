@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 28.10.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,16 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "membran-knoten-quelle": "abbildungen/membran-knoten-quelle.svg",
+  "huygens-quelle": "abbildungen/huygens-quelle.svg",
+  "doppelspalt-quelle": "abbildungen/doppelspalt-quelle.svg",
+  "beugung-quelle": "abbildungen/beugung-quelle.svg",
+  "reflexion-3d-quelle": "abbildungen/reflexion-3d-quelle.svg",
+  "brechung-quelle": "abbildungen/brechung-quelle.svg",
+  "doppler-quelle": "abbildungen/doppler-quelle.svg",
+  "map-raumwellen": "abbildungen/map-raumwellen.svg",
+  "map-huygens": "abbildungen/map-huygens.svg",
+  "map-doppler": "abbildungen/map-doppler.svg",
   "alt-harmwelle": "abbildungen/alt-harmwelle.svg",
   "alt-kopplung": "abbildungen/alt-kopplung.svg",
   "alt-pendel": "abbildungen/alt-pendel.svg",
@@ -124,6 +134,16 @@
 )
 
 #let bilddeutungen = (
+  "membran-knoten-quelle": (titel: "Bild lesen", body: [Die Draufsichten zeigen die ruhenden Knotenlinien verschiedener Moden auf einer Rechteck- und einer Kreismembran. Die Farben unterscheiden Moden, keine Auslenkungswerte. Zwischen diesen Linien schwingen Flächenbereiche; Sand sammelt sich bevorzugt auf den ruhenden Linien.]),
+  "huygens-quelle": (titel: "Bild lesen", body: [Blau ist die alte Front, rot sind Elementarwellen mit gleichem Ausbreitungszeitraum. Grün ist ihre gemeinsame vordere Einhüllende, also die neue Wellenfront. Die Skizze ist ein Schnitt; im Raum sind die Elementarwellen kugelförmig.]),
+  "doppelspalt-quelle": (titel: "Bild lesen", body: [Von links trifft eine Welle auf zwei Öffnungen mit Abstand d. Rechts entstehen überlagerte Kreisfronten als Schnitt durch Kugelwellen. Die gestrichelten Richtungen markieren Maxima beziehungsweise Minima; der Winkel wird von der Mittelsenkrechten der Quellenverbindung aus gemessen.]),
+  "beugung-quelle": (titel: "Bild lesen", body: [Die blauen Hindernisse begrenzen den geometrischen Schatten. Von den roten Punkten gehen Elementarwellen aus. Auch im markierten Schatten sind Wellenstrukturen sichtbar: Die Ausbreitung ist nicht auf gerade Strahlen beschränkt.]),
+  "reflexion-3d-quelle": (titel: "Bild lesen", body: [a bis c zeigen nacheinander einfallende Fronten und die an der Grenzfläche erzeugten Elementarwellen. Deren Einhüllende bildet die reflektierte Front. In d stehen beide Winkel zwischen Ausbreitungsrichtung und Lot, nicht zwischen Front und Oberfläche.]),
+  "brechung-quelle": (titel: "Bild lesen", body: [Oben gilt c₁, unten das kleinere c₂. Im gleichen Zeitraum wachsen die unteren Elementarwellen weniger weit. Deshalb dreht sich die Front und ihre Normale wird zum Lot hin gebrochen; zugleich wird der Frontabstand kleiner.]),
+  "doppler-quelle": (titel: "Bild lesen", body: [Die roten Punkte markieren frühere und aktuelle Senderorte; der Sender bewegt sich nach rechts. Jede ausgesandte Front breitet sich vom jeweiligen Emissionsort aus. Rechts liegen die Fronten enger, links weiter auseinander. Ruhende Empfänger hören deshalb vorne einen höheren und hinten einen tieferen Ton.]),
+  "map-raumwellen": (titel: "Die Mindmap lesen", body: [Die drei Geometrien unterscheiden sich durch die Fläche, auf die sich dieselbe Leistung verteilt. Der vierte Ast nennt die Voraussetzung: keine Absorption. Eine sinkende Intensität beweist daher noch keinen Energieverlust.]),
+  "map-huygens": (titel: "Die Mindmap lesen", body: [Von der alten Front führen Startpunkte über Elementarwellen zur neuen Front. Die Einhüllende erklärt die Geometrie; die Superposition der Auslenkungen erklärt Verstärkung und Auslöschung.]),
+  "map-doppler": (titel: "Die Mindmap lesen", body: [Der Sender behält seinen eigenen Takt, verändert aber beim Weiterfahren die räumlichen Abstände der Fronten. Der ruhende Empfänger zählt diese Fronten pro Sekunde. So entsteht die Frequenzänderung, ohne dass sich c im Medium ändert.]),
   "alt-harmwelle": (titel: "Bild lesen", body: [Die blaue Kurve ist eine Momentaufnahme über dem Ort, gestrichelt die kurz darauf. Grün ist der Abstand zweier Berge λ, rot die Richtung von c. Orange zeigt die lokale Schnelle eines Teilchens; sie gehört nicht zur waagerechten Musterbewegung.]),
   "alt-kopplung": (titel: "Bild lesen", body: [Oben ist x₁(t), unten x₂(t), beide mit gleicher Zeitrichtung. Die schnellen Schwingungen liegen in wechselnden Hüllen. Der grüne Pfeil markiert einen vollständigen Hüllenzyklus; ein halber Zyklus reicht von einer großen Hülle zur jeweils anderen.]),
   "alt-pendel": (titel: "Bild lesen", body: [Die äußeren roten Federn besitzen jeweils D, die mittlere blaue Feder Dₖ. Beide Massen sind gleich und werden in derselben Richtung positiv gezählt. Diese Festlegung erklärt die entgegengesetzten Kopplungsterme.]),
@@ -184,8 +204,8 @@
 ]
 #note("Dein Feynman-Schritt", [Sieh hin, erkläre den Zusammenhang ohne Vorlage und prüfe dann Formel und Voraussetzungen. Bearbeite anschließend eine Aufgabe auf der Lernwebseite. Vergleiche erst danach mit den Lösungsschritten und schließe deine konkrete Lücke.])
 
-Stand *27.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wellen bis zu den eindimensionalen Eigenmoden an der bestätigten Grenze „Ende VL 19.10.“. Die Kapitelnummern 5 und 6 folgen dem Dozentenskript. Vorwissen steht als solches dabei. Stand *27.10.2026*: Aufgaben, ausführliche Lösungen und Quiz stehen auf der Lernwebseite (Tab „Lernen“); dieses Skript enthält nur noch Erklärung und Formelsammlung.
-#src[V1, PDF-S. 1–13; VB, PDF-S. 3–22 bis zur Markierung; Bestätigung von Mario am 22.10.2026.]
+Stand *28.10.2026*: eingearbeitet sind Schwebung, Kopplung und Wellen bis zur markierten Grenze „Ende VL 26.10.“: zweidimensionale Eigenmoden, Raumwellen, Huygens, Interferenz, Beugung, Reflexion, Brechung und Doppler bei bewegter Quelle. Bewegter Empfänger und Mach-Kegel bleiben offen. Die Kapitelnummern 5 und 6 folgen dem Dozentenskript. Aufgaben, Lösungen, Quiz und Karten stehen auf der Lernwebseite; dieses Skript enthält Erklärungen und Formelsammlung.
+#src[V1, PDF-S. 1–13; VB, PDF-S. 3–22; V26, PDF-S. 1–15 bis zur handschriftlichen Endmarkierung auf Skript S. 210.]
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -195,7 +215,7 @@ Stand *27.10.2026*: eingearbeitet sind Schwebung und Kopplung aus VL 1 sowie Wel
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Flossmann, Physik für Ingenieure, Stand 02.10.2026, Gesamt-PDF; V1 = VL1 Physik (13 PDF-Seiten, Skript S. 169–174 und 177–183); VB = VL Physik bisher (22 PDF-Seiten, Skript S. 175–196); Ü = Physik2_Blatt10, Aufgaben 10.1–10.6; R = handschriftliche Lösung Blatt 10; AS = Aufgabensammlung, 23.04.2026, Nummer laut Sammlung; L = bisheriges Lernskript Physik 2, Stand 15.10.2026 (PDF und HTML); LB = Lernblatt VL 1 (Claude-Fassung und annotierter Export); K17/18 = Klausur Physik 1 WIW WS 17/18 mit Musterlösung; K15 = Prüfung Phy_1 (Deckblatt WS 2015/16). „PDF-S.“ zählt ab der ersten PDF-Seite der genannten Datei. Bei V stimmt diese Zählung für die verwendeten Seiten mit dem Seitenaufdruck überein. Alle „Nachschlagen“-Verweise führen zu Abschnitt und echter Seite dieses Lernskripts. Eigene Aufgaben, Umformungen und Darstellungen sind gekennzeichnet.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Flossmann, Physik für Ingenieure, Stand 02.10.2026, Gesamt-PDF; V1 = VL1 Physik (13 PDF-Seiten, Skript S. 169–174 und 177–183); VB = VL Physik bisher (22 PDF-Seiten, Skript S. 175–196); V26 = VL 26.10.pdf (15 PDF-Seiten, Skript S. 196–210, Stoff nur bis zur Endmarkierung auf PDF-S. 15); ÜN = Physik2_Blatt10_mit_Notizen_26.10.pdf (4 PDF-Seiten); ASN = Aufgabensammlung_Aufgaben_1.4-1.5_mit_Notizen_26.10.pdf (4 PDF-Seiten); Ü = Physik2_Blatt10, Aufgaben 10.1–10.6; R = handschriftliche Lösung Blatt 10; AS = Aufgabensammlung, 23.04.2026, Nummer laut Sammlung; L = bisheriges Lernskript Physik 2, Stand 15.10.2026 (PDF und HTML); LB = Lernblatt VL 1 (Claude-Fassung und annotierter Export); K17/18 = Klausur Physik 1 WIW WS 17/18 mit Musterlösung; K15 = Prüfung Phy_1 (Deckblatt WS 2015/16). „PDF-S.“ zählt ab der ersten PDF-Seite der genannten Datei. Bei V stimmt diese Zählung für die verwendeten Seiten mit dem Seitenaufdruck überein. Alle „Nachschlagen“-Verweise führen zu Abschnitt und echter Seite dieses Lernskripts. Eigene Aufgaben, Umformungen und Darstellungen sind gekennzeichnet.]
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
 
@@ -204,10 +224,10 @@ Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zu
 #karte((1fr, auto, 1fr),
   chunk([Kapitel 5 · Schwingungen], [Federpendel · Schwebung · Kopplung · Eigenmoden], ziel: <a-5>),
   pfeil(beschriftung: [führt über Kopplung zu]),
-  chunk([Kapitel 6 · Wellen], [Wellenfunktion · Medium · Intensität · Interferenz · Randbedingungen], ziel: <a-6>),
+  chunk([Kapitel 6 · Wellen], [Wellenfunktion · Eigenmoden · Raumwellen · Huygens · Grenzflächen · Doppler], ziel: <a-6>),
 )
 
-Eine Schwingung beschreibt die Bewegung an einem Ort. Gekoppelte Schwinger geben die Störung weiter und bilden die Brücke zur Welle. Bei Wellen trennst Du die lokale Teilchenbewegung vom wandernden Muster und seinem Energiefluss. Überlagerung und Randbedingungen bestimmen schließlich, welche stehenden Eigenmoden möglich sind.
+Eine Schwingung beschreibt die Bewegung an einem Ort. Gekoppelte Schwinger geben die Störung weiter und bilden die Brücke zur Welle. Bei Wellen trennst Du die lokale Teilchenbewegung vom wandernden Muster und seinem Energiefluss. Überlagerung und Randbedingungen bestimmen, welche stehenden Eigenmoden möglich sind. Im Raum erklären Wellenfronten die Intensitätsverteilung, Beugung und Grenzflächen; Quellenbewegung führt zum Doppler-Effekt.
 #src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
 
 #pagebreak()
@@ -354,10 +374,10 @@ Erweitert man das Modell auf $N$ linear gekoppelte Schwinger mit je einem Freihe
 #überblick([Kapitel 6 auf einen Blick],
   idee(<a-6-1>, [Das Muster wandert, die Teilchen schwingen lokal.], [Die Wellenfunktion beschreibt Auslenkung nach Ort und Zeit.]),
   idee(<a-6-2>, [Ort und Zeit haben je einen Takt.], [Wellenlänge und Frequenz sind über die Ausbreitungsgeschwindigkeit verbunden.]),
-  idee(<a-6-3>, [Das Medium bestimmt die Geschwindigkeit.], [Rückstellwirkung und Trägheit legen den passenden Modellansatz fest.]),
-  idee(<a-6-4>, [Amplitude bestimmt den Energiefluss.], [Im harmonischen Modell wächst die mittlere Intensität quadratisch mit der Amplitude.]),
-  idee(<a-6-5>, [Überlagerung addiert Auslenkungen.], [Gegenläufige Wellen können ein stehendes Muster erzeugen.]),
-  idee(<a-6-7>, [Die Enden wählen die Eigenmoden.], [Knoten und Bäuche begrenzen die erlaubten Wellenlängen und Frequenzen.]),
+  idee(<a-6-3>, [Medium und Amplitude bestimmen die Ausbreitung.], [Rückstellwirkung und Trägheit liefern c; die Amplitude bestimmt den Energiefluss.]),
+  idee(<a-6-7>, [Überlagerung und Ränder wählen die Eigenmoden.], [Das gilt auf einer Strecke und auf einer Fläche.]),
+  idee(<a-6-8>, [Fronten erklären räumliche Ausbreitung.], [Geometrie, Huygens, Interferenz, Beugung und Grenzflächen hängen zusammen.]),
+  idee(<a-6-9-1>, [Quellenbewegung verändert den ankommenden Takt.], [Der Doppler-Effekt folgt aus veränderten Frontabständen.]),
 )
 
 #karte((1fr, auto, 1fr, auto, 1fr),
@@ -374,12 +394,19 @@ Erweitert man das Modell auf $N$ linear gekoppelte Schwinger mit je einem Freihe
   pfeil(beschriftung: [Randbedingungen wählen]),
   chunk([Erlaubte Eigenmoden], [Enden · Länge · Frequenz], ziel: <a-6-7>),
 )
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([Räumliche Fronten], [Geometrie · Huygens], ziel: <a-6-8-1>),
+  pfeil(beschriftung: [erklären]),
+  chunk([Überlagerung und Grenzen], [Interferenz · Beugung · Brechung], ziel: <a-6-8-3>),
+  pfeil(beschriftung: [bewegte Quelle ändert]),
+  chunk([Ankommenden Takt], [Doppler bei ruhendem Empfänger], ziel: <a-6-9-1>),
+)
 #src[Eigene Darstellung; Zusammenführung der nachfolgenden, jeweils belegten Abschnitte dieses Kapitels.]
 #hoch(<ueberblick>, [Modul auf einen Blick])
 
 
-Wir verfolgen nun, wie eine Störung von Ort zu Ort weitergegeben wird. Erst lesen wir die Wellenfunktion, dann bestimmen wir Geschwindigkeit und Energiefluss. Zum Schluss zeigt die Überlagerung, welche stehenden Muster zu festen oder freien Enden passen.
-#src[VB, PDF-S. 3–22 bis zur handschriftlichen Grenze; V1, PDF-S. 7–13.]
+Wir verfolgen nun, wie eine Störung von Ort zu Ort weitergegeben wird. Erst lesen wir die Wellenfunktion, dann bestimmen wir Geschwindigkeit und Energiefluss. Danach zeigt die Überlagerung, welche stehenden Muster zu Rändern passen. Die Ergänzung vom 26.10. führt über räumliche Fronten und Grenzflächen bis zum Doppler-Effekt bei bewegter Quelle.
+#src[VB, PDF-S. 3–22; V1, PDF-S. 7–13; V26, PDF-S. 1–15 bis zur Endmarkierung.]
 
 == 6.1 Grundbegriffe · Das Muster wandert <a-6-1>
 Eine *Welle* ist eine sich ausbreitende Störung beziehungsweise ein weitergegebener Schwingungszustand. Bei der hier betrachteten mechanischen Welle bewegen sich die Teilchen um ihre Ruhelage; sie reisen nicht mit dem Wellenberg durch das ganze Medium. Dabei kann Energie weitergegeben werden.
@@ -586,13 +613,119 @@ An beiden Enden liegt im behandelten Modell ein Bauch. Die schwingenden Moden be
 #bild("moden-skizze", [Die ersten drei Moden für jede Randbedingung. Eigene Darstellung nach Gl. 6.13–6.18; normierte Auslenkung, nicht maßstäblich.], height: 70mm)
 #bild("map-moden", [Mindmap: Randbedingungen → Wellenlänge → Frequenz. Eigene Darstellung.], height: 46mm)
 
-#note("Deine Vorlesungsgrenze", [Die handschriftliche Linie „Ende VL 19.10.“ liegt auf VB, PDF-S. 22 direkt vor „Stehende Wellen in zwei Dimensionen“. Du hast diese Grenze bestätigt. Hier endet deshalb der behandelte Stoff.])
+#note("Bisherige Vorlesungsgrenze", [Die Grenze „Ende VL 19.10.“ auf VB, PDF-S. 22 ist in V26, PDF-S. 1 erneut markiert. Direkt darunter beginnt die neue Vorlesung vom 26.10.; ihre Ergänzungen folgen im nächsten Abschnitt.])
 #src[VB, PDF-S. 20–22 bis zur Grenze, Gl. 6.13–6.18; eigene Herleitung der zulässigen Ordnungen.]
 
-*Der Zusammenhang in Kapitel 6.* Die Wellenfunktion trennt Ort und Zeit. Die Geschwindigkeit stammt aus dem Medium, die Frequenz aus der Anregung; daraus folgt die Wellenlänge. Die Amplitude bestimmt den Energiefluss quadratisch. Überlagerung erzeugt Verstärkung oder Auslöschung; Reflexion macht daraus stehende Wellen. Erst die Randbedingungen wählen ihre zulässigen Moden aus.
+*Von der laufenden Welle zu den Eigenmoden.* Die Wellenfunktion trennt Ort und Zeit. Die Geschwindigkeit stammt aus dem Medium, die Frequenz aus der Anregung; daraus folgt die Wellenlänge. Die Amplitude bestimmt den Energiefluss quadratisch. Überlagerung erzeugt Verstärkung oder Auslöschung; Reflexion macht daraus stehende Wellen. Erst die Randbedingungen wählen ihre zulässigen Moden aus.
 #src[VB, PDF-S. 5–22; eigene Zusammenfassung.]
 #hoch(<a-6>, [Kapitelübersicht])
 
+
+== 6.7.4 Ergänzung vom 26.10. · Stehende Wellen auf Flächen <a-6-7-4>
+Ein Trommelfell kann nicht nur entlang einer Strecke, sondern in zwei Richtungen schwingen. Eine *zweidimensionale Eigenmode* ist eine gemeinsame Schwingungsform der ganzen Fläche, die zu deren Form und Randbedingungen passt. Statt einzelner Knotenpunkte entstehen *Knotenlinien*: Auf ihnen bleibt die Auslenkung jederzeit null.
+
+#bild("membran-knoten-quelle", [Knotenlinien auf Rechteck- und Kreismembran. V26, PDF-S. 2, Abb. 6.11.], height: 48mm)
+
+Zwischen den Knotenlinien liegen schwingende Flächenbereiche. Feiner Sand wird von diesen Bereichen fortbewegt und sammelt sich bevorzugt an ruhenden Linien. So macht das Experiment die Eigenmode sichtbar. Am eingespannten Rand ist die Auslenkung ebenfalls null; ein freier Rand verlangt eine andere Randbedingung.
+#note("In eigenen Worten", [Aus dem Knotenmuster einer Saite wird auf einer Fläche ein Netz ruhender Linien. Die Randbedingungen müssen in der ganzen Ebene erfüllt sein; die eindimensionale Formel $f_n=n c/(2L)$ darf nicht ungeprüft auf ein Trommelfell übertragen werden.], fill: sand)
+#src[V26, PDF-S. 1 ab der Startmarkierung und PDF-S. 2, Skript S. 196–197; eigene Erläuterung des Modenbegriffs.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+== 6.8 Wellenausbreitung im Raum · Fronten statt Teilchenbahnen <a-6-8>
+Eine Sirene erreicht nicht nur eine Linie von Zuhörern. Im Raum beschreiben wir ihre Ausbreitung durch Flächen gleicher Phase. Das Huygenssche Prinzip erklärt anschließend, wie Fronten weiterwandern, sich überlagern und an Hindernissen ihre Form ändern.
+#src[V26, PDF-S. 3–13, Skript S. 198–208; eigene Zusammenfassung.]
+
+=== 6.8.1 Ebene, Kugel- und Zylinderwellen <a-6-8-1>
+Eine *Wellenfront* verbindet Orte gleichen Schwingungszustands. Auf der Wasseroberfläche ist sie eine Linie, im Raum eine Fläche. Die *Wellennormale* steht senkrecht auf der Front und zeigt im behandelten homogenen, isotropen Medium die Ausbreitungsrichtung. Benachbarte gleichphasige Fronten liegen eine Wellenlänge auseinander.
+
+#tab(columns: (1fr, 1.3fr, 1.6fr),
+ th([Idealtyp], [Quelle und Front], [Intensität ohne Verluste]),
+ [Ebene Welle], [Flächige Quelle; parallele Ebenen], [Gleichbleibende Transportfläche: $I="konstant"$],
+ [Kugelwelle], [Punktquelle; konzentrische Kugeln], [$A=4 pi r^2$; $I prop 1/r^2$],
+ [Zylinderwelle], [Lange Linienquelle; Zylindermäntel], [$A=2 pi r ell$; $I prop 1/r$],
+)
+#form[$ I(r)=P/(4 pi r^2), quad I(r_2)/I(r_1)=(r_1/r_2)^2 quad "(Kugelwelle)" $]
+$P$ ist die gleichmäßig in alle Richtungen abgestrahlte Leistung in W, $r$ der Abstand in m und $I$ die Intensität in W/m². Bei der Zylinderwelle wird eine feste Quellenlänge $ell$ betrachtet. Die Flächenformeln und das Intensitätsverhältnis sind eigene Ableitungen aus $I=P/A$.
+
+#bild("map-raumwellen", [Mindmap zur geometrischen Verteilung der Leistung. Eigene Darstellung nach V26, PDF-S. 3–5.], height: 46mm)
+
+*Eigene Folgerung:* Doppelter Abstand ergibt bei der Kugelwelle ein Viertel, bei der Zylinderwelle die Hälfte der Intensität. Bei festem Medium und fester Frequenz folgt aus $I prop u^2$: Die Amplitude einer Kugelwelle fällt wie $1/r$, die einer Zylinderwelle wie $1/sqrt(r)$.
+#note("Gültigkeit", [Idealisierte, verlustfreie Ausbreitung ohne Reflexionen und ohne Absorption. Reale Quellen sind nicht unendlich groß oder exakt punktförmig. Die Autobahn als Linienquelle und eine entfernte kompakte Maschine als Punktquelle sind Näherungen; eine Intensitätsabnahme durch Flächenwachstum bedeutet keine Vernichtung von Energie.], fill: sand)
+#src[V26, PDF-S. 3–6, Abb. 6.12–6.16; VB, PDF-S. 13–14 für $I=P/A$ und $I prop u^2$; Flächen- und Amplitudenskalierung: eigene Ableitungen.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+=== 6.8.2 Huygens · Aus Elementarwellen wird eine neue Front <a-6-8-2>
+Jeder Punkt einer Wellenfront wird als Ausgangspunkt einer *Elementarwelle* betrachtet. Nach derselben kurzen Zeit konstruiert man die neue Front als gemeinsame *Einhüllende*: Sie berührt die vorwärts laufenden Elementarwellen. So wird aus vielen kleinen Ausbreitungen wieder eine zusammenhängende Front.
+#bild("huygens-quelle", [Alte Front, Elementarwellen und neue Einhüllende. V26, PDF-S. 7, Abb. 6.18.], height: 38mm)
+#form[$ r_"Elementar"=c Delta t $]
+Der Radius in m wächst während $Delta t$ in s mit der Geschwindigkeit $c$ in m/s. Das ist eine eigene Anwendung von Strecke = Geschwindigkeit × Zeit. Der Abstand zwischen alter und neuer Front ist nur dann genau eine Wellenlänge, wenn $Delta t=T$ gewählt wird.
+
+Das *Huygens-Fresnelsche Prinzip* ergänzt die geometrische Konstruktion: Die Auslenkung am Ziel entsteht aus der Superposition der Elementarwellen. Dabei zählen deren Phasen; nicht jede Elementarwelle verstärkt die anderen. Das Summieren über alle Punkte führt mathematisch zu einer Integration, die hier nicht ausgerechnet wird.
+#bild("map-huygens", [Mindmap: Konstruktion und Überlagerung. Eigene Darstellung nach V26, PDF-S. 6–7.], height: 46mm)
+#note("Präzisierung der Vorlage", [V26, PDF-S. 6–7 spricht bei gleichen Frequenzen von einer „zeitlich konstanten Funktion". Die momentane Auslenkung schwingt weiterhin. Zeitstabil sind bei fester relativer Phase die Orte der Verstärkung und Auslöschung beziehungsweise das zeitlich gemittelte Intensitätsmuster. Gleiche Frequenz allein ersetzt die feste Phasenbeziehung nicht.], fill: sand)
+#src[V26, PDF-S. 6–7, Abb. 6.17–6.18; Präzisierung aus der dort angegebenen Superposition harmonischer Wellen.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+=== 6.8.3 Zwei Quellen und Doppelspalt · Der Weg entscheidet die Phase <a-6-8-3>
+Zwei gleich getaktete Quellen können an einem Ort gemeinsam stark und an einem anderen schwach wirken. Entscheidend sind die *Wegdifferenz* $Delta s$ und eine mögliche Anfangsphasendifferenz. Für zwei Wege $s_1,s_2$ wähle konsistent $Delta s=s_1-s_2$ und die dazu passende Phase $Delta phi_0$:
+#form[$ Delta phi=(2 pi)/lambda Delta s+Delta phi_0 $]
+$Delta s$ und $lambda$ stehen in m, die Phasen in rad. Das Vorzeichen hängt von der Reihenfolge der Quellen ab; eine gleichzeitige Umkehr beider Differenzen ändert das Interferenzergebnis nicht.
+#note("Dimensionsfehler in der Quelle", [Gl. 6.19 auf V26, PDF-S. 8 addiert eine Phasenverschiebung direkt zu Weglängen. Eine Phase in rad darf aber nicht ohne Umrechnung zu Metern addiert werden. Die äquivalente Wegverschiebung ist $lambda Delta phi_0/(2pi)$. Hier wird deshalb mit der dimensionsrichtigen Phasengleichung gerechnet.], fill: sand)
+
+Bei gleichphasigen Quellen liegen Maxima bei $abs(Delta s)=j lambda$ und Minima bei $abs(Delta s)=(j+1/2)lambda$ mit $j=0,1,2,dots$. Vollständige Auslöschung erfordert zusätzlich gleiche Amplituden am Beobachtungsort. Im Nahbereich berechnest du beide Wege aus der Geometrie; das zeigt die Mitschrift zu Ü 10.5 ausdrücklich.
+#bild("doppelspalt-quelle", [Zwei Öffnungen wirken als Quellen; Maxima und Minima hinter dem Doppelspalt. V26, PDF-S. 10, Abb. 6.21.], height: 55mm)
+
+Im *Fernfeld*, also bei Beobachtungsabstand viel größer als Quellenabstand $d$, verlaufen die beiden Wege näherungsweise parallel. Für den Winkel $alpha$ gegen die Mittelsenkrechte der Quellenverbindung gilt:
+#form[$ Delta s approx d sin(alpha), quad sin(alpha_j)=j lambda/d quad "(Maxima)" $]
+#form[$ sin(alpha_"min")=(j+1/2)lambda/d quad "(Minima)" $]
+Hier dürfen positive und negative ganze $j$ eingesetzt werden. Physikalisch existiert nur ein Winkel, wenn die rechte Seite im Bereich von −1 bis +1 liegt. Vorausgesetzt sind gleiche Frequenz und feste, hier gleiche Anfangsphase.
+
+#note("Mehrfachspalt nicht gleich Doppelspalt", [Der letzte Satz auf V26, PDF-S. 10 behauptet gleiche Maxima- *und* Minimawinkel beim n-fach-Spalt. Die gemeinsamen Hauptmaxima gleichabständiger, gleichphasiger Quellen erfüllen weiterhin $d sin(alpha)=j lambda$. Die Aussage über alle Minima ist jedoch nicht allgemein richtig: Zusätzliche Quellen ändern die Auslöschungsbedingungen. Die Doppelspalt-Minimaformel wird hier nicht auf beliebig viele Spalte übertragen.], fill: sand)
+#src[V26, PDF-S. 8–10, Gl. 6.19–6.21; ÜN, PDF-S. 3; dimensionsrichtige Phasenform und Einschränkung des Mehrfachspalts: eigene Präzisierungen aus dem Superpositionsprinzip.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+=== 6.8.4 Beugung · Wellen reichen in den geometrischen Schatten <a-6-8-4>
+Hinter einer Kante ist nicht zwangsläufig völlige Ruhe. *Beugung* bedeutet, dass sich Wellen auch in den geometrischen Schatten eines Hindernisses ausbreiten. Deshalb ist eine Schallquelle nicht nur dort wahrnehmbar, wo eine gerade Verbindung zu ihr frei ist (*eigene Alltagsveranschaulichung*).
+#bild("beugung-quelle", [Beugung an verschiedenen Hindernissen. V26, PDF-S. 11, Abb. 6.22.], height: 52mm)
+Das Huygenssche Modell erklärt dies mit den Elementarwellen der nicht blockierten Front an Öffnungen und Kanten. Ihre Ausläufer reichen in den Schatten. Die tatsächliche Stärke ergibt sich aus der Interferenz aller Beiträge; die Kante ist keine zusätzliche Energiequelle.
+#note("Begriffe trennen", [Beugung beschreibt die Ausbreitung in Bereiche, die ein reines geradliniges Strahlenbild ausblendet. Interferenz bezeichnet die Überlagerung der Auslenkungen. Beugungsbilder entstehen durch diese Überlagerung der Elementarwellen; es sind keine konkurrierenden Erklärungen.])
+#src[V26, PDF-S. 7 und 11, Abb. 6.18 und 6.22; Alltagsbild und Begriffstrennung: eigene Erläuterung.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+=== 6.8.5 Reflexion und Brechung · Winkel immer zum Lot <a-6-8-5>
+Eine schräge Welle trifft nicht mit ihrer ganzen Front gleichzeitig auf eine Grenzfläche. Die zuerst auftreffenden Punkte senden früher Elementarwellen aus. Deren gemeinsame Einhüllende erklärt sowohl die zurücklaufende als auch die in ein anderes Medium übergehende Front.
+#bild("reflexion-3d-quelle", [Reflexion mit dem Huygensschen Prinzip. V26, PDF-S. 12, Abb. 6.23.], height: 57mm)
+#form[$ alpha_"ein"=alpha_"aus" quad "(Winkelbeträge zum Lot)" $]
+Bei *Reflexion* bleibt die Welle im selben Medium. Einfalls- und Ausfallswinkel sind betragsgleich. Das Minuszeichen in Gl. 6.22 kennzeichnet die entgegengesetzten Seiten des Lots bei vorzeichenbehafteten Winkeln; Gl. 6.23 nennt die gleichen Beträge.
+
+#bild("brechung-quelle", [Brechung in ein langsameres Medium. V26, PDF-S. 13, Abb. 6.24.], height: 43mm)
+Bei *Brechung* ändert sich die Ausbreitungsgeschwindigkeit. Die neu entstehenden Elementarwellen wachsen deshalb unterschiedlich weit, und die Ausbreitungsrichtung dreht sich. Das Snelliussche Gesetz lautet:
+#form[$ sin(alpha_1)/c_1=sin(alpha_2)/c_2, quad lambda_2/lambda_1=c_2/c_1, quad f_2=f_1 $]
+$c_1,c_2$ stehen in m/s; die Winkel werden zwischen Wellennormale und Grenzflächenlot gemessen. Für $c_2<c_1$ wird zum Lot hin, für $c_2>c_1$ vom Lot weg gebrochen. Die Frequenz bleibt an der ruhenden Grenzfläche gleich; nur Geschwindigkeit und Wellenlänge ändern sich.
+#note("Gültigkeit und Grenzfälle", [Ruhende Grenzfläche, homogene isotrope Medien und ein möglicher sich ausbreitender gebrochener Anteil. Senkrechter Einfall ergibt keine Richtungsänderung, auch wenn $c$ sich ändert. Liefert die Rechnung $abs(sin(alpha_2))>1$, existiert kein reeller Brechungswinkel dieses Strahlenmodells; keinen unmöglichen Winkel angeben.], fill: sand)
+#src[V26, PDF-S. 12–13, Gl. 6.22–6.24; Wellenlängenverhältnis und Grenzfälle: eigene Ableitungen.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+== 6.9 Bewegte Quellen · Der ankommende Takt ändert sich <a-6-9>
+Ein vorbeifahrendes Fahrzeug klingt bei der Annäherung höher als beim Entfernen. Nicht der Takt der Quelle muss wechseln: Schon ihre Bewegung verändert die Abstände der ausgesandten Fronten. Hier betrachten wir nur den bis zur Vorlesungsgrenze behandelten Fall einer bewegten Quelle und eines im Medium ruhenden Empfängers.
+#src[V26, PDF-S. 14–15 bis zur Endmarkierung; Ü 10.6.]
+
+=== 6.9.1 Doppler-Effekt · Bewegte Quelle, ruhender Empfänger <a-6-9-1>
+Der Sender emittiert im Abstand $T_S=1/f_S$ jeweils eine neue Front. Währenddessen rückt er um $v_S T_S$ weiter. Vor ihm werden die Frontabstände kleiner, hinter ihm größer. Die Welle selbst läuft im ruhenden Medium weiterhin mit $c$.
+#bild("doppler-quelle", [Bewegter Sender: gestauchte und gedehnte Frontabstände. V26, PDF-S. 15, linker Teil von Abb. 6.25.], height: 49mm)
+#form[$ lambda_"vor"=(c-v_S)/f_S, quad lambda_"hinter"=(c+v_S)/f_S $]
+#form[$ f_"an"=f_S/(1-v_S/c), quad f_"ent"=f_S/(1+v_S/c) $]
+$f_S$ ist die Senderfrequenz in Hz; $f_"an"$ und $f_"ent"$ sind die vom ruhenden Empfänger gehörten Frequenzen. $v_S$ ist hier der positive Geschwindigkeitsbetrag in m/s bei geradliniger Bewegung auf ihn zu beziehungsweise von ihm weg; $c$ ist die Schallgeschwindigkeit relativ zum Medium.
+
+*Eigene Herleitung:* Der ruhende Empfänger erhält pro Sekunde $c/lambda_E$ Fronten. Mit kleinerem Frontabstand hört er daher eine höhere Frequenz. Als Vorzeichenkontrolle gilt: Bei Annäherung muss der Nenner kleiner als eins, beim Entfernen größer als eins sein. Bei $v_S=0$ erhält man wieder $f_E=f_S$.
+#bild("map-doppler", [Mindmap zum Doppler-Effekt bei bewegtem Sender. Eigene Darstellung.], height: 46mm)
+#note("Gültigkeit", [Klassisches Wellenmodell mit ruhendem Medium; bewegte Quelle mit $0<=v_S<c$ und ruhender Empfänger. Die beiden angegebenen Beträge gelten für Bewegung entlang der Verbindungslinie, nicht ungeprüft im Moment einer seitlichen Vorbeifahrt. Für Licht sind diese Formeln nicht gültig. Bewegter Empfänger und Mach-Kegel werden nicht vorgezogen.], fill: sand)
+#note("Neue Vorlesungsgrenze", [Auf V26, PDF-S. 15 / Skript S. 210 liegt „Ende VL 26.10." *vor* „Ruhende Quelle, bewegter Empfänger". Dieser darunter sichtbare Fall ist noch nicht eingearbeitet.])
+#src[V26, PDF-S. 14–15 bis zur handschriftlichen Linie, Gl. 6.25 und linker Teil von Abb. 6.25; ÜN, PDF-S. 4. Herleitung und Grenzfallprüfung: eigene Erläuterungen.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 6.* Die Randbedingungen wählen auch auf Flächen die Eigenmoden. Im freien Raum entscheidet die Frontgeometrie, auf welche Fläche sich die Leistung verteilt. Huygens verbindet die Frontausbreitung mit Interferenz, Beugung, Reflexion und Brechung. Bewegt sich schließlich die Quelle, verändert sie die Frontabstände und damit den beim Empfänger ankommenden Takt, nicht die Schallgeschwindigkeit im Medium.
+#src[V26, PDF-S. 1–15 bis zur Endmarkierung; eigene Zusammenfassung.]
 
 = Anhang
 == Formelsammlung mit Voraussetzungen
@@ -629,6 +762,17 @@ An beiden Enden liegt im behandelten Modell ein Bauch. Die schwingenden Moden be
  [Abstände], [Knoten–Knoten: $lambda/2$; Knoten–Bauch: $lambda/4$], [Stehende harmonische Welle],
  [Fest–fest / lose–lose], [$lambda_n=2L/n$; $f_n=n c/(2L)$], [$n=1,2,3,dots$; gemeinsames c im Aufgabenmodell],
  [Fest–lose], [$lambda_n=4L/n$; $f_n=n c/(4L)$], [$n=1,3,5,dots$; Auslenkungsknoten und -bauch],
+ [Kugelwelle], [$I=P/(4pi r^2)$; $I_2/I_1=(r_1/r_2)^2$], [Isotrop, verlustfrei; Leistung in W],
+ [Zylinderwelle], [$I prop 1/r$], [Lange Linienquelle, verlustfrei],
+ [Elementarwelle], [$r=c Delta t$], [Gleiches c; Radius in m],
+ [Phase aus Weg], [$Delta phi=2pi Delta s/lambda+Delta phi_0$], [Gleiche Frequenz; Phase nicht zu Metern addieren],
+ [Doppelspalt], [$sin(alpha_j)=j lambda/d$], [Maxima; gleichphasig, Fernfeld; $abs(j lambda/d)<=1$],
+ [Doppelspalt-Minima], [$sin(alpha)=(j+1/2)lambda/d$], [Zwei Quellen, gleichphasig, Fernfeld; $j$ ganzzahlig],
+ [Reflexion], [$alpha_"ein"=alpha_"aus"$], [Winkelbeträge zum Lot],
+ [Brechung], [$sin(alpha_1)/c_1=sin(alpha_2)/c_2$], [Ruhende Grenze; Winkel zum Lot],
+ [Wellenlängenwechsel], [$lambda_2/lambda_1=c_2/c_1$; $f_2=f_1$], [Ruhende Medien und Grenzfläche],
+ [Doppler, Annäherung], [$f_"an"=f_S/(1-v_S/c)$], [Bewegte Quelle; ruhender Empfänger; $v_S<c$],
+ [Doppler, Entfernung], [$f_"ent"=f_S/(1+v_S/c)$], [Bewegung entlang Verbindungslinie; Medium ruht],
 )
 #note("Wichtige Zahlen", [$1 thin "Hz"=1 thin "s"^(-1)$; $1 thin "kHz"=10^3 thin "Hz"$; $1 thin "MHz"=10^6 thin "Hz"$. $1 thin "mm"=10^(-3) thin "m"$; $1 thin "µm"=10^(-6) thin "m"$. $T/(1 thin "K")=vartheta/(1 thin "°C")+"273,15"$. In den Aufgaben vorgegebene Schallgeschwindigkeiten werden jeweils übernommen: Luft 340 oder 343 m/s, Wasser 1480 oder 1500 m/s. Für die Kranaufgabe gilt $g="9,81" thin "m/s²"$.])
-#src[V, PDF-S. 146–150; V1, PDF-S. 1–13; VB, PDF-S. 10–22 bis zur Grenze; Ü 10.1–10.5; AS 1.3–1.4. Umformungen und Einheitenumrechnungen: eigene Zusammenstellung.]
+#src[V, PDF-S. 146–150; V1, PDF-S. 1–13; VB, PDF-S. 10–22 bis zur Grenze; V26, PDF-S. 1–15 bis zur Endmarkierung; Ü 10.1–10.6; AS 1.3–1.4. Umformungen und Einheitenumrechnungen: eigene Zusammenstellung.]
