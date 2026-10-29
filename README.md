@@ -36,3 +36,5 @@ Die Zitatdatenbank enthält zunächst 100 Zitate von 28 Personen. Angezeigte Tag
 Ein GitHub-Workflow sucht wöchentlich nach weiteren passenden Zitaten in den Quellenabschnitten festgelegter Wikiquote-Autorenseiten und ergänzt bis zu zehn neue Einträge mit Werkangabe. Unsichere Zuschreibungen, Dubletten und redaktionell ausgeschlossene Einträge werden ausgelassen. Wenn die Quellen ausfallen oder nichts Neues passt, bleibt die Sammlung erhalten. Quellenprüfung erfolgt beim Import; beim Öffnen der Webseite sind keine Anfragen an Zitatdienste nötig. Online ergänzte Einträge bleiben in der veröffentlichten Datendatei und werden beim nächsten Build oder lokalen Upload übernommen. Der Workflow benötigt dafür keine Schreibrechte auf den Quellcode.
 
 Prüfen: `python3 -m unittest test_zitate.py` und `node test_zitate.cjs`. Beide Prüfungen laufen im GitHub-Build.
+
+Alles wird Kapitel für Kapitel der Reihe nach gelernt: Ein Modul springt erst ins nächste Kapitel, wenn im aktuellen alle Aufgaben selbst gelöst, alle Quizfragen richtig und alle Karteikarten gelernt sind (siehe AGENTS.md, „Lernreihe“).

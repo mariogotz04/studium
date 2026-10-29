@@ -17,6 +17,13 @@ Sie ist Marios Lernplattform mit vier Reitern:
   zwei Module. Ab 17 Uhr erscheint auf der Startseite der Tagesabschluss (frei aufschreiben, dann 5 Quizfragen aus den
   heutigen Modulen).
 - **Termine:** Fristen und Klausuren mit Countdown, To-dos, Wochenplan.
+- **Lernreihe (Mario, 29.10.2026):** Jedes Modul wird Kapitel für Kapitel der Reihe nach gelernt (`lernreihe()` in
+  vorlage.html). Ein Kapitel ist abgeschlossen, wenn alle Aufgaben selbst gelöst (grün), alle Quizfragen zuletzt richtig
+  und alle Karteikarten einmal gelernt sind. „Heute dran“, „Weiter der Reihe nach“, das Quiz „Der Reihe nach“, neue
+  Karteikarten, Mix-Serie und Probeklausur nehmen nur das aktuelle bzw. schon erreichte Kapitel; fällige Wiederholungen
+  bleiben. Eine nicht selbst gelöste Aufgabe bleibt dran. Das Kapitel kommt aus der Überschrift (`#kapitel`, `## `),
+  bei Sammelüberschriften („Kapitel 7–12“, „TM1 · Statik“) aus `Quelle:`/`quelle:`. Darum Kapitelüberschriften immer
+  mit „Kapitel N“ benennen und jede Aufgabe, Quizfrage und Karte mit Quelle versehen.
 
 Die PDFs und die Aufgaben werden auf GitHub aus den `.typ`-Dateien gesetzt; hier liegt nur die Seite selbst.
 

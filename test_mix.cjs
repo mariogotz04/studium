@@ -32,6 +32,7 @@ const c = {
   store: { get: (k, d) => clone(state.has(k) ? state.get(k) : d), set: (k, v) => state.set(k, clone(v)) },
   db: { get: (k, d) => stand.get(k) ?? d, set: (k, v) => stand.set(k, v) },
   aufgabeStand: a => stand.get(`aufgabe:${m.name}:${a.id}`),
+  quizStand: () => null, kartenStand: () => ({}),
   lernAktivität: (...args) => aktiv.push(args),
   $: selector => node(selector), esc: String, kopf: () => {}, baustein: () => '<img>', quellenLink: () => '',
   heuteIso: () => '2026-10-28', iso: d => d.toISOString().slice(0, 10),
@@ -43,6 +44,7 @@ const c = {
   modulSeite: () => { view.innerHTML = 'Modulauswahl'; },
 };
 vm.createContext(c);
+vm.runInContext(source.slice(source.indexOf('function kapitelSchlüssel('), source.indexOf('function vorschläge(')), c);
 vm.runInContext(source.slice(source.indexOf('let offenAufgabe = null;'), source.indexOf('/* Quiz: Einfachauswahl')), c);
 vm.runInContext(source.slice(source.indexOf('const VIEWS ='), source.indexOf('window.addEventListener("hashchange"')), c);
 const zurück = '#lernen/Finanzierung/probe';
@@ -120,4 +122,22 @@ assert(view.html.includes('href="#lernen/Finanzierung"'));
 node('#alle').click();
 bewerten(null, 'ok');
 assert.equal(c.location.hash, '#lernen/Finanzierung/aufgabe/a1', 'Einzelaufgaben behalten ihre Navigation');
+// Der Reihe nach: nicht gelöst → die Aufgabe bleibt; gelöst → nächste offene; offene Karten sperren das nächste Kapitel
+stand.clear();
+gehen('#lernen/Finanzierung/aufgabe/a0');
+node('#alle').click();
+bewerten(null, 'nein');
+assert.equal(c.location.hash, '#lernen/Finanzierung/aufgabe/a0', 'Nicht geschaffte Aufgabe bleibt dran');
+stand.set('aufgabe:Finanzierung:a1', { s: 'ok', n: 1 });
+c.DECKS = [{ name: 'Finanzierung', cards: [{ id: 'k2', k: 'Kapitel 2', n: '2.1' }] }];
+node('#alle').click();
+bewerten(null, 'ok');
+assert.equal(c.location.hash, '#lernen/Finanzierung/aufgabe/a2', 'Gelöste Aufgabe springt zur nächsten offenen');
+gehen('#lernen/Finanzierung/aufgabe/a2');
+node('#alle').click();
+bewerten(null, 'ok');
+assert.equal(c.location.hash, '#lernen/Finanzierung', 'Kapitel 3 erst, wenn die Karten aus Kapitel 2 gelernt sind');
+assert.equal(c.lernreihe('Finanzierung').front.kurz, 'Kapitel 2');
+c.kartenStand = () => ({ k2: { typ: 'wdh', lapses: 0 } });
+assert.equal(c.lernreihe('Finanzierung').front.kurz, 'Kapitel 3');
 console.log('OK: Abgabebestätigung; fünf Mix-Aufgaben; einzelne Lösungsschritte; Rückkehr mit Ergebnis/Bewertung; Serienabschluss erst nach allen Bewertungen; Starttag; Probeklausur; Einzelaufgaben.');

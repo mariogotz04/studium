@@ -417,6 +417,7 @@ def karteikarten(md, modul, abschnitte=(), skript=None, stellen=None):
             return
         karte.update(a=a, b=bild)
         if quelle:
+            karte["n"] = quelle     # Abschnittsnummer: legt die Lernreihenfolge fest (Kapitel für Kapitel)
             treffer = abschnitt_finden(quelle, abschnitte)
             if treffer:
                 karte["s"] = (stellen.verweis(treffer, karte["q"], "\n".join(z for z in zeilen if not z.startswith("Bild:")))
@@ -531,6 +532,7 @@ def aufgaben(typ, modul, abschnitte, stellen=None):
         if info.get("minuten"):
             a["min"] = info["minuten"]
         if info.get("quelle"):
+            a["n"] = str(info["quelle"])
             treffer = abschnitt_finden(str(info["quelle"]), abschnitte)
             if treffer:
                 a["q"] = (stellen.verweis(treffer, info["titel"] + " " + texte[anfang], "\n".join(texte[anfang + 1:n]))
@@ -595,6 +597,7 @@ def quiz(md, modul, abschnitte, stellen=None):
             f["erkl"] = antwort_html(felder["Erklärung"])[0]
         if "Quelle" in felder:
             ref = " ".join(felder["Quelle"]).strip()
+            f["n"] = ref
             treffer = abschnitt_finden(ref, abschnitte)
             if treffer:
                 antwort = " ".join(felder.get("Antwort", []) + felder.get("Erklärung", []) +
