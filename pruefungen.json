@@ -1,0 +1,34 @@
+{
+  "hinweis": "Prüfungsanmeldung und Notenblatt (THD). Pflege: siehe AGENTS.md, Abschnitt Prüfungen und Noten. Module = Namen der Module auf der Webseite.",
+  "semester": "WS 2026/27",
+  "stand_anmeldung": "2026-11-03",
+  "pruefungen": [
+    {"titel": "Technische Mechanik", "module": ["technische Mechanik"], "angemeldet": true, "datum": "2027-01-26", "zeit": "08:30", "dauer": 90, "pruefer": "Norbert Sosnowsky, Christian Bongmba", "nummer": "022", "ects": 10, "versuch": 2, "hinweis": "Frist SS 27"},
+    {"titel": "Investition und Finanzierung", "module": ["Investitionsrechnung", "Finanzierung"], "angemeldet": true, "datum": "2027-01-28", "zeit": "11:00", "dauer": 90, "pruefer": "Gerhard Brauch-Widmann, Jutta Stirner", "nummer": "028", "ects": 10},
+    {"titel": "Grundlagen der Elektrotechnik", "module": ["GET"], "angemeldet": true, "datum": "2027-02-02", "zeit": "11:00", "dauer": 90, "pruefer": "Gerald Fütterer", "nummer": "032", "ects": 5},
+    {"titel": "Konstruktion", "module": ["Konstruktion"], "angemeldet": true, "datum": "2027-02-04", "zeit": "11:00", "dauer": 90, "pruefer": "Christian Vogt", "nummer": "036", "ects": 4},
+    {"titel": "Physik 2", "module": ["Physik"], "angemeldet": true, "datum": "2027-02-09", "zeit": "11:00", "dauer": 90, "pruefer": "Florian Flossmann", "nummer": "033", "ects": 3},
+    {"titel": "Fluid- und Energietechnik", "module": ["FET"], "angemeldet": true, "datum": "2027-02-11", "zeit": "11:00", "dauer": 90, "pruefer": "Robert Mnich", "nummer": "044", "ects": 5},
+    {"titel": "Mess- und Regelungstechnik", "module": [], "angemeldet": false, "datum": "2026-12-01", "zeit": "11:00", "dauer": 90, "pruefer": "Jochen Hiller, Peter Firsching", "nummer": "024", "ects": 5},
+    {"titel": "Regenerative Energien und Stofftechnik", "module": [], "angemeldet": false, "datum": "2026-12-04", "zeit": "11:00", "dauer": 90, "pruefer": "Rui Li", "nummer": "012", "ects": 4}
+  ],
+  "noten": {
+    "stand": "2026-11-03",
+    "schnitt": 2.8,
+    "ects": 52,
+    "faecher": [
+      {"fach": "Unternehmerische Grundlagen", "note": 1.3, "semester": "WS 2025/26", "ects": 8},
+      {"fach": "Wirtschaftsenglisch", "note": 1.0, "semester": "WS 2025/26", "ects": 2},
+      {"fach": "TN Wirtschaftsenglisch", "note": "bestanden", "semester": "WS 2025/26", "ects": 0},
+      {"fach": "Marketing", "note": 2.7, "semester": "WS 2025/26", "ects": 5},
+      {"fach": "Mathematische Grundlagen", "note": 3.0, "semester": "WS 2025/26", "ects": 5},
+      {"fach": "Technisches Englisch", "note": 2.3, "semester": "SS 2026", "ects": 2},
+      {"fach": "TN Technisches Englisch", "note": "bestanden", "semester": "SS 2026", "ects": 0},
+      {"fach": "Wirtschaftsrecht", "note": 2.7, "semester": "SS 2026", "ects": 10},
+      {"fach": "Grundlagen der Ingenieurmathematik", "note": 3.3, "semester": "SS 2026", "ects": 5},
+      {"fach": "Informatik", "note": 4.0, "semester": "SS 2026", "ects": 10},
+      {"fach": "Physik 1", "note": 4.0, "semester": "SS 2026", "ects": 5},
+      {"fach": "Technische Mechanik", "note": 5.0, "semester": "SS 2026", "ects": 0, "hinweis": "2. Versuch im WS 2026/27, Frist SS 27"}
+    ]
+  }
+}

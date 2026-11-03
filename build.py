@@ -733,6 +733,18 @@ def stundenplan():
     return {"termine": termine, "tage": tage, "stand": datetime.fromtimestamp(PLAN_PDF.stat().st_mtime, BERLIN).date().isoformat()}
 
 
+def pruefungen():
+    """Prüfungsanmeldung und Notenblatt aus pruefungen.json (von Hand bzw. von Claude/Codex gepflegt)."""
+    datei = ROOT / "pruefungen.json"
+    if not datei.exists():
+        return None
+    daten = json.loads(datei.read_text(encoding="utf-8"))
+    for p in daten.get("pruefungen", []):
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.get("datum", "")) or not p.get("titel"):
+            raise SystemExit(f"pruefungen.json: Prüfung ohne gültigen Titel oder Datum: {p}")
+    return daten
+
+
 def baustand():
     """Zeitpunkt des Builds und letzte Änderung (für die Zeile „Stand der Seite“ unten auf der Seite)."""
     jetzt = datetime.now(ZoneInfo("Europe/Berlin"))
@@ -981,6 +993,7 @@ def main():
             .replace("/*LERNEN*/null", einsetzen(lernen))
             .replace("/*ZITATE*/null", einsetzen(zitate))
             .replace("/*PLAN*/null", einsetzen(stundenplan()))
+            .replace("/*PRUEFUNGEN*/null", einsetzen(pruefungen()))
             .replace("/*BUILD*/null", einsetzen(baustand())))
     page = formeln_setzen(page)
     print(f"→ {len(FORMELN)} Formeln gesetzt")
