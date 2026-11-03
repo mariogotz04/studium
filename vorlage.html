@@ -198,6 +198,18 @@ label.l { font-size: 14px; color: var(--muted); }
 .todo .was span { display: block; font-size: 13px; color: var(--muted); }
 .todo.fertig .was { opacity: .5; text-decoration: line-through; }
 .todo .weg, .frist .weg { background: none; border: 0; color: var(--muted); font-size: 22px; width: 44px; height: 44px; cursor: pointer; border-radius: 22px; }
+.notenkopf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 4px 0 14px; }
+.notenkopf div { background: var(--accent-soft); border-radius: 14px; padding: 10px 12px; }
+.notenkopf b { display: block; font-family: var(--serif); font-size: 28px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.notenkopf span { font-size: 13px; color: var(--muted); }
+.note { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); }
+.note:first-of-type { border-top: 0; }
+.note .was span { display: block; font-size: 13px; color: var(--muted); }
+.note .wert { font-family: var(--serif); font-size: 22px; font-variant-numeric: tabular-nums; text-align: right; }
+.note .wert.klein { font-family: inherit; font-size: 14px; color: var(--muted); }
+.note.durch .wert { color: var(--again); }
+.script .klausurinfo { margin-top: 6px; font-size: 14px; color: var(--muted); }
+.script .klausurinfo b { color: var(--again); font-weight: 600; }
 .neu-zeile { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
 .neu-zeile input[type=text] { flex: 1 1 220px; }
 .formular { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -524,6 +536,7 @@ const LERNEN = /*LERNEN*/null || [];
 const ZITATE = /*ZITATE*/null || [];
 const PLAN = /*PLAN*/null || { termine: [], tage: {} };
 const BUILD = /*BUILD*/null;
+const PRUEFUNGEN = /*PRUEFUNGEN*/null || { pruefungen: [], noten: null };   // aus pruefungen.json (Prüfungsanmeldung + Notenblatt)
 // Stand der Seite ganz unten: wann die Seite zuletzt gebaut wurde
 if (BUILD) document.getElementById("stand").textContent = `Stand der Seite: ${BUILD.zeit} Uhr`;
 // GitHub Pages hält die Seite bis zu 10 Minuten im Zwischenspeicher, und die Home-Bildschirm-App lädt nie von selbst neu.
@@ -764,13 +777,18 @@ function kopf(titel, sub) {
 const alleModule = [...new Set([...DATA.map(m => m.name), ...DECKS.map(d => d.name), ...LERNEN.map(m => m.name)])].sort((a, b) => a.localeCompare(b, "de"));
 
 /* ───────────── Fristen und Termine ───────────── */
-// Eigene Einträge (frist:<id>) plus Prüfungen, die im Vorlesungsplan als Prüfung markiert sind.
+// Eigene Einträge (frist:<id>), angemeldete Prüfungen aus pruefungen.json und Prüfungen, die im Vorlesungsplan als Prüfung markiert sind.
+// Angemeldete Prüfungen gehen vor: eigene Einträge oder Plan-Termine am selben Tag zum selben Modul werden dann ausgeblendet.
 function fristen(mitErledigten = false) {
-  const eigene = Object.entries(db.objekt("frist:")).map(([id, f]) => ({ id, ...f }));
+  const amtlich = PRUEFUNGEN.pruefungen.filter(p => p.angemeldet).map(p => ({ id: "pruefung-" + p.nummer + "-" + p.datum, titel: "Klausur " + p.titel,
+    datum: p.datum, zeit: p.zeit || "", art: "klausur", modul: (p.module || [])[0] || "", module: p.module || [], amtlich: p,
+    notiz: [p.dauer ? p.dauer + " min" : "", p.versuch > 1 ? p.versuch + ". Versuch" : "", p.hinweis || ""].filter(Boolean).join(" · ") }));
+  const doppelt = f => amtlich.some(a => a.datum === f.datum && (!f.modul || a.module.includes(f.modul)));
+  const eigene = Object.entries(db.objekt("frist:")).map(([id, f]) => ({ id, ...f })).filter(f => f.art !== "klausur" || !doppelt(f));
   const ausPlan = PLAN.termine.filter(t => t.art === "Prüfung").map(t => ({ id: "plan-" + t.d + t.von, titel: t.t, datum: t.d, zeit: t.von,
     art: "klausur", modul: t.m || "", notiz: t.raum ? "Raum " + t.raum : "", plan: true }))
-    .filter(p => !eigene.some(e => e.datum === p.datum && e.modul && e.modul === p.modul));
-  return [...eigene, ...ausPlan].filter(f => mitErledigten || !f.erledigt)
+    .filter(p => !eigene.some(e => e.datum === p.datum && e.modul && e.modul === p.modul) && !doppelt(p));
+  return [...eigene, ...amtlich, ...ausPlan].filter(f => mitErledigten || !f.erledigt)
     .map(f => ({ ...f, ts: new Date(`${f.datum}T${f.zeit || "23:59"}:00`).getTime() })).sort((a, b) => a.ts - b.ts);
 }
 function rest(ts, jetzt = Date.now()) {
@@ -797,11 +815,38 @@ function klausurSetzen(m, werte) {
 function fristZeile(f, mitKnöpfen) {
   const r = rest(f.ts);
   return `<div class="frist${f.ts - Date.now() < 7 * 864e5 && f.ts > Date.now() ? " bald" : ""}" data-frist="${esc(f.id)}">
-    <div class="was"><span class="chip ${f.art}">${ARTEN[f.art] || "Termin"}</span>${f.modul ? ` <span class="muted">${esc(f.modul)}</span>` : ""}
-      <b>${esc(f.titel)}</b><span>${langDatum(f.datum)}${f.zeit ? `, ${f.zeit} Uhr` : ""}${f.notiz ? " · " + esc(f.notiz) : ""}${f.plan ? " · aus dem Vorlesungsplan" : ""}</span></div>
+    <div class="was"><span class="chip ${f.art}">${ARTEN[f.art] || "Termin"}</span>${(f.module?.length ? f.module : f.modul ? [f.modul] : []).length ? ` <span class="muted">${esc((f.module?.length ? f.module : [f.modul]).join(" + "))}</span>` : ""}
+      <b>${esc(f.titel)}</b><span>${langDatum(f.datum)}${f.zeit ? `, ${f.zeit} Uhr` : ""}${f.notiz ? " · " + esc(f.notiz) : ""}${f.plan ? " · aus dem Vorlesungsplan" : ""}${f.amtlich ? " · angemeldet" : ""}</span></div>
     <div class="rest" data-ts="${f.ts}"><b>${r.zahl}</b><span>${r.text}</span></div>
-    ${mitKnöpfen && !f.plan ? `<div class="knöpfe"><button class="btn klein" data-bearbeiten="${esc(f.id)}">Bearbeiten</button>
+    ${mitKnöpfen && !f.plan && !f.amtlich ? `<div class="knöpfe"><button class="btn klein" data-bearbeiten="${esc(f.id)}">Bearbeiten</button>
       <button class="btn klein" data-fertig="${esc(f.id)}">${f.erledigt ? "Wieder offen" : "Erledigt"}</button></div>` : ""}</div>`;
+}
+/* Prüfungen und Noten aus pruefungen.json */
+const noteText = n => typeof n === "number" ? n.toFixed(1).replace(".", ",") : String(n);
+const mitJahr = s => new Date(s + "T12:00:00").toLocaleDateString("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", year: "numeric" });
+// Nächste angemeldete Klausur, die ein Modul der Webseite abdeckt
+function klausurVon(m) {
+  return PRUEFUNGEN.pruefungen.filter(p => p.angemeldet && (p.module || []).includes(m) && new Date(`${p.datum}T${p.zeit || "23:59"}:00`) > Date.now())
+    .sort((a, b) => a.datum.localeCompare(b.datum))[0];
+}
+function notenHtml() {
+  const N = PRUEFUNGEN.noten, an = PRUEFUNGEN.pruefungen.filter(p => p.angemeldet).sort((a, b) => a.datum.localeCompare(b.datum));
+  const nicht = PRUEFUNGEN.pruefungen.filter(p => !p.angemeldet);
+  if (!N && !an.length) return "";
+  const semester = N ? [...new Set(N.faecher.map(f => f.semester))].reverse() : [];
+  return `<div class="panel" id="noten"><div class="kasten-titel"><h2>Prüfungen & Noten</h2></div>
+    ${N ? `<div class="notenkopf"><div><b>${noteText(N.schnitt)}</b><span>Notenschnitt</span></div><div><b>${N.ects}</b><span>ECTS erreicht</span></div>
+      <div><b>${an.length}</b><span>Klausuren angemeldet</span></div></div>` : ""}
+    ${an.length ? `<div class="kapitelkopf">Angemeldet im ${esc(PRUEFUNGEN.semester || "Semester")}</div>
+      ${an.map(p => `<div class="note"><div class="was"><b>${esc(p.titel)}</b><span>${mitJahr(p.datum)}${p.zeit ? `, ${p.zeit} Uhr` : ""}${p.dauer ? ` · ${p.dauer} min` : ""}${p.versuch > 1 ? ` · ${p.versuch}. Versuch` : ""}${p.hinweis ? " · " + esc(p.hinweis) : ""}<br>${esc(p.pruefer || "")}${p.nummer ? ` · Nr. ${esc(p.nummer)}` : ""}</span></div>
+        <div class="wert klein">${p.ects ? p.ects + " ECTS" : ""}</div></div>`).join("")}` : ""}
+    ${nicht.length ? `<p class="muted" style="margin:10px 0 0;font-size:14px">Nicht angemeldet: ${nicht.map(p => `${esc(p.titel)} (${fmtDate(p.datum)})`).join(", ")}.</p>` : ""}
+    ${N ? `<details style="margin-top:12px"><summary class="muted" style="min-height:44px;cursor:pointer">Notenblatt (${N.faecher.length} Einträge)</summary>
+      ${semester.map(sem => `<div class="kapitelkopf">${esc(sem)}</div>${N.faecher.filter(f => f.semester === sem).map(f => `<div class="note${typeof f.note === "number" && f.note > 4 ? " durch" : ""}">
+        <div class="was"><b>${esc(f.fach)}</b><span>${f.ects ? f.ects + " ECTS" : typeof f.note === "number" && f.note > 4 ? "nicht bestanden" : "Teilnahme"}${f.hinweis ? " · " + esc(f.hinweis) : ""}</span></div>
+        <div class="wert${typeof f.note === "number" ? "" : " klein"}">${esc(noteText(f.note))}</div></div>`).join("")}`).join("")}
+      <p class="muted" style="margin:10px 0 0;font-size:14px">Stand Notenblatt ${fmtDate(N.stand)}${PRUEFUNGEN.stand_anmeldung ? ` · Prüfungsanmeldung ${fmtDate(PRUEFUNGEN.stand_anmeldung)}` : ""}</p></details>` : ""}
+  </div>`;
 }
 function countdownHtml(f) {
   return `<div class="countdown" data-countdown="${f.ts}"><span class="chip klausur">${ARTEN[f.art]}</span> <b>${esc(f.titel)}</b>
@@ -908,7 +953,7 @@ function vorschläge(tag) {
   const woche = vorlesungsModule(tagPlus(tag, -7), tagPlus(tag, -1));
   const klausuren = fristen().filter(f => f.art === "klausur" && f.modul && f.ts > Date.now());
   const grund = m => {
-    const k = klausuren.find(f => f.modul === m);
+    const k = klausuren.find(f => f.modul === m || f.module?.includes(m));
     const tage = k ? Math.ceil((k.ts - Date.now()) / 864e5) : 99;
     // Transferklausuren brauchen mehr Vorlauf als Abfrageklausuren
     if (tage <= { transfer: 42, gemischt: 35, abfrage: 28 }[klausurInfo(m).typ]) return { p: tage <= 14 ? 5 : 3, text: `Klausur in ${tage} Tagen`, tage };
@@ -1334,6 +1379,7 @@ function termineSeite() {
     <div class="panel"><div class="kasten-titel"><h2>Fristen & Klausuren</h2></div>
       ${offen.map(x => fristZeile(x, true)).join("") || `<p class="muted">Noch nichts eingetragen.</p>`}
       ${alt.length ? `<details style="margin-top:12px"><summary class="muted" style="min-height:44px;cursor:pointer">Vergangen oder erledigt (${alt.length})</summary>${alt.map(x => fristZeile(x, true)).join("")}</details>` : ""}</div>
+    ${notenHtml()}
     <div class="panel" id="fristform"><h2>${fristBearbeiten ? "Frist bearbeiten" : "Neue Frist"}</h2>
       <form class="formular" id="frist-neu">
         <label class="ganz">Was?<input type="text" name="titel" required placeholder="z. B. Klausur Technische Mechanik" value="${esc(f.titel || "")}"></label>
@@ -1412,12 +1458,18 @@ function woche() {
 /* ───────────── Lernskripte ───────────── */
 const hoerLink = (m, kapitel = "kap-0") => `#hoeren/${encodeURIComponent(m.name)}/${kapitel}`;
 const epubLink = m => `<a class="btn primary" data-epub href="${esc(m.hoeren.file)}" download="${esc(m.hoeren.download)}">EPUB herunterladen</a>`;
+function klausurHinweis(m) {
+  const p = klausurVon(m);
+  if (!p) return "";
+  const tage = Math.ceil((new Date(`${p.datum}T${p.zeit || "23:59"}:00`) - Date.now()) / 864e5);
+  return `<div class="klausurinfo"><b>Klausur in ${tage} Tag${tage === 1 ? "" : "en"}</b> · ${mitJahr(p.datum)}${p.zeit ? `, ${p.zeit} Uhr` : ""}${p.titel.toLowerCase() !== m.toLowerCase() ? ` · ${esc(p.titel)}` : ""}</div>`;
+}
 function render(query) {
   const q = query.trim().toLowerCase();
   const html = DATA.filter(m => !q || m.name.toLowerCase().includes(q) || m.title.toLowerCase().includes(q))
     .map(m => `<div class="script"><div><div class="title">${esc(m.name)}</div>
       <div class="sub">Lernskript · <span class="stand">Stand ${fmtDate(m.updated)}</span></div>
-      <div class="meta">${m.pages} Seiten · ${fmtSize(m.size)}</div></div>
+      <div class="meta">${m.pages} Seiten · ${fmtSize(m.size)}</div>${klausurHinweis(m.name)}</div>
       <div class="actions"><a class="btn" href="${m.file}" target="_blank" rel="noopener">PDF ansehen</a>
       <a class="btn" href="${m.file}" download="${esc(m.download)}">PDF herunterladen</a></div>
       ${m.hoeren ? `<div class="hoerangebot"><h3>Hörzusammenfassung</h3>
@@ -1968,7 +2020,8 @@ function modulSeite(m, teil) {
   const deck = DECKS.find(d => d.name === m.name);
   const teile = [auf.length && "aufgaben", quiz.length && "quiz", probe && "probe", deck?.cards.length && "karteikarten"].filter(Boolean);
   if (!teile.includes(teil)) teil = teile[0] || "aufgaben";
-  kopf(m.name, `Lernen · ${auf.length} Aufgaben · ${quiz.length} Quizfragen${deck ? ` · ${deck.cards.length} Karteikarten` : ""}`);
+  const kl = klausurVon(m.name);
+  kopf(m.name, `Lernen · ${auf.length} Aufgaben · ${quiz.length} Quizfragen${deck ? ` · ${deck.cards.length} Karteikarten` : ""}${kl ? ` · Klausur am ${fmtDate(kl.datum)}${kl.zeit ? ", " + kl.zeit + " Uhr" : ""}` : ""}`);
   const filter = store.get("lernen:filter", "alle");
   const passt = a => filter === "alle" || (filter === "offen" ? aufgabeStand(a)?.s !== "ok" : a.art === filter);
   const reihe = lernreihe(m.name), front = reihe.front;

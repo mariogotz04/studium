@@ -62,6 +62,7 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 
 - `vorlage.html` – Aussehen und Verhalten der Seite (eingesetzt werden die Skripte bei `/*DATA*/null`, die Karteikarten bei
   `/*KARTEN*/null`, Aufgaben und Quiz bei `/*LERNEN*/null`, der Vorlesungsplan bei `/*PLAN*/null`).
+- `pruefungen.json` – Prüfungsanmeldung (Termine, Uhrzeit, Dauer, angemeldet ja/nein) und Notenblatt; eingesetzt bei `/*PRUEFUNGEN*/null`.
 - `Vorlesungsplan.pdf` – aktueller Stundenplan als PDF-Export aus thabella (Mario legt ihn hier ab).
 - `build.py` – kompiliert die Skripte und baut die Seite (läuft auf GitHub).
 - `.github/workflows/webseite.yml` – Build/Veröffentlichung und wöchentliche Ergänzung der Zitatdatenbank; diese lokale Quelle wird mit hochgeladen.
@@ -154,6 +155,19 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
   Tageskopf (Feiertage, vorlesungsfrei). Welches Fach zu welchem Modul gehört, steht in `PLAN_MODULE` in `build.py`;
   bei einem neuen Fach dort eine Zeile ergänzen. Als „Prüfung“ markierte Termine erscheinen automatisch als Frist.
 
+## Prüfungen und Noten
+
+- `pruefungen.json` hält die Prüfungsanmeldung aus dem Prüfungsportal und das Notenblatt der THD. Gibt Mario eine neue
+  Prüfungsanmeldung, ein neues Notenblatt oder Screenshots davon, diese Datei aktualisieren und hochladen.
+- `pruefungen[]`: `titel` (wie im Portal), `module` (Modulnamen der Webseite, z. B. `["Investitionsrechnung", "Finanzierung"]`
+  für Investition und Finanzierung; leer, wenn es kein Modul auf der Seite gibt), `angemeldet`, `datum` (JJJJ-MM-TT),
+  `zeit`, `dauer` (Minuten), `pruefer`, `nummer` (Anmeldenummer), `ects`, optional `versuch` und `hinweis`.
+  Praktikum Physik bleibt draußen (wie auf der ganzen Seite).
+- Angemeldete Prüfungen erscheinen automatisch als Klausur-Frist mit Countdown, steuern die Tagesvorschläge und stehen
+  auf den Lernskript-Karten und im Kopf der Lernen-Seite. Eigene Klausur-Fristen am selben Tag zum selben Modul werden ausgeblendet.
+- `noten`: `stand`, `schnitt` und `ects` wie auf dem Notenblatt, `faecher[]` mit `fach`, `note` (Zahl oder „bestanden“),
+  `semester`, `ects`, optional `hinweis`. Angezeigt im Reiter Termine unter „Prüfungen & Noten“.
+
 ## Synchronisation
 
 - Lernstand, Fristen, To-dos und Einstellungen liegen im Browser und werden über Supabase (Projekt „studium“,
@@ -199,3 +213,7 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Tageshistorie verhindert vorzeitige Wiederholungen und hält die Wahl nach Neuladen/Erweiterungen stabil. Suchbare Sammlung, portionsweises Nachladen und Favoriten erhalten.
 - Wöchentlicher Import mit Werkbelegen, Ausfallrückfall, automatischer Veröffentlichung und sicherer Zusammenführung bei lokalen Uploads ergänzt. Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-10-27_vor_Zitatdatenbank/`.
 - Validiert: Parser-/Importtests und JavaScript-Tests für vollständigen Umlauf, Tagesstabilität, Datenbankwachstum, Favoriten und reduzierte Anzeige bestanden. Echter Internetimport gegen eine Testkopie ergänzt genau 10 weitere freigegebene Einträge. Gesamtbuild aller 7 Module ohne Fehler/Warnungen; Browserprüfung von Suche, Favoriten, Entwurfserhalt und Anzeige nur mit Zitat/Name bestanden.
+
+### 03.11.2026 · Prüfungsanmeldung und Notenblatt
+- `pruefungen.json` mit den 6 angemeldeten Klausuren des WS 2026/27 (TM 26.01., I&F 28.01., GET 02.02., Konstruktion 04.02., Physik 2 09.02., FET 11.02.) und dem Notenblatt vom 03.11.2026 (Ø 2,8, 52 ECTS).
+- Klausuren laufen als Fristen mit Countdown und in die Tagesvorschläge ein; neuer Bereich „Prüfungen & Noten“ im Reiter Termine; Klausurdatum auf Lernskript-Karten und Lernen-Seite.
