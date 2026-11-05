@@ -385,6 +385,35 @@ Abbildung: stickstoff-zustaende
 Energiezufuhr verändert Temperatur oder Phasenanteile. Zuerst wird das Zustandsgebiet bestimmt; daraus ergibt sich die passende Tabelle oder Zustandsgleichung. Im Nassdampfgebiet koppeln Sättigung Druck und Temperatur, während der Dampfgehalt die Massenaufteilung und die gemittelten spezifischen Größen festlegt. Prozessbedingungen wie konstantes Volumen verbinden die Zustände; Interpolation und einheitliche Bezugsgrößen liefern die Werte für die Energiebilanz.
 Quelle: 2.1
 
+### Warum kann sich ein Eis-Wasser-Dampf-Gemisch trotz Wärmezufuhr zunächst nicht erwärmen?
+Solange alle drei Phasen im Gleichgewicht vorhanden sind, bleiben Druck und Temperatur auf ihren Tripelwerten. Die zugeführte Energie verändert zunächst die Phasenmengen. Erst nach dem Verschwinden einer Phase kann der weitere Weg den Tripelzustand verlassen.
+Quelle: 2.14.1
+Abbildung: map-tripel
+
+### Warum liegen Anfang und Ende des Schmelzens im starren Tripelgefäß im p-v-Diagramm auf demselben Punkt?
+Masse und Gesamtvolumen bleiben konstant, damit auch das spezifische Volumen. Solange der Tripelzustand besteht, bleibt außerdem der Druck gleich. Die Phasenanteile können sich ändern, obwohl die Diagrammkoordinaten gleich bleiben.
+Quelle: 2.14.1
+Abbildung: tripel-isochor
+
+### Warum müssen nach dem Schmelzen im Tripelgefäß die Teilmassen neu berechnet werden?
+Eis, Flüssigkeit und Dampf ändern während der Wärmezufuhr ihre Anteile. Nach dem Verschwinden des Eises gelten eine Massenbilanz und eine Volumenbilanz für die beiden übrigen Phasen. Erst mit diesen neuen Teilmassen lässt sich die Endenergie und daraus die nötige Wärme bestimmen.
+Quelle: 2.14.2
+Abbildung: map-tripel
+
+### Warum legt ein Massenstrom den Durchmesser einer Dampfleitung noch nicht allein fest?
+Man braucht außerdem das spezifische Volumen des Dampfes und die vorgesehene mittlere Geschwindigkeit. Das spezifische Volumen wandelt den Massenstrom in einen Volumenstrom um. Erst aus Volumenstrom und Geschwindigkeit folgt der freie Querschnitt.
+Quelle: 2.15.1
+
+### Warum enthält eine volumetrisch halb mit Dampf gefüllte Kesseltrommel nicht zur Hälfte Dampfmasse?
+Dampf braucht pro Kilogramm viel mehr Raum als Flüssigkeit. Gleiche Teilvolumina liefern deshalb verschiedene Teilmassen. Der Dampfgehalt wird aus den Massen gebildet, nachdem jede Teilmasse über ihr spezifisches Volumen berechnet wurde.
+Quelle: 2.15.2
+Abbildung: dampftrommel-anteile
+
+### Warum führt derselbe Heizvorgang im abgesperrten Überhitzer bei verschiedenen Anfangs-Dampfgehalten auf verschiedene Zustandswege?
+Jede Füllung besitzt ein anderes spezifisches Volumen. Nach dem Absperren bleiben Masse und Gesamtvolumen fest, also verläuft jede Füllung auf ihrer eigenen Isochore. Deshalb erreicht sie die Sattdampflinie und später bestimmte Druckgrenzen an anderen Zuständen.
+Quelle: 2.15.3
+Abbildung: ueberhitzer-wege
+
 ## Kapitel 3 · Erster Hauptsatz
 
 ### Was sagt der erste Hauptsatz in einem Satz?
@@ -459,8 +488,8 @@ Die spezifische Entropie $s$ (pro kg) und die gesamte Entropie $S = m s$ können
 Quelle: 3.2.2
 
 ### Zeichne die Begriffslandkarte zu Kapitel 3 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-Die Systemgrenze bestimmt zuerst, ob eine offene oder geschlossene Energiebilanz gebraucht wird. Im offenen System transportiert der Stoff Enthalpie einschließlich Verschiebearbeit; im geschlossenen System gibt es keinen solchen Massentransport. Wärme, Arbeit und Änderungen der gespeicherten Energie werden mit einheitlichen Vorzeichen bilanziert. Annahmen erlauben erst danach das Streichen einzelner Terme; die instationäre Stickstoffentnahme verbindet Speicheränderung und austretende Enthalpie. Turbine und Kessel verknüpfen Energieunterschiede mit Arbeit oder Wärme; Prozessweg und Verschiebearbeit bestimmen die Arbeitsformen. Der Druckluftmotor verbindet diese Begriffe mit dem Gasmodell und dem Gaswechsel.
-Quelle: 3.7.2
+Die Systemgrenze bestimmt Stoffaustausch und Speicherung. Der erste Hauptsatz verbindet diese mit Wärme, Arbeit und Änderungen der Stoffenergie. Arbeitsformen hängen vom Prozessweg ab; Wärmekapazitäten vom Stoffmodell und vom Temperaturbereich. Ein Kreisprozess besitzt keine bleibende Zustandsänderung, aber Nettoübertragungen; Düse, Drossel und Heizregister verlangen unterschiedliche Bilanzvereinfachungen. Erst Kapitel 4 ergänzt die Prüfung der Prozessrichtung.
+Quelle: 3.11
 
 ### Warum kann sich Wasser in einer adiabaten Turbine erwärmen?
 Adiabat bedeutet nur, dass keine Wärme über die Grenze übertragen wird. Wird nicht die gesamte Gefälleenergie als Wellenarbeit abgegeben, kann der Rest die innere Energie des Wassers erhöhen. Diese Energie verlässt die Turbine mit dem erwärmten Wasser; sie ist kein Wärmeverlust nach außen.
@@ -533,3 +562,124 @@ Abbildung: druckluftmotor-vergleich
 ### Warum genügt die Drehzahl eines Motors allein nicht, um aus der Arbeit je Zyklus die Leistung zu berechnen?
 Man braucht die Zahl der Arbeitsspiele pro Zeit. Die Drehzahl liefert zunächst nur Umdrehungen pro Zeit; zusätzlich muss bekannt sein, wie viele Arbeitsspiele zu einer Umdrehung gehören. Erst dann gilt $P=f W_"Zyklus"$ mit der richtigen Zyklusfrequenz.
 Quelle: 3.7.2
+
+### Warum braucht das ideale Gas bei gleichem Temperaturanstieg isobar mehr Wärme als isochor?
+Bei konstantem Volumen wird keine Volumenarbeit abgegeben. Bei konstantem Druck dehnt sich das Gas beim Erwärmen aus und gibt zusätzlich Arbeit ab. Deshalb gilt im passenden reibfreien Modell $c_p=c_v+R>c_v$.
+Quelle: 3.8.1
+Abbildung: waermekapazitaet-kolben
+
+### Gelten die kalorischen Stoffbeziehungen beim idealen Gas nur auf isochoren beziehungsweise isobaren Wegen?
+Nein. Beim idealen Gas hängen innere Energie und Enthalpie nur von der Temperatur ab; die beiden Stoffbeziehungen gelten auch auf anderen Wegen. Erst die Gleichsetzung der Wärme mit diesen Energieänderungen benötigt passende Prozessbedingungen.
+Quelle: 3.8.1
+
+### Wie unterscheiden sich gesamte, spezifische und molare Wärmekapazität?
+Die gesamte Wärmekapazität gehört zu einer konkreten Portion und hat die Einheit Energie pro Kelvin. Spezifisch bedeutet je Masse, molar je Stoffmenge. Verbunden werden sie über Masse beziehungsweise Stoffmenge und Molmasse: $C_p=m c_p=n C_(m,p)$ und $C_(m,p)=M c_p$.
+Quelle: 3.8.1
+Abbildung: map-waermekapazitaet
+
+### Warum ist das Mittel 0 bis 800 Grad nicht das Mittel 400 bis 1200 Grad?
+Gleiche Bereichsbreite bedeutet nicht dieselben Temperaturen oder dieselbe Wärmekapazität. Aus seit 0 Grad tabellierten Mittelwerten werden zuerst die Energiezunahmen zu beiden Endtemperaturen gebildet und voneinander abgezogen. Erst danach wird durch die Breite des gesuchten Bereichs geteilt.
+Quelle: 3.8.2
+Abbildung: waermekapazitaet-mittel
+
+### Warum kann ein Kreisprozess Arbeit abgeben, obwohl seine Zustandsänderungen insgesamt null sind?
+Das Arbeitsmittel kehrt nach dem Umlauf zu seinen Anfangswerten zurück. Wärme und Arbeit sind aber Übertragungen entlang des Wegs und können netto bestehen bleiben. Ihre vorzeichenbehaftete Summe muss sich nach dem ersten Hauptsatz ausgleichen.
+Quelle: 3.9.1
+Abbildung: kreisprozess-energie
+
+### Wie unterscheiden sich rechtsläufiger und linksläufiger Kreisprozess in ihrer Energienutzung?
+Der rechtsläufige Wärmekraftprozess gibt netto Arbeit ab. Beim linksläufigen Prozess wird Arbeit zugeführt, um Wärme von einem niedrigeren auf ein höheres Temperaturniveau zu übertragen. Pumpenaufnahme und Turbinenabgabe dürfen in einer Gesamtbilanz nicht verwechselt werden.
+Quelle: 3.9.2
+Abbildung: kreisprozess-energie
+
+### Warum ist in einer adiabaten Düse nicht allgemein die Enthalpie konstant?
+Ohne technische Arbeit und bei gleicher Höhe bleibt die Summe aus Enthalpie und spezifischer Bewegungsenergie gleich. Wird der Strom schneller, kann seine Enthalpie sinken. Adiabat streicht den Wärmestrom und streicht nicht den Geschwindigkeitsbeitrag.
+Quelle: 3.10
+Abbildung: stroemung-duese-drossel
+
+### Warum kann eine adiabate Drossel irreversibel sein, obwohl sie keine technische Arbeit überträgt?
+Druckabbau und innere Irreversibilität sind auch ohne äußere Arbeitsabgabe möglich. Bei vernachlässigten äußeren Energieänderungen bleibt die Enthalpie gleich, während die Entropie zunimmt. Die Energiebilanz allein beweist deshalb keine Reversibilität.
+Quelle: 3.10
+Abbildung: stroemung-duese-drossel
+
+### Warum bedeutet isenthalpe Drosselung bei einem realen Fluid nicht automatisch konstante Temperatur?
+Die Enthalpie eines realen Fluids hängt im Allgemeinen von mehr als der Temperatur ab. Daher können sich Druck und Temperatur ändern, obwohl die Enthalpie gleich bleibt. Nur beim idealen Gas mit Enthalpie als reiner Temperaturfunktion folgt unter diesen Bedingungen auch gleiche Temperatur.
+Quelle: 3.10
+
+### Warum verschwindet der Registerwärmestrom aus der Gesamtbilanz des Lufterhitzers?
+Er liegt vollständig innerhalb der Grenze um Wasser, Luft und Lüfter. Was das Wasser abgibt, erhält die Luft mit dem entgegengesetzten Bilanzvorzeichen. In der Gesamtbilanz bleiben die Enthalpieänderungen beider Stoffströme und die von außen zugeführte Lüfterleistung.
+Quelle: 3.11
+Abbildung: lufterhitzer-grenzen
+
+### Warum darf man bei zwei verschiedenen Stoffströmen die spezifischen Enthalpieänderungen nicht einfach addieren?
+Sie beziehen sich auf jeweils ein Kilogramm ihres eigenen Stoffes. Erst die Multiplikation mit dem jeweiligen Massenstrom ergibt vergleichbare Leistungen. Unterschiedliche Massenströme müssen deshalb bis zur Bildung dieser Enthalpieströme getrennt bleiben.
+Quelle: 3.11
+Abbildung: lufterhitzer-grenzen
+
+
+## Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme
+
+### Warum reicht die Energieerhaltung allein nicht aus, um einen Prozess als möglich zu beurteilen?
+Sie verlangt den Ausgleich aller Energiebeiträge, legt aber die mögliche Richtung noch nicht vollständig fest. Ein Rührer kann Fluid erwärmen; Abkühlen allein hebt das antreibende Gewicht nicht wieder an. Der zweite Hauptsatz prüft zusätzlich Irreversibilität und Entropieerzeugung.
+Quelle: 4.1
+Abbildung: joule-prozess
+
+### Warum muss man bei Reversibilität die Umgebung mitbetrachten?
+Reversibel wäre eine gemeinsame Rückkehr von System und Umgebung ohne bleibende Änderung. Dass nur das System wieder denselben Zustand erreicht, genügt nicht. Die dafür eingesetzte Arbeit oder Wärme kann die Umgebung dauerhaft verändert haben.
+Quelle: 4.1
+Abbildung: joule-prozess
+
+### Wodurch kann sich die Entropie eines Systems ändern?
+Entropie kann mit Wärme und bei offenen Systemen mit Stoff über die Grenze transportiert werden. Außerdem kann sie im Inneren durch irreversible Vorgänge entstehen. Eine Speicheränderung ist deshalb nicht automatisch gleich der Erzeugung.
+Quelle: 4.2
+Abbildung: entropie-bilanz
+
+### Unter welchen Bedingungen darf die Entropie eines Systems niemals abnehmen?
+Für ein adiabates geschlossenes System kann die Gesamtentropie nur zunehmen oder im reversiblen Grenzfall gleich bleiben. Bei Wärmeabgabe darf seine Entropie dagegen sinken. Bei Stoffaustausch muss zusätzlich der Entropietransport mit der Masse bilanziert werden.
+Quelle: 4.2.1
+Abbildung: map-entropie
+
+### Warum kann in einer stationären adiabaten Turbine Entropie erzeugt werden, obwohl im Gerät nichts gespeichert wird?
+Stationär bleibt der Entropiespeicher zeitlich gleich. Die im Inneren erzeugte Entropie kann laufend mit dem austretenden Stoff abgeführt werden. Dann besitzt der austretende Stoff eine größere spezifische Entropie als der eintretende.
+Quelle: 4.2.2
+Abbildung: entropie-bilanz
+
+### Was verbindet die Gibbs'sche Fundamentalgleichung?
+Sie verknüpft Temperatur und spezifische Entropieänderung mit Änderungen der inneren Energie und des Volumens beziehungsweise der Enthalpie und des Drucks. Für einen einfachen kompressiblen Stoff gilt $T dif s=dif u+p dif v=dif h-v dif p$. Die Zustandsbeziehung bedeutet nicht, dass der tatsächliche Weg reversibel gewesen sein muss.
+Quelle: 4.2.3
+Abbildung: map-entropie
+
+### Warum müssen in Entropieformeln Kelvin und absolute Drücke verwendet werden?
+Die Logarithmen vergleichen absolute Zustandsgrößen. Ein Quotient von Celsius-Temperaturen oder von Überdrücken ist kein entsprechendes absolutes Verhältnis. Deshalb kann er auch bei scheinbar plausiblen Zahlen eine falsche Entropiedifferenz liefern.
+Quelle: 4.3.1
+
+### Warum verletzt die sinkende Entropie eines abkühlenden Stahlblocks nicht den zweiten Hauptsatz?
+Der Block gibt Wärme und damit Entropie an die Umgebung ab. Seine Entropie darf deshalb sinken, weil er nicht adiabat ist. Beim vollständigen Vergleich erhält die Umgebung mehr Entropie, als der Block verliert; die positive Gesamtänderung zeigt die Irreversibilität.
+Quelle: 4.3.1
+
+### Warum ist der reale Austritt einer adiabaten Turbine enthalpiereicher als der isentrope Vergleich bei gleichem Enddruck?
+Die reale Turbine gibt wegen innerer Irreversibilität weniger Wellenarbeit ab. Die entsprechend größere Energie bleibt mit dem austretenden Stoff erhalten. Gleichzeitig steigt seine spezifische Entropie; der isentrope Vergleich besitzt unveränderte spezifische Entropie.
+Quelle: 4.3.3
+
+### Warum ist entgangene isentrope Wellenleistung nicht automatisch dieselbe Größe wie eine genaue Dissipationsarbeit?
+Die entgangene Wellenleistung ist eine Vergleichsdifferenz zwischen realem und isentropem Prozess mit gleichen Randzustandsvorgaben. Eine genaue Dissipationsarbeit enthält dagegen ein Integral entlang des inneren Prozesswegs. Ohne diesen Weg darf sie nicht mit einer erfundenen mittleren Temperatur aus der Entropiedifferenz berechnet werden.
+Quelle: 4.3.3
+
+### Warum ist eine Isentrope nicht in jedem Diagramm eine senkrechte Linie?
+Eine Isentrope hält die spezifische Entropie konstant. Senkrecht ist sie nur dann unmittelbar, wenn diese Entropie die waagerechte Achse bildet, etwa im T-s- oder h-s-Diagramm. Bei anderen Achsen muss ihre Form aus dem Stoffdiagramm abgelesen werden.
+Quelle: 4.4
+Abbildung: zustandsdiagramme-achsen
+
+### Was bedeutet eine Isovapore, und wo ist sie sinnvoll?
+Sie verbindet Zustände mit gleichem Dampf-Massenanteil. Dieser Anteil beschreibt ein Flüssig-Dampf-Gemisch im Zweiphasengebiet. Er ist kein fortsetzbarer Dampfgehalt eines einphasig überhitzten Gases.
+Quelle: 4.4
+
+### Wann ist die Fläche unter einem T-s-Weg unmittelbar die übertragene spezifische Wärme?
+Bei einem reversiblen Weg gilt $delta q_"rev"=T dif s$. Dann liefert die Fläche das Integral dieser Wärme. Bei einem irreversiblen Weg enthält die Entropieänderung zusätzlich Erzeugung; die Fläche darf deshalb nicht ungeprüft als tatsächliche Wärmezufuhr gelesen werden.
+Quelle: 4.4
+Abbildung: zustandsdiagramme-achsen
+
+### Zeichne die Begriffslandkarte zu Kapitel 4 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Reversibilität betrifft die gemeinsame Rückkehr von System und Umgebung. Die Entropiebilanz verbindet Speicheränderung mit Transport durch Wärme und Stoff sowie nichtnegativer Erzeugung. Gibbs, Stoffmodelle und Tabellen liefern Entropiedifferenzen zwischen Zuständen. T-s-, h-s- und lg(p)-h-Diagramme zeigen diese Zusammenhänge über Achsen, Isolinien und Zustandswege; zusammen mit der Energiebilanz prüfen sie die mögliche Prozessrichtung.
+Quelle: 4.4
+Abbildung: map-entropie

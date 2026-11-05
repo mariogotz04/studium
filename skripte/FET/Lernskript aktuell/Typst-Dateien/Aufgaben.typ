@@ -1078,7 +1078,7 @@ Für eine konsistente Nachrechnung aus den gerundeten Tabellenwerten $H=sum m_i 
 ][
 *Ende des Schmelzens bilanzieren:* Bei Zustand ② ist kein Eis mehr vorhanden, p und T sind noch Tripelwerte. $m'_2+m''_2=m$ und $m'_2v'+m''_2v''=V$. Durch Einsetzen folgt $m''_2=(V-m v')/(v''-v') approx "4,044031" dot 10^(-6)$ kg; $m'_2 approx "0,199999956"$ kg. Etwas zusätzliche Masse ist verdampft, um das beim Schmelzen frei werdende Volumen auszufüllen.
 ][
-*Wärme und Zeit berechnen:* $H_2=m'_2h'+m''_2h'' approx "0,010236075"$ kJ; $U_2=H_2-p_1V approx "0,009604187"$ kJ. Starr und ohne weitere Arbeit gilt $Q_12=U_2-U_1 approx "33,350171"$ kJ. $Delta t="33350,171" thin "J"/(1 thin "J/s") approx 33350$ s = 9,26394 h. Für die Rechnung in Mathe werden gerundete Zahlen mit Dezimalkomma gesetzt; als Dauer genügen etwa 9,264 h.
+*Wärme und Zeit berechnen:* $H_2=m'_2h'+m''_2h'' approx "0,010236075"$ kJ; $U_2=H_2-p_1V approx "0,009604187"$ kJ. Starr und ohne weitere Arbeit gilt $Q_12=U_2-U_1 approx "33,350171"$ kJ. $Delta t="33350,171" thin "J"/(1 thin "J/s") approx 33350$ s = 9,26394 h. Mit den gerundeten Stoffwerten genügt die Angabe etwa 9,264 h.
 ][
 *Clapeyron mit Einheiten einsetzen:* Die tabellierte Entropiedifferenz ist $"9155,5"$ J/(kg K). $a=(s''-s')/(v''-v')="9155,5"/("205,99"-"0,0010002") approx "44,44655"$ Pa/K. Mit $Delta T=7$ K folgt $p_3 approx "611,66"+"44,44655" dot 7 approx "922,786"$ Pa = 9,22786 mbar. Das ist die geforderte lineare Näherung, kein exakter Dampftafelwert.
 ][
@@ -1692,5 +1692,5 @@ Zeichne die Achsen eines T-s-, h-s- und lg(p)-h-Diagramms. Trage jeweils die unm
 *Konstant gehaltene Größe benennen:* Isotherme T, Isobare p, Isochore v, Isentrope s, Isenthalpe h, Isovapore x im Zweiphasengebiet. Eine Isentrope ist keine überall senkrechte Linie; das hängt von den gewählten Achsen ab.
 ][
 *Wärmefläche begrenzen:* Bei reversiblem Weg gilt $delta q_"rev"=T dif s$, also $q_"rev"=integral T dif s$. Bei einem irreversiblen tatsächlichen Weg enthält die Entropiezunahme zusätzlich Erzeugung; die Fläche ist dann nicht ungeprüft die tatsächlich übertragene Wärme.
-#align(center)[#image("abbildungen/zustandsdiagramme-achsen.svg", width: 100%)]
+#align(center)[#image("abbildungen/zustandsdiagramme-achsen.svg", width: 75%)]
 ]

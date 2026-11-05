@@ -211,6 +211,38 @@ Quelle: 2.12.2
   > Entnommen wird Flüssigkeit; verdampft ist ein anderer, viel kleinerer Teil.
 Quelle: 2.13.2
 
+### In einem starren geschlossenen Gefäß schmilzt Eis, während Eis, Wasser und Dampf im Gleichgewicht vorhanden sind. Was bleibt zunächst konstant?
+- [x] Druck und Temperatur bleiben auf ihren Tripelwerten.
+  > Die Wärmezufuhr ändert zunächst die Phasenanteile; die drei Phasen koexistieren weiter.
+- [ ] Alle drei Teilmassen bleiben unverändert.
+  > Gerade die Teilmassen ändern sich beim Schmelzen und der begleitenden Umverteilung.
+- [ ] Die innere Energie bleibt wegen des konstanten Volumens gleich.
+  > Ein starres Volumen streicht die Volumenarbeit, nicht die Wirkung zugeführter Wärme.
+Quelle: 2.14.1
+
+### Bei der starren geschlossenen Erwärmung eines Tripelgemisches ohne weitere Arbeit gilt $Q$ = ___. Nenne die geänderte Gesamtgröße in Worten.
+Antwort: Änderung der inneren Energie/innere Energieänderung
+Erklärung: Aus dem ersten Hauptsatz bleibt bei unveränderten äußeren Energien die Änderung von U. Die Teilmassen des Endzustands müssen davor neu bestimmt werden.
+Quelle: 2.14.2
+
+### Eine Dampftrommel enthält gleich viel Flüssigkeits- und Dampfvolumen. Welche Aussage folgt daraus?
+- [x] Die Massenanteile sind wegen unterschiedlicher spezifischer Volumina verschieden.
+  > Teilmassen werden aus Teilvolumen geteilt durch den passenden Stoffwert berechnet.
+- [ ] Der Dampfgehalt ist genau 50 Prozent.
+  > Der Dampfgehalt ist ein Massenanteil, kein Volumenanteil.
+- [ ] Die beiden spezifischen Enthalpien werden ohne Gewichtung addiert.
+  > Erst Masse mal spezifische Enthalpie ergibt die addierbare Gesamtenergie.
+Quelle: 2.15.2
+
+### Für eine abgesperrte starre Überhitzerfüllung ändert sich der Druck. Welche Formel beschreibt die benötigte Wärme bei unveränderten äußeren Energien?
+- [x] $Q=m[(h_2-h_1)-v(p_2-p_1)]$
+  > Wärme ändert hier U. Der Druck-Volumen-Anteil verbindet u mit h und bleibt bei veränderlichem Druck erhalten.
+- [ ] $Q=m(h_2-h_1)$ unabhängig vom Druckverlauf
+  > Die Änderung von pv wurde weggelassen. Konstantes v bedeutet nicht konstantes pv.
+- [ ] $Q=0$, weil keine Volumenarbeit übertragen wird.
+  > Die starre Wand verhindert Volumenarbeit, aber nicht Wärmeübertragung.
+Quelle: 2.15.3
+
 ## Kapitel 3 · Energiebilanzen: Erster Hauptsatz
 
 ### Warum steht in der Energiebilanz eines durchströmten Systems die Enthalpie $h$ statt der inneren Energie $u$?
@@ -382,3 +414,170 @@ Quelle: 3.7.2
 Antwort: Die Gasgleichung und die verwendeten Zustandsverhältnisse benötigen absolute Drücke und Kelvin. Zum Überdruck wird der Umgebungsdruck addiert; zur Celsius-Temperatur werden 273,15 addiert. Im Vorlesungsbeispiel sind das 23,21 bar absolut und 297,95 Kelvin.
 Tipp: Ein Druckverhältnis aus Überdrücken ist nicht das Verhältnis der absoluten Zustandsdrücke.
 Quelle: 3.7.2
+
+### Warum ist beim idealen Gas $c_p>c_v$?
+- [x] Isobare Erwärmung muss im passenden Modell zusätzlich die Ausdehnungsarbeit bedienen.
+  > Bei gleicher Temperaturerhöhung kommt zur Änderung der inneren Energie eine Arbeitsabgabe hinzu.
+- [ ] Weil isochore Erwärmung die Temperatur nicht ändern kann.
+  > Bei festem Volumen kann die Temperatur steigen; stattdessen steigt der Druck.
+- [ ] Weil die gleiche Gasportion isobar automatisch schwerer wird.
+  > Verglichen wird dieselbe geschlossene Masse. Der Unterschied stammt nicht aus zusätzlicher Masse.
+Quelle: 3.8.1
+
+### Eine Tabelle nennt Mittelwerte seit 0 °C. Du brauchst den Mittelwert von 400 bis 1200 °C. Was ist richtig?
+- [x] Die beiden seit 0 °C berechneten Energiezunahmen subtrahieren und durch 800 K teilen.
+  > So bleibt genau die Energiezunahme im gesuchten Intervall übrig.
+- [ ] Den Tabellenwert seit 0 bis 800 °C ablesen.
+  > Die gleiche Breite macht zwei verschiedene Temperaturbereiche nicht gleich.
+- [ ] Die beiden Tabellenwerte einfach arithmetisch mitteln.
+  > Tabelliert sind bereits unterschiedliche integrale Mittel. Ihre bloße Mittelung bildet das Zielintervall nicht ab.
+Quelle: 3.8.2
+
+### Welche Einheit gehört zur molaren isobaren Wärmekapazität bei Stoffmenge in kmol?
+- [x] kJ/(kmol K)
+  > Der molare Bezug ist pro Stoffmenge. Mit der Molmasse wird daraus der spezifische Bezug.
+- [ ] kJ/(kg K)
+  > Das ist die spezifische Wärmekapazität je Masse.
+- [ ] kJ/K
+  > Das ist die gesamte Wärmekapazität einer konkreten Portion.
+Quelle: 3.8.1
+
+### Welche Aussagen treffen auf einen vollständigen Kreisprozess zu?
+- [x] Das Arbeitsmittel erreicht wieder seinen Anfangszustand.
+  > Deshalb verschwinden die Änderungen seiner Zustandsgrößen nach dem gesamten Umlauf.
+- [x] Netto-Wärme und Netto-Arbeit können trotzdem ungleich null sein.
+  > Wärme und Arbeit sind Prozessgrößen. Ihre vorzeichenbehaftete Summe muss ausgeglichen sein.
+- [ ] Die Pumpenaufnahme darf bei der Nettoleistung grundsätzlich ignoriert werden.
+  > Die Nutzabgabe ist Turbinenabgabe abzüglich der zugehörigen Pumpenaufnahme.
+Quelle: 3.9.1
+
+### Eine Maschine soll dauernd Arbeit abgeben, ohne andere Energie aufzunehmen oder einen Speicher abzubauen. Das wäre ein Perpetuum mobile ___ Art.
+Antwort: erster/1./1
+Erklärung: Die Behauptung verletzt den ersten Hauptsatz. Ein geschlossener Kreis des Arbeitsmittels ist keine Energiequelle.
+Quelle: 3.9.2
+
+### Bei einer adiabaten Düse ohne technische Arbeit und mit gleicher Höhe nimmt die Geschwindigkeit zu. Was kann dabei geschehen?
+- [x] Die spezifische Enthalpie sinkt und liefert den Zuwachs an Bewegungsenergie.
+  > Erhalten bleibt unter diesen Annahmen h plus spezifische Bewegungsenergie.
+- [ ] Die Enthalpie muss gleich bleiben, weil keine Wärme übertragen wird.
+  > Adiabat streicht nur den Wärmestrom; die Bewegungsenergie bleibt Teil der Bilanz.
+- [ ] Die Düse erzeugt zusätzliche Energie durch den kleineren Querschnitt.
+  > Der Querschnitt beeinflusst die Strömung, erzeugt aber keine Energie.
+Quelle: 3.10
+
+### Welche Aussage zur adiabaten Drossel mit vernachlässigten äußeren Energieänderungen ist richtig?
+- [x] Die Enthalpie bleibt etwa gleich; der Prozess kann trotzdem irreversibel sein.
+  > Die gleichbleibende Enthalpie ist eine Energieaussage. Druckabbau kann mit positiver Entropieerzeugung verbunden sein.
+- [ ] Enthalpiekonstanz beweist Reversibilität.
+  > Reversibilität wird dadurch nicht bewiesen; die Drossel ist ein typisches Gegenbeispiel.
+- [ ] Bei jedem realen Fluid bleibt automatisch auch die Temperatur gleich.
+  > Die Enthalpie eines realen Fluids hängt im Allgemeinen nicht allein von der Temperatur ab.
+Quelle: 3.10
+
+### Warum fällt der Registerwärmestrom in der Gesamtbilanz um Wasser, Luft und Lüfter weg?
+Antwort: Er liegt innerhalb der Gesamtgrenze. Die Wasserabgabe und die Luftaufnahme erscheinen mit entgegengesetzten Vorzeichen und heben sich auf. Die verschiedenen Enthalpieströme und die von außen zugeführte Lüfterleistung bleiben in der Bilanz.
+Erklärung: Lege zuerst die Grenze fest und verfolge dann denselben inneren Pfeil auf beiden Seiten.
+Quelle: 3.11
+
+### Ein Lufterhitzer ist nach außen adiabat. Welche Aussagen sind trotzdem möglich?
+- [x] Im Inneren überträgt Wasser Wärme an Luft.
+  > Die Adiabatie betrifft die äußere Gesamtgrenze und verhindert keinen inneren Austausch.
+- [x] Über die äußere Grenze wird Lüfterarbeit zugeführt.
+  > Adiabat bedeutet keine Wärmeübertragung; Arbeit ist eine andere Übertragungsform.
+- [ ] Alle spezifischen Enthalpieänderungen werden ohne ihre Massenströme addiert.
+  > Verschiedene spezifische Bezüge müssen zuerst in vergleichbare extensive Leistungen umgerechnet werden.
+Quelle: 3.11
+
+
+## Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme
+
+### Ein Rührer erwärmt mit Arbeit ein Fluid. Warum beweist die Energieerhaltung nicht, dass Abkühlen allein das antreibende Gewicht wieder anhebt?
+- [x] Der erste Hauptsatz bilanziert Energie; der zweite begrenzt zusätzlich die mögliche Prozessrichtung.
+  > Ein energetisch gedachter Rückvorgang muss nicht ohne weitere Veränderung der Umgebung möglich sein.
+- [ ] Weil beim Rühren Energie vernichtet wird.
+  > Die Arbeit erhöht die innere Energie. Energie wird nicht vernichtet.
+- [ ] Weil ein Fluid überhaupt keine Arbeit abgeben kann.
+  > Fluide können in passenden Prozessen Arbeit abgeben. Hier ist die behauptete selbsttätige Umkehr das Problem.
+Quelle: 4.1
+
+### Ein System wird in seinen Anfangszustand zurückgebracht, dabei wird die Umgebung bleibend verändert. Ist damit Reversibilität bewiesen?
+- [x] Nein; auch die Umgebung müsste ohne bleibende Änderung zurückkehren.
+  > Die gemeinsame Rückkehr ist Teil der Reversibilitätsbedingung.
+- [ ] Ja; allein der Systemzustand entscheidet.
+  > Damit würde gerade die für die Rückführung veränderte Umgebung ausgeblendet.
+- [ ] Ja; sobald der Prozess nur langsam genug ablief.
+  > Langsamkeit beseitigt vorhandene Reibung oder andere Irreversibilitäten nicht automatisch.
+Quelle: 4.1
+
+### Welche Aussage über Entropie ist ohne weitere Einschränkung richtig?
+- [x] Die innere Entropieerzeugung ist nichtnegativ.
+  > Transport kann die Systementropie senken; die Erzeugung im Inneren wird dadurch nicht negativ.
+- [ ] Die Entropie jedes einzelnen Systems steigt bei jedem Vorgang.
+  > Ein System kann durch Wärme- oder Stoffabgabe Entropie verlieren.
+- [ ] Wärmeabgabe erzeugt grundsätzlich negative Entropie.
+  > Wärmeabgabe ist ein negativer Transportbeitrag, keine negative innere Erzeugung.
+Quelle: 4.2.1
+
+### Wann folgt aus der Entropiebilanz unmittelbar $Delta S>=0$ für die Gesamtentropie des betrachteten Systems?
+- [x] Bei einem adiabaten geschlossenen System.
+  > Es gibt weder Wärme- noch Stofftransport von Entropie über die Grenze; die Änderung entspricht der nichtnegativen Erzeugung.
+- [ ] Bei jedem starren System, unabhängig von Wärme- und Stoffaustausch.
+  > Starrheit allein verhindert diese Entropietransporte nicht.
+- [ ] Bei jedem offenen System allein wegen der Durchströmung.
+  > Offene Systeme müssen den mit Masse transportierten Entropiestrom mitbilanzieren.
+Quelle: 4.2.1
+
+### Eine stationäre adiabate Turbine erzeugt im Inneren Entropie. Was muss bei einem Ein- und Austritt im betrachteten Modell gelten?
+- [x] Der Austritts-Entropiestrom ist größer als der Eintritts-Entropiestrom.
+  > Die Erzeugung wird mit dem Stoff abgeführt, obwohl der Speicher im Gerät stationär bleibt.
+- [ ] Die Entropie im Gerät muss immer weiter anwachsen.
+  > Stationär bleibt der Speicher gleich; Erzeugung und Abtransport können sich ausgleichen.
+- [ ] Die Entropieerzeugung muss null sein, weil die Turbine adiabat ist.
+  > Adiabat streicht den Wärme-Entropietransport und verbietet keine innere Erzeugung.
+Quelle: 4.2.2
+
+### Ein Stahlblock kühlt ab und seine Entropie sinkt. Welche zusätzliche Betrachtung entscheidet über die Irreversibilität des ganzen Vorgangs?
+- [x] Die Entropieaufnahme der Umgebung und die gemeinsame Gesamtbilanz.
+  > Die Umgebung nimmt die abgegebene Wärme und Entropie auf; ihre Zunahme muss mitbetrachtet werden.
+- [ ] Nur das Vorzeichen der Blockentropie.
+  > Die negative Änderung eines nichtadiabaten Teilsystems ist für sich kein Verstoß.
+- [ ] Nur der Energieausgleich; Entropie ist dafür überflüssig.
+  > Gleiche Energiebeträge bei Abgabe und Aufnahme sagen noch nicht, ob ein Prozess reversibel ist.
+Quelle: 4.3.1
+
+### Welche Größen gehören in die Verhältnisse der idealen Gas-Entropieformel?
+- [x] Kelvin-Temperaturen und absolute Drücke in jeweils einheitlichen Einheiten.
+  > Nur diese Verhältnisse vergleichen die entsprechenden absoluten Zustandsgrößen.
+- [ ] Celsius-Temperaturen und Überdrücke reichen grundsätzlich aus.
+  > Ihre Quotienten sind im Allgemeinen andere Zahlenverhältnisse und liefern falsche Logarithmen.
+- [ ] Beliebige gemischte Druckeinheiten, solange die Zahlen positiv sind.
+  > Die Einheiten müssen sich innerhalb jedes Verhältnisses kürzen.
+Quelle: 4.3.1
+
+### Bei gleichem Einlass und gleichem Enddruck hat eine reale adiabate Turbine gegenüber dem isentropen Vergleich typischerweise welche Eigenschaften?
+- [x] Geringere Wellenabgabe und höhere Austrittsenthalpie.
+  > Die kleinere abgegebene Arbeit lässt eine entsprechend größere Enthalpie im austretenden Stoff.
+- [x] Eine höhere spezifische Entropie am Austritt.
+  > Innere Irreversibilität erzeugt unter den adiabaten Annahmen Entropie.
+- [ ] Eine vernichtete Energiemenge in Höhe der Vergleichsverlustleistung.
+  > Die entgangene Arbeit ist kein Energieverlust aus der Gesamtbilanz; der Austrittszustand enthält die Energie.
+Quelle: 4.3.3
+
+### Im lg(p)-h-Diagramm ist die waagerechte Achse h. Welche Linie ist unmittelbar senkrecht?
+- [x] Eine Isenthalpe.
+  > Bei konstantem h ändert sich die waagerechte Koordinate nicht.
+- [ ] Jede Isentrope unabhängig von Stoff und Gebiet.
+  > Senkrechte Isentropen ergeben sich unmittelbar bei s als waagerechter Achse, nicht allgemein in diesem Diagramm.
+- [ ] Eine Isobare.
+  > Ein konstanter Druck hält hier die senkrechte Koordinate fest und ergibt eine waagerechte Linie.
+Quelle: 4.4
+
+### Darf eine T-s-Fläche unter einem beliebigen tatsächlichen Prozessweg ohne Weiteres als übertragene Wärme gelesen werden?
+- [x] Nur für einen reversiblen Weg gilt unmittelbar $q_"rev"=integral T dif s$.
+  > Bei Irreversibilität enthält die Entropieänderung zusätzlich Erzeugung.
+- [ ] Ja; jede Entropieänderung entsteht ausschließlich durch Wärme.
+  > Entropie kann auch im Inneren erzeugt und bei offenen Systemen mit Stoff transportiert werden.
+- [ ] Ja; sobald nur die Endtemperaturen bekannt sind.
+  > Die tatsächliche Wärme hängt auch vom Prozessweg und seinen Bedingungen ab.
+Quelle: 4.4
+
