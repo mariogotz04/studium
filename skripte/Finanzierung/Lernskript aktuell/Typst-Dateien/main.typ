@@ -267,6 +267,12 @@ Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu
   chunk([1.13–1.18 Glasspinnerei], [EBK · NOCF · Planbilanz · Finanzierungslücke], ziel: <a-1-13>),
 )
 
+#karte((1fr, auto, 1fr, auto, 1fr),
+  chunk([1.19 Aktienkennzahlen], [Substanz · Ertrag · Marktpreis], ziel: <a-1-19>), pfeil(),
+  chunk([1.20 Kapitalbindung], [Working Capital · Dauer der Vorfinanzierung], ziel: <a-1-20>), pfeil(),
+  chunk([1.21 Finanzkontrolle], [Engpass · Vergleich · Bezugsgrößen], ziel: <a-1-21>),
+)
+
 Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher kommt es?* Dafür trennst Du zuerst Erfolg von Zahlungen, denn Gewinn allein bezahlt keine Rechnung. Cashflow und Finanzplan zeigen, wann Geld fehlt; Kennzahlen und Leverage zeigen, wie riskant die Finanzierung ist. Die Fallstudie Glasspinnerei setzt alles zu einer Kapitalbedarfsrechnung zusammen; Working Capital und Aktienkennzahlen ergänzen die Beurteilung. Kapitel 2 verfolgt anschließend den Weg vom Kreditrisiko über Bonität und Vertrag zur Zinsrechnung und Rückführung.
 #src[V, PDF-S. 1–3; G, PDF-S. 1 und 24; V, PDF-S. 28–58; Zusammenführung aus Kapiteln 1–2. Eigene Darstellung.]
 
@@ -279,7 +285,7 @@ Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher k
   idee(<a-1-5>, [Der Cashflow zeigt die Zahlungskraft.], [Direkt oder indirekt gerechnet ergibt er dieselbe Größe, aufgeteilt in drei Bereiche.]),
   idee(<a-1-7>, [Der Finanzplan ist ein Zahlungsfahrplan.], [Er zeigt Betrag und Termin jeder Lücke, bevor sie zur Insolvenz führt.]),
   idee(<a-1-19>, [Kennzahlen und Kapitalbindung richtig lesen.], [Leverage, Aktienkennzahlen und Working Capital brauchen klare Bezugsgrößen und Zeiträume.]),
-  idee(<a-1-13>, [Die Fallstudie führt alles zusammen.], ["Aus" Absatz, Kosten, Steuern und Investitionen entsteht der Kapitalbedarf.]),
+  idee(<a-1-13>, [Die Fallstudie führt alles zusammen.], [Aus Absatz, Kosten, Steuern und Investitionen entsteht der Kapitalbedarf.]),
 )
 
 *So entsteht die Kapitalbedarfsrechnung der Glasspinnerei*
@@ -794,7 +800,7 @@ Die Fallstudie bezeichnet Fortführungsbilanzen bei der Liquiditätsmessung als 
 
 Eine Aktie hat mehrere Bezugsgrößen: ihren *Nominalwert* als Anteil am Grundkapital, den *Börsenkurs* als Marktpreis und rechnerische Werte aus Vermögen oder künftigen Gewinnen. Diese Größen beantworten verschiedene Fragen. Ein hoher Bilanzwert ist deshalb keine Zusage für einen bestimmten Börsenkurs.
 
-#bild("map-aktien", [Mindmap: vier Blickrichtungen auf eine Aktie. Eigene Darstellung nach V, PDF-S. 28–30 (Folien 55–59).], height: 44mm)
+#bild("map-aktien", [Mindmap: vier Blickrichtungen auf eine Aktie. Eigene Darstellung nach V, PDF-S. 28–30 (Folien 55–59).], height: 38mm)
 
 Sei $N$ die Anzahl gleichartiger Aktien und $"NW"$ ihr Nominalwert. Dann gilt im Modell $N="Grundkapital"/"NW"$. *Bilanzielles Eigenkapital* umfasst hier Grundkapital, Rücklagen und Jahresüberschuss; Fremdkapital gehört nicht dazu. *Stille Reserven* sind im angesetzten Bilanzwert noch nicht sichtbare Vermögensmehrwerte bzw. entsprechende Bewertungsunterschiede.
 
@@ -812,7 +818,7 @@ Der *relative Bilanzkurs* setzt korrigiertes EK zum Grundkapital ins Verhältnis
 
 #note("Widersprüche der Musterlösung sichtbar halten", [Folie 59 nennt *Gewinn je Aktie / Börsenkurs* „Eigenkapitalrendite“. Die Rechnung ergibt eine *Gewinnrendite zum Börsenkurs*, nicht die in Abschnitt 1.11 definierte Jahresüberschuss/EK-Rentabilität. Außerdem passen die separat vorgegebenen 0,32 €/Aktie nicht zum bilanziellen Jahresüberschuss von 30 T€ bei 400.000 Aktien. Für KGV und Gewinnrendite werden die ausdrücklich gegebenen 0,32 € verwendet; die Unvereinbarkeit wird nicht weggerundet. Eigene Prüfung.], fill: sand)
 
-Der Daimler-Ausschnitt 2016 zeigt Umsatz, EBIT, Konzernergebnis, Cashflow, Investitionen, Ergebnis und Dividende je Aktie nebeneinander. *EBIT* ist das Ergebnis vor Zinsen und Ertragsteuern; es ist weder Konzernergebnis noch Cashflow. Eine Dividende ist die Ausschüttung und muss nicht dem gesamten Gewinn je Aktie entsprechen. Die Tabelle ist ein historisches Anschauungsbeispiel, keine aktuelle Kursinformation.
+Der Daimler-Ausschnitt 2016 zeigt Umsatz, EBIT, Konzernergebnis, Cashflow, Investitionen, Ergebnis und Dividende je Aktie nebeneinander. *EBIT* ist das Ergebnis vor Zinsen und Ertragsteuern; es ist weder Konzernergebnis noch Cashflow. Eine Dividende ist die Ausschüttung und muss nicht dem gesamten Gewinn je Aktie entsprechen. Die Tabelle illustriert historische Kennzahlen, keine aktuellen Kurse.
 #src[V, PDF-S. 28–30 (Folien 55–59); N28, PDF-S. 2–4. Abgrenzungen und Widerspruchsprüfung: eigene Erläuterung der vorgegebenen Formeln und Zahlen; keine Buchquelle direkt verwendet.]
 #hoch(<a-1>, [Kapitelübersicht])
 
@@ -1126,11 +1132,15 @@ Eine *Personalsicherheit* gibt einen zusätzlichen Anspruch gegen eine Person, e
 Eine Sicherungsgrundschuld setzt dagegen nicht kraft ihres dinglichen Bestands eine Forderung voraus; ihre Verbindung zum Kredit wird durch die Sicherungsvereinbarung hergestellt. Das ist das hier gesuchte Beispiel eines *fiduziarischen* Sicherungsmittels. „Personal/real“ und „akzessorisch/fiduziarisch“ sind also zwei verschiedene Fragen. Die spätere ausführliche Vorlesung zu Kreditsicherheiten wird hier nicht vorweggenommen.
 #src[K, PDF-S. 1–2 (Klausurseiten 5–6), Aufgabe 1 a–d, insgesamt 13 Punkte; V, PDF-S. 53, Folie 105. Formeln und Herleitung: eigene Lösung zur Klausur. Rechtsabgleich der Beispiele: #link("https://www.gesetze-im-internet.de/bgb/__767.html")[§ 767] und #link("https://www.gesetze-im-internet.de/bgb/__1192.html")[§ 1192 BGB], Abruf 05.11.2026.]
 
+#block(breakable: false)[
 *Der Zusammenhang in Kapitel 2.* Feste Zahlungsansprüche erklären, warum der Gläubiger Bonität und Sicherheiten prüft. Rating und Bankkapital übersetzen Risiko in Bedingungen der Kreditvergabe. Der Vertrag legt Zahlungsfahrplan und Verhaltensgrenzen fest; Zinstage, Zinstermine und Auszahlung bestimmen die Vergleichbarkeit. Tilgung führt die Schuld zurück, während Kündigung und möglicher Zinsschaden den vorzeitigen Ausstieg regeln. Die Altklausur verknüpft diese Bausteine in vollständigen Rechen- und Erklärfällen.
 #src[V, PDF-S. 40–58; K, PDF-S. 1–2. Eigene Zusammenfassung des Kapitels.]
 #hoch(<a-2>, [Kapitelübersicht])
+]
 
 
+
+#pagebreak()
 = Anhang
 == Formelsammlung mit Voraussetzungen
 
@@ -1173,7 +1183,7 @@ Geldgrößen immer in derselben Währung und Periode einsetzen. Prozentgrößen 
  [NOCF], [Operativer Überschuss vor Steuer/EBK − Steuerzahlungen − ΔEBK], [Kosten-/Bestandsabgrenzungen müssen zusammenpassen; G PDF-S. 9–14.],
  [Sofort-AfA im Fall], [$"0,75" times "Anschaffungskosten"$], [Historische Fallannahme 2005; G PDF-S. 13.],
  [Rest-AfA im Fall], [$"0,25" times "Anschaffungskosten"/("Nutzungsdauer"-1)$], [Linear ab Folgejahr, historische Fallannahme; G PDF-S. 13.],
- [Steuer im Fall], [$"0,50" times "positive Steuerbasis nach Verlustverrechnung"$], [Nur historische Modellannahme, keine aktuelle Steuerregel; G PDF-S. 14.],
+ [Steuer im Fall], [50 % der positiven Steuerbasis nach Verlustverrechnung], [Nur historische Modellannahme, keine aktuelle Steuerregel; G PDF-S. 14.],
  [Aktienzahl], [$N="Grundkapital"/"Nominalwert je Aktie"$], [Gleichartige Aktien; Stück; V PDF-S. 28–30.],
  [Korrigierter Bilanzkurs], [$("EK"+"stille Reserven")/N$], [€/Aktie, korrigierte Substanzwerte; V PDF-S. 29.],
  [Ertragswertkurs], [$("künftiger Jahresgewinn"/i)/N$], [Konstanter unbegrenzter Gewinn, $i>0$; V PDF-S. 29.],

@@ -75,7 +75,7 @@ Quelle: 0.6
   > Die Toleranz gilt in beide Richtungen, nicht nur nach oben.
 Quelle: 0.2
 
-## Kapitel 1 · Grundbegriffe: Strom und Quellspannung
+## Kapitel 1 · Grundbegriffe: Strom, Spannung, Widerstand, Leistung
 
 ### In welche Richtung zeigt der Strompfeil $I$ in einem Schaltplan außerhalb der Quelle?
 - [x] Von Plus nach Minus, also entgegen der Elektronenbewegung.
@@ -142,7 +142,7 @@ Quelle: 1.1.7
   > Der Schalter überbrückt C. Der Gesamtwiderstand sinkt, also steigt der Strom durch A und B.
 - [ ] Sie bleiben gleich hell, nur C geht aus.
   > Dann müsste der Strom gleich bleiben. Er steigt aber von $U_q\/(3R)$ auf $U_q\/(2R)$.
-- [x] Sie werden heller, ihre Leistung steigt auf das 2,25-Fache.
+- [x] Sie werden heller; im Modell mit konstanten Lampenwiderständen steigt ihre Leistung auf das 2,25-Fache.
   > Ihre Spannung steigt von $U_q\/3$ auf $U_q\/2$. Mit $P = U^2\/R$ gibt das $(3\/2)^2 = "2,25"$.
 - [ ] Sie werden genau doppelt so hell.
   > Der Strom steigt um den Faktor 1,5, die Leistung aber quadratisch mit dem Strom.
@@ -194,7 +194,226 @@ Quelle: 1.2.5
   > 0,76 A fließen nach einer Zeitkonstante, also rund 63 % des Endstroms.
 Quelle: 1.2.6.1
 
-## Kapitel 2 · Der Grundstromkreis
+### Du erklärst einen anderen Schaltungspunkt zur Masse. Was bleibt unverändert?
+- [x] Die Spannung zwischen zwei unveränderten Punkten.
+  > Beide Potenziale verschieben sich um denselben Wert; ihre Differenz bleibt gleich.
+- [ ] Alle Potenzialzahlen.
+  > Potenziale beziehen sich auf den gewählten Nullpunkt und ändern daher ihre Zahlenwerte.
+- [ ] Nur negative Potenziale werden zu null.
+  > Das Vorzeichen allein entscheidet nicht; alle Potenziale werden um denselben Betrag verschoben.
+Quelle: 1.3
+
+### A liegt bei 5 V, B bei 8 V gegenüber derselben Masse. Wie groß ist die Spannung von A nach B?
+- [x] −3 V
+  > Es gilt $U_(A B) = phi_A - phi_B = 5 - 8$ V.
+- [ ] +3 V
+  > Das ist die Spannung von B nach A. Die Reihenfolge der Punkte ist vertauscht.
+- [ ] 13 V
+  > Die Potenziale werden zur Spannungsbildung subtrahiert, nicht addiert.
+Quelle: 1.3
+
+### Was unterscheidet Leitwert und Leitfähigkeit?
+- [x] Der Leitwert gehört zum konkreten Bauteil, die Leitfähigkeit zum Material.
+  > Die Geometrie geht in $G = kappa A/l$ zusätzlich zum Materialwert ein.
+- [ ] Beide sind derselbe Wert mit anderem Namen.
+  > Sie haben verschiedene Einheiten und beziehen sich auf verschiedene Größen.
+- [ ] Der Leitwert wächst mit dem Widerstand.
+  > $G = 1/R$: Größerer Widerstand bedeutet kleineren Leitwert.
+Quelle: 1.4.1
+
+### Warum darfst du Materialwerte für den Drahtwiderstand nicht ohne Temperaturangabe verwenden?
+Antwort: Der spezifische Widerstand ist temperaturabhängig. Die Tabelle dieses Abschnitts gilt bei 20 °C. Für eine andere Temperatur muss das passende Temperaturmodell oder der passende Materialwert verwendet werden.
+Quelle: 1.4.1
+
+### Eine Motorzuleitung ist 25 m lang und hat Hin- und Rückleiter. Welche Leiterlänge zählt für den gesamten Spannungsabfall?
+- [x] 50 m
+  > Der Strom fließt über 25 m hin und 25 m zurück; beide Widerstände liegen in Reihe.
+- [ ] 25 m
+  > Das zählt nur einen der beiden Leiter.
+- [ ] 12,5 m
+  > Die Aufteilung auf zwei Leiter halbiert nicht die gesamte Strecke.
+Quelle: 1.4.2
+
+### Warum beweist ein ausreichend kleiner Spannungsabfall noch nicht die vollständige Eignung eines Leiterquerschnitts?
+Antwort: Die Spannungsabfallrechnung prüft nur ein Auslegungskriterium. Die thermische Belastbarkeit muss zusätzlich zur tatsächlichen Anwendung passen; V S. 24 fordert diese Prüfung ausdrücklich.
+Quelle: 1.4.2
+
+### Wann darfst du aus einer geraden I-U-Kennlinie einen konstanten Widerstand folgern?
+- [x] Für die Ursprungsgerade unter den betrachteten festen Bedingungen.
+  > Die konstante Steigung bedeutet konstanten Leitwert; eine andere Temperatur kann eine andere Gerade ergeben.
+- [ ] Immer und für jede Temperatur.
+  > Temperaturänderungen können das Material und damit den Widerstandswert verändern.
+- [ ] Nur wenn der Strom null ist.
+  > Am Ursprung allein ist der Quotient U/I nicht bestimmbar. Die Gerade beschreibt gerade die weiteren Betriebspunkte.
+Quelle: 1.4.3.1
+
+### Im I-U-Diagramm wird eine ohmsche Ursprungsgerade steiler. Wird der Widerstand größer oder kleiner?
+Antwort: Er wird kleiner: Die Steigung ist Stromänderung durch Spannungsänderung, also der Leitwert. Der Widerstand ist dessen Kehrwert.
+Quelle: 1.4.3.1
+
+### Was ändert sich bei einem nichtlinearen Widerstand grundsätzlich?
+- [x] Die Strom-Spannungs-Beziehung ist keine Ursprungsgerade mit überall gleichem Widerstand.
+  > Der Arbeitspunkt muss aus der Kennlinie oder einer passenden Bauteilgleichung bestimmt werden.
+- [ ] Die Knotenregel gilt nicht mehr.
+  > Die Ladungsbilanz gilt weiterhin.
+- [ ] Die Maschenregel darf nicht mehr verwendet werden.
+  > Die Spannungsbilanz bleibt im betrachteten Netzwerkmodell gültig.
+Quelle: 1.4.3.2
+
+### Warum darfst du den Quotienten U durch I eines nichtlinearen Bauteils nicht als festen Widerstand für alle Ströme benutzen?
+Antwort: Der Quotient beschreibt nur den ausgewählten Arbeitspunkt. Bei einem anderen Strom liegt ein anderer Punkt auf der gekrümmten Kennlinie; Spannung und Quotient müssen neu bestimmt werden.
+Quelle: 1.4.3.2
+
+### Warum ist der Strom einer Wolfram-Glühwendel direkt beim Einschalten oft besonders hoch?
+- [x] Die kalte Wendel hat einen kleineren Widerstand als im heißen Betrieb.
+  > Wolfram ist ein Kaltleiter; bei Wärme steigt sein Widerstand.
+- [ ] Der heiße Draht hat einen kleineren Widerstand.
+  > Das wäre das Verhalten eines Heißleiters und kehrt hier die Temperaturwirkung um.
+- [ ] Die Quelle muss beim Einschalten ihre Spannung verdoppeln.
+  > Eine solche Spannungsänderung wird für die Erklärung nicht benötigt.
+Quelle: 1.4.3.2.1
+
+### Warum gelten die festen Leistungsfaktoren der einfachen Lampenrechnung nicht automatisch für echte Glühlampen?
+Antwort: Die Rechnung setzt einen unveränderten Widerstand voraus. Ein echter Wolframfaden erwärmt sich und verändert seinen Widerstand. Die qualitative Aussage heller oder dunkler kann stimmen, während der genaue Leistungsfaktor vom konstanten Modell abweicht.
+Quelle: 1.4.3.2.1
+
+### Welche Temperaturen gehören in die NTC-Gleichung mit den Kehrwerten eins durch T?
+- [x] Absolute Temperaturen in Kelvin.
+  > Nur diese passen zum angegebenen Exponentialmodell; der Exponent muss einheitenlos sein.
+- [ ] Celsiuszahlen wie 20 oder 100.
+  > Die verschobene Celsius-Skala darf hier nicht als absoluter Kehrwert verwendet werden.
+- [ ] Nur die Temperaturdifferenz.
+  > Die Gleichung enthält die beiden absoluten Kehrwerte, nicht nur ihre Differenz als Temperaturanstieg.
+Quelle: 1.4.3.2.2
+
+### Warum kann ein zu großer Messstrom die NTC-Temperaturmessung verfälschen?
+Antwort: Der Strom erzeugt Verlustwärme und erwärmt das Messbauteil selbst. Dadurch ändert sich dessen Widerstand zusätzlich zur Umgebungstemperatur. Die Messleistung muss deshalb klein genug sein.
+Quelle: 1.4.3.2.2
+
+### Beim Varistormodell ist der Strom proportional zur fünften Potenz der Spannung. Was bewirkt eine Verdopplung der positiven Spannung?
+- [x] Der Modellstrom wächst um den Faktor 32.
+  > Die gesamte Spannung wird potenziert: zwei hoch fünf ergibt 32.
+- [ ] Der Strom verdoppelt sich.
+  > Das wäre die lineare Beziehung eines konstanten Widerstands.
+- [ ] Der Strom wächst um den Faktor 5.
+  > Der Exponent ist kein gewöhnlicher Multiplikationsfaktor.
+Quelle: 1.4.3.2.3
+
+### Wie hilft ein parallel angeschlossener Varistor gegen eine Überspannung?
+Antwort: Bei hoher Spannung wird er stark leitfähig und übernimmt einen großen Anteil des Störstroms. Dadurch wird die Spannung am geschützten Zweig begrenzt. Das konkrete Verhalten folgt seiner Kennlinie und Belastbarkeit, nicht einem universellen festen Widerstand.
+Quelle: 1.4.3.2.3
+
+### Eine Diode liegt bei 0,6 V und 2 mA. Welche Aussage zu statischem und differenziellem Widerstand stimmt bei n gleich eins und 26 mV Temperaturspannung?
+- [x] Statisch 300 Ω; differenziell ungefähr 13 Ω.
+  > Der Quotient U/I und die lokale Tangente sind verschiedene Auswertungen derselben Kennlinie.
+- [ ] Beide Widerstände sind 300 Ω.
+  > Das würde Quotient und Ableitung einer gekrümmten Kennlinie gleichsetzen.
+- [ ] Die Diode hat überall 13 Ω.
+  > Der differenzielle Wert gilt nur für kleine Änderungen nahe dem gewählten Arbeitspunkt.
+Quelle: 1.4.3.2.4
+
+### Was beschreibt der differenzielle Widerstand einer Diode physikalisch?
+Antwort: Er beschreibt, wie viel kleine Spannungsänderung für eine kleine Stromänderung nahe einem festgelegten Arbeitspunkt nötig ist. Grafisch gehört er zur Tangente. Bei großen Auslenkungen braucht man wieder die vollständige Kennlinie.
+Quelle: 1.4.3.2.4
+
+### Beim Leerlauf der LED-Aufgabe wird nur die LED entfernt. Was geschieht mit dem 50-Ω-Widerstand parallel zur LED?
+- [x] Er bleibt im Netzwerk und beeinflusst die Leerlaufspannung.
+  > Leerlauf bezieht sich auf die äußere LED-Last; der vorhandene Teiler bleibt bestehen.
+- [ ] Er muss ebenfalls entfernt werden.
+  > Dadurch würde ein anderes Netzwerk entstehen.
+- [ ] Er wird automatisch kurzgeschlossen.
+  > Das passiert beim Kurzschluss der Klemmen, nicht im Leerlauf.
+Quelle: 1.4.3.2.4.1
+
+### Die LED hat 20 Prozent optischen Wirkungsgrad. Auf welche elektrische Leistung bezieht sich das in der Aufgabe?
+- [x] Auf die Leistung direkt in der LED: Diodenspannung mal Diodenstrom.
+  > Die übrigen Widerstände sind nicht Teil dieses angegebenen LED-Wirkungsgrads.
+- [ ] Auf die gesamte Quellleistung.
+  > Damit würde man die Netzwerkverluste fälschlich in die LED-Effizienz einbeziehen.
+- [ ] Auf die Photonenergie allein.
+  > Eine Energie pro Photon ist noch keine Leistung; dafür wäre auch die Zahl der Photonen pro Zeit nötig.
+Quelle: 1.4.3.2.4.1
+
+### Warum darfst du den Kollektorstrom nicht unbegrenzt mit beta mal Basisstrom hochrechnen?
+- [x] Quelle, Lastgerade und Betriebsbereich begrenzen den möglichen Arbeitspunkt.
+  > In Sättigung gilt die einfache aktive Verstärkungsbeziehung nicht unverändert.
+- [ ] Weil beta immer genau eins ist.
+  > Der behandelte Transistor kann deutlich größere Gleichstromverstärkungen haben.
+- [ ] Weil die Knotenregel im Transistor aussetzt.
+  > Auch hier addieren sich Basis- und Kollektorstrom zum Emitterstrom.
+Quelle: 1.4.3.2.5
+
+### Was zeigt die Verlustleistungshyperbel im Transistorkennlinienfeld?
+Antwort: Sie verbindet Punkte gleichen Produkts aus Kollektor-Emitter-Spannung und Kollektorstrom. Eine vorgegebene Grenze darf am Arbeitspunkt nicht überschritten werden. Sie beschreibt etwas anderes als die Lastgerade des äußeren Stromkreises.
+Quelle: 1.4.3.2.5
+
+### Kupfer erwärmt sich von 20 auf 100 Grad Celsius. Welche Temperaturdifferenz setzt du in das lineare Widerstandsmodell ein?
+- [x] 80 Kelvin
+  > Temperaturdifferenzen haben in Kelvin und Grad Celsius denselben Zahlenwert.
+- [ ] 373,15 Kelvin
+  > Das ist die absolute Endtemperatur, nicht ihre Differenz zum Bezug.
+- [ ] 353,15 Kelvin
+  > Zu einer Celsius-Differenz wird nicht 273,15 addiert.
+Quelle: 1.4.4
+
+### Wie kann man einen temperaturabhängigen Widerstand als Thermometer nutzen?
+Antwort: Man kennt den Widerstand bei einer Bezugstemperatur und seinen passenden Temperaturkoeffizienten. Aus der gemessenen relativen Widerstandsänderung folgt im gültigen Modell die Temperaturänderung. Selbsterwärmung und Gültigkeitsbereich müssen dabei berücksichtigt werden.
+Quelle: 1.4.4
+
+### Was entspricht der Fläche unter einer Leistung-Zeit-Kurve?
+- [x] Der umgesetzten Energie.
+  > Watt mal Sekunde ergibt Joule; die mittlere Leistung ist die Höhe des flächengleichen Rechtecks.
+- [ ] Der Endleistung.
+  > Die Endleistung ist nur ein einzelner Kurvenwert.
+- [ ] Dem mittleren Strom.
+  > Die Fläche einer Leistungskurve hat die Energieeinheit, keine Stromeinheit.
+Quelle: 1.5
+
+### Warum darfst du bei zeitabhängigem Strom nicht immer einfach die Endleistung mit der gesamten Zeit multiplizieren?
+Antwort: Die Endleistung lag vorher möglicherweise nicht die ganze Zeit an. Die Energie ergibt sich aus der gesamten Fläche unter der Leistungskurve. Erst eine konstante Leistung oder die korrekt gebildete mittlere Leistung darf mit der gesamten Zeit multipliziert werden.
+Quelle: 1.5
+
+## Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis
+
+### Ein berechneter Zweigstrom ist negativ. Was bedeutet das bei festgelegtem Zählpfeil?
+- [x] Der tatsächliche Strom fließt entgegen dem angenommenen Pfeil.
+  > Der Pfeil bleibt als Bezugsrichtung bestehen; das Vorzeichen gibt die reale Richtung an.
+- [ ] Die Knotenregel ist verletzt.
+  > Eine vorzeichenrichtige Bilanz kann ohne Weiteres negative Ergebnisse liefern.
+- [ ] Es fließt überhaupt kein Strom.
+  > Ein negativer Wert ist nicht null.
+Quelle: 2.1
+
+### Welche Erhaltungsgröße steckt hinter dem Knotenpunktsatz?
+Antwort: Die elektrische Ladung bleibt erhalten. Im stationären Knoten sammelt sich keine Ladung an; der gesamte Zufluss gleicht deshalb dem gesamten Abfluss. Die algebraische Summe ist nur mit richtiger Vorzeichenwahl null.
+Quelle: 2.1
+
+### Du kehrst bei einer Maschengleichung den Umlaufsinn um. Was muss passieren?
+- [x] Alle Spannungsbeiträge wechseln gemeinsam das Vorzeichen.
+  > Die ganze Gleichung wird mit minus eins multipliziert; die Lösung bleibt dieselbe.
+- [ ] Nur die Quellspannung wechselt das Vorzeichen.
+  > Auch die übrigen Spannungen werden nun entgegengesetzt durchlaufen.
+- [ ] Der reale Strom kehrt seine Richtung um.
+  > Eine Rechenentscheidung verändert den Stromkreis nicht.
+Quelle: 2.2
+
+### Warum ist die Spannungssumme auf einer geschlossenen Masche null?
+Antwort: Nach dem Umlauf erreicht man wieder denselben Schaltungspunkt und damit dasselbe Potenzial. Alle Anhebungen und Abfälle müssen sich im betrachteten Netzwerkmodell ausgleichen. Die Vorzeichen folgen dem gewählten Umlauf und den Zählpfeilen.
+Quelle: 2.2
+
+### In einem nichtlinearen Dreizweignetz ist der Strom eines Zweigs bekannt. Was ist ein sinnvoller erster Schritt?
+- [x] Aus dessen Kennlinie die Spannung lesen und weitere Spannungsabfälle dieses Zweigs ergänzen.
+  > Damit erhält man die gemeinsame Klemmen- bzw. Zweigspannung für den Vergleich mit den anderen Zweigen.
+- [ ] Alle nichtlinearen Bauteile durch denselben konstanten Widerstand ersetzen.
+  > Die Kennlinien sind unterschiedlich und gelten nicht als universelle konstante Widerstände.
+- [ ] Die Kirchhoffschen Gesetze weglassen.
+  > Gerade diese Bilanzen verbinden die Zweige weiterhin.
+Quelle: 2.3
+
+### Wie kontrollierst du das Ergebnis eines nichtlinearen Netzwerks?
+Antwort: Prüfe die verwendeten Punkte an den Kennlinien, die Summe der Ströme am Knoten und die Spannungssumme jeder betrachteten Masche. Berechnete Leistungen müssen zu den tatsächlichen Bauteilspannungen und -strömen gehören. Ein negativer Strom wird als Richtungsinformation interpretiert.
+Quelle: 2.3
+
 
 ### Eine reale Quelle hat $U_q = 9 thin "V"$ und $R_i = 300 thin Omega$. Wie groß ist der Kurzschlussstrom?
 - [x] 30 mA

@@ -245,7 +245,7 @@ Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zu
 #karte((1fr, auto, 1fr, auto, 1fr),
   chunk([Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung], [Ladung · Spannung · Strom · Widerstand · Leistung], ziel: <a-0>),
   pfeil(beschriftung: [erklärt die Größen für]),
-  chunk([Kapitel 1 · Grundbegriffe: Strom und Quellspannung], [Ladungstransport · Stromdichte · Stromwirkung · Ladungstrennung · Quelleneffekte], ziel: <a-1>),
+  chunk([Kapitel 1 · Grundbegriffe], [Strom · Quellen · Potenzial · Kennlinien · Energie], ziel: <a-1>),
   pfeil(beschriftung: [liefert Quellenmodell für]),
   chunk([Kapitel 2 · Kirchhoff und Grundstromkreis], [Knoten · Maschen · Arbeitspunkt · Leistungsbilanz], ziel: <a-2>),
 )
@@ -526,6 +526,7 @@ $N$: Windungszahl; $A$: Fläche der Leiterschleife $2 r l$; $D^*$: Winkelrichtgr
 
 == 1.1.7.1 Qualitative Fragestellung: drei Lampen und ein Schalter <a-1-1-7-1>
 Drei identische Glühlampen liegen in Reihe an einer Batterie, der Schalter S liegt parallel zu Lampe C. Was passiert, wenn S geschlossen wird?
+#note("Modell für die Zahlenfaktoren", [Die Quelle und der Schalter seien ideal, die drei Lampen werden als gleiche *konstante Widerstände* behandelt. Reale Wolframwendeln sind PTCs (Abschnitt 1.4.3.2.1); ihre Widerstände ändern sich mit der Temperatur. Die angegebenen exakten Faktoren gehören daher zum vereinfachten Modell.], fill: sand)
 #grid(columns: (1fr, 1.2fr), gutter: 5mm,
  [#bild("lampen", [Drei gleiche Lampen in Reihe, Schalter S parallel zu C. Eigene Darstellung nach V S. 14, Abb. 1.10.], height: 36mm)],
  [*S offen:* Reihenschaltung aus drei gleichen Lampen.
@@ -816,6 +817,9 @@ $alpha_20$ in $"1/K"$, $beta_20$ in $"1/K"^2$, $Delta vartheta$ in K; beide Klam
  idee(<a-2-4-3>, [Maximale Leistung und hoher Wirkungsgrad sind verschiedene Ziele.], [Bei Anpassung wird ebenso viel Leistung innen wie außen umgesetzt.]),
 )
 
+#bild("map-netzwerk", [Mindmap: Potenziale, Knoten, Maschen und Kennlinien verbinden. Eigene Darstellung nach V S. 20–21 und 39–41.], height: 40mm)
+#src[Eigene Zusammenführung von N30, PDF-S. 1–2 und 20–22.]
+
 #ablauf(
   chunk([Quelle und Last modellieren], [Quellspannung · Innenwiderstand · Außenwiderstand], ziel: <a-2-4-1>),
   chunk([Arbeitspunkt bestimmen], [Maschenumlauf oder Schnittpunkt der Kennlinien], ziel: <a-2-4-1-k>),
@@ -868,7 +872,7 @@ Der Quotient $U/I$ aus einem Arbeitspunkt ist kein konstanter Ersatzwiderstand f
  [#bild("skript-grundstromkreis", [Grundstromkreis mit Generator und Verbraucher. V S. 42, Abb. 2.3.], height: 34mm)],
  [#bild("grundstromkreis", [Dasselbe Ersatzschaltbild; gestrichelt die reale Quelle. Eigene Darstellung.], height: 34mm)],
 )
-Spannungspfeile weisen vom höheren zum niedrigeren Potenzial. Im Verbraucher fließt der Strom von + nach −; Strom- und Spannungspfeil zeigen dort in dieselbe Richtung (*Verbraucherzählpfeilsystem*). Der Umlauf um die Masche ergibt:
+Bei positivem Spannungswert weist der Spannungspfeil vom höheren zum niedrigeren Potenzial; ein negativer Wert bedeutet die umgekehrte tatsächliche Reihenfolge. Im Verbraucher fließt der Strom von + nach −; Strom- und Spannungspfeil zeigen dort in dieselbe Richtung (*Verbraucherzählpfeilsystem*). Der Umlauf um die Masche ergibt:
 #form[$ U_i + U_a - U_q = 0 quad quad I = U_q/(R_i + R_a) quad quad U_a = U_q - U_i = I dot.c R_a $]
 *Grenzfälle* zeigen, was $R_i$ bewirkt:
 #tab(columns: (1fr, 1.2fr, 1.2fr),
@@ -936,10 +940,11 @@ _Eigene Ergänzung:_ In der Nachrichtentechnik (Antenne, Lautsprecher) ist Anpas
 #note("Fehler vermeiden", [Leistungsanpassung ist *nicht* der Fall mit dem besten Wirkungsgrad. $eta$ steigt, je größer $R_a$ gegenüber $R_i$ ist; im Kurzschluss ist $eta = 0$.], fill: sand)
 #src([V S. 44–46; Z S. 1; FK 30.])
 
-*Der Zusammenhang in Kapitel 2.* Die Knotenbilanz erhält die Ladung, der Maschenumlauf verknüpft die Potenziale. Kennlinien liefern die zusätzlichen Beziehungen der nichtlinearen Bauteile. Das Modell „ideale Quelle plus Innenwiderstand“ erklärt, warum der Kurzschlussstrom endlich ist und die Klemmenspannung unter Last sinkt. Strom und Spannung lassen sich rechnerisch über den Maschenumlauf oder zeichnerisch über den Schnittpunkt zweier Kennlinien bestimmen. Die Leistungsbilanz zeigt, dass der Verbraucher bei $R_a = R_i$ am meisten bekommt, die Quelle dabei aber die Hälfte selbst verheizt.
+*Der Zusammenhang in Kapitel 2.* Die Knotenbilanz erhält die Ladung, der Maschenumlauf verbindet die Potenziale. Kennlinien liefern das nichtlineare Bauteilverhalten. Im Grundstromkreis erklärt der Innenwiderstand Spannungseinbruch und endlichen Kurzschlussstrom. Der Arbeitspunkt erfüllt Quellen- und Verbraucherkennlinie zugleich. Die Leistungsbilanz unterscheidet nutzbare Leistung, innere Verluste und Wirkungsgrad; bei Leistungsanpassung wird innen genauso viel umgesetzt wie außen.
 #hoch(<a-2>, [Kapitelübersicht])
 
 
+#pagebreak(weak: true)
 = Anhang
 
 == Formelsammlung mit Voraussetzungen

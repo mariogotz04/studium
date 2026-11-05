@@ -26,7 +26,7 @@ Falsche Optionen sollen plausibel sein und einen typischen Denkfehler treffen.
 - [ ] Die Rentabilität
   > Rentabilität ist ein Ziel im magischen Dreieck, kein Bestandteil des Finanzierungsbegriffs. Über die Kosten des Kredits sagt die Frage nichts.
 - [ ] Die Art der Mittel
-  > Ein langfristiger Kredit für eine Maschine mit zehn Jahren Nutzung passt in der Art. Nur der Termin passt nicht.
+  > Zur Laufzeit des zugesagten Kredits macht der Fragetext keine Angabe. Der verspätete Geldzufluss belegt hier den Fehler beim Zeitpunkt.
 Tipp: Geh die vier Merkmale Umfang, Art, Zeitpunkt und Ort einzeln durch.
 Quelle: 1.1
 
@@ -190,7 +190,7 @@ Quelle: 1.5
 - [ ] Operativer Cashflow plus Investitions-Cashflow plus Finanzierungs-Cashflow
   > Die Summe aller drei Bereiche erklärt die Änderung des Zahlungsmittelbestands, nicht den Free Cashflow.
 - [x] Operativer Cashflow minus Investitionsauszahlungen in Sachanlagen und immaterielle Vermögenswerte
-  > Siemens 2018: $8415 - 2602 = 5813$ Mio. €, in der Tabelle 5814 wegen Rundung.
+  > Siemens 2018: $8415 - 2602 = 5813$ Mio. €, die Folientabelle nennt 5814. Ohne ungerundete Daten ist die Ursache der Differenz von 1 Mio. € nicht belegt.
 - [ ] Jahresüberschuss minus Ausschüttungen
   > Das wäre der einbehaltene Gewinn, also offene Selbstfinanzierung. Mit Zahlungen hat das nur indirekt zu tun.
 - [ ] Operativer Cashflow minus gesamter Investitions-Cashflow inklusive Verkäufen
@@ -397,3 +397,250 @@ Quelle: 1.17
   > Mit etwa 90 % Marktanteil und 20 % Wachstum fehlt es nicht am Markt.
 Erklärung: Maßnahmen gegen die eine Größe ändern die andere nicht zwangsläufig. Lineare Abschreibung der Gebäude macht das EK positiv, schließt aber die Lücke nicht. Investitionsstreckung schließt die Lücke, ändert am EK wenig.
 Quelle: 1.18
+
+### Welche Größe steckt im Nenner der Gewinnrendite zum Börsenkurs?
+- [x] Börsenkurs je Aktie
+  > Gewinn je Aktie wird auf den Marktpreis bezogen.
+- [ ] Bilanzielles Eigenkapital des Unternehmens
+  > Das wäre bei passendem Gesamtgewinn eine andere Rendite, die JÜ/EK-Rentabilität.
+- [ ] Grundkapital je Aktie
+  > Der Nominalwert ist nicht der Marktpreis.
+Tipp: Trenne Marktpreis, Nominalwert und Bilanzkapital.
+Quelle: 1.19
+
+### Warum ist der Ertragswertkurs der Folienaufgabe ein vereinfachtes Modell?
+- [x] Er setzt einen gleichbleibenden künftigen Jahresgewinn ohne Wachstumsrate und einen positiven Kalkulationszins voraus.
+  > Gewinn durch Zinssatz kapitalisiert eine unbegrenzte konstante Gewinnreihe.
+- [ ] Er entspricht immer dem Börsenkurs.
+  > Der Marktpreis kann von einem Modellwert abweichen.
+- [ ] Er berücksichtigt automatisch jede künftige Investition und jedes Risiko einzeln.
+  > Diese umfassende Einzelplanung enthält die einfache Formel nicht.
+Tipp: Frage, welche Zukunftsannahme hinter Gewinn geteilt durch Zinssatz steht.
+Quelle: 1.19
+
+### Warum dürfen die 13,3 % aus Gewinn je Aktie geteilt durch Börsenkurs nicht ohne Weiteres als JÜ/EK-Rentabilität bezeichnet werden?
+Antwort: Der Börsenkurs ist die Marktpreis-Basis einer Aktie. JÜ/EK bezieht den gesamten Jahresüberschuss auf bilanzielles Eigenkapital. Die Nenner und im konkreten Foliendatensatz sogar die Gewinnangaben sind verschieden.
+Tipp: Vergleiche zuerst die Nenner beider Formeln.
+Quelle: 1.19
+
+### Wie wirkt der Ersatz langfristiger Schulden durch gleich hohe kurzfristige Schulden bei unverändertem Umlaufvermögen auf das Working Capital?
+- [x] Es sinkt.
+  > WC ist UV minus kurzfristiges FK; der abzuziehende Betrag steigt.
+- [ ] Es steigt.
+  > Das Vorzeichen des kurzfristigen FK ist negativ.
+- [ ] Es bleibt zwingend gleich, weil das gesamte FK gleich bleibt.
+  > Die Fristigkeit ist gerade Teil der Definition.
+Tipp: Setze die Veränderung nur im kurzfristigen Fremdkapital ein.
+Quelle: 1.20
+
+### Welche Aussage zur Kapitalbindungsdauer ist richtig?
+- [x] Sie reicht vom tatsächlichen Auszahlungstag der jeweiligen Kostenart bis zur Kundenzahlung.
+  > Deshalb können Löhne und Material verschiedene Dauern haben.
+- [ ] Sie ist für alle Kosten gleich der Fertigungszeit.
+  > Lager, Debitorenfrist und Auszahlungstermin fehlen dann.
+- [ ] Ein längeres Lieferantenziel verlängert immer die Materialbindung.
+  > Eine spätere Materialzahlung verkürzt unter den Modellannahmen die Zeit bis zur Kundenzahlung.
+Tipp: Zeichne Auszahlung und Kundeneingang auf einer Zeitachse.
+Quelle: 1.20
+
+### Warum kann ein hohes Working Capital trotzdem mit einer Zahlungslücke morgen zusammenfallen?
+Antwort: Es ist ein Bilanzsaldo und kann in Vorräten oder noch unbezahlten Forderungen stecken. Ob morgen gezahlt werden kann, hängt von tatsächlichen verfügbaren Mitteln und Fälligkeiten ab.
+Tipp: Frage, ob das Umlaufvermögen schon Geld ist.
+Quelle: 1.20
+
+### Wann wird der Finanzplan zum Primärplan?
+- [x] Wenn die Finanzbeschaffung den möglichen Umfang der übrigen Teilpläne begrenzt.
+  > Der finanzielle Engpass setzt dann den Rahmen.
+- [ ] Sobald der Jahresgewinn positiv ist.
+  > Gewinn bedeutet weder automatisch ausreichende Liquidität noch einen Engpass.
+- [ ] Nur wenn keine Produktionsplanung vorhanden ist.
+  > Die Pläne bleiben bestehen und müssen an den finanzierbaren Rahmen angepasst werden.
+Tipp: Welcher Bereich begrenzt die anderen?
+Quelle: 1.21
+
+### Warum darf ein Wareneinkauf auf Kredit nicht sofort als Auszahlung verbucht werden?
+- [x] Zunächst entsteht eine Verbindlichkeit; Geld fließt erst bei Zahlung ab.
+  > Beschaffung und Bezahlung sind verschiedene Zeitpunkte.
+- [ ] Weil Wareneinkäufe niemals Geld kosten.
+  > Die spätere Bezahlung ist sehr wohl eine Auszahlung.
+- [ ] Weil eine Verbindlichkeit immer einen Ertrag erzeugt.
+  > Die Schuldentstehung ist kein Verkaufserlös.
+Tipp: Trenne Beschaffung und Bankbewegung.
+Quelle: 1.21.1
+
+### Warum braucht die Sanitärlösung für ihre Rentabilität andere Kapitalwerte als für ihre Stichtags-EK-Quote?
+Antwort: Die Rentabilität bezieht einen Jahresgewinn auf das durchschnittlich eingesetzte Kapital. Die Folie unterstellt gleichmäßigen Gewinnanfall und setzt daher nur den halben Gewinnanteil im Durchschnitt an. Die EK-Quote verwendet dagegen den ganzen EK-Endbestand zum Bilanzstichtag.
+Tipp: Jahresstrom und Stichtagsbestand sind verschiedene Bezugsebenen.
+Quelle: 1.21.2
+
+## Kapitel 2 · Fremdfinanzierung
+
+### Welche Vorgänge können das Risiko eines bestehenden Gläubigers nachträglich erhöhen?
+- [x] Zusätzliche Verschuldung und Ausschüttung vorhandener Mittel
+  > Mehr Ansprüche und weniger Puffer können die Rückzahlung gefährden.
+- [x] Unerwarteter Einbruch des Absatzmarkts
+  > Dadurch können erwartete Einzahlungen ausfallen.
+- [ ] Der bloße Fortbestand des vertraglichen Rückzahlungsanspruchs garantiert Risikofreiheit.
+  > Ein Anspruch garantiert keine tatsächliche Erfüllung.
+Tipp: Unterscheide den Anspruch von den verfügbaren Mitteln.
+Quelle: 2.1
+
+### Welche drei Informationsbereiche untersucht der Gläubiger laut Vorlesung?
+Antwort: Unternehmen und Schuldner einschließlich Liquiditätslage, die Märkte des Unternehmens und die gesamtwirtschaftliche Entwicklung. Sie ergänzen sich, weil ein gutes Einzelunternehmen ebenfalls von Markt- und Umfeldrisiken betroffen sein kann.
+Tipp: Denke vom einzelnen Betrieb nach außen.
+Quelle: 2.1
+
+### Was prüft die Kreditfähigkeit?
+- [x] Ob ein Kreditvertrag rechtswirksam geschlossen werden kann.
+  > Vertretung und Befugnisse gehören dazu.
+- [ ] Nur ob der Jahresgewinn hoch ist.
+  > Das gehört eher zur wirtschaftlichen Kreditwürdigkeit.
+- [ ] Nur ob ein Grundstück vorhanden ist.
+  > Das ist eine mögliche Sicherheit und ersetzt die Fähigkeit zum Vertragsschluss nicht.
+Tipp: Fähigkeit und Würdigkeit beantworten verschiedene Fragen.
+Quelle: 2.2
+
+### Warum prüft eine Bank trotz guter Bilanz auch Aufträge und künftige Finanzpläne?
+Antwort: Die Bilanz zeigt eine vergangene Stichtagslage. Aufträge und Finanzpläne helfen einzuschätzen, ob bei den künftigen Fälligkeiten Geld für Zins und Tilgung entsteht. Wirtschaftliche Kreditwürdigkeit braucht diese Zukunftssicht.
+Tipp: Wann müssen die vertraglichen Zahlungen geleistet werden?
+Quelle: 2.2
+
+### Eine Bank vergibt im vereinfachten Folienmodell 100 Mio. € Kredit bei 150 % Risikogewicht. Wie hoch ist die 8-%-Unterlegung?
+- [x] 12 Mio. €
+  > 100 Mio. × 1,5 × 0,08 = 12 Mio. €.
+- [ ] 8 Mio. €
+  > Dabei wurde das Risikogewicht von 150 % übergangen.
+- [ ] 150 Mio. €
+  > Das ist der risikogewichtete Betrag vor Anwendung der 8 %.
+Tipp: 150 Prozent als Faktor 1,5 einsetzen.
+Quelle: 2.3
+
+### Welche Aussage über die Bank-Leverage-Ratio stimmt?
+- [x] Sie verwendet einen nicht risikogewichteten Nenner und ergänzt die risikogewichteten Kapitalquoten.
+  > Deshalb ist sie nicht direkt mit 7 % oder 10,5 % auf RWA vergleichbar.
+- [ ] Sie ist Fremdkapital geteilt durch Eigenkapital des kreditnehmenden Unternehmens.
+  > Das ist der Unternehmens-Verschuldungsgrad.
+- [ ] Sie ist eine garantierte Eigenkapitalrendite der Bank.
+  > Die Quote ist eine Kapital-/Risikopositionsrelation, keine Rendite.
+Tipp: Vergleiche Zähler und Nenner, bevor Du Prozentwerte vergleichst.
+Quelle: 2.3
+
+### Wer erhält den Kaufpreis, wenn die Notenbank eine bestehende Staatsanleihe am Sekundärmarkt kauft?
+- [x] Der bisherige Inhaber über die Bankabwicklung
+  > Die Emission ist bereits erfolgt; der jetzige Verkäufer bekommt den Gegenwert.
+- [ ] Zwingend der Staat als Erlös einer neuen Anleihe
+  > Das verwechselt Emission und späteren Handel.
+- [ ] Niemand, weil nur der Börsenkurs steigt
+  > Es gibt eine tatsächliche Kaufpreiszahlung gegen Übertragung des Wertpapiers.
+Tipp: Zeichne das erste und das zweite Geschäft getrennt.
+Quelle: 2.4.1
+
+### Warum sind die historischen Länder-Ratings und die Anleiherenditen keine identischen Größen?
+Antwort: Ein Rating ist eine verdichtete Einschätzung des Kreditrisikos. Die Marktrendite folgt aus Preis und Zahlungsansprüchen der Anleihe und kann auch von anderen Marktbedingungen beeinflusst werden. Eine historische Korrelation ist keine feste zeitlose Umrechnung.
+Tipp: Eine Note und ein Marktpreis entstehen auf verschiedene Weise.
+Quelle: 2.4
+
+### Welche Funktion hat ein Covenant im Kreditvertrag?
+- [x] Risikoänderungen durch Grenzen und Berichtspflichten früh sichtbar machen und begrenzen
+  > Dazu können Verschuldungs-, Ausschüttungs- oder Investitionsgrenzen vereinbart werden.
+- [ ] Dem Kreditnehmer immer gesellschaftsrechtliche Stimmrechte in der Bank geben
+  > Covenants sind Nebenbedingungen des Kredits, keine Beteiligungsrechte.
+- [ ] Jeden Verstoß automatisch mit Insolvenz gleichsetzen
+  > Die vertraglichen Folgen und die wirtschaftliche Lage sind gesondert zu prüfen.
+Tipp: Denke an Risikobegrenzung während der Laufzeit.
+Quelle: 2.5
+
+### Warum sind Zinsbindungsfrist und Gesamtlaufzeit nicht automatisch gleich?
+Antwort: Der feste Zins kann nur für einen Teil der gesamten Rückzahlungsdauer gelten. Danach muss der Zinssatz neu vereinbart oder nach Vertragsregeln angepasst werden, obwohl noch Restschuld besteht.
+Tipp: Frage, ob das Darlehen am Ende der Zinsbindung schon vollständig getilgt ist.
+Quelle: 2.5
+
+### Warum ergibt actual/360 bei denselben 352 tatsächlichen Tagen mehr Zins als actual/365?
+- [x] Der kleinere Nenner erzeugt einen größeren Jahresbruchteil.
+  > 352/360 ist größer als 352/365.
+- [ ] Weil actual/360 mehr Kalendertage zählt.
+  > Der Zähler ist in beiden Fällen 352.
+- [ ] Weil der Nominalzins automatisch erhöht wird.
+  > Der Jahreszinssatz bleibt gleich; der Zeitbruchteil ändert sich.
+Tipp: Vergleiche die beiden Brüche bei gleichem Zähler.
+Quelle: 2.6
+
+### Warum liefern 30/360 und 30E/360 im behandelten Dezember-Endfall verschiedene Zinstage?
+Antwort: Die konkret gezeigten Varianten behandeln den 31.12. unterschiedlich. 30E/360 setzt ihn auf den 30., die andere Variante belässt ihn hier beim 31. Deshalb ist der Zähler um einen Tag verschieden.
+Tipp: Die Differenz entsteht an der Monatsendregel.
+Quelle: 2.6
+
+### Wie wird bei Wiederanlage aus einem Monatszins der effektive Jahreszins?
+- [x] Zwölf Monatsfaktoren multiplizieren und anschließend 1 abziehen
+  > Jeder Faktor verzinst auch zuvor gutgeschriebene Zinsen.
+- [ ] Immer nur Monatszins mal zwölf
+  > Das ignoriert den Zinseszins der monatlichen Gutschriften.
+- [ ] Jahreszins durch zwölf teilen und dann vergleichen
+  > Gesucht ist die Umrechnung vom Monat zum Jahr, nicht umgekehrt.
+Tipp: Zinsfaktor ist 1 plus Periodenzins.
+Quelle: 2.7
+
+### Welche Annahme ist nötig, damit die bessere Einjahresanlage auch über drei Jahre besser bleibt?
+Antwort: Die positiven Jahresfaktoren müssen unverändert gelten, die Zinsen werden wiederangelegt und keine weiteren Unterschiede wie Gebühren kommen hinzu. Bei veränderlichen Zinssätzen muss der gesamte neue Zahlungsweg verglichen werden.
+Tipp: Was passiert, wenn der Zinssatz nur bis zur nächsten Gutschrift garantiert ist?
+Quelle: 2.7
+
+### Woran knüpft § 489 das Zehnjahres-Kündigungsrecht grundsätzlich an?
+- [x] An den vollständigen Empfang des Darlehens; eine relevante spätere Neuvereinbarung kann den Zeitpunkt ersetzen.
+  > Danach kommt noch die Kündigungsfrist von sechs Monaten hinzu.
+- [ ] Immer an die erste Unterschrift, unabhängig von Auszahlung und Neuvereinbarungen
+  > Der Vertragsabschluss ist nicht automatisch der maßgebliche Start.
+- [ ] An jede beliebige jährliche Zinszahlung
+  > Eine normale Zinszahlung startet die Frist nicht jährlich neu.
+Tipp: Suche das gesetzliche Ereignis für den Fristbeginn.
+Quelle: 2.8
+
+### Warum reicht für die außerordentliche Kündigung durch den Kreditgeber nicht jede kleine Wertschwankung einer Sicherheit?
+Antwort: § 490 Abs. 1 verlangt eine wesentliche eingetretene oder drohende Verschlechterung, durch die die Rückzahlung auch unter Verwertung der Sicherheit gefährdet wird. Anlass und Rückzahlungsgefährdung sind zusammen zu prüfen.
+Tipp: Die Norm verbindet Verschlechterung und Rückzahlungsrisiko.
+Quelle: 2.8
+
+### Wie wirkt ein niedrigerer Wiederanlagezins unter sonst gleichen Bedingungen auf den Zinsnachteil einer vorzeitigen Rückzahlung?
+- [x] Er kann den Nachteil der Bank vergrößern.
+  > Zurückerhaltene Mittel verdienen dann weniger als die ursprünglich geplanten Zahlungen.
+- [ ] Er beseitigt zwingend jeden Nachteil.
+  > Das wäre eher bei günstigerer Wiederanlage denkbar.
+- [ ] Er beweist ohne weitere Prüfung einen pauschalen Gebührenanspruch.
+  > Anspruchsgrund, Zahlungen und ersparte Kosten bleiben zu prüfen.
+Tipp: Vergleiche den alten Ertrag mit der möglichen neuen Anlage.
+Quelle: 2.9
+
+### Was ist der Unterschied zwischen Aktiv-Aktiv- und Aktiv-Passiv-Vergleich?
+Antwort: Aktiv-Aktiv vergleicht mit einem neuen Kreditgeschäft. Aktiv-Passiv vergleicht mit einer Wiederanlage in laufzeitentsprechenden Hypothekenpfandbriefen. Dabei müssen Zahlungsstruktur und ersparte Kosten berücksichtigt werden.
+Tipp: Welche Wiederanlage bildet die jeweilige Vergleichsseite?
+Quelle: 2.9
+
+### Was bleibt beim Annuitätendarlehen des behandelten Modells konstant?
+- [x] Die Gesamtzahlung aus Zins und Tilgung
+  > Mit sinkender Restschuld sinkt der Zinsanteil; der Tilgungsanteil steigt.
+- [ ] Der Tilgungsanteil jeder Zahlung
+  > Das kennzeichnet das Ratendarlehen.
+- [ ] Die Restschuld bis zum letzten Tag
+  > Das kennzeichnet die endfällige Tilgung.
+Tipp: Annuität ist die Summe der beiden Zahlungsanteile.
+Quelle: 2.10.1
+
+### Warum verwendet die Praktikerformel für den Effektivzins mit Disagio die Auszahlung im Nenner?
+- [x] Weil sie die jährliche Näherungsbelastung auf das tatsächlich erhaltene Geld bezieht.
+  > Nominalzinsen plus verteiltes Disagio belasten einen kleineren Zufluss.
+- [ ] Weil nur die Auszahlung später zurückgezahlt wird.
+  > Im Klausurfall wird der Nominalbetrag zurückgezahlt.
+- [ ] Weil die Formel dadurch eine exakte gesetzliche Effektivzinsberechnung wird.
+  > Sie bleibt eine vereinfachende Näherung für den angegebenen Fall.
+Tipp: Unterscheide erhaltenes Geld und Nominalschuld.
+Quelle: 2.10.2
+
+### Welche Zuordnungen von Sicherheiten passen zur Altklausur-Ergänzung?
+- [x] Bürgschaft: personal und akzessorisch
+  > Zusätzliche Person; Bindung an die Hauptverbindlichkeit.
+- [x] Sicherungsgrundschuld: real und fiduziarisch
+  > Vermögenswert als Sicherheit; Verbindung zur Forderung durch Sicherungsvereinbarung.
+- [ ] Jede Realsicherheit ist allein deshalb akzessorisch
+  > Die Art des Rückgriffs und die Forderungsbindung sind getrennte Kriterien.
+Tipp: Prüfe zuerst Person oder Sache, danach die Bindung an die Forderung.
+Quelle: 2.10.3

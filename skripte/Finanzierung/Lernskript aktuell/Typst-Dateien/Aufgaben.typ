@@ -1557,8 +1557,11 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 #aufgabe(titel: "Vorlesung: fundamentale Aktienkennzahlen", art: "rechnen", quelle: "1.19", ergebnis: [Bilanzkurs 2,98 €; Ertragswertkurs 2,90 €; KGV 7,5; Gewinnrendite 13,33 %; Dividendenrendite 2,5 %; Cashflow Ratio 6,62.], tipp: [Erst die Aktienzahl aus Grundkapital und Nominalwert bestimmen. Danach immer fragen: Welche Größe steht im Nenner?])[
 #if not web [*Aufgabe 90* #linebreak()]
 *Gegeben und Annahmen*
+
 Bilanz in T€: Grundstück 300, Maschinen 400, Umlaufvermögen 352; Grundkapital 400, gesetzliche Rücklagen 20, freie Rücklagen 42, Jahresüberschuss 30, FK 560. Zusätzlich: Cashflow 145 T€, stille Reserven 700 T€, erwarteter gleichbleibender Jahresgewinn 116 T€, Kalkulationszins 10 %, Nominalwert 1 €/Aktie, Börsenkurs 2,40 €, separat vorgegebener Gewinn je Aktie 0,32 €, Dividende je Aktie 0,06 €. Keine Wachstumsrate im Ertragswertmodell.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Aktienzahl, bilanzielles EK und korrigierter Bilanzkurs.][Ertragswertkurs, KGV, Gewinnrendite zum Kurs, Dividendenrendite und Cashflow Ratio.][Vergleiche die Gewinnrendite zum Kurs mit JÜ/EK und prüfe die Konsistenz des vorgegebenen Gewinns je Aktie.]
 #src[V, PDF-S. 28–30, Folien 56–59; N28, PDF-S. 2–4. Eigene Prüfung der Musterlösung.]
 ][
@@ -1580,8 +1583,11 @@ Bilanz in T€: Grundstück 300, Maschinen 400, Umlaufvermögen 352; Grundkapita
 #aufgabe(titel: "Vorlesung: maximaler Kapitalbedarf des Umlaufvermögens", art: "rechnen", quelle: "1.20", ergebnis: [341.250 €], tipp: [Zeichne den Tag der Kundenzahlung und ziehe für jede Kostenart ihren Auszahlungstag ab.])[
 #if not web [*Aufgabe 91* #linebreak()]
 *Gegeben und Annahmen*
+
 Umsatz 1,8 Mio. €/Jahr; davon Material 40 %, Lohn 25 %, Herstellgemeinkosten (HGK) 10 %, Verwaltungs-/Vertriebsgemeinkosten (VVGK) 10 %. Beschaffungssynchrone Fertigung, gleichmäßige Tagesausgaben und 360-Tage-Rechenjahr wie in der Folienlösung. Fertigung 60 Tage, Fertiglager 15 Tage, Debitorenfrist 45 Tage. Materialzahlung nach 60 Tagen Kreditorenfrist; Lohnzahlung 15 Tage nach Produktionsbeginn, HGK sofort, VVGK am Tag 60. Kundenzahlung nach Fertigung, Lager und Debitorenfrist. Keine weiteren Auszahlungen im Modell.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Kundenzahlungstag und Bindungsdauer jeder Kostenart.][Jahres- und Tagesausgaben sowie maximalen UV-Kapitalbedarf.]
 #src[V, PDF-S. 31–32, Folien 61–63; N28, PDF-S. 5–6. „Herstellkosten unmittelbar“ wird entsprechend Grafik/Tabelle als HGK interpretiert.]
 ][
@@ -1617,8 +1623,11 @@ Nenne die kurzfristigen und langfristigen Aufgaben der Finanzplanung. Erkläre, 
 #aufgabe(titel: "Vorlesung: Monatsfinanzplan mit zwei Abwandlungen", art: "rechnen", quelle: "1.7", ergebnis: [Grundfall 3.050 / 1.900 / 2.450 €; Abwandlung 50 / −1.100 / −550 €; Linie im Februar um 100 € zu klein.])[
 #if not web [*Aufgabe 93* #linebreak()]
 *Gegeben und Annahmen*
+
 Anfangsbestand am 1. Januar 0 € (wie in der Folienlösung), monatlich zu zahlende Miete 1.000 € und Löhne 450 €. Einzahlungen aus Umsatz: Januar 4.000 €, Februar 300 €, März 2.000 €; USt-Erstattung im Januar 500 €. Jahresabschreibung 5.000 €, ohne weitere Zahlungen dafür in diesen Monaten. Keine weiteren Ein-/Auszahlungen. Monatssalden-Modell; untermonatliche Fälligkeiten nicht vorgegeben.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Monatssalden und fortgeschriebene Endbestände im Grundfall.][Dieselben Größen, wenn die Umsatzeinzahlung im Januar nur 1.000 € beträgt.][Reicht im abgewandelten Fall eine bisher ungenutzte Kontokorrentlinie von 1.000 €?]
 #src[V, PDF-S. 34, Folien 67–68; N28, PDF-S. 8, Übungsaufgabe 2.]
 ][
@@ -1635,14 +1644,17 @@ Anfangsbestand am 1. Januar 0 € (wie in der Folienlösung), monatlich zu zahle
 
 
 // Ergänzung VL 28.10./04.11.2026
-#aufgabe(titel: "Vorlesung: Quartalsplan und widersprüchliche Ausgabenbegriffe", art: "rechnen", quelle: "1.21.1", ergebnis: [Folienrechnung: Ende 315 / 170 / −645 T€. Eigene reine Zahlungsvariante: 915 / 1.390 / 1.475 T€. Nettomonetäres UV aus den Angaben nicht eindeutig bestimmt.])[
+#aufgabe(titel: "Vorlesung: Quartalsplan und Zahlungsbegriffe", art: "rechnen", quelle: "1.21.1", ergebnis: [Folienrechnung: Ende 315 / 170 / −645 T€. Eigene reine Zahlungsvariante: 915 / 1.390 / 1.475 T€. Nettomonetäres UV aus den Angaben nicht eindeutig bestimmt.])[
 #if not web [*Aufgabe 94* #linebreak()]
 *Gegeben und Annahmen*
+
 Alle Werte in T€, Anfang 80. Die Originaltabelle nennt:
 #tab(columns: (2fr,1fr,1fr,1fr),th([Zeile],[Q1],[Q2],[Q3]),
 [Barverkäufe],[450],[300],[300], [Debitoreneingänge],[500],[600],[200], [Gutschriftenerträge / in der Lösung Wertschriftenerträge],[150],[120],[100],
 [Lohnaufwand],[100],[120],[100], [Barlöhne],[50],[30],[0], [Miete],[10],[10],[10], [Wareneinkauf auf Kredit],[500],[500],[800], [Lieferantenrechnungen],[200],[500],[500], [Zinsen],[5],[5],[5],)
+
 *Gesucht*
+
 #enum(numbering: "a)")[Rechne wie Folie 71: alle Einnahmenzeilen und alle Ausgabenzeilen jeweils addieren, Salden und Bestände fortschreiben.][Erkläre, warum das noch keinen eindeutig belegten Kassenbestand ergibt.][Rechne eine eigene reine Zahlungsvariante: Alle Einnahmenzeilen seien tatsächlich bezahlt; Auszahlungen seien ausschließlich Barlöhne, Miete, bezahlte Lieferantenrechnungen und Zinsen. Die anderen beiden Zeilen seien unbare Buchungen. Ist damit auch das nettomonetäre UV bestimmt?]
 #src[V, PDF-S. 35–36, Folien 69–71; N28, PDF-S. 9–10, Übungsaufgabe 3. Teil c ist ausdrücklich eine eigene Abgrenzungsvariante.]
 ][
@@ -1678,8 +1690,11 @@ Wofür können Rentabilität, Liquidität, Verschuldungsgrad und Anlagendeckung 
 #aufgabe(titel: "Vorlesung: Darlehen für das Sanitärgeschäft beurteilen", art: "rechnen", quelle: "1.21.2", ergebnis: [EK-Rentabilität 8,61 %, Netto-GK 5,65 %; L1/L2/L3 226,32 / 236,84 / 710,53 %; EK-Quote 66,56 %; AD I/II 83,85 / 122,31 %.])[
 #if not web [*Aufgabe 96* #linebreak()]
 *Gegeben und Annahmen*
+
 Darlehenswunsch mindestens 15.000 €. Bilanz in €: Lagerhalle 40.000; Fahrzeuge 12.000; Materiallager 9.000; Debitoren 200; Kasse 300; Bank 4.000. Passiva: gezeichnetes Kapital 30.000, Rücklagen 10.000, Gewinnvortrag 3.600, kurzfristiger Bankkredit 1.500, langfristiger Bankkredit 20.000, Lieferantenkredit 400. Summe 65.500. Wie in der Folienlösung: Gewinnvortrag sei Jahresgewinn, im Jahr gleichmäßig entstanden; alle anderen Kapitalpositionen seien unverändert. Flüssige Mittel seien verfügbar, Forderungen kurzfristig. Zinsaufwand nicht angegeben.
+
 *Gesucht*
+
 #enum(numbering: "a)")[EK- und Netto-GK-Rentabilität bezogen auf Durchschnittskapital.][Liquidität 1.–3. Grades, Eigenfinanzierungsgrad/EK-Quote und Anlagendeckung I/II zum Bilanzstichtag.][Begründete vorläufige Kreditbeurteilung und zusätzliche Informationen. Ist die GK-Rentabilität vor FK-Zinsen berechenbar?]
 #src[V, PDF-S. 37–38, Folien 74–76; N28, PDF-S. 11–12, Übungsaufgabe 5.]
 ][
@@ -1729,7 +1744,7 @@ Eine Bank vereinbart feste Zins- und Tilgungszahlungen. Warum besteht trotzdem R
 
 
 // Ergänzung VL 28.10./04.11.2026
-#aufgabe(titel: "Kreditfähigkeit, Kreditwürdigkeit und Sicherheiten unterscheiden", art: "verstehen", quelle: "2.2")[
+#aufgabe(titel: "Kreditfähigkeit und Kreditwürdigkeit prüfen", art: "verstehen", quelle: "2.2")[
 #if not web [*Aufgabe 99* #linebreak()]
 Ein Betrieb legt eine gute Bilanz und eine Halle als Sicherheit vor. Reicht das für eine Kreditentscheidung? Trenne Kreditfähigkeit, persönliche und wirtschaftliche Kreditwürdigkeit und Sicherheit; nenne passende Unterlagen.
 #src[V, PDF-S. 42–43, Folien 83–86; eigene Erklärfrage.]
@@ -1746,8 +1761,11 @@ Ein Betrieb legt eine gute Bilanz und eine Halle als Sicherheit vor. Reicht das 
 #aufgabe(titel: "Vorlesung: Basel-II-Unterlegung und Kreditvolumen", art: "rechnen", quelle: "2.3", ergebnis: [12 Mio. € Unterlegung; 31,25 Mrd. € rechnerisches Kreditvolumen.])[
 #if not web [*Aufgabe 100* #linebreak()]
 *Gegeben und Annahmen*
+
 Verfügbares Bank-EK 2,5 Mrd. €. Unternehmenskredit 100 Mio. €, Risikogewicht 150 %. Vereinfachtes Folienmodell: Unterlegung = Kreditbetrag × 8 % × Risikogewicht; keine weiteren Puffer, Risiken oder bindenden Grenzen. Für Teil b) sei das durchschnittliche Gewicht 100 %, das gesamte EK dafür verfügbar.
+
 *Gesucht*
+
 #enum(numbering: "a)")[EK-Unterlegung für den einzelnen Kredit.][Maximales gesamtes Kreditvolumen bei durchschnittlich 100 % Risikogewicht.][Erkläre, wem das unterlegte EK gehört.]
 #src[V, PDF-S. 43–44, Folien 85 und 87; N04, PDF-S. 1–2.]
 ][
@@ -1806,11 +1824,14 @@ Nenne die sechs verhandlungsrelevanten Merkmalsgruppen des Kreditvertrags. Erkl�
 
 
 // Ergänzung VL 28.10./04.11.2026
-#aufgabe(titel: "Vorlesung: Zinstage vom 14. Januar bis Jahresende", art: "rechnen", quelle: "2.6", ergebnis: [Endkapital: 2.057,83 / 2.057,67 / 2.057,86 / 2.058,67 / 2.057,70 € in der Reihenfolge a).])[
+#aufgabe(titel: "Vorlesung: Zinstage 14.01.–31.12.2016", art: "rechnen", quelle: "2.6", ergebnis: [Endkapital: 2.057,83 / 2.057,67 / 2.057,86 / 2.058,67 / 2.057,70 € in der Reihenfolge a).])[
 #if not web [*Aufgabe 104* #linebreak()]
 *Gegeben und Annahmen*
+
 Anlage 2.000 €, einfacher Jahreszins 3 %, 14.01.2016 bis 31.12.2016. Anfangstag nicht mitzählen, Endtag mitzählen. 2016 ist ein Schaltjahr mit 366 Tagen. Methoden wie in der Musterlösung: 30E/360 setzt den Endtag 31 auf 30; 30/360 belässt ihn in diesem konkreten Fall bei 31. Bei tatsächlichen Tagen Kalenderdifferenz verwenden. Kein unterjähriger Zinseszins, keine weiteren Zahlungen.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Zinstage und Jahresbruchteil für 30/360, 30E/360, actual/365, actual/360 und actual/actual kalenderjährlich.][Jeweils Zinsbetrag und Endkapital, auf Cent gerundet.]
 #src[V, PDF-S. 55, Folien 109–110; N04, PDF-S. 14.]
 ][
@@ -1837,8 +1858,11 @@ Die Bruchteile werden vor der Multiplikation nicht vorzeitig gerundet.
 #aufgabe(titel: "Vorlesung: jährliche und monatliche Zinsgutschrift", art: "rechnen", quelle: "2.7", ergebnis: [Angebot 2: etwa 3,0108 % effektiver Jahreszins; unter den Annahmen für ein und drei Jahre etwas besser.])[
 #if not web [*Aufgabe 105* #linebreak()]
 *Gegeben und Annahmen*
+
 Angebot 1: jährliche Verzinsung 3 %. Angebot 2: monatliche Verzinsung 0,2475 % pro Monat. Albert legt für ein Jahr an, Beatrice für drei Jahre. Dasselbe beliebige positive Anfangskapital, unveränderte Zinssätze, Wiederanlage sämtlicher Zinsen, keine Gebühren, Steuern oder weiteren Zahlungen.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Jahresfaktor und effektiven Jahreszins beider Angebote.][Vergleich für ein Jahr und für drei Jahre; Grenze bei veränderlichen Zinsen.]
 #src[V, PDF-S. 56, Folien 111–112; N04, PDF-S. 15.]
 ][
@@ -1888,8 +1912,11 @@ Warum kann eine vorzeitige Rückzahlung bei Festzins einen Schaden verursachen? 
 #aufgabe(titel: "Klausur: Annuitätendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", ergebnis: [Annuität ungerundet 21.522,16 €/Jahr, Tabelle 21.522 €; Zinsen gerundet insgesamt 6.088 €.])[
 #if not web [*Aufgabe 108* #linebreak()]
 *Gegeben und Annahmen*
+
 Inn GmbH: Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest für vier Jahre, jährliche Zahlung am Jahresende. Zinsen jeweils auf die Restschuld zu Jahresbeginn. Annuität so bestimmen, dass das Darlehen in vier Jahren vollständig getilgt ist. Wie in der Klausur jede Tabellenzahl auf volle Euro runden; Rundungsrest vernachlässigen.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Annuität und Tilgungsplan 2017–2020 mit Anfangsschuld, Zinsen, Tilgung, Gesamtzahlung und Endschuld.][Erkläre den Verlauf der Zins- und Tilgungsanteile.]
 #src[Altklausur 2017, Aufgabe 1 a, 6 Punkte; K, PDF-S. 1 (Klausurseite 5). Eigene Lösung, fremde Handschrift nicht übernommen.]
 ][
@@ -1915,8 +1942,11 @@ Jede Zeile benutzt die gerundete Anfangsschuld und rundet den Zins auf volle Eur
 #aufgabe(titel: "Klausur: Ratendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", ergebnis: [Tilgung 20.000 €/Jahr; Zahlungen 22.400 / 21.800 / 21.200 / 20.600 €; Gesamtzinsen 6.000 €.])[
 #if not web [*Aufgabe 109* #linebreak()]
 *Gegeben und Annahmen*
+
 Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest, vier Jahre. Konstante jährliche Tilgung 25 % der Anfangsschuld; Zinsen auf die Restschuld zu Jahresbeginn, Zahlung am Jahresende. Keine weiteren Kosten.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Tilgungsplan 2017–2020 mit Anfangsschuld, Zins, Tilgung, Gesamtzahlung und Endschuld.][Gesamtzinsen und Verlauf der Belastung.]
 #src[Altklausur 2017, Aufgabe 1 b, 4 Punkte; K, PDF-S. 1 (Klausurseite 5). Eigene Lösung.]
 ][
@@ -1937,8 +1967,11 @@ Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest, vier Jahre.
 #aufgabe(titel: "Klausur: Effektivzins mit zwei Prozent Disagio", art: "rechnen", quelle: "2.10.2", ergebnis: [Auszahlung 78.400 €; näherungsweise 3,57 % p. a.])[
 #if not web [*Aufgabe 110* #linebreak()]
 *Gegeben und Annahmen*
+
 Endfälliges Darlehen: Nominalbetrag 80.000 €, 3 % p. a., vier Jahre, Auszahlungsdisagio 2 % des Nominalbetrags. Jährliche Zinszahlung, vollständige Nominalrückzahlung am Ende, keine anderen Kosten. Gesucht ist ausdrücklich die approximative Praktikerformel, nicht die exakte interne Rendite.
+
 *Gesucht*
+
 #enum(numbering: "a)")[Auszahlungsbetrag und approximativen effektiven Jahreszins auf zwei Nachkommastellen.]
 #src[Altklausur 2017, Aufgabe 1 c, 1 Punkt; K, PDF-S. 2 (Klausurseite 6). Eigene Lösung.]
 ][

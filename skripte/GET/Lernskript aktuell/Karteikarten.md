@@ -97,7 +97,7 @@ Quelle: 0.5
 Ladung ist die transportierte Größe; Strom sagt, wie viel Ladung pro Zeit fließt. Spannung beschreibt Energie je Ladung, und der Widerstand verknüpft Spannung und Strom. Aus Spannung mal Strom folgt die Leistung, aus Leistung mal Zeit die Energie. Reihen- und Parallelschaltung bestimmen die Verteilung; der Innenwiderstand erweitert die ideale zur realen Quelle.
 Quelle: 0.1
 
-## Kapitel 1 · Strom und Quellspannung
+## Kapitel 1 · Grundbegriffe: Strom, Spannung, Widerstand, Leistung
 
 ### Was bedeutet Q = n·e·A·l?
 Die Ladung in einem Drahtstück hängt davon ab, wie dicht die freien Elektronen gepackt sind ($n$), wie viel Ladung jedes trägt ($e$) und wie groß das Drahtstück ist ($A l$), also $Q = n e A l$. Doppelt so langes Stück, doppelte Ladung.
@@ -244,10 +244,117 @@ Abbildung: notiz-diode
 
 
 ### Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-Gerichtete Ladungsbewegung ergibt Strom, bezogen auf die Leiterfläche die Stromdichte. Die langsame Drift ist von der raschen Feldwirkung zu unterscheiden. Wärme-, Kraft- und chemische Wirkung machen den Strom erkennbar. Quellen wandeln zugeführte Energie über Chemie, Induktion, Thermo-, Foto- oder Piezoeffekt in Ladungstrennung und Quellspannung um; Spule und Diode ergänzen dieses Bild um Stromänderung und Arbeitspunkt.
+Gerichtete Ladungsbewegung ergibt Strom, bezogen auf die Leiterfläche die Stromdichte. Die langsame Drift ist von der raschen Feldwirkung zu unterscheiden. Wärme-, Kraft- und chemische Wirkung machen den Strom erkennbar. Quellen wandeln zugeführte Energie über Chemie, Induktion, Thermo-, Foto- oder Piezoeffekt in Ladungstrennung und Quellspannung um; Spule und Diode ergänzen dieses Bild um Stromänderung und Arbeitspunkt. Potenziale definieren die Spannungen relativ zu einer Masse. Material und Temperatur bestimmen Widerstände, Kennlinien beschreiben nichtlineare Bauteile; die Fläche der Leistung über der Zeit ist Energie.
 Quelle: 1.1.1
 
-## Kapitel 2 · Grundstromkreis
+### Warum braucht eine Potenzialangabe einen Bezugspunkt?
+Das Potenzial ist eine Spannung gegenüber einem festgelegten Nullpunkt. Ohne diesen Bezug ist die Zahl nicht eindeutig. Wie bei Höhenangaben kann man alle Werte gemeinsam verschieben, ohne die Unterschiede zu verändern.
+Quelle: 1.3
+Abbildung: vl30-potential
+
+### Wie hängt die Reihenfolge A–B mit dem Vorzeichen der Spannung zusammen?
+$U_(A B) = phi_A - phi_B$. Liegt A niedriger als B, ist dieser Wert negativ. Beim Vertauschen der Punktreihenfolge ändert sich nur das Vorzeichen, nicht der Betrag.
+Quelle: 1.3
+Abbildung: vl30-bruecke
+
+### Warum verändert ein Querwiderstand die Potenziale zweier Spannungsteiler?
+Er verbindet die vorher getrennten Abgriffe und lässt einen zusätzlichen Strom fließen. Dadurch ändern sich die Knotenbilanzen und die Spannungsaufteilungen. Die unbelasteten Potenziale sind keine starren Spannungsquellen.
+Quelle: 1.3
+Abbildung: vl30-bruecke
+
+### Wie unterscheiden sich Leitwert und spezifische Leitfähigkeit?
+Der Leitwert $G = 1/R$ gehört zum konkreten Bauteil und hat die Einheit Siemens. Die Leitfähigkeit $kappa$ ist ein Materialwert. Erst Geometrie und Material zusammen liefern $G = kappa A/l$.
+Quelle: 1.4.1
+
+### Warum muss man bei einer Zweidrahtleitung Hin- und Rückleiter zählen?
+Der Strom muss auch von der Last zur Quelle zurückkehren. Beide Leiter haben Widerstand und verursachen Spannungsabfall. Die gesamte wirksame Länge ist deshalb die Summe beider Leiterlängen.
+Quelle: 1.4.2
+Abbildung: vl30-leitung
+
+### Bedeutet eine lineare Kennlinie auch Temperaturunabhängigkeit?
+Nein. Eine Ursprungsgerade beschreibt ein konstantes Verhältnis von Spannung zu Strom unter den betrachteten Bedingungen. Eine andere Temperatur kann den Widerstandswert ändern und zu einer anderen Geraden führen.
+Quelle: 1.4.3.1
+
+### Warum lässt eine kalte Glühwendel besonders viel Strom zu?
+Wolfram ist ein Kaltleiter: Sein Widerstand ist kalt kleiner und wächst beim Erwärmen. Bei derselben anliegenden Spannung kann deshalb unmittelbar nach dem Einschalten mehr Strom fließen. Feste Leistungsfaktoren aus einem konstanten Widerstandsmodell sind für echte Glühlampen nur Näherungen.
+Quelle: 1.4.3.2.1
+Abbildung: vl30-ptc
+
+### Warum müssen im NTC-Exponentialmodell Kelvinwerte stehen?
+Das Modell verwendet die Kehrwerte absoluter Temperaturen. Celsius besitzt einen verschobenen Nullpunkt und liefert dafür andere, falsche Quotienten. Mit Temperaturen und B-Konstante in Kelvin wird der Exponent dimensionslos.
+Quelle: 1.4.3.2.2
+Abbildung: vl30-ntc
+
+### Warum soll sich ein Messheißleiter möglichst wenig selbst erwärmen?
+Sein Widerstand soll die gesuchte äußere Temperatur abbilden. Eigene Verlustwärme verändert seine Temperatur zusätzlich und verfälscht damit den Messwert. Der Messstrom wird deshalb so gewählt, dass die Selbsterwärmung klein bleibt.
+Quelle: 1.4.3.2.2
+
+### Wie begrenzt ein Varistor eine Spannungsspitze?
+Bei hoher Spannung wird der Varistor stark leitfähig. Parallel zur empfindlichen Schaltung übernimmt er einen großen Anteil des Störstroms und begrenzt die Spannung. Ein festes, von der Spannung unabhängiges R beschreibt diesen Vorgang nicht.
+Quelle: 1.4.3.2.3
+Abbildung: vl30-vdr
+
+### Was unterscheidet statischen und differenziellen Diodenwiderstand?
+Der statische Widerstand ist der Quotient $R_D = U_D/I_D$ im Arbeitspunkt. Der differenzielle Widerstand ist die lokale Tangente $r_e = dif U_D/dif I_D$. Er beschreibt nur kleine Änderungen um den gewählten Punkt; bei einer gekrümmten Kennlinie sind beide Werte verschieden.
+Quelle: 1.4.3.2.4
+Abbildung: vl30-tangente
+
+### Warum ist die aus einer Lichtwellenlänge berechnete LED-Schwelle nicht automatisch die Betriebsspannung?
+Die Energiebetrachtung verknüpft die Energie eines Photons mit einer elektrischen Spannungsskala. Die tatsächliche Durchlassspannung bei einem bestimmten Strom folgt zusätzlich aus der elektrischen Kennlinie. Quelle und Last müssen gemeinsam einen passenden Arbeitspunkt liefern.
+Quelle: 1.4.3.2.4.1
+Abbildung: led-kennlinie-aufgabe
+
+### Was bleibt bei der Leerlaufbetrachtung der LED-Aufgabe im Netzwerk?
+Nur die LED wird als äußere Last entfernt. Die drei vorgegebenen Widerstände bleiben angeschlossen; der Parallelwiderstand gehört weiter zum unbelasteten Spannungsteiler. Erst beim Kurzschließen der Klemmen wird er überbrückt.
+Quelle: 1.4.3.2.4.1
+Abbildung: led-netzwerk
+
+### Auf welche Leistung bezieht sich der optische LED-Wirkungsgrad?
+Auf die elektrische Leistung direkt an der LED: $P_"LED" = U_D I_D$. Die optische Leistung ist $P_"opt" = eta_"LED" P_"LED"$. Die Verlustleistungen im übrigen Netzwerk sind darin nicht enthalten.
+Quelle: 1.4.3.2.4.1
+
+### Warum begrenzt die Lastgerade die Wirkung des Basisstroms?
+Im aktiven Transistormodell steuert der Basisstrom den Kollektorstrom. Quelle und Lastwiderstand erlauben aber nur die Betriebspunkte auf ihrer Lastgeraden. Gerät der Transistor in Sättigung, kann man den Strom nicht mehr unverändert mit beta mal Basisstrom weiterrechnen.
+Quelle: 1.4.3.2.5
+Abbildung: vl30-transistorfeld
+
+### Was unterscheidet Lastgerade und Verlustleistungshyperbel beim Transistor?
+Die Lastgerade beschreibt die Spannungsbilanz mit Quelle und äußerem Widerstand. Die Verlustleistungshyperbel verbindet Punkte gleichen Produkts $U_(C E) I_C$. Ein Arbeitspunkt muss zur Last passen und zugleich unter der zulässigen Verlustleistungsgrenze liegen.
+Quelle: 1.4.3.2.5
+Abbildung: vl30-transistorfeld
+
+### Warum wird zu einer Temperaturdifferenz in Grad Celsius nicht 273,15 addiert?
+Die Celsius- und Kelvin-Skala unterscheiden sich durch eine feste Verschiebung. Beim Subtrahieren zweier Temperaturen fällt diese Verschiebung weg. Deshalb hat ein Temperaturanstieg in Kelvin denselben Zahlenwert wie in Grad Celsius.
+Quelle: 1.4.4
+
+### Wie liest man Energie und mittlere Leistung aus einer Leistung-Zeit-Kurve?
+Die Energie ist die Fläche unter der Kurve. Die mittlere Leistung ist die Höhe eines Rechtecks mit derselben Fläche und derselben Zeitbreite. Ein einzelner Endwert ersetzt die Fläche bei veränderlicher Leistung nicht.
+Quelle: 1.5
+Abbildung: vl30-leistung
+
+## Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis
+
+### Warum ist ein negativer Strom in einer Knotenrechnung kein automatischer Fehler?
+Die Strompfeile sind zunächst Bezugsrichtungen. Ein negativer berechneter Wert bedeutet einen Strom entgegen dem angenommenen Pfeil. Die Ladungsbilanz muss mit diesen Vorzeichen trotzdem aufgehen.
+Quelle: 2.1
+Abbildung: vl30-knoten
+
+### Welche Erhaltungsidee steckt hinter dem Maschensatz?
+Nach einem geschlossenen Umlauf ist man wieder am selben Potenzial. Alle gezählten Spannungsanhebungen und Spannungsabfälle müssen sich deshalb im betrachteten Netzwerk ausgleichen. Beim Umkehren des Umlaufsinns wechseln alle Vorzeichen gemeinsam.
+Quelle: 2.2
+Abbildung: vl30-masche
+
+### Warum gelten Kirchhoffs Regeln auch mit nichtlinearen Bauteilen?
+Die Regeln bilanzieren Ladung am Knoten und Spannungen im Umlauf. Die Nichtlinearität steckt in der Bauteilkennlinie, nicht in diesen Bilanzen. Kennlinien und Kirchhoffsche Gleichungen müssen zusammen erfüllt werden.
+Quelle: 2.3
+Abbildung: map-netzwerk
+
+### Wie hilft ein vorgegebener Zweigstrom beim Lösen eines nichtlinearen Netzwerks?
+Du liest zuerst die zugehörige Spannung des nichtlinearen Bauteils ab und ergänzt die übrigen Abfälle des Zweigs. Dadurch kennst du die gemeinsame Zweigspannung. Über Potenziale und Knotenbilanz lassen sich die anderen Zweige Schritt für Schritt verbinden.
+Quelle: 2.3
+Abbildung: vl30-netzkennlinie
+
+
 
 ### Woran merkt man, dass eine reale Quelle einen Innenwiderstand haben muss?
 Bei einer idealen Quelle würde im Kurzschluss ein unendlich großer Strom fließen. Tatsächlich ist der Kurzschlussstrom endlich, und die Klemmenspannung sinkt unter Last. Irgendetwas in der Quelle begrenzt also den Strom: der Innenwiderstand $R_i$.
@@ -272,28 +379,28 @@ $ R_i = (U_"Leerlauf" - U_"Klemme")/I $
 Quelle: 2.4.2
 
 ### Was sagt das Verbraucherzählpfeilsystem?
-Am Verbraucher zeigen Strom- und Spannungspfeil in dieselbe Richtung. Spannungspfeile zeigen vom höheren zum niedrigeren Potenzial. Der Maschenumlauf ergibt $U_i + U_a - U_q = 0$.
+Am Verbraucher werden Strom- und Spannungspfeil gleichgerichtet gewählt. Bei positivem Spannungswert weist der Pfeil vom höheren zum niedrigeren Potenzial; ein negativer Wert bezeichnet die umgekehrte tatsächliche Reihenfolge. Der Maschenumlauf ergibt $U_i + U_a - U_q = 0$.
 Quelle: 2.4.1
 Abbildung: skript-grundstromkreis
 
 ### Wie findet man den Arbeitspunkt grafisch?
 Man zeichnet zwei Kennlinien ins $I$-$U$-Diagramm: die Quellenkennlinie (fallende Gerade von $I_k$ auf der Stromachse bis $U_q$ auf der Spannungsachse) und die Widerstandsgerade des Verbrauchers (Ursprungsgerade, Steigung $1\/R_a$). Der Schnittpunkt ist der Arbeitspunkt: Dort passen Strom und Spannung von Quelle und Verbraucher zusammen.
-Quelle: Kennlinien und Arbeitspunkt
+Quelle: 2.4.1.1
 Abbildung: zf-kennlinie
 
 ### Was passiert mit dem Arbeitspunkt, wenn R_a kleiner wird?
 Die Widerstandsgerade wird steiler, der Arbeitspunkt wandert nach links oben: mehr Strom, weniger Klemmenspannung. Wird $R_a$ größer, wandert er Richtung Leerlauf.
-Quelle: Kennlinien und Arbeitspunkt
+Quelle: 2.4.1.1
 Abbildung: zf-kennlinie
 
 ### Welche Steigung hat die Quellenkennlinie, und was bedeutet eine steilere Kennlinie?
 Die Steigung ist $-1\/R_i$. Eine steilere Quellenkennlinie heißt kleinerer Innenwiderstand, also eine „steifere“ Quelle, deren Spannung unter Last weniger einbricht.
-Quelle: Kennlinien und Arbeitspunkt
+Quelle: 2.4.1.1
 Abbildung: zf-kennlinie
 
 ### Wo sieht man im Kennliniendiagramm die Leistungen?
 Das Rechteck unter dem Arbeitspunkt ($U_a dot I$) ist die Verbraucherleistung. Das Rechteck rechts daneben bis $U_q$ ($U_i dot I$) ist die Verlustleistung in der Quelle. Zusammen ergeben sie die Quellenleistung.
-Quelle: Kennlinien und Arbeitspunkt
+Quelle: 2.4.1.1
 Abbildung: zf-kennlinie
 
 ### Was ist Leistungsanpassung?
@@ -320,6 +427,6 @@ Quelle: 2.4.3
 Abbildung: skript-anpassung
 
 ### Zeichne die Begriffslandkarte zu Kapitel 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-Das Ersatzschaltbild verbindet die ideale Quellspannung mit Innen- und Außenwiderstand. Der Maschenumlauf liefert Strom und Klemmenspannung; der Kennlinienschnitt beschreibt denselben Arbeitspunkt. Die Quellenleistung verteilt sich auf innere Verluste und Lastleistung. Leistungsanpassung bedeutet gleicher Außen- und Innenwiderstand und maximale Lastleistung, aber nur 50 % Wirkungsgrad; ein hoher Wirkungsgrad erfordert einen anderen Lastfall.
+Die Knotenregel erhält die Ladung, die Maschenregel schließt die Spannungsbilanz. Kennlinien verbinden die Größen der nichtlinearen Zweige. Das Ersatzschaltbild verbindet die ideale Quellspannung mit Innen- und Außenwiderstand. Der Maschenumlauf liefert Strom und Klemmenspannung; der Kennlinienschnitt beschreibt denselben Arbeitspunkt. Die Quellenleistung verteilt sich auf innere Verluste und Lastleistung. Leistungsanpassung bedeutet gleicher Außen- und Innenwiderstand und maximale Lastleistung, aber nur 50 % Wirkungsgrad; ein hoher Wirkungsgrad erfordert einen anderen Lastfall.
 Quelle: 2.4.1
 

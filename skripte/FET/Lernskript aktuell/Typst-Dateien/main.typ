@@ -12,7 +12,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -91,6 +91,21 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "tripel-isochor": "abbildungen/tripel-isochor.svg",
+  "dampftrommel-anteile": "abbildungen/dampftrommel-anteile.svg",
+  "ueberhitzer-wege": "abbildungen/ueberhitzer-wege.svg",
+  "waermekapazitaet-mittel": "abbildungen/waermekapazitaet-mittel.svg",
+  "waermekapazitaet-kolben": "abbildungen/waermekapazitaet-kolben.svg",
+  "kreisprozess-energie": "abbildungen/kreisprozess-energie.svg",
+  "stroemung-duese-drossel": "abbildungen/stroemung-duese-drossel.svg",
+  "lufterhitzer-grenzen": "abbildungen/lufterhitzer-grenzen.svg",
+  "joule-prozess": "abbildungen/joule-prozess.svg",
+  "entropie-bilanz": "abbildungen/entropie-bilanz.svg",
+  "zustandsdiagramme-achsen": "abbildungen/zustandsdiagramme-achsen.svg",
+  "map-tripel": "abbildungen/map-tripel.svg",
+  "map-entropie": "abbildungen/map-entropie.svg",
+  "map-waermekapazitaet": "abbildungen/map-waermekapazitaet.svg",
+
   "druckluftmotor-vergleich": "abbildungen/druckluftmotor-vergleich.svg",
   "kraftwerk-enthalpie": "abbildungen/kraftwerk-enthalpie.svg",
   "turbine-energie": "abbildungen/turbine-energie.svg",
@@ -160,6 +175,21 @@
 )
 
 #let bilddeutungen = (
+  "tripel-isochor": (titel: "Bild lesen", body: [Links stehen Druck und spezifisches Volumen, rechts Druck und Temperatur. Die Zustände ① und ② überlagern sich: Das Eis schmilzt bei gleichem Druck, gleicher Temperatur und gleichem Gesamtvolumen. Erst nach dem Verschwinden des Eises führt der Weg nach ③ zu höherem Druck und höherer Temperatur. Grau zeigt nur schematische Phasengrenzen.]),
+  "dampftrommel-anteile": (titel: "Bild lesen", body: [Die beiden Kästen zeigen je 4 m³, aber unterschiedliche Stoffzustände. Weil das spezifische Flüssigkeitsvolumen viel kleiner ist als das Dampfvolumen je Kilogramm, steckt links deutlich mehr Masse. Die Gleichheit der geometrischen Volumina überträgt sich nicht auf die Massenanteile.]),
+  "ueberhitzer-wege": (titel: "Bild lesen", body: [Waagerecht steht das spezifische Volumen, senkrecht der Druck. Grün und Orange markieren die zwei verschiedenen festen spezifischen Volumina. Beide Füllungen starten im Nassdampfgebiet und treffen beim Erwärmen die rechte Sattdampfgrenze an verschiedenen Stellen. Die schematische Glocke liefert keine abzulesenden Zahlen.]),
+  "waermekapazitaet-mittel": (titel: "Bild lesen", body: [Waagerecht steht die Temperatur, senkrecht die wahre spezifische Wärmekapazität. Grün zeigt schematisch ihren Verlauf. Das gestrichelte Rechteck veranschaulicht einen Bereichsmittelwert: Seine Fläche steht für dieselbe Energieänderung wie die Fläche unter der Kurve. Die Skizze ist keine maßstäbliche Lufttabelle.]),
+  "waermekapazitaet-kolben": (titel: "Bild lesen", body: [Links kann das Volumen nicht wachsen; die Wärmezufuhr erhöht im Idealmodell nur die innere Energie. Rechts gibt die Expansion Arbeit ab, während die gleiche Temperaturerhöhung erreicht wird. Die zusätzlich nötige Wärme erklärt $c_p>c_v$ für das ideale Gas.]),
+  "kreisprozess-energie": (titel: "Bild lesen", body: [Das Arbeitsmittel durchläuft Pumpe, Kessel, Turbine und Kondensator und kehrt in den Anfangszustand zurück. Pumpe und Turbine übertragen Arbeit in entgegengesetzten Richtungen; Kessel und Kondensator übertragen Wärme. Die Arbeit ist als Nutzabgabe erst nach Abzug der Pumpenaufnahme bestimmt.]),
+  "stroemung-duese-drossel": (titel: "Bild lesen", body: [Links führt der Enthalpieabfall bei gleicher Höhe zu höherer Strömungsgeschwindigkeit. Rechts wird die Geschwindigkeit vor und hinter der Drossel als etwa gleich angenommen; dann bleibt die Enthalpie trotz Druckabfall gleich. Die Drossel darf deshalb nicht mit einem reversiblen Vergleichsprozess gleichgesetzt werden.]),
+  "lufterhitzer-grenzen": (titel: "Bild lesen", body: [Die braune gestrichelte Linie ist die äußere adiabate Gesamtgrenze. Der rote Wärmestrom zwischen Wasser und Luft überschreitet sie nicht, wohl aber die zugeführte Lüfterleistung. Für die beiden inneren Stoffgrenzen ist derselbe Wärmestrom Abgabe beziehungsweise Zufuhr.]),
+  "joule-prozess": (titel: "Bild lesen", body: [Die Kette verbindet die Abnahme der Lageenergie des Gewichts mit Arbeitsübertragung und einer Zunahme der inneren Energie im Fluid. Energie wird erhalten. Dass das Fluid später abkühlen kann, stellt jedoch nicht den gemeinsamen Ausgangszustand von Fluid, Gewicht und Umgebung wieder her.]),
+  "entropie-bilanz": (titel: "Bild lesen", body: [Links erreichen Entropiebeiträge aus Wärme und Stofftransport das System; rechts kann Entropie abgeführt werden. Im Inneren ist zusätzlich eine nichtnegative Erzeugung möglich. Eine Änderung des Speichers ist deshalb nicht einfach die Erzeugung; Transport muss mitgezählt werden.]),
+  "zustandsdiagramme-achsen": (titel: "Bild lesen", body: [In jedem Feld stehen die Achsen ausdrücklich dabei. Eine konstante waagerechte Koordinate ergibt eine senkrechte Linie; eine konstante senkrechte Koordinate eine waagerechte. Grün und Blau zeigen ausgewählte sichere Beispiele, keine vollständigen Stoffdiagramme.]),
+  "map-tripel": (titel: "Bild lesen", body: [Die vier Äste verknüpfen Phasen, Gleichgewicht, additive Gesamtgrößen und die starre Energiebilanz. Während drei Phasen vorhanden sind, kann Energiezufuhr die Zusammensetzung ändern, ohne Druck und Temperatur zu ändern.]),
+  "map-entropie": (titel: "Bild lesen", body: [Die vier Äste trennen eine Zustandsgröße von ihren Transporten und von der Erzeugung. Der isentrope reversible adiabate Grenzfall hat keinen Wärme-Entropietransport und keine innere Erzeugung.]),
+  "map-waermekapazitaet": (titel: "Bild lesen", body: [Die ersten beiden Äste erklären den physikalischen Unterschied zwischen isochorer und isobarer Wärmekapazität. Die anderen erinnern an den Mengenbezug und an den Temperaturbereich. Eine Zahl ohne diese Angaben reicht für eine Energieberechnung nicht aus.]),
+
   "druckluftmotor-vergleich": (titel: "Bild lesen", body: [Druck und Volumen sind auf die Anfangswerte bezogen; beide Wege beginnen bei ①. Grün fällt die reversible Adiabate steiler als die blaue Isotherme. Am selben orange markierten Enddruck endet sie bei kleinerem Volumen. Die graue Fülllinie oben und die orange Ausschiebelinie unten gehören zum idealisierten Gaswechsel. Gezeichnet sind die beiden Modellkurven mit dem Druckverhältnis des Vorlesungsbeispiels.]),
   "kraftwerk-enthalpie": (titel: "Bild lesen", body: [Von links nach rechts bleibt der Massenstrom gleich. Im Kessel steigt die Enthalpie durch Wärmezufuhr von 128 auf 3150 kJ/kg. In der adiabaten Turbine sinkt sie auf 2350 kJ/kg; diese Differenz wird im Modell als Wellenarbeit abgegeben. Das Schema zeigt eine offene Anlage, keinen geschlossenen Dampfkreislauf.]),
   "turbine-energie": (titel: "Bild lesen", body: [Links steht die mit dem Höhenunterschied verfügbare Leistung. Sie teilt sich rechts in abgegebene Wellenleistung und Zunahme der inneren Energie des Wassers. Die zweite Größe bleibt im austretenden Wasser; über die adiabate äußere Grenze fließt keine Wärme.]),
@@ -241,7 +271,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand: *27.10.2026*. Behandelt sind die Vorlesungsunterlagen vom 27.10. einschließlich Turbine, Kraftwerk, Arbeitsformen und Druckluftmotor sowie Tutorium und WZF bis 23.10. Die ältere Altklausurzuordnung bleibt im Wegweiser eingeordnet. Aufgaben mit vollständigen Lösungen, Quiz und Karteikarten stehen unter „Lernen“, die Hörzusammenfassung als EPUB bei den Lernskripten; das Strahltriebwerk ist weiterhin nur angekündigt.
+Stand: *05.11.2026*. Eingearbeitet sind die belegten Vorlesungen bis „Ende VL 4.11.“ sowie Tutorium 29.10. und Übungsrechnungen 30.10. Neu hinzu kommen Dreiphasengleichgewicht, weitere Dampftafelanwendungen, Wärmekapazitäten, Kreisprozesse und der zweite Hauptsatz mit Entropie und Zustandsdiagrammen. Aufgaben, Quiz, Karten und Hörfassung wachsen mit; die ältere Altklausurzuordnung bleibt erhalten.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -251,22 +281,24 @@ Stand: *27.10.2026*. Behandelt sind die Vorlesungsunterlagen vom 27.10. einschli
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; N28 = „Skript FET.pdf“, VL 28.10.; N03 = VL 3.11.; N04 = VL 4.11.; T29 = Tutorium 29.10.; R30 = Übungsrechnungen 30.10.; M13 = Musterlösung Ü 2.13 (5 Seiten); M32 = Musterlösung Ü 3.2 (1 Seite); V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
 
 Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zusammenhängen.
 
-#karte((1fr, auto, 1fr, auto, 1fr),
-  chunk([Kapitel 1 · Grundbegriffe], [Systemgrenze · Zustand · Masse · Ströme · Prozessgrößen], ziel: <a-1>),
+#karte((1fr, auto, 1fr),
+  chunk([Kapitel 1 · Grundbegriffe], [Systemgrenze · Zustand · Masse · Ströme], ziel: <a-1>),
   pfeil(beschriftung: [benennt Größen für]),
-  chunk([Kapitel 2 · Stoffeigenschaften], [Phasen · Zustandsgebiet · Dampfgehalt · Stoffmodell · Dampftafel], ziel: <a-2>),
-  pfeil(beschriftung: [liefert Stoffwerte für]),
-  chunk([Kapitel 3 · Energiebilanzen: Erster Hauptsatz], [Systemart · Energiespeicher · Turbine · Prozessweg · Arbeitsformen], ziel: <a-3>),
+  chunk([Kapitel 2 · Stoffeigenschaften], [Phasen · Stoffmodelle · Dampftafeln], ziel: <a-2>),
+  chunk([Kapitel 3 · Erster Hauptsatz], [Energiebilanz · Arbeitsformen · Kreisprozess], ziel: <a-3>),
+  pfeil(beschriftung: [wird geprüft durch]),
+  chunk([Kapitel 4 · Zweiter Hauptsatz], [Richtung · Entropie · Zustandsdiagramme], ziel: <a-4>),
 )
 
-Die Systemgrenze legt fest, was Du betrachtest und was über die Grenze fließt. Kapitel 1 gibt dafür die Größen und Bilanzbegriffe vor. Kapitel 2 beschreibt den Stoffzustand mit Modellen und Tabellen. Kapitel 3 verbindet beides zur Energiebilanz: Erst die Grenze wählen, dann die Bilanz aufstellen, Stoffwerte einsetzen und das Ergebnis prüfen. Turbine und Druckluftmotor zeigen anschließend, wie Prozessweg und Arbeitsform das nutzbare Ergebnis bestimmen.
+Die Systemgrenze legt fest, was Du betrachtest und was darüber übertragen wird. Kapitel 1 gibt die Größen und Bilanzbegriffe vor; Kapitel 2 liefert die Stoffzustände und Tabellenwerte. Kapitel 3 verbindet beides zur Energieerhaltung und zu den Arbeitsformen. Kapitel 4 ergänzt die mögliche Prozessrichtung: Entropie wird transportiert und im Inneren erzeugt. Zusammen prüfen Energie- und Entropiebilanz den physikalisch möglichen Ablauf.
+
 #src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
 
 #pagebreak()
@@ -278,9 +310,9 @@ Die Gesamtübersicht *Big Picture* verbindet Thermodynamik und Strömungsmechani
  th([Verbindung], [So nutzt du sie im Lernskript]),
  [Masse ↔ Volumenstrom], [$dot(m)=rho A c$ aus Kapitel 1 bleibt beim Verdampfen erhalten; $dot(V)$ ändert sich mit dem Stoffzustand in Kapitel 2.],
  [Stoffwert ↔ Energiebilanz], [$h=u+p v$ verbindet Kapitel 2 mit dem ersten Hauptsatz in Kapitel 3. Der Stickstoffbehälter zeigt zusätzlich eine offene, zeitabhängige Bilanz.],
- [Gesamtübersicht ↔ Vorlesungsstand], [B enthält auch spätere Themen wie Exergie, Kreisprozesse, Rohrreibungsverluste und Impulssatz. Ohne Nachweis ihrer Behandlung werden daraus hier keine zusätzlichen Lehrkapitel.],
+ [Gesamtübersicht ↔ Vorlesungsstand], [Kreisprozesse sowie Entropie und Zustandsdiagramme sind jetzt durch N03/N04 belegt. Exergieberechnungen, ausführliche Rohrreibungsrechnung und Impulssatz bleiben ohne weiteren Vorlesungsnachweis außerhalb des behandelten Stoffes.],
 )
-#src[B, PDF-S. 2, 4–9 und 18–24; Zuordnung zum bisherigen Stand: eigene Darstellung.]
+#src[B, PDF-S. 2, 4–9 und 18–24; N03, PDF-S. 12–14; N04, PDF-S. 4–11. Zuordnung zum belegten Stand: eigene Darstellung.]
 
 #heading(level: 2, outlined: false)[Ältere Altklausurübersicht · Thermodynamik]
 Die Unterlage K ordnet Aufgaben aus alten Prüfungen zu. Ihr Stand ist *26.11.2010 (WS 10/11)*. Sie empfiehlt, bei den jüngeren Prüfungen dieser damaligen Auswahl zu beginnen. Die folgende Zuordnung übernimmt die Angaben vollständig; *PF* bedeutet Prüfung, *LN* Leistungsnachweis.
@@ -648,9 +680,9 @@ Bei technischen „Verlusten“ verschwindet keine Energie. Reibung kann geordne
   idee(<a-2-1>, [Energiezufuhr kann Temperatur oder Phase ändern.], [Beim Verdampfen eines reinen Stoffes hängen Sättigungsdruck und Sättigungstemperatur zusammen.]),
   idee(<a-2-4>, [Das Zustandsgebiet kommt vor der Rechnung.], [Flüssigkeit, Nassdampf, überhitzter Dampf und überkritische Zustände verlangen passende Beschreibungen.]),
   idee(<a-2-9>, [Dampfgehalt ist ein Massenanteil.], [Er bestimmt die gemittelten spezifischen Größen im Nassdampfgebiet.]),
-  idee(<a-2-10>, [Die Tabelle muss zum Gebiet passen.], [Sättigungswerte, Überhitzung und Interpolation folgen den gegebenen Zustandsgrößen.]),
+  idee(<a-2-10>, [Die Tabelle muss zum Gebiet passen.], [Sättigungswerte, Überhitzung und Interpolation folgen den Angaben; #link(<a-2-15>)[Dampfleitung und Überhitzer] wenden das an.]),
   idee(<a-2-12>, [Stoffmodelle haben einen Gültigkeitsbereich.], [Realgasgleichungen und Gemischgrößen ergänzen das ideale Gasmodell.]),
-  idee(<a-2-13>, [Ein Prozess verbindet Zustände unter Bedingungen.], [Konstante Größen, Bezugsgrößen und Tabellenrichtung steuern den Rechenplan.]),
+  idee(<a-2-13>, [Ein Prozess verbindet Zustände unter Bedingungen.], [Konstante Größen, Bezugsgrößen und Tabellenrichtung steuern den Rechenplan; #link(<a-2-14>)[drei Phasen] verlangen drei Phasenbeiträge.]),
 )
 
 #ablauf(
@@ -963,7 +995,60 @@ $dot(H)$ in kW, $dot(S)$ in kW/K, wenn $dot(m)$ in kg/s, $h$ in kJ/kg und $s$ in
 #note("Musterlösung prüfen", [In M1 steht in der Enthalpierechnung einmal 389,9 statt des Tabellenwerts 389,83 kJ/kg. Wir rechnen durchgängig mit 389,83. Kleine Abweichungen bei $u$ entstehen zusätzlich durch das vorzeitige Runden von $v$. Die Kontrolle $dot(H)=dot(H)'+dot(H)''$ muss mit ungerundeten Zwischenwerten stimmen.], fill: sand)
 #src[M1, PDF-S. 1–3; Ü 1.14, PDF-S. 10; BT 3.4, Beispiel 3.4, S. 64–65 / PDF-S. 84–85, und 4.4, Gl. (4.46), (4.49), S. 108 / PDF-S. 128. Tabellenwerte und Rundung nach M1; eigene Nachrechnung.]
 
-*Der Zusammenhang in Kapitel 2.* Zuerst wird das Zustandsgebiet erkannt. Einphasig nutzt du das passende Stoffmodell oder eine p-T-Tabelle; im Nassdampf die Sättigungswerte und einen zusätzlichen Phasenanteil. Danach werden Stoffwerte in die Massen- und Energiebilanz eingesetzt. Der Vergleich von Verdampfer und Entnahmebehälter zeigt, wann ein Massenstrom konstant bleibt und wann sich der Bestand ändert. Die Darstellung im Diagramm hilft, den Rechenweg zu prüfen.
+#pagebreak()
+== 2.14 Ergänzung 30.10. · Drei Phasen im starren Gefäß <a-2-14>
+Ein Gemisch aus Eis, flüssigem Wasser und Wasserdampf kann trotz Wärmezufuhr zunächst dieselbe Temperatur behalten. Die zugeführte Energie verändert dann die *Phasenanteile*. Alle drei Phasen befinden sich im *Tripelgleichgewicht*: bei Wasser $T_"Tr"="273,16"$ K und $p_"Tr"="611,66"$ Pa.
+#bild("tripel-isochor", [Weg von Ü 2.13. Eigene schematische Darstellung nach R30, PDF-S. 3–4, und M13, PDF-S. 1 und 4–5; keine maßstäblichen Phasengrenzen.], height: 58mm)
+
+=== 2.14.1 Derselbe Diagrammpunkt kann andere Phasenanteile enthalten <a-2-14-1>
+Im geschlossenen starren Gefäß bleiben $m,V$ und damit $v=V/m$ konstant. Solange noch Eis, Wasser und Dampf vorhanden sind, bleiben auch $p$ und $T$ auf ihren Tripelwerten. Die Zustände ① und ② am Ende des Schmelzens haben daher *dieselben Koordinaten* im p-v- und p-T-Diagramm; ihre Phasenanteile unterscheiden sich trotzdem.
+Erst wenn das Eis vollständig verschwunden ist, verlässt weitere Erwärmung den Tripelzustand. Im p-v-Diagramm steigt der Druck bei festem $v$ senkrecht an; im p-T-Diagramm folgt der Zustand der Flüssig-Dampf-Grenze. Die gegebenen Phasenanteile führen im Beispiel zunächst in das Nassdampfgebiet.
+#form[$ m=m'+m''+m''' quad V=m'v'+m''v''+m'''v''' quad H=m'h'+m''h''+m'''h''' $]
+Strich: Flüssigkeit, Doppelstrich: Dampf, Dreifachstrich: Eis. Die Gesamtgrößen werden addiert. Bei drei Phasen reichen die zwei Gewichte $1-x$ und $x$ der üblichen Nassdampfregel nicht aus.
+#src[R30, PDF-S. 3–4; M13, PDF-S. 1–2 und 5; Ü 2.13, PDF-S. 16; BT 3.5, S. 72–74 / PDF-S. 92–94. Diagrammüberlagerung und Abgrenzung der Zweiphasenregel: ergänzte Einordnung.]
+
+=== 2.14.2 Wärme verändert U; Tabellenwerte brauchen denselben Bezug <a-2-14-2>
+Ohne äußere Bewegung, Höhenänderung und weitere Arbeit gilt wegen der starren Grenze:
+#form[$ Q_12=U_2-U_1 quad Delta t=frac(Q_12,dot(Q)) quad U=H-p V $]
+$Q,U,H$ in J, $dot(Q)$ in W ergeben Sekunden; bei kJ ist passend kW zu verwenden. Vor Zustand ② müssen die neuen Flüssigkeits- und Dampfmassen aus *Massen- und Volumenbilanz* bestimmt werden. Die anfänglichen Teilmassen bleiben beim Schmelzen nicht unverändert.
+#note("Tabellen konsistent verwenden", [Ü 2.13 gibt stark gerundete $u$- und $h$-Werte an. Für die Musterrechnung werden die angegebenen $h$- und $v$-Werte verwendet und $U=H-p V$ durchgängig gebildet. Ein negatives $H$ oder $U$ ist mit dem gewählten Tripel-Bezugszustand vereinbar; benötigt wird die Energiedifferenz.], fill: sand)
+Die dortige lineare Abschätzung des späteren Dampfdrucks benutzt die *Clapeyron-Steigung* am Tripelpunkt:
+#form[$ frac(dif p_s,dif T)=frac(s''-s',v''-v') quad p_3 approx p_"Tr"+(frac(dif p_s,dif T))_"Tr"(T_3-T_"Tr") $]
+Mit $s$ in J/(kg K) und $v$ in m³/kg ergibt sich Pa/K. Die konstante Steigung ist die ausdrücklich vorgegebene lokale Näherung der Aufgabe; sie ersetzt keine genaue Dampftafel über große Temperaturbereiche.
+#bild("map-tripel", [Mindmap: Phasenanteile, Gesamtgrößen und Energie im Tripelgefäß. Eigene Darstellung.], height: 45mm)
+#src[R30, PDF-S. 3–4; M13, PDF-S. 2–4; Ü 2.13, PDF-S. 16. Energiebezug und Rundungsstrategie ausdrücklich ergänzt.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+#pagebreak()
+== 2.15 Ergänzung Tutorium 29.10. · Dampfleitung, Trommel und Überhitzer <a-2-15>
+Dieselben Dampftafeln beantworten drei verschiedene Fragen: Wie viel Raum beansprucht der Stoffstrom, wie verteilt sich die gespeicherte Masse und welchen Weg nimmt ein abgesperrter Inhalt beim Heizen? Die *Randbedingung* entscheidet, welche Rechnung passt.
+
+=== 2.15.1 Dampfleitung: erst den realen Stoffwert, dann den Querschnitt <a-2-15-1>
+Für einen stationären Strom mit mittlerer Geschwindigkeit $c$ gilt:
+#form[$ dot(m)=rho A c=frac(A c,v) quad d=sqrt(frac(4 dot(m)v,pi c)) $]
+$dot(m)$ in kg/s, $v$ in m³/kg und $c$ in m/s liefern $d$ in m. Das spezifische Volumen wird zum gegebenen *Druck und zur Temperatur* aus der Überhitzungstafel gelesen. Der Massenstrom allein legt den Rohrdurchmesser nicht fest.
+#src[T29, PDF-S. 1; Ü 2.15, PDF-S. 17; BT A.8, S. 492 / PDF-S. 507.]
+
+=== 2.15.2 Gleiche Phasenvolumina bedeuten verschiedene Phasenmassen <a-2-15-2>
+#bild("dampftrommel-anteile", [Je die Hälfte einer 8-m³-Trommel. Eigene Darstellung nach T29, PDF-S. 2–3.], height: 50mm)
+Die Flüssigkeit ist viel dichter als der Dampf. Deshalb enthält die volumetrisch halb gefüllte Trommel überwiegend *Flüssigkeitsmasse*. Der Rechenweg bleibt eindeutig:
+#form[$ m'=frac(V',v') quad m''=frac(V'',v'') quad x=frac(m'',m'+m'') quad H=m'h'+m''h'' $]
+Die 50 % Dampfvolumen in Ü 2.16 entsprechen nur etwa 3,158 % Dampfmasse. $h'$ und $h''$ müssen zu derselben Sättigung gehören; spezifische Enthalpien werden nicht einfach addiert.
+#note("Abgleich mit der Mitschrift", [T29, PDF-S. 3, nennt für $h'$ korrekt 1155 kJ/kg, schreibt im nachfolgenden Produkt einmal 1150. Die Rechnung verwendet den Tabellenwert 1155; der notierte Ergebnisbereich von etwa 3,876 GJ passt dazu.], fill: sand)
+#src[T29, PDF-S. 2–3; Ü 2.16, PDF-S. 17. Flüssigkeitsvolumen nach der im Tutorium gezeigten Interpolation; Datensatz nicht mit anderen Tabellen gerundet vermischt.]
+
+=== 2.15.3 Abgesperrter Überhitzer: zwei Füllungen, zwei Isochoren <a-2-15-3>
+#bild("ueberhitzer-wege", [Zwei Anfangsfüllungen α und β aus Ü 2.17. Eigene schematische Darstellung nach T29, PDF-S. 3–5; nicht maßstäblich.], height: 57mm)
+Nach dem Absperren bleiben Masse und Gesamtvolumen fest. Unterschiedliche Anfangs-Dampfgehalte liefern daher *unterschiedliche spezifische Volumina* und verschiedene Isochoren. „Gerade Sattdampf“ bedeutet: Die jeweilige Isochore trifft die Sattdampflinie $v''(p_2)=v_1$.
+Im überhitzten Gebiet wird anschließend bei bekanntem $v,T$ rückwärts der Druck oder bei bekanntem $v,p$ die Temperatur gesucht. Für die starre Erwärmung bleibt die Energiebilanz $Q_14=m(u_4-u_1)$; mit $u=h-p v$:
+#form[$ Q_14=m[(h_4-h_1)-v(p_4-p_1)] $]
+$p$ in kPa und $v$ in m³/kg liefern kJ/kg. Der Druck-Volumen-Term verschwindet nicht, nur weil das *Volumen* konstant ist: Der Druck ändert sich.
+#note("Tabellengrenze und Ergebnisprüfung", [Für Fall β liegt die Ventilöffnung bei 25 bar außerhalb der im Tutorium gezeigten Überhitzungstabelle; eine belastbare Öffnungstemperatur wird daraus nicht extrapoliert. Bei den Wärmemengen verwendet die ergänzte Lösung getrennte Endenthalpien für α und β. Der notierte β-Wert 252,23 kJ stimmt damit nicht überein; aus den mitgegebenen Tabellen folgt rund 258,23 kJ.], fill: sand)
+Der Weg bis 600 °C ist als *hypothetisch geschlossene Isochore* zu lesen. Öffnet das Sicherheitsventil vorher, ändern sich Masse und Bilanz; die Rechnung darf dann nicht als tatsächlicher Entlastungsvorgang ausgegeben werden.
+#src[T29, PDF-S. 3–7; Ü 2.17, PDF-S. 17; eigene Nachrechnung mit den dortigen Tabellen und ausgewiesenen Rundungen.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 2.* Zuerst wird das Zustandsgebiet erkannt. Einphasig nutzt du das passende Stoffmodell oder eine p-T-Tabelle; im Nassdampf die Sättigungswerte und einen zusätzlichen Phasenanteil. Danach werden Stoffwerte in die Massen- und Energiebilanz eingesetzt. Der Vergleich von Verdampfer und Entnahmebehälter zeigt, wann ein Massenstrom konstant bleibt und wann sich der Bestand ändert. Die Darstellung im Diagramm hilft, den Rechenweg zu prüfen. Das Tripelgefäß ergänzt drei Phasen; die Trommel trennt Volumen- und Massenanteile, der Überhitzer zeigt die Wirkung verschiedener Isochoren.
 #hoch(<a-2>, [Kapitelübersicht])
 
 
@@ -971,12 +1056,12 @@ $dot(H)$ in kW, $dot(S)$ in kW/K, wenn $dot(m)$ in kg/s, $h$ in kJ/kg und $s$ in
 = Kapitel 3 · Energiebilanzen: Erster Hauptsatz <a-3>
 
 #überblick([Kapitel 3 auf einen Blick],
-  idee(<a-3-1>, [Erst die Systemart, dann die Bilanz.], [Offen mit Enthalpietransport, geschlossen mit innerer Energie; Annahmen einzeln begründen.]),
-  idee(<a-3-2>, [Ein starrer Behälter kann instationär sein.], [Bei Entnahme bleiben Speicherung und Enthalpietransport in derselben Bilanz.]),
-  idee(<a-3-3>, [Turbine und Kessel erfüllen verschiedene Aufgaben.], [Wellenarbeit und Wärmezufuhr ergeben sich aus passenden Energiedifferenzen.]),
-  idee(<a-3-4>, [Der Weg bestimmt die Volumenarbeit.], [Druckverlauf und Umgebungsdruck entscheiden über Aufwand und Nutzanteil.]),
-  idee(<a-3-5>, [Verschiebearbeit verbindet die Beschreibungen.], [Druckarbeit und Volumenarbeit unterscheiden sich um die Änderung von pv.]),
-  idee(<a-3-7>, [Das Stoffmodell schließt die Bilanz.], [Wärme, innere Energie und Enthalpie #link(<a-3-6>)[trennen]; den Motorprozess adiabat oder isotherm modellieren.]),
+ idee(<a-3-1>, [Systemart und Speicherung zuerst.], [Offene Ströme tragen Enthalpie; #link(<a-3-2>)[instationäre Entnahme] behält den Speicherterm.]),
+ idee(<a-3-4>, [Arbeitsform und Weg gehören zusammen.], [Volumen-, #link(<a-3-5>)[Druck-] und #link(<a-3-7>)[Gaswechselarbeit] haben passende Voraussetzungen.]),
+ idee(<a-3-8>, [Stoffwerte schließen die Bilanz.], [#link(<a-3-6>)[U und H] brauchen ein Stoffmodell; Wärmekapazitäten einen Mengen- und Temperaturbezug.]),
+ idee(<a-3-9>, [Ein Kreis hat keinen bleibenden Zustandszuwachs.], [Netto-Wärme und Netto-Arbeit können trotzdem übertragen werden.]),
+ idee(<a-3-10>, [Düse und Drossel vereinfachen verschieden.], [Geschwindigkeit, Enthalpie und Druck folgen jeweils den getroffenen Annahmen.]),
+ idee(<a-3-11>, [Die Gesamtgrenze entfernt interne Ströme.], [#link(<a-3-3>)[Anlagenbauteile] und mehrere Stoffströme werden über extensive Leistungen verbunden.]),
 )
 
 #ablauf(
@@ -1226,12 +1311,207 @@ Die nachströmende Wärme ermöglicht die zusätzliche Arbeitsabgabe. Das größ
 Beim Einfüllen schiebt die Zuluft den Kolben bei $p_1$ von null bis $V_1$; beim Ausstoßen wird gegen $p_2$ von $V_2$ bis null zurückgeschoben. Ohne Totvolumen und mit idealisiert konstanten Füll-/Ausschiebedrücken gilt:
 #form[$ W_"Verschiebung"=-p_1 V_1+p_2 V_2 quad W_"Zyklus"=W_v+W_"Verschiebung"=W_p $]
 Die Gesamtarbeit pro Gaswechselzyklus entspricht damit der Druckarbeit entlang des Expansionswegs. Im reversiblen Modell ohne Änderungen äußerer Energie ist sie zugleich die technische Arbeit dieser Gasportion. $P=f W_"Zyklus"$ benötigt die *Arbeitsspiele pro Sekunde* $f$, nicht nur eine Drehzahlangabe.
-#note("Annahmen zur Vorlesungsrechnung", [Die Folie gibt 600 U/min an, aber keine Zahl der Arbeitsspiele je Umdrehung. In der ergänzten Musterrechnung wird *ein Arbeitsspiel je Umdrehung* ausdrücklich angenommen, also $f=10 thin "s"^(-1)$. Für Luft werden als konstantes Idealmodell $R="287,2"$ J/(kg K) und $kappa="1,4"$ verwendet (BT A.4); diese Stoffwerte sind auf der Folie nicht angegeben.], fill: sand)
-Bei $p_(1,"ü")="22,3"$ bar und $p_"∞"="0,91"$ bar ist der Anfangsdruck *23,21 bar absolut*. Die Anfangstemperatur beträgt *297,95 K*. Die Rechnung in „Druckluftmotor: Adiabate und Isotherme mit Gaswechsel“ trennt die Expansions-, Verschiebe- und Zyklusarbeit; ihre Zahlen sind eine eigene Musterrechnung, keine auf der Folie vorhandene Lösung.
-#src[N27, PDF-S. 21; BT A.4, S. 482 / PDF-S. 497 (Luft: R und κ; konstante Werte als Modell), sowie BT 4.2, S. 102 / PDF-S. 122. Arbeitsspielannahme ausdrücklich ergänzt.]
+#note("Abgleich mit dem Anschrieb vom 28.10.", [N28, PDF-S. 4 und 7, gibt $R="287,2"$ J/(kg K), $kappa="1,4"$ und den Ansatz $dot(m)=m N/60$ vor. Dieser Tafelansatz entspricht *einem Arbeitsspiel je Umdrehung* und damit $f=10 thin "s"^(-1)$ bei 600 U/min. Der zuvor ergänzte Modellansatz ist damit durch Deine neuen Unterlagen bestätigt.], fill: sand)
+Bei $p_(1,"ü")="22,3"$ bar und $p_"∞"="0,91"$ bar ist der Anfangsdruck *23,21 bar absolut*, die Anfangstemperatur *297,95 K*. Die bereits vorhandene Musterrechnung bleibt fachlich gültig; kleine Unterschiede zum Tafelanschrieb entstehen durch gerundete Zwischenwerte.
+#note("Von dir markiert", [Auf N28, PDF-S. 4, steht mit „\@KI“, dass auch ein Zustandsdiagramm in der Prüfung gezeichnet werden soll. Benenne Achsen, Zustände und die konstant gehaltene Größe; die Einordnung der Diagramme steht jetzt in #link(<a-4-4>)[4.4].])
+#src[N27, PDF-S. 21; N28, PDF-S. 3–7; N03, PDF-S. 1–3; BT A.4, S. 482 / PDF-S. 497, und BT 4.2, S. 102 / PDF-S. 122. Bestehende Zahlen unabhängig erneut geprüft.]
+
 #hoch(<a-3>, [Kapitelübersicht])
 
-*Der Zusammenhang in Kapitel 3.* Die Systemgrenze entscheidet über die Bilanz; der Stoffzustand liefert die Energieunterschiede. Bei instationärer Entnahme bleiben Speicheränderung und Enthalpietransport gemeinsam erhalten. Turbine und Kessel zeigen, ob diese Unterschiede mit Arbeit, Wärme oder äußerer Energie verbunden sind. Der Prozessweg bestimmt die Arbeitsintegrale, während die Verschiebearbeit Volumen- und Druckarbeit verknüpft. Der Druckluftmotor führt alles zusammen: Absolutdruck, passendes Gasmodell, Wärmeannahme und Gaswechsel ergeben erst gemeinsam die abgegebene Arbeit und Leistung.
+#pagebreak()
+== 3.8 Ergänzung 3.11. · Wärmekapazitäten richtig verwenden <a-3-8>
+Eine Wärmekapazität sagt, wie stark sich eine Energiegröße bei einer Temperaturänderung verändert. Sie braucht einen *Mengenbezug* und einen *Temperaturbereich*. Eine Tabelle mit Mittelwerten seit 0 °C liefert nicht unmittelbar den Mittelwert zwischen zwei anderen Temperaturen.
+
+=== 3.8.1 Isochor und isobar: Die Ausdehnung braucht zusätzliche Energie <a-3-8-1>
+#bild("waermekapazitaet-kolben", [Gleiche Temperaturerhöhung in zwei idealisierten Kolbensystemen. Eigene Darstellung nach N03, PDF-S. 9–11.], height: 53mm)
+Im geschlossenen, ruhenden Idealmodell ohne Dissipation wird bei festgehaltenem Volumen keine Volumenarbeit übertragen: $q=c_v Delta T$. Bei konstantem Druck dehnt sich das Gas aus und gibt Arbeit ab; dafür muss zusätzlich Wärme zugeführt werden: $q=c_p Delta T$.
+#form[$ dif u=c_v dif T quad dif h=c_p dif T quad c_p-c_v=R quad kappa=frac(c_p,c_v)>1 $]
+*Gültigkeit:* ideales Gas; für endliche Änderungen konstante oder passende mittlere Wärmekapazitäten. Die Stoffbeziehungen $dif u=c_v dif T$ und $dif h=c_p dif T$ gelten beim idealen Gas auch auf anderen Wegen. Erst die Gleichsetzung von Wärme mit $c_v dif T$ beziehungsweise $c_p dif T$ benötigt die jeweilige Prozessbedingung.
+#tab(columns: (1fr, 1fr, 1.25fr),
+ th([Bezug], [Isobar], [Einheit / Umrechnung]),
+ [Gesamte Portion], [$C_p=m c_p=n C_(m,p)$], [kJ/K.],
+ [Je Masse], [$c_p$], [kJ/(kg K).],
+ [Je Stoffmenge], [$C_(m,p)=M c_p$], [kJ/(kmol K); $M$ in kg/kmol.],
+)
+Die entsprechende Umrechnung gilt für die isochoren Größen mit Index $v$.
+#src[N03, PDF-S. 4 und 9–11; BT 6.4, S. 192–194 / PDF-S. 211–213.]
+
+=== 3.8.2 Wahre Wärmekapazität und Bereichsmittel unterscheiden <a-3-8-2>
+#bild("waermekapazitaet-mittel", [Fläche unter einer schematischen Kurve und flächengleiches Mittelwertrechteck. Eigene Darstellung nach N03, PDF-S. 4–6; keine Stoffdatenkurve.], height: 56mm)
+Der Kurvenwert $c_p(T)$ beschreibt eine kleine Änderung am jeweiligen Zustand. Der Mittelwert über ein Intervall wird so gewählt, dass er *dieselbe Energieänderung* liefert:
+#form[$ overline(c)_(p,12)=frac(integral_(T_1)^(T_2)c_p(T)dif T,T_2-T_1) quad Delta h=overline(c)_(p,12)(T_2-T_1) $]
+Der Wert in der Intervallmitte ist im Allgemeinen kein exakter Ersatz. Auch ein Tabellenmittel 0–800 °C ist nicht das Mittel für 400–1200 °C, obwohl beide Bereiche 800 K breit sind.
+Für die auf $vartheta_0=0$ °C bezogenen *molaren* Tabellenwerte folgt durch Abziehen der beiden Energiezunahmen:
+#form[$ overline(C)_(m,p,12)=frac(overline(C)_(m,p,02)(vartheta_2-vartheta_0)-overline(C)_(m,p,01)(vartheta_1-vartheta_0),vartheta_2-vartheta_1) $]
+Alle Temperaturdifferenzen besitzen dieselbe Schrittweite in K und °C. Hier dürfen die Celsius-Zahlenwerte wegen des ausdrücklich festgelegten Tabellenbezugs verwendet werden; in Gasgleichungen und Logarithmen bleibt Kelvin erforderlich.
+#note("Zwei verschiedene Tabellen", [N03, PDF-S. 7, nennt $c_p,c_v,kappa$ für *0 °C* (alte T-3, heute BT A.4). Die Mittelwerttabelle auf PDF-S. 8 verwendet einen Temperaturbereich seit 0 °C (alte T-4, heute BT A.5). Ihre Luft-Molmassen sind leicht unterschiedlich gerundet. Die Vorlesungsrechnung bleibt deshalb mit $M=28,95$ kg/kmol innerhalb der T-4-Werte.], fill: sand)
+Für Luft von 400 bis 1200 °C ergibt die Vorlesungsrechnung $overline(C)_(m,p,12)="33,27"$ kJ/(kmol K), $overline(c)_(p,12) approx "1,14922"$ kJ/(kg K) und einen daraus gebildeten *Bereichswert* $kappa approx "1,33315"$. Er ist kein überall unveränderlicher Isentropenexponent; 1,4 ist hier nur der Vergleichswert des konstanten Luftmodells.
+#bild("map-waermekapazitaet", [Mindmap: Prozessbedingung, Bezugsmenge und Mittelwert. Eigene Darstellung.], height: 45mm)
+#src[N03, PDF-S. 4–11, besonders markierter Hinweis „Man muss rechnen & nicht ablesen“ auf PDF-S. 5; BT 6.4, S. 195 / PDF-S. 214, und A.4–A.5, S. 482–483 / PDF-S. 497–498. Werte selbst nachgerechnet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak()
+== 3.9 Ergänzung 3.11. · Energiebilanz von Kreisprozessen <a-3-9>
+In einem *Kreisprozess* durchläuft das Arbeitsmittel mehrere Zustandsänderungen und kehrt anschließend in seinen Anfangszustand zurück. Eine Dampfkraftanlage verbindet dazu Pumpe, Kessel, Turbine und Kondensator. Die Bauteile werden einzeln offen bilanziert; der gesamte Umlauf hat keine bleibende Änderung der Zustandsgrößen.
+#bild("kreisprozess-energie", [Bauteile und Energieübertragungen einer einfachen Dampfkraftanlage. Eigene Darstellung nach N03, PDF-S. 12–13.], height: 60mm)
+
+=== 3.9.1 Zustand kehrt zurück; Wärme und Arbeit bleiben als Bilanzbeiträge <a-3-9-1>
+#form[$ integral.cont dif U=0 quad integral.cont dif H=0 quad Q_"zu"+Q_"ab"+W_"netto"=0 $]
+$Q_"zu">0$, $Q_"ab"<0$ und bei Arbeitsabgabe $W_"netto"<0$ sind hier *vorzeichenbehaftete* Größen. Für stationäre Anlagen gilt dieselbe Summe mit Wärmeströmen und Leistungen. Die Pumpenaufnahme wird von der Turbinenabgabe abgezogen, um die Nutzabgabe zu bestimmen.
+Interne Stoff- und Energieübertragungen treten an benachbarten Bauteilen mit entgegengesetzten Vorzeichen auf. In der Gesamtbilanz bleiben nur die Übertragungen über die *äußere Systemgrenze*. Ein interner Enthalpiestrom ist kein zusätzlicher Nutzen der Gesamtanlage.
+#form[$ eta_"th"=frac(abs(W_"netto"),Q_"zu")=1-frac(abs(Q_"ab"),Q_"zu") $]
+*Gültigkeit:* die gezeigte Wärmekraftmaschine mit zwei entsprechend bilanzierten Wärmeaustauschbeiträgen; gleiche Größenbasis verwenden, also Energien oder Leistungen. Der erste Hauptsatz prüft den Energieausgleich. Ob ein gedachter Prozess auch möglich ist, verlangt Kapitel 4.
+#src[N03, PDF-S. 12–13; BT 4.5, S. 112 und 115–116 / PDF-S. 132 und 135–136. Vorzeichen ausdrücklich vereinheitlicht.]
+
+=== 3.9.2 Rechtslauf, Linkslauf und Perpetuum mobile erster Art <a-3-9-2>
+#tab(columns: (1fr, 1.6fr, 1.2fr),
+ th([Prozess], [Energienutzung], [Typisches Beispiel]),
+ [Rechtsläufig], [Nettoarbeit wird abgegeben; Wärme auf hohem Niveau aufgenommen und auf niedrigerem abgegeben.], [Wärmekraftmaschine.],
+ [Linksläufig], [Arbeit wird zugeführt; Wärme wird von niedrigerem auf höheres Temperaturniveau übertragen.], [Kältemaschine, Wärmepumpe.],
+)
+Ein *Perpetuum mobile erster Art* würde fortlaufend Arbeit abgeben, ohne eine gleichwertige andere Energieaufnahme oder Speicherabnahme. Das widerspricht dem ersten Hauptsatz. Die Rückkehr des Arbeitsmittels zum Anfangszustand ist keine Energiequelle.
+#note("In eigenen Worten", [„Im Kreis ist die Zustandsänderung null“ heißt nicht „es fließt keine Energie“. Es heißt: Was insgesamt zugeführt wird, muss insgesamt wieder abgegeben werden.])
+#src[N03, PDF-S. 12–14, dort „Ein Perpetuum Mobile erster Art ist unmöglich!“ markiert.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak()
+== 3.10 Ergänzung 4.11. · Düse, Ausfluss, Drossel und Rohr <a-3-10>
+Bei einer *Düse* wird der Strom schneller; bei einer *Drossel* wird vor allem der Druck abgebaut. Beide können nach außen adiabat und ohne technische Arbeitsübertragung sein. Daraus folgt jeweils eine Energiebilanz, aber noch keine Reversibilität.
+#form[$ h_2-h_1+frac(c_2^2-c_1^2,2)+g(z_2-z_1)=0 $]
+*Voraussetzungen:* stationärer Stoffstrom, $q_12=0$, $w_(t,12)=0$. Die Folienbezeichnung „rigid“ bedeutet hier keine technische Arbeitsübertragung; ein starres Gehäuse allein würde etwa elektrische Arbeit nicht ausschließen. Enthalpien in J/kg verwenden, wenn Geschwindigkeit in m/s eingesetzt wird.
+#bild("stroemung-duese-drossel", [Zwei verschiedene Vereinfachungen derselben Energiebilanz. Eigene Darstellung nach N04, PDF-S. 1.], height: 56mm)
+#tab(columns: (1fr, 1.9fr),
+ th([Fall und Zusatzannahme], [Physikalische Folge]),
+ [Düse; gleiche Höhe], [$c_2^2-c_1^2=2(h_1-h_2)$. Sinkende Enthalpie erhöht die Bewegungsenergie.],
+ [Druckbehälterausfluss; Eintritt aus großem Vorrat, $c_1 approx 0$], [Lokaler Ausfluss: $c_2 approx sqrt(2(h_1-h_2))$. Ein sich leerender Gesamtbehälter ist trotzdem instationär.],
+ [Torricelli; inkompressibel, gleicher Umgebungsdruck, $c_1 approx 0$], [$c_2=sqrt(2g(z_1-z_2))$. Der Höhenverlust treibt die Geschwindigkeit.],
+ [Drossel; gleiche Höhe und $c_1 approx c_2$], [$h_2 approx h_1$. Druck und bei realen Stoffen auch Temperatur können sich ändern.],
+ [Langes Rohr; gleiche Höhe, Geschwindigkeit ändert sich], [$h_1+c_1^2/2=h_2+c_2^2/2$. Bei gleichem Querschnitt bleibt $dot(m)=rho A c$ erhalten.],
+)
+#note("Folienüberschrift einordnen", [Die Überschrift N04, PDF-S. 1, nennt „reversibel adiabat = isentrop“. Das ist für einen ausdrücklich reversiblen adiabaten Vergleichsweg richtig. Eine reale Drossel und ein Rohr mit Reibung sind dagegen irreversibel. $q=0$ und $w_t=0$ allein machen einen Prozess nicht isentrop.], fill: sand)
+Eine Drosselung ist beim idealen Gas mit $h=h(T)$ unter diesen Bedingungen auch isotherm. Für ein reales Fluid folgt aus $h_2=h_1$ keine allgemeine Temperaturkonstanz. Umgekehrt beweist gleiche Entropie allein ohne weitere Bedingungen weder fehlende Wärmeübertragung noch fehlende Irreversibilität; verschiedene Beiträge können sich ausgleichen.
+#src[N04, PDF-S. 1 (Folie 03-32; mit handschriftlichem Beginn VL 4.11.); BT 4.6, Gl. (4.67)–(4.71), S. 120–121 / PDF-S. 140–141, und 5.1–5.2, PDF-S. 149–150 und 157–158. Der Trennhinweis auf N04, PDF-S. 2, beendet diesen Foliensatz; anschließend beginnt der belegte Foliensatz 04.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak()
+== 3.11 Ergänzung Übung 30.10. · Zwei Stoffströme, eine Gesamtbilanz <a-3-11>
+Ein Heizregister überträgt Energie vom warmen Wasser an vorbeiströmende Luft. Der Wärmestrom ist für die beiden Stoffseiten ein Grenzübertritt. Umschließt Du Wasser, Luft und Lüfter gemeinsam, ist derselbe Wärmestrom *intern* und fällt aus der Gesamtbilanz heraus.
+#bild("lufterhitzer-grenzen", [Innere und äußere Grenzen in Ü 3.2. Eigene Darstellung nach R30, PDF-S. 1–2, und M32, PDF-S. 1.], height: 62mm)
+Die Luft- und Wassermassenströme sind verschieden. Deshalb werden zuerst die jeweiligen *Enthalpieströme* gebildet. Ohne Änderungen äußerer Energie gilt für die Wasser- und Luftseite:
+#form[$ dot(m)_W(h_"W2"-h_"W1")=-dot(Q)_"WL" $]
+#form[$ dot(m)_L(h_"L2"-h_"L1")=dot(Q)_"WL"+P_"Lüfter" $]
+$dot(Q)_"WL">0$ ist hier der vom Wasser zur Luft gerichtete Übertragungsbetrag. Addiert man beide Gleichungen, kürzt er sich:
+#form[$ dot(m)_W Delta h_W+dot(m)_L Delta h_L=P_"Lüfter" $]
+*Gültigkeit:* nach außen adiabates Gesamtgerät; die zugeführte Lüfterleistung gelangt vollständig in die betrachtete Luftseite. Die *Adiabatie der Gesamtgrenze* verbietet den inneren Wärmeaustausch nicht. Bei den angegebenen 0,8 kW liefert der Lüfter zusätzlich Energie zur Luft; nur die Wasserabkühlung liefert den Registerwärmestrom.
+#note("Vorzeichen mit der Grenze verbinden", [Der gleiche innere Wärmestrom ist für das Wasser Abgabe und für die Luft Zufuhr. Du darfst den Pfeil anders wählen; dann müssen sein Vorzeichen und alle zugehörigen Bilanzgleichungen gemeinsam angepasst werden.], fill: sand)
+#src[R30, PDF-S. 1–2; M32, PDF-S. 1; Ü 3.2, PDF-S. 20.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 3.* Systemgrenze, Speicheränderung und Stoffzustand bestimmen die Energiebilanz. Der Prozessweg legt die Arbeitsintegrale fest; Wärme- und Verschiebearbeit dürfen nicht doppelt gezählt werden. Wärmekapazitäten verbinden Temperatur- und Energieänderungen. Im Kreisprozess kehren die Zustandsgrößen zurück, während Nettoübertragungen bleiben; Düse, Drossel und Heizregister zeigen verschiedene Bilanzvereinfachungen. Kapitel 4 prüft anschließend, welche dieser energetisch gedachten Abläufe auch möglich sind.
+#pagebreak()
+= Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme <a-4>
+#überblick([Kapitel 4 auf einen Blick],
+ idee(<a-4-1>, [Energieerhaltung legt die Richtung noch nicht fest.], [Irreversibilität beschreibt die gemeinsame Rückkehr von System und Umgebung.]),
+ idee(<a-4-2>, [Entropie wird transportiert und erzeugt.], [Wärme und Stoff tragen sie über Grenzen; innere Erzeugung ist niemals negativ.]),
+ idee(<a-4-3>, [Eine Entropiedifferenz gehört zu zwei Zuständen.], [Stoffmodell, Kelvin und konsistente Tabellen bestimmen den Rechenweg.]),
+ idee(<a-4-4>, [Ein Diagramm zeigt Bedingungen als Linien.], [Erst Achsen und konstant gehaltene Größe nennen, dann den Zustandsweg lesen.]),
+)
+#karte((1fr, auto, 1fr),
+ chunk([Richtung prüfen], [reversibel · irreversibel · unmöglich], ziel: <a-4-1>), pfeil(), chunk([Entropie bilanzieren], [Transport + Erzeugung], ziel: <a-4-2>),
+ chunk([Werte bestimmen], [Stoffmodell · Tabellen · Δs], ziel: <a-4-3>), pfeil(), chunk([Weg darstellen], [T-s · h-s · lg(p)-h], ziel: <a-4-4>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+Der erste Hauptsatz sagt, *wie viel Energie* ausgetauscht wird. Der zweite prüft, *in welcher Richtung* ein Prozess ablaufen kann. Die neue Zustandsgröße Entropie macht diese Prüfung berechenbar; Diagramme verbinden sie mit den schon bekannten Stoffgrößen.
+#src[Eigene Zusammenführung der behandelten Folien N04, PDF-S. 4–11; handschriftliches Ende VL 4.11. auf PDF-S. 11.]
+
+== 4.1 Reversibel und irreversibel: Energie allein genügt nicht <a-4-1>
+Ein fallendes Gewicht treibt einen Rührer an und erwärmt ein Fluid. Die Energie des Gewichts verschwindet nicht: Sie erhöht die innere Energie des Fluids. Bloßes Abkühlen des Fluids setzt den Rührer jedoch nicht von selbst rückwärts in Bewegung und hebt das Gewicht wieder an.
+#bild("joule-prozess", [Joules Schaufelradprozess als Richtungskette. Eigene Darstellung nach N04, PDF-S. 4.], height: 51mm)
+#form[$ m_"Sys" c_v(T_2-T_1)=m_"Gewicht" g(z_1-z_2)>0 $]
+*Voraussetzungen dieses Beispiels:* ideales Gas mit konstantem $c_v$, adiabater starrer Fluidbehälter; übertragene Arbeit gelangt vollständig in dessen innere Energie. Mit J/(kg K), kg, m und m/s² steht auf beiden Seiten J.
+Ein Prozess heißt *reversibel*, wenn System und Umgebung gemeinsam ohne bleibende Änderung zurückgeführt werden könnten. *Irreversibel* bedeutet, dass dies nicht möglich ist. Das System allein kann unter Umständen zurückgesetzt werden; die dafür veränderte Umgebung muss mitbetrachtet werden.
+#note("Folienhinweis zur Umkehrung", [Die auf N04, PDF-S. 4, durchgestrichene Umkehrungszeile ist keine verwendbare Prozessgleichung. Die Energiegleichung für den Rührvorgang erlaubt keine selbsttätige Rückumwandlung durch Abkühlen. Einheiten und mögliche Prozessrichtung müssen beide stimmen.], fill: sand)
+Reibung, Temperaturausgleich über endliche Unterschiede, Mischung und Drosselung sind Beispiele für irreversible Vorgänge. Ein langsamer Prozess ist deshalb noch nicht reversibel: Vorhandene Reibung verschwindet durch Langsamkeit nicht automatisch.
+#src[N04, PDF-S. 4; BT 5.1, S. 127–130 / PDF-S. 147–150. Reversibilität bereits in 1.10 vorbereitet; Modellbedingungen ergänzt.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#pagebreak()
+== 4.2 Entropie und Entropiestrom bilanzieren <a-4-2>
+*Entropie* $S$ ist eine additive Zustandsgröße. Für eine homogene Portion ist $S=m s$; ein Stoffstrom transportiert $dot(S)=dot(m)s$. Entropie wird außerdem mit Wärme übertragen und im Inneren durch irreversible Vorgänge erzeugt. Diese drei Beiträge dürfen nicht verwechselt werden.
+#bild("entropie-bilanz", [Speicherung, Transport und Erzeugung. Eigene Darstellung nach N04, PDF-S. 5–7.], height: 56mm)
+$S$ in J/K oder kJ/K; $s$ in J/(kg K) oder kJ/(kg K); $dot(S)$ in W/K oder kW/K. Eine Arbeitsübertragung allein transportiert keine Entropie. Wird übertragene Arbeit im System dissipiert, kann dort jedoch Entropie entstehen.
+
+=== 4.2.1 Geschlossen: Wärmetransport und innere Erzeugung <a-4-2-1>
+#form[$ dif S=frac(delta Q,T_b)+dif S_"erz" quad dif S_"erz">=0 $]
+$T_b$ ist die absolute Temperatur an der betrachteten Wärmeübertragungsgrenze. Bei mehreren Wärmeübertragungen werden ihre Beiträge einzeln bilanziert. Wärmeabgabe zählt negativ; deshalb darf die Entropie eines gekühlten Systems sinken. Die *Erzeugung* bleibt trotzdem nichtnegativ.
+Für das Folienmodell eines einfachen kompressiblen Stoffes mit Dissipationsarbeit $J$ wird der Erzeugungsbeitrag als $delta J/T$ geschrieben:
+#form[$ dif S=frac(delta Q,T)+frac(delta J,T) quad S_2-S_1=integral_1^2 frac(delta Q,T)+integral_1^2 frac(delta J,T) $]
+Hier ist $T$ die zum jeweiligen differentiellen Modellschritt gehörige Temperatur. Allgemeine Irreversibilitäten werden sicher mit $S_"erz"$ bilanziert; sie müssen nicht als eine zusätzlich über die Grenze zugeführte Reibungsenergie auftreten.
+#note("Die Bedingung gehört zur Aussage", [In einem *adiabaten geschlossenen* System kann die Entropie niemals abnehmen: $Delta S>=0$. Bei reversiblem Verlauf bleibt sie gleich. Ohne „adiabat“ darf $Delta S<0$ durch Wärmeabgabe möglich sein; ohne „geschlossen“ muss der Stofftransport berücksichtigt werden.], fill: sand)
+#src[N04, PDF-S. 6–7 und handschriftliche Herleitung auf PDF-S. 9; BT 5.2, Gl. (5.15) und (5.20)–(5.21), S. 134–135 / PDF-S. 154–155. Grenztemperatur und allgemeine Erzeugungsnotation ergänzend präzisiert.]
+
+=== 4.2.2 Offen: Entropie reist mit dem Stoff <a-4-2-2>
+Für ein stationäres System mit einem Ein- und Austritt gilt:
+#form[$ dot(m)(s_2-s_1)=sum_i frac(dot(Q)_i,T_(b,i))+dot(S)_"erz" $]
+Bei adiabatem Betrieb bleibt rechts nur die Erzeugung. Reversibel und adiabat liefert daher $s_2=s_1$: der Prozess ist *isentrop*. Eine adiabate Drossel erzeugt dagegen Entropie und ist trotz $h_2 approx h_1$ im Allgemeinen nicht isentrop.
+Ein unveränderter Entropiespeicher im stationären Gerät verlangt nicht $s_2=s_1$: Erzeugte Entropie kann laufend mit dem austretenden Stoff abgeführt werden. Auch eine zufällig gleiche Entropie an Ein- und Austritt beweist allein keine Reversibilität; Wärmeabgabe und Erzeugung könnten sich kompensieren.
+#src[N04, PDF-S. 5 und 7; BT 5.2, Gl. (5.22)–(5.24), S. 135–136 / PDF-S. 155–156.]
+
+=== 4.2.3 Gibbs verbindet Stoffzustand und Entropie <a-4-2-3>
+Für einen einfachen kompressiblen Stoff bei fester Zusammensetzung verbindet die *Gibbs'sche Fundamentalgleichung* die Zustandsgrößen:
+#form[$ T dif s=dif u+p dif v=dif h-v dif p $]
+Mit J/kg, Pa und m³/kg ergibt der Zähler J/kg und nach Division durch K die Einheit J/(kg K). Die Zustandsbeziehung liefert Entropieunterschiede zwischen passenden Gleichgewichtszuständen. Sie behauptet nicht, dass der tatsächliche Prozess zwischen ihnen reversibel gewesen sein muss.
+#bild("map-entropie", [Mindmap: Entropie als Zustand, Transport und Erzeugung. Eigene Darstellung.], height: 45mm)
+#src[N04, PDF-S. 5–7; BT 5.2, Gl. (5.11), S. 133 / PDF-S. 153. Voraussetzungen der Stoffbeziehung ausdrücklich ergänzt.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#pagebreak()
+== 4.3 Entropiedifferenzen aus Zuständen berechnen <a-4-3>
+Der tatsächliche Weg kann irreversibel sein; die Entropiedifferenz bleibt eine Zustandsdifferenz. Wähle deshalb zuerst ein passendes Stoffmodell und die zwei Endzustände. Die Berechnung aus bekannten Prozessbeiträgen ist ein zweiter Weg und kann als Kontrolle dienen.
+
+=== 4.3.1 Ideales Gas und inkompressible Stoffe <a-4-3-1>
+Für ideale Gase mit konstanten Wärmekapazitäten gelten drei gleichwertige Schreibweisen:
+#form[$ s_2-s_1=c_p ln(T_2/T_1)-R ln(p_2/p_1) $]
+#form[$ s_2-s_1=c_v ln(T_2/T_1)+R ln(v_2/v_1)=c_v ln(p_2/p_1)+c_p ln(v_2/v_1) $]
+Alle Temperaturen in *Kelvin*, Drücke absolut; die Größen in jedem Verhältnis haben dieselbe Einheit. $c_p,c_v,R$ in kJ/(kg K) liefern $Delta s$ in kJ/(kg K). $Delta S=m Delta s$ gilt bei konstanter Masse. Bei temperaturabhängigen Wärmekapazitäten muss der Temperaturterm passend integriert werden; ein Bereichsmittel für $Delta h$ ist nicht automatisch das richtige Mittel im Entropieintegral $integral c_p(T)/T dif T$.
+Für näherungsweise inkompressible Festkörper und Flüssigkeiten mit konstantem $c$:
+#form[$ Delta s=c ln(T_2/T_1) quad Delta S=m c ln(T_2/T_1) $]
+Ein abkühlender Stahlblock hat damit $Delta S<0$. Ob der Gesamtprozess reversibel ist, zeigt erst die Bilanz *einschließlich Umgebung* und deren positiver Entropieaufnahme.
+#src[N04, PDF-S. 8 und Beispiel IV-2 auf PDF-S. 10; BT 5.2, S. 137 / PDF-S. 157. Hinweis auf temperaturabhängige Integrale aus Gibbs und Definition des kalorischen Modells ergänzt.]
+
+=== 4.3.2 Reale Fluide und Phasenwechsel <a-4-3-2>
+Bei realen Fluiden werden $s_1,s_2$ aus denselben passenden Tabellen ermittelt. Im Nassdampfgebiet gilt die Massenmischungsregel; für einen vollständigen Phasenwechsel im Sättigungsgleichgewicht:
+#form[$ s=s'+x(s''-s') quad s''-s'=frac(h''-h',T_s) $]
+$T_s$ in K; kJ/kg geteilt durch K ergibt kJ/(kg K). Der Tabellen-Nullpunkt fällt bei konsistent gebildeten Differenzen heraus. Entropie und Entropiestrom bleiben verschiedene Bezugsgrößen: In einer stationären Rechnung wird mit $dot(m)Delta s$ daraus eine Stromdifferenz.
+#src[N04, PDF-S. 8; BT 5.2, Gl. (5.25)–(5.28), S. 137 / PDF-S. 157.]
+
+=== 4.3.3 Turbine und blockierte Turbine vergleichen <a-4-3-3>
+Die isentrope Vergleichsturbine expandiert vom gegebenen Anfangszustand bis zum gleichen Enddruck bei $s_(2s)=s_1$. Die reale adiabate Turbine hat wegen innerer Irreversibilität eine kleinere Arbeitsabgabe:
+#form[$ eta_("is,T")=frac(h_1-h_2,h_1-h_(2s)) quad P_t=dot(m)(h_2-h_1) quad dot(S)_"erz"=dot(m)(s_2-s_1)>=0 $]
+*Gültigkeit:* stationär, adiabat, Änderungen äußerer Energie vernachlässigt; $h$ in kJ/kg und $dot(m)$ in kg/s liefern kW. Der Vergleich bei *gleichem Anfangszustand und gleichem Enddruck* ist wesentlich.
+Ist die Turbine blockiert und strömt der Dampf ohne Arbeitsabgabe hindurch, wird sie im Folienmodell zur Drossel: $P_t=0$, $h_2=h_1$, aber $s_2>s_1$.
+#note("Verlust eindeutig benennen", [Aus dem Gütegrad lässt sich die *Leistungsminderung gegenüber der isentropen Vergleichsturbine* berechnen: $P_"Verlust"=dot(m)(h_2-h_(2s))$. Sie beschreibt entgangene Wellenleistung und keine vernichtete Energie. Eine genaue Dissipationsarbeit $j=integral T dif s$ wäre zusätzlich eine Prozessgröße; sie ist nicht ohne Prozessverlauf mit jeder solchen Vergleichsdifferenz identisch. Der Folienauftrag IV-3 verwendet „dissipierte Leistung“, ohne diese Unterscheidung weiter festzulegen.], fill: sand)
+#src[N04, PDF-S. 10 (IV-3); BT 5.1, S. 129–131 / PDF-S. 149–151, und 6.3, Definition des isentropen Gütegrades. Verlustbegriff und fehlende Prozessangabe sichtbar abgegrenzt.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#pagebreak()
+== 4.4 Zustandsdiagramme und Isolinien lesen <a-4-4>
+Eine *Isolinie* verbindet Zustände, bei denen eine gewählte Größe konstant bleibt. Ihr Aussehen hängt von den Achsen ab. „Senkrecht“ oder „waagerecht“ ist deshalb keine universelle Eigenschaft eines Prozesses.
+#bild("zustandsdiagramme-achsen", [Achsen und ausgewählte Isolinien. Eigene schematische Darstellung nach N04, PDF-S. 11; keine maßstäblichen Stoffdiagramme.], height: 60mm)
+#tab(columns: (1fr, 1.3fr, 1.6fr),
+ th([Diagramm], [Achsen], [Direkt erkennbare Linien]),
+ [T-s], [Waagerecht $s$, senkrecht $T$.], [Isentrope senkrecht, Isotherme waagerecht.],
+ [h-s], [Waagerecht $s$, senkrecht $h$.], [Isentrope senkrecht, Isenthalpe waagerecht.],
+ [lg(p)-h], [Waagerecht $h$, senkrecht logarithmischer Absolutdruck.], [Isenthalpe senkrecht, Isobare waagerecht.],
+)
+*Isotherm:* $T$ konstant. *Isobar:* $p$ konstant. *Isochor:* $v$ konstant. *Isentrop:* $s$ konstant. *Isenthalp:* $h$ konstant. *Isovapor / Isohygre:* Dampfgehalt $x$ konstant; diese Bezeichnung gehört zum Zweiphasengebiet.
+Die Lesereihenfolge lautet: Achsen benennen, Zustandsgebiet erkennen, konstant gehaltene Größe nennen und den Verlauf zur gesuchten Größe verfolgen. Im lg(p)-h-Diagramm bedeutet eine Kurve etwa: Wie verändert sich der Druck mit der Enthalpie, wenn die auf der Kurve angegebene Größe konstant bleibt?
+#note("Von dir markiert", [N28, PDF-S. 4, verlangt mit „\@KI“ auch ein selbst gezeichnetes Zustandsdiagramm für die Prüfung. N04, PDF-S. 11, ist ebenfalls mit „In der Prüfung machen“ markiert. Dazu gehören benannte Achsen, Anfang/Ende, Prozessrichtung und die konstant gehaltene Größe.])
+Eine Fläche im T-s-Diagramm ist nur bei einem *reversiblen* Weg unmittelbar die spezifische Wärme $q_"rev"=integral T dif s$. Bei Irreversibilität enthält $T dif s$ auch die Entropieerzeugung; die Fläche darf dann nicht ungeprüft als tatsächliche Wärmezufuhr gelesen werden.
+#src[N03, PDF-S. 1–2; N04, PDF-S. 11 und Ende VL 4.11.; N28, PDF-S. 4; ergänzend BT 5.3, S. 138–140 / PDF-S. 158–160.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 4.* Reversibilität verlangt die gemeinsame Rückkehr von System und Umgebung. Die Entropiebilanz trennt dafür Transport und nichtnegative Erzeugung. Stoffmodelle und Tabellen liefern die Zustandsdifferenzen; die Diagramme machen ihren Zusammenhang mit Druck, Temperatur und Enthalpie sichtbar. Zusammen mit dem ersten Hauptsatz entsteht so eine doppelte Prüfung: Der Energieausgleich muss stimmen und die Entropieerzeugung darf nicht negativ sein.
 
 
 #pagebreak(weak: true)
@@ -1311,6 +1591,24 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Gaswechselmotor], [$W_"Zyklus"=-p_1 V_1+W_v+p_2 V_2$; $P=f W_"Zyklus"$], [Kein Totvolumen; Füllung/Ausschiebung bei konstanten Drücken; $f$ Arbeitsspiele pro Sekunde.],
  [Gefälleleistung und Turbine], [$P_"Gefälle"=rho dot(V)g H$; $eta=abs(P_t)/P_"Gefälle"$], [Gleicher Umgebungsdruck, äußere Geschwindigkeitsänderung vernachlässigt; Nutzleistung eindeutig definieren.],
  [Kessel und Dampfturbine], [$q_12=h_2-h_1$; $w_(t,23)=h_3-h_2$], [Stationär; Kessel ohne technische Arbeit, Turbine adiabat; äußere Energien vernachlässigt.],
+ [Drei Phasen, extensiv], [$Y=sum_i m_i y_i$], [$Y=V,H,U,S$; alle Phasen einbeziehen, Werte mit demselben Bezug.],
+ [Rohrdurchmesser], [$d=sqrt(4 dot(m)v/(pi c))$], [Stationärer Kreisquerschnitt; $v$ aus passendem Stoffmodell; Ergebnis m bei SI-Einheiten.],
+ [Starre geschlossene Erwärmung], [$Q=m[(h_2-h_1)-v(p_2-p_1)]$], [Keine weitere Arbeit, äußere Energien unverändert; konstantes $m,V,v$.],
+ [Wärmekapazitäten, Mengenbezug], [$C_p=m c_p=n C_(m,p)$; $C_(m,p)=M c_p$], [kJ/K, kJ/(kg K), kJ/(kmol K); entsprechend Index v.],
+ [Bereichsmittel], [$overline(c)_(p,12)=integral_(T_1)^(T_2)c_p(T)dif T/(T_2-T_1)$], [Passender Bereich; liefert $Delta h=overline(c)_(p,12) Delta T$.],
+ [Kreisprozess], [$Q_"zu"+Q_"ab"+W_"netto"=0$], [Zustandsänderungen im gesamten Umlauf null; Vorzeichenbeiträge, $Q_"ab"<0$.],
+ [Thermischer Wirkungsgrad], [$eta_"th"=1-abs(Q_"ab")/Q_"zu"$], [Wärmekraftmaschine mit den bilanzierten Wärmezufuhr-/Abfuhrbeiträgen.],
+ [Düse], [$c_2=sqrt(c_1^2+2(h_1-h_2))$], [Adiabat, keine technische Arbeit, gleiche Höhe; $h$ in J/kg.],
+ [Drossel], [$h_2 approx h_1$], [Adiabat, keine technische Arbeit, äußere Energieänderungen vernachlässigt; irreversibel.],
+ [Entropie, geschlossen], [$dif S=delta Q/T_b+dif S_"erz"$], [$dif S_"erz">=0$; Grenztemperatur $T_b$ in K. Adiabat geschlossen: $Delta S>=0$.],
+ [Entropie, stationärer Strom], [$dot(m)Delta s=sum_i dot(Q)_i/T_(b,i)+dot(S)_"erz"$], [Ein Ein-/Austritt; alle Wärmekontakte zählen; W/K oder kW/K.],
+ [Gibbs], [$T dif s=dif u+p dif v=dif h-v dif p$], [Einfacher kompressibler Stoff, feste Zusammensetzung; Gleichgewichtszustände.],
+ [Entropie, ideales Gas], [$Delta s=c_p ln(T_2/T_1)-R ln(p_2/p_1)$], [Konstante Wärmekapazität; Kelvin und Absolutdruck.],
+ [Entropie, ideales Gas, alternativ], [$Delta s=c_v ln(T_2/T_1)+R ln(v_2/v_1)$], [Dieselben Modellbedingungen; äquivalent über Gasgleichung.],
+ [Entropie, inkompressibel], [$Delta S=m c ln(T_2/T_1)$], [Konstantes $m,c$; T in K.],
+ [Entropie, Phasenwechsel], [$s''-s'=(h''-h')/T_s$], [Sättigungsgleichgewicht desselben Druck-/Temperaturpunkts.],
+ [Turbinen-Gütegrad], [$eta_("is,T")=(h_1-h_2)/(h_1-h_(2s))$], [Adiabat, gleiche Einlassdaten und gleicher Enddruck; $s_(2s)=s_1$.],
+ [T-s-Fläche], [$q_"rev"=integral T dif s$], [Reversibler Weg; bei Irreversibilität keine ungeprüfte Wärmedeutung.],
  [Fester Stoff], [$u_2-u_1=c Delta T$], [Inkompressibel; $c$ in J/(kg K).],
 )
 

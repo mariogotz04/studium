@@ -787,7 +787,7 @@ Ruhender Magnet: nein, der Fluss ist konstant, $dif Phi\/dif t = 0$. Spule aus d
 // 1-14
 #aufgabe(titel: "Lampen-Aufgabe: Schalter schließen", art: "verstehen", quelle: "1.1.7.1")[
 #if not web [*Aufgabe 44* #linebreak()]
-In der Lampen-Aufgabe wird S geschlossen. Was passiert mit C, mit dem Batteriestrom, mit A und B und mit der Gesamtleistung?
+Drei gleiche Lampen A, B und C liegen in Reihe an einer idealen Batterie. Ein idealer Schalter S liegt parallel zu C und ist zunächst offen. Für das einfache Modell werden die Lampen als gleiche konstante Widerstände behandelt. S wird geschlossen: Was passiert mit C, mit dem Batteriestrom, mit A und B und mit der Gesamtleistung?
 ][
 C erlischt, der Batteriestrom steigt, A und B leuchten heller, die Gesamtleistung steigt.
 ]
@@ -818,7 +818,7 @@ Durch einen Leiter fließen 2 Minuten lang 0,5 A. Elementarladung: $e="1,602" do
 
 // 1-16
 #aufgabe(titel: "Stromdichte und Driftgeschwindigkeit", art: "rechnen", quelle: "1.1.5",
-  ergebnis: [a) $S approx "10,7" thin "A/mm"^2$, nicht dauerhaft zulässig b) $v_d approx "0,79" thin "mm/s"$],
+  ergebnis: [a) $S approx "10,7" thin "A/mm"^2$, oberhalb des vorgegebenen Skriptrichtbereichs b) $v_d approx "0,79" thin "mm/s"$],
   tipp: [Für $v_d$ stellst du $I = n e A v_d$ um. Achte darauf, dass alle Längen in derselben Einheit stehen wie $n$.],
 )[
 #if not web [*Aufgabe 46* #linebreak()]
@@ -835,7 +835,7 @@ Kupferleitung, $A = "1,5" thin "mm"^2$, $I = 16 thin "A"$. Elektronendichte $n="
 ][
 *a) Stromdichte:* $S = I\/A$ sagt, wie viel Strom sich durch jeden Quadratmillimeter drängt. $S = 16 thin "A"\/"1,5" thin "mm"^2 approx "10,7" thin "A/mm"^2$.
 ][
-*Bewerten:* Für Kupferleitungen gelten etwa 1 bis 6 A/mm² als dauerhaft zulässig. 10,7 A/mm² liegt deutlich darüber; die Leitung würde zu warm.
+*Bewerten:* 10,7 A/mm² liegt über dem ausdrücklich vorgegebenen Skriptrichtbereich von 1 bis 6 A/mm². Nach diesem Aufgabenmodell ist der Wert nicht zulässig. Eine reale thermische Beurteilung folgt nicht allein aus diesem Richtbereich; V S. 24 verlangt eine zusätzliche Prüfung.
 ][
 *b) Modell für die Drift:* Im Draht steckt die Ladung $n e$ pro Volumen. Wandern die Elektronen mit $v_d$, fließt pro Sekunde die Ladung $n e A v_d$ durch den Querschnitt. Also $I = n e A v_d$ und $v_d = I\/(n e A)$.
 ][
@@ -870,7 +870,7 @@ Kupferleitung (Daten aus V S. 9): $I = "16,66" thin "A"$, $A = "1,5" thin "mm"^2
 
 // 1-18
 #aufgabe(titel: "Zulässige Stromdichte prüfen", art: "rechnen", quelle: "1.1.5",
-  ergebnis: [$S = 4 thin "A/mm"^2$, zulässig],
+  ergebnis: [$S = 4 thin "A/mm"^2$, innerhalb des vorgegebenen Skriptrichtbereichs],
 )[
 #if not web [*Aufgabe 48* #linebreak()]
 *Gegeben und Annahmen*
@@ -887,7 +887,7 @@ Durch einen Leiter mit 2,5 mm² fließen 10 A. Für die Modellbeurteilung dieser
 ][
 *Einsetzen:* $S = 10 thin "A"\/"2,5" thin "mm"^2 = 4 thin "A/mm"^2$.
 ][
-*Bewerten:* Der übliche Bereich liegt bei 1 bis 6 A/mm². 4 A/mm² liegt darin, die Leitung ist also zulässig belastet.
+*Bewerten:* 4 A/mm² liegt innerhalb des in der Aufgabe vorgegebenen Skriptrichtbereichs von 1 bis 6 A/mm². Das erfüllt die Modellvorgabe, ist aber kein alleiniger Nachweis der thermischen Belastbarkeit einer realen Leitung (V S. 24).
 ]
 
 // 1-19
@@ -967,7 +967,7 @@ Lampen-Aufgabe mit $U_q = 9 thin "V"$ und $R = 30 thin Omega$ je Lampe. Drei Lam
 #if not web [*Aufgabe 52* #linebreak()]
 *Gegeben und Annahmen*
 
-Vier gleiche Lampen liegen in Reihe an 12 V. Eine Lampe wird überbrückt.
+Vier gleiche Lampen liegen in Reihe an einer idealen 12-V-Quelle. Eine Lampe wird ideal überbrückt. Jede Lampe wird für diese Rechnung als gleicher konstanter ohmscher Widerstand modelliert.
 
 *Gesucht*
 
