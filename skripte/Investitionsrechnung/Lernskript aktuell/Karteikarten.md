@@ -87,7 +87,7 @@ Quelle: 1.4
 Abbildung: deckungsbalken
 
 ### Warum ist der Stückdeckungsbeitrag noch nicht der Gewinn je Stück?
-Er deckt erst die variablen Kosten des Stücks. Die Fixkosten sind davon noch nicht abgezogen. Erst wenn alle Deckungsbeiträge zusammen die Fixkosten übersteigen, entsteht Gewinn.
+Der Stückdeckungsbeitrag ist der Erlösrest nach Abzug der variablen Kosten. Die Fixkosten sind davon noch nicht abgezogen. Erst wenn alle Deckungsbeiträge zusammen die Fixkosten übersteigen, entsteht Gewinn.
 Quelle: 1.4
 Abbildung: deckungsbalken
 
@@ -111,7 +111,7 @@ Quelle: 1.5
 Abbildung: original-bep
 
 ### Wann gibt es keine Gewinnschwelle?
-Wenn der Stückdeckungsbeitrag null oder negativ ist. Dann deckt kein Stück auch nur seine variablen Kosten, und mehr Produktion macht die Lage nicht besser, sondern höchstens schlechter.
+Bei positiven Fixkosten und einem Stückdeckungsbeitrag von null oder darunter gibt es durch mehr Produktion keine erreichbare Gewinnschwelle. Bei null deckt der Preis genau die variablen Kosten, aber nichts von den Fixkosten; bei negativem Beitrag deckt er nicht einmal die variablen Kosten.
 Quelle: 1.5
 Abbildung: original-bep
 
@@ -207,3 +207,98 @@ Mit dem Preis kommt der **Deckungsbeitrag** dazu: $d = p - k_v$ je Stück, $D = 
 
 Bild: Wie eine Treppe: Bezugsgröße → Kosten → Deckungsbeitrag → Gewinnschwelle → Entscheidung. Keine Stufe lässt sich überspringen.
 Quelle: 1.1
+
+## Kapitel 2 · Statische Investitionsrechnung
+
+### Warum wird der Kaufbetrag einer Maschine nicht als voller jährlicher Kostenbetrag angesetzt?
+Die Anschaffung betrifft mehrere Nutzungsjahre. Die lineare Abschreibung verteilt den Wertverbrauch auf diese Jahre. Zusätzlich bewertet der kalkulatorische Zins die durchschnittliche Kapitalbindung. So werden daraus vergleichbare Jahreskosten.
+Quelle: 2.1
+Abbildung: map-investitionskosten
+
+### Warum rechnet man bei linearem Kapitalabbau mit der durchschnittlichen Kapitalbindung?
+Am Anfang ist mehr Kapital gebunden als am Ende. Bei linearer Entwicklung ist der Mittelwert aus Anschaffungskosten und Restwert die passende durchschnittliche Bindung. Bei Restwert null ist das die Hälfte der Anschaffungskosten; das ist nicht automatisch die Basis jeder anderen Investition.
+Quelle: 2.1
+Abbildung: map-investitionskosten
+
+### Was bedeuten Kapitaldienst und Betriebskosten in den vorliegenden Aufgaben?
+Kapitaldienst ist hier kalkulatorische Abschreibung plus kalkulatorische Zinsen. Betriebskosten bestehen aus sonstigen Fixkosten und variablen Kosten. Zusammen ergeben sie die Jahresgesamtkosten. Sind Abschreibung und Zinsen schon enthalten, werden sie nicht nochmals addiert.
+Quelle: 2.1
+Abbildung: map-investitionskosten
+
+### Wann kann die Kostenvergleichsrechnung eine sinnvolle Investitionswahl begründen?
+Wenn die Leistung gleichwertig und die Mengenbasis passend ist. Bei gleicher Menge genügt der Vergleich der Gesamtkosten; verschiedene Mengen erfordern eine bewusste Leistungsbasis. Unterschiedliche Qualitätspreise oder Erlöse müssen zusätzlich über den Gewinn betrachtet werden.
+Quelle: 2.2
+Abbildung: map-kvr
+
+### Warum reichen niedrige Stückkosten bei unterschiedlichen Kapazitäten nicht als vollständiges Gewinnurteil?
+Stückkosten sagen nur, was eine Leistungseinheit kostet. Der Jahresgewinn hängt außerdem von der verkauften Menge und dem Nettoerlös ab. Eine hohe Kapazität bringt erst durch passenden Absatz zusätzlichen Erlös.
+Quelle: 2.2
+Abbildung: map-kvr
+
+### Warum kann die Gewinnvergleichsrechnung die teurere Anlage bevorzugen?
+Ein höherer Verkaufspreis oder mehr absetzbare Stücke können die Mehrkosten übertreffen. Die GVR betrachtet Erlöse minus vollständige Jahreskosten. Beim Backofen überwiegt der Qualitätsmehrerlös von Back de luxe dessen Mehrkosten.
+Quelle: 2.3
+Abbildung: map-gvr
+
+### Was bedeutet ein positiver Gewinn nach kalkulatorischen Zinsen im Investitionsmodell?
+Die Erlöse decken die Betriebskosten, die Abschreibung und die angesetzte kalkulatorische Verzinsung. Ein positiver Rest liegt somit über dieser Kostenbasis. Das gilt für die vorgegebenen Mengen, Preise und Jahresannahmen.
+Quelle: 2.3
+Abbildung: map-gvr
+
+### Warum addiert man für die Investitionsrentabilität kalkulatorische Zinsen zum Gewinn zurück?
+Der verwendete GVR-Gewinn ist bereits um diese Zinsen gemindert. Für den Erfolg vor kalkulatorischen Zinsen werden sie zurückaddiert und dann durch die mittlere Kapitalbindung geteilt. Ist der Gewinn schon vor Zinsen gegeben, würde erneutes Addieren doppelt zählen.
+Quelle: 2.4
+Abbildung: map-rvr
+
+### Wozu braucht man beim Rentabilitätsvergleich eine Differenzinvestition?
+Bei der billigeren Anlage bleibt ein Teil des Budgets frei. Die Differenzinvestition macht dessen Alternativverwendung ausdrücklich. Erst dann vergleicht man dasselbe Gesamtbudget; das Ergebnis hängt vom angenommenen Ertrag und von der Kapitalbindung dieser Zusatzanlage ab.
+Quelle: 2.4
+Abbildung: map-rvr
+
+### Darf man einen gegebenen Jahresertrag halbieren, weil die mittlere Kapitalbindung halb so hoch ist wie der Kaufbetrag?
+Nein. Durchschnittliche Kapitalbindung und Jahresertrag sind verschiedene Größen. Der Nenner wird aus dem Kapitalverlauf bestimmt; ein ausdrücklich gegebener Jahresertrag bleibt im Zähler unverändert. Genau hier weicht die Backofen-Mitschrift vom Aufgabentext ab.
+Quelle: 2.4
+Abbildung: map-rvr
+
+### Was unterscheidet Eigenkapital-, Gesamtkapital- und Umsatzrendite?
+Die Eigenkapitalrendite bezieht den Gewinn für die Eigentümer auf das mittlere Eigenkapital. Die Gesamtkapitalrendite betrachtet den Erfolg vor Fremdkapitalzinsen je mittlerem Gesamtkapital. Die Umsatzrendite setzt den klar abgegrenzten Gewinn ins Verhältnis zum Umsatz derselben Periode. Verschiedene Nenner beantworten verschiedene Fragen.
+Quelle: 2.4.1
+
+### Warum ist eine Umsatzrendite kein Cashflow?
+Die Rendite ist ein Verhältnis von Gewinn zu Umsatz in Prozent. Ein Cashflow ist dagegen ein Zahlungsüberschuss in Euro je Periode. Gewinn enthält beispielsweise Abschreibung und möglicherweise kalkulatorische Positionen; deshalb ist er nicht automatisch ein Zahlungsüberschuss.
+Quelle: 2.4.1
+
+### Warum wird die Abschreibung bei der Amortisationsrechnung zum Gewinn addiert?
+Sie hat den Jahresgewinn vermindert, ist im jeweiligen Jahr aber keine Auszahlung. Die Mitschrift B31 verwendet deshalb den vereinfachten Rückfluss Gewinn plus Abschreibung. Weil der Gewinn dabei nach kalkulatorischen Zinsen abgegrenzt ist, muss diese Konvention ausdrücklich benannt werden.
+Quelle: 2.5
+Abbildung: amortisationsverlauf
+
+### Warum kann ein höherer Jahresgewinn mit einer längeren Amortisationszeit zusammenfallen?
+Auch der zurückzugewinnende Kaufbetrag kann höher sein. Steigt dieser stärker als der jährliche Rückfluss, dauert die Rückgewinnung länger. Ein Verfahren für Rückgewinnungszeit und ein Verfahren für Jahresgewinn beantworten verschiedene Fragen.
+Quelle: 2.5
+Abbildung: amortisationsverlauf
+
+### Was erfasst eine kurze Amortisationszeit nicht?
+Sie sagt nicht, wie viel Erfolg nach dem Rückgewinnungszeitpunkt noch entsteht. Auch die genaue zeitliche Lage einzelner Zahlungen geht in die statische Durchschnittsmethode nicht ein. Deshalb ergänzt sie ein Gewinn- oder Rentabilitätsurteil.
+Quelle: 2.5
+Abbildung: amortisationsverlauf
+
+### Was unterscheidet die kritische Kostenmenge von der Gewinnschwelle?
+An der kritischen Kostenmenge kosten zwei Alternativen gleich viel. An der Gewinnschwelle deckt der Erlös die Kosten einer Alternative und deren Gewinn ist null. Am Kosten-Schnittpunkt können beide Anlagen bereits Gewinn oder auch noch Verlust erzielen.
+Quelle: 2.6
+Abbildung: kritische-auslastung
+
+### Warum müssen variable Jahreskosten vor dem Aufstellen einer Kostenfunktion in Stückkosten umgerechnet werden?
+Die Steigung multipliziert sich mit einer Stückzahl und muss deshalb Euro je Stück sein. Ein Jahresgesamtbetrag enthält die betrachtete Menge schon. Erst das Teilen durch diese Menge liefert den variablen Stückbetrag.
+Quelle: 2.6
+Abbildung: kritische-auslastung
+
+### Wann haben Kostenvergleich und Gewinnvergleich dieselbe kritische Menge?
+Wenn beide Alternativen bei derselben Menge denselben Stückerlös erzielen. Dann fällt der gemeinsame Erlös beim Gleichsetzen der Gewinne heraus. Bei verschiedenen Preisen muss man die Gewinnfunktionen mit ihren jeweils eigenen Erlösen gleichsetzen.
+Quelle: 2.6
+Abbildung: map-kritisch
+
+### Zeichne die Begriffslandkarte zu Kapitel 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Anschaffungskosten, Restwert und Nutzungsdauer führen zu Abschreibung und mittlerer Kapitalbindung. Mit Zins und Betriebskosten entstehen die Jahreskosten. Die KVR vergleicht diese Kosten; die GVR ergänzt Menge und Erlös zum Gewinn. Die RVR bezieht den passenden Erfolg auf Kapital und berücksichtigt gegebenenfalls die Differenzinvestition. Die AVR prüft die Rückgewinnungszeit, während die kritische Menge einen Wechsel des Vorteils bei anderer Auslastung zeigt.
+Quelle: 2.1
+Abbildung: map-investitionskosten

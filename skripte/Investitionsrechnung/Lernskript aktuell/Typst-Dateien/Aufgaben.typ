@@ -167,7 +167,7 @@ Kapazität 7 000 Stück pro Stunde; tatsächliche Produktion 4 900 Stück pro St
 ]
 
 // 0-11
-#aufgabe(titel: "Kurz- und langfristige Preisuntergrenze", art: "verstehen", quelle: "1.6.2")[
+#aufgabe(titel: "Kurz- und langfristige Preisuntergrenze", art: "verstehen", quelle: "1.6.3")[
 #if not web [*Aufgabe 11* #linebreak()]
 *Preisuntergrenzen:* Weshalb unterscheiden sich die kurz- und langfristige Grenze im einfachen Modell? Bedeutet $e_"Z"=k_v$ bereits einen zusätzlichen Gewinn? (Ergänzung aus L15, PDF-S. 8.)
 ][
@@ -211,7 +211,7 @@ Kapazität 7 000 Stück pro Stunde; tatsächliche Produktion 4 900 Stück pro St
 #if not web [*Aufgabe 16* #linebreak()]
 *Zusammenhang:* Wie helfen Kostenfunktion und DB beim späteren Beurteilen einer neuen Maschine? Beschreibe nur die Verbindung zur bisherigen Basis. (Gliederung, PDF-S. 1; L15, PDF-S. 1 und 13.)
 ][
-*Verbindung:* Eine neue Maschine kann den festen Kostenblock, die variablen Stückkosten und die mögliche Menge verändern. Die KLR macht diese Folgen vergleichbar. Die Gliederung baut darauf später Kosten-, Gewinn-, Rentabilitäts- und Amortisationsrechnung auf; deren zusätzliche Regeln sind noch nicht Gegenstand dieses Skripts.
+*Verbindung:* Eine neue Maschine kann den festen Kostenblock, die variablen Stückkosten und die mögliche Menge verändern. Die KLR macht diese Folgen vergleichbar. Die Gliederung baut darauf später Kosten-, Gewinn-, Rentabilitäts- und Amortisationsrechnung auf; deren zusätzliche Regeln jetzt in Kapitel 2 erklärt werden.
 ]
 
 // 0-17
@@ -256,7 +256,7 @@ $K_f=50 000$ €/Monat, $k_v=20$ €/Stück, $e=45$ €/Stück.
 ]
 
 // 0-20
-#aufgabe(titel: "Nettopreis aus dem Bruttopreis", art: "rechnen", quelle: "1.5",
+#aufgabe(titel: "Nettopreis aus dem Bruttopreis", art: "rechnen", quelle: "1.1",
   ergebnis: [$e = 200$ €/Stück],
   tipp: [Brutto ist netto plus 19 %, also netto mal 1,19.],
 )[
@@ -382,11 +382,14 @@ Kapazität 1 000 Verkaufspackungen/Monat, nur Auftragsproduktion.  Kostendaten: 
 ][
 *Modell:* Packungen pro Monat, Produktion gleich Absatz, Nettopreise; $K_f$ und $k_v$ bleiben bis 1 000 Packungen unverändert. Die beiden Preisentscheidungen sind Alternativen.
 ][
-*Kosten aufteilen:* $K_f=9000+1600+400+3000+6000=20 000$ €/Monat. $k_v=6+22+2=30$ €/Packung. Somit $K(x)=20 000+30x$; die vollständige Kostentabelle steht in Abschnitt 1.3. Die dortigen fünf Zeilen sind die Lösung zu a).
+*Kosten aufteilen:* $K_f=9000+1600+400+3000+6000=20 000$ €/Monat. $k_v=6+22+2=30$ €/Packung. Somit $K(x)=20 000+30x$; die Kosten je Menge sind:
+#tab(columns: (1fr,1fr,1fr,1fr,1fr), th([$x$],[$K_f$ €],[$K_v$ €],[$K$ €],[$k$ €/Pack.]),
+ [200],[20 000],[6 000],[26 000],[130,00], [400],[20 000],[12 000],[32 000],[80,00], [600],[20 000],[18 000],[38 000],[63,33], [800],[20 000],[24 000],[44 000],[55,00], [1 000],[20 000],[30 000],[50 000],[50,00])
 ][
 *600 Packungen:* $E=70 dot 600=42 000$ €, $K=20 000+30 dot 600=38 000$ €. *$G=+4000$ €*. Gegenprobe: $(70-30) dot 600-20 000=+4000$ €.
 ][
-*BEP und Skizze:* $d b_"I"=40$ €/Packung, $x_"BEP"=20 000/40=500$ Packungen; $E_"BEP"=70 dot 500=35 000$ €. Die Zeichnung in Abschnitt 1.5 zeigt $E=70x$ und $K=20 000+30x$ mit Schnittpunkt $(500;35 000)$.
+*BEP und Skizze:* $d b_"I"=40$ €/Packung, $x_"BEP"=20 000/40=500$ Packungen; $E_"BEP"=70 dot 500=35 000$ €. Die Geraden sind $E=70x$ und $K=20 000+30x$ mit Schnittpunkt $(500;35 000)$.
+#bild("bep-aufgabe1", [Eigene Darstellung nach Ü 1, PDF-S. 1.], height: 55mm)
 ][
 *Maximum:* Positiver Stück-DB und vollständiger Absatz bis Kapazität: *$G(1000)=40 dot 1000-20 000=+20 000$ €*.
 ][
@@ -425,7 +428,8 @@ Bei 3 000 Stück entstehen 75 000 € Gesamtkosten, darunter 30 000 € fixe Kos
 ][
 *Erlös und Preis:* $E=G+K=-12 000+75 000=63 000$ €, $e=63 000/3000=21$ €/Stück. Probe: $63 000-75 000=-12 000$ €.
 ][
-*Gewinnschwelle:* $x_"BEP"=30 000/(21-15)=5000$ Stück. Grafisch schneiden sich $E=21x$ und $K=30 000+15x$ bei 5 000 Stück und 105 000 €. Die Abbildung in Abschnitt 1.8.1 zeigt die rechnerische Fortsetzung außerhalb der Kapazität.
+*Gewinnschwelle:* $x_"BEP"=30 000/(21-15)=5000$ Stück. Grafisch schneiden sich $E=21x$ und $K=30 000+15x$ bei 5 000 Stück und 105 000 €. Die Kostenlinie ist außerhalb der Kapazität nur rechnerisch fortgesetzt.
+#bild("bep-ausserhalb", [Eigene Darstellung nach Ü 2, PDF-S. 2.], height: 55mm)
 ][
 *Kapazität:* *$G(4500)=6 dot 4500-30 000=-3000$ €*. Mit den vorhandenen Zahlen ist Gewinn nicht möglich. Preis/Kosten ändern oder eine Kapazitätsänderung einschließlich neuer Kosten untersuchen.
 ][
@@ -543,7 +547,7 @@ Ein Einproduktbetrieb stellt Kunststoffbehälter für Gartenabfälle her. Preis 
 
 #enum(numbering: "a)",
 [Jährliche BEP-Menge und BEP-Umsatz?],
-[Betriebsergebnis bei 10 000 Stück? Der Teil zur Umsatzrentabilität bleibt dem späteren Kennzahlenstoff vorbehalten.],
+[Betriebsergebnis und Umsatzrendite bei 10 000 Stück? Die Umsatzrendite ist in 2.4.1 eingeordnet.],
 )
 ][
 *Modell:* Jahresbetrachtung, Material und Fertigungslohn proportional, fixe Jahreskosten konstant; vollständiger Absatz.
@@ -552,7 +556,7 @@ Ein Einproduktbetrieb stellt Kunststoffbehälter für Gartenabfälle her. Preis 
 ][
 *Schwelle:* *$x_"BEP"=900 000/120=7500$ Stück/Jahr*. BEP-Umsatz *$E_"BEP"=200 dot 7500=1 500 000$ €/Jahr*.
 ][
-*10 000 Stück:* $E=2 000 000$ €, $K=900 000+80 dot 10 000=1 700 000$ €. *$G=+300 000$ €/Jahr*.
+*10 000 Stück:* $E=2 000 000$ €, $K=900 000+80 dot 10 000=1 700 000$ €. *$G=+300 000$ €/Jahr*. Die Umsatzrendite ist $300000/2000000 dot 100 %=15 %$; sie bezieht den Gewinn auf den Umsatz, siehe Abschnitt 2.4.1.
 ][
 *Prüfung:* Bei 7 500 Stück sind Erlös und Kosten je 1,5 Mio. €; 2 500 weitere Stück liefern $2500 dot 120=300 000$ € Gewinn. Eine Kapazitätsangabe fehlt, daher keine gesicherte Aussage zur maximalen Menge. Quelle: A13, PDF-S. 3–4, KLR-Fall, Teile a–b; Einzelseiten 3.pdf/4.pdf.
 ]
@@ -924,3 +928,409 @@ März 4 000 Stück, $K=150 000$ €; April 5 000 Stück, $K=175 000$ €. Verkau
 *Prüfung:* Aprilkosten $50 000+25 dot 5000=175 000$ €; 3 333 Stück ergeben −5 €, 3 334 +10 €. Die Zusatz- und Zielrechnungen haben jeweils einen eigenen klaren Kapazitätstest.
 ]
 
+
+#kapitel("Kapitel 2 · Statische Investitionsrechnung")
+
+#aufgabe(titel: "Backofen 23: Kosten bei gleicher Jahresmenge", art: "rechnen", quelle: "2.2", ergebnis: [Normalo-Back; 19 320 gegenüber 21 430 €/Jahr.])[
+#if not web [*Aufgabe 43* #linebreak()]
+*Gegeben und Annahmen*
+
+#tab(columns: (2fr, 1fr, 1fr),
+ th([Jahresdaten], [Normalo-Back], [Back de luxe]),
+ [Anschaffungskosten €], [18 000], [32 000],
+ [Nutzungsdauer / Restwert], [5 Jahre / 0 €], [5 Jahre / 0 €],
+ [Kalkulationszins pro Jahr], [8 %], [8 %],
+ [Material €/Brötchen], [0,10], [0,08],
+ [Variable Energie €/Brötchen], [0,02], [0,01],
+ [Fixe Energie €/Jahr], [1 500], [1 900],
+ [Reparaturen €/Jahr], [1 000], [2 000],
+ [Raumkosten €/Jahr], [500], [850],
+)
+Lineare Abschreibung, mittlere Kapitalbindung $(A K+R W)/2$, konstante Jahreswerte. Produzierte Mengen werden vollständig verkauft. Sonstige Steuern und zusätzliche Zahlungen werden nicht angesetzt.
+Geplante Jahresmenge für beide: 100 000 Brötchen.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Abschreibung, kalkulatorische Zinsen, fixe und variable Kosten je Ofen.],
+[Bestimme Gesamtkosten und die günstigere Alternative bei gleichwertiger Leistung.],
+)
+#src[B31, Aufgabe 23, PDF-S. 1–3; B27, PDF-S. 1–2; selbst nachgerechnet.]
+][
+*Kapitaldienst bilden:* Der Kaufbetrag wird auf fünf Jahre verteilt; Zinsen beziehen sich auf den Mittelwert. Normalo: $A=18000/5=3600$ €/Jahr, $Z=9000 dot "0,08"=720$ €/Jahr. Back: $A=32000/5=6400$ €/Jahr, $Z=16000 dot "0,08"=1280$ €/Jahr.
+][
+*Fixkosten sammeln:* Normalo $K_f=3600+720+1500+1000+500=7320$ €/Jahr. Back $K_f=6400+1280+1900+2000+850=12430$ €/Jahr. Abschreibung und Zinsen sind darin bereits enthalten.
+][
+*Mengenabhängige Kosten:* Normalo $k_v="0,10"+"0,02"="0,12"$ €/Brötchen, also $K_v=12000$ €/Jahr. Back $k_v="0,08"+"0,01"="0,09"$ €/Brötchen, also $K_v=9000$ €/Jahr.
+][
+*Entscheiden und prüfen:* $K_N=7320+12000=19320$ €/Jahr, $K_B=12430+9000=21430$ €/Jahr. Normalo ist um *2 110 €/Jahr günstiger*. Gegenprobe Stückkosten: 0,1932 gegenüber 0,2143 €/Brötchen bei derselben Menge. Das Urteil setzt vergleichbare Leistung/Erlöse voraus.
+]
+
+#aufgabe(titel: "Backofen 24: Kosten bei unterschiedlicher Leistung", art: "rechnen", quelle: "2.2")[
+#if not web [*Aufgabe 44* #linebreak()]
+*Gegeben und Annahmen*
+
+#tab(columns: (2fr, 1fr, 1fr),
+ th([Jahresdaten], [Normalo-Back], [Back de luxe]),
+ [Anschaffungskosten €], [18 000], [32 000],
+ [Nutzungsdauer / Restwert], [5 Jahre / 0 €], [5 Jahre / 0 €],
+ [Kalkulationszins pro Jahr], [8 %], [8 %],
+ [Material €/Brötchen], [0,10], [0,08],
+ [Variable Energie €/Brötchen], [0,02], [0,01],
+ [Fixe Energie €/Jahr], [1 500], [1 900],
+ [Reparaturen €/Jahr], [1 000], [2 000],
+ [Raumkosten €/Jahr], [500], [850],
+)
+Lineare Abschreibung, mittlere Kapitalbindung $(A K+R W)/2$, konstante Jahreswerte. Produzierte Mengen werden vollständig verkauft. Sonstige Steuern und zusätzliche Zahlungen werden nicht angesetzt.
+Normalo kann jährlich nur 100 000, Back de luxe 150 000 Brötchen herstellen. 150 000 Brötchen wären absetzbar. Kostenstruktur wie in der Tabelle.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Vergleiche die Stückkosten bei jeweils voll genutzter Kapazität.],
+[Beurteile die Wahl und die Bedeutung der Kapazitätsgrenze.],
+)
+#src[B31, Aufgabe 24, PDF-S. 1 und 3; B27, PDF-S. 1–2.]
+][
+*Vergleichsbasis wählen:* Die Jahresmengen sind verschieden. Ein bloßer Vergleich zweier Gesamtkosten sagt dann nicht, welcher Ofen dieselbe Leistung günstiger bereitstellt. Berechne zunächst Kosten je Brötchen.
+][
+*Normalo berechnen:* $K_f=18000/5+9000 dot "0,08"+1500+1000+500=7320$ €/Jahr. $k_N=7320/100000+"0,12"="0,1932"$ €/Brötchen.
+][
+*Back berechnen:* $K_f=32000/5+16000 dot "0,08"+1900+2000+850=12430$ €/Jahr. $K_B=12430+"0,09" dot 150000=25930$ €/Jahr. $k_B=25930/150000 approx "0,17287"$ €/Brötchen.
+][
+*Entscheiden und prüfen:* Back de luxe hat bei dieser Auslastung niedrigere Stückkosten und schafft die absetzbaren 150 000 Stück. Normalo kann diese Menge allein nicht liefern. Ob beide Erlöse dieselbe Gewinnentscheidung ergeben, ist ohne Preise nicht berechnet; die KVR setzt eine passende Leistungsbasis voraus.
+]
+
+#aufgabe(titel: "Backofen 25: Gewinn durch unterschiedliche Qualität", art: "rechnen", quelle: "2.3", ergebnis: [Normalo +5 680, Back de luxe +8 570 €/Jahr; GVR: Back de luxe.])[
+#if not web [*Aufgabe 45* #linebreak()]
+*Gegeben und Annahmen*
+
+#tab(columns: (2fr, 1fr, 1fr),
+ th([Jahresdaten], [Normalo-Back], [Back de luxe]),
+ [Anschaffungskosten €], [18 000], [32 000],
+ [Nutzungsdauer / Restwert], [5 Jahre / 0 €], [5 Jahre / 0 €],
+ [Kalkulationszins pro Jahr], [8 %], [8 %],
+ [Material €/Brötchen], [0,10], [0,08],
+ [Variable Energie €/Brötchen], [0,02], [0,01],
+ [Fixe Energie €/Jahr], [1 500], [1 900],
+ [Reparaturen €/Jahr], [1 000], [2 000],
+ [Raumkosten €/Jahr], [500], [850],
+)
+Lineare Abschreibung, mittlere Kapitalbindung $(A K+R W)/2$, konstante Jahreswerte. Produzierte Mengen werden vollständig verkauft. Sonstige Steuern und zusätzliche Zahlungen werden nicht angesetzt.
+Beide Öfen verkaufen 100 000 Stück/Jahr. Normalo erzielt 0,25 €/Brötchen netto, Back de luxe mit Vollkornbrötchen 0,30 €/Stück netto.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne die Jahresgewinne und die Gewinndifferenz.],
+[Erkläre, warum das Urteil vom reinen Kostenvergleich abweicht.],
+)
+#src[B31, Aufgabe 25, PDF-S. 1 und 3; B27, PDF-S. 2.]
+][
+*Jahreskosten aufbauen:* Aus den Daten folgen $K_N=7320+"0,12" dot 100000=19320$ €/Jahr und $K_B=12430+"0,09" dot 100000=21430$ €/Jahr; beide enthalten Abschreibung und kalkulatorische Zinsen.
+][
+*Erlöse bestimmen:* $E_N="0,25" dot 100000=25000$ €/Jahr; $E_B="0,30" dot 100000=30000$ €/Jahr. Die bessere Qualität ist hier über den vorgegebenen Preis erfasst.
+][
+*Gewinne vergleichen:* $G_N=25000-19320=+5680$ €/Jahr; $G_B=30000-21430=+8570$ €/Jahr. Back de luxe erzielt *2 890 €/Jahr mehr Gewinn*.
+][
+*Prüfen:* Mehrerlös 5 000 € minus Mehrkosten 2 110 € ergibt dieselben 2 890 €. Deshalb bevorzugt die GVR Back de luxe, obwohl die KVR bei gleicher Menge Normalo bevorzugt.
+]
+
+#aufgabe(titel: "Backofen 26: Rentabilität mit Differenzinvestition", art: "rechnen", quelle: "2.4", ergebnis: [Mit gedrucktem Differenzertrag: 52,50 % für Normalo plus Alternative, 61,5625 % für Back.])[
+#if not web [*Aufgabe 46* #linebreak()]
+*Gegeben und Annahmen*
+
+#tab(columns: (2fr, 1fr, 1fr),
+ th([Jahresdaten], [Normalo-Back], [Back de luxe]),
+ [Anschaffungskosten €], [18 000], [32 000],
+ [Nutzungsdauer / Restwert], [5 Jahre / 0 €], [5 Jahre / 0 €],
+ [Kalkulationszins pro Jahr], [8 %], [8 %],
+ [Material €/Brötchen], [0,10], [0,08],
+ [Variable Energie €/Brötchen], [0,02], [0,01],
+ [Fixe Energie €/Jahr], [1 500], [1 900],
+ [Reparaturen €/Jahr], [1 000], [2 000],
+ [Raumkosten €/Jahr], [500], [850],
+)
+Lineare Abschreibung, mittlere Kapitalbindung $(A K+R W)/2$, konstante Jahreswerte. Produzierte Mengen werden vollständig verkauft. Sonstige Steuern und zusätzliche Zahlungen werden nicht angesetzt.
+Je 100 000 Stück/Jahr; Nettopreise 0,25 / 0,30 €/Stück. Als geprüfte Jahreswerte nach kalkulatorischen Zinsen gelten $G_N=5680$ €, $G_B=8570$ €, $Z_N=720$ €, $Z_B=1280$ €. Das freie Kapital der billigeren Alternative beträgt 14 000 €. Laut Aufgabentext erzielt dessen Alternativverwendung 2 000 € Ertrag; angenommen ist ein jährlicher Ertrag vor kalkulatorischen Zinsen. Für den gemeinsamen Budgetvergleich wird wie in der Mitschrift die durchschnittliche Differenzbindung mit 7 000 € angesetzt.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne zuerst die isolierten Rentabilitäten.],
+[Vergleiche beide Alternativen bei gemeinsamem Budget und dem gedruckten Differenzertrag.],
+[Prüfe die Mitschrift: 1 000 € Differenzertrag und 52,9 %.],
+)
+#src[B31, Aufgabe 26, PDF-S. 1 und 4; Jahresbezug als Modellannahme; Quellenabweichung selbst geprüft.]
+][
+*Gewinngröße abstimmen:* Für die Verzinsung vor kalkulatorischen Zinsen werden diese zurückaddiert. Normalo $G_N+Z_N=6400$ €/Jahr, Back $G_B+Z_B=9850$ €/Jahr.
+][
+*Isolierte Prozentsätze:* $R_N=6400/9000 dot 100 % approx "71,11" %$; $R_B=9850/16000 dot 100 %="61,5625" %$. Die isolierte Rangfolge bevorzugt Normalo; sie sagt noch nichts über den Ertrag des freien Budgets.
+][
+*Differenz einbeziehen:* Beide Budgetvarianten haben jetzt 16 000 € mittlere Bindung. $R_("N+Diff")=(6400+2000)/(9000+7000) dot 100 %="52,50" %$. Back de luxe bleibt bei 61,5625 % und ist im vorgegebenen Budgetvergleich besser.
+][
+*Quelle sichtbar prüfen:* In der Mitschrift stehen 1 000 € statt der gedruckten 2 000 €. Mit 1 000 € ergäbe die notierte Formel *46,25 %*, nicht 52,9 %. Keine der beiden Zahlen wird still übernommen. Die Halbierung der Kapitalbindung erlaubt nicht, einen gegebenen Jahresertrag zu halbieren.
+][
+*Plausibilität:* Der kleine isolierte Nenner begünstigte Normalo. Erst die festgelegte Alternative für das freie Kapital macht den Gesamtbudgetvergleich möglich. Die Entscheidung hängt ausdrücklich von diesem Differenzmodell ab.
+]
+
+#aufgabe(titel: "Backofen 27: Amortisationszeiten vergleichen", art: "rechnen", quelle: "2.5", ergebnis: [B31-Konvention: Normalo ca. 1,94 Jahre, Back ca. 2,14 Jahre.])[
+#if not web [*Aufgabe 47* #linebreak()]
+*Gegeben und Annahmen*
+
+#tab(columns: (2fr, 1fr, 1fr),
+ th([Jahresdaten], [Normalo-Back], [Back de luxe]),
+ [Anschaffungskosten €], [18 000], [32 000],
+ [Nutzungsdauer / Restwert], [5 Jahre / 0 €], [5 Jahre / 0 €],
+ [Kalkulationszins pro Jahr], [8 %], [8 %],
+ [Material €/Brötchen], [0,10], [0,08],
+ [Variable Energie €/Brötchen], [0,02], [0,01],
+ [Fixe Energie €/Jahr], [1 500], [1 900],
+ [Reparaturen €/Jahr], [1 000], [2 000],
+ [Raumkosten €/Jahr], [500], [850],
+)
+Lineare Abschreibung, mittlere Kapitalbindung $(A K+R W)/2$, konstante Jahreswerte. Produzierte Mengen werden vollständig verkauft. Sonstige Steuern und zusätzliche Zahlungen werden nicht angesetzt.
+Jahresmenge je 100 000 Stück, Nettopreise 0,25 / 0,30 €. Geprüfte Gewinne nach kalkulatorischen Zinsen: Normalo 5 680 €/Jahr, Back 8 570 €/Jahr. Diese Gewinne sind Durchschnittswerte. Verwende wie B31 den Rückfluss $G+A$; keine Differenzinvestition.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Berechne Rückfluss und Amortisationszeit beider Öfen.],
+[Prüfe die Nutzungsdauer und erkläre den Unterschied zur Gewinnentscheidung.],
+)
+#src[B31, Aufgabe 27, PDF-S. 1 und 4; Abgrenzung ergänzend erklärt.]
+][
+*Rückflusskonvention wählen:* In B31 wird die Abschreibung zum gegebenen Gewinn zurückaddiert. Normalo $A=3600$, Back $A=6400$ €/Jahr. Abschreibung ist Wertverbrauch, keine laufende Auszahlung.
+][
+*Rückflüsse bestimmen:* Normalo $r_N=5680+3600=9280$ €/Jahr; Back $r_B=8570+6400=14970$ €/Jahr. Es sind vereinfachte Rückflüsse nach kalkulatorischen Zinsen, keine ungeprüft gleichzusetzenden Zahlungsüberschüsse.
+][
+*Zeiten berechnen:* $t_N=18000/9280 approx "1,9397"$ Jahre; $t_B=32000/14970 approx "2,1376"$ Jahre. Nach diesem Kriterium wird *Normalo* bevorzugt.
+][
+*Prüfen und einordnen:* Beide Zeiten liegen unter fünf Jahren. Back hat zwar einen höheren Jahresgewinn, muss aber einen deutlich größeren Kaufbetrag zurückverdienen. Die AVR bewertet die Rückgewinnungszeit; Gewinne nach dieser Zeit gehen nicht in die Kennzahl ein. Bei der ausdrücklich anderen Abgrenzung vor kalkulatorischen Zinsen wären $G+A+Z$ und damit 1,80 bzw. etwa 1,97 Jahre anzusetzen.
+]
+
+#aufgabe(titel: "Schaltmodule 032: Vier statische Verfahren", art: "rechnen", quelle: "2.4", ergebnis: [KVR: A; GVR und RVR: B; AVR nach B31: B knapp vor A.])[
+#if not web [*Aufgabe 48* #linebreak()]
+*Gegeben und Annahmen*
+
+Beide Anlagen: Nutzungsdauer 10 Jahre, Kapazität je 15 000 Module/Jahr, geplante Auslastung 80 %, Kalkulationszins 9 % pro Jahr. Mittlere Bindung ist ausdrücklich die Hälfte der Anschaffungskosten. Ein Restwert ist nicht angegeben; für die lineare Abschreibung wird 0 € angenommen. Alle Stücke werden verkauft, Werte bleiben im Jahresmodell konstant.
+#tab(columns: (2fr,1fr,1fr),
+ th([Daten], [Anlage A], [Anlage B]),
+ [Anschaffungskosten €], [300 000], [360 000],
+ [Sonstige Fixkosten €/Jahr], [32 000], [38 000],
+ [Variable Kosten €/Stück], [24,00], [25,00],
+ [Nettopreis €/Stück], [36,80], [40,50],
+)
+Für den Budgetvergleich der RVR verwende die Differenzanlage wie in der Mitschrift: 60 000 € Anfangskapital, 30 000 € durchschnittlich gebunden, Ertrag 5 400 €/Jahr (9 % des Anfangskapitals). AVR wie B31 mit $G+A$.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle Planmenge, Kosten und KVR-Urteil.],
+[Berechne Jahresgewinne und GVR-Urteil.],
+[Bestimme isolierte und budgetgleiche Rentabilitäten.],
+[Berechne die Amortisationszeiten und beurteile die Verfahren.],
+)
+#src[S32, Aufgabenstellung PDF-S. 1 und Mitschrift S. 2–3; AVR vollständig ergänzt; B31, S. 4 für deren Konvention.]
+][
+*Planmenge:* $x="0,80" dot 15000=12000$ Module/Jahr. Kapazität und Auslastung gelten für beide; Preise unterscheiden sich wegen der Qualität.
+][
+*Kapitaldienst:* A: $A_A=300000/10=30000$, $Z_A=150000 dot "0,09"=13500$ €/Jahr. B: $A_B=36000$, $Z_B=180000 dot "0,09"=16200$ €/Jahr.
+][
+*Kostenvergleich:* $K_(f,A)=30000+13500+32000=75500$, $K_(f,B)=36000+16200+38000=90200$ €/Jahr. $K_A=75500+24 dot 12000=363500$, $K_B=90200+25 dot 12000=390200$ €/Jahr. KVR bevorzugt *A*, um 26 700 €/Jahr günstiger; die unterschiedlichen Erlöse bleiben dabei unberücksichtigt.
+][
+*Gewinnvergleich:* $E_A="36,80" dot 12000=441600$, $E_B="40,50" dot 12000=486000$ €/Jahr. $G_A=+78100$, $G_B=+95800$ €/Jahr. GVR bevorzugt *B*, Mehrgewinn 17 700 €/Jahr.
+][
+*Isolierte Rentabilitäten:* $R_A=(78100+13500)/150000 dot 100 % approx "61,07" %$; $R_B=(95800+16200)/180000 dot 100 % approx "62,22" %$. Gewinne sind vor dem Teilen um die kalkulatorischen Zinsen bereinigt.
+][
+*Differenzanlage:* $R_("A+Diff")=(91600+5400)/(150000+30000) dot 100 % approx "53,89" %$. B bleibt bei 62,22 %. Im vorgegebenen Budgetmodell ist *B* besser. Der Ertrag 5 400 € folgt hier dem Mitschriftmodell; 9 % auf die mittlere Differenzbindung wären eine andere Annahme.
+][
+*Amortisation:* $t_A=300000/(78100+30000) approx "2,7752"$ Jahre; $t_B=360000/(95800+36000) approx "2,7314"$ Jahre. Beide unter zehn Jahren, B etwas schneller. „AVR = gleich“ in S32, S. 3 ist kein exaktes Ergebnis.
+][
+*Verfahren beurteilen und prüfen:* KVR ignoriert den Qualitätsmehrerlös und ist deshalb allein unzureichend. GVR bevorzugt den höheren Jahresgewinn; RVR bezieht ihn auf Kapital und Alternativverwendung. AVR ergänzt die Rückgewinnungsdauer, erfasst aber nicht den gesamten späteren Erfolg. Mehrerlös 44 400 minus Mehrkosten 26 700 ergibt als Gegenprobe 17 700 € Mehrgewinn. Alle Verfahren beruhen auf den genannten statischen Annahmen.
+]
+
+#aufgabe(titel: "Maschine 20: Kapitaldienst und Aussagegrenze", art: "rechnen", quelle: "2.1")[
+#if not web [*Aufgabe 49* #linebreak()]
+*Gegeben und Annahmen*
+
+Anschaffung 140 000 €, Nutzungsdauer 7 Jahre, Auslastung 28 000 Stück/Jahr. Fixe Kosten ohne Abschreibungen und Zinsen 15 000 €/Jahr; variable Gesamtkosten bei dieser Menge 180 000 €/Jahr; Kalkulationszins 10 % pro Jahr. Lineare Abschreibung und kontinuierliche Kapitalrückflüsse, Restwertannahme 0 €. Kein Erlös und kein anderes Angebot gegeben.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle Kapitaldienst, Betriebskosten und Gesamtkosten je Jahr.],
+[Kannst Du die Investition als vorteilhaft beurteilen?],
+)
+#src[KD, Aufgabe 20, PDF-S. 1–2.]
+][
+*Kapitaldienst:* $A=140000/7=20000$ €/Jahr; $Z=140000/2 dot "0,10"=7000$ €/Jahr. Daher $K D=27000$ €/Jahr. Der Kaufbetrag ist keine jährliche Betriebskostenposition.
+][
+*Betriebskosten:* $B K=15000+180000=195000$ €/Jahr. Abschreibung und Zinsen sind laut Aufgabe in diesen Werten noch nicht enthalten.
+][
+*Gesamtkosten:* $K=27000+195000=222000$ €/Jahr. Rechnerische Stückkosten $222000/28000 approx "7,93"$ €/Stück.
+][
+*Aussage prüfen:* Ohne Erlös oder Vergleichsangebot/Kostenobergrenze ist kein Vorteilhaftigkeitsurteil möglich. Die Kostenbasis ist berechnet; daraus folgt allein noch kein Gewinn.
+]
+
+#aufgabe(titel: "Maschine 21: Zwei Angebote mit gleichem Output", art: "rechnen", quelle: "2.2")[
+#if not web [*Aufgabe 50* #linebreak()]
+*Gegeben und Annahmen*
+
+Zwei Angebote mit je 7 Jahren Nutzungsdauer, 28 000 Stück/Jahr und 10 % Kalkulationszins pro Jahr. Lineare Abschreibung, kontinuierliche Rückflüsse, Restwert jeweils 0 € als Modellannahme. Identische Leistung und Erlösbasis.
+#tab(columns: (2fr,1fr,1fr),
+ th([Daten], [Angebot 1], [Angebot 2]),
+ [Anschaffungskosten €], [140 000], [161 000],
+ [Sonstige Fixkosten €/Jahr], [15 000], [14 000],
+ [Variable Gesamtkosten €/Jahr], [180 000], [165 000],
+)
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Vergleiche Kapitaldienst, Betriebs- und Gesamtkosten tabellarisch.],
+[Welche Alternative ist nach der KVR vorteilhafter?],
+)
+#src[KD, Aufgaben 20–21, PDF-S. 1–3.]
+][
+*Kapitaldienst beider Anlagen:* Angebot 1: $A=20000$, $Z=7000$, $K D=27000$ €/Jahr. Angebot 2: $A=161000/7=23000$, $Z=80500 dot "0,10"=8050$, $K D=31050$ €/Jahr.
+][
+*Jahresvergleich:*
+#tab(columns: (1.7fr,1fr,1fr), th([€/Jahr],[Angebot 1],[Angebot 2]), [Kapitaldienst],[27 000],[31 050], [Betriebskosten],[195 000],[179 000], [Gesamtkosten],[222 000],[210 050])
+][
+*Entscheiden:* Angebot 2 spart $222000-210050=11950$ €/Jahr. Trotz höherem Kaufbetrag ist es bei gleicher Leistung im Kostenvergleich vorteilhafter.
+][
+*Prüfen:* Höherer Kapitaldienst 4 050 € wird durch 16 000 € niedrigere Betriebskosten mehr als ausgeglichen: $16000-4050=11950$ €/Jahr. Ein isolierter Blick auf den Kaufpreis hätte die Betriebskostenvorteile übersehen.
+]
+
+#aufgabe(titel: "Kritische Auslastung: 47 000 und 30 000 Euro Fixkosten", art: "rechnen", quelle: "2.6", ergebnis: [Exakt 10 967,7419… Stück/Jahr; Objekt 1 ab 10 968 günstiger.])[
+#if not web [*Aufgabe 51* #linebreak()]
+*Gegeben und Annahmen*
+
+Objekt 1: Fixkosten 47 000 €/Jahr, variable Gesamtkosten 295 000 €/Jahr bei 20 000 Stück/Jahr. Objekt 2: Fixkosten 30 000 €/Jahr, variable Gesamtkosten 326 000 €/Jahr bei derselben Menge. Beide Kostenstrukturen sind linear und im untersuchten Bereich gültig. Leistung gleichwertig; Mengen 6 000, 18 000 und 20 000 Stück/Jahr sind für beide möglich und absetzbar.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Ermittle die beiden Kostenfunktionen und die exakte kritische Jahresmenge.],
+[Entscheide bei ganzen Stückzahlen sowie bei 6 000, 18 000 und 20 000 Stück.],
+[Zeichne die Kostenlinien und unterscheide den Schnittpunkt vom BEP.],
+)
+#src[KR, PDF-S. 1–3; Rundung und Randnotiz selbst geprüft.]
+][
+*Einheiten herstellen:* $k_(v,1)=295000/20000="14,75"$ €/Stück; $k_(v,2)=326000/20000="16,30"$ €/Stück. Deshalb $K_1=47000+"14,75"x$, $K_2=30000+"16,30"x$, jeweils €/Jahr.
+][
+*Gleichsetzen:* $47000+"14,75"x=30000+"16,30"x => x=17000/"1,55"="10967,7419…"$ Stück/Jahr. Der Schnittpunkt hat etwa 208 774,19 €/Jahr Kosten.
+][
+*Ganze Mengen richtig zuordnen:* $K_1-K_2=17000-"1,55"x$. Bei 10 967: +1,15 €, Objekt 2 günstiger; bei 10 968: −0,40 €, Objekt 1 günstiger. Gleichheit besteht nur an der exakten nicht ganzzahligen Grenze.
+][
+*Testmengen:* Bei 6 000: $K_1=135500$, $K_2=127800$ €, also Objekt 2. Bei 18 000: $K_1=312500$, $K_2=323400$ €, also Objekt 1. Bei 20 000: 342 000 gegenüber 356 000 €, also Objekt 1 mit 14 000 € Vorteil.
+][
+*Grafik und Bedeutung:*
+#bild("kritische-auslastung", [Eigene Darstellung nach KR, PDF-S. 2–3.], height: 57mm)
+Beide Linien sind Kostenfunktionen, keine ist eine Erlösfunktion. Der Schnittpunkt ist ein Wechsel des Kostenvorteils und sagt nicht, dass ein Gewinn null wäre.
+]
+
+#aufgabe(titel: "Blatt 09.1: Investitionsobjekte und kritische Menge", art: "rechnen", quelle: "2.6")[
+#if not web [*Aufgabe 52* #linebreak()]
+*Gegeben und Annahmen*
+
+Beide Objekte haben 20 000 Stück/Jahr Kapazität und erlösen netto 18 €/Stück. Objekt 1: vollständige Fixkosten 32 500 €/Jahr, variable Kosten 14 €/Stück. Objekt 2: vollständige Fixkosten 29 000 €/Jahr, variable Kosten 14,25 €/Stück. Kosten linear, keine weiteren Kosten; alle produzierten Stücke sind absetzbar. Für den ersten Vergleich wird volle Kapazitätsauslastung angenommen, da keine andere Planmenge genannt ist.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Vergleiche Kosten und Gewinne bei Vollauslastung.],
+[Bestimme die kritische Menge und den jeweils günstigeren Bereich.],
+)
+#src[C09, Aufgabe 1, PDF-S. 1–2; Vergleichsannahme und Bereichseinordnung ausdrücklich ergänzt.]
+][
+*Vergleichsmenge ausdrücklich festlegen:* Kapazität allein ist noch keine Planmenge. Hier wird wie in der Mitschrift zunächst mit $x=20000$ Stück/Jahr gerechnet.
+][
+*Jahresvergleich:* $E_1=E_2=18 dot 20000=360000$ €/Jahr. $K_1=32500+14 dot 20000=312500$, $K_2=29000+"14,25" dot 20000=314000$ €/Jahr. Daher $G_1=+47500$, $G_2=+46000$ €/Jahr; Objekt 1 ist um 1 500 € besser.
+][
+*Kritische Menge:* $32500+14x=29000+"14,25"x => "0,25"x=3500 => x=14000$ Stück/Jahr. Gleichwertige Erlöse fallen im Vergleich der Gewinne heraus.
+][
+*Prüfen und entscheiden:* Bei 14 000 Stück kosten beide 228 500 €, erlösen 252 000 € und gewinnen *23 500 €*. Das ist kein BEP. Unter 14 000 ist Objekt 2 günstiger, darüber bis Kapazität Objekt 1. Ohne Planmenge ist eine allgemeingültige Wahl nicht möglich.
+]
+
+#aufgabe(titel: "Blatt 09.2: Erweiterungsmaschine und Auslastungswechsel", art: "rechnen", quelle: "2.6", ergebnis: [a bei 12 000 und 8 000; kritische Menge ca. 7 344,83 Stück/Jahr.])[
+#if not web [*Aufgabe 53* #linebreak()]
+*Gegeben und Annahmen*
+
+Zwei Maschinen: je 8 Jahre Nutzungsdauer, 12 000 Stück/Jahr Kapazität, Nettopreis 8 €/Stück. Kapitaldienst und Betriebskosten sind bei Vollauslastung gegeben; Kapitaldienst bleibt fix. In den Betriebskosten enthaltene Fixanteile gelten auch bei anderen Mengen, der Rest ist proportional.
+#tab(columns: (2fr,1fr,1fr), th([Daten], [a], [b]),
+ [Anschaffung €], [80 000], [70 000],
+ [Kapitaldienst €/Jahr], [14 000], [12 250],
+ [Betriebskosten bei 12 000 €/Jahr], [62 000], [66 000],
+ [davon fix €/Jahr], [3 400], [1 600],
+)
+Die genannten Kapitaldienste enthalten Abschreibung und Zinsen vollständig; sie werden nicht erneut berechnet. Alle hergestellten Stücke werden verkauft.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Beurteile Angebot a allein und im Vergleich mit b bei 12 000 Stück/Jahr.],
+[Berechne Gewinne bei 8 000 Stück/Jahr.],
+[Ermittle die kritische Menge rechnerisch und grafisch.],
+)
+#src[C09, Aufgabe 2 a–d, PDF-S. 1–3 und 5. Fehlende c-Lösung ergänzt, Rundungs-/Vorzeichenfehler sichtbar korrigiert.]
+][
+*Vollauslastung:* Gemeinsamer Erlös $8 dot 12000=96000$ €/Jahr. $K_a=14000+62000=76000$, $K_b=12250+66000=78250$ €/Jahr. Gewinne +20 000 und +17 750 €/Jahr. Angebot a verdient unter diesen Annahmen einen positiven Gewinn und ist relativ zu b um 2 250 €/Jahr besser.
+][
+*Kostenfunktionen aufbauen:* $K_(f,a)=14000+3400=17400$, $K_(f,b)=12250+1600=13850$ €/Jahr. $k_(v,a)=(62000-3400)/12000=293/60="4,88333…"$ €/Stück; $k_(v,b)=(66000-1600)/12000=161/30="5,36666…"$ €/Stück. Brüche bis zum Ende behalten.
+][
+*8 000 Stück:* $E=64000$ €/Jahr. $K_a=17400+(293/60) dot 8000 approx "56466,67"$, $K_b=13850+(161/30) dot 8000 approx "56783,33"$ €/Jahr. Somit $G_a approx +"7533,33"$, $G_b approx +"7216,67"$ €/Jahr. a ist um etwa 316,67 € besser.
+][
+*Kritische Menge:* $17400+(293/60)x=13850+(161/30)x$. Also $3550=(29/60)x$ und $x=213000/29 approx "7344,8276"$ Stück/Jahr. Bei ganzen Mengen ist b bis 7 344 günstiger, a ab 7 345.
+][
+*Grafik und Quellenprüfung:*
+#bild("kritisch-erweiterung", [Eigene Darstellung nach C09, PDF-S. 1, 3 und 5.], height: 57mm)
+Der Schnittpunkt liegt innerhalb beider Kapazitäten. Die Mitschrift rundet die Steigungen früh auf 4,88 und 5,37 und erhält etwa 7 245. Das ist eine Rundungsverschiebung; mit ungerundeten Werten gilt 7 344,8276. Für Gewinn gilt zudem $G=e x-K_f-k_v x$: Das Plus vor $k_v x$ auf S. 5 ist ein Vorzeichenfehler.
+][
+*Gegenprobe:* Bei 12 000 liefern die Funktionen wieder 76 000 und 78 250 €/Jahr. Am Schnittpunkt liefern beide denselben Gewinn von etwa 5 491,38 €/Jahr; auch dieser Schnittpunkt ist kein Nullgewinn.
+]
+
+#aufgabe(titel: "Blatt 09.3: Pizzaöfen Roma und Florenz", art: "rechnen", quelle: "2.3")[
+#if not web [*Aufgabe 54* #linebreak()]
+*Gegeben und Annahmen*
+
+Beide Pizzaöfen haben 8 Jahre Nutzungsdauer, 0 € Restwert, 10 % Kalkulationszins pro Jahr, 5 € Nettoerlös je Pizza und 2,50 € variable Kosten je Pizza. Lineare Abschreibung; mittlere Bindung halbe Anschaffungskosten. Jahresmengen sind vollständig absetzbar.
+#tab(columns: (2fr,1fr,1fr), th([Daten], [Roma], [Florenz]),
+ [Anschaffung €], [100 000], [65 000],
+ [Geplanter Absatz Stück/Jahr], [50 000], [40 000],
+ [Sonstige Fixkosten €/Jahr], [55 000], [45 000],
+)
+Für den BEP von Roma bleiben dessen Kosten und Preis unverändert; Mengen unmittelbar über der Schwelle sind technisch möglich.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Welche Form des Gewinnvergleichs ist bei diesen Mengen anzuwenden?],
+[Welcher Ofen ist nach Jahresgewinn vorzuziehen?],
+[Wie viele Pizzas braucht Roma zur Kostendeckung bzw. für einen positiven Gewinn?],
+)
+#src[C09, Aufgabe 3, PDF-S. 3–4; letzte Pizza zur positiven Gewinnzone präzisiert.]
+][
+*Basis wählen:* Wegen verschiedener verkaufter Jahresmengen werden die gesamten Jahresgewinne verglichen. Ein Vergleich allein der Gewinne je Pizza würde einen anderen Maßstab verwenden.
+][
+*Fixkosten vollständig erfassen:* Roma: $A=100000/8=12500$, $Z=50000 dot "0,10"=5000$ €/Jahr; $K_f=55000+12500+5000=72500$ €/Jahr. Florenz: $A=65000/8=8125$, $Z=32500 dot "0,10"=3250$ €/Jahr; $K_f=45000+8125+3250=56375$ €/Jahr.
+][
+*Jahresgewinne:* Roma $G_R=(5-"2,50") dot 50000-72500=+52500$ €/Jahr. Florenz $G_F="2,50" dot 40000-56375=+43625$ €/Jahr. Roma ist nach GVR um *8 875 €/Jahr* besser.
+][
+*Gewinnschwelle Roma:* $x_"BEP"=72500/"2,50"=29000$ Pizzas/Jahr. Genau dort ist $G=0$. Für *positiven* Gewinn braucht Roma bei ganzen Pizzas mindestens *29 001*; dann bleiben 2,50 € Gewinn.
+][
+*Prüfen:* Roma $E=250000$, $K=197500$ €; Florenz $E=200000$, $K=156375$ €. Beide Differenzen bestätigen die Gewinne. Der Kapitaldienst von Florenz ist $8125+3250=11375$ €/Jahr und enthält bereits beide Kapitalpositionen.
+]
+
+#aufgabe(titel: "Investitionsverfahren: unterschiedliche Empfehlungen erklären", art: "verstehen", quelle: "2.5")[
+#if not web [*Aufgabe 55* #linebreak()]
+Erkläre in eigenen Worten, weshalb ein Ofen mit höherem Jahresgewinn trotzdem eine längere Amortisationszeit haben kann. Welche Frage beantworten KVR, GVR, RVR und AVR jeweils? Warum genügt eine einzelne Kennzahl nicht für jedes Investitionsurteil?
+#src[B31, Aufgaben 23–27, PDF-S. 1–5; S32, PDF-S. 1–3; eigene Zusammenführung.]
+][
+*Fragen unterscheiden:* KVR: Welche vergleichbare Leistung kostet weniger? GVR: Welche Alternative liefert mehr Jahresgewinn? RVR: Wie hoch ist der passende Jahreserfolg bezogen auf die durchschnittliche Kapitalbindung? AVR: Nach welcher Zeit ist der eingesetzte Betrag rechnerisch ausgeglichen?
+][
+*Zusammenhang erklären:* Ein höherer Gewinn erhöht den Rückfluss, ein höherer Kaufbetrag erhöht aber zugleich den zurückzugewinnenden Betrag. Wenn der Kaufbetrag stärker steigt, kann die Zeit länger sein. Back de luxe liefert deshalb in B31 mehr Gewinn, amortisiert sich aber später.
+][
+*Grenzen nennen:* Mengen, Erlöse, Kapitalbasis und Gewinn-/Rückflussabgrenzung müssen passen. Die AVR ignoriert den späteren Erfolg; die KVR ignoriert Preisunterschiede. Statische Jahresdurchschnitte bilden außerdem keine zeitlich genaue Zahlungsfolge ab.
+]

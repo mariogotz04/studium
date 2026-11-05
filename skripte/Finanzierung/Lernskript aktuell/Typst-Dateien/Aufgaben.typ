@@ -506,7 +506,7 @@ Free Cashflow: CF aus operativer Tätigkeit 1.250 T€, Investitionen in Sachanl
 #text("Worin unterscheiden sich finanzwirtschaftliche Kennzahlen und Finanzplan?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B12. Verfahren: #stelle(<a-1-7>).]
 ][
-#text("Kennzahlen beschreiben die gegenwärtige Lage (aus der Bilanz, Stichtag). Der Finanzplan nimmt künftige Einund Auszahlungen vorweg.")
+#text("Bilanzkennzahlen zeigen Bestandsrelationen eines Stichtags; Rentabilitätskennzahlen verbinden einen Periodenerfolg mit einer passenden Bezugsgröße. Der Finanzplan nimmt künftige Ein- und Auszahlungen nach Termin vorweg. Kennzahlen eignen sich für Zielvorgaben sowie Soll-Ist-, Zeit- und Branchenvergleiche, ersetzen aber keinen Fälligkeitsplan.")
 ]
 
 // 0-37
@@ -560,7 +560,7 @@ Free Cashflow: CF aus operativer Tätigkeit 1.250 T€, Investitionen in Sachanl
 #text("Erkläre am Beispiel Hubert + Maier GmbH, warum das Risiko von Alternative B aus der Kapitalstruktur kommt.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B18. Verfahren: #stelle(<a-1-11>).]
 ][
-#text("Bei A und B fällt das Grundstück gleich stark (gleiches Geschäftsrisiko). Bei A trägt das hohe EK den Verlust. Bei B kommen 8.000 € Zinsen dazu, und das kleine EK (20.000) reicht für 28.000 Verlust nicht: Überschuldung. Der Unterschied liegt nur in der Finanzierung.")
+#text("Bei A und B fällt das Grundstück gleich stark (gleiches Geschäftsrisiko). Bei A trägt das hohe EK den Verlust. Bei B kommen 8.000 € Zinsen dazu, und das kleine EK (20.000) reicht für 28.000 Verlust nicht: bilanzieller Fehlbetrag von 8.000 €. Eine rechtliche Überschuldung ist zusätzlich nach Abschnitt 1.8 zu prüfen. Der Unterschied liegt nur in der Finanzierung.")
 ]
 
 // 0-43
@@ -1551,3 +1551,416 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 *Prüfung:* Außen- oder Fremdfinanzierung (Antwort im Scan) sind keine Innenfinanzierung, denn die Mittel kommen von außen.
 ]
 
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: fundamentale Aktienkennzahlen", art: "rechnen", quelle: "1.19", ergebnis: [Bilanzkurs 2,98 €; Ertragswertkurs 2,90 €; KGV 7,5; Gewinnrendite 13,33 %; Dividendenrendite 2,5 %; Cashflow Ratio 6,62.], tipp: [Erst die Aktienzahl aus Grundkapital und Nominalwert bestimmen. Danach immer fragen: Welche Größe steht im Nenner?])[
+#if not web [*Aufgabe 90* #linebreak()]
+*Gegeben und Annahmen*
+Bilanz in T€: Grundstück 300, Maschinen 400, Umlaufvermögen 352; Grundkapital 400, gesetzliche Rücklagen 20, freie Rücklagen 42, Jahresüberschuss 30, FK 560. Zusätzlich: Cashflow 145 T€, stille Reserven 700 T€, erwarteter gleichbleibender Jahresgewinn 116 T€, Kalkulationszins 10 %, Nominalwert 1 €/Aktie, Börsenkurs 2,40 €, separat vorgegebener Gewinn je Aktie 0,32 €, Dividende je Aktie 0,06 €. Keine Wachstumsrate im Ertragswertmodell.
+*Gesucht*
+#enum(numbering: "a)")[Aktienzahl, bilanzielles EK und korrigierter Bilanzkurs.][Ertragswertkurs, KGV, Gewinnrendite zum Kurs, Dividendenrendite und Cashflow Ratio.][Vergleiche die Gewinnrendite zum Kurs mit JÜ/EK und prüfe die Konsistenz des vorgegebenen Gewinns je Aktie.]
+#src[V, PDF-S. 28–30, Folien 56–59; N28, PDF-S. 2–4. Eigene Prüfung der Musterlösung.]
+][
+*Bezugsgrößen aufstellen:* Die 400 T€ Grundkapital sind 400.000 €. Bei 1 € Nominalwert gibt es $N=400000$ Aktien. Bilanzielles EK: $(400+20+42+30)=492$ T€. Der JÜ ist Bestandteil des EK und wird hier nicht weggelassen.
+][
+*Substanz auf Aktien verteilen:* Korrigiertes EK $492+700=1192$ T€. Bilanzkurs $1192000/400000="2,98"$ €/Aktie. Relativ sind es $1192/400=298%$ des Nominalwerts.
+][
+*Künftigen Gewinn kapitalisieren:* Bei konstanter ewiger Gewinnreihe beträgt der Ertragswert $116000/"0,10"=1160000$ €. Je Aktie $1160000/400000="2,90"$ €. Die Aussage 2,60 € auf Folie 57 ist falsch; Folie 58 rechnet selbst 2,90 €.
+][
+*Kursrelationen berechnen:* Für diese Kennzahlen gilt der separat angegebene Gewinn je Aktie: KGV $"2,40"/"0,32"="7,5"$. Gewinnrendite $"0,32"/"2,40" times 100% approx "13,33"%$. Dividendenrendite $"0,06"/"2,40" times 100%="2,5"%$.
+][
+*Cashflow auf dieselbe Stückzahl beziehen:* $145000/400000="0,3625"$ € CF/Aktie; Cashflow Ratio $"2,40"/"0,3625" approx "6,62"$. Kurs und CF je Aktie müssen in derselben Währung eingesetzt werden.
+][
+*Widerspruch prüfen:* JÜ/EK beträgt $30/492 times 100% approx "6,10"%$, nicht 13,33 %. Außerdem ergeben 30 T€ JÜ bei 400.000 Aktien nur 0,075 €/Aktie. Die gegebenen 0,32 € passen nicht dazu. Die Folienrechnung zu 13,3 % ist als Gewinnrendite zum Börsenkurs nachvollziehbar, ihre Bezeichnung „Eigenkapitalrendite“ ist mit Abschnitt 1.11 unvereinbar. Die Daten nicht still gleichsetzen.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: maximaler Kapitalbedarf des Umlaufvermögens", art: "rechnen", quelle: "1.20", ergebnis: [341.250 €], tipp: [Zeichne den Tag der Kundenzahlung und ziehe für jede Kostenart ihren Auszahlungstag ab.])[
+#if not web [*Aufgabe 91* #linebreak()]
+*Gegeben und Annahmen*
+Umsatz 1,8 Mio. €/Jahr; davon Material 40 %, Lohn 25 %, Herstellgemeinkosten (HGK) 10 %, Verwaltungs-/Vertriebsgemeinkosten (VVGK) 10 %. Beschaffungssynchrone Fertigung, gleichmäßige Tagesausgaben und 360-Tage-Rechenjahr wie in der Folienlösung. Fertigung 60 Tage, Fertiglager 15 Tage, Debitorenfrist 45 Tage. Materialzahlung nach 60 Tagen Kreditorenfrist; Lohnzahlung 15 Tage nach Produktionsbeginn, HGK sofort, VVGK am Tag 60. Kundenzahlung nach Fertigung, Lager und Debitorenfrist. Keine weiteren Auszahlungen im Modell.
+*Gesucht*
+#enum(numbering: "a)")[Kundenzahlungstag und Bindungsdauer jeder Kostenart.][Jahres- und Tagesausgaben sowie maximalen UV-Kapitalbedarf.]
+#src[V, PDF-S. 31–32, Folien 61–63; N28, PDF-S. 5–6. „Herstellkosten unmittelbar“ wird entsprechend Grafik/Tabelle als HGK interpretiert.]
+][
+*Zeitachse bestimmen:* Der Kunde zahlt $60+15+45=120$ Tage nach Produktionsbeginn. Bis dahin müssen die bereits bezahlten Kosten vorfinanziert werden. Die Auszahlung startet die jeweilige Bindung.
+][
+*Bindungsdauer ableiten:* Material $120-60=60$ Tage; Lohn $120-15=105$ Tage; HGK $120-0=120$ Tage; VVGK $120-60=60$ Tage. Die Kreditorenfrist verkürzt nur die zugehörige Materialbindung.
+][
+*Tagesausgaben bilden:* Material $1800000 times "0,40"/360=2000$ €/Tag; Lohn $1800000 times "0,25"/360=1250$ €/Tag; HGK und VVGK jeweils $180000/360=500$ €/Tag. Die Jahresbeträge sind 720.000 / 450.000 / 180.000 / 180.000 €. Umsatz ist nicht vollständig Auszahlung.
+][
+*Kostenartweise vorfinanzieren:* Material $2000 times 60=120000$ €; Lohn $1250 times 105=131250$ €; HGK $500 times 120=60000$ €; VVGK $500 times 60=30000$ €. Jeder Betrag hat die Einheit €/Tag × Tage = €.
+][
+*Addieren und prüfen:* $120000+131250+60000+30000=341250$ €. Das ist der maximale UV-Kapitalbedarf des gleichmäßigen Folienmodells. Er ist kein zusätzlicher Gewinn und nicht das pauschale Produkt aus allen Tageskosten und 120 Tagen, weil die Auszahlungstermine verschieden sind.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Finanzplan als Primärplan", art: "verstehen", quelle: "1.21")[
+#if not web [*Aufgabe 92* #linebreak()]
+Nenne die kurzfristigen und langfristigen Aufgaben der Finanzplanung. Erkläre, wann der Finanzplan zum Primärplan wird und welchen Beitrag Kennzahlen leisten.
+#src[V, PDF-S. 32–33, Folien 64–66; N28, PDF-S. 6–7, Übungsaufgabe 1.]
+][
+*Kurzfristig sichern:* Zahlungsbereitschaft erhalten, Fehlbeträge vermeiden, Fristen sinnvoll nutzen und vorübergehende Überschüsse passend anlegen. Die Fälligkeit ist entscheidend.
+][
+*Langfristig abstimmen:* Rechtzeitig geeignete Finanzierung beschaffen, Ursachen veränderter Zahlungsströme zeigen und das Geschäftsprogramm finanzierbar gestalten.
+][
+*Engpass erklären:* Wird die Kapitalbeschaffung knapp, setzt der Finanzplan den Rahmen für Absatz, Produktion und Investition. Dieser Minimumsektor begrenzt die anderen Teilpläne.
+][
+*Kennzahlen nutzen:* Ziele vorgeben, Soll und Ist sowie Zeiträume, Branche und Konkurrenz vergleichen. Sie ergänzen die Planung; Bestandsrelationen ersetzen keinen Terminplan.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Monatsfinanzplan mit zwei Abwandlungen", art: "rechnen", quelle: "1.7", ergebnis: [Grundfall 3.050 / 1.900 / 2.450 €; Abwandlung 50 / −1.100 / −550 €; Linie im Februar um 100 € zu klein.])[
+#if not web [*Aufgabe 93* #linebreak()]
+*Gegeben und Annahmen*
+Anfangsbestand am 1. Januar 0 € (wie in der Folienlösung), monatlich zu zahlende Miete 1.000 € und Löhne 450 €. Einzahlungen aus Umsatz: Januar 4.000 €, Februar 300 €, März 2.000 €; USt-Erstattung im Januar 500 €. Jahresabschreibung 5.000 €, ohne weitere Zahlungen dafür in diesen Monaten. Keine weiteren Ein-/Auszahlungen. Monatssalden-Modell; untermonatliche Fälligkeiten nicht vorgegeben.
+*Gesucht*
+#enum(numbering: "a)")[Monatssalden und fortgeschriebene Endbestände im Grundfall.][Dieselben Größen, wenn die Umsatzeinzahlung im Januar nur 1.000 € beträgt.][Reicht im abgewandelten Fall eine bisher ungenutzte Kontokorrentlinie von 1.000 €?]
+#src[V, PDF-S. 34, Folien 67–68; N28, PDF-S. 8, Übungsaufgabe 2.]
+][
+*Zahlungsmodell wählen:* Miete und Löhne kosten zusammen $1000+450=1450$ €/Monat. Die Abschreibung ist Aufwand, keine zusätzliche aktuelle Auszahlung. Die USt-Erstattung ist dagegen ein Geldzufluss.
+][
+*Grundfall rechnen:* Januar $4000+500-1450=3050$ €; Februar $300-1450=-1150$ €; März $2000-1450=550$ €. Diese Werte sind die monatlichen Änderungen.
+][
+*Bestände fortschreiben:* Mit Anfang 0: Januar 3.050 €, Februar $3050-1150=1900$ €, März $1900+550=2450$ €. Im Monatsendmodell bleibt der Bestand positiv; daraus folgt ohne Termine kein Beweis für jeden einzelnen Tag.
+][
+*Abwandlung berechnen:* Januar $1000+500-1450=50$ €; danach Endbestände $50-1150=-1100$ € und $-1100+550=-550$ €. Der positive Märzsaldo beseitigt die frühere ungedeckte Lücke nicht rechtzeitig.
+][
+*Kreditlinie prüfen:* Der höchste Bedarf beträgt 1.100 € Ende Februar. Die Linie von 1.000 € reicht um 100 € nicht. Im März wären noch 550 € Kredit genutzt, falls die Februar-Lücke rechtzeitig zusätzlich gedeckt wird. Kreditaufnahme nicht als selbst erwirtschafteten Cashflow behandeln.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Quartalsplan und widersprüchliche Ausgabenbegriffe", art: "rechnen", quelle: "1.21.1", ergebnis: [Folienrechnung: Ende 315 / 170 / −645 T€. Eigene reine Zahlungsvariante: 915 / 1.390 / 1.475 T€. Nettomonetäres UV aus den Angaben nicht eindeutig bestimmt.])[
+#if not web [*Aufgabe 94* #linebreak()]
+*Gegeben und Annahmen*
+Alle Werte in T€, Anfang 80. Die Originaltabelle nennt:
+#tab(columns: (2fr,1fr,1fr,1fr),th([Zeile],[Q1],[Q2],[Q3]),
+[Barverkäufe],[450],[300],[300], [Debitoreneingänge],[500],[600],[200], [Gutschriftenerträge / in der Lösung Wertschriftenerträge],[150],[120],[100],
+[Lohnaufwand],[100],[120],[100], [Barlöhne],[50],[30],[0], [Miete],[10],[10],[10], [Wareneinkauf auf Kredit],[500],[500],[800], [Lieferantenrechnungen],[200],[500],[500], [Zinsen],[5],[5],[5],)
+*Gesucht*
+#enum(numbering: "a)")[Rechne wie Folie 71: alle Einnahmenzeilen und alle Ausgabenzeilen jeweils addieren, Salden und Bestände fortschreiben.][Erkläre, warum das noch keinen eindeutig belegten Kassenbestand ergibt.][Rechne eine eigene reine Zahlungsvariante: Alle Einnahmenzeilen seien tatsächlich bezahlt; Auszahlungen seien ausschließlich Barlöhne, Miete, bezahlte Lieferantenrechnungen und Zinsen. Die anderen beiden Zeilen seien unbare Buchungen. Ist damit auch das nettomonetäre UV bestimmt?]
+#src[V, PDF-S. 35–36, Folien 69–71; N28, PDF-S. 9–10, Übungsaufgabe 3. Teil c ist ausdrücklich eine eigene Abgrenzungsvariante.]
+][
+*Folienmodell abbilden:* Einzahlungen laut Summierung: $450+500+150=1100$, $300+600+120=1020$, $300+200+100=600$ T€. Die Lösung benennt die dritte Einnahmenzeile anders als die Aufgabe; hier bleibt der vorgegebene Betrag gleich.
+][
+*Alle Ausgabenzeilen summieren:* Q1 $100+50+10+500+200+5=865$; Q2 $120+30+10+500+500+5=1165$; Q3 $100+0+10+800+500+5=1415$ T€. Folien-Salden: $235$, $-145$, $-815$ T€.
+][
+*Folienbestände fortschreiben:* $80+235=315$, $315-145=170$, $170-815=-645$ T€. Das reproduziert die Musterlösung. Der negative Planwert bezeichnet in diesem Rechenschema einen Bedarf, keine negative Bargeldmenge.
+][
+*Abgrenzung prüfen:* Aufwand ist keine Zahlungsangabe. Einkauf auf Kredit führt zunächst zu einer Verbindlichkeit, nicht zur Auszahlung. Bei Lieferantenrechnungen ist ebenfalls der Zahlungsvorgang zu klären. Die Originalangaben trennen die Fortschreibung der Forderungen/Verbindlichkeiten und die tatsächlichen Zahlungen nicht hinreichend; alle Zeilen als Auszahlungen zu lernen wäre falsch.
+][
+*Reine Zahlungsvariante rechnen:* Auszahlungen $50+10+200+5=265$, $30+10+500+5=545$, $0+10+500+5=515$ T€. Salden 835 / 475 / 85 T€. Kasse Ende: 915 / 1.390 / 1.475 T€. Diese Ergebnisse gelten nur unter den ausdrücklich zusätzlichen Annahmen von c).
+][
+*Bestandsfrage offenhalten:* Für nettomonetäres UV sind zusätzlich liquide Mittel plus kurzfristige Forderungen minus kurzfristige Verbindlichkeiten nötig. Deren vollständige Anfangsbestände und Bewegungen fehlen. Weder −645 T€ noch 1.475 T€ dürfen ohne diese Daten als eindeutiger Endbestand des nettomonetären UV ausgegeben werden.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Funktionen finanzwirtschaftlicher Kennzahlen", art: "verstehen", quelle: "1.21")[
+#if not web [*Aufgabe 95* #linebreak()]
+Wofür können Rentabilität, Liquidität, Verschuldungsgrad und Anlagendeckung verwendet werden? Nenne mindestens fünf Funktionen und erläutere eine Grenze ihrer Aussagekraft.
+#src[V, PDF-S. 36–37, Folien 72–73; N28, PDF-S. 10–11, Übungsaufgabe 4.]
+][
+*Funktionen benennen:* Zielvorgaben/Führung, Soll-Ist-Kontrolle, Zeitvergleich, Branchenvergleich, Konkurrenzanalyse, Analyse von Kapitalstruktur und Kapitalbedarf. Standardisierte Definitionen vereinfachen die Kontrolle.
+][
+*Vergleich begründen:* Eine Abweichung zeigt einen Prüfbedarf. Erst konsistente Bezugsgrößen und die Untersuchung ihrer Ursachen erlauben eine belastbare Bewertung.
+][
+*Grenze erklären:* Bestandsquoten zeigen keine vollständigen künftigen Fälligkeiten. Ein hoher Liquiditätsgrad kann trotz unbezahlter Vorräte/Forderungen mit einem zeitlichen Engpass zusammenfallen. Für die Zahlungstermine braucht man den Finanzplan.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Darlehen für das Sanitärgeschäft beurteilen", art: "rechnen", quelle: "1.21.2", ergebnis: [EK-Rentabilität 8,61 %, Netto-GK 5,65 %; L1/L2/L3 226,32 / 236,84 / 710,53 %; EK-Quote 66,56 %; AD I/II 83,85 / 122,31 %.])[
+#if not web [*Aufgabe 96* #linebreak()]
+*Gegeben und Annahmen*
+Darlehenswunsch mindestens 15.000 €. Bilanz in €: Lagerhalle 40.000; Fahrzeuge 12.000; Materiallager 9.000; Debitoren 200; Kasse 300; Bank 4.000. Passiva: gezeichnetes Kapital 30.000, Rücklagen 10.000, Gewinnvortrag 3.600, kurzfristiger Bankkredit 1.500, langfristiger Bankkredit 20.000, Lieferantenkredit 400. Summe 65.500. Wie in der Folienlösung: Gewinnvortrag sei Jahresgewinn, im Jahr gleichmäßig entstanden; alle anderen Kapitalpositionen seien unverändert. Flüssige Mittel seien verfügbar, Forderungen kurzfristig. Zinsaufwand nicht angegeben.
+*Gesucht*
+#enum(numbering: "a)")[EK- und Netto-GK-Rentabilität bezogen auf Durchschnittskapital.][Liquidität 1.–3. Grades, Eigenfinanzierungsgrad/EK-Quote und Anlagendeckung I/II zum Bilanzstichtag.][Begründete vorläufige Kreditbeurteilung und zusätzliche Informationen. Ist die GK-Rentabilität vor FK-Zinsen berechenbar?]
+#src[V, PDF-S. 37–38, Folien 74–76; N28, PDF-S. 11–12, Übungsaufgabe 5.]
+][
+*Bestände gliedern:* EK $30000+10000+3600=43600$ €, AV $40000+12000=52000$ €, UV $9000+200+300+4000=13500$ €, kurzfristiges FK $1500+400=1900$ €. Beide Bilanzseiten ergeben 65.500 €.
+][
+*Durchschnittskapital begründen:* Ohne den erst im Jahr entstandenen Gewinn betrug EK zu Beginn 40.000 €, GK 61.900 €. Bei gleichmäßigem Gewinnanfall ist der mittlere Gewinnanteil 1.800 €. Daher mittleres EK 41.800 €, mittleres GK 63.700 €.
+][
+*Rentabilitäten nach Folie berechnen:* EK $3600/41800 times 100% approx "8,61"%$; Netto-GK $3600/63700 times 100% approx "5,65"%$. Für eine Gesamtkapitalrentabilität vor FK-Zinsen müsste zum Gewinn der Zinsaufwand addiert werden; der fehlt. Die Nettozahl ist nicht identisch mit der Leverage-Gesamtrendite.
+][
+*Liquidität rechnen:* Flüssige Mittel $300+4000=4300$ €. L1 $4300/1900 times 100% approx "226,32"%$, L2 $4500/1900 times 100% approx "236,84"%$, L3 $13500/1900 times 100% approx "710,53"%$. Die hohen Quoten sind keine Garantie für die künftige Schuldendienstfähigkeit.
+][
+*Finanzierungsstruktur prüfen:* EK-Quote $43600/65500 times 100% approx "66,56"%$. AD I $43600/52000 times 100% approx "83,85"%$; AD II $(43600+20000)/52000 times 100% approx "122,31"%$. Langfristiges Kapital deckt AV im Bilanzbild.
+][
+*Kreditentscheidung begründen:* Die Folie sieht geringe Rentabilität und hohen Lagerbestand kritisch und nennt eine mögliche Besicherung über die Halle. Daraus folgt keine automatische Zusage oder Ablehnung: Aufträge, Margen, Lagerumschlag, Investitionszweck, künftigen Finanzplan mit Zins/Tilgung, persönliche/wirtschaftliche Kreditwürdigkeit und bereits bestehende Belastungen der Halle prüfen. Hohe Liquiditätsquoten allein beweisen kein schlechtes Management.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Aussagekraft und Grenzen des Cashflows", art: "verstehen", quelle: "1.21")[
+#if not web [*Aufgabe 97* #linebreak()]
+Erkläre, was der betriebliche Cashflow über Innenfinanzierung aussagt, warum er den Gewinn ergänzt und welche Grenzen seine Verwendung hat.
+#src[V, PDF-S. 39, Folien 77–78; N28, PDF-S. 13, Übungsaufgabe 6.]
+][
+*Zahlungskraft erklären:* Der operative Cashflow beschreibt Mittel aus der betrieblichen Tätigkeit. Er hilft einzuschätzen, ob das Unternehmen Investitionen, Tilgungen und Ausschüttungen aus dem Geschäft tragen kann.
+][
+*Gewinn ergänzen:* Abschreibungen und Rückstellungsänderungen können Erfolg und Zahlung auseinanderfallen lassen. Die indirekte Rechnung korrigiert passende Unterschiede; eine Abschreibung erzeugt selbst keine Einzahlung.
+][
+*Grenzen nennen:* Abgrenzung und vollständige Informationen sind nötig; gerade nicht börsennotierte Unternehmen veröffentlichen sie oft nicht vollständig. Fälligkeiten, Investitionsbedarf und Risiken sind zusätzlich zu prüfen. Ein Kredit-Cashflow ist kein selbst erwirtschafteter operativer Überschuss.
+]
+
+
+#kapitel("Kapitel 2 · Fremdfinanzierung")
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Gläubigerrisiko trotz festem Zahlungsanspruch", art: "verstehen", quelle: "2.1")[
+#if not web [*Aufgabe 98* #linebreak()]
+Eine Bank vereinbart feste Zins- und Tilgungszahlungen. Warum besteht trotzdem Risiko? Erkläre Informationsasymmetrie, spätere Entscheidungen des Schuldners und eine unerwartete Veränderung des Umfelds.
+#src[V, PDF-S. 40–41, Folien 80–82; eigene Erklärfrage.]
+][
+*Anspruch und Erfüllung trennen:* Der Vertrag begründet die Pflicht. Ob genügend Mittel zur Erfüllung entstehen, ist eine wirtschaftliche Frage.
+][
+*Information prüfen:* Der Schuldner kennt sein Geschäft oft genauer. Der Gläubiger kann Einzahlungen überschätzen oder bereits bestehende weitere Kredite übersehen.
+][
+*Nachträgliche Veränderungen erklären:* Riskante Investitionen, zusätzliche Verschuldung und Ausschüttungen können den Puffer verkleinern; ein unerwarteter Markteinbruch kann beide Seiten überraschen. Deshalb werden Unternehmen, Märkte und Gesamtwirtschaft beurteilt.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Kreditfähigkeit, Kreditwürdigkeit und Sicherheiten unterscheiden", art: "verstehen", quelle: "2.2")[
+#if not web [*Aufgabe 99* #linebreak()]
+Ein Betrieb legt eine gute Bilanz und eine Halle als Sicherheit vor. Reicht das für eine Kreditentscheidung? Trenne Kreditfähigkeit, persönliche und wirtschaftliche Kreditwürdigkeit und Sicherheit; nenne passende Unterlagen.
+#src[V, PDF-S. 42–43, Folien 83–86; eigene Erklärfrage.]
+][
+*Kreditfähigkeit prüfen:* Kann der Antragsteller wirksam handeln, und ist die handelnde Person vertretungsbefugt? Dafür können Handelsregister und Gesellschaftsvertrag wichtig sein.
+][
+*Kreditwürdigkeit prüfen:* Persönlich zählen Verlässlichkeit und bisheriges Zahlungsverhalten; wirtschaftlich zählen künftige Erträge, Cashflow, Finanzplan, Auftragsbestand und Markt. Ein Jahresabschluss beschreibt die Vergangenheit und ersetzt den künftigen Schuldendienstplan nicht.
+][
+*Sicherheit ergänzen:* Wert und Rang der Halle sowie bestehende Belastungen prüfen. Eine Sicherheit begrenzt möglichen Verlust, garantiert aber weder rechtliche Wirksamkeit des Vertrags noch laufende Zins-/Tilgungszahlungen. § 18 KWG nicht pauschal ohne seine Voraussetzungen auf jeden Fall übertragen.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Basel-II-Unterlegung und Kreditvolumen", art: "rechnen", quelle: "2.3", ergebnis: [12 Mio. € Unterlegung; 31,25 Mrd. € rechnerisches Kreditvolumen.])[
+#if not web [*Aufgabe 100* #linebreak()]
+*Gegeben und Annahmen*
+Verfügbares Bank-EK 2,5 Mrd. €. Unternehmenskredit 100 Mio. €, Risikogewicht 150 %. Vereinfachtes Folienmodell: Unterlegung = Kreditbetrag × 8 % × Risikogewicht; keine weiteren Puffer, Risiken oder bindenden Grenzen. Für Teil b) sei das durchschnittliche Gewicht 100 %, das gesamte EK dafür verfügbar.
+*Gesucht*
+#enum(numbering: "a)")[EK-Unterlegung für den einzelnen Kredit.][Maximales gesamtes Kreditvolumen bei durchschnittlich 100 % Risikogewicht.][Erkläre, wem das unterlegte EK gehört.]
+#src[V, PDF-S. 43–44, Folien 85 und 87; N04, PDF-S. 1–2.]
+][
+*Risikobetrag bestimmen:* 150 % als Faktor ist 1,5, nicht 150. RWA $100 times "1,5"=150$ Mio. €. Der Risikobetrag ist nicht die Auszahlung an den Kunden.
+][
+*Unterlegung rechnen:* $150 times "0,08"=12$ Mio. €. Das sind 12 % des Nominalkredits, weil die 8 % auf den risikogewichteten Betrag wirken.
+][
+*Volumenformel umstellen:* $"2,5"/("0,08" times 1)="31,25"$ Mrd. €. Kontrolle: 8 % von 31,25 Mrd. € sind 2,5 Mrd. €. Dieses theoretische Maximum gilt nur innerhalb der gegebenen Vereinfachungen.
+][
+*Bankbilanz erklären:* Der Kredit steht als Forderung auf der Aktivseite der Bank, das unterlegte EK als Verlustpuffer auf ihrer Passivseite. Der Kreditnehmer erhält dadurch keine zusätzliche EK-Einlage.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Rating und Basel-Quoten richtig vergleichen", art: "verstehen", quelle: "2.3")[
+#if not web [*Aufgabe 101* #linebreak()]
+Unterscheide internes und externes Rating. Warum kann man 7 % hartes Kernkapital, 10,5 % Gesamtkapital und 3 % Leverage Ratio nicht als drei vergleichbare Unternehmens-EK-Quoten lesen?
+#src[V, PDF-S. 43–44 und 49, Folien 85–88 und 97; Präzisierungen nach den Primärquellen in Abschnitt 2.3.]
+][
+*Urheber unterscheiden:* Intern bewertet die Bank ihren Kunden; extern bewertet eine Agentur Schuldner-/Emittentenrisiken. Eine gute Note ist keine Garantie, und die Skalen verschiedener Agenturen sind nicht wortgleich.
+][
+*Risikogewichtete Quoten erklären:* Im einfachen Basel-III-Schema ergeben 4,5 % Mindest-CET1 plus 2,5 % Kapitalerhaltungspuffer 7 %; 8 % Mindestgesamtkapital plus derselbe Puffer ergeben 10,5 %. Nenner sind RWA.
+][
+*Leverage Ratio abgrenzen:* Kernkapital geteilt durch die nicht risikogewichtete Gesamtrisikopositionsmessgröße, mindestens 3 %. Andere Kapitaldefinition und anderer Nenner als EK/Bilanzsumme eines Unternehmens; außerdem gibt es in der Praxis weitere Anforderungen.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Krisenmechanismus und Anleihekauf erklären", art: "verstehen", quelle: "2.4.1")[
+#if not web [*Aufgabe 102* #linebreak()]
+Erkläre den Weg von Kreditverlusten zu schwächerer Bankfinanzierung. Unterscheide danach die Ausgabe einer Staatsanleihe von einem späteren Ankauf durch die Notenbank: Wer erhält jeweils den Kaufpreis?
+#src[V, PDF-S. 45–52, Folien 89–104; N04, PDF-S. 9, eigene Skizze; EZB-Präzisierung in Abschnitt 2.4.]
+][
+*Verstärkungskette erklären:* Ausfälle und Wertberichtigungen belasten Bankkapital. Unsicherheit über die Verluste anderer Banken schwächt Vertrauen und kann Refinanzierung und Kreditvergabe erschweren. Staatshilfen und Geldpolitik setzen an unterschiedlichen Stellen an.
+][
+*Emission trennen:* Bei Ausgabe einer neuen Anleihe erhält der Staat den Kaufpreis vom Anleger; der Anleger erhält den Zahlungsanspruch aus der Anleihe.
+][
+*Sekundärmarktkauf erklären:* Die Notenbank kauft das bereits bestehende Papier vom bisherigen Inhaber. Die Bankabwicklung schafft Zentralbankgeld; der Verkäufer erhält den Gegenwert. Das ist keine unmittelbare Zahlung an den Staat für eine neue Anleihe.
+][
+*Grenzen der Skizze nennen:* „Geld drucken“ muss keine Ausgabe zusätzlicher Scheine bedeuten. Käufe können Renditen und Finanzierungsbedingungen beeinflussen, erzeugen aber nicht automatisch einen gleich großen Anstieg aller Verbraucherpreise. Historische Foliengrafiken nicht als aktuelle Werte ausgeben.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Kreditvertrag mit Covenants gestalten", art: "verstehen", quelle: "2.5")[
+#if not web [*Aufgabe 103* #linebreak()]
+Nenne die sechs verhandlungsrelevanten Merkmalsgruppen des Kreditvertrags. Erkläre anschließend an einem selbst formulierten Covenant den Zweck, die Berichtspflicht, eine mögliche Folge eines Verstoßes und den Nachteil für den Schuldner.
+#src[V, PDF-S. 53–54, Folien 105–108; eigene Anwendung.]
+][
+*Vertragsgruppen nennen:* Auszahlungs-/Rückzahlungsbetrag, Tilgungsstruktur, Zinssatz einschließlich Terminen/Bindung, Laufzeit, Sicherheiten und sonstige Vereinbarungen.
+][
+*Covenant formulieren:* Eigener Fall ohne zusätzliche Zahlen: Der Schuldner muss ein positives Net Working Capital halten und nach vereinbarter Definition regelmäßig darüber berichten. Zweck ist ein rechtzeitig sichtbarer Mindestpuffer.
+][
+*Folgen und Grenze erklären:* Bei Verstoß greifen die vereinbarten Neuverhandlungen, Anpassungen oder Sanktionen. Das kann Zinsanpassung oder Fälligstellung umfassen, ist aber kein automatischer Insolvenzbeweis. Der Schuldner verliert Entscheidungsspielraum, beispielsweise für Ausschüttung oder weitere Verschuldung.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: Zinstage vom 14. Januar bis Jahresende", art: "rechnen", quelle: "2.6", ergebnis: [Endkapital: 2.057,83 / 2.057,67 / 2.057,86 / 2.058,67 / 2.057,70 € in der Reihenfolge a).])[
+#if not web [*Aufgabe 104* #linebreak()]
+*Gegeben und Annahmen*
+Anlage 2.000 €, einfacher Jahreszins 3 %, 14.01.2016 bis 31.12.2016. Anfangstag nicht mitzählen, Endtag mitzählen. 2016 ist ein Schaltjahr mit 366 Tagen. Methoden wie in der Musterlösung: 30E/360 setzt den Endtag 31 auf 30; 30/360 belässt ihn in diesem konkreten Fall bei 31. Bei tatsächlichen Tagen Kalenderdifferenz verwenden. Kein unterjähriger Zinseszins, keine weiteren Zahlungen.
+*Gesucht*
+#enum(numbering: "a)")[Zinstage und Jahresbruchteil für 30/360, 30E/360, actual/365, actual/360 und actual/actual kalenderjährlich.][Jeweils Zinsbetrag und Endkapital, auf Cent gerundet.]
+#src[V, PDF-S. 55, Folien 109–110; N04, PDF-S. 14.]
+][
+*Grundgleichung wählen:* $Z=K_0 i t/B$. Kapital und Jahreszins sind gleich; nur Tageszählung und Jahresbasis ändern sich. $2000 times "0,03"=60$ € ist der Zins für einen vollständigen Modelljahresbruchteil 1.
+][
+*30-Tage-Zähler bilden:* 30E/360: $30(12-1)+(30-14)=346$ Tage. Die hier verwendete 30/360-Variante: $30(12-1)+(31-14)=347$ Tage. Die beiden Methoden sind am Monatsende nicht gleich.
+][
+*Kalendertage zählen:* Vom 14.01. bis 31.12. sind es 352 verstrichene Tage. Derselbe Zähler steht über 365, 360 oder dem tatsächlichen Schaltjahr 366. Anfangs- und Endtag nicht beide mitzählen.
+][
+*Zinsen und Endwerte einsetzen:*
+#tab(columns: (1.5fr,1fr,1fr,1fr),th([Methode],[Jahresbruchteil],[Zins €],[Ende €]),
+[30/360],[$347/360$],[57,83],[2.057,83],
+[30E/360],[$346/360$],[57,67],[2.057,67],
+[actual/365],[$352/365$],[57,86],[2.057,86],
+[actual/360],[$352/360$],[58,67],[2.058,67],
+[actual/actual],[$352/366$],[57,70],[2.057,70],)
+Die Bruchteile werden vor der Multiplikation nicht vorzeitig gerundet.
+][
+*Plausibilität prüfen:* Alle Bruchteile liegen unter 1, also alle Zinsen unter 60 €. Bei gleichen 352 Tagen ergibt der kleinere Nenner 360 den höheren Zins. Bei anderen Monatsendfällen ist die genaue vereinbarte 30/360-Variante erneut zu prüfen.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorlesung: jährliche und monatliche Zinsgutschrift", art: "rechnen", quelle: "2.7", ergebnis: [Angebot 2: etwa 3,0108 % effektiver Jahreszins; unter den Annahmen für ein und drei Jahre etwas besser.])[
+#if not web [*Aufgabe 105* #linebreak()]
+*Gegeben und Annahmen*
+Angebot 1: jährliche Verzinsung 3 %. Angebot 2: monatliche Verzinsung 0,2475 % pro Monat. Albert legt für ein Jahr an, Beatrice für drei Jahre. Dasselbe beliebige positive Anfangskapital, unveränderte Zinssätze, Wiederanlage sämtlicher Zinsen, keine Gebühren, Steuern oder weiteren Zahlungen.
+*Gesucht*
+#enum(numbering: "a)")[Jahresfaktor und effektiven Jahreszins beider Angebote.][Vergleich für ein Jahr und für drei Jahre; Grenze bei veränderlichen Zinsen.]
+#src[V, PDF-S. 56, Folien 111–112; N04, PDF-S. 15.]
+][
+*Gleichen Zeitraum herstellen:* Angebot 1 hat den Jahresfaktor $"1,03"$. Der Monatszins von Angebot 2 ist als Dezimalzahl $"0,002475"$; jeder Monatsfaktor beträgt daher $"1,002475"$.
+][
+*Wiederanlage berücksichtigen:* Jahresfaktor Angebot 2 $"1,002475"^12 approx "1,030107645"$. Effektiver Jahreszins rund 3,0107645 %. Er liegt geringfügig über 3 %, weil bereits gutgeschriebene Zinsen mitverzinst werden.
+][
+*Drei Jahre vergleichen:* Angebot 1: $"1,03"^3="1,092727"$. Angebot 2: $"1,002475"^36 approx "1,093069639"$. Beide Personen wählen unter den Modellannahmen Angebot 2. Die Faktoren multiplizieren das jeweilige Anfangskapital.
+][
+*Aussage prüfen:* Bei unveränderten positiven Jahresfaktoren bleibt deren Reihenfolge auch nach Hoch-drei erhalten. Der Satz auf Folie 112, der dabei „Möglichkeit 1“ als besser bezeichnet, ist ein Formulierungsfehler. Bei variablen Zinssätzen oder fehlender Wiederanlage muss neu gerechnet werden.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Darlehenspflichten und passende Kündigungsregel", art: "verstehen", quelle: "2.8")[
+#if not web [*Aufgabe 106* #linebreak()]
+Erkläre die Hauptpflichten nach § 488 BGB. Ordne danach zu: variabler Zins; Ende einer Zinsbindung ohne neue Zinsvereinbarung; mehr als zehn Jahre seit vollständigem Empfang bei Festzins; vorzeitiger Verkauf eines belasteten Grundstücks aus berechtigtem Interesse. Nenne jeweils die wesentlichen Bedingungen und Fristen.
+#src[V, PDF-S. 57–58, Folien 113–115; Rechtsabgleich in Abschnitt 2.8.]
+][
+*Pflichten nennen:* Geber stellt den vereinbarten Betrag bereit; Nehmer zahlt geschuldeten Zins und erstattet das Darlehen bei Fälligkeit zurück.
+][
+*Ordentliche Fälle zuordnen:* Variabler Zins: drei Monate Frist nach § 489 Abs. 2. Ende einer früher als die Rückzahlung endenden Zinsbindung ohne Neuvereinbarung: ein Monat, frühestens zum Bindungsende. Lange Festzinsbindung: nach zehn Jahren seit vollständigem Empfang mit sechs Monaten Frist; eine relevante spätere Neuvereinbarung kann den Fristbeginn ersetzen.
+][
+*Besonderen Anlass zuordnen:* § 490 Abs. 2 verlangt gebundenen Sollzins, Grund-/Schiffspfandrecht, sechs Monate seit vollständigem Empfang und berechtigtes Interesse; drei Monate Kündigungsfrist. Dann kann ein ersatzfähiger Schaden als Vorfälligkeitsentschädigung hinzukommen.
+][
+*Prüfen:* Unterschrift und vollständiger Empfang sind nicht derselbe Zeitpunkt. Auch die Rückzahlung muss fristgerecht erfolgen. Den konkreten Fall erst unter die passende Regel einordnen, danach Frist und mögliche Entschädigung bestimmen.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Vorfälligkeitsentschädigung wirtschaftlich erklären", art: "verstehen", quelle: "2.9")[
+#if not web [*Aufgabe 107* #linebreak()]
+Warum kann eine vorzeitige Rückzahlung bei Festzins einen Schaden verursachen? Unterscheide Aktiv-Aktiv- und Aktiv-Passiv-Vergleich. Was bedeutet ein höherer Wiederanlagezins, und warum folgt aus der Folie kein pauschaler Gebührenanspruch?
+#src[V, PDF-S. 58, Folien 115–116; N04, PDF-S. 17; rechtliche Präzisierung in Abschnitt 2.9.]
+][
+*Anspruch zuerst prüfen:* Der wirtschaftliche Zinsnachteil begründet nicht in jedem Kündigungsfall automatisch eine Forderung. Ordentliche Kündigung, besonderer vorzeitiger Ausstieg und einvernehmliche Aufhebung sind zu unterscheiden.
+][
+*Wirtschaftlichen Nachteil erklären:* Die Bank hatte mit den vereinbarten Zahlungen gerechnet. Muss sie zurückerhaltene Mittel zu einem niedrigeren Zins wieder anlegen, kann ein Nachteil entstehen; ein höherer Wiederanlagezins kann ihn vermindern oder beseitigen.
+][
+*Methoden trennen:* Aktiv-Aktiv vergleicht mit einem neuen Kreditgeschäft. Aktiv-Passiv rekonstruiert Zahlungen über laufzeitentsprechende Hypothekenpfandbriefe. Zahlungszeitpunkte, Restschuld und ersparte Risiko-/Verwaltungskosten gehören in die Betrachtung.
+][
+*Doppelzählung und Gebühr vermeiden:* Ein Nachteil darf nicht zweimal als Zinsschaden und noch einmal identischer Margenschaden ersetzt werden. Die Folienaussage über eine Bearbeitungsgebühr ist kein allgemeiner Automatismus; Rechtsgrund und tatsächlich ersatzfähiger Schaden sind zu prüfen.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Klausur: Annuitätendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", ergebnis: [Annuität ungerundet 21.522,16 €/Jahr, Tabelle 21.522 €; Zinsen gerundet insgesamt 6.088 €.])[
+#if not web [*Aufgabe 108* #linebreak()]
+*Gegeben und Annahmen*
+Inn GmbH: Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest für vier Jahre, jährliche Zahlung am Jahresende. Zinsen jeweils auf die Restschuld zu Jahresbeginn. Annuität so bestimmen, dass das Darlehen in vier Jahren vollständig getilgt ist. Wie in der Klausur jede Tabellenzahl auf volle Euro runden; Rundungsrest vernachlässigen.
+*Gesucht*
+#enum(numbering: "a)")[Annuität und Tilgungsplan 2017–2020 mit Anfangsschuld, Zinsen, Tilgung, Gesamtzahlung und Endschuld.][Erkläre den Verlauf der Zins- und Tilgungsanteile.]
+#src[Altklausur 2017, Aufgabe 1 a, 6 Punkte; K, PDF-S. 1 (Klausurseite 5). Eigene Lösung, fremde Handschrift nicht übernommen.]
+][
+*Modell wählen:* Bei der Annuität bleibt die Summe von Zins und Tilgung konstant. Die Schuld muss durch vier nachschüssige Jahreszahlungen abgebaut werden. $i="0,03"$, $n=4$, $D=80000$ €.
+][
+*Annuität berechnen:* $A=80000 frac("0,03" times "1,03"^4,"1,03"^4-1) approx "21522,16"$ €/Jahr. Für die Tabelle nach Klausurvorgabe auf 21.522 € runden.
+][
+*Erste Zeile begründen:* Zins $80000 times "0,03"=2400$ €. Von 21.522 € bleiben $21522-2400=19122$ € Tilgung; Restschuld $80000-19122=60878$ €. Nur die Tilgung vermindert die Schuld.
+][
+*Jährlich fortschreiben:*
+#tab(columns: (0.8fr,1fr,1fr,1fr,1fr,1fr),th([Jahr],[Anfang €],[Zins €],[Tilgung €],[Zahlung €],[Ende €]),
+[2017],[80.000],[2.400],[19.122],[21.522],[60.878],
+[2018],[60.878],[1.826],[19.696],[21.522],[41.182],
+[2019],[41.182],[1.235],[20.287],[21.522],[20.895],
+[2020],[20.895],[627],[20.895],[21.522],[0],)
+Jede Zeile benutzt die gerundete Anfangsschuld und rundet den Zins auf volle Euro.
+][
+*Prüfen:* Tilgungen $19122+19696+20287+20895=80000$ €. Zinsen insgesamt 6.088 €, vier Zahlungen 86.088 €. Die Restschuld sinkt; darum fällt der Zinsanteil und bei konstanter Zahlung steigt der Tilgungsanteil. Eine Rechnung mit ungerundeten Zwischenwerten kann geringfügig anders enden.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Klausur: Ratendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", ergebnis: [Tilgung 20.000 €/Jahr; Zahlungen 22.400 / 21.800 / 21.200 / 20.600 €; Gesamtzinsen 6.000 €.])[
+#if not web [*Aufgabe 109* #linebreak()]
+*Gegeben und Annahmen*
+Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest, vier Jahre. Konstante jährliche Tilgung 25 % der Anfangsschuld; Zinsen auf die Restschuld zu Jahresbeginn, Zahlung am Jahresende. Keine weiteren Kosten.
+*Gesucht*
+#enum(numbering: "a)")[Tilgungsplan 2017–2020 mit Anfangsschuld, Zins, Tilgung, Gesamtzahlung und Endschuld.][Gesamtzinsen und Verlauf der Belastung.]
+#src[Altklausur 2017, Aufgabe 1 b, 4 Punkte; K, PDF-S. 1 (Klausurseite 5). Eigene Lösung.]
+][
+*Tilgung festlegen:* 25 % beziehen sich hier auf die Anfangsschuld, also $80000 times "0,25"=20000$ €/Jahr. Nicht jährlich 25 % der sinkenden Restschuld tilgen; dann wäre sie nach vier Jahren noch nicht null.
+][
+*Restschuld verzinsen und fortschreiben:*
+#tab(columns: (0.8fr,1fr,1fr,1fr,1fr,1fr),th([Jahr],[Anfang €],[Zins €],[Tilgung €],[Zahlung €],[Ende €]),
+[2017],[80.000],[2.400],[20.000],[22.400],[60.000],
+[2018],[60.000],[1.800],[20.000],[21.800],[40.000],
+[2019],[40.000],[1.200],[20.000],[21.200],[20.000],
+[2020],[20.000],[600],[20.000],[20.600],[0],)
+][
+*Prüfen und deuten:* Vier Tilgungen ergeben 80.000 €, Zinsen $2400+1800+1200+600=6000$ €. Die jährliche Gesamtzahlung fällt um 600 €. Gegenüber der Annuität ist die erste Zahlung höher, die Schuld sinkt anfangs schneller; dadurch entstehen in diesem Modell weniger Gesamtzinsen.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Klausur: Effektivzins mit zwei Prozent Disagio", art: "rechnen", quelle: "2.10.2", ergebnis: [Auszahlung 78.400 €; näherungsweise 3,57 % p. a.])[
+#if not web [*Aufgabe 110* #linebreak()]
+*Gegeben und Annahmen*
+Endfälliges Darlehen: Nominalbetrag 80.000 €, 3 % p. a., vier Jahre, Auszahlungsdisagio 2 % des Nominalbetrags. Jährliche Zinszahlung, vollständige Nominalrückzahlung am Ende, keine anderen Kosten. Gesucht ist ausdrücklich die approximative Praktikerformel, nicht die exakte interne Rendite.
+*Gesucht*
+#enum(numbering: "a)")[Auszahlungsbetrag und approximativen effektiven Jahreszins auf zwei Nachkommastellen.]
+#src[Altklausur 2017, Aufgabe 1 c, 1 Punkt; K, PDF-S. 2 (Klausurseite 6). Eigene Lösung.]
+][
+*Tatsächlichen Zufluss bestimmen:* Disagio $80000 times "0,02"=1600$ €, Auszahlung $80000-1600=78400$ €. Trotzdem werden die vereinbarten 80.000 € zurückgezahlt und verzinst.
+][
+*Jahresbelastung näherungsweise bilden:* Jährlicher Zins $80000 times "0,03"=2400$ €. Das Disagio wird in dieser Näherung gleichmäßig verteilt: $1600/4=400$ €/Jahr.
+][
+*Auf erhaltenes Geld beziehen:* $i_"eff,approx"=(2400+400)/78400 approx "0,035714"= "3,57"%$ p. a. Der Nenner ist die Auszahlung, nicht die Nominalschuld.
+][
+*Plausibilität prüfen:* Der Wert liegt über 3 %, weil zusätzlich zum Nominalzins das Disagio getragen wird. Die lineare Verteilung des Disagios vereinfacht die zeitliche Belastung; die Formel ist ausdrücklich nur eine Näherung.
+]
+
+
+// Ergänzung VL 28.10./04.11.2026
+#aufgabe(titel: "Klausur: Sicherheiten nach zwei Kriterien einordnen", art: "verstehen", quelle: "2.10.3")[
+#if not web [*Aufgabe 111* #linebreak()]
+Nenne je eine Personal- und Realsicherheit sowie je ein akzessorisches und fiduziarisches Sicherungsmittel. Erkläre die beiden Einteilungen, statt nur vier Wörter aufzuzählen.
+#src[Altklausur 2017, Aufgabe 1 d, zweimal 1 Punkt; K, PDF-S. 2 (Klausurseite 6). Eigene Lösung mit Rechtsabgleich in Abschnitt 2.10.]
+][
+*Rückgriff unterscheiden:* Personalsicherheit: beispielsweise Bürgschaft, also zusätzlicher Anspruch gegen einen Bürgen. Realsicherheit: beispielsweise Grundschuld, also Sicherung an einem Vermögenswert.
+][
+*Forderungsbindung unterscheiden:* Akzessorisch: Bürgschaft, deren Umfang vom jeweiligen Bestand der Hauptverbindlichkeit abhängt. Fiduziarisches Beispiel: Sicherungsgrundschuld; ihr dinglicher Bestand setzt die Forderung nicht voraus, der Sicherungsvertrag verbindet sie mit dem Kredit.
+][
+*Prüfen:* Dieselbe Bürgschaft ist zugleich personal und akzessorisch. Die Sicherungsgrundschuld ist zugleich real und fiduziarisch. „Real“ bedeutet nicht automatisch „akzessorisch“. Die handschriftlichen falschen Zuordnungen im Scan werden nicht übernommen.
+]

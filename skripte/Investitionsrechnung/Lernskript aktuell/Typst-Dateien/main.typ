@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,14 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "kritisch-erweiterung": "abbildungen/kritisch-erweiterung.svg",
+  "map-investitionskosten": "abbildungen/map-investitionskosten.svg",
+  "map-kvr": "abbildungen/map-kvr.svg",
+  "map-gvr": "abbildungen/map-gvr.svg",
+  "map-rvr": "abbildungen/map-rvr.svg",
+  "map-kritisch": "abbildungen/map-kritisch.svg",
+  "kritische-auslastung": "abbildungen/kritische-auslastung.svg",
+  "amortisationsverlauf": "abbildungen/amortisationsverlauf.svg",
   "bep-aufgabe1": "abbildungen/bep-aufgabe1.svg",
   "bep-aufgabe3": "abbildungen/bep-aufgabe3.svg",
   "bep-ausserhalb": "abbildungen/bep-ausserhalb.svg",
@@ -112,6 +120,14 @@
 )
 
 #let bilddeutungen = (
+  "kritisch-erweiterung": (titel: "Bild lesen", body: [Waagerecht steht die gemeinsame Jahresmenge, senkrecht die Jahreskosten. Blau ist Angebot a mit höherem Fixkostenstart, aber geringerer Steigung. Orange ist b. Unterhalb von 7 344,8276 Stück ist b günstiger, oberhalb a. Der Punkt liegt innerhalb der Kapazität von 12 000 Stück; der hier gleiche Stückerlös ist nicht als Linie gezeichnet.]),
+  "map-investitionskosten": (titel: "Bild lesen", body: [Beginne im dunkelgrünen Zentrum und folge den vier hellblauen Ästen. Der Kaufbetrag wird nicht als voller Jahresaufwand angesetzt. Abschreibung und Zinsen bilden den Kapitaldienst; dazu kommen die Betriebskosten.]),
+  "map-kvr": (titel: "Bild lesen", body: [Beginne im dunkelgrünen Zentrum und folge den vier hellblauen Ästen. Ein Kostenurteil braucht gleichwertige Leistung und eine klare Mengenbasis. Kapazität und Absatz begrenzen den Vergleich.]),
+  "map-gvr": (titel: "Bild lesen", body: [Beginne im dunkelgrünen Zentrum und folge den vier hellblauen Ästen. Die Jahresmenge verbindet den Nettoerlös je Stück mit dem Gesamterlös. Erst nach Abzug sämtlicher Jahreskosten bleibt der Jahresgewinn.]),
+  "map-rvr": (titel: "Bild lesen", body: [Beginne im dunkelgrünen Zentrum und folge den vier hellblauen Ästen. Zähler und Nenner müssen dieselbe Investition beschreiben. Beim Budgetvergleich wird auch die Verwendung des freien Kapitals berücksichtigt.]),
+  "map-kritisch": (titel: "Bild lesen", body: [Beginne im dunkelgrünen Zentrum und folge den vier hellblauen Ästen. Die Gleichung findet nur die Grenze. Erst eine Probe auf beiden Seiten und der Kapazitätstest machen daraus eine Entscheidung.]),
+  "kritische-auslastung": (titel: "Bild lesen", body: [Waagerecht steht die Jahresmenge, senkrecht stehen Jahreskosten. Die blaue Linie startet höher bei 47 000 €, steigt aber mit 14,75 €/Stück flacher. Orange startet bei 30 000 € und steigt mit 16,30 €/Stück. Links der exakten Schwelle ist Objekt 2 günstiger, rechts Objekt 1. Der Schnittpunkt zeigt Kostengleichheit zweier Anlagen, keinen Nullgewinn.]),
+  "amortisationsverlauf": (titel: "Bild lesen", body: [Waagerecht steht die Zeit in Jahren, senkrecht der rechnerisch kumulierte Rückfluss. Die blaue Gerade erreicht ihren eigenen Kaufbetrag von 18 000 € nach etwa 1,94 Jahren. Grün steigt schneller, muss aber 32 000 € ausgleichen und erreicht diesen Betrag erst nach etwa 2,14 Jahren. Es sind Durchschnittsgeraden, keine beobachteten Zahlungsreihen.]),
   "bep-aufgabe1": (titel: "Bild lesen", body: [Waagerecht steht die Monatsmenge, senkrecht Euro je Monat. Grün ist E(x), orange K(x), gestrichelt der Fixkostenbetrag. Ihr Schnittpunkt liegt bei 500 Packungen und 35 000 €. Bei 1 000 Packungen stehen 70 000 € Erlös 50 000 € Kosten gegenüber; der senkrechte Abstand beträgt 20 000 € Gewinn.]),
   "bep-aufgabe3": (titel: "Bild lesen", body: [Waagerecht steht die Monatsmenge, senkrecht stehen Euro je Monat. Der Schnittpunkt von E = 40x und K = 200 000 + 25x liegt bei 13 333,333… Stück. Die gestrichelte Senkrechte bei 24 000 zeigt die Novembermenge. Sie ist keine belegte Kapazitätsgrenze. Die größeren Abstände rechts des Schnittpunkts bedeuten höheren Gewinn.]),
   "bep-ausserhalb": (titel: "Bild lesen", body: [Die grüne Erlöslinie steigt stärker als die orange Kostenlinie, schneidet sie aber erst bei 5 000 Stück. Die senkrechte Kapazitätsgrenze liegt bereits bei 4 500. Dort ist die Kostenlinie noch 3 000 € höher. Die Fortsetzung nach rechts zeigt nur den rechnerischen Schnittpunkt, keine lieferbare Menge.]),
@@ -160,8 +176,8 @@
 ]
 #note("Dein Feynman-Schritt", [Erkläre ohne Vorlage: *Was kostet ein weiteres Stück? Was trägt es bei? Wann wird daraus Gewinn?* Zeichne dazu zwei Linien oder einen Geldfluss. Prüfe anschließend Erklärung, Einheiten und Annahmen.])
 
-*Stand 26.10.2026.* Enthalten ist der von Dir bestätigte Stoff aus VL 1–2: Grundlagen der KLR und Deckungsbeitragsrechnung, einschließlich der Aufgaben 1–4 des Blatts „08 Übungsaufgaben: KLR“. Die fachlichen Inhalte der älteren Skripte sind zusammengeführt; Das Skript enthält nur die Erklärungen und im Anhang die Formelsammlung; die Aufgaben (mit Altklausurteilen) samt Lösungen Schritt für Schritt und das Quiz stehen auf der Lernwebseite im Reiter „Lernen“. Spätere Investitionsverfahren und Controllingkennzahlen folgen erst nach Behandlung in der Vorlesung.
-#src[Gliederung, PDF-S. 1–2; K, PDF-S. 1–2; Ü, PDF-S. 1–2; L15, PDF-S. 1 und 22; Umfang von Mario am 22.10.2026 bestätigt.]
+*Stand 05.11.2026.* Enthalten sind KLR und Deckungsbeitragsrechnung aus VL 1–2 sowie die neuen Unterlagen zu statischen Investitionsverfahren und kritischer Auslastung (unter anderem mit „VL 3.11“ markiert). Kapitel 2 erklärt Kosten-, Gewinn-, Rentabilitäts- und Amortisationsvergleich einschließlich der Rechenkonventionen und geprüften Quellenabweichungen. Aufgaben mit vollständigen Lösungen, Quiz und Karteikarten stehen im Reiter „Lernen“; die Hörfassung deckt beide Kapitel ab. Dynamische Verfahren und technische Controllingkennzahlen sind weiterhin nicht belegt.
+#src[K und Ü, PDF-S. 1–2; B31, PDF-S. 1–5; S32, PDF-S. 1–3; KR, PDF-S. 1–3; KD, PDF-S. 1–3; C09, PDF-S. 1–5.]
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -171,7 +187,7 @@
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* M = „KLR Skript eigenes Skript.pdf“, 2 S., vom 06.10.2026; K = „KLR.pdf“, 2 S., handschriftliche Grundlagen und VL-1-Übung; Ü = „VL2 Investition und Controlling.pdf“, 2 S., Blatt „08 Übungsaufgaben: KLR“ mit Notizen; Fotos Ü 2–4 = gleichnamige Originalfotos; F = „Formelsammlung.pdf“, 7 S.; A13 = „Controlling SS 13.pdf“; A14 = „Controlling WS 14-15.pdf“; A18 = „Controlling WS18-19.pdf“; L15 = „Stand 15.10.26_Lernskript_Investition.pdf“, 22 S.; L13 = Stand 13.10., 18 S.; L02 = „VL02_KLR_Grundlagen_Lernskript.pdf“, 15 S.; H = zugehörige frühere HTML-Skripte. Die alten Skripte liegen in „Zum Löschen/Alte Lernskript-Stände/“. „PDF-S.“ zählt ab der ersten Dateiseite. Alle „Nachschlagen“-Verweise führen mit automatisch berechneter Seite in dieses Lernskript. Eigene Erklärhilfen und Präzisierungen sind gekennzeichnet.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* B27 = „031 Investitionsrechnung Beispiele Backofen.pdf“, 2 S.; B31 = gleichnamige Fassung mit Suffix „202611030745_48266“, 5 S.; S32 = „032 Aufgabe Investitionsrechnung_202611030745_19484.pdf“, 3 S.; KR = „Datei 04 .pdf“, 4 S., kritische Auslastung; KD = „Datei 05.pdf“, 3 S., Kapitaldienst und Aufgaben 20–21; C09 = „07  Controlling  Aufgaben_202611040747_40352.pdf“, 5 S., Blattüberschrift „09: Aufgaben: KVR, kritische Menge, Gewinnvergleichsrechnung“. Diese sechs Originale liegen unter „Unterlagen/Vorlesungsseiten mit Notizen/“. M = „KLR Skript eigenes Skript.pdf“, 2 S., vom 06.10.2026; K = „KLR.pdf“, 2 S., handschriftliche Grundlagen und VL-1-Übung; Ü = „VL2 Investition und Controlling.pdf“, 2 S., Blatt „08 Übungsaufgaben: KLR“ mit Notizen; Fotos Ü 2–4 = gleichnamige Originalfotos; F = „Formelsammlung.pdf“, 7 S.; A13 = „Controlling SS 13.pdf“; A14 = „Controlling WS 14-15.pdf“; A18 = „Controlling WS18-19.pdf“; L15 = „Stand 15.10.26_Lernskript_Investition.pdf“, 22 S.; L13 = Stand 13.10., 18 S.; L02 = „VL02_KLR_Grundlagen_Lernskript.pdf“, 15 S.; H = zugehörige frühere HTML-Skripte. Die alten Skripte liegen in „Zum Löschen/Alte Lernskript-Stände/“. „PDF-S.“ zählt ab der ersten Dateiseite. Alle „Nachschlagen“-Verweise führen mit automatisch berechneter Seite in dieses Lernskript. Eigene Erklärhilfen und Präzisierungen sind gekennzeichnet.]
 
 #bild("map-ueberblick", [Die Denkkette des bisher behandelten Stoffs. Eigene Darstellung nach K und Ü, jeweils PDF-S. 1–2.], height: 47mm)
 
@@ -183,7 +199,7 @@ Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu
 #karte((1fr, auto, 1fr, auto, 1fr, auto, 1fr),
   chunk([Kapitel 1 · KLR und Deckungsbeitragsrechnung], [Bezugsgröße · fixe und variable Kosten · Deckungsbeitrag · Break-Even · Entscheidungen], ziel: <a-1>),
   pfeil(beschriftung: [Grundlage für]),
-  chunk([Statische Investitionsverfahren], [noch nicht behandelt], fill: white, stroke: muted),
+  chunk([Kapitel 2 · Statische Investitionsrechnung], [Kosten · Gewinn · Rentabilität · Amortisation · kritische Auslastung], ziel: <a-2>),
   pfeil(),
   chunk([Dynamische Investitionsverfahren], [noch nicht behandelt], fill: white, stroke: muted),
   pfeil(),
@@ -208,8 +224,8 @@ Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu
   chunk([1.8 Rückwärts rechnen und prüfen], [Zielgewinn · unerreichbare Schwelle · Ansatz für jede Textaufgabe], ziel: <a-1-8>),
 )
 
-Das Modul fragt im Kern: *Lohnt sich das?* Kapitel 1 legt dafür das Werkzeug. Du trennst Kosten, die mit jedem Stück entstehen, von Kosten, die ohnehin anfallen. Der Deckungsbeitrag zeigt, was jedes Stück zur Deckung der Fixkosten beiträgt, und daraus folgen Gewinnschwelle und Entscheidungen. Die späteren Investitionsverfahren bauen laut Gliederung auf genau dieser Trennung auf.
-#src[Gliederung, PDF-S. 1–2; Zusammenführung aus Kapitel 1. Eigene Darstellung.]
+Das Modul fragt im Kern: *Lohnt sich das?* Kapitel 1 legt dafür das Werkzeug. Kapitel 2 nutzt es zum Vergleich von Investitionsalternativen und ergänzt Kapitalbindung und Rückflusszeit. Du trennst Kosten, die mit jedem Stück entstehen, von Kosten, die ohnehin anfallen. Der Deckungsbeitrag zeigt, was jedes Stück zur Deckung der Fixkosten beiträgt, und daraus folgen Gewinnschwelle und Entscheidungen. Die statischen Verfahren bauen auf dieser Trennung auf; ihre verschiedenen Maßstäbe werden in Kapitel 2 verbunden.
+#src[Gliederung, PDF-S. 1–2; K und Ü, jeweils PDF-S. 1–2; B31, PDF-S. 1–5; KR, PDF-S. 1–3. Eigene Zusammenführung.]
 
 #pagebreak()
 = Kapitel 1 · KLR und #box[Deckungsbeitragsrechnung] <a-1>
@@ -476,7 +492,7 @@ Mögliche Stellschrauben sind Preis erhöhen, variable Stückkosten senken, Fixk
 + *Prüfung:* Einheiten, Vorzeichen, Rundung und möglichst einen zweiten Rechenweg kontrollieren.
 + *Entscheidung:* Bei „Soll der IB …?“ ein begründetes Ja/Nein mit den passenden Bedingungen und dem Risiko angeben.
 
-#note("Anschluss an das Modul", [Die Gliederung baut nach dieser Basis statische und dynamische Investitionsverfahren sowie Controlling auf. Schon jetzt kannst Du verstehen, warum eine neue Maschine fixe und variable Kosten verändern kann. Die zusätzlichen Verfahren werden hier noch nicht vorweg erklärt.])
+#note("Anschluss an das Modul", [Die Gliederung baut nach dieser Basis statische und dynamische Investitionsverfahren sowie Controlling auf. Schon jetzt kannst Du verstehen, warum eine neue Maschine fixe und variable Kosten verändern kann. Die statischen Verfahren folgen jetzt in Kapitel 2; dynamische Verfahren und weitere Controllingthemen bleiben bis zu belegten Vorlesungsunterlagen offen.])
 #src[Ü 2–4, PDF-S. 2; K, PDF-S. 2, Rückwärtsaufgaben; Gliederung, PDF-S. 1–2; L15, PDF-S. 8–10 und 21–22; L02, PDF-S. 9–10 und 15. Geordneter Lösungsablauf: eigene Zusammenführung.]
 
 #block(breakable: false)[
@@ -486,10 +502,156 @@ Mögliche Stellschrauben sind Preis erhöhen, variable Stückkosten senken, Fixk
 ]
 #hoch(<a-1>, [Kapitelübersicht])
 
+#pagebreak()
+= Kapitel 2 · Statische Investitionsrechnung <a-2>
+
+#überblick([Kapitel 2 auf einen Blick],
+  idee(<a-2-1>, [Jahreskosten aufbauen.], [Anschaffung, Abschreibung und Kapitalbindung sauber trennen.]),
+  idee(<a-2-2>, [Kosten vergleichen.], [Gleiche Leistung und passende Mengenbasis herstellen.]),
+  idee(<a-2-3>, [Gewinn vergleichen.], [Unterschiedliche Erlöse und Absatzmengen berücksichtigen.]),
+  idee(<a-2-4>, [Rentabilität vergleichen.], [Erfolg auf das durchschnittlich gebundene Kapital beziehen.]),
+  idee(<a-2-5>, [Amortisation prüfen.], [Die Zeit bis zum rechnerischen Kapitalrückfluss bestimmen.]),
+  idee(<a-2-6>, [Kritische Auslastung.], [Den Mengenbereich finden, in dem eine Alternative günstiger ist.]),
+)
+#ablauf(
+  chunk([Daten und Vergleichsbasis], [Jahr · Menge · Nutzungsdauer · Restwert], ziel: <a-2-1>),
+  chunk([Kosten → Erlöse → Gewinn], [KVR und GVR], ziel: <a-2-2>),
+  chunk([Kapital und Rückfluss], [RVR und AVR], ziel: <a-2-4>),
+  chunk([Entscheidung mit Grenzen], [kritische Menge · Absatz · Aussage des Verfahrens], ziel: <a-2-6>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
+Eine Maschine kostet beim Kauf Geld, beeinflusst aber viele spätere Jahresergebnisse. Die *statischen Verfahren* verdichten diese Folgen auf eine repräsentative Jahresrechnung mit Durchschnittswerten. Du baust zunächst dieselbe Kostenbasis auf und wechselst dann die Frage: weniger Kosten, mehr Gewinn, höhere Verzinsung oder schnellere Rückgewinnung?
+#src[B31, PDF-S. 1–5; S32, PDF-S. 1–3; KD, PDF-S. 1–3. Einordnung und Denkkette: eigene Zusammenführung.]
+
+== 2.1 Anschaffung, Kapitalkosten und Betriebskosten <a-2-1>
+
+Die *Anschaffungskosten* $A K$ sind der Kaufbetrag. Die *kalkulatorische Abschreibung* $A$ verteilt den Wertverbrauch auf die Nutzungsdauer $n$. Die *kalkulatorischen Zinsen* $Z$ bewerten das gebundene Kapital mit dem vorgegebenen Zinssatz $i$; sie sind hier keine zusätzlich belegte Bankzahlung.
+
+#form[$ A=(A K-R W)/n quad overline(K)_"geb"=(A K+R W)/2 quad Z=overline(K)_"geb" dot i $]
+$A K,R W,overline(K)_"geb"$: €; $A,Z$: €/Jahr; $n$: Jahre; $i$: Zinssatz pro Jahr als Dezimalzahl. $R W$ ist der Restwert am Ende. Gültig bei linearer Abschreibung und dem in den Unterlagen verwendeten durchschnittlichen Kapitalverlauf. Bei $R W=0$ bindest Du im Mittel $A K/2$. In S32 ist diese Hälfte ausdrücklich vorgegeben; mangels eines anderen Restwerts wird dort für die Abschreibung $R W=0$ angenommen.
+
+#karte((1fr, auto, 1fr),
+  chunk([Kapitalkosten / Kapitaldienst], [$K D = A + Z$ · €/Jahr]),
+  pfeil(zeichen: sym.plus),
+  chunk([Betriebskosten], [$B K = K_(f,"sonst") + k_v x$ · €/Jahr]),
+)
+#form[$ K(x)=K D+B K=A+Z+K_(f,"sonst")+k_v x quad K_f=A+Z+K_(f,"sonst") $]
+$x$: Stück/Jahr; $k_v$: €/Stück. In diesen Blättern bedeutet *Kapitaldienst* Abschreibung plus kalkulatorische Zinsen. Die Betriebskosten enthalten hier beides noch nicht. Ein vorgegebener Kapitaldienst wird deshalb *einmal* addiert; Abschreibung und Zinsen danach nicht nochmals aufschlagen.
+
+#note("★ Klausur · von Dir markiert", [In KD, PDF-S. 2 steht: „Abschreibungen u. Zinsen fehlen hier noch! Muss man in der Klausur wissen!“ Gemeint sind die dortigen Betriebskosten. Prüfe stets, ob „fixe Kosten“ nur die *sonstigen* Fixkosten oder bereits den gesamten Fixkostenblock bezeichnen.])
+#bild("map-investitionskosten", [Mindmap: vom Kaufbetrag zu den Jahreskosten. Eigene Darstellung nach B31, PDF-S. 2, und KD, PDF-S. 2–3.], height: 46mm)
+#src[B31, PDF-S. 1–2; S32, PDF-S. 1–2; KD, PDF-S. 1–3, besonders markierte Abgrenzung auf S. 2. Symbolwahl und Abgrenzung zur Bankzahlung: eigene Erklärung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.2 Kostenvergleichsrechnung: dieselbe Leistung vergleichen <a-2-2>
+
+Die *Kostenvergleichsrechnung (KVR)* bevorzugt die Alternative mit den geringeren Kosten. Das ist aussagekräftig, wenn die verglichene Leistung gleichwertig ist und Erlösunterschiede keine Rolle spielen. Sonst kann gerade die teurere Anlage den höheren Gewinn erzielen.
+#form[$ K_j(x)=K_(f,j)+k_(v,j)x quad k_j(x)=K_j(x)/x $]
+$K_j$: €/Jahr; $k_j$: €/Stück; $j$: Alternative. Bei gleicher Jahresmenge liefern Gesamt- und Stückkosten dieselbe Rangfolge. Bei verschiedenen Mengen brauchst Du eine bewusste Vergleichsbasis: Stückkosten zeigen die Kosten je Leistungseinheit, ersetzen aber keinen Vergleich der gesamten Erlöse und Gewinne.
+
+#tab(columns: (1.7fr, 1fr, 1fr),
+ th([Backofen-Beispiel], [Normalo-Back], [Back de luxe]),
+ [$K_f$ in €/Jahr], [7 320], [12 430],
+ [$k_v$ in €/Brötchen], [0,12], [0,09],
+ [$K(100 000)$ in €/Jahr], [19 320], [21 430],
+ [$k$ bei 100 000 bzw. 150 000 Stück/Jahr], [0,1932 €/Stück], [0,172866… €/Stück],
+)
+Die letzte Zeile gehört zum *anderen Mengenfall* aus Aufgabe 24: Der Normalo-Back schafft nur 100 000 Brötchen/Jahr, Back de luxe 150 000. Niedrige Stückkosten und eine ausreichende Kapazität sprechen dort für Back de luxe. Bei 100 000 gleichen Brötchen ist dagegen der Normalo-Back um 2 110 €/Jahr günstiger.
+
+#note("Gültigkeit", [Ein einzelnes Angebot mit bekannten Kosten, aber ohne Erlös, Vergleichsangebot oder Kostenobergrenze lässt noch kein Urteil „lohnt sich“ zu. Genau diese Grenze nennt KD, PDF-S. 2. Ein positiver Gewinn einschließlich kalkulatorischer Zinsen ist eine andere, weitergehende Aussage.], fill: sand)
+#bild("map-kvr", [Mindmap: Kostenvergleich braucht eine passende Leistungsbasis. Eigene Darstellung nach B31, PDF-S. 1–3, und KD, PDF-S. 1–3.], height: 46mm)
+#src[B31, Aufgaben 23–24, PDF-S. 1–3; B27, PDF-S. 1–2 als zusätzliche Mitschrift desselben Beispiels; KD, Aufgaben 20–21, PDF-S. 1–3; S32, PDF-S. 1–2. Vergleichsbedingungen: eigene Präzisierung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.3 Gewinnvergleichsrechnung: Qualität und Menge zählen mit <a-2-3>
+
+Die *Gewinnvergleichsrechnung (GVR)* nimmt die Erlöse hinzu. Ein besseres Produkt kann einen höheren Preis erzielen; ein leistungsfähigerer Ofen kann mehr verkaufbare Stücke ermöglichen. Deshalb reicht „billiger“ als Investitionsurteil nicht immer aus.
+#form[$ E_j=e_j x_j quad G_j=E_j-K_j=(e_j-k_(v,j))x_j-K_(f,j) $]
+$e_j$: Nettoerlös in €/Stück; $x_j$: hergestellte und verkaufte Stück/Jahr; $G_j$: €/Jahr, hier *nach* kalkulatorischen Zinsen. Für die relative Wahl wird der höhere Jahresgewinn bevorzugt. $G>0$ bedeutet in diesem Kostenmodell, dass auch die vorgegebene kalkulatorische Verzinsung verdient wurde.
+
+*Gleiche Menge:* Beim Backofenfall 25 stehen 100 000 Brötchen zu 0,25 € den 100 000 Vollkornbrötchen zu 0,30 € gegenüber. Back de luxe hat höhere Kosten, erzielt aber den höheren Gewinn. *Verschiedene Mengen:* Beim Pizzafall vergleichst Du die tatsächlich absetzbaren 50 000 Pizzas aus Roma mit 40 000 aus Florenz über die gesamten Jahresgewinne.
+#bild("map-gvr", [Mindmap: erst verkaufbare Menge, dann Erlös und vollständige Kosten. Eigene Darstellung nach B31, PDF-S. 3, und C09, PDF-S. 3–4.], height: 46mm)
+#note("Fehler vermeiden", [Gewinn je Stück und Jahresgewinn sind bei unterschiedlichen Mengen verschiedene Maßstäbe. Für die gesamte Investitionsalternative zählt in der GVR der *gesamte Jahresgewinn*. Eine hohe Produktionskapazität wird erst durch Absatz zu Erlös.], fill: sand)
+#src[B31, Aufgaben 24–25 und Verfahrensübersicht, PDF-S. 1, 3 und 5; S32, PDF-S. 1–2; C09, PDF-S. 1–4. Positive-Gewinn-Aussage und Mengenabgrenzung: eigene Erklärung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.4 Rentabilität und Differenzinvestition <a-2-4>
+
+Die *Rentabilitätsvergleichsrechnung (RVR)* fragt nach dem Jahreserfolg je Euro durchschnittlich gebundenem Kapital. Sie setzt eine Erfolgsgröße zu einer Kapitalgröße ins Verhältnis. Wenn im Jahresgewinn die kalkulatorischen Zinsen bereits abgezogen sind, werden sie für die hier verwendete Verzinsung des gesamten gebundenen Kapitals wieder hinzugerechnet.
+#form[$ R=(G+Z)/overline(K)_"geb" dot 100 % $]
+$G,Z$: €/Jahr; $overline(K)_"geb"$: €; $R$: % pro Jahr. Prüfe die Gewinnabgrenzung: Ist ein Gewinn *vor* kalkulatorischen Zinsen gegeben, darfst Du $Z$ nicht nochmals addieren. Die Mitschrift nennt daneben Eigenkapital- und Umsatzrendite; diese Nenner beantworten andere Fragen und werden hier nicht mit der Investitionsrentabilität vermischt.
+
+#bild("map-rvr", [Mindmap: Zähler, Nenner und Alternativverwendung abstimmen. Eigene Darstellung nach B31, PDF-S. 4–5, und S32, PDF-S. 2–3.], height: 46mm)
+
+Bei ungleichen Anschaffungskosten bleibt bei der billigeren Anlage Kapital frei. Die *Differenzinvestition* legt fest, was dieses Geld alternativ erwirtschaftet. Für ein gleiches Gesamtbudget vergleichst Du „billigere Anlage plus Alternative“ mit der teureren Anlage. Dadurch kann sich die Rangfolge gegenüber den isolierten Prozentsätzen ändern.
+#form[$ R_("1+Diff")=(G_1+Z_1+g_"Diff")/(overline(K)_1+overline(K)_"Diff") dot 100 % $]
+$g_"Diff"$ ist hier der ausdrücklich gegebene jährliche Ertrag der Zusatzanlage, passend zur Erfolgsgröße vor kalkulatorischen Zinsen. Die Halbierung ihres Anschaffungsbetrags als durchschnittliche Bindung folgt in den vorliegenden Mitschriften demselben Modell; sie ist keine allgemeine Regel für jede Geldanlage.
+
+#note("Quelle sichtbar geprüft · Backofen 26", [Der Aufgabentext B31, PDF-S. 1 nennt für die 14 000 € Differenz einen Ertrag von *2 000 €*. Auf S. 4 stehen stattdessen 1 000 € und das Ergebnis 52,9 %. Beides passt nicht zusammen: $(6400+1000)/16000 dot 100 %="46,25" %$. Mit dem ausdrücklich vorgegebenen Ertrag 2 000 €/Jahr sind es *52,50 %*. Back de luxe erreicht 61,5625 % und bleibt in beiden Varianten vorn. Die Halbierung des Kapitalbetrags halbiert nicht automatisch den vorgegebenen Ertrag.], fill: sand)
+#block(breakable: false)[
+=== 2.4.1 Renditebegriffe: der Nenner verrät die Frage <a-2-4-1>
+
+Die Randübersicht auf B31, S. 5 nennt drei weitere Bezugsgrößen. *Eigenkapital* ist der von den Eigentümern bereitgestellte Teil, *Gesamtkapital* umfasst Eigen- und Fremdkapital; *Umsatz* ist der Verkaufserlös. Benenne stets, welche Gewinnabgrenzung zum verwendeten Nenner passt.
+#tab(columns: (1.4fr, 1.7fr, 2.2fr),
+ th([Kennzahl], [Bezugsgröße], [Was wird verglichen?]),
+ [Eigenkapitalrendite], [durchschnittliches Eigenkapital], [Gewinn für die Eigentümer nach Fremdkapitalzinsen je Euro Eigenkapital],
+ [Gesamtkapitalrendite], [durchschnittliches Gesamtkapital], [Erfolg vor Fremdkapitalzinsen je Euro Gesamtkapital],
+ [Umsatzrendite], [Umsatz derselben Periode], [Gewinnanteil je Euro Umsatz; Gewinnabgrenzung benennen],
+)
+#form[$ R_"Umsatz"=G/E dot 100 % $]
+$G,E$: €/Jahr; $R_"Umsatz"$: %. Voraussetzung: dieselbe Periode und klar abgegrenzter Gewinn. Für die Kapitalrenditen gilt entsprechend Erfolg geteilt durch die genannte durchschnittliche Kapitalbasis mal 100 %. Die Mitschrift schreibt allgemein „Gewinn“; die passende Zinsabgrenzung ist hier ausdrücklich ergänzt.
+#note("Fehler vermeiden", [Die Pfeilnotiz „Cashflow“ unter der Umsatzrendite in B31, S. 5 ist keine Gleichsetzung: Eine Rendite ist ein *Verhältnis in Prozent*, ein Cashflow ein *Zahlungsüberschuss in Euro pro Periode*. Abschreibungen, kalkulatorische Zinsen und die tatsächlichen Zahlungen machen diese Größen verschieden.], fill: sand)
+]
+#src[B31, Aufgabe 26, PDF-S. 1 und 4, ergänzende Renditebegriffe S. 5; S32, Differenzinvestition, PDF-S. 2–3. Quellenabweichung und Rechnung mit dem gedruckten Ertrag: eigene Prüfung; Jahresbezug des Ertrags als statische Modellannahme.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.5 Amortisation: wann ist der Kaufbetrag zurück? <a-2-5>
+
+Die *Amortisationsvergleichsrechnung (AVR)* fragt nach der Zeit, bis laufende Rückflüsse den eingesetzten Betrag rechnerisch ausgeglichen haben. Eine kürzere Zeit bedeutet in dieser Betrachtung eine schnellere Kapitalrückgewinnung. Sie ist kein Beweis für den größten Gewinn über die gesamte Nutzungsdauer.
+
+#form[$ t_"A"=(A K-R W)/overline(r) quad overline(r)=G+A quad ("Rechenkonvention B31") $]
+$t_"A"$: Jahre; $overline(r)$: durchschnittlicher jährlicher Rückfluss in €/Jahr. In Aufgabe 27 ist $R W=0$ und die Mitschrift rechnet mit $G+A$, wobei $G$ aus der GVR nach kalkulatorischen Zinsen stammt. Abschreibung wird addiert, weil sie den Gewinn mindert, aber im jeweiligen Jahr keine Auszahlung ist.
+
+#bild("amortisationsverlauf", [Rechnerisch kumulierter Rückfluss der Backöfen, Konvention B31. Eigene Darstellung nach B31, PDF-S. 4.], height: 56mm)
+#note("Gültigkeit · Gewinn ist nicht automatisch Cashflow", [Die Unterlagen verwenden mit $G+A$ eine vereinfachte Rückflussgröße *nach kalkulatorischen Zinsen*. Für einen Rückfluss vor diesen rein kalkulatorischen Zinsen wäre bei sonst zahlungswirksamen Jahrespositionen $G+A+Z$ anzusetzen. Dann ergeben sich andere Zeiten. Hier bleibt die Vorlesungskonvention ausdrücklich benannt; beide Abgrenzungen dürfen nicht unbemerkt vermischt werden.], fill: sand)
+
+Die Durchschnittsmethode verlangt einen positiven, repräsentativen Jahresrückfluss. Vergleiche die Zeit mit der Nutzungsdauer und gegebenenfalls einer vorgegebenen Höchstzeit. Die Methode lässt die zeitliche Lage einzelner Zahlungen und den Erfolg nach dem Amortisationszeitpunkt außer Betracht; sie dient deshalb als zusätzliche Betrachtung von Kapitalbindung und Risiko.
+#note("Quelle sichtbar korrigiert · S32", [Auf S32, PDF-S. 3 steht nur „AVR = gleich“. Die vollständig gerechneten Zeiten sind mit derselben Konvention *2,7752 Jahre für A* und *2,7314 Jahre für B*. Sie sind nahe beieinander, aber nicht gleich. B amortisiert sich etwas schneller.], fill: sand)
+#src[B31, Aufgabe 27, PDF-S. 1 und 4–5; S32, Aufgabenstellung S. 1 und Kurznotiz S. 3. Vollständige Rechnung, Cashflow-Abgrenzung und Verfahrensgrenzen: eigene ergänzende Erklärung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.6 Kritische Auslastung: wann wechselt der Kostenvorteil? <a-2-6>
+
+Eine teurere Maschine kann höhere Fixkosten, aber geringere Kosten je Stück haben. Bei geringer Menge überwiegt der feste Block; bei hoher Menge die Ersparnis pro Stück. Die *kritische Auslastung* ist hier die Jahresmenge, bei der *zwei Alternativen dieselben Kosten* haben.
+#form[$ K_1(x)=K_2(x) => K_(f,1)+k_(v,1)x=K_(f,2)+k_(v,2)x $]
+#form[$ x_"krit"=(K_(f,2)-K_(f,1))/(k_(v,1)-k_(v,2)) $]
+$x_"krit"$: Stück/Jahr. Voraussetzungen: dieselbe Jahresmenge für beide Alternativen, gültige lineare Kostenfunktionen, unterschiedliche variable Stückkosten und ein Schnittpunkt im machbaren Mengenbereich. Bei gleichen Steigungen gibt es entweder keinen Schnittpunkt oder zwei identische Kostenlinien.
+
+#bild("kritische-auslastung", [Kostenvergleich aus KR, PDF-S. 2–3. Eigene Darstellung mit exaktem Schnittpunkt.], height: 60mm)
+
+*Einheiten zuerst:* Die 295 000 bzw. 326 000 € sind *variable Jahreskosten bei 20 000 Stück*. Erst die Division durch 20 000 liefert 14,75 bzw. 16,30 €/Stück. Ein Gesamtbetrag in €/Jahr gehört nicht als Steigung an $x$.
+#note("Quelle sichtbar korrigiert", [KR rundet die Schwelle $17000/"1,55"="10 967,7419…"$ auf 10 968 Stück. Genau bei *10 968* ist Objekt 1 bereits um 0,40 €/Jahr günstiger. Daher: Objekt 2 bis einschließlich 10 967, Objekt 1 ab 10 968; nur am nicht ganzzahligen exakten Schnittpunkt sind beide gleich. Die Randnotiz auf KR, S. 3 begründet den Vorteil bei 18 000 mit niedrigeren Fixkosten; tatsächlich hat Objekt 1 *höhere* Fixkosten und *niedrigere variable Stückkosten*.], fill: sand)
+
+#tab(columns: (1.3fr, 2fr, 2fr),
+ th([Schnittpunkt], [Gleichgesetzt], [Bedeutung]),
+ [Gewinnschwelle], [$E(x)=K(x)$ einer Anlage], [$G=0$, siehe 1.5],
+ [Kritische Kostenmenge], [$K_1(x)=K_2(x)$], [Wechsel des Kostenvorteils],
+ [Kritische Gewinnmenge], [$G_1(x)=G_2(x)$], [Wechsel des Gewinnvorteils],
+)
+Bei gleichem Stückerlös und gleicher Menge fällt der Erlös im Gewinnvergleich heraus: Kosten- und Gewinnvergleich haben dann dieselbe kritische Menge. Bei unterschiedlichen Erlösen musst Du die *Gewinnfunktionen* gleichsetzen. Die kritische Menge ist also nicht automatisch die Gewinnschwelle.
+#bild("map-kritisch", [Mindmap: Gleichsetzen, Bereich prüfen und richtig entscheiden. Eigene Darstellung nach KR, PDF-S. 1–3, und C09, PDF-S. 1–2 und 5.], height: 46mm)
+#src[KR, PDF-S. 1–3; S. 4 enthält nur die Überschrift „Aufgaben“, keinen weiteren Aufgabentext. C09, PDF-S. 1–2 und 5. Exakte Rundungsgrenze, Randfälle und Unterscheidung der Schnittpunkte: eigene algebraische Prüfung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 2.* Die Jahreskosten aus Abschreibung, Zinsen und Betriebskosten sind die gemeinsame Basis. Die KVR vergleicht Kosten, die GVR ergänzt Erlöse. Die RVR setzt den passend abgegrenzten Erfolg zur Kapitalbindung ins Verhältnis; eine Differenzinvestition stellt die Budgetverwendung vergleichbar her. Die AVR betrachtet die Rückgewinnungszeit. Kritische Mengen zeigen schließlich, ob ein Urteil auch bei einer anderen Auslastung Bestand hat. Die Verfahren beantworten unterschiedliche Fragen und können deshalb zu unterschiedlichen Empfehlungen führen.
+#src[B31, PDF-S. 1–5; S32, PDF-S. 1–3; KD, PDF-S. 1–3; KR, PDF-S. 1–3; C09, PDF-S. 1–5. Eigene Zusammenführung.]
+
+#pagebreak()
 = Anhang
 == Formelsammlung mit Voraussetzungen
 
-Alle Beträge und Mengen beziehen sich auf dieselbe Periode. Es gilt das im Kapitel erläuterte lineare Einproduktmodell; für einen gegebenen Mehrproduktfall werden die Gesamt-DB addiert und gemeinsame Fixkosten einmal abgezogen.
+Alle Beträge und Mengen beziehen sich innerhalb einer Rechnung auf dieselbe Periode. Die erste Tabelle betrifft das lineare Einproduktmodell aus Kapitel 1; die zweite die statischen Investitionsverfahren aus Kapitel 2. Für die KLR gilt das lineare Einproduktmodell; für einen gegebenen Mehrproduktfall werden die Gesamt-DB addiert und gemeinsame Fixkosten einmal abgezogen.
 
 #tab(columns: (1.35fr, 2fr, 2fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
@@ -518,3 +680,23 @@ Alle Beträge und Mengen beziehen sich auf dieselbe Periode. Es gilt das im Kapi
 
 #note("Wichtige Zahlen", [*Ü 1:* $K_f=20 000$ €/Monat, $k_v=30$ €/Packung, $e=70$ €/Packung → Stück-DB 40 €, BEP 500 Packungen, $G(800)=+12 000$ €. *Ü 4:* 214,20 € brutto / 1,19 = 180 € netto; Stück-DB 70 €; exakte Schwelle 914,2857… Regale, kleinste ganze Menge 915. *Prozent:* 85 % = 0,85. Zahlen sind Aufgabenwerte, keine allgemeinen Betriebskennzahlen.])
 #src[Ü 1 und 4, PDF-S. 1–2; Foto Ü 4; Werte nachgerechnet.]
+
+
+#tab(columns: (1.35fr, 2fr, 2fr),
+ th([Statische Verfahren], [Formel], [Voraussetzung / Einheit]),
+ [Abschreibung], [$A=(A K-R W)/n$], [linear; €/Jahr],
+ [Mittlere Kapitalbindung], [$overline(K)_"geb"=(A K+R W)/2$], [linearer Kapitalabbau; €; S32 gibt $A K/2$ vor],
+ [Kalkulatorische Zinsen], [$Z=overline(K)_"geb" i$], [$i$ pro Jahr als Dezimalzahl; €/Jahr],
+ [Kapitaldienst], [$K D=A+Z$], [Begriffsverwendung der vorliegenden Blätter; €/Jahr],
+ [Betriebskosten], [$B K=K_(f,"sonst")+k_v x$], [hier ohne Abschreibung/Zinsen; €/Jahr],
+ [Gesamtkosten], [$K=K D+B K$], [Kapitaldienst genau einmal; €/Jahr],
+ [Gewinn], [$G=e x-K$], [verkaufbare Menge; hier nach kalkulatorischen Zinsen],
+ [Rentabilität], [$R=(G+Z)/overline(K)_"geb" dot 100 %$], [Zähler vor kalkulatorischen Zinsen; % pro Jahr],
+ [Umsatzrendite], [$R_"Umsatz"=G/E dot 100 %$], [gleiche Periode, $E>0$; Gewinnabgrenzung benennen],
+ [Amortisation], [$t_"A"=(A K-R W)/(G+A)$], [Konvention B31, konstanter positiver Jahresrückfluss; Jahre],
+ [Rückfluss vor kalk. Zinsen], [$overline(r)_"vor Z"=G+A+Z$], [ergänzende Abgrenzung; andere Jahrespositionen zahlungswirksam],
+ [Kritische Kostenmenge], [$x_"krit"=(K_(f,2)-K_(f,1))/(k_(v,1)-k_(v,2))$], [gleiche Menge, ungleiche Steigungen, machbarer Bereich; Stück/Jahr],
+)
+#src[B31, PDF-S. 1–5; S32, PDF-S. 1–3; KD, PDF-S. 1–3; KR, PDF-S. 1–3. Abgrenzungen wie in Kapitel 2.]
+#note("Wichtige Zahlen · Investitionsrechnung", [*Backöfen bei 100 000 Stück:* Kosten 19 320 / 21 430 €/Jahr; bei Preisen 0,25 / 0,30 € Gewinne 5 680 / 8 570 €/Jahr. *KR:* exakte kritische Menge 10 967,7419… Stück/Jahr, Objekt 1 bei ganzen Mengen ab 10 968 günstiger. *S32:* $x=12 000$ Stück/Jahr; KVR bevorzugt A, GVR und RVR mit Differenzinvestition bevorzugen B; AVR nach B31 knapp B.])
+#src[B31, PDF-S. 1–4; KR, PDF-S. 2–3; S32, PDF-S. 1–3. Nachgerechnet.]

@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 27.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,27 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "led-netzwerk": "abbildungen/led-netzwerk.svg",
+  "netzwerk-nichtlinear": "abbildungen/netzwerk-nichtlinear.svg",
+  "vl30-bruecke": "abbildungen/vl30-bruecke.svg",
+  "vl30-potential": "abbildungen/vl30-potential.svg",
+  "vl30-vdr": "abbildungen/vl30-vdr.svg",
+  "vl30-leistung": "abbildungen/vl30-leistung.svg",
+  "vl30-knoten": "abbildungen/vl30-knoten.svg",
+  "vl30-diode": "abbildungen/vl30-diode.svg",
+  "vl30-tangente": "abbildungen/vl30-tangente.svg",
+  "vl30-bay41": "abbildungen/vl30-bay41.svg",
+  "vl30-netzkennlinie": "abbildungen/vl30-netzkennlinie.svg",
+  "vl30-ptc": "abbildungen/vl30-ptc.svg",
+  "vl30-leitung": "abbildungen/vl30-leitung.svg",
+  "vl30-transistorfeld": "abbildungen/vl30-transistorfeld.svg",
+  "vl30-masche": "abbildungen/vl30-masche.svg",
+  "vl30-transistor": "abbildungen/vl30-transistor.svg",
+  "vl30-ntc": "abbildungen/vl30-ntc.svg",
+  "map-widerstandsarten": "abbildungen/map-widerstandsarten.svg",
+  "map-netzwerk": "abbildungen/map-netzwerk.svg",
+  "led-kennlinie-aufgabe": "abbildungen/led-kennlinie-aufgabe.svg",
+
   "skript-thermo": "abbildungen/skript-thermo.svg",
   "skript-foto": "abbildungen/skript-foto.svg",
   "skript-piezo": "abbildungen/skript-piezo.svg",
@@ -125,6 +146,25 @@
 )
 
 #let bilddeutungen = (
+  "vl30-potential": (titel: "Bild lesen", body: [Links verbinden ideale Drähte Punkte gleichen Potenzials. Rechts steht waagerecht die Folge der Schaltungspunkte, senkrecht das Potenzial in V mit D als Nullpunkt. Über Widerständen sinkt es in Stromrichtung, über der Quelle steigt es wieder. Der Anstieg schließt den Umlauf.]),
+  "vl30-bruecke": (titel: "Bild lesen", body: [Beide Zweige liegen an 10 V. Links teilen zwei gleiche Widerstände die Spannung auf 5 V. Rechts bleiben unter dem Abgriff 8 V. Der gestrichelte Querzweig ist offen; ein realer Querwiderstand würde beide Spannungsteiler belasten.]),
+  "vl30-leitung": (titel: "Bild lesen", body: [A und B liegen am Hinleiter, C und D am Rückleiter. Die Spannungen 220 V und 216 V unterscheiden sich um die Summe der Abfälle beider Leiter. C ist als Bezugspunkt markiert; Masse muss nicht am Minuspol der Quelle liegen.]),
+  "vl30-ptc": (titel: "Bild lesen", body: [Links stehen Strom und Spannung, rechts Widerstand und Temperatur. Die Temperaturkennlinien steigen an. Die gekrümmten Strom-Spannungs-Kennlinien zeigen, dass sich ein erwärmter Kaltleiter anders als ein konstanter ohmscher Widerstand verhält.]),
+  "vl30-ntc": (titel: "Bild lesen", body: [Links oben sind unterschiedliche Arbeitspunkte bei unterschiedlichen Temperaturen eingetragen. Rechts steht die Reihenschaltung mit Vorwiderstand. Unten fällt die Temperaturkennlinie: Je wärmer der NTC, desto kleiner sein Widerstand. Die Beschriftung ist eine Skizzenangabe, kein genauer Ersatz für die Exponentialrechnung.]),
+  "vl30-vdr": (titel: "Bild lesen", body: [Oben links steigt der Strom mit der Spannung stark an, während der Widerstandsquotient abnimmt. Oben rechts liegt der Varistor parallel zur Halbleiterschaltung. Unten wird die Spannungsspitze ohne Schutz der begrenzten Spannung mit Varistor gegenübergestellt; waagerecht steht die Zeit.]),
+  "vl30-diode": (titel: "Bild lesen", body: [Waagerecht steht die Diodenspannung, senkrecht der Strom. Rechts ist der Durchlassbereich, links der Sperrbereich bis zum Durchbruch. Unten sind beide Polungen mit Lastwiderstand dargestellt. Der Ring am Bauteil kennzeichnet die Kathode.]),
+  "vl30-bay41": (titel: "Bild lesen", body: [Waagerecht steht die Spannung in V, senkrecht der Strom in mA. Die rote Durchlasskennlinie wird bei wachsender Spannung sehr steil. Die Aufgabe verwendet den aus der Kurve abgelesenen Arbeitspunkt, um das Modell lokal auszuwerten.]),
+  "vl30-tangente": (titel: "Bild lesen", body: [Die drei Diagramme zeigen dieselbe gekrümmte Kennlinie. Eine Gerade mit festgelegter Steigung wird bis an den Arbeitspunkt verschoben. Ihre Steigung ist der differenzielle Leitwert; der Kehrwert ist der differenzielle Widerstand. Die Gerade gilt nur in der Nähe dieses Punkts.]),
+  "vl30-transistor": (titel: "Bild lesen", body: [Links ist der kleine Basisstrom im Steuerkreis, rechts der Kollektorstrom im Lastkreis mit Lastwiderstand. Beide Ströme vereinigen sich zum Emitterstrom. Die Quellspannung teilt sich zwischen Transistor und Lastwiderstand auf.]),
+  "vl30-transistorfeld": (titel: "Bild lesen", body: [Waagerecht steht die Kollektor-Emitter-Spannung, senkrecht der Kollektorstrom. Jede nahezu waagerechte Kurve gehört zu einem Basisstrom. Die fallende Lastgerade schneidet die gewählte Kennlinie im Arbeitspunkt. Die rote Hyperbel kennzeichnet gleiche Verlustleistung von 0,5 W.]),
+  "vl30-leistung": (titel: "Bild lesen", body: [Waagerecht steht die Zeit. Die Spannungs-, Strom- und Leistungskurven sind qualitativ überlagert, ihre Einheiten verschieden. Die rot schraffierte Fläche unter p(t) ist Energie. Das flächengleiche Rechteck hat die Höhe der mittleren Leistung; die Ausgleichsflächen F1 und F2 sind gleich groß.]),
+  "vl30-knoten": (titel: "Bild lesen", body: [I1 und I3 zeigen auf den schwarzen Knoten, I2 und I4 von ihm weg. Die Bilanz vergleicht daher I1 plus I3 mit I2 plus I4. Die räumliche Richtung auf dem Blatt ist nur für die Pfeilzuordnung wichtig.]),
+  "vl30-masche": (titel: "Bild lesen", body: [Die Pfeile U1, U2, U3 und Uq sind Bezugsrichtungen der Spannungen. Der eingezeichnete Umlauf zählt Uq, U1 und U2 gleichgerichtet und U3 entgegengerichtet. Ein anderer Umlaufsinn ändert alle Vorzeichen gemeinsam.]),
+  "vl30-netzkennlinie": (titel: "Bild lesen", body: [Waagerecht steht die Spannung in V, senkrecht der Strom in A. R1 gehört zur flach auslaufenden Kurve, R3 zur nach oben steiler werdenden Kurve. Für einen vorgegebenen Strom gehst du zuerst waagerecht bis zur passenden Kurve und dann senkrecht zur Spannungsachse.]),
+  "map-widerstandsarten": (titel: "Bild lesen", body: [Das Zentrum verbindet vier Blickwinkel: lineares Verhalten, Temperaturabhängigkeit, Spannungsabhängigkeit und Steuerung durch einen Basisstrom. Alle Bauteile brauchen passende Betriebsbedingungen; ein einziges konstantes R reicht bei den nichtlinearen Fällen nicht.]),
+  "map-netzwerk": (titel: "Bild lesen", body: [Oben links beginnt die Rechnung mit einem Potenzialbezug. Knoten- und Maschenbilanz verbinden Ströme und Spannungen; rechts unten ergänzen die Kennlinien das Bauteilverhalten. Erst zusammen ergeben diese Beziehungen den Arbeitspunkt.]),
+  "led-kennlinie-aufgabe": (titel: "Bild lesen", body: [Waagerecht steht die Spannung an der LED, senkrecht ihr Strom in mA. Die grüne Linie wurde aus der gedruckten Kennlinie nachgezeichnet. Sie steigt oberhalb des Knies steil an. Arbeitsgeraden und gesuchte Punkte sind bewusst nicht vorgegeben; die Kennlinie ist ein Ablesediagramm.]),
+
   "skript-thermo": (titel: "Zwei Temperaturen vergleichen", body: [Oben sind Kupfer und Konstantan an der Messstelle verbunden; rechts liegen die offenen Messanschlüsse. Unten zeigt die Skizze die Temperaturdifferenz zwischen Messstelle und Vergleichsstelle. Entscheidend ist diese Differenz, nicht die Temperatur einer einzelnen Stelle. Bei gleicher Temperatur verschwindet die Thermospannung.]),
   "skript-foto": (titel: "Vom Licht zum Strom", body: [Die gewellten Pfeile treffen auf den Halbleiter. Dort entstehen bewegliche Ladungsträger; das innere elektrische Feld trennt sie. Der Fotostrom fließt durch den äußeren Widerstand R und erzeugt dort die Spannung Uq. Die Skizze zeigt den Energiefluss von der Strahlung zum elektrischen Verbraucher.]),
   "skript-piezo": (titel: "Sensor und Schwingquarz unterscheiden", body: [Oben links drücken graue Pfeile auf den Kristall, rote Pfeile stehen für Zug. An den Elektroden entsteht eine Spannung; bei umgekehrter Wirkung verformt eine Spannung den Kristall. Rechts steht das elektrische Ersatzmodell mit R, L, Cs und Cp für das Resonanzverhalten. Unten siehst du einen Quarz im Gehäuse, geöffnet und in einer Oszillatorschaltung. Die Ersatzbauteile werden hier nur eingeordnet, nicht berechnet.]),
@@ -185,7 +225,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand 27.10.2026: Enthalten sind Skript Kapitel 1.1 bis 1.2.5, deine Randnotizen zu Spule und Diode sowie der Grundstromkreis aus der Zusammenfassung (Skript 2.4.1 bis 2.4.3). Die neuen Markierungen belegen den 15.10. auf Skript S. 16–17 und den 22.10. auf S. 18–19; die Nummern dieser Vorlesungen sind offen. Das Skript enthält nur noch die Erklärungen und im Anhang die Formelsammlung. Alle Rechenaufgaben und Verständnisfragen mit Lösungen Schritt für Schritt stehen auf der Lernwebseite im Reiter „Lernen“, das Quiz ebenfalls dort.
+Stand 05.11.2026: Die Markierungen vom 30.10. erweitern den behandelten Stoff um Skript S. 20–41: Potenzial, Widerstandsarten, Temperaturgang, Energie und Leistung sowie Knoten- und Maschensatz. Hinzu kommt die Aufgabe zur grünen LED. Der bereits enthaltene Grundstromkreis bleibt erhalten; Aufgaben, Quiz, Karten und Hörfassung auf der Lernplattform sind mit diesem Stand abgeglichen.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -195,7 +235,7 @@ Stand 27.10.2026: Enthalten sind Skript Kapitel 1.1 bis 1.2.5, deine Randnotizen
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Vorlesungsskript Kölbl, „Grundlagen der Elektrotechnik“ (aufgedruckte Seite = PDF-Seite); M = Mitschrift „eigenes Skript Elektrotechnik“; B = BAF-Mitschrift VL 1–3 (S. 1 = VL 1, S. 2 = VL 2, S. 3 = VL 3); Z = handschriftliche Zusammenfassung VL 3; FK = Fragenkatalog „Einstieg GET auf Schulniveau“ (Fragennummer); Ü = Übung GET (Aufgabe); A, B = Übungsblatt A bzw. B (Aufgabe); R = handschriftliche Lösungen zu Blatt A und B („Prüfungsvorbereitungsfragen.pdf“). N = „neue VL GET.pdf“ mit Notizen vom 15./22.10. (PDF-S. 1–6 entsprechen V S. 14–19); FK-N = Fragenkatalog mit Lösungen bis 22.10.; Ü-N = „ÜBUNG GET (mit Mitschrift zu Aufgabe 1)“; DC = „ÜBUNGEN_GET_DC_URI_Basics_202610161827_42497“ mit Rechenwegen zu Ü 1–3. „S.“ bei Mitschriften zählt ab der ersten PDF-Seite. Externe Fachprüfungen sind mit Anbieter und Link direkt am Abschnitt genannt. „Eigene Ergänzung“ bezeichnet zusätzliche Erklärhilfen und Beispiele.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Vorlesungsskript Kölbl, „Grundlagen der Elektrotechnik“ (aufgedruckte Seite = PDF-Seite); M = Mitschrift „eigenes Skript Elektrotechnik“; B = BAF-Mitschrift VL 1–3 (S. 1 = VL 1, S. 2 = VL 2, S. 3 = VL 3); Z = handschriftliche Zusammenfassung VL 3; FK = Fragenkatalog „Einstieg GET auf Schulniveau“ (Fragennummer); Ü = Übung GET (Aufgabe); A, B = Übungsblatt A bzw. B (Aufgabe); R = handschriftliche Lösungen zu Blatt A und B („Prüfungsvorbereitungsfragen.pdf“). N30 = „Skript GET vl 30.10.pdf“ (PDF-S. 1–22 entsprechen V S. 20–41); LED = „Aufgabe GET_grüne_LED_202610291323_57076.pdf“ (PDF-S. 1 Aufgabe, S. 2–3 Mitschrift); N = „neue VL GET.pdf“ mit Notizen vom 15./22.10. (PDF-S. 1–6 entsprechen V S. 14–19); FK-N = Fragenkatalog mit Lösungen bis 22.10.; Ü-N = „ÜBUNG GET (mit Mitschrift zu Aufgabe 1)“; DC = „ÜBUNGEN_GET_DC_URI_Basics_202610161827_42497“ mit Rechenwegen zu Ü 1–3. „S.“ bei Mitschriften zählt ab der ersten PDF-Seite. Externe Fachprüfungen sind mit Anbieter und Link direkt am Abschnitt genannt. „Eigene Ergänzung“ bezeichnet zusätzliche Erklärhilfen und Beispiele.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -207,10 +247,10 @@ Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zu
   pfeil(beschriftung: [erklärt die Größen für]),
   chunk([Kapitel 1 · Grundbegriffe: Strom und Quellspannung], [Ladungstransport · Stromdichte · Stromwirkung · Ladungstrennung · Quelleneffekte], ziel: <a-1>),
   pfeil(beschriftung: [liefert Quellenmodell für]),
-  chunk([Kapitel 2 · Der Grundstromkreis], [Innenwiderstand · Klemmenspannung · Arbeitspunkt · Leistungsbilanz · Anpassung], ziel: <a-2>),
+  chunk([Kapitel 2 · Kirchhoff und Grundstromkreis], [Knoten · Maschen · Arbeitspunkt · Leistungsbilanz], ziel: <a-2>),
 )
 
-Ladung, Spannung und Strom bilden die Sprache des Moduls. Mit Widerstand und Leistung beschreibst Du zuerst einfache Schaltungen. Danach erklären die Quelleneffekte, wie eine Spannung entsteht. Der Grundstromkreis verbindet die reale Quelle mit dem Verbraucher: Innenwiderstand und Last bestimmen Arbeitspunkt, Verluste und nutzbare Leistung.
+Ladung, Spannung und Strom bilden die Sprache des Moduls. Mit Widerstand und Leistung beschreibst Du zuerst einfache Schaltungen. Danach erklären die Quelleneffekte, wie eine Spannung entsteht. Potenziale und Kennlinien erweitern die Sprache auf nichtlineare Bauteile. Knoten- und Maschenregel verbinden die Zweige; der Grundstromkreis verbindet die reale Quelle mit dem Verbraucher: Innenwiderstand und Last bestimmen Arbeitspunkt, Verluste und nutzbare Leistung.
 #src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
 
 #pagebreak()
@@ -283,7 +323,7 @@ $rho$: spezifischer Widerstand in $Omega thin "mm"^2\/"m"$ (Materialkonstante); 
 #note("Widerspruch in den Unterlagen", [V S. 9 rechnet mit $rho_"Cu" = "0,0179" thin Omega thin "mm"^2\/"m"$ (aus $kappa = 56$), Ü 7 und Blatt B 14 mit 0,0178. Der Unterschied ist klein; nimm immer den Wert, der in der Aufgabe gegeben ist.], fill: sand)
 #note("Fehler vermeiden", [Halber Durchmesser heißt viertel Querschnitt (wegen $d^2$) und damit vierfacher Widerstand.], fill: sand)
 *Weitere Begriffe aus dem Fragenkatalog.* *PTC* (Kaltleiter): Widerstand steigt mit der Temperatur. *NTC* (Heißleiter): Widerstand sinkt mit der Temperatur. *E12-Reihe:* Normwerte mit ±10 % Toleranz; ein 8,2-kΩ-Widerstand liegt zwischen 7,38 und 9,02 kΩ. Beste Leiter: Silber vor Kupfer, Gold und Aluminium, Eisen deutlich schlechter (_eigene Ergänzung_, FK 7 fragt danach).
-#src([FK 7, 13–17; M S. 1; B S. 1 (VL 1); V S. 9; Ü 7. Ohmsches Gesetz ausführlich erst in V Kap. 1.4 (noch nicht behandelt).])
+#src([FK 7, 13–17; M S. 1; B S. 1 (VL 1); V S. 9; Ü 7. Ohmsches Gesetz jetzt vertieft in Abschnitt 1.4.1–1.4.3 (VL 30.10.).])
 #hoch(<a-0>, [Kapitelübersicht])
 
 
@@ -344,15 +384,15 @@ $U$: Gesamtspannung in V; $R_1$, $R_2$: Widerstände in Ω; $U_20$: Ausgangsspan
 
 
 #pagebreak(weak: true)
-= Kapitel 1 · Grundbegriffe: Strom und Quellspannung <a-1>
+= Kapitel 1 · Grundbegriffe: Strom, Spannung, Widerstand, Leistung <a-1>
 
 #überblick([Kapitel 1 auf einen Blick],
-  idee(<a-1-1-2>, [Strom ist gerichteter Ladungstransport.], [Technische Stromrichtung und Elektronenbewegung sind im Metall entgegengesetzt.]),
-  idee(<a-1-1-3>, [Drift und Wirkung haben verschiedene Geschwindigkeiten.], [Die Elektronen bewegen sich langsam, während das Feld die Wirkung rasch vermittelt.]),
-  idee(<a-1-1-5>, [Stromdichte bezieht Strom auf den Querschnitt.], [Derselbe Strom beansprucht eine dünne Leiterstelle stärker.]),
-  idee(<a-1-1-6>, [Wirkungen machen Strom sichtbar.], [Wärme, Kräfte und Materialtransport verbinden die Größen mit Anwendungen.]),
-  idee(<a-1-2-1>, [Quellen trennen Ladungen durch Energieumwandlung.], [Chemie, Induktion, Temperaturdifferenz, Licht und Kraft sind die behandelten Wege.]),
-  idee(<a-1-2-6>, [Bauteile bestimmen das zeitliche und nichtlineare Verhalten.], [Die Spule widersetzt sich Stromänderungen; bei der Diode muss der Arbeitspunkt passen.]),
+ idee(<a-1-1-2>, [Strom transportiert Ladung.], [Drift, Stromdichte und Wirkungen beschreiben denselben Vorgang aus verschiedenen Blickwinkeln.]),
+ idee(<a-1-2-1>, [Quellen trennen Ladungen.], [Chemie, Flussänderung, Temperaturdifferenz, Licht und Kraft sind die behandelten Ursachen.]),
+ idee(<a-1-3>, [Potenziale brauchen einen Nullpunkt.], [Spannungen sind Differenzen zweier Potenziale.]),
+ idee(<a-1-4-1>, [Material, Geometrie und Temperatur bestimmen den Drahtwiderstand.], [Widerstand und Leitwert sind Kehrwerte.]),
+ idee(<a-1-4-3>, [Kennlinien beschreiben das Bauteilverhalten.], [Bei nichtlinearen Bauteilen unterscheiden sich statischer und differenzieller Widerstand.]),
+ idee(<a-1-5>, [Leistung ist Energieumsatz pro Zeit.], [Bei zeitabhängigen Größen ergibt sich die Energie als Fläche unter der Leistungskurve.]),
 )
 
 #karte((1fr, auto, 1fr, auto, 1fr),
@@ -373,7 +413,12 @@ $U$: Gesamtspannung in V; $R_1$, $R_2$: Widerstände in Ω; $U_20$: Ausgangsspan
 #hoch(<ueberblick>, [Modul auf einen Blick])
 
 
-Wir bauen ein Bild davon auf, was im Draht passiert, wenn Strom fließt: wie viel Ladung darin steckt, wie schnell sie wandert, wie sie sich auf den Querschnitt verteilt und woran man sie erkennt. Danach klären wir, woher der Antrieb kommt: Eine Quelle trennt Ladungen, chemisch, durch Induktion, eine Temperaturdifferenz, Licht oder eine mechanische Einwirkung. Grundlage ist Skript Kapitel 1.1 bis 1.2.5; hinzu kommen die Randnotizen vom 15. und 22.10.
+#karte((1fr, auto, 1fr, auto, 1fr),
+ chunk([Potenziale], [Bezugspunkt und Differenz], ziel: <a-1-3>), pfeil(beschriftung: [liefern Spannungen für]),
+ chunk([Bauteilkennlinien], [Material · Temperatur · Arbeitspunkt], ziel: <a-1-4-3>), pfeil(beschriftung: [bestimmen mit dem Strom]),
+ chunk([Leistung und Energie], [Momentanwert · Fläche · Mittelwert], ziel: <a-1-5>),
+)
+Wir bauen ein Bild davon auf, was im Draht passiert, wenn Strom fließt: wie viel Ladung darin steckt, wie schnell sie wandert, wie sie sich auf den Querschnitt verteilt und woran man sie erkennt. Danach klären wir, woher der Antrieb kommt: Eine Quelle trennt Ladungen, chemisch, durch Induktion, eine Temperaturdifferenz, Licht oder eine mechanische Einwirkung. Grundlage ist Skript Kapitel 1.1 bis 1.5; hinzu kommen die Randnotizen vom 15., 22. und 30.10. sowie die LED-Aufgabe.
 
 #bild("map-strom", [Mindmap: Vier Blicke auf den elektrischen Strom. Eigene Darstellung.], height: 44mm)
 
@@ -617,18 +662,158 @@ $U_D$: Diodenspannung in V; $R$: Serienwiderstand in Ω; $I$: gemeinsamer Strom 
 #bild("map-quelleneffekte", [Mindmap: Chemie, Induktion, Thermo-, Foto- und Piezoeffekt. Eigene Darstellung nach V S. 15–19.], height: 40mm)
 #src([Zusammenführung von V S. 15–19 und N, PDF-S. 2–6; eigene Darstellung.])
 
-*Der Zusammenhang in Kapitel 1.* Strom beschreibt bewegte Ladung. Die Elektronen driften langsam; das elektrische Feld vermittelt die Wirkung rasch. Stromdichte und Material bestimmen die Erwärmung, Wärme-, Kraft- und chemische Wirkung machen Strom erkennbar. Quellen trennen Ladungen durch Chemie, Flussänderung, Temperaturdifferenz, Licht oder Kraft. Die Randnotizen verbinden diese Grundlagen mit der verzögerten Stromänderung einer Spule und dem Arbeitspunkt einer Diode.
+== 1.3 Der Potenzialbegriff · VL vom 30.10. <a-1-3>
+Das *Potenzial* $phi_A$ ist die Spannung eines Punktes A gegenüber einem festgelegten Bezugspunkt. Wie bei Höhenangaben brauchst du zuerst „Meereshöhe null“: In der Schaltung ist das meist die *Masse* oder Ground, der du 0 V zuweist. Eine Spannung zwischen zwei Punkten ist dagegen die Differenz ihrer Potenziale.
+#bild("vl30-potential", [Potenziale und Potenzialverlauf. N30, PDF-S. 1 = V S. 20, Abb. 1.17, mit deinen Notizen.], height: 55mm)
+#form[$ phi_A = U_(A "Masse") quad U_(A B) = phi_A - phi_B quad U_(B A) = -U_(A B) $]
+$phi$, $U$ in V. *Voraussetzung:* Alle verglichenen Potenziale beziehen sich auf denselben Nullpunkt. Im idealen Draht ohne Widerstand bleibt das Potenzial gleich. Über einem passiven Widerstand fällt es in Richtung des positiven technischen Stroms ab; eine Quelle kann es anheben.
+#note("Von dir markiert · ★ Klausur", [Auf V S. 20 hast du „Prüfungsaufgabe: geben sie das Potential an dieser oder jener Stelle an!“ vermerkt. Lege daher zuerst den Bezugspunkt fest und gehe dann mit den Spannungspfeilen durch die Schaltung.])
+
+*Den Verlauf verstehen:* Mit D als Masse liegen B und C bei +30 V, E bei −20 V sowie F und A bei −60 V. Die Quellspannung zwischen A und B beträgt 90 V. Das sind die Werte aus den Spannungsabfällen 30 V, 20 V und 40 V; die Zeichnung des Verlaufs ist qualitativ und ersetzt die Rechnung nicht.
+
+#bild("vl30-bruecke", [Zwei Spannungsteiler mit offenem Querzweig. N30, PDF-S. 2 = V S. 21, Abb. 1.18.], height: 47mm)
+Im offenen Querzweig gilt $phi_A = 5 thin "V"$ und $phi_B = 8 thin "V"$. Deshalb ist $U_(A B) = -3 thin "V"$ und $U_(B A) = +3 thin "V"$. Ein negatives Ergebnis bedeutet eine zur gewählten Richtung entgegengesetzte Spannung. Wird zwischen A und B ein Widerstand angeschlossen, belastet er beide Teiler und verändert die Potenziale; die unbelasteten 5 V und 8 V gelten dann nicht unverändert.
+#note("Selbst erklären", [Was passiert mit $U_(A B)$, wenn du einen anderen Punkt zur Masse erklärst? \ *Antwort:* Beide Potenziale verschieben sich um denselben Wert. Ihre Differenz und damit die physikalische Spannung bleibt gleich.])
+#src[N30, PDF-S. 1–2 = V S. 20–21, Abschnitt 1.3; Höhenvergleich und Rechenprüfung ergänzt.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+== 1.4.1 Widerstand und Leitwert gleichförmiger Körper <a-1-4-1>
+Ein Draht bremst den Ladungstransport abhängig von Material und Geometrie. Eine längere Strecke bietet mehr Widerstand; eine größere Querschnittsfläche mehr parallele Wege. Die in Abschnitt 0.2 eingeführten Größen werden jetzt mit Materialwerten und Voraussetzungen verbunden.
+#form[$ R = rho l/A = l/(kappa A) quad G = 1/R = kappa A/l quad rho = 1/kappa $]
+$R$ in Ω, $G$ in S; $rho$ in $Omega thin "mm"^2/"m"$; $kappa$ in $"m"/(Omega thin "mm"^2)$; $l$ in m, $A$ in mm². *Gültigkeit:* gleichförmiger Leiter bei der zum Materialwert gehörenden Temperatur, hier 20 °C. Bei einer Zweidrahtleitung tragen Hin- und Rückleiter zum Gesamtwiderstand bei.
+#tab(columns: (1fr, 1.5fr, 1.5fr),
+ th([Material], [$rho_20$ in Ω mm²/m], [$kappa_20$ in m/(Ω mm²)]),
+ [Silber], [0,016], [62,5],
+ [Kupfer], [0,0178], [56],
+ [Gold], [0,022], [45],
+ [Aluminium], [0,0286], [35],
+ [Eisen], [0,1 … 0,15], [10 … 7],
+)
+Die Tabellenwerte sind gerundet. Ein größerer Leitwert bedeutet einen kleineren Widerstand; *Leitwert* $G$ beschreibt das konkrete Bauteil, *Leitfähigkeit* $kappa$ das Material.
+#note("Von dir markiert", [Neben der Materialtabelle steht „In Prüfung einheiten richtig kürzen“. Mit $rho$ in Ω mm²/m, $l$ in m und $A$ in mm² bleibt bei $rho l/A$ genau Ω übrig.])
+#note("Verschiedene Aluminiumwerte", [V S. 22 nennt 0,0286 Ω mm²/m; Ü 7 und das bisherige Schulwissen rechnen mit 0,0278 Ω mm²/m. Beide Fassungen bleiben kenntlich: Verwende den ausdrücklich vorgegebenen Aufgabenwert, sonst die zum Abschnitt gehörende Tabelle.], fill: sand)
+#src[N30, PDF-S. 3 = V S. 22, Abschnitt 1.4.1 und Materialtabelle; Ü 7 für den abweichenden Aluminiumwert.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+== 1.4.2 Ohmsches Gesetz und Leitungsabfall <a-1-4-2>
+Ein *passiver Zweipol* wird über zwei Klemmen angeschlossen und enthält im betrachteten Modell keine eigene Quellspannung. Für einen Arbeitspunkt mit $I != 0$ lässt sich das Verhältnis $R = U/I$ bilden. Ein *ohmscher Widerstand* hat darüber hinaus bei festen Bedingungen ein konstantes $R$: Strom und Spannung sind proportional.
+#form[$ U = R I quad I = U/R = G U quad R = U/I $]
+*Gültigkeit:* konstantes $R$ nur beim linearen, ohmschen Modell; bei temperaturabhängigen oder nichtlinearen Bauteilen nicht ungeprüft auf andere Betriebspunkte übertragen.
+#bild("vl30-leitung", [Motor mit Hin- und Rückleiter und Bezugspunkt C. N30, PDF-S. 4 = V S. 23, Abb. 1.19.], height: 44mm)
+Bei der gezeigten 25-m-Leitung fließt der Strom auch 25 m zurück. Die erlaubte Spannungsdifferenz von 220 V auf 216 V entfällt insgesamt auf beide Leiter. Für symmetrische Leiter sind das 2 V je Leiter. Daher ergeben sich rechnerisch 0,1 Ω je Leiter und mindestens 4,45 mm² Kupferquerschnitt; aus der im Skript genannten Reihe wird 6 mm² gewählt.
+#note("Gültigkeit", [Die Querschnittsrechnung in V S. 24 prüft den Spannungsabfall. Die thermische Belastbarkeit muss zusätzlich geprüft werden. Ein günstiger Spannungsabfall allein ist keine vollständige Auslegung.], fill: sand)
+Mit C als Bezugspunkt gilt für die im Bild angenommenen Spannungsabfälle: $phi_C = 0$, $phi_B = 216 thin "V"$, $phi_D = -2 thin "V"$ und $phi_A = 218 thin "V"$. Auch ein negativer Masse-bezogener Wert passt damit zur positiven Quellspannung von 220 V zwischen A und D.
+#src[N30, PDF-S. 4–5 = V S. 23–24, Abschnitt 1.4.2; Zahlen beziehen sich auf die angenommenen Spannungsabfälle von je 2 V, nicht auf eine Neuberechnung mit 6 mm². Vollständige Rechenaufgabe in Aufgaben.typ.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+== 1.4.3 Widerstandsarten und Kennlinien <a-1-4-3>
+Eine *Kennlinie* zeigt, welcher Strom zu welcher Spannung gehört. Lies zuerst die Achsen: In unseren $I$-$U$-Diagrammen steht die Spannung waagerecht, der Strom senkrecht. Eine steile Ursprungsgerade bedeutet großen Leitwert und kleinen Widerstand; bei einer gekrümmten Kennlinie hängt die Steigung vom Arbeitspunkt ab.
+#bild("map-widerstandsarten", [Mindmap: Die behandelten Widerstandsarten. Eigene Darstellung nach V S. 25–33.], height: 44mm)
+
+=== 1.4.3.1 Lineare Widerstände <a-1-4-3-1>
+Für einen linearen Widerstand ist das Verhältnis $U/I$ bei unveränderten Bedingungen konstant. Seine Kennlinie ist eine Gerade durch den Ursprung:
+#form[$ R = U_1/I_1 = U_2/I_2 = "konstant" quad G = (Delta I)/(Delta U) = 1/R $]
+Eine Erwärmung kann den Widerstand ändern: Dann gehört zur neuen Temperatur eine andere Gerade. „Linear“ heißt also nicht, dass ein Material unabhängig von der Temperatur immer denselben Widerstand hat.
+#src[N30, PDF-S. 6 = V S. 25, Abschnitt 1.4.3.1; Abgrenzung der Temperaturbedingung ergänzt.]
+
+=== 1.4.3.2 Nichtlineare Widerstände <a-1-4-3-2>
+Bei nichtlinearen Bauteilen ist $U/I$ nicht überall gleich. Du brauchst die Kennlinie, eine zum Betrieb passende Gleichung oder ein Modell. *Die Kirchhoffschen Gesetze gelten weiterhin*: Nichtlinearität ändert das Bauteilverhalten, nicht die Strom- und Spannungsbilanzen des hier behandelten Netzwerks.
+#src[N30, PDF-S. 7 = V S. 26, Abschnitt 1.4.3.2.]
+
+=== 1.4.3.2.1 Kaltleiter (PTC) <a-1-4-3-2-1>
+Ein *Kaltleiter* hat einen positiven Temperaturkoeffizienten: Wird er wärmer, steigt sein Widerstand. Das Skript nennt Wolfram mit einem Widerstandsverhältnis kalt zu warm von ungefähr 1 : 15 sowie dotiertes Bleititanat.
+#bild("vl30-ptc", [Kaltleiter: Strom-Spannungs- und Temperaturkennlinien. N30, PDF-S. 7 = V S. 26, Abb. 1.22.], height: 43mm)
+Eine kalte Glühwendel lässt zunächst mehr Strom zu als im heißen Betrieb. Der Anfangsstrom kann die Wendel gerade beim Einschalten stark beanspruchen. Weitere Anwendungen sind Temperaturerfassung, Überlastschutz und einfache Heizregler. Die Bezeichnung „Kaltleiter“ beschreibt das bessere Leiten bei niedriger Temperatur.
+#src[N30, PDF-S. 7 = V S. 26, einschließlich Fußnote 11.]
+
+=== 1.4.3.2.2 Heißleiter (NTC) <a-1-4-3-2-2>
+Beim *Heißleiter* sinkt der Widerstand mit steigender Temperatur. Wärme kann von außen kommen oder durch den eigenen Strom entstehen. Deshalb muss ein Messheißleiter mit so kleiner Messleistung betrieben werden, dass er seine zu messende Temperatur kaum selbst verändert.
+#bild("vl30-ntc", [Heißleiter: Kennlinien und Reihenschaltung. N30, PDF-S. 8 = V S. 27, Abb. 1.23.], height: 49mm)
+#form[$ R(T) = R_(T_0) e^(B (1/T - 1/T_0)) $]
+$T$, $T_0$ sind absolute Temperaturen in K; $B$ ist die Materialkonstante in K. *Voraussetzung:* das angegebene NTC-Modell und sein Gültigkeitsbereich. Für die Skriptwerte $R_(T_0) = 10 thin "k"Omega$, $T_0 = 293 thin "K"$ und $B = 2800 thin "K"$ ergibt sich bei 373 K rechnerisch etwa 1,29 kΩ. Die Skizze nennt rund 1,5 kΩ; ihre gerundete Beschriftung ist nicht mit einer genauen Auswertung dieser Parameter gleichzusetzen.
+#note("Fehler vermeiden", [In der Exponentialgleichung niemals 20 oder 100 als Celsiuszahl einsetzen: Die Kehrwerte $1/T$ verlangen Kelvin. Anwendungen laut V: Temperaturmessung, Temperaturkompensation, Einschaltstrombegrenzung und Relaisverzögerung.], fill: sand)
+#src[N30, PDF-S. 8 = V S. 27; Nachrechnung ergänzt. Fachprüfung der Selbsterwärmung: #link("https://www.murata.com/en-us/products/thermistor/ntc/overview/basic/characteristic")[Murata, Basic Characteristics of NTC Thermistor].]
+
+=== 1.4.3.2.3 Spannungsabhängiger Widerstand (VDR) <a-1-4-3-2-3>
+Ein *Varistor* oder VDR wird bei hoher Spannung viel leitfähiger. Als paralleler Schutzpfad kann er einen großen Teil eines Überspannungsstroms übernehmen. Bei normaler Betriebsspannung ist sein Strom vergleichsweise klein.
+#bild("vl30-vdr", [Varistor und Begrenzung einer Spannungsspitze. N30, PDF-S. 9 = V S. 28, Abb. 1.24.], height: 50mm)
+#form[$ I/(1 thin "A") = (U/(220 thin "V"))^5 $]
+*Gültigkeit:* Das ist die beispielhafte positive Kennlinie aus V S. 28, kein universelles Varistorgesetz. Die Quotienten im Potenzterm sind dimensionslos. Wächst die Spannung um den Faktor 2, steigt der Strom in diesem Modell um $2^5 = 32$; der Quotient $U/I$ sinkt stark.
+#src[N30, PDF-S. 9 = V S. 28, Abschnitt 1.4.3.2.3.]
+
+=== 1.4.3.2.4 Diode: Durchlass, Sperren und Kleinsignal <a-1-4-3-2-4>
+Die *Anode* und die am Bauteilring erkennbare *Kathode* bestimmen die Polung einer Diode. Eine Siliziumdiode leitet in Durchlassrichtung mit positiver Anode gegenüber der Kathode; in Sperrrichtung ist der Strom vor dem Durchbruch klein. Werte wie 0,6 V oder 1 V sind Betriebspunkte bzw. Näherungen, keine für jeden Strom feste Diodenspannung.
+#bild("vl30-diode", [Siliziumdiode in Durchlass- und Sperrrichtung. N30, PDF-S. 10 = V S. 29, Abb. 1.26.], height: 62mm)
+#form[$ I_D = I_S (e^(U_D/(n U_T)) - 1) quad U_T = (k T)/e approx 26 thin "mV" quad "bei Raumtemperatur" $]
+$I_S$: Sättigungsstrom des Modells (im Skript „Sperrstrom“); $n$: Emissionskoeffizient, ideal 1; $U_T$: Temperaturspannung; $k$: Boltzmann-Konstante, $T$ in K, $e$: Elementarladung. *Gültigkeit:* Shockley-Modell im geeigneten Betriebsbereich, ohne Durchbruch und ohne Berücksichtigung größerer Serienwiderstandseffekte.
+
+*Zwei Widerstandsbegriffe:* Der *statische Widerstand* verbindet den Ursprung mit dem Arbeitspunkt: $R_D = U_D/I_D$. Der *differenzielle Widerstand* beschreibt die örtliche Tangente, also die Reaktion auf eine kleine Änderung:
+#form[$ g_d = (dif I_D)/(dif U_D) quad r_e = 1/g_d = (dif U_D)/(dif I_D) approx (n U_T)/I_D quad "für" I_D >> I_S $]
+#bild("vl30-tangente", [Tangente im Arbeitspunkt der BAY41-Diode. N30, PDF-S. 12 = V S. 31, Abb. 1.28.], height: 35mm)
+Bei 0,6 V und 2 mA ist $R_D = 300 thin Omega$. Mit $n = 1$ und $U_T approx 26 thin "mV"$ ist dagegen $r_e approx 13 thin Omega$. Die 13 Ω gelten nur für kleine Änderungen um diesen Arbeitspunkt. Sie ersetzen weder den ganzen Diodenstromkreis noch die vollständige Kennlinie.
+#src[N30, PDF-S. 10–12 = V S. 29–31; Begriffe und Gültigkeit präzisiert. Fachprüfung: #link("https://wiki.analog.com/university/courses/electronics/text/chapter-5")[Analog Devices, Solid-state diodes and diode characteristics].]
+
+=== 1.4.3.2.4.1 LED: Lichtenergie und elektrischer Arbeitspunkt <a-1-4-3-2-4-1>
+Eine *Leuchtdiode* wandelt einen Teil ihrer elektrischen Leistung in Strahlungsleistung um. Die Energiebetrachtung verbindet die Lichtwellenlänge mit einer Spannungsskala; der tatsächliche Arbeitspunkt muss zusätzlich zur elektrischen Kennlinie passen.
+#form[$ h f = e U_"Schwelle" quad f = c/lambda quad => quad U_"Schwelle" = (h c)/(e lambda) quad P_"opt" = eta_"LED" U_D I_D $]
+$h$ in Js, $c$ in m/s, $lambda$ in m; $eta_"LED"$ ist der optische Wirkungsgrad bezogen auf die elektrische Leistung *der LED*. *Gültigkeit:* vereinfachte Energiebetrachtung aus dem Aufgabenblatt; keine allgemeine exakte Durchlassspannung bei beliebigem Strom. Für die dort „grün“ genannte LED ist ausdrücklich $lambda = 580 thin "nm"$ vorgegeben.
+#bild("led-kennlinie-aufgabe", [Elektrische LED-Kennlinie ohne Lösungseintragungen. Nachgezeichnet aus LED, PDF-S. 1; Ablesediagramm.], height: 54mm)
+Ein Netzwerk vor der LED kann bezüglich ihrer Klemmen durch Leerlaufspannung und Kurzschlussstrom beschrieben werden. Die Gerade durch diese beiden Achsenschnittpunkte trifft die LED-Kennlinie im Arbeitspunkt. *Leerlauf* heißt hier: nur die LED abklemmen; ein im Netzwerk vorhandener Parallelwiderstand bleibt angeschlossen.
+#note("Fehler vermeiden", [Photonenenergie, statische Durchlassspannung und Tangentensteigung sind verschiedene Angaben. Für die optische Leistung zählt $U_D I_D$, nicht die gesamte Quellleistung einschließlich der anderen Widerstände. Die vollständige LED-Aufgabe mit Schaltung und allen Teilfragen steht in Aufgaben.typ.], fill: sand)
+#src[LED, PDF-S. 1–3; Energiebeziehung und Wirkungsgrad aus der Aufgabenstellung, elektrische Einordnung ergänzt.]
+
+=== 1.4.3.2.5 Transistor: Steuern und Lastgerade <a-1-4-3-2-5>
+Ein *Bipolartransistor* hat Basis B, Kollektor C und Emitter E. Im aktiven Bereich steuert ein kleiner Basisstrom $I_B$ den größeren Kollektorstrom $I_C$. Das Skript beschreibt ihn anschaulich als elektronisch regelbaren Widerstand; die Ausgangskennlinien zeigen genauer eine annähernd stromgesteuerte Stromquelle.
+#bild("vl30-transistor", [Steuerkreis und Lastkreis eines Transistors. N30, PDF-S. 13 = V S. 32, Abb. 1.29.], height: 38mm)
+#form[$ beta = I_C/I_B quad I_C approx beta I_B quad I_E = I_B + I_C quad U_q = U_(C E) + I_C R_L $]
+*Gültigkeit:* $I_C approx beta I_B$ als Gleichstrommodell im aktiven Bereich; $beta$ ist bauteil- und betriebspunktabhängig. Die Quelle und der Lastwiderstand begrenzen den tatsächlich möglichen Strom. Im Sättigungsbetrieb darf die einfache Verstärkungsbeziehung nicht unbesehen weiterverwendet werden.
+#bild("vl30-transistorfeld", [Ausgangskennlinienfeld, Lastgerade und 0,5-W-Grenze. N30, PDF-S. 14 = V S. 33, Abb. 1.32, mit deinen Eintragungen.], height: 55mm)
+Eine bestimmte Basisstrom-Kennlinie schneidet die Lastgerade im Arbeitspunkt. Gleichzeitig muss die *Verlustleistung* $P_T = U_(C E) I_C$ unter der zulässigen Grenze bleiben. Die Hyperbel $P_T = "0,5" thin "W"$ verbindet die Punkte gleicher Verlustleistung; sie ist keine zusätzliche Lastgerade.
+#src[N30, PDF-S. 13–14 = V S. 32–33, einschließlich Abb. 1.31 für die Stromaufteilung; Modellgrenzen erläutert.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+== 1.4.4 Temperaturgang von Widerständen <a-1-4-4>
+Ein Widerstandswert braucht eine Temperaturangabe. Metalle werden beim Erwärmen meist hochohmiger; Konstantan ändert sich nur wenig. Der *Temperaturkoeffizient* $alpha_20$ gibt die relative Widerstandsänderung je Kelvin gegenüber dem Wert bei 20 °C an.
+#form[$ Delta vartheta = vartheta - 20 thin "°C" quad R(vartheta) approx R_20 (1 + alpha_20 Delta vartheta) $]
+*Gültigkeit:* lineare Näherung im für das Material passenden Bereich; V S. 34 nennt 0 bis 200 °C. Über größere Bereiche verwendet das Skript einen quadratischen Term:
+#form[$ R(vartheta) approx R_20 (1 + alpha_20 Delta vartheta + beta_20 (Delta vartheta)^2) $]
+$alpha_20$ in $"1/K"$, $beta_20$ in $"1/K"^2$, $Delta vartheta$ in K; beide Klammerterme sind dimensionslos. Bei Materialwerten mit negativem $alpha$ sinkt $R$ beim Erwärmen.
+#tab(columns: (1fr, 1.3fr, 1.2fr), th([Material], [$alpha_20$ in 1/K], [$beta_20$ in 1/K²]),
+ [Kupfer], [$"3,93" dot.c 10^(-3)$], [$"0,6" dot.c 10^(-6)$],
+ [Aluminium], [$"3,77" dot.c 10^(-3)$], [$"1,3" dot.c 10^(-6)$],
+ [Konstantan], [$"3,5" dot.c 10^(-6)$], [nicht angegeben],
+ [Kohle], [$-("0,2" dots "0,8") dot.c 10^(-3)$], [nicht angegeben],
+)
+*Umgekehrt messen:* Aus einer Widerstandsänderung lässt sich im linearen Modell die Temperaturänderung berechnen: $Delta vartheta = (R/R_20 - 1)/alpha_20$. Das Skript nennt die Bestimmung der Wicklungstemperatur elektrischer Maschinen als Anwendung.
+#note("Fehler vermeiden", [Temperatur und Temperaturdifferenz auseinanderhalten: $T/(1 thin "K") = vartheta/(1 thin "°C") + "273,15"$. Ein Temperaturanstieg um 10 °C ist ein Anstieg um 10 K, nicht um 283,15 K. Die Celsius-Skala wird als verschobene Temperaturskala verwendet; Kelvin ist die SI-Basiseinheit.], fill: sand)
+#src[N30, PDF-S. 15 = V S. 34, Abschnitt 1.4.4 und Tabelle; Begriffe und Umkehrformel erläutert.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+== 1.5 Energie und Leistung · konstant und zeitabhängig <a-1-5>
+*Energie* beschreibt die Fähigkeit, Arbeit zu verrichten; *Leistung* sagt, wie schnell Energie umgesetzt wird. Eine Quelle erzeugt keine Energie aus dem Nichts: Bei der im Skript gezeigten Wasserkraft wird Lageenergie über mechanische Arbeit in elektrische Energie umgewandelt.
+#form[$ W_"el" = U Q = U I t quad P = W_"el"/t = U I quad P_R = I^2 R = U^2/R $]
+*Gültigkeit:* die ersten Produktformen mit konstantem $U$, $I$ bzw. $P$; die Widerstandsformen am ohmschen Widerstand. Energie in J = Ws, Leistung in W = J/s. Ein Elektronenvolt ist die Energie einer Elementarladung beim Durchlaufen von 1 V, keine Spannungseinheit.
+#bild("vl30-leistung", [Momentanleistung, Energiefläche und mittlere Leistung. N30, PDF-S. 17 = V S. 36, Abb. 1.34.], height: 52mm)
+#form[$ p(t) = u(t) i(t) quad W_"el" = integral_0^(t_1) p(t) dif t quad P_"mittel" = W_"el"/t_1 $]
+*Gültigkeit:* zeitabhängige Größen im gewählten Zeitraum; nicht ohne Weiteres Mittelwert der Spannung mal Mittelwert des Stroms rechnen. Die Fläche unter der Leistungskurve ist die Energie. Die mittlere Leistung ist die Höhe des flächengleichen Rechtecks über derselben Zeitspanne. Für die Erwärmung ist die mittlere Verlustleistung wichtig.
+#note("In eigenen Worten", [Leistung ist die Geschwindigkeit der Energieumsetzung. Zwei Geräte können in einer Stunde dieselbe Energie umsetzen, obwohl eines gleichmäßig arbeitet und das andere kurze hohe Leistungsspitzen hat. Für das Rechteck müssen Fläche und Zeitdauer passen.])
+#src[N30, PDF-S. 16–18 = V S. 35–37; Formeln, Wasserkraftbeispiel und Energie-/Leistungsbegriffe; Alltagsbeispiel ergänzt.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 1.* Potenziale machen Spannungsunterschiede eindeutig; Kennlinien verbinden sie mit dem Strom. Material und Temperatur bestimmen das Verhalten von Widerständen, Halbleiter reagieren darüber hinaus nichtlinear. Energie und Leistung bewerten die Wirkung des Stromkreises. Strom beschreibt bewegte Ladung. Die Elektronen driften langsam; das elektrische Feld vermittelt die Wirkung rasch. Stromdichte und Material bestimmen die Erwärmung, Wärme-, Kraft- und chemische Wirkung machen Strom erkennbar. Quellen trennen Ladungen durch Chemie, Flussänderung, Temperaturdifferenz, Licht oder Kraft. Die Randnotizen verbinden diese Grundlagen mit der verzögerten Stromänderung einer Spule und dem Arbeitspunkt einer Diode.
 #hoch(<a-1>, [Kapitelübersicht])
 
 
 #pagebreak(weak: true)
-= Kapitel 2 · Der Grundstromkreis <a-2>
+= Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis <a-2>
 
 #überblick([Kapitel 2 auf einen Blick],
-  idee(<a-2-4-1>, [Die reale Quelle enthält einen Innenwiderstand.], [Unter Last fällt dort Spannung ab und der Kurzschlussstrom bleibt endlich.]),
-  idee(<a-2-4-1-k>, [Der Arbeitspunkt muss zu Quelle und Last passen.], [Er ergibt sich aus ihren Kennlinien oder aus dem Maschenumlauf.]),
-  idee(<a-2-4-3>, [Quellenleistung teilt sich auf.], [Ein Teil wird innen Verlustwärme, der andere erreicht den Verbraucher.]),
-  idee(<a-2-4-3>, [Maximale Leistung ist ein bestimmter Lastfall.], [Bei gleichem Außen- und Innenwiderstand ist die Lastleistung maximal, der Wirkungsgrad beträgt dann 50 %.]),
+ idee(<a-2-1>, [Am Knoten bleibt Ladung erhalten.], [Die zufließenden und abfließenden Ströme gleichen sich aus.]),
+ idee(<a-2-2>, [Eine Masche schließt die Spannungsbilanz.], [Umlaufsinn und Zählpfeile legen die Vorzeichen fest.]),
+ idee(<a-2-3>, [Nichtlineare Zweige brauchen ihre Kennlinien.], [Knoten- und Maschenregel gelten weiterhin.]),
+ idee(<a-2-4-1>, [Die reale Quelle hat einen Innenwiderstand.], [Unter Last sinkt die Klemmenspannung; der Kurzschlussstrom bleibt endlich.]),
+ idee(<a-2-4-1-k>, [Der Arbeitspunkt passt zu Quelle und Verbraucher.], [Beide Kennlinien müssen denselben Strom und dieselbe Spannung liefern.]),
+ idee(<a-2-4-3>, [Maximale Leistung und hoher Wirkungsgrad sind verschiedene Ziele.], [Bei Anpassung wird ebenso viel Leistung innen wie außen umgesetzt.]),
 )
 
 #ablauf(
@@ -643,7 +828,39 @@ $U_D$: Diodenspannung in V; $R$: Serienwiderstand in Ω; $I$: gemeinsamer Strom 
 #hoch(<ueberblick>, [Modul auf einen Blick])
 
 
-Im Skript gehört der Grundstromkreis zu Kapitel 2 „Die Kirchhoffschen Gesetze“ (Abschnitt 2.4.1 bis 2.4.3). In der Vorlesung 3 kam er vorab dran, deine Zusammenfassung rechnet ihn vollständig durch. Die Strategie: Eine reale Quelle wird als ideale Quelle mit Innenwiderstand modelliert. Daraus folgen Strom, Klemmenspannung, Arbeitspunkt, Leistung und Wirkungsgrad. Die übrigen Abschnitte von Kapitel 2 folgen, sobald sie behandelt sind.
+Mit Knoten- und Maschenregel bestimmst du Ströme und Spannungen über die Erhaltungssätze. Kennlinien ergänzen das Verhalten nichtlinearer Bauteile. Der zuvor vorgezogene Grundstromkreis bleibt als Anwendung mit realer Quelle, Last und Leistungsbilanz erhalten. Neu belegt sind die Abschnitte 2.1–2.3 bis V S. 41.
+
+== 2.1 Der Knotenpunktsatz <a-2-1>
+An einem *Knoten* treffen Leiter zusammen. Im stationären Netzwerk sammelt sich dort keine Ladung an: Was pro Zeit hineinfließt, fließt auch wieder heraus. Das ist dieselbe Ladungserhaltung wie bei der Kontinuität im unverzweigten Draht, jetzt mit mehreren Wegen.
+#bild("vl30-knoten", [Zufließende und abfließende Ströme. N30, PDF-S. 20 = V S. 39, Abb. 2.1.], height: 31mm)
+#form[$ sum I_"zu" = sum I_"ab" quad "bzw. mit Vorzeichen:" quad sum_(nu=1)^n I_nu = 0 $]
+*Vorzeichenkonvention:* z. B. zufließende Ströme positiv, abfließende negativ. Für die Pfeile im Bild: $I_1 + I_3 - I_2 - I_4 = 0$. Ein negativ berechneter Strom fließt entgegen seinem angenommenen Zählpfeil; das ist ein zulässiges Ergebnis.
+#note("Fehler vermeiden", [„Die Summe ist null“ meint eine vorzeichenbehaftete Summe. Alle Strombeträge ohne Richtungsunterscheidung zu addieren kann keine Knotenbilanz ergeben.])
+#src[N30, PDF-S. 20 = V S. 39, Abschnitt 2.1; Zusammenhang mit Ladungserhaltung ergänzt.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.2 Der Maschensatz <a-2-2>
+Eine *Masche* ist ein geschlossener Weg durch die Schaltung. Kehrst du zum Ausgangspunkt zurück, bist du wieder beim selben Potenzial. Deshalb ist die Summe der vorzeichenrichtig gezählten Spannungen null.
+#bild("vl30-masche", [Umlaufsinn und Spannungspfeile einer Masche. N30, PDF-S. 21 = V S. 40, Abb. 2.2.], height: 49mm)
+#form[$ sum_(nu=1)^n U_nu = 0 quad "im Bild:" quad U_q + U_1 + U_2 - U_3 = 0 $]
+*Vorgehen:* Umlaufsinn wählen. Spannungspfeile in Umlaufrichtung positiv zählen, entgegen der Umlaufrichtung negativ. An einem ohmschen Widerstand im Verbraucherzählpfeilsystem gilt $U_k = R_k I_k$ mit den gewählten Vorzeichen. Die Polung einer idealen Quelle legt ihren Spannungspfeil fest, unabhängig von der tatsächlichen Stromrichtung.
+#note("Selbst erklären", [Was passiert, wenn du den Umlaufsinn umkehrst? \ *Antwort:* Jedes Vorzeichen kehrt sich um. Die ganze Gleichung wird mit −1 multipliziert und beschreibt denselben physikalischen Zusammenhang.])
+*Gültigkeit:* das hier behandelte konzentrierte Gleichstromnetzwerk. Ein zusätzlich von außen induzierter Spannungsbeitrag müsste im erweiterten Modell mit erfasst werden.
+#src[N30, PDF-S. 21 = V S. 40, Abschnitt 2.2; Potenzialerklärung und Modellabgrenzung ergänzt.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.3 Nichtlineare Netzwerke systematisch auswerten <a-2-3>
+Auch bei gekrümmten Bauteilkennlinien gelten Knoten- und Maschenregel. Der Trick ist, zuerst eine bekannte Zweiggröße zu verwenden: Aus einem vorgegebenen Strom liest du die zugehörige Bauteilspannung ab. Danach verbindest du die Zweige über gleiche Klemmenpotenziale und Strombilanzen.
+#bild("vl30-netzkennlinie", [Kennlinien der nichtlinearen Widerstände R1 und R3. N30, PDF-S. 22 = V S. 41, rechter Teil von Abschnitt 2.3.], height: 43mm)
+#ablauf(
+ chunk([Bekannten Zweig auswerten], [Kennlinie lesen · ohmsche Spannungsabfälle ergänzen], ziel: <a-1-4-3>),
+ chunk([Gemeinsame Klemmenpotenziale verbinden], [gleiche Zweigspannung · Quellpolung beachten], ziel: <a-1-3>),
+ chunk([Knotenbilanz aufstellen], [Ströme mit Zählpfeilen · negatives Ergebnis deuten], ziel: <a-2-1>),
+ chunk([Leistung und Plausibilität prüfen], [p = u · i · Maschenbilanz kontrollieren], ziel: <a-1-5>),
+)
+Der Quotient $U/I$ aus einem Arbeitspunkt ist kein konstanter Ersatzwiderstand für die gesamte gekrümmte Kennlinie. Für einen neuen Strom musst du die Kennlinie erneut auswerten. Die vollständig vorgegebene Netzwerkaufgabe aus V S. 41 steht mit Schaltung, Kennlinien und Lösung in Aufgaben.typ.
+#src[N30, PDF-S. 22 = V S. 41, Abschnitt 2.3 und deine eingetragenen Potenziale; Lösungsstrategie als eigene Zusammenführung.]
+#hoch(<a-2>, [Kapitelübersicht])
 
 == 2.4.1 Der Grundstromkreis: reale Quelle mit Verbraucher <a-2-4-1>
 *Experiment (V S. 42):* Schließt man einen Akku kurz, müsste bei einer idealen Quelle ein unendlich hoher Kurzschlussstrom fließen: $I_k = U_q\/R$ mit $R = 0$ ergäbe $I_k -> oo$. Tatsächlich ist $I_k$ endlich (z. B. 200 A). In der Quelle muss also ein Widerstand stecken, der den Strom begrenzt: der *Innenwiderstand* $R_i$. Deine Mitschrift: „Innenwiderstand ist wichtig“ (B S. 1).
@@ -673,7 +890,7 @@ Spannungspfeile weisen vom höheren zum niedrigeren Potenzial. Im Verbraucher fl
 #note("Fehler vermeiden", [In deiner Zusammenfassung stehen $I = "11,23" thin "mA"$ und $P_a = "63,68" thin "mW"$. Richtig sind $9\/800 = "11,25" thin "mA"$ und $P_a = "5,625" thin "V" dot.c "11,25" thin "mA" approx "63,28" thin "mW"$. Deine Werte für $U_i$, $U_a$, $P_i$ und $P_q$ stimmen.], fill: sand)
 #bild("map-grundstromkreis", [Mindmap: Modell, Grenzfälle und Anpassung. Eigene Darstellung.], height: 44mm)
 
-=== Kennlinien und Arbeitspunkt <a-2-4-1-k>
+=== 2.4.1.1 Kennlinien und Arbeitspunkt <a-2-4-1-k>
 Man kann den Grundstromkreis auch zeichnerisch lösen. Dazu trägt man zwei Kennlinien in ein $I$-$U$-Diagramm ein:
 - *Quellenkennlinie:* Gerade von $I_k$ auf der $I$-Achse (bei $U = 0$) bis $U_l = U_q$ auf der $U$-Achse (bei $I = 0$).
 - *Widerstandsgerade:* Ursprungsgerade mit der Steigung $1\/R_a$. Je steiler, desto kleiner der Widerstand.
@@ -688,8 +905,8 @@ Probe: Bei $U = U_q$ ist $I = -U_q\/R_i + I_k = 0$. Die Steigung der Quellenkenn
 #hoch(<a-2>, [Kapitelübersicht])
 
 
-== 2.4.2 Aufgabe zum Grundstromkreis <a-2-4-2>
-*V S. 43 und Ü 3:* Ein Heizwiderstand von 31,2 Ω wird ans Netz gelegt. Die Netzspannung beträgt im Leerlauf 230 V, im Einschaltmoment sinkt die Klemmenspannung auf 218 V. Wie groß ist der Innenwiderstand des Netzes?
+== 2.4.2 Spannungseinbruch unter Last <a-2-4-2>
+*V S. 43 und Ü 3:* Ein Heizwiderstand von 31,2 Ω wird ans Netz gelegt. Die Netzspannung beträgt im Leerlauf 230 V, im Einschaltmoment sinkt die Klemmenspannung auf 218 V. Die Spannungsdifferenz beschreibt den inneren Spannungsabfall des Quellenmodells.
 + Ersatzschaltbild: Grundstromkreis aus Abschnitt 2.4.1 mit $U_q = 230 thin "V"$ und $R_a = "31,2" thin Omega$.
 + Strom aus der Last: $I = U_a\/R_a = 218\/"31,2" approx "6,99" thin "A"$
 + Spannung, die innen abfällt: $U_i = 230 - 218 = 12 thin "V"$
@@ -719,7 +936,7 @@ _Eigene Ergänzung:_ In der Nachrichtentechnik (Antenne, Lautsprecher) ist Anpas
 #note("Fehler vermeiden", [Leistungsanpassung ist *nicht* der Fall mit dem besten Wirkungsgrad. $eta$ steigt, je größer $R_a$ gegenüber $R_i$ ist; im Kurzschluss ist $eta = 0$.], fill: sand)
 #src([V S. 44–46; Z S. 1; FK 30.])
 
-*Der Zusammenhang in Kapitel 2.* Das Modell „ideale Quelle plus Innenwiderstand“ erklärt, warum der Kurzschlussstrom endlich ist und die Klemmenspannung unter Last sinkt. Strom und Spannung lassen sich rechnerisch über den Maschenumlauf oder zeichnerisch über den Schnittpunkt zweier Kennlinien bestimmen. Die Leistungsbilanz zeigt, dass der Verbraucher bei $R_a = R_i$ am meisten bekommt, die Quelle dabei aber die Hälfte selbst verheizt.
+*Der Zusammenhang in Kapitel 2.* Die Knotenbilanz erhält die Ladung, der Maschenumlauf verknüpft die Potenziale. Kennlinien liefern die zusätzlichen Beziehungen der nichtlinearen Bauteile. Das Modell „ideale Quelle plus Innenwiderstand“ erklärt, warum der Kurzschlussstrom endlich ist und die Klemmenspannung unter Last sinkt. Strom und Spannung lassen sich rechnerisch über den Maschenumlauf oder zeichnerisch über den Schnittpunkt zweier Kennlinien bestimmen. Die Leistungsbilanz zeigt, dass der Verbraucher bei $R_a = R_i$ am meisten bekommt, die Quelle dabei aber die Hälfte selbst verheizt.
 #hoch(<a-2>, [Kapitelübersicht])
 
 
@@ -747,6 +964,15 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [R–L-Zeitkonstante], [$tau = L/R$; $I_oo = U_q/R$], [Lineares $L$ in H, gesamter Serienwiderstand $R$ in Ω; $tau$ in s.],
  [R–L-Einschalten], [$i(t) = I_oo (1 - e^(-t/tau))$; $u_L(t) = U_q e^(-t/tau)$], [Gleichspannungssprung bei $t = 0$, $i(0) = 0$; ideale Spule.],
  [Dioden-Arbeitsgerade], [$I = (U_q - U_D)/R$], [Quelle, Vorwiderstand, Diode in Reihe; Schnittpunkt mit Diodenkennlinie.],
+ [Potenzial und Spannung], [$U_(A B) = phi_A - phi_B$], [Gleicher Bezugspunkt; Potenziale und Spannung in V.],
+ [NTC], [$R(T) = R_(T_0) e^(B(1/T-1/T_0))$], [$T$, $T_0$, $B$ in K; passendes Materialmodell.],
+ [Temperaturgang], [$R approx R_20(1+alpha_20 Delta vartheta+beta_20(Delta vartheta)^2)$], [Linear: quadratischen Term weglassen; Materialbereich beachten.],
+ [Diode], [$I_D = I_S(e^(U_D/(n U_T))-1)$; $U_T = k T/e$], [Shockley-Modell außerhalb des Durchbruchs; $U_T approx 26 thin "mV"$ bei Raumtemperatur.],
+ [Diodenwiderstände], [$R_D = U_D/I_D$; $r_e approx n U_T/I_D$], [Statischer Quotient bzw. lokale Tangente; zweite Form bei $I_D >> I_S$.],
+ [LED], [$U_"Schwelle" = h c/(e lambda)$; $P_"opt" = eta_"LED" U_D I_D$], [Vereinfachte Photonenergie; Wirkungsgrad bezogen auf die LED.],
+ [Transistor], [$I_C approx beta I_B$; $P_T = U_(C E) I_C$], [Aktiver Bereich; Lastgerade und Verlustleistungsgrenze prüfen.],
+ [Zeitabhängige Leistung], [$p(t) = u(t)i(t)$; $W = integral_0^(t_1) p(t) dif t$; $P_"mittel" = W/t_1$], [Integration über denselben Zeitraum; W in J, mittlere Leistung in W.],
+ [Knoten und Maschen], [$sum I_nu = 0$; $sum U_nu = 0$], [Vorzeichen gemäß Zählpfeilen; konzentriertes Netzwerkmodell.],
  [Ladung im Leiter], [$Q = n e A l$], [$n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-3)$.],
  [Driftgeschwindigkeit], [$I = n e v_d A$; $v_d = I\/(n e A)$], [Einheiten passend (cm oder m); Größenordnung mm/s.],
  [Stromdichte], [$S = I\/A$], [A/mm²; zulässig etwa 1 … 6 A/mm² (V S. 10).],
@@ -765,7 +991,7 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Fehlanpassung], [$P_a\/P_"a,max" = 4 (R_a\/R_i)\/(1 + R_a\/R_i)^2$], [Nach V S. 46.],
 )
 
-#src([Ergänzte Formeln: FK-N, PDF-S. 6; V S. 17–19; N, PDF-S. 3 und 6. Voraussetzungen und belasteter Teiler wie in Abschnitt 0.6 und 1.2.3–1.2.6 hergeleitet.])
+#src([Ergänzte Formeln: N30, PDF-S. 1–18 und 20–22 = V S. 20–37 und 39–41; LED, PDF-S. 1; FK-N, PDF-S. 6; V S. 17–19; N, PDF-S. 3 und 6. Voraussetzungen und belasteter Teiler wie in Abschnitt 0.6 und 1.2.3–1.2.6 hergeleitet.])
 
 #note("Wichtige Zahlen", [
 $e = "1,602176634" dot.c 10^(-19) thin "As"$ (gerundet $"1,602" dot.c 10^(-19)$); 1 A ≈ $"6,25" dot.c 10^18$ Elektronen pro Sekunde; $n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-3)$.

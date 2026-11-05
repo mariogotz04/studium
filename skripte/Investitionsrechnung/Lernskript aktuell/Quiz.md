@@ -267,3 +267,155 @@ Quelle: 1.8
 - [ ] Mehr als 4.500 Stück produzieren, ohne etwas zu ändern
   > Die Kapazität ist die Grenze. Eine Erweiterung kann neue Fixkosten verursachen, dann müssen beide Änderungen zusammen geprüft werden.
 Quelle: 1.8.1
+
+## Kapitel 2 · Statische Investitionsrechnung
+
+### Eine Maschine kostet 140.000 €, hält sieben Jahre und hat Restwert null. Wie hoch ist die lineare Abschreibung pro Jahr?
+- [x] 20.000 €
+  > Anschaffung minus Restwert wird auf sieben Jahre verteilt: $140000/7=20000$ €/Jahr.
+- [ ] 140.000 €
+  > Das ist der einmalige Kaufbetrag, kein jährlicher Wertverbrauch.
+- [ ] 70.000 €
+  > Das ist die mittlere Kapitalbindung in diesem Modell, keine Abschreibung.
+Quelle: 2.1
+
+### Was gehört in den vorliegenden Aufgaben zum Kapitaldienst?
+- [x] Kalkulatorische Abschreibung und kalkulatorische Zinsen
+  > Diese Summe ist die verwendete Begriffsdefinition.
+- [ ] Nur die variablen Kosten
+  > Diese gehören zu den Betriebskosten.
+- [ ] Kaufbetrag plus alle Betriebskosten
+  > Kaufbetrag und Jahreskosten haben unterschiedliche Zeitbezüge.
+Quelle: 2.1
+
+### Betriebskosten sind ausdrücklich ohne Abschreibung und Zinsen angegeben. Was fehlt bis zu den Gesamtkosten?
+Antwort: Der Kapitaldienst aus kalkulatorischer Abschreibung und kalkulatorischen Zinsen muss einmal addiert werden. Ist er bereits als Betrag vorgegeben, werden seine Bestandteile nicht nochmals zusätzlich aufgeschlagen.
+Quelle: 2.1
+
+### Bei gleicher Jahresmenge und gleichwertiger Leistung sind die Gesamtkosten von Anlage A niedriger. Was folgt in der KVR?
+- [x] A ist nach dem Kostenkriterium vorteilhafter.
+  > Bei gleicher Menge haben Gesamt- und Stückkosten dieselbe Rangfolge.
+- [ ] A hat zwingend den höheren Gewinn, auch bei anderen Verkaufspreisen.
+  > Unterschiedliche Erlöse können die Gewinnrangfolge umkehren.
+- [ ] Man muss die Anschaffungskosten nochmals als Jahreskosten addieren.
+  > Abschreibung und Zinsen sind in vollständigen Jahreskosten schon enthalten.
+Quelle: 2.2
+
+### Warum ist der Vergleich 100.000 Brötchen aus Normalo gegen 150.000 aus Back de luxe kein bloßer Gesamtkostenvergleich gleicher Leistung?
+Antwort: Die Jahresmengen sind verschieden. Die Stückkosten zeigen die Kosten je Einheit; zusätzlich müssen Kapazität und Absatz passen. Die GVR braucht außerdem die zugehörigen Erlöse. Normalo kann die 150.000 Stück allein nicht herstellen.
+Quelle: 2.2
+
+### Ein einzelnes Angebot hat bekannte Jahreskosten, aber keinen Erlös und kein Vergleichsangebot. Welche Aussage ist begründet?
+- [x] Die Kosten sind bestimmbar, die Vorteilhaftigkeit allein daraus nicht.
+  > Es fehlt eine Vergleichs- oder Erfolgsbasis.
+- [ ] Jede Anlage mit positiven Kosten ist unvorteilhaft.
+  > Kosten allein sagen nichts über die Gegenleistung oder Erlöse.
+- [ ] Man nimmt automatisch das Angebot an.
+  > Eine Kostenberechnung ersetzt keine begründete Investitionsentscheidung.
+Quelle: 2.2
+
+### Bei 100.000 Stück erlöst Back de luxe 5.000 € mehr und kostet 2.110 € mehr pro Jahr. Wie ändert sich der Gewinn?
+- [x] Er steigt um 2.890 €/Jahr.
+  > Mehrerlös minus Mehrkosten: $5000-2110=2890$.
+- [ ] Er sinkt um 2.110 €/Jahr.
+  > Der zusätzliche Erlös wurde vergessen.
+- [ ] Er steigt um 5.000 €/Jahr.
+  > Die höheren Kosten wurden vergessen.
+Quelle: 2.3
+
+### Welche Größen gehören in einen Jahresgewinnvergleich mit unterschiedlichen Absatzmengen?
+- [x] Jeweils absetzbare Menge und Nettoerlös je Stück
+  > Ihr Produkt liefert den jeweiligen Jahreserlös.
+- [x] Vollständige Jahreskosten einschließlich kalkulatorischer Kapitalpositionen
+  > Sie werden vom zugehörigen Jahreserlös abgezogen.
+- [ ] Nur der Gewinn je Stück ohne Menge
+  > Das würde einen anderen Maßstab als den gesamten Jahresgewinn vergleichen.
+Quelle: 2.3
+
+### Warum kann die GVR bei Qualitätsunterschieden aussagekräftiger sein als eine reine KVR?
+Antwort: Qualität kann unterschiedliche erzielbare Preise verursachen. Die GVR berücksichtigt die daraus entstehenden Erlöse zusammen mit den Kosten. Die KVR kann diesen Mehrerlös allein nicht bewerten.
+Quelle: 2.3
+
+### Ein GVR-Gewinn ist bereits nach kalkulatorischen Zinsen angegeben. Welcher Zähler passt zur Verzinsung des gesamten durchschnittlich gebundenen Kapitals?
+- [x] Gewinn plus kalkulatorische Zinsen
+  > So erhält man den Erfolg vor diesen Zinsen.
+- [ ] Gewinn minus kalkulatorische Zinsen
+  > Dann würden dieselben kalkulatorischen Zinsen zweimal abgezogen.
+- [ ] Nur der Jahreserlös
+  > Kosten und Wertverbrauch würden ignoriert.
+Quelle: 2.4
+
+### Was muss bei einer billigeren Anlage geschehen, bevor Du dasselbe Gesamtbudget rentabilitätsmäßig vergleichst?
+Antwort: Die Alternativverwendung des freien Kapitals muss mit Ertrag und Kapitalbindung festgelegt werden. Diese Differenzinvestition wird zur billigeren Anlage hinzugefügt. Ein isolierter Anlagenprozentsatz bildet die ganze Budgetverwendung noch nicht ab.
+Quelle: 2.4
+
+### Der Backofen-Aufgabentext nennt 2.000 € Jahresertrag der Differenzanlage. Darf dieser Ertrag wegen halber mittlerer Kapitalbindung zu 1.000 € werden?
+- [x] Nein, der gegebene Jahresertrag bleibt unverändert.
+  > Kapitalmittelwert und Jahresertrag sind verschiedene Größen. Die Halbierung des Nenners halbiert nicht den gegebenen Zähler.
+- [ ] Ja, jeder Ertrag muss immer halbiert werden.
+  > Dafür liefert die Durchschnittsbindung keine Begründung.
+- [ ] Ja, weil die Rentabilität sonst immer über 100 % läge.
+  > Die Höhe des Prozentsatzes ist kein Grund, einen gegebenen Ertrag zu ändern.
+Quelle: 2.4
+
+### Ein Betrieb hat 300.000 € Jahresgewinn und 2.000.000 € Jahresumsatz. Wie hoch ist die Umsatzrendite mit dieser Gewinnabgrenzung?
+- [x] 15 %
+  > $300000/2000000 dot 100 %=15 %$; beide Beträge beziehen sich auf dasselbe Jahr.
+- [ ] 300.000 €
+  > Das ist der Gewinnbetrag, keine Verhältniszahl.
+- [ ] 666,67 %
+  > Gewinn und Umsatz wurden vertauscht.
+Quelle: 2.4.1
+
+### Welche Aussage trennt Umsatzrendite und Cashflow richtig?
+- [x] Die Rendite ist eine Verhältniszahl; der Cashflow ein Zahlungsüberschuss pro Periode.
+  > Prozent und Euro je Periode sind unterschiedliche Größen, auch wenn beide zur Beurteilung beitragen können.
+- [ ] Umsatzrendite ist nur ein anderes Wort für Cashflow.
+  > Gewinn, Umsatz und Zahlungsüberschuss sind verschieden abgegrenzt.
+- [ ] Ein Gewinn enthält grundsätzlich nur Zahlungen.
+  > Beispielsweise Abschreibung ist ein Aufwand beziehungsweise kalkulatorischer Wertverbrauch ohne laufende Auszahlung.
+Quelle: 2.4.1
+
+### Welche Rückflussgröße verwendet die Backofen-Mitschrift B31 für die AVR?
+- [x] GVR-Gewinn plus Abschreibung
+  > Das ist die ausdrücklich übernommene vereinfachte Konvention nach kalkulatorischen Zinsen.
+- [ ] Nur der Gewinn
+  > Die nicht zahlungswirksame Abschreibung wäre nicht zurückaddiert.
+- [ ] Erlös plus Anschaffungskosten
+  > Weder Kostenabzug noch Zeitbezug stimmen damit.
+Quelle: 2.5
+
+### Warum darf man den Rückfluss Gewinn plus Abschreibung nicht ohne Prüfung als tatsächlichen Cashflow bezeichnen?
+Antwort: Es kommt auf die Abgrenzung des Gewinns an. In B31 enthält er bereits kalkulatorische Zinsen als Abzug. Für einen Rückfluss vor diesen rein kalkulatorischen Zinsen wäre unter sonst passenden Zahlungsannahmen auch dieser Betrag zurückzuaddieren. Man muss die Konvention benennen und durchhalten.
+Quelle: 2.5
+
+### Normalo amortisiert sich nach B31 in etwa 1,94 Jahren, Back de luxe in 2,14 Jahren. Welche Aussagen stimmen?
+- [x] Normalo ist nach dem Amortisationskriterium besser.
+  > Der Kaufbetrag wird in kürzerer Zeit rechnerisch ausgeglichen.
+- [x] Back de luxe kann trotzdem den höheren Jahresgewinn erzielen.
+  > Kaufbetrag und Rückfluss wachsen unterschiedlich; die Kriterien beantworten verschiedene Fragen.
+- [ ] Damit ist Normalo automatisch über die gesamte Nutzungsdauer gewinnreicher.
+  > Die AVR erfasst den späteren Erfolg nicht.
+Quelle: 2.5
+
+### Zwei Kostenlinien schneiden sich bei exakt 10.967,7419 Stück/Jahr; Objekt 1 ist rechts davon günstiger. Welcher Bereich stimmt bei ganzen Stückzahlen?
+- [x] Objekt 2 bis 10.967, Objekt 1 ab 10.968
+  > 10.968 liegt schon rechts der exakten Grenze.
+- [ ] Bei 10.968 sind beide exakt gleich teuer.
+  > Die Rundung verschiebt den Punkt; dort hat Objekt 1 bereits 0,40 € Kostenvorteil im KR-Beispiel.
+- [ ] Objekt 1 erst ab 10.969
+  > Damit würde die erste bereits günstigere ganze Menge übersprungen.
+Quelle: 2.6
+
+### An einer kritischen Kostenmenge sind beide Kosten gleich. Ist dort automatisch der Gewinn null?
+Antwort: Nein. Die Kosten zweier Anlagen werden gleichgesetzt, nicht der Erlös mit den Kosten einer Anlage. Der gemeinsame Gewinn kann positiv, null oder negativ sein. Nur die Gewinnschwelle verlangt Erlös gleich Kosten.
+Quelle: 2.6
+
+### Bei 20.000 Stück entstehen 295.000 € variable Jahreskosten. Welche Steigung gehört in die lineare Kostenfunktion?
+- [x] 14,75 €/Stück
+  > Der Jahresgesamtbetrag wird durch die Jahresmenge geteilt.
+- [ ] 295.000 €/Stück
+  > Die Menge wäre doppelt berücksichtigt.
+- [ ] 20.000 €/Stück
+  > Das ist die Stückzahl, keine Kostengröße.
+Quelle: 2.6

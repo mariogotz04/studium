@@ -678,7 +678,7 @@ Eine Mignonzelle hat $U_q = "1,52" thin "V"$ und $R_i = "0,13" thin Omega$.
 ]
 
 
-#kapitel("Kapitel 1 · Grundbegriffe: Strom und Quellspannung")
+#kapitel("Kapitel 1 · Grundbegriffe: Strom, Spannung, Widerstand, Leistung")
 
 // 1-1
 #aufgabe(titel: "Die Formel Q = n e A l", art: "verstehen", quelle: "1.1.1")[
@@ -1393,11 +1393,190 @@ Flussdichte: $B = (R Q)/(N A) = (100 thin Omega dot.c 2 dot.c 10^(-6) thin "As")
 ]
 
 
-#kapitel("Kapitel 2 · Der Grundstromkreis")
+
+#aufgabe(titel: "Potenzialtreppe mit frei gewählter Masse", art: "rechnen", quelle: "1.3",
+ ergebnis: [$U_q = 90 thin "V"$; $R_1 = 3 thin "k"Omega$, $R_2 = 2 thin "k"Omega$, $R_3 = 4 thin "k"Omega$.], tipp: [Beginne bei D und gehe mit bzw. gegen die Spannungsabfälle.])[
+#if not web [*Aufgabe 71* #linebreak()]
+*Gegeben und Annahmen:* Reihenschaltung aus drei Widerständen, $I = 10 thin "mA"$. In technischer Stromrichtung lautet die Reihenfolge: B → C (idealer Draht) → R1 → D → R2 → E → R3 → F → A (idealer Draht). Die Spannungsabfälle sind $U_1 = 30 thin "V"$, $U_2 = 20 thin "V"$, $U_3 = 40 thin "V"$. Die Quelle verbindet A zurück mit B. Bezugspunkt D: 0 V.
+*Gesucht:*
+#enum(numbering: "a)")[Potenziale von A bis F und Quellspannung.][Widerstände R1 bis R3.][Als eigene Variation: Potenziale mit E als neuem Nullpunkt und die dabei unveränderte Spannung zwischen B und A.]
+#src[N30, PDF-S. 1 = V S. 20; Teil c eigene Variation.]
+][*Bezugspunkt festlegen:* D hat 0 V. Gegen die Stromrichtung über R1 steigt das Potenzial um 30 V. Daher sind $phi_C = phi_B = 30 thin "V"$. Hinter R2 liegt $phi_E = -20 thin "V"$, hinter R3 $phi_F = phi_A = -60 thin "V"$. Ideale Drähte ändern das Potenzial nicht.
+][*Quellspannung bestimmen:* Die Quelle hebt das Potenzial von A nach B an. $U_q = phi_B - phi_A = 30 - (-60) = 90 thin "V"$. Das stimmt mit $30 + 20 + 40 = 90$ V aus den Widerständen überein.
+][*Ohmsches Gesetz anwenden:* Jeder Widerstand führt denselben Strom 0,010 A. Deshalb $R_1 = 30/"0,010" = 3000 thin Omega$, $R_2 = 2000 thin Omega$ und $R_3 = 4000 thin Omega$. Spannung geteilt durch Strom ergibt Ω.
+][*Nullpunkt verschieben und prüfen:* E lag bisher bei −20 V. Addiere zu allen Potenzialen 20 V: B und C = 50 V, D = 20 V, E = 0 V, A und F = −40 V. $U_(B A) = 50 - (-40) = 90 thin "V"$ bleibt gleich. Nur die Bezugswerte, nicht die Spannungsdifferenzen, ändern sich.]
+
+
+#aufgabe(titel: "Zwei Spannungsteiler und ein offener Querzweig", art: "rechnen", quelle: "1.3",
+ ergebnis: [$phi_A = 5 thin "V"$, $phi_B = 8 thin "V"$, $U_(A B) = -3 thin "V"$.], tipp: [Die Ausgangsspannung jedes offenen Teilers liegt am unteren Widerstand.])[
+#if not web [*Aufgabe 72* #linebreak()]
+*Gegeben und Annahmen:* Beide Zweige liegen an einer idealen 10-V-Quelle. Zwischen den oberen 10 V und A liegen 5 Ω, zwischen A und Masse weitere 5 Ω. Zwischen den oberen 10 V und B liegen 2 Ω, zwischen B und Masse 8 Ω. A und B sind zunächst nicht verbunden.
+*Gesucht:*
+#enum(numbering: "a)")[Potenziale A und B sowie die vorzeichenrichtigen Spannungen UAB und UBA.][Richtung eines Stroms beim Anschließen eines Querwiderstands zwischen A und B.][Warum die beiden unbelasteten Potenziale dann nicht unverändert eingesetzt werden dürfen.]
+#src[N30, PDF-S. 2 = V S. 21.]
+][*Unbelastete Teiler auswerten:* Jeder Zweig hat insgesamt 10 Ω und führt deshalb 1 A. A liegt um $1 thin "A" dot.c 5 thin Omega = 5 thin "V"$ über Masse, B um $1 thin "A" dot.c 8 thin Omega = 8 thin "V"$.
+][*Spannungsrichtung beachten:* $U_(A B) = phi_A - phi_B = -3 thin "V"$, $U_(B A) = +3 thin "V"$. Ein passiver Querwiderstand lässt den technischen Strom vom zunächst höheren Potenzial B nach A fließen.
+][*Belastung erklären:* Der Querzweig verändert die Knotenbilanzen. Die oberen und unteren Widerstände eines ursprünglichen Teilers führen dann nicht mehr zwangsläufig denselben Strom. Die neue Schaltung braucht gekoppelte Knoten- oder Maschengleichungen; die offenen Werte sind dafür keine feste Spannungsquelle.]
+
+
+#aufgabe(titel: "Motorzuleitung: Querschnitt und Potenziale", art: "rechnen", quelle: "1.4.2",
+ ergebnis: [$A_"min" = "4,45" thin "mm"^2$; gewählt 6 mm²; dann $U_M approx "217,03" thin "V"$.], tipp: [Zähle die Länge beider Leiter oder rechne mit 2 V und 25 m pro Leiter.])[
+#if not web [*Aufgabe 73* #linebreak()]
+*Gegeben und Annahmen:* Ideale Quelle mit 220 V, Motorstrom konstant 20 A. Kupfer-Hinleiter und -Rückleiter sind je 25 m lang und haben gleichen Querschnitt. $rho = "0,0178" thin Omega thin "mm"^2/"m"$. Am Motor sollen mindestens 216 V anliegen. Verfügbare Querschnitte: 1; 1,5; 2,5; 4; 6; 10 mm². A liegt am Quellenplus, B am Motorplus, C am Motorminus, D am Quellenminus; C ist Masse.
+*Gesucht:*
+#enum(numbering: "a)")[Maximaler gesamter Leitungswiderstand, Mindestquerschnitt und Auswahl aus der Reihe.][Potenziale A, B, C und D im Grenzfall mit genau 2 V Abfall je Leiter.][Als Nachrechnung: tatsächliche Motorspannung bei 6 mm² und weiterhin 20 A; welche zusätzliche Prüfung zur realen Auslegung fehlt.]
+#src[N30, PDF-S. 4–5 = V S. 23–24; Nachrechnung mit 6 mm² ergänzt.]
+][*Spannungsbudget wählen:* Von 220 V dürfen 4 V auf der Leitung bleiben. Da Hin- und Rückleiter in Reihe liegen, gilt $R_"L,ges,max" = 4 thin "V"/(20 thin "A") = "0,2" thin Omega$, also 0,1 Ω je Leiter.
+][*Geometrie berechnen:* Für die gesamte Leiterlänge 50 m gilt $A_"min" = rho l/R = "0,0178" dot.c 50/"0,2" thin "mm"^2 = "4,45" thin "mm"^2$. 4 mm² reichen nicht; aus der Reihe sind *6 mm²* zu wählen.
+][*Potenziale mit C = 0 bestimmen:* Am Motor liegt B um 216 V höher: $phi_B = 216 thin "V"$. Der Hinleiter führt von A nach B und verliert 2 V, also $phi_A = 218 thin "V"$. Der Rückleiter führt von C nach D und verliert 2 V, also $phi_D = -2 thin "V"$. Prüfung: $phi_A - phi_D = 220 thin "V"$.
+][*Gewählten Querschnitt nachrechnen:* $R_"L,ges" = "0,0178" dot.c 50/6 approx "0,1483" thin Omega$. Bei 20 A fallen insgesamt rund 2,967 V ab, also $U_M approx "217,03" thin "V"$. Das erfüllt die Spannungsforderung. Die thermische Belastbarkeit muss zusätzlich geprüft werden; die Potenziale aus Teil b gehören zum dort angenommenen Grenzfall und sind nicht unverändert die Werte dieser Nachrechnung.]
+
+
+#aufgabe(titel: "PTC und NTC: Wärme kann Ursache und Folge sein", art: "verstehen", quelle: "1.4.3",
+ ergebnis: [PTC: Widerstand steigt bei Wärme; NTC: Widerstand sinkt.], tipp: [Unterscheide äußere Temperatur und Erwärmung durch die Messung selbst.])[
+#if not web [*Aufgabe 74* #linebreak()]
+Erkläre den Unterschied zwischen PTC und NTC. Warum kann eine Glühlampe beim Einschalten einen hohen Strom ziehen? Warum soll sich ein NTC zur Temperaturmessung möglichst wenig selbst erwärmen?
+#src[N30, PDF-S. 7–8 = V S. 26–27.]
+][*Temperaturrichtung trennen:* Beim PTC steigt der Widerstand mit der Temperatur, beim NTC sinkt er. Die Namen beziehen sich auf den Temperaturkoeffizienten, nicht auf die Höhe einer fest vorgegebenen Spannung.
+][*Einschalten erklären:* Die kalte Wolframwendel hat einen viel kleineren Widerstand als im heißen Betrieb. Bei gleicher anliegender Spannung kann zunächst ein größerer Strom fließen. Die genaue Stromänderung hängt zusätzlich vom übrigen Stromkreis ab.
+][*Messung prüfen:* Ein Messstrom erzeugt Verlustwärme. Erwärmt diese den NTC deutlich, misst er nicht mehr nur die Umgebungstemperatur. Seine Messleistung muss deshalb klein genug sein.]
+
+
+#aufgabe(titel: "NTC-Widerstand mit Kelvin im Exponenten", art: "rechnen", quelle: "1.4.3.2.2",
+ ergebnis: [$R(373 thin "K") approx "1,29" thin "k"Omega$.], tipp: [Ein größerer Kelvinwert hat einen kleineren Kehrwert.])[
+#if not web [*Aufgabe 75* #linebreak()]
+*Gegeben und Annahmen:* NTC-Modell $R(T) = R_(T_0) e^(B(1/T-1/T_0))$, $R_(T_0) = 10 thin "k"Omega$, $T_0 = 293 thin "K"$, $B = 2800 thin "K"$. Zieltemperatur 373 K; Selbsterwärmung vernachlässigt.
+*Gesucht:*
+#enum(numbering: "a)")[Widerstand bei 373 K.][Vorzeichen und Einheit des Exponenten.][Einordnung der groben Angabe 1,5 kΩ aus der Skriptskizze.]
+#src[N30, PDF-S. 8 = V S. 27.]
+][*Modell auswählen:* Der angegebene NTC folgt einer Exponentialbeziehung. Die Temperaturen sind bereits in Kelvin gegeben und dürfen direkt als Kehrwerte eingesetzt werden.
+][*Dimensionslosen Exponenten bilden:* $x = 2800 thin "K" dot.c (1/(373 thin "K") - 1/(293 thin "K")) approx -"2,050"$. Die Einheiten K kürzen sich; der Exponent ist negativ, weil 373 K größer als die Bezugstemperatur ist.
+][*Einsetzen und prüfen:* $R = 10 thin "k"Omega dot.c e^(-"2,050") approx "1,29" thin "k"Omega$. Der Widerstand sinkt, wie es für einen NTC sein muss. Die Skizzenangabe 1,5 kΩ ist eine grobe Kennlinienbeschriftung; die Rechnung mit diesen Parametern ergibt etwa 1,29 kΩ.]
+
+
+#aufgabe(titel: "Varistor: Spannung verdoppelt, Strom nicht nur verdoppelt", art: "rechnen", quelle: "1.4.3.2.3",
+ ergebnis: [Bei 220 V: 1 A, 220 Ω; bei 440 V: 32 A, 13,75 Ω.], tipp: [Der gesamte dimensionslose Spannungsquotient steht in der fünften Potenz.])[
+#if not web [*Aufgabe 76* #linebreak()]
+*Gegeben und Annahmen:* Für die positive Kennlinie eines Varistormodells gilt $I/(1 thin "A") = (U/(220 thin "V"))^5$.
+*Gesucht:*
+#enum(numbering: "a)")[Strom und statischer Widerstand bei 220 V.][Strom und statischer Widerstand bei 440 V.][Erklärung, weshalb das Bauteil zur Begrenzung von Spannungsspitzen eingesetzt wird.]
+#src[N30, PDF-S. 9 = V S. 28; zweite Spannung eigene Rechenvariation, keine Belastbarkeitszusage.]
+][*Bezugswert einsetzen:* Bei 220 V ist das Verhältnis $U/(220 thin "V") = 1$. Damit $I = 1 thin "A"$ und $R = U/I = 220 thin Omega$.
+][*Potenz beachten:* Bei 440 V verdoppelt sich die Spannung. Der Strom wächst auf $2^5 thin "A" = 32 thin "A"$, nicht auf 2 A. Dann ist $R = 440/32 thin Omega = "13,75" thin Omega$.
+][*Physikalisch deuten:* Das Bauteil wird bei höherer Spannung viel leitfähiger. Parallel zur empfindlichen Schaltung kann es einen großen Teil des Überspannungsstroms aufnehmen. Prüfung: Die Widerstandsänderung zeigt die Nichtlinearität; konkrete Grenzenergien und Belastbarkeiten sind in dieser Modellgleichung nicht angegeben.]
+
+
+#aufgabe(titel: "BAY41: Sättigungsstrom und zwei Widerstandsbegriffe", art: "rechnen", quelle: "1.4.3.2.4",
+ ergebnis: [$I_D approx 2 thin "mA"$, $I_S approx 190 thin "fA"$, $R_D = 300 thin Omega$, $r_e approx 13 thin Omega$.], tipp: [Zuerst die Kennlinie ablesen, dann das Modell im Arbeitspunkt auswerten.])[
+#if not web [*Aufgabe 77* #linebreak()]
+*Gegeben und Annahmen:* Gedruckte BAY41-Kennlinie bei 300 K; ideales Shockley-Modell mit $n = 1$. Verwende wie im Skript die gerundete Temperaturspannung $U_T = 26 thin "mV"$. $I_D = I_S(e^(U_D/U_T)-1)$.
+#image("abbildungen/vl30-bay41.svg", width: 78%)
+*Gesucht:*
+#enum(numbering: "a)")[Strom bei $U_D = "0,6" thin "V"$ aus der Kennlinie und daraus der Modellparameter $I_S$.][Statischer Widerstand $R_D = U_D/I_D$.][Differenzieller Widerstand $r_e approx U_T/I_D$ und Erklärung des Unterschieds.]
+#src[N30, PDF-S. 11–12 = V S. 30–31; Kennlinie nach Abb. 1.27.]
+][*Arbeitspunkt ablesen:* Bei 0,6 V sind aus der Kennlinie ungefähr 2 mA abzulesen. Der Strom ist ein Ablesewert, keine beliebig genaue Messung.
+][*Modellparameter bestimmen:* Nach $I_S$ umstellen: $I_S = (2 dot.c 10^(-3) thin "A")/(e^("0,6"/"0,026")-1) approx "1,90" dot.c 10^(-13) thin "A" = 190 thin "fA"$. Der Spannungsquotient im Exponenten ist dimensionslos. Der Wert gehört zum idealisierten Modell mit ausdrücklich auf 26 mV gerundetem $U_T$.
+][*Statischen Quotienten berechnen:* $R_D = "0,6" thin "V"/("0,002" thin "A") = 300 thin Omega$. Das ist die Verbindungsgerade vom Ursprung zum Arbeitspunkt.
+][*Lokale Änderung berechnen und prüfen:* $r_e approx "0,026" thin "V"/("0,002" thin "A") = 13 thin Omega$. Die lokale Tangente ist viel steiler als die Ursprungsgerade. Die 13 Ω dürfen nur für kleine Änderungen um den gewählten Arbeitspunkt verwendet werden.]
+
+
+#aufgabe(titel: "Grüne LED: Schwelle, Quellenkennlinie und Arbeitspunkt", art: "rechnen", quelle: "1.4.3.2.4.1",
+ ergebnis: [$U_"Schwelle" approx "2,14" thin "V"$, $U_l approx "6,02" thin "V"$, $I_k approx 303 thin "mA"$; AP ungefähr 2,4 V / 180 mA; $P_"opt" approx 86 thin "mW"$; neue Quelle etwa 7,2 V (Ablesewert).], tipp: [Im Leerlauf nur die LED entfernen; beim Kurzschluss wird R3 überbrückt.])[
+#if not web [*Aufgabe 78* #linebreak()]
+*Gegeben und Annahmen:* Netzwerk nach dem Aufgabenblatt mit $U_q = 10 thin "V"$, $R_1 = 18 thin Omega$, $R_2 = 15 thin Omega$, $R_3 = 50 thin Omega$. Die LED liegt zwischen A und B parallel zu R3. Wellenlänge 580 nm; optischer LED-Wirkungsgrad 20 %. Ideale Quelle und Leitungen, konstante Widerstände. Verwende $h = "6,626" dot.c 10^(-34) thin "Js"$, $c = "3,00" dot.c 10^8 thin "m/s"$, $e = "1,602" dot.c 10^(-19) thin "As"$. Gegeben ist die nachgezeichnete elektrische Kennlinie; Ablesewerte sinnvoll runden.
+#image("abbildungen/led-netzwerk.svg", width: 95%)
+#image("abbildungen/led-kennlinie-aufgabe.svg", width: 100%)
+*Gesucht:*
+#enum(numbering: "a)")[Theoretische Schwellenspannung aus $h f = e U$ und $c = lambda f$.][Markierung der Schwellenspannung im Diagramm und ihre Abgrenzung zur tatsächlichen Betriebsspannung.][Leerlaufspannung und Kurzschlussstrom an A–B bei abgeklemmter LED.][Grafischer Arbeitspunkt mit der LED.][Emittierte optische Leistung.][Quellspannung für einen LED-Strom von 0,1 A.]
+#src[LED, PDF-S. 1–3, alle Teilfragen a–f; Schaltung neu gezeichnet, nur gedruckte grüne Kennlinie ohne handschriftliche Lösungen nachgezeichnet.]
+][*Energiebeziehung nutzen:* $U_"Schwelle" = h c/(e lambda)$. Mit $lambda = 580 dot.c 10^(-9) thin "m"$ folgt $U_"Schwelle" approx "2,14" thin "V"$. Js × m/s geteilt durch As × m ergibt J/As = V.
+][*Markierung einordnen:* Zeichne etwa 2,14 V auf der Spannungsachse ein. Die Energiebeziehung ist eine theoretische Spannungsskala aus der Photonenenergie. Für einen konkreten Strom liefert erst die elektrische Kennlinie die passende Durchlassspannung.
+][*Leerlauf richtig definieren:* Nur die LED wird entfernt; R3 bleibt im Netzwerk. $R_12 = 18 + 15 = 33 thin Omega$. Durch den unbelasteten Teiler fließen $10/83 thin "A" approx "0,1205" thin "A"$. Daher $U_l = 10 dot.c 50/83 thin "V" approx "6,024" thin "V"$.
+][*Kurzschluss auswerten:* A und B werden direkt verbunden. Damit ist R3 überbrückt, aber R1 und R2 bleiben in Reihe zur Quelle. $I_k = 10/33 thin "A" approx "0,3030" thin "A"$. Kontrolle: $R_i = U_l/I_k approx "19,88" thin Omega$, gleich dem Parallelersatz von 33 Ω und 50 Ω bei kurzgeschlossener idealer Quelle.
+][*Arbeitsgerade zeichnen:* Verbinde (0 V; 303 mA) mit (6,02 V; 0 mA). Am Schnittpunkt mit der LED-Kennlinie liest du ungefähr $U_D approx "2,4" thin "V"$ und $I_D approx "0,18" thin "A"$ ab. Die Mitschrift verwendet diese gerundeten Werte. Die Quellspannung 10 V ist nicht die LED-Spannung.
+][*Optische Leistung bestimmen:* Erst die elektrische Leistung der LED: $P_"LED" approx "2,4" thin "V" dot.c "0,18" thin "A" = "0,432" thin "W"$. Dann $P_"opt" = "0,20" dot.c P_"LED" approx "0,0864" thin "W" = 86 thin "mW"$. Die Verluste in den drei Widerständen gehören nicht in die elektrische Bezugsleistung des gegebenen LED-Wirkungsgrads.
+][*Neuen Arbeitspunkt festlegen:* Bei $I_D = "0,1" thin "A"$ liest du etwa $U_D = "2,35" thin "V"$ ab. R3 führt dann zusätzlich $I_3 = "2,35"/50 thin "A" = "0,047" thin "A"$. Durch R1 und R2 fließen zusammen $I_12 = "0,147" thin "A"$. Die benötigte Quellspannung ist $U_q' = U_D + I_12 R_12 approx "2,35" + "0,147" dot.c 33 = "7,20" thin "V"$.
+][*Mitschrift und Plausibilität prüfen:* Die 7,1 V aus der Mitschrift sind eine gröbere grafische Ablesung: Mit etwa 2,3 V bei 0,1 A erhält man rund 7,12 V. Sinnvoll ist daher etwa *7,2 V* mit Ablesetoleranz, keine übergenaue Zahl. Bei festem Widerstandsnetz ändert sich die Steigung der Quellenkennlinie nicht; sie verschiebt sich parallel. Die Knotenkontrolle $I_12 = I_D + I_3$ ist erfüllt.]
+
+
+#aufgabe(titel: "Transistorarbeitspunkt und Verlustleistungsgrenze", art: "rechnen", quelle: "1.4.3.2.5",
+ ergebnis: [$beta approx 300$, $I_E approx "60,2" thin "mA"$, $P_T approx "0,48" thin "W"$.], tipp: [Basis- und Kollektorstrom zuerst in dieselbe Einheit umrechnen.])[
+#if not web [*Aufgabe 79* #linebreak()]
+*Gegeben und Annahmen:* Aus dem Kennlinienfeld werden ungefähr $I_B = 200 thin mu"A"$, $I_C = 60 thin "mA"$ und $U_(C E) = 8 thin "V"$ am betrachteten Arbeitspunkt abgelesen. Zulässige Verlustleistung 0,5 W. Aktiver Betrieb im angegebenen Punkt.
+*Gesucht:*
+#enum(numbering: "a)")[Gleichstromverstärkung beta und Emitterstrom.][Verlustleistung und Vergleich mit der Grenze.][Warum man bei beliebiger Erhöhung des Basisstroms nicht unbegrenzt mit demselben beta weiterrechnen darf.]
+#src[N30, PDF-S. 13–14 = V S. 32–33, abgelesener Arbeitspunkt und Verlustleistungshyperbel.]
+][*Steuerverhältnis bilden:* $beta = I_C/I_B = "0,060" thin "A"/(200 dot.c 10^(-6) thin "A") approx 300$. Die Stromverstärkung ist einheitenlos. $I_E = I_C + I_B approx "60,2" thin "mA"$.
+][*Verlustleistung prüfen:* $P_T = U_(C E) I_C = 8 thin "V" dot.c "0,060" thin "A" = "0,48" thin "W"$. Das liegt unter 0,5 W, aber nahe an der im Diagramm angegebenen Grenze. Die Ablesegenauigkeit erlaubt keine große zusätzliche Reservebehauptung.
+][*Modellgrenze erklären:* Die Lastgerade und die Quellspannung begrenzen den möglichen Kollektorstrom. Bei Sättigung gilt die einfache aktive Beziehung $I_C approx beta I_B$ nicht unverändert; außerdem ist beta selbst betriebspunktabhängig.]
+
+
+#aufgabe(titel: "Kupferwiderstand als Thermometer", art: "rechnen", quelle: "1.4.4",
+ ergebnis: [$R(100 thin "°C") = "13,144" thin Omega$; bei 13,93 Ω: 120 °C.], tipp: [Rechne mit der Abweichung vom 20-°C-Wert, nicht mit der absoluten Kelvin-Temperatur.])[
+#if not web [*Aufgabe 80* #linebreak()]
+*Gegeben und Annahmen:* Eigene Rechenvariation mit einem Kupferwiderstand $R_20 = 10 thin Omega$ bei 20 °C; $alpha_20 = "3,93" dot.c 10^(-3) thin "1/K"$. Lineares Temperaturmodell, Selbsterwärmung vernachlässigt.
+*Gesucht:*
+#enum(numbering: "a)")[Widerstand bei 100 °C.][Temperatur bei einem gemessenen Widerstand von 13,93 Ω.][Warum die Differenz nicht durch Addition von 273,15 zu einer Kelvin-Differenz umgerechnet wird.]
+#src[Materialkoeffizient und Modell: N30, PDF-S. 15 = V S. 34; Zahlenvariation eigene Ergänzung.]
+][*Differenz bilden:* Für 100 °C gegenüber 20 °C gilt $Delta vartheta = 80 thin "K"$. Es wird eine Differenz, keine absolute Temperatur, benötigt.
+][*Linear einsetzen:* $R = 10 thin Omega dot.c (1 + "0,00393" thin "1/K" dot.c 80 thin "K") = "13,144" thin Omega$. Die Klammer ist dimensionslos, und der Widerstand steigt wie bei Kupfer erwartet.
+][*Messung umkehren:* $Delta vartheta = (R/R_20 - 1)/alpha_20 = ("13,93"/10 - 1)/"0,00393" thin "K" = 100 thin "K"$. Zur Bezugstemperatur addieren: $vartheta = 120 thin "°C"$.
+][*Prüfen:* Der Anstieg von 100 K ist zahlenmäßig ein Anstieg von 100 °C. Die Verschiebung 273,15 gehört nur zur Umrechnung absoluter Skalenwerte und fällt beim Subtrahieren heraus. Die Werte bleiben im genannten linearen Modellbereich.]
+
+
+#aufgabe(titel: "Zeitabhängige Leistung: Fläche statt Endwert", art: "rechnen", quelle: "1.5",
+ ergebnis: [Endleistung 4 W, Energie 4 J, mittlere Leistung 2 W.], tipp: [Die Fläche unter einer linear von null steigenden Leistung ist ein Dreieck.])[
+#if not web [*Aufgabe 81* #linebreak()]
+*Gegeben und Annahmen:* Eigene Anwendung der Vorlesungsformel. Eine konstante Spannung von 10 V treibt in 2 s einen linear von 0 auf 0,4 A steigenden Strom. Damit $i(t) = ("0,2" thin "A/s") t$ für $0 <= t <= 2 thin "s"$.
+*Gesucht:*
+#enum(numbering: "a)")[Momentanleistung als Funktion der Zeit und Leistung am Ende.][Umgesetzte Energie und mittlere Leistung.][Begründung, weshalb Endleistung mal Gesamtzeit hier falsch ist.]
+#src[N30, PDF-S. 17–18 = V S. 36–37; konkrete Zeitfunktion eigene Ergänzung.]
+][*Momentanwerte verknüpfen:* $p(t) = u(t) i(t) = (2 thin "W/s") t$. Am Ende nach 2 s beträgt die Leistung 4 W; am Anfang ist sie null.
+][*Energiefläche bestimmen:* Die Leistungskurve ist eine Gerade ab null. Ihre Fläche ist ein Dreieck: $W = "0,5" dot.c 2 thin "s" dot.c 4 thin "W" = 4 thin "J"$. Gleichwertig ist die Integration $integral_0^(2 thin "s") p(t) dif t$.
+][*Mittelwert und Plausibilität prüfen:* $P_"mittel" = W/t_1 = 4 thin "J"/(2 thin "s") = 2 thin "W"$. Das flächengleiche Rechteck hat dieselbe Zeitbreite und halbe Endhöhe. Endleistung mal Gesamtzeit ergäbe 8 J und täte fälschlich so, als hätten von Anfang an 4 W vorgelegen.]
+
+#kapitel("Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis")
+
+#aufgabe(titel: "Knotenbilanz mit negativem Ergebnis", art: "rechnen", quelle: "2.1",
+ ergebnis: [$I_4 = -1 thin "A"$, tatsächlich 1 A entgegen dem Pfeil zum Knoten.], tipp: [Alle Ströme mit ihren angenommenen Pfeilen in dieselbe Bilanz eintragen.])[
+#if not web [*Aufgabe 82* #linebreak()]
+*Gegeben und Annahmen:* Eigene Zahlenvariation zur Knotenregel. I1 = 2 A und I3 = 3 A sind zum Knoten hin definiert, I2 = 6 A vom Knoten weg. Für I4 wird ebenfalls ein Pfeil vom Knoten weg angenommen. Stationärer Knoten ohne Ladungsanhäufung.
+*Gesucht:*
+#enum(numbering: "a)")[Knotenbilanz und I4.][Bedeutung des Vorzeichens und Kontrolle der tatsächlichen Zu- und Abflüsse.]
+#src[Knoten und Pfeilanordnung nach N30, PDF-S. 20 = V S. 39; Zahlen eigene Ergänzung.]
+][*Richtungen festlegen:* Zuflüsse positiv, Abflüsse negativ: $I_1 + I_3 - I_2 - I_4 = 0$. Die Definition von I4 muss in der Rechnung beibehalten werden.
+][*Unbekannten Strom berechnen:* $I_4 = I_1 + I_3 - I_2 = 2 + 3 - 6 = -1 thin "A"$. Der Strom fließt tatsächlich mit 1 A zum Knoten hin, entgegen dem angenommenen Pfeil.
+][*Bilanz prüfen:* Tatsächlich fließen 2 A + 3 A + 1 A hinein und 6 A hinaus. Das passt. Ein negatives Ergebnis ist hier eine Richtungsinformation, kein Rechenfehler.]
+
+
+#aufgabe(titel: "Maschenumlauf umkehren", art: "verstehen", quelle: "2.2",
+ ergebnis: [Alle Vorzeichen kehren sich gemeinsam um; die physikalische Lösung bleibt gleich.], tipp: [Ein Umlaufsinn ist eine Rechenentscheidung.])[
+#if not web [*Aufgabe 83* #linebreak()]
+Im Skriptumlauf gilt $U_q + U_1 + U_2 - U_3 = 0$. Erkläre, was beim Umkehren des Umlaufsinns passiert. Ändert die Umkehr die reale Stromrichtung oder die Polung der idealen Quelle?
+#src[N30, PDF-S. 21 = V S. 40.]
+][*Nur die Zählung umkehren:* Die neue Gleichung lautet $-U_q - U_1 - U_2 + U_3 = 0$. Sie entsteht durch Multiplikation der alten Gleichung mit −1.
+][*Physik und Rechenrichtung trennen:* Die reale Schaltung, Quellenpolung und Ströme ändern sich durch unsere Wahl nicht. Wir laufen dieselbe geschlossene Masche rechnerisch andersherum ab. Die Lösungen müssen identisch bleiben.]
+
+
+#aufgabe(titel: "Nichtlineares Dreizweignetz aus der Vorlesung", art: "rechnen", quelle: "2.3",
+ ergebnis: [Uq2 = 8 V, Plus oben (Spannungspfeil nach unten); PR1 = 12 W, PR2 = 16 W.], tipp: [Beginne beim vorgegebenen Mittelzweig; die gemeinsame Zweigspannung verbindet alle drei Äste.])[
+#if not web [*Aufgabe 84* #linebreak()]
+*Gegeben und Annahmen:* Drei parallele Zweige zwischen demselben oberen und unteren Knoten, ideale Leitungen. Links R1 über einer Quelle mit 20 V (Plus oben). Mitte R3 in Reihe mit R4 = 10 Ω; I3 = 1 A soll nach unten fließen. Rechts R2 = 4 Ω über einer Quelle Uq2 unbekannter Polung. R1 und R3 sind nichtlinear mit den mitgegebenen Kennlinien; keine konstanten Widerstandswerte unterstellen.
+#image("abbildungen/netzwerk-nichtlinear.svg", width: 98%)
+#image("abbildungen/vl30-netzkennlinie.svg", width: 70%)
+*Gesucht:*
+#enum(numbering: "a)")[Erforderlicher Betrag und Polung von Uq2 für I3 = 1 A.][Leistungen in R1 und R2.][Kontrolle über Knotenbilanz und Zweigspannungen.]
+#src[N30, PDF-S. 22 = V S. 41, gesamte Aufgabe 2.3; Schaltung ohne Lösungseinträge neu gezeichnet.]
+][*Bekannten Mittelzweig verwenden:* Bei I3 = 1 A liest man an der R3-Kennlinie etwa 6 V ab. An R4 fallen $1 thin "A" dot.c 10 thin Omega = 10 thin "V"$ ab. Der obere Knoten liegt deshalb 16 V über dem unteren.
+][*Linken Zweig mit Potenzialen verbinden:* Über der linken Quelle liegt der Zwischenpunkt 20 V über dem unteren Knoten. Zwischen diesem Punkt und dem oberen 16-V-Knoten liegen an R1 daher 4 V. Aus seiner Kennlinie folgt ein Strom von etwa 3 A nach oben in den oberen Knoten.
+][*Knotenbilanz aufstellen:* Die 3 A aus dem linken Zweig teilen sich in 1 A im Mittelzweig und damit 2 A im rechten Zweig nach unten. An R2 fallen $2 thin "A" dot.c 4 thin Omega = 8 thin "V"$ ab.
+][*Gesuchte Quelle bestimmen:* Von den 16 V zwischen den Knoten bleiben unter R2 noch 8 V bis zum unteren Knoten. Uq2 muss daher 8 V haben, mit Plus oben und Minus unten; der zugehörige positive Spannungspfeil zeigt nach unten.
+][*Leistung und Plausibilität prüfen:* R1 nimmt $4 thin "V" dot.c 3 thin "A" = 12 thin "W"$ auf, R2 $8 thin "V" dot.c 2 thin "A" = 16 thin "W"$. Beide Ergebnisse stimmen mit den Endergebnissen in V überein. Knoten: 3 = 1 + 2 A; Mittelzweig: 6 + 10 = 16 V; rechter Zweig: 8 + 8 = 16 V.]
+
 
 // 2-1
 #aufgabe(titel: "Leerlauf und Kurzschluss", art: "verstehen", quelle: "2.4.1")[
-#if not web [*Aufgabe 71* #linebreak()]
+#if not web [*Aufgabe 85* #linebreak()]
 Beschreibe Leerlauf und Kurzschluss: Wie groß sind jeweils $R_a$, $I$, $U_a$ und die Spannung an $R_i$?
 ][
 Leerlauf: $R_a = oo$, $I = 0$, $U_a = U_q$, an $R_i$ 0 V. Kurzschluss: $R_a = 0$, $I = I_k = U_q\/R_i$, $U_a = 0$, an $R_i$ liegt ganz $U_q$.
@@ -1405,7 +1584,7 @@ Leerlauf: $R_a = oo$, $I = 0$, $U_a = U_q$, an $R_i$ 0 V. Kurzschluss: $R_a = 0$
 
 // 2-2
 #aufgabe(titel: "Hinweise auf den Innenwiderstand", art: "verstehen", quelle: "2.4.1")[
-#if not web [*Aufgabe 72* #linebreak()]
+#if not web [*Aufgabe 86* #linebreak()]
 Woran merkt man, dass eine reale Quelle einen Innenwiderstand haben muss?
 ][
 Der Kurzschlussstrom ist endlich, und die Klemmenspannung sinkt unter Last. Bei einer idealen Quelle wäre $I_k$ unendlich.
@@ -1413,7 +1592,7 @@ Der Kurzschlussstrom ist endlich, und die Klemmenspannung sinkt unter Last. Bei 
 
 // 2-3
 #aufgabe(titel: "Arbeitspunkt grafisch finden", art: "verstehen", quelle: "2.4.1")[
-#if not web [*Aufgabe 73* #linebreak()]
+#if not web [*Aufgabe 87* #linebreak()]
 Wie findet man den Arbeitspunkt grafisch? Was passiert mit ihm, wenn $R_a$ kleiner wird?
 ][
 Quellenkennlinie (von $I_k$ bis $U_q$) und Widerstandsgerade (Ursprungsgerade, Steigung $1\/R_a$) einzeichnen; der Schnittpunkt ist der AP. Kleineres $R_a$: Gerade steiler, AP wandert Richtung Kurzschluss (mehr Strom, weniger Spannung).
@@ -1421,7 +1600,7 @@ Quellenkennlinie (von $I_k$ bis $U_q$) und Widerstandsgerade (Ursprungsgerade, S
 
 // 2-4
 #aufgabe(titel: "Quellenkennlinie und Widerstandsgerade", art: "verstehen", quelle: "2.4.1")[
-#if not web [*Aufgabe 74* #linebreak()]
+#if not web [*Aufgabe 88* #linebreak()]
 Welche Steigung hat die Quellenkennlinie, wo schneidet sie die Achsen? Was bedeutet eine steilere Widerstandsgerade?
 ][
 Steigung $-1\/R_i$; sie schneidet die $I$-Achse bei $I_k$ und die $U$-Achse bei $U_q$. Eine steilere Widerstandsgerade bedeutet einen kleineren Widerstand.
@@ -1429,7 +1608,7 @@ Steigung $-1\/R_i$; sie schneidet die $I$-Achse bei $I_k$ und die $U$-Achse bei 
 
 // 2-5
 #aufgabe(titel: "Leistungsanpassung", art: "verstehen", quelle: "2.4.3")[
-#if not web [*Aufgabe 75* #linebreak()]
+#if not web [*Aufgabe 89* #linebreak()]
 Was ist Leistungsanpassung? Welcher Wirkungsgrad ergibt sich, wie groß sind dann $U_a$ und $I$, und wo setzt man sie ein bzw. vermeidet sie?
 ][
 $R_a = R_i$: maximale Leistung am Verbraucher, $eta = 50 thin %$, $U_a = U_q\/2$, $I = I_k\/2$. Erwünscht in der Nachrichtentechnik, vermieden in der Energietechnik ($R_a >> R_i$).
@@ -1437,7 +1616,7 @@ $R_a = R_i$: maximale Leistung am Verbraucher, $eta = 50 thin %$, $U_a = U_q\/2$
 
 // 2-6
 #aufgabe(titel: "Wirkungsgrad im Grundstromkreis", art: "verstehen", quelle: "2.4.3")[
-#if not web [*Aufgabe 76* #linebreak()]
+#if not web [*Aufgabe 90* #linebreak()]
 Wie hängt der Wirkungsgrad im Grundstromkreis von $R_a$ ab? Wann ist er null, wann steigt er?
 ][
 $eta = R_a\/(R_i + R_a)$: steigt, je größer $R_a$ gegenüber $R_i$ wird; im Kurzschluss ($R_a = 0$) ist $eta = 0$. Bei Anpassung ist $P_a$ maximal, nicht $eta$.
@@ -1445,7 +1624,7 @@ $eta = R_a\/(R_i + R_a)$: steigt, je größer $R_a$ gegenüber $R_i$ wird; im Ku
 
 // 2-7
 #aufgabe(titel: "Ideale und reale Spannungsquelle", art: "verstehen", quelle: "2.4.1")[
-#if not web [*Aufgabe 77* #linebreak()]
+#if not web [*Aufgabe 91* #linebreak()]
 Skizziere das Schaltbild einer idealen und einer realen Spannungsquelle.
 ][
 Ideal: nur die Quelle $U_q$. Real: $U_q$ mit dem Innenwiderstand $R_i$ in Reihe.
@@ -1456,7 +1635,7 @@ Ideal: nur die Quelle $U_q$. Real: $U_q$ mit dem Innenwiderstand $R_i$ in Reihe.
   ergebnis: [a) $R_i = 30 thin "m"Omega$ b) $U = "8,1" thin "V"$],
   tipp: [Im Kurzschluss bremst nur noch der Innenwiderstand den Strom.],
 )[
-#if not web [*Aufgabe 78* #linebreak()]
+#if not web [*Aufgabe 92* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Batterie hat $U_l = "12,6" thin "V"$ und $I_k = 420 thin "A"$.
@@ -1481,7 +1660,7 @@ Eine Batterie hat $U_l = "12,6" thin "V"$ und $I_k = 420 thin "A"$.
 #aufgabe(titel: "Grundstromkreis vollständig berechnen", art: "rechnen", quelle: "2.4.3",
   ergebnis: [$I = 2 thin "A"$, $U_a = 20 thin "V"$, $U_i = 4 thin "V"$, $P_a = 40 thin "W"$, $P_i = 8 thin "W"$, $P_q = 48 thin "W"$, $eta approx "83,3" thin %$],
 )[
-#if not web [*Aufgabe 79* #linebreak()]
+#if not web [*Aufgabe 93* #linebreak()]
 *Gegeben und Annahmen*
 
 Quelle $U_q = 24 thin "V"$, $R_i = 2 thin Omega$, Last $R_a = 10 thin Omega$.
@@ -1508,7 +1687,7 @@ Quelle $U_q = 24 thin "V"$, $R_i = 2 thin Omega$, Last $R_a = 10 thin Omega$.
   ergebnis: [$R_a = 2 thin Omega$, $P_"a,max" = 72 thin "W"$ bei $eta = 50 thin %$],
   tipp: [Leistungsanpassung: Bei welchem Lastwiderstand bekommt der Verbraucher am meisten?],
 )[
-#if not web [*Aufgabe 80* #linebreak()]
+#if not web [*Aufgabe 94* #linebreak()]
 *Gegeben und Annahmen*
 
 Ideale Quellenspannung und Innenwiderstand ($U_q = 24 thin "V"$, $R_i = 2 thin Omega$)
@@ -1534,7 +1713,7 @@ Ideale Quellenspannung und Innenwiderstand ($U_q = 24 thin "V"$, $R_i = 2 thin O
   ergebnis: [$R_i = 1 thin Omega$, $U_q = 12 thin "V"$],
   tipp: [Schreibe $U = U_q - I R_i$ für beide Messungen auf und ziehe die Gleichungen voneinander ab.],
 )[
-#if not web [*Aufgabe 81* #linebreak()]
+#if not web [*Aufgabe 95* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Quelle liefert bei 2 A eine Klemmenspannung von 10 V und bei 4 A noch 8 V.
@@ -1558,7 +1737,7 @@ Eine Quelle liefert bei 2 A eine Klemmenspannung von 10 V und bei 4 A noch 8 V.
 #aufgabe(titel: "Grundstromkreis mit 12 V", art: "rechnen", quelle: "2.4.1",
   ergebnis: [$I = 2 thin "A"$, $U_a = 11 thin "V"$, $U_i = 1 thin "V"$, $eta approx "91,7" thin %$],
 )[
-#if not web [*Aufgabe 82* #linebreak()]
+#if not web [*Aufgabe 96* #linebreak()]
 *Gegeben und Annahmen*
 
 Grundstromkreis: $U_q = 12 thin "V"$, $R_i = "0,5" thin Omega$, $R_a = "5,5" thin Omega$.
@@ -1582,7 +1761,7 @@ Grundstromkreis: $U_q = 12 thin "V"$, $R_i = "0,5" thin Omega$, $R_a = "5,5" thi
 #aufgabe(titel: "Innen- und Lastwiderstand aus einer Messung", art: "rechnen", quelle: "2.4.2",
   ergebnis: [$R_i = 1 thin Omega$, $R_a = 14 thin Omega$],
 )[
-#if not web [*Aufgabe 83* #linebreak()]
+#if not web [*Aufgabe 97* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Quelle hat 4,5 V Leerlaufspannung. Bei 300 mA misst du an den Klemmen 4,2 V.
@@ -1606,7 +1785,7 @@ Eine Quelle hat 4,5 V Leerlaufspannung. Bei 300 mA misst du an den Klemmen 4,2 V
 #aufgabe(titel: "Größte Leistung einer 9-V-Batterie", art: "rechnen", quelle: "2.4.3",
   ergebnis: [$R_a = 2 thin Omega$, $P_"a,max" approx "10,1" thin "W"$, $I = "2,25" thin "A"$, $U_a = "4,5" thin "V"$],
 )[
-#if not web [*Aufgabe 84* #linebreak()]
+#if not web [*Aufgabe 98* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Batterie hat $U_q = 9 thin "V"$ und $R_i = 2 thin Omega$.
@@ -1632,7 +1811,7 @@ Eine Batterie hat $U_q = 9 thin "V"$ und $R_i = 2 thin Omega$.
   ergebnis: [$I approx "6,99" thin "A"$, $R_i approx "1,7" thin Omega$],
   tipp: [Die 12 V, die beim Einschalten fehlen, fallen im Netz selbst ab.],
 )[
-#if not web [*Aufgabe 85* #linebreak()]
+#if not web [*Aufgabe 99* #linebreak()]
 *Innenwiderstand des Netzes, Ü 3 (= V S. 43):*
 
 *Gegeben und Annahmen*
@@ -1657,7 +1836,7 @@ Heizwiderstand 31,2 Ω, Leerlaufspannung 230 V, Klemmenspannung beim Einschalten
 
 // 2-16
 #aufgabe(titel: "Leistung im Kohleschicht-Widerstand", art: "rechnen", quelle: "2.4.1")[
-#if not web [*Aufgabe 86* #linebreak()]
+#if not web [*Aufgabe 100* #linebreak()]
 *Kohleschicht-Widerstand, Ü 1b:*
 
 *Gegeben und Annahmen*
@@ -1686,7 +1865,7 @@ Leistungen: $P_K = 8 thin "V" dot.c "0,1" thin "mA" = "0,8" thin "mW"$; $P_S = "
 #aufgabe(titel: "Höchstleistung einer Starterbatterie", art: "rechnen", quelle: "2.4.3",
   ergebnis: [$R_a = 40 thin "m"Omega$, $P_"max" approx "1,2" thin "kW"$],
 )[
-#if not web [*Aufgabe 87* #linebreak()]
+#if not web [*Aufgabe 101* #linebreak()]
 *Starterbatterie, Blatt A 2:*
 
 *Gegeben und Annahmen*
@@ -1711,7 +1890,7 @@ Leerlaufspannung 13,8 V, Innenwiderstand 40 mΩ.
 
 // 2-18
 #aufgabe(titel: "Arbeit beim Laden eines Akkus", art: "rechnen", quelle: "2.4.1")[
-#if not web [*Aufgabe 88* #linebreak()]
+#if not web [*Aufgabe 102* #linebreak()]
 *Akku laden, Blatt B 17:*
 
 *Gegeben und Annahmen*
@@ -1737,7 +1916,7 @@ $W = U dot.c I dot.c t = "4,85" thin "V" dot.c "0,1" thin "A" dot.c 16 thin "h" 
 
 // 2-19
 #aufgabe(titel: "Heizgerät an langer Leitung", art: "rechnen", quelle: "2.4.1")[
-#if not web [*Aufgabe 89* #linebreak()]
+#if not web [*Aufgabe 103* #linebreak()]
 *Heizgerät an langer Leitung:*
 
 *Gegeben und Annahmen*
@@ -1771,7 +1950,7 @@ $S = "8,47"\/"1,5" approx "5,6" thin "A/mm"^2$, gerade noch im Bereich bis 6 A/m
   ergebnis: [a) 2 Ω b) 2 Ω, 18 W c) 75 % d) AP bei 1,5 A und 9 V],
   tipp: [Die Quellenkennlinie ist die Gerade zwischen Kurzschlussstrom und Leerlaufspannung.],
 )[
-#if not web [*Aufgabe 90* #linebreak()]
+#if not web [*Aufgabe 104* #linebreak()]
 *Kennlinien zeichnen:*
 
 *Gegeben und Annahmen*

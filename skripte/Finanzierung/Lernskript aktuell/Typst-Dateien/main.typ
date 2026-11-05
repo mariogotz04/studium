@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 26.10.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,25 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "map-aktien": "abbildungen/map-aktien.svg",
+  "map-working-capital": "abbildungen/map-working-capital.svg",
+  "map-finanzkontrolle": "abbildungen/map-finanzkontrolle.svg",
+  "map-glaeubigerrisiko": "abbildungen/map-glaeubigerrisiko.svg",
+  "map-bonitaet": "abbildungen/map-bonitaet.svg",
+  "map-rating": "abbildungen/map-rating.svg",
+  "map-kreditvertrag": "abbildungen/map-kreditvertrag.svg",
+  "map-zinszeit": "abbildungen/map-zinszeit.svg",
+  "map-darlehensrecht": "abbildungen/map-darlehensrecht.svg",
+  "map-vorfaelligkeit": "abbildungen/map-vorfaelligkeit.svg",
+  "map-tilgung": "abbildungen/map-tilgung.svg",
+  "kapitalbindung-zeit": "abbildungen/kapitalbindung-zeit.svg",
+  "krisen-kette": "abbildungen/krisen-kette.svg",
+  "anleihekauf-schema": "abbildungen/anleihekauf-schema.svg",
+  "zinsfaktoren": "abbildungen/zinsfaktoren.svg",
+  "krise-staat-historisch": "abbildungen/krise-staat-historisch.svg",
+  "krise-geldpolitik-historisch": "abbildungen/krise-geldpolitik-historisch.svg",
+  "krise-konjunktur-historisch": "abbildungen/krise-konjunktur-historisch.svg",
+
   "abgrenzung-auszahlung": "abbildungen/abgrenzung-auszahlung.svg",
   "abgrenzung-einzahlung": "abbildungen/abgrenzung-einzahlung.svg",
   "cashflow-bereiche": "abbildungen/cashflow-bereiche.svg",
@@ -128,6 +147,25 @@
 )
 
 #let bilddeutungen = (
+  "map-aktien": (titel: "Bild lesen", body: [Die vier Äste ordnen Vermögen, künftigen Gewinn, Kursrelationen und Ausschüttung. Jede Rechnung braucht ihren eigenen Nenner; Nominalwert, Buchwert und Börsenkurs sind verschiedene Größen.]),
+  "map-working-capital": (titel: "Bild lesen", body: [Der linke obere Ast definiert den Bilanzpuffer, die anderen zeigen Zielkonflikt und operative Zahlungsdauer. Die Höhe des Puffers ist keine unmittelbare Aussage über den Kontostand.]),
+  "map-finanzkontrolle": (titel: "Bild lesen", body: [Die Äste verbinden Zahlungsplanung und Engpass mit Zielen und Datenabgrenzung. Ein Soll-Ist-Vergleich ist nur sinnvoll, wenn dieselbe Größe nach derselben Definition gemessen wird.]),
+  "map-glaeubigerrisiko": (titel: "Bild lesen", body: [Der Anspruch steht fest, Information und Umwelt sind dagegen unvollständig bekannt. Folge den anderen Ästen: Schuldnerentscheidungen können den Rückzahlungspuffer nach Vertragsabschluss verändern.]),
+  "map-bonitaet": (titel: "Bild lesen", body: [Jeder Ast beantwortet eine andere Frage: Vertrag schließen können, verlässlich handeln, wirtschaftlich zahlen können und im Sicherungsfall zusätzliche Werte nutzen. Keine dieser Prüfungen ersetzt die übrigen.]),
+  "map-rating": (titel: "Bild lesen", body: [Oben werden die beiden Urheber einer Note unterschieden. Unten stehen deren Verwendung im Risikomodell und die Kapitalregeln der Bank. Die Note ist keine Garantie und der Bankpuffer kein Eigenkapital des Kunden.]),
+  "map-kreditvertrag": (titel: "Bild lesen", body: [Links stehen Geldbeträge und Sicherheiten, rechts Zins/Zeit und Verhaltensgrenzen. Ein Vertrag muss in allen vier Richtungen gelesen werden; ein günstiger Nominalzins allein genügt nicht.]),
+  "map-zinszeit": (titel: "Bild lesen", body: [Die oberen Äste bestimmen Zähler und Nenner des Jahresbruchteils. Der untere linke Ast führt zum einfachen Zins, der rechte zum Zinseszins bei wiederholter Wiederanlage.]),
+  "map-darlehensrecht": (titel: "Bild lesen", body: [Die Äste trennen Vertragspflichten, ordentlichen Ausstieg, besonderen Anlass und Fristen. Die richtige Kündigungsregel hängt vom konkreten Fall ab, nicht allein vom Wunsch nach einem billigeren Kredit.]),
+  "map-vorfaelligkeit": (titel: "Bild lesen", body: [Erst links oben den Anspruch prüfen. Dann bestimmen Zinsvergleich und Methode den wirtschaftlichen Nachteil; ersparte Kosten mindern ihn. Keine der vier Boxen ist eine pauschale Gebührenzusage.]),
+  "map-tilgung": (titel: "Bild lesen", body: [Drei Äste zeigen unterschiedliche Zahlungsprofile. Der vierte erinnert an die tatsächliche Auszahlung: Bei gleicher Nominalschuld kann ein Disagio die wirtschaftliche Belastung erhöhen.]),
+  "kapitalbindung-zeit": (titel: "Bild lesen", body: [Waagerecht verläuft die Zeit von Produktionsbeginn bis Kundenzahlung. Jeder Balken startet bei der tatsächlichen Auszahlung einer Kostenart und endet beim Geldzufluss. Längere Balken bedeuten längere Bindung, nicht automatisch höhere Gesamtkosten.]),
+  "krisen-kette": (titel: "Bild lesen", body: [Die Pfeile zeigen einen möglichen wirtschaftlichen Verstärkungsmechanismus, keine Zahlenachse und keinen zwingenden Ablauf jeder Krise. Wertverluste schwächen Kapital, Misstrauen erschwert Finanzierung; Stützungsmaßnahmen setzen an mehreren Stellen an.]),
+  "anleihekauf-schema": (titel: "Bild lesen", body: [Die beiden Zeilen sind getrennte Geschäfte. Oben erhält der Staat Geld für eine neue Anleihe. Unten erhält der bisherige Inhaber Geld für eine bereits existierende Anleihe; die Notenbank schafft dabei Zentralbankgeld in der Bankabwicklung.]),
+  "zinsfaktoren": (titel: "Bild lesen", body: [Die obere Zeile hat eine Zinsgutschrift je Jahr, die untere zwölf mit Wiederanlage. Die Faktoren werden nacheinander multipliziert. Die Kästen zeigen eine Rechenfolge, keinen linearen Zeit-/Zinsertragsverlauf.]),
+  "krise-staat-historisch": (titel: "Bild lesen", body: [Oben stehen zwei historische Ratingkarten. Unten links verknüpft eine Tabelle Noten mit Marktrenditen; unten rechts laufen TARGET-Salden über die Zeit in Milliarden Euro. Kartenfarben sind Ratingklassen, keine Zinssätze. Alle Stände gehören um 2011.]),
+  "krise-geldpolitik-historisch": (titel: "Bild lesen", body: [Oben links steht die Folienübersicht Basel III; oben rechts vergleicht die Grafik Kapitalquoten und Anleiherenditen. Unten links haben Käufe und Gesamtbestand verschiedene Skalen, unten rechts stehen Konjunkturindikatoren. Die Farben unterscheiden Reihen, nicht eine gemeinsame Einheit aller Teilbilder.]),
+  "krise-konjunktur-historisch": (titel: "Bild lesen", body: [Oben links zeigen Wachstum und Vertrauen den Corona-Einbruch, oben rechts Finanzmarktstress und Ausfallversicherungskosten. Unten folgen Staatsschuldenquoten und der datierte Zinsaufschlag-Vergleich. Prozentpunkte des BIP-Wachstums, Prozent des BIP, Basispunkte und Indexstände dürfen nicht vermischt werden.]),
+
   "abgrenzung-auszahlung": (titel: "Bild lesen", body: [#text("Die beiden Balken erfassen Auszahlungen und Aufwendungen derselben Periode. Nur der gemeinsame Bereich fällt zusammen. Die nummerierten Zuordnungen zeigen vor- und nachperiodisierte Vorgänge sowie Zahlungen ohne zugehörigen Aufwand; die Balkenlängen sind keine Eurobeträge.")]),
   "abgrenzung-einzahlung": (titel: "Bild lesen", body: [#text("Oben werden Einzahlungen, unten Erträge verglichen. Die Verbindungen führen etwa von einer Kundenanzahlung zum späteren Ertrag oder vom heutigen Zielverkauf zur späteren Einzahlung. Die gleiche Buchungsperiode ist nicht automatisch die gleiche Zahlungsperiode.")]),
   "cashflow-bereiche": (titel: "Bild lesen", body: [#text("Die drei oberen Kästen sind Tätigkeitsbereiche, keine aufeinanderfolgenden Jahre. Jeder Bereich trägt mit seinem eigenen Vorzeichen zur Änderung des Zahlungsmittelbestands bei. Ein negativer Investitionssaldo kann deshalb gleichzeitig mit einem positiven operativen Saldo auftreten.")]),
@@ -193,7 +231,7 @@
 
 #note("Dein Feynman-Schritt", [Erkläre ohne Vorlage: *Woher kommt das Geld? Wann wird es gebraucht? Warum genügt Gewinn allein nicht?* Zeichne die Zahlungsströme und prüfe Deine Erklärung anschließend an den Beispielen und Aufgaben.])
 
-*Stand 26.10.2026:* Grundlagen der Finanzplanung bis Folie 54 sowie die Fallstudie Glasspinnerei aus der Vorlesung vom 21.10.2026. Neu: die Aufgaben 3 und 4 der Altklausur 2017 (Leverage, Cashflow, Innenfinanzierung) als Klausuraufgaben im Reiter „Lernen“ der Lernwebseite; ihre Aufgaben 1 und 2 (Darlehen, Kreditsicherheiten, Kapitalerhöhung) folgen, sobald Kapitel B und C behandelt sind. Die Sachinhalte und Rechenfälle des Lernskripts vom 15.10. sind übernommen; das Skript enthält nur die Erklärungen und im Anhang die Formelsammlung; alle Aufgaben mit Lösungen Schritt für Schritt und das Quiz stehen auf der Lernwebseite im Reiter „Lernen“. Fachliche Grundlage sind Deine Vorlesungsunterlagen, ergänzt um sichtbar gekennzeichnete Erklärhilfen und den Abgleich widersprüchlicher Insolvenzaussagen mit Primärquellen.
+*Stand 05.11.2026:* Teil A ist bis Folie 78 einschließlich Aktienkennzahlen, Working Capital und Finanzplanungsübungen eingearbeitet. Kapitel 2 enthält Fremdfinanzierung bis Folie 116 aus den Vorlesungen vom 28.10. und 04.11.; die Glasspinnerei bleibt erhalten. Aufgabe 1 der Altklausur 2017 ergänzt Tilgung, Effektivzins und Sicherheitenbegriffe; Aufgabe 2 folgt mit Kapitel C. Aufgaben, Quiz, Karteikarten und Hörfassung sind gemeinsam abgeglichen. Folienwidersprüche und historische Annahmen bleiben sichtbar gekennzeichnet.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -203,7 +241,7 @@
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = „Skript Finanzierung.pdf“; N1 = „1VL Finanzierung.pdf“; N2 = „VL 14.10.pdf“; M = „eigenes Skript Finanzierung.pdf“; BAF = „01VL_BAF Finanzierung.pdf“; G = „Fallstudie Glasspinnerei Straubing AG.pdf“; L15 = altes Claude-Lernskript, Stand 15.10.2026; K = „Klausur 2017.pdf“ (Fotos von Teil II, Klausurseiten 5–10; Hochschule und Prüfer sind auf den Seiten nicht erkennbar; die handschriftlichen Antworten und Korrekturen im Scan werden nicht übernommen). „PDF-S.“ zählt ab der ersten Dateiseite. V hat zwei Folien pro PDF-Seite. Buchangaben auf Folien sind Sekundärnachweise; Bücher wurden nicht verwendet. Gesetzeslinks und BGH sind nur zur ausdrücklich markierten Fehlerklärung ergänzt (Abruf 22.10.2026). „Nachschlagen“ führt mit automatisch berechneter Seite in dieses Lernskript.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = „Skript Finanzierung.pdf“; N1 = „1VL Finanzierung.pdf“; N2 = „VL 14.10.pdf“; N28 = „Skript Finanzierung.pdf“ im Notizenordner (VL 28.10., 17 PDF-Seiten, Folien 53–86); N04 = „Skript Finanzierung VL 4.11.pdf“ (17 PDF-Seiten, Folien 85–116 mit handschriftlicher Zusatzseite auf PDF-S. 9); M = „eigenes Skript Finanzierung.pdf“; BAF = „01VL_BAF Finanzierung.pdf“; G = „Fallstudie Glasspinnerei Straubing AG.pdf“; L15 = altes Claude-Lernskript, Stand 15.10.2026; K = „Klausur 2017.pdf“ (Fotos von Teil II, Klausurseiten 5–10; Hochschule und Prüfer sind auf den Seiten nicht erkennbar; die handschriftlichen Antworten und Korrekturen im Scan werden nicht übernommen). „PDF-S.“ zählt ab der ersten Dateiseite. V hat zwei Folien pro PDF-Seite. Buchangaben auf Folien sind Sekundärnachweise; Bücher wurden nicht verwendet. Gesetzeslinks, BGH, BIS, Ratingagenturen und EZB sind nur zur ausdrücklich markierten Begriffs-/Fehlerklärung ergänzt (Abrufdatum jeweils am Abschnitt). „Nachschlagen“ führt mit automatisch berechneter Seite in dieses Lernskript.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -211,10 +249,11 @@
 Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu springen.
 
 #karte((1fr,),
-  chunk([Kapitel 1 · Grundlagen der Finanzplanung], [Finanzierungsformen · Liquidität · Erfolg und Zahlung · Cashflow · Finanzplan · Kennzahlen · Leverage · Fallstudie Glasspinnerei], ziel: <a-1>),
+  chunk([Kapitel 1 · Grundlagen der Finanzplanung], [Finanzierungsformen · Liquidität · Erfolg und Zahlung · Cashflow · Finanzplan · Kennzahlen · Leverage · Fallstudie Glasspinnerei · Aktienkennzahlen · Working Capital], ziel: <a-1>),
+  chunk([Kapitel 2 · Fremdfinanzierung], [Gläubigerrisiko · Bonität und Rating · Basel · Kreditvertrag · Zinsrechnung · Kündigung · Vorfälligkeit · Altklausur], ziel: <a-2>),
 )
 
-*Der rote Faden in Kapitel 1*
+*Der rote Faden von der Planung zum Kreditvertrag*
 
 #karte((1fr, auto, 1fr, auto, 1fr, auto, 1fr, auto, 1fr),
   chunk([1.1–1.2 Ziele und Formen], [Herkunft · Rechte · Eigen- oder Fremdkapital], ziel: <a-1-1>),
@@ -228,8 +267,8 @@ Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu
   chunk([1.13–1.18 Glasspinnerei], [EBK · NOCF · Planbilanz · Finanzierungslücke], ziel: <a-1-13>),
 )
 
-Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher kommt es?* Dafür trennst Du zuerst Erfolg von Zahlungen, denn Gewinn allein bezahlt keine Rechnung. Cashflow und Finanzplan zeigen, wann Geld fehlt; Kennzahlen und Leverage zeigen, wie riskant die Finanzierung ist. Die Fallstudie Glasspinnerei setzt alles zu einer Kapitalbedarfsrechnung zusammen.
-#src[V, PDF-S. 1–3; G, PDF-S. 1 und 24; Zusammenführung aus Kapitel 1. Eigene Darstellung.]
+Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher kommt es?* Dafür trennst Du zuerst Erfolg von Zahlungen, denn Gewinn allein bezahlt keine Rechnung. Cashflow und Finanzplan zeigen, wann Geld fehlt; Kennzahlen und Leverage zeigen, wie riskant die Finanzierung ist. Die Fallstudie Glasspinnerei setzt alles zu einer Kapitalbedarfsrechnung zusammen; Working Capital und Aktienkennzahlen ergänzen die Beurteilung. Kapitel 2 verfolgt anschließend den Weg vom Kreditrisiko über Bonität und Vertrag zur Zinsrechnung und Rückführung.
+#src[V, PDF-S. 1–3; G, PDF-S. 1 und 24; V, PDF-S. 28–58; Zusammenführung aus Kapiteln 1–2. Eigene Darstellung.]
 
 #pagebreak()
 = Kapitel 1 · Grundlagen der Finanzplanung <a-1>
@@ -239,8 +278,8 @@ Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher k
   idee(<a-1-4>, [Erfolg ist nicht Zahlung.], [Gewinn kann entstehen, ohne dass Geld fließt, und umgekehrt; deshalb erst trennen, dann planen.]),
   idee(<a-1-5>, [Der Cashflow zeigt die Zahlungskraft.], [Direkt oder indirekt gerechnet ergibt er dieselbe Größe, aufgeteilt in drei Bereiche.]),
   idee(<a-1-7>, [Der Finanzplan ist ein Zahlungsfahrplan.], [Er zeigt Betrag und Termin jeder Lücke, bevor sie zur Insolvenz führt.]),
-  idee(<a-1-12>, [Leverage hebelt Rendite und Risiko.], [Mehr Fremdkapital erhöht die Eigenkapitalrendite nur, solange die Gesamtrendite über dem Zins liegt.]),
-  idee(<a-1-13>, [Die Fallstudie führt alles zusammen.], [Aus Absatz, Kosten, Steuern und Investitionen entsteht der Kapitalbedarf.]),
+  idee(<a-1-19>, [Kennzahlen und Kapitalbindung richtig lesen.], [Leverage, Aktienkennzahlen und Working Capital brauchen klare Bezugsgrößen und Zeiträume.]),
+  idee(<a-1-13>, [Die Fallstudie führt alles zusammen.], ["Aus" Absatz, Kosten, Steuern und Investitionen entsteht der Kapitalbedarf.]),
 )
 
 *So entsteht die Kapitalbedarfsrechnung der Glasspinnerei*
@@ -750,9 +789,346 @@ Die Fallstudie bezeichnet Fortführungsbilanzen bei der Liquiditätsmessung als 
 #note("Selbst erklären", [Wie kann die Glasspinnerei Verlust ausweisen und trotzdem einen hohen NOCF haben? *Weil die Abschreibung den Erfolg mindert, ohne in derselben Periode Geld abfließen zu lassen.* Steuerwirkung, Investitionszahlung und Betriebskapital müssen trotzdem vollständig in den Finanzplan.])
 #src[G, PDF-S. 16 und 18–24 (Folien 31, 35–48); rechtlicher Abgleich: eigene Ergänzung nach #link("https://www.gesetze-im-internet.de/inso/__19.html")[§ 19 Abs. 2 InsO], Abruf 22.10.2026.]
 
-*Der Zusammenhang in Kapitel 1.* Ziele bestimmen die Finanzierungsentscheidung. Herkunft und Rechte erklären die Kapitalformen. Erfolg und Zahlungen sind zu trennen, bevor Cashflow und Finanzplan aufgebaut werden. Kennzahlen und Leverage zeigen Deckung, Verlustpolster und Risiko; die Glasspinnerei führt diese Bausteine mit EBK, Steuern und Investitionen zu einer abgestimmten Kapitalbedarfsrechnung zusammen.
-#src[V, PDF-S. 3–27; G, PDF-S. 4, 7–15 und 24. Eigene Zusammenfassung der genannten Abschnitte.]
+#pagebreak()
+== 1.19 Ergänzung vom 28.10.: fundamentale Aktienkennzahlen <a-1-19>
+
+Eine Aktie hat mehrere Bezugsgrößen: ihren *Nominalwert* als Anteil am Grundkapital, den *Börsenkurs* als Marktpreis und rechnerische Werte aus Vermögen oder künftigen Gewinnen. Diese Größen beantworten verschiedene Fragen. Ein hoher Bilanzwert ist deshalb keine Zusage für einen bestimmten Börsenkurs.
+
+#bild("map-aktien", [Mindmap: vier Blickrichtungen auf eine Aktie. Eigene Darstellung nach V, PDF-S. 28–30 (Folien 55–59).], height: 44mm)
+
+Sei $N$ die Anzahl gleichartiger Aktien und $"NW"$ ihr Nominalwert. Dann gilt im Modell $N="Grundkapital"/"NW"$. *Bilanzielles Eigenkapital* umfasst hier Grundkapital, Rücklagen und Jahresüberschuss; Fremdkapital gehört nicht dazu. *Stille Reserven* sind im angesetzten Bilanzwert noch nicht sichtbare Vermögensmehrwerte bzw. entsprechende Bewertungsunterschiede.
+
+#tab(columns: (1.2fr, 2.1fr, 1.8fr),
+ th([Kennzahl], [Rechnung], [Frage / Voraussetzung]),
+ [Korrigierter Bilanzkurs], [$("bilanzielles EK"+"stille Reserven")/N$], [Welcher korrigierte Substanzwert entfällt auf eine Aktie? €/Aktie.],
+ [Ertragswertkurs], [$("künftiger Jahresgewinn"/i)/N$], [Welcher Wert folgt aus gleichbleibendem Gewinn auf unbegrenzte Zeit? $i>0$, hier keine Wachstumsrate.],
+ [Kurs-Gewinn-Verhältnis, *KGV*], [$"Börsenkurs"/"Gewinn je Aktie"$], [Wie viele Jahresgewinne je Aktie entspricht der Kurs? Gleiche Periode, positiver Gewinn.],
+ [Gewinnrendite zum Kurs], [$"Gewinn je Aktie"/"Börsenkurs" times 100%$], [Gewinn relativ zum Marktpreis; Kehrwert des KGV bei passender Abgrenzung.],
+ [Dividendenrendite], [$"Dividende je Aktie"/"Börsenkurs" times 100%$], [Welche laufende Ausschüttung steht zum Kaufpreis im Verhältnis? Kein vollständiger Anlageertrag.],
+ [Cashflow Ratio der Folie], [$"Börsenkurs"/("Cashflow"/N)$], [Kurs zu Cashflow je Aktie; gleiche Periode. Nicht die Dividendenrendite.],
+)
+
+Der *relative Bilanzkurs* setzt korrigiertes EK zum Grundkapital ins Verhältnis. Multipliziert mit dem Nominalwert ergibt er den absoluten Bilanzkurs in €/Aktie. Beim Ertragswertkurs wird zuerst der erwartete Jahresgewinn mit dem Kalkulationszins kapitalisiert; erst danach wird auf die Aktien verteilt. Das ist das vereinfachte Modell dieser Folien, keine umfassende Unternehmensbewertung.
+
+#note("Widersprüche der Musterlösung sichtbar halten", [Folie 59 nennt *Gewinn je Aktie / Börsenkurs* „Eigenkapitalrendite“. Die Rechnung ergibt eine *Gewinnrendite zum Börsenkurs*, nicht die in Abschnitt 1.11 definierte Jahresüberschuss/EK-Rentabilität. Außerdem passen die separat vorgegebenen 0,32 €/Aktie nicht zum bilanziellen Jahresüberschuss von 30 T€ bei 400.000 Aktien. Für KGV und Gewinnrendite werden die ausdrücklich gegebenen 0,32 € verwendet; die Unvereinbarkeit wird nicht weggerundet. Eigene Prüfung.], fill: sand)
+
+Der Daimler-Ausschnitt 2016 zeigt Umsatz, EBIT, Konzernergebnis, Cashflow, Investitionen, Ergebnis und Dividende je Aktie nebeneinander. *EBIT* ist das Ergebnis vor Zinsen und Ertragsteuern; es ist weder Konzernergebnis noch Cashflow. Eine Dividende ist die Ausschüttung und muss nicht dem gesamten Gewinn je Aktie entsprechen. Die Tabelle ist ein historisches Anschauungsbeispiel, keine aktuelle Kursinformation.
+#src[V, PDF-S. 28–30 (Folien 55–59); N28, PDF-S. 2–4. Abgrenzungen und Widerspruchsprüfung: eigene Erläuterung der vorgegebenen Formeln und Zahlen; keine Buchquelle direkt verwendet.]
 #hoch(<a-1>, [Kapitelübersicht])
+
+== 1.20 Ergänzung vom 28.10.: Working Capital und Bindungsdauer <a-1-20>
+
+*Working Capital (WC)* ist hier der Überschuss des Umlaufvermögens über das kurzfristige Fremdkapital. Es zeigt einen Finanzierungspuffer in der Bilanz. Das *erforderliche Betriebskapital (EBK)* der Glasspinnerei grenzt dagegen bestimmte operative Bestände ab; die Begriffe sind bei diesen unterschiedlichen Definitionen nicht austauschbar.
+#form[$ "WC" = "Umlaufvermögen" - "kurzfristiges FK" $]
+WC ist ein Geldbestand am Stichtag, z. B. in €. Bei einer vollständig gegliederten Bilanz lässt sich dieselbe Differenz als $"EK"+"langfristiges FK"-"Anlagevermögen"$ schreiben. Positives WC bedeutet dann, dass langfristiges Kapital auch einen Teil des UV finanziert.
+
+#bild("map-working-capital", [Mindmap: Sicherheit, Ertrag und operative Kapitalbindung. Eigene Darstellung nach V, PDF-S. 30–32 (Folien 60–63).], height: 44mm)
+
+*Zielkonflikt:* Ein größerer langfristig finanzierter Puffer kann die Fristenlage entspannen. Er garantiert keine Zahlung am konkreten Fälligkeitstag, weil Vorräte und Forderungen erst zu Geld werden müssen. Die Folie unterstellt günstigere kurzfristige als langfristige Zinsen: Ein Ersatz langfristiger durch kurzfristige Schulden spart unter dieser Annahme Zinsen, verkleinert aber das WC und erhöht das Anschlussfinanzierungsrisiko. Diese Zinsrelation ist eine Modellannahme, kein allgemeines Marktgesetz.
+
+*Operativer Kapitalbedarf* entsteht dagegen während der Zeit zwischen einer Auszahlung und dem zugehörigen Kundeneingang. Wie bei einem Auftrag, für den Material und Löhne bezahlt werden müssen, bevor der Kunde zahlt: Jede Kostenart hat ihren eigenen Beginn der Geldbindung.
+
+#bild("kapitalbindung-zeit", [Zahlungszeitpunkte bestimmen die Bindung. Eigene schematische Darstellung nach V, PDF-S. 31–32; nicht maßstäblich.], height: 55mm)
+
+#form[$ B_j = "Kundenzahlungstag" - "Auszahlungstag der Kostenart j" $]
+#form[$ "Kapitalbedarf UV" = sum_j ("zahlungswirksame Jahreskosten"_j / "Tage je Jahr") B_j $]
+$B_j$ = Bindungsdauer in Tagen; Jahreskosten in €/Jahr, Tageskosten in €/Tag. So ergibt €/Tag × Tage einen Geldbetrag. Das Folienmodell setzt gleichmäßige Tätigkeit, gleichmäßige tägliche Ausgaben und ein *360-Tage-Rechenjahr* voraus. Das Rechenjahr ist aus der Folienlösung erkennbar und wird in den Aufgaben ausdrücklich angegeben.
+
+Bei beschaffungssynchroner Fertigung beginnt die Materialbereitstellung mit der Produktion. Fertigungszeit, Fertiglagerzeit und Debitorenfrist ergeben den Kundenzahlungstag. Die *Kreditorenfrist* verschiebt die Materialzahlung nach hinten und verkürzt deren Bindung. Löhne, Herstellgemeinkosten und Verwaltungs-/Vertriebsgemeinkosten können andere Zahlungstermine haben. „Herstellkosten unmittelbar“ in Folie 61 wird durch Grafik und Tabelle als *Herstellgemeinkosten* präzisiert; Material und Lohn werden separat gerechnet.
+#src[V, PDF-S. 30–32 (Folien 60–63); N28, PDF-S. 4–6; EBK-Abgrenzung: G, PDF-S. 10–12. Umformung der Bilanzidentität und Modellgrenzen: eigene Erläuterung.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+== 1.21 Ergänzung vom 28.10.: Finanzkontrolle und saubere Bezugsgrößen <a-1-21>
+
+Die Finanzplanung ist normalerweise mit Absatz, Produktion und Investition abzustimmen. Wird die *Finanzbeschaffung zum Engpass*, wird sie zum *Primärplan*: Erst der finanzierbare Rahmen bestimmt, welches Produktions- oder Investitionsprogramm möglich ist. Der knappste Bereich begrenzt damit die übrige Planung.
+
+#bild("map-finanzkontrolle", [Mindmap: Planen, kontrollieren und die richtige Größe wählen. Eigene Darstellung nach V, PDF-S. 32–39.], height: 44mm)
+
+#tab(columns: (1.2fr, 2.8fr),
+ th([Aufgabe], [Bedeutung]),
+ [Kurzfristiges Cash Management], [Zahlungsbereitschaft sichern, Fehlbeträge vermeiden, Fristen ausschöpfen und vorübergehend nicht benötigte Mittel passend anlegen.],
+ [Langfristige Planung], [Rechtzeitig tragfähige Finanzierung beschaffen, Zahlungsursachen erklären und künftige Geschäftstätigkeit auf ihre Finanzierbarkeit prüfen.],
+ [Kennzahlen als Vorgaben], [Ziele für Rendite, Deckung und Kapitalstruktur formulieren; Soll und Ist vergleichen.],
+ [Kennzahlen als Vergleich], [Entwicklung über die Zeit, Branche und Konkurrenz untersuchen; gleiche Definitionen und vergleichbare Daten verwenden.],
+)
+
+*Statische Kontrolle* beschreibt Bestandsrelationen eines Stichtags, besonders Liquiditäts- und Deckungsgrade. Rentabilitätskennzahlen verknüpfen dagegen einen Periodenerfolg mit einer Kapitalbezugsgröße. Eine Veränderung ist ein Anlass zur Ursachenprüfung; sie beweist allein weder gutes Management noch Zahlungsunfähigkeit. Der Finanzplan ergänzt die konkreten künftigen Termine.
+
+=== 1.21.1 Zahlung, Aufwand und Nettogeldvermögen <a-1-21-1>
+
+#form[$ "nettomonetäres UV" = "liquide Mittel" + "kurzfristige Forderungen" - "kurzfristige Verbindlichkeiten" $]
+Ein Geldbestand, kein reiner Kassenbestand. Ein Wareneinkauf auf Ziel erhöht eine Verbindlichkeit, ohne sofort Geld auszuzahlen. Seine spätere Bezahlung vermindert Kasse und Verbindlichkeit zugleich. Wer Aufwand, Beschaffung und Zahlung mischt, kann denselben Vorgang mehrfach erfassen.
+
+#note("Unklare Folienaufgabe 69–71", [Die Tabelle führt unter anderem „Lohnaufwand“, „Barlöhne“, „Wareneinkauf auf Kredit“ und „Lieferantenrechnungen“ zugleich als Ausgaben auf. Die Musterlösung addiert sämtliche Zeilen und nennt den Saldo Liquidität. Ob und wann diese Positionen tatsächlich bezahlt werden bzw. wie Forderungen/Verbindlichkeiten fortgeschrieben werden, ist nicht vollständig angegeben. Die Lernaufgabe zeigt das *Folienergebnis* und trennt es von einer ausdrücklich angenommenen reinen Zahlungsrechnung. Ohne Zusatzangaben ist daraus kein eindeutiger Bestand des nettomonetären UV ableitbar. Eigene Quellenprüfung.], fill: sand)
+
+=== 1.21.2 Jahresgewinn und durchschnittliches Kapital <a-1-21-2>
+
+In der Sanitärgeschäft-Aufgabe setzt die Lösung den *Gewinnvortrag* ausdrücklich mit dem Gewinn des betrachteten Jahres gleich und unterstellt einen gleichmäßigen Gewinnanfall. Der Gewinnanteil am durchschnittlich eingesetzten Kapital beträgt deshalb die Hälfte seines Endbestands; die übrigen Kapitalpositionen bleiben im Modell konstant.
+#form[$ "durchschnittliches Kapital" = ("Anfangskapital" + "Endkapital") / 2 $]
+Die so bezeichnete *Netto-Gesamtkapitalrentabilität* der Folie teilt den Gewinn nach Zinsen durch durchschnittliches GK. Die Gesamtkapitalrentabilität für den Leverage-Vergleich in Abschnitt 1.12 verwendet dagegen *Gewinn vor FK-Zinsen*. Ohne Zinsangabe lässt sich diese zweite Kennzahl aus der Sanitärbilanz nicht vollständig ermitteln. Vergleichbare Namen ersetzen keine Definition.
+
+Cashflow ergänzt den Gewinn um den Blick auf Zahlungen und nicht zahlungswirksame Vorgänge. Sein operativer Teil hilft, Innenfinanzierungskraft einzuschätzen; freie Verwendbarkeit für Tilgung, Investition und Ausschüttung muss dennoch zusammen mit fälligen Zahlungen geprüft werden. Die Folie 78 weist auf lückenhafte veröffentlichte Informationen hin. Cashflow ist deshalb hilfreich, aber kein Ersatz für Ergebnis-, Risiko- und Liquiditätsanalyse.
+
+#note("Von Dir notiert: Klausur", [Auf N28, PDF-S. 10, steht: *„50 % Rechnen, 50 % Fragen zum Hinschreiben“*. Die Lernplattform enthält deshalb sowohl Rechenfälle mit begründeten Schritten als auch offene Erklärfragen. Das ist Deine Vorlesungsnotiz, keine hier ergänzte Punkteverteilung einer konkreten Klausur.])
+#src[V, PDF-S. 32–39 (Folien 64–78); N28, PDF-S. 6–13, Klausurnotiz PDF-S. 10. Abgrenzung der widersprüchlichen Tabellen und Kennzahlen: eigene Prüfung.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 1.* Ziele bestimmen die Finanzierungsentscheidung. Herkunft und Rechte erklären die Kapitalformen. Erfolg und Zahlungen sind zu trennen, bevor Cashflow und Finanzplan aufgebaut werden. Kennzahlen und Leverage zeigen Deckung, Verlustpolster und Risiko; die Glasspinnerei führt diese Bausteine mit EBK, Steuern und Investitionen zu einer abgestimmten Kapitalbedarfsrechnung zusammen. Aktienkennzahlen trennen Marktpreis, Substanz und Ertragswert; Working Capital und Bindungsdauer verbinden Bilanzpuffer mit operativem Kapitalbedarf. Die Finanzkontrolle prüft diese Größen mit konsistenten Definitionen.
+#src[V, PDF-S. 3–39; G, PDF-S. 4, 7–15 und 24. Eigene Zusammenfassung der genannten Abschnitte.]
+#hoch(<a-1>, [Kapitelübersicht])
+
+
+#pagebreak()
+= Kapitel 2 · Fremdfinanzierung <a-2>
+
+#überblick([Kapitel 2 auf einen Blick],
+ idee(<a-2-1>, [Anspruch und Ausfall trennen.], [Feste Ansprüche bleiben von der Leistungsfähigkeit und den Entscheidungen des Schuldners abhängig.]),
+ idee(<a-2-2>, [Bonität begründen.], [Rechtliche Fähigkeit, persönliche Verlässlichkeit und wirtschaftliche Tragfähigkeit beantworten verschiedene Fragen.]),
+ idee(<a-2-3>, [Risiko bewerten.], [Rating und Eigenkapitalunterlegung verbinden Ausfallrisiko mit dem Kreditgeschäft der Bank.]),
+ idee(<a-2-5>, [Verträge gestalten.], [Betrag, Tilgung, Zins, Laufzeit, Sicherheiten und Covenants bestimmen den Zahlungsfahrplan.]),
+ idee(<a-2-6>, [Zinsen vergleichbar machen.], [Tagekonvention und Zinstermine beeinflussen die tatsächlichen Zahlungen.]),
+ idee(<a-2-8>, [Rückzahlung und Ausstieg prüfen.], [Vertragspflichten, Kündigungsrecht und Vorfälligkeitsentschädigung gehören zusammen.]),
+)
+#ablauf(
+ chunk([Finanzierungsbedarf und Gläubigerrisiko], [Welcher Betrag wird wann gebraucht, wodurch könnte Rückzahlung ausfallen?], ziel: <a-2-1>),
+ chunk([Bonität und Rating], [Unterlagen prüfen, Risiken einschätzen, Bankkapital berücksichtigen], ziel: <a-2-2>),
+ chunk([Vertrag und Zinsrechnung], [Zahlungsströme und Handlungsgrenzen vereinbaren], ziel: <a-2-5>),
+ chunk([Rückführung oder vorzeitiger Ausstieg], [Tilgung, Kündigungsrecht und möglichen Schaden prüfen], ziel: <a-2-9>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
+Kapitel 1 hat den Kapitalbedarf bestimmt. Jetzt wird daraus ein Kreditverhältnis: Der Gläubiger muss die Rückzahlung einschätzen, der Schuldner muss Bedingungen und Zahlungen verstehen. Das Kapitel folgt den Vorlesungen vom 28.10. und 04.11. bis Folie 116. Abschnitt 2.10 ergänzt ausdrücklich Aufgabe 1 der bereits vorhandenen Altklausur; spätere Vorlesungsfolien werden dadurch nicht als behandelt ausgewiesen.
+#src[V, PDF-S. 40–58 (Folien 79–116); N28, PDF-S. 14–17; N04, PDF-S. 1–17; K, PDF-S. 1–2.]
+
+== 2.1 Fremdkapital und Risiken der Gläubiger <a-2-1>
+
+*Fremdfinanzierung* begründet Ansprüche auf vereinbarte Zahlungen. „Verträge sind einzuhalten“ (*pacta sunt servanda*) beschreibt die Pflicht; es garantiert keine tatsächliche Erfüllung. Während der Laufzeit entscheidet im Grundmodell der Schuldner über das Unternehmen, obwohl diese Entscheidungen das Risiko des Gläubigers verändern.
+
+#bild("map-glaeubigerrisiko", [Mindmap: Anspruch, Information und Entscheidungen. Eigene Darstellung nach V, PDF-S. 40–41.], height: 44mm)
+
+#tab(columns: (1.15fr, 2.8fr),
+ th([Gliederung von Krediten], [Worauf Du achtest]),
+ [Kreditgeber], [Wer stellt die Mittel bereit? Beispielsweise Bank oder anderer vertraglicher Gläubiger.],
+ [Fristigkeit], [Wie lange stehen die Mittel zur Verfügung? Passt das zur Bindung des Vermögens?],
+ [Besicherung], [Welche zusätzlichen Rechte sollen den Ausfallverlust begrenzen?],
+ [Zahlungsanspruch], [Wie sind Auszahlungsbetrag, Zins und Tilgung ausgestaltet?],
+)
+
+Die Einleitung nennt als historische Erklärungen für die Bedeutung des FK steuerliche Vorteile, Gläubigerschutz und höhere Kosten der EK-Beschaffung. Das sind Argumente der Folie mit Quelle 2007. Weder der damalige Trend „in den letzten 50 Jahren“ noch die pauschale Aussage über steuerlich abziehbare FK-Bestände wird hier als aktuelle uneingeschränkte Regel übernommen. Für das Verständnis zählt: Finanzierungskosten und Risiko beeinflussen die Kapitalwahl.
+
+*Informationsasymmetrie* heißt: Schuldner und Gläubiger verfügen nicht über dieselben Informationen. Die Bank prüft daher das Unternehmen einschließlich Liquidität, seine Absatzmärkte und die Gesamtwirtschaft. Risiken bleiben durch überschätzte Einzahlungen, nicht offengelegte weitere Kredite, riskante Investitionen, zusätzliche Verschuldung, Ausschüttungen und unerwartete Umweltveränderungen.
+
+*Eigene Erklärhilfe:* Ein Betrieb nimmt nach dem ersten Kredit einen zweiten auf und schüttet zugleich liquide Mittel aus. Der erste Anspruch bleibt nominell gleich, aber künftig stehen mehr Ansprüche einem geringeren Puffer gegenüber. Deshalb genügen die ursprünglichen guten Zahlen nicht für die gesamte Laufzeit.
+#src[V, PDF-S. 40–41 (Folien 80–82); N28, PDF-S. 14–15. Beispiel und historische Einordnung: eigene Erläuterung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.2 Bonität: Fähigkeit, Würdigkeit und Sicherheiten <a-2-2>
+
+*Bonität* beschreibt hier die Einschätzung der Schuldnerqualität. Zunächst muss ein Kreditvertrag wirksam zustande kommen können; anschließend geht es darum, ob der Schuldner zuverlässig und wirtschaftlich leistungsfähig ist. Eine werthaltige Sicherheit ergänzt diese Prüfung.
+
+#bild("map-bonitaet", [Mindmap: drei Prüfbereiche und ihre Belege. Eigene Darstellung nach V, PDF-S. 42–43.], height: 44mm)
+#tab(columns: (1.2fr, 2.8fr),
+ th([Begriff], [Kernfrage und Belege]),
+ [*Kreditfähigkeit*], [Kann die Person bzw. Gesellschaft rechtswirksam einen Kreditvertrag schließen? Vertretung und erforderliche Befugnisse prüfen.],
+ [Persönliche *Kreditwürdigkeit*], [Wie verlässlich erscheinen Schuldner bzw. Geschäftsführung? Erfahrung, bisheriges Zahlungsverhalten und Geschäftsbeziehung.],
+ [Wirtschaftliche Kreditwürdigkeit], [Lassen Vermögen, Ertrag, Cashflow und Finanzplan Zins und Tilgung erwarten? Auch Markt und Auftragslage zählen.],
+ [*Kreditsicherheit*], [Welche zusätzliche Person oder welcher verwertbare Vermögenswert steht im Sicherungsfall zur Verfügung? Das beseitigt das Ausfallrisiko nicht vollständig.],
+)
+
+Relevante Unterlagen sind Handelsregisterauszug und gegebenenfalls Gesellschaftsvertrag, Jahresabschluss, Lage- und Prüfungsberichte, Liquiditäts-/Finanzpläne, Investitions- und Cashflow-Rechnungen sowie Auftragsbestand, Steuerbescheide und Forderungs-/Verbindlichkeitslisten. Die Folie nennt auch den digitalen Finanzbericht im Datenstandard XBRL. Unterlagen müssen zusammenpassen: Ein hoher Gewinn hilft wenig, wenn der Finanzplan schon eine ungedeckte Rate zeigt.
+
+Die Informationsliste auf Folie 86 enthält außerdem persönliche Merkmale, Wohnumfeld, Werdegang, wirtschaftliche Verhältnisse und Auskünfte über das Zahlungsverhalten. Sie wird als Sammlung der Vorlesung verstanden, nicht als Aussage, dass jede dort genannte Information in jedem Kreditfall erforderlich oder zulässig ist. Das Wort „entmündigt“ auf Folie 83 wird nicht als heutige Rechtskategorie gelernt; maßgeblich ist die Fähigkeit zum wirksamen Vertragsschluss im konkreten Fall.
+
+#note("§ 18 KWG genauer als die Folie", [Die pauschale Aussage „verpflichtet zur regelmäßigen Prüfung aller Kreditnehmer“ ist zu weit. § 18 knüpft die Offenlegung insbesondere an einen Kredit von insgesamt *über 1,5 Mio. € oder über 10 % des Kernkapitals* und enthält Ausnahmen. Für die Vorlesungslogik merken: wirtschaftliche Verhältnisse anhand belastbarer Unterlagen offenlegen und fortlaufend beurteilen; den Gesetzesbereich nicht ohne Voraussetzungen verallgemeinern. Eigener Rechtsabgleich.], fill: sand)
+#src[V, PDF-S. 42–43 (Folien 83–86); N28, PDF-S. 16–17; N04, PDF-S. 1. Rechtsabgleich: #link("https://www.gesetze-im-internet.de/kredwg/__18.html")[§ 18 KWG], Abruf 05.11.2026. Begriffliche Präzisierungen: eigene Erläuterung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.3 Rating und Eigenkapitalunterlegung der Bank <a-2-3>
+
+Ein *Rating* verdichtet die Beurteilung des Ausfallrisikos zu einer Note. Beim *internen Rating* beurteilt die Bank ihren Kunden selbst; beim *externen Rating* bewertet eine Ratingagentur einen Schuldner bzw. Emittenten. Das Ergebnis ist eine Risikoeinschätzung und keine Rückzahlungsgarantie.
+
+#bild("map-rating", [Mindmap: Information wird zu Risikoeinschätzung und Kapitalbedarf. Eigene Darstellung nach V, PDF-S. 43–44 und 49.], height: 44mm)
+
+Die Folie nennt intern Klassen von A (geringes Risiko) bis D (nicht mehr vertretbar). Extern nennt sie S&P, Moody’s und Fitch sowie nationale Agenturen als Beispiele. Die Notenskalen sind nicht identisch: *AAA* ist bei S&P/Fitch die höchste Stufe, *Aaa* bei Moody’s; die pauschale Zeile „A = beste Note“ ist daher nur eine vereinfachte Richtungsangabe. *BB bzw. Ba und schlechter* gehören im üblichen Langfristrating zum spekulativen Bereich. Länder-, Branchen- und Emittentenrisiko müssen auseinandergehalten werden.
+
+*Bankbilanz verstehen:* Der Unternehmenskredit ist eine Forderung und damit ein Aktivposten der Bank. Eigenkapital steht auf ihrer Passivseite und trägt Verluste. Die Unterlegung meint einen Kapitalpuffer der Bank, keine zusätzliche Einzahlung von Eigenkapital in das kreditnehmende Unternehmen.
+#form[$ "RWA" = "Kreditbetrag" times w $]
+#form[$ "EK-Unterlegung" = "Kreditbetrag" times 8% times w $]
+RWA = risikogewichtete Aktiva; $w$ = Risikogewicht als Faktor, z. B. 150 % = 1,5. Alle Kapitalbeträge in derselben Währung. Das ist das *vereinfachte Basel-II-Rechenmodell der Folie*: ein Kreditrisiko, ein vorgegebenes Gewicht, keine weiteren Puffer oder Risikokategorien.
+#form[$ "maximales Kreditvolumen" = "verfügbares Bank-EK" / (8% times w_"durchschnittlich") $]
+Gilt nur, wenn das gesamte vorgegebene EK dafür verfügbar ist und keine andere Grenze bindet. Ein höheres Risikogewicht erhöht bei gleichem Kredit den erforderlichen Puffer und senkt bei gegebenem EK das rechnerische Kreditvolumen.
+
+#note("Basel III: gleiche Prozentzahl, anderer Nenner?", [Folie 97 nennt 7 % hartes Kernkapital und 10,5 % Gesamtkapital. Im vereinfachten Schema sind das *4,5 % bzw. 8 % Mindestquote plus 2,5 % Kapitalerhaltungspuffer*, bezogen auf RWA. Die *Leverage Ratio von mindestens 3 %* bezieht Kernkapital dagegen auf eine nicht risikogewichtete Gesamtrisikopositionsmessgröße. Sie ist kein Verschuldungsgrad FK/EK des Unternehmens. Zusätzliche bank- und länderspezifische Anforderungen sind in dieser Folienrechnung nicht enthalten. Eigene Präzisierung.], fill: sand)
+
+Basel III wird in der Vorlesung als Reaktion auf die Finanzkrise eingeführt: mehr und belastbareres Kapital sowie eine zusätzliche Begrenzung der Verschuldung. Unterschiedliche Rechnungslegung, etwa US GAAP und IFRS, kann die Vergleichbarkeit von Bilanzsummen und Quoten beeinflussen. Die Folien liefern die Lernmodelle, keine vollständige Bankregulierung für jeden Fall.
+#src[V, PDF-S. 43–44 und 49 (Folien 85–88, 97); N28, PDF-S. 17; N04, PDF-S. 1–2 und 7. Basel-Präzisierung: #link("https://www.bis.org/bcbs/publ/d570.pdf")[Basler Ausschuss, Basel III Monitoring Report, März 2024]; #link("https://www.bis.org/publications/fsi-summary-capital-buffers-basel-iii-executive-summary")[BIS, Kapitalpuffer]; #link("https://www.bankingsupervision.europa.eu/activities/srep/leverage-ratio-pillar-2-requirement/html/index.en.html")[EZB-Bankenaufsicht, Leverage Ratio]; #link("https://www.spglobal.com/ratings/en/credit-ratings/about/understanding-credit-ratings")[S&P, Ratingskala] und #link("https://www.moodys.com/web/en/us/solutions/ratings/understanding-ratings.html")[Moody’s, Ratingskala], Abruf 05.11.2026.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.4 Krisen, Staatsrisiko und Anleihekäufe einordnen <a-2-4>
+
+Viele einzelne Kredite können dasselbe Risiko enthalten. Werden Ausfälle und Wertverluste gleichzeitig sichtbar, geraten Bankkapital, Vertrauen und Kreditvergabe gemeinsam unter Druck. Die historischen Abbildungen der Vorlesung zeigen diesen Zusammenhang aus verschiedenen Blickwinkeln.
+
+#bild("krisen-kette", [Vom Kreditrisiko zur Finanzierungskrise. Eigene schematische Darstellung nach V, PDF-S. 45–52.], height: 46mm)
+
+Die Folien schildern die Neubewertung amerikanischer Hypothekenrisiken ab 2007, den Weiterverkauf verbriefter Forderungen, Wertberichtigungen und den Zusammenbruch von Lehman Brothers 2008. Verluste schwächen das Bankkapital; Misstrauen kann die Refinanzierung zwischen Banken erschweren. Staatliche Garantien, Kapitalhilfen und Risikoübernahmen sollen den Kreislauf stabilisieren. Die Folien 94–96 zeigen historische Größen dazu; sie sind keine heutigen Ausgaben oder Prognosen.
+
+#bild("krise-staat-historisch", [Historische Länder-Ratings und TARGET-Salden, Stand um 2011. Ausschnitte aus N04, PDF-S. 3–4 (Folien 89–92; V, PDF-S. 45–46).], height: 96mm)
+
+*Rating und Anleiherendite* sind verschiedene Größen: Die Note verdichtet eine Risikoeinschätzung, die Marktrendite ergibt sich aus dem Preis und den Zahlungsansprüchen der Anleihe. Höheres wahrgenommenes Risiko kann einen höheren Renditeaufschlag verlangen. Der historische Ländervergleich beweist keine zeitlose exakte Zuordnung zwischen Note und Zins. *TARGET-Salden* in der Grafik sind Forderungs-/Verbindlichkeitspositionen im Euro-Zahlungsverkehr; sie sind nicht die Ratingnote eines Staates.
+
+#bild("krise-geldpolitik-historisch", [Bankkapital, Zinsen und Anleihekäufe in historischen Zeitreihen bis 2020. Ausschnitte aus N04, PDF-S. 7–8 (Folien 98–100; V, PDF-S. 49–50).], height: 96mm)
+
+Die Kapitalquoten-Grafik vergleicht *Tier-1-Kapital/RWA* 2008 und 2018; sie zeigt keine EK-Quote EK/Bilanzsumme eines normalen Unternehmens. Die Zinsgrafik zeigt Renditen verschiedener Staatsanleihen. Die Kaufprogramm-Grafik verwendet *zwei Skalen*: monatliche Käufe links, Bestandsvolumen rechts. Leitzinsen und EONIA stehen in einer eigenen Grafik. EONIA ist hier die historische Zeitreihe, kein aktueller Referenzzins.
+
+#bild("krise-konjunktur-historisch", [Konjunktur-, Finanzmarkt- und Staatsschuldenindikatoren. Ausschnitte aus N04, PDF-S. 10–11 (Folien 101–104; V, PDF-S. 51–52).], height: 103mm)
+
+Die Folien zeigen bereits vor Corona eine Abschwächung 2019, den Einbruch 2020 sowie höhere Finanzmarktstress- und Kreditausfallversicherungswerte im Frühjahr 2020. Der *CISS-Index* bündelt Stressindikatoren; er ist keine Ausfallwahrscheinlichkeit eines einzelnen Unternehmens. Die Schuldenstandsquote setzt Staatsschulden zum BIP ins Verhältnis; ein Anstieg kann durch höhere Schulden und/oder ein niedrigeres BIP entstehen. Folie 104 ergänzt historische Daten 2022–2025 und einen Renditeaufschlag-Vergleich aus Oktober 2026; diese Stände bleiben als datierte Unterrichtsbeispiele gekennzeichnet.
+
+=== 2.4.1 Deine Skizze zum Anleihekaufprogramm <a-2-4-1>
+
+Deine Zusatzseite zeigt eine Wertpapierausgabe gegen 100 € und anschließend einen Ankauf durch die Notenbank. Den entscheidenden Unterschied macht der *Verkäufer beim Ankauf*: Die Notenbank kauft Staatsanleihen im hier gemeinten Programm am Sekundärmarkt. Das neu geschaffene Zentralbankgeld geht an die verkaufende Bank bzw. über deren Bank an den bisherigen Inhaber, nicht als unmittelbarer Kaufpreis einer neuen Staatsanleihe direkt an den Staat.
+
+#bild("anleihekauf-schema", [Zwei getrennte Geschäfte: Emission und späterer Ankauf. Eigene Darstellung zu N04, PDF-S. 9; mit EZB-Erklärung präzisiert.], height: 59mm)
+
+„Geld drucken“ ist hier ein Bild für die Schaffung von Zentralbankgeld durch Gutschrift, nicht zwingend für zusätzliche Banknoten. Wertpapierkäufe können Kurse erhöhen, Renditen senken und Finanzierungsbedingungen lockern. Die Wirkung auf Kreditvergabe, Nachfrage und Inflation ist ein Übertragungsprozess und keine automatische Eins-zu-eins-Wirkung auf Verbraucherpreise.
+#src[V, PDF-S. 45–52 (Folien 89–104); N04, PDF-S. 3–11, insbesondere handschriftliche Zusatzseite PDF-S. 9. Präzisierung Anleihekäufe: #link("https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/app.en.html")[EZB, Funktionsweise des APP] und #link("https://www.ecb.europa.eu/ecb-and-you/explainers/show-me/html/app_infographic.en.html")[EZB, Kaufmechanismus]; #link("https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/asset-purchase.en.html")[EZB, Sekundärmarkt], Abruf 05.11.2026. Historische Foliengrafiken, keine Aktualisierung ihrer Zeitreihen.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.5 Kreditvertrag: sechs Stellschrauben und Covenants <a-2-5>
+
+Ein Kredit wird durch seinen *Zahlungsfahrplan* und die vereinbarten Rechte bestimmt. Derselbe Nominalzins kann mit anderen Auszahlungen, Tilgungen und Terminen zu einer anderen Belastung führen. Deshalb prüfst Du den Vertrag als Ganzes.
+
+#bild("map-kreditvertrag", [Mindmap: Zahlungen und Rechte gemeinsam vereinbaren. Eigene Darstellung nach V, PDF-S. 53–54.], height: 44mm)
+#tab(columns: (1.2fr, 2.8fr),
+ th([Merkmal], [Worum verhandelt wird]),
+ [Betrag], [*Nominalbetrag* als Bezugs-/Rückzahlungsbetrag und tatsächlicher *Auszahlungsbetrag*. Ein *Disagio* ist ein Abzug bei der Auszahlung.],
+ [Tilgungsstruktur], [Endfällig, konstante Tilgung oder konstante Gesamtzahlung (Annuität); Sondertilgungen und tilgungsfreie Zeiten.],
+ [Zins], [Zinstermine, Bindungsdauer, Nominalzins und vergleichbarer Effektivzins.],
+ [Laufzeit], [Fristenkongruenz, Kündigung und Verlängerung. Zinsbindung und Gesamtlaufzeit sind verschiedene Fristen.],
+ [Sicherheiten], [Bürgschaft, Abtretung, Pfandrechte oder Sicherungsübereignung; knapper Überblick in 2.10.],
+ [Weitere Vereinbarungen], [Zweckbindung und Covenants begrenzen bestimmte Handlungen.],
+)
+
+*Zinsbindung* fixiert den Zinssatz für einen vereinbarten Zeitraum, gegebenenfalls bis zur vollständigen Tilgung. Ein variabler Zins passt sich nach den Vertragsbedingungen an das Marktniveau an. Bei der Wahl werden Zinsänderungsrisiko, erwartete gesamte Zinszahlungen und Inflation abgewogen; ein fester Satz beseitigt nicht jedes Finanzierungsrisiko. *Zweckbindung* verpflichtet zur Verwendung für das vereinbarte Projekt.
+
+*Covenants* sind vertragliche Nebenbedingungen zum Schutz des Gläubigers. Sie sollen eine nachträgliche Risikoerhöhung früh anzeigen bzw. begrenzen: Die Bank vereinbart Grenzen, der Schuldner berichtet über deren Einhaltung, und ein Verstoß löst die vertraglich vorgesehenen Folgen aus.
+#tab(columns: (1.2fr, 2.8fr),
+ th([Bereich], [Beispiele der Folien]),
+ [Finanzierung], [Verschuldungsgrenzen, Schutz des bisherigen Anspruchsrangs (me-first-rule), Grenzen für Finanzierungsleasing.],
+ [Ausschüttung], [Dividenden und Aktienrückkäufe begrenzen; bestimmte Mittel für Investition oder Tilgung reservieren.],
+ [Investition], [Verkauf betriebsnotwendiger Anlagen begrenzen, Übernahmen an Finanzierungsstandards knüpfen, positives Net Working Capital verlangen.],
+ [Information und Folgen], [Berichtspflichten, eindeutige Kennzahlendefinitionen, wahrheitsgemäße Angaben; Neuverhandlung, Zinsanpassung oder Fälligstellung gemäß Vertrag.],
+)
+Eine *Cross-default-Klausel* kann einen vertraglich definierten Ausfall in einem anderen Kreditverhältnis auch für diesen Vertrag relevant machen. Covenants liefern ein Frühwarnsystem, beschränken zugleich das Entscheidungsfeld des Schuldners. Ein Verstoß ist nicht automatisch eine Insolvenz; entscheidend sind Vertragsinhalt, Heilungsmöglichkeiten und die tatsächliche Lage.
+#src[V, PDF-S. 53–54 (Folien 105–108); N04, PDF-S. 12–13. Disagio und Tilgungsformen zusätzlich K, PDF-S. 1–2. Verbindende Beispiele/Abgrenzungen: eigene Erläuterung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.6 Zinstage: dieselbe Zeit unterschiedlich zählen <a-2-6>
+
+Bei einfacher unterjähriger Verzinsung bestimmt die *Zinstagemethode*, welcher Bruchteil eines Jahres bezahlt wird. Zähler und Nenner gehören zusammen: Tatsächliche Kalendertage geteilt durch 360 sind etwas anderes als tatsächliche Tage geteilt durch 365.
+
+#bild("map-zinszeit", [Mindmap: Tage zählen, Jahresbasis wählen und erst dann rechnen. Eigene Darstellung nach V, PDF-S. 55–56.], height: 44mm)
+#form[$ Z=K_0 i frac(t,B) quad K_"Ende"=K_0+Z $]
+$K_0$ = Anfangskapital in €; $i$ = Jahreszinssatz als Dezimalzahl; $t$ = nach der Methode gezählte Zinstage; $B$ = Tage der Jahresbasis. $t/B$ ist dimensionslos. Gültig für die einfache zeitanteilige Verzinsung des Beispiels, ohne Zinseszins innerhalb dieses Zeitabschnitts.
+
+#tab(columns: (1.2fr, 2.8fr),
+ th([Methode], [Zähler und Jahresbasis im behandelten Beispiel]),
+ [30E/360], [Jeder Monat 30 Tage; der 31. wird hier auf den 30. gesetzt. Jahresbasis 360.],
+ [30/360], [30-Tage-Monate mit abweichender Monatsendregel; der 31.12. bleibt im konkreten Folienfall als 31. stehen. Jahresbasis 360.],
+ [actual/365], [Tatsächlich verstrichene Tage / 365.],
+ [actual/360], [Tatsächlich verstrichene Tage / 360.],
+ [actual/actual, kalenderjährlich], [Tatsächliche Tage / tatsächliche Tage des Kalenderjahres; 2016 hat 366. Bei Jahreswechsel nach Jahren aufteilen.],
+)
+
+Bei 30-Tage-Methoden lässt sich der Zähler als $360(Y_2-Y_1)+30(M_2-M_1)+(D_2-D_1)$ schreiben, nachdem die Tage gemäß Konvention angepasst wurden. Die Namen 30/360 allein reichen für alle denkbaren Monatsendfälle nicht aus: hier gilt genau die im Foliensatz gezeigte Variante. Die Musteraufgabe zählt den Anfangstag nicht mit und den Endtag mit. Ein Wechsel der Konvention ändert den Zinsbetrag, obwohl Anfangs- und Enddatum gleich bleiben.
+#src[V, PDF-S. 55 (Folien 109–110); N04, PDF-S. 14. Formel, Zählweise und Begrenzung auf die gezeigten Varianten: eigene Erläuterung der Musterlösung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.7 Zinstermine und Zinseszins vergleichen <a-2-7>
+
+Zinsen können jährlich oder öfter gutgeschrieben werden. Bleiben sie angelegt, werden auch die früher gutgeschriebenen Zinsen später verzinst: *Zinseszins*. Ein Monatszinssatz ist daher zuerst in einen Jahresfaktor umzurechnen, bevor Du ihn mit einem Jahreszins vergleichst.
+#form[$ K_n=K_0(1+i)^n $]
+#form[$ 1+i_"eff,Jahr"=(1+i_"Monat")^12 $]
+$i$ = Zinssatz je Zinsperiode als Dezimalzahl; $n$ = Zahl genau dieser Perioden. Voraussetzungen: unveränderte Zinssätze, Wiederanlage der Zinsen und keine zusätzlichen Ein-/Auszahlungen, Steuern oder Gebühren im Vergleichsmodell.
+
+#bild("zinsfaktoren", [Häufigere Zinsgutschriften wirken über die Wiederanlage. Eigene schematische Darstellung nach V, PDF-S. 56; keine Zahlenachse.], height: 43mm)
+
+Zum Vergleich über drei Jahre wird der jeweilige *Jahresfaktor hoch drei* genommen. Sind beide positiv und für alle Jahre unverändert, bleibt die Reihenfolge gleich. Ein Vorteil im ersten Jahr sagt dagegen nichts Sicheres über drei Jahre, wenn die anschließenden Zinssätze variabel oder nur bis zur nächsten Gutschrift zugesagt sind.
+#note("Fehler in der Lösungsformulierung", [Folie 112 schreibt im Begründungssatz „wenn Möglichkeit 1 für ein Jahr besser ist“. Ihr eigenes Ergebnis bevorzugt aber *Möglichkeit 2*. Die zutreffende Aussage lautet: *Die bei unveränderten Bedingungen bessere Einjahresalternative bleibt auch über drei Jahre besser.* Eigene Korrektur des Satzfehlers.], fill: sand)
+#src[V, PDF-S. 56 (Folien 111–112); N04, PDF-S. 15. Faktorvergleich und Satzkorrektur: eigene Erläuterung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.8 Darlehenspflichten und Kündigungsrechte <a-2-8>
+
+Beim *Darlehensvertrag* muss der Darlehensgeber den vereinbarten Geldbetrag bereitstellen. Der Darlehensnehmer schuldet einen vereinbarten Zins und bei Fälligkeit die Rückzahlung. Zins ist der Preis der zeitweisen Geldüberlassung; Tilgung führt die Schuld zurück.
+
+#bild("map-darlehensrecht", [Mindmap: Pflichten, Fristen und Anlass getrennt prüfen. Eigene Darstellung nach V, PDF-S. 57–58; Rechtsabgleich 05.11.2026.], height: 44mm)
+
+Für Verbraucherdarlehen nennt die Folie vorvertragliche Informationen, etwa über Kreditart, effektiven Jahreszins und Widerruf. Das historische Datum 11.06.2010 beschreibt die damalige Reform. Die heutigen Informationspflichten ergeben sich insbesondere aus § 491a BGB in Verbindung mit Art. 247 EGBGB; der konkrete Darlehenstyp ist zu unterscheiden. Eine Unternehmensfinanzierung ist nicht allein wegen einer natürlichen Person im Hintergrund ein Verbraucherdarlehen.
+
+#tab(columns: (1.25fr, 2.8fr),
+ th([Fall], [Voraussetzungen und Frist]),
+ [Variabler Zins, § 489 Abs. 2], [Darlehensnehmer kann mit drei Monaten Frist kündigen.],
+ [Zinsbindung endet, § 489 Abs. 1 Nr. 1], [Wenn sie vor dem Rückzahlungstermin endet und keine neue Zinsvereinbarung besteht: ein Monat Frist, frühestens zum Ende der Bindung.],
+ [Lange Zinsbindung, § 489 Abs. 1 Nr. 2], [Nach zehn Jahren seit *vollständigem Empfang* mit sechs Monaten Frist; eine spätere neue Vereinbarung über Zins oder Rückzahlung kann den Fristbeginn ersetzen.],
+ [Gefährdete Rückzahlung, § 490 Abs. 1], [Wesentliche eingetretene oder drohende Verschlechterung von Vermögensverhältnissen oder Sicherheit, die die Rückzahlung auch unter Verwertung gefährdet: Kündigungsrecht des Gebers unter den gesetzlichen Voraussetzungen.],
+ [Berechtigtes Interesse, § 490 Abs. 2], [Nehmer: gebundener Sollzins, Grund-/Schiffspfandrecht, sechs Monate seit vollständigem Empfang und berechtigtes Interesse; drei Monate Kündigungsfrist. Möglicher Schadenersatz für den vorzeitigen Ausstieg.],
+)
+
+#note("Fristbeginn nicht verwechseln", [Die zehn Jahre beziehen sich nicht pauschal auf die Unterschrift. Der vollständige Darlehensempfang und gegebenenfalls eine spätere relevante Neuvereinbarung sind entscheidend. Auch bei § 490 Abs. 2 sind die sechs Monate bis zur Kündigungsmöglichkeit von der zusätzlichen Kündigungsfrist zu trennen. § 489 Abs. 3 verlangt außerdem fristgerechte Rückzahlung nach Wirksamwerden der Kündigung.], fill: sand)
+#src[V, PDF-S. 57–58 (Folien 113–115); N04, PDF-S. 16–17. Geprüfte Ergänzungen: #link("https://www.gesetze-im-internet.de/bgb/__488.html")[§ 488], #link("https://www.gesetze-im-internet.de/bgb/__489.html")[§ 489], #link("https://www.gesetze-im-internet.de/bgb/__490.html")[§ 490], #link("https://www.gesetze-im-internet.de/bgb/__491a.html")[§ 491a BGB]; Abruf 05.11.2026.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.9 Vorfälligkeitsentschädigung: den Schaden vergleichen <a-2-9>
+
+Ein Festzins verschafft dem Schuldner Planungssicherheit. Die Bank richtet ihre Finanzierung und erwarteten Zinszahlungen auf die Vertragsdauer aus. Bei einem vorzeitigen Ausstieg kann deshalb ein *Zinsschaden* entstehen: Die zurückerhaltenen Mittel lassen sich möglicherweise nur zu einem niedrigeren Zins wieder anlegen.
+
+#bild("map-vorfaelligkeit", [Mindmap: Rechtsgrund, Zinsvergleich und Kostenkorrektur. Eigene Darstellung nach V, PDF-S. 58.], height: 44mm)
+
+Zuerst wird geprüft, *ob* ein Anspruch auf Entschädigung besteht. Eine ordentliche Kündigung nach § 489 ist anders einzuordnen als die vorzeitige Kündigung nach § 490 Abs. 2. Ein frei vereinbarter Aufhebungsvertrag ist wiederum eine eigene Fallgruppe. Nicht jede frühere Rückzahlung erzeugt automatisch dieselbe Gebühr.
+
+#tab(columns: (1.15fr, 2.8fr),
+ th([Methode der Folie], [Vergleich und Bedeutung]),
+ [*Aktiv-Aktiv*], [Der alte Kredit wird mit einem möglichen neuen Kreditgeschäft verglichen. Wiederanlage-/Zinsmargeneffekte sind sachgerecht abzugrenzen, damit derselbe Nachteil nicht doppelt ersetzt wird.],
+ [*Aktiv-Passiv*], [Die vertraglichen Zahlungen werden mit einer Wiederanlage in laufzeitentsprechenden Hypothekenpfandbriefen verglichen. Die rekonstruierten Zahlungsströme werden bewertet; ersparte Risiko- und Verwaltungskosten sind zu berücksichtigen.],
+)
+
+Ein niedrigerer Wiederanlagezins vergrößert unter sonst gleichen Bedingungen den Zinsnachteil; ein höherer kann diesen Nachteil beseitigen. Restlaufzeit, Restschuld, vertragliche Zahlungen und mögliche Sondertilgungen beeinflussen die Rechnung. Die bloße Zinsdifferenz ist deshalb noch keine vollständige Entschädigungsformel.
+
+#note("Gebührenaussage der Folie begrenzen", [Folie 116 leitet bei fehlendem Zinsschaden eine Beschränkung auf eine Bearbeitungsgebühr ab. Daraus folgt *kein automatischer Gebührenanspruch in jedem Fall*. Anspruchsgrund, anwendbares Darlehensrecht und der tatsächlich ersatzfähige Schaden sind zuerst zu prüfen. In den Lernaufgaben wird nur der behandelte wirtschaftliche Vergleich verlangt; eine pauschale Gebührenregel wird nicht als Gesetz gelernt. Eigene Präzisierung.], fill: sand)
+#src[V, PDF-S. 58 (Folien 115–116); N04, PDF-S. 17. Abgrenzung des Schadenersatzes nach #link("https://www.gesetze-im-internet.de/bgb/__490.html")[§ 490 Abs. 2 BGB], Kündigungsrechte nach #link("https://www.gesetze-im-internet.de/bgb/__489.html")[§ 489 BGB], Abruf 05.11.2026. Keine über die Folie hinausgehende konkrete Gebührenberechnung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.10 Ergänzung aus der Altklausur 2017: Tilgung, Effektivzins und Sicherheiten <a-2-10>
+
+Die Altklausur-Aufgabe 1 führt die in Folie 105 genannten Vertragsmerkmale zu Rechenfällen zusammen. Diese Ergänzung stammt aus der Klausurquelle und ist als solche von der Vorlesungsgrenze bis Folie 116 getrennt. Fremde handschriftliche Antworten im Scan werden nicht als Musterlösung verwendet.
+
+#bild("map-tilgung", [Mindmap: Rückzahlungsform, Auszahlung und Sicherung unterscheiden. Eigene Darstellung nach K, PDF-S. 1–2; V, PDF-S. 53.], height: 44mm)
+
+=== 2.10.1 Drei Tilgungsformen <a-2-10-1>
+
+Bei *endfälliger Tilgung* bleibt die Schuld bis zum Schluss bestehen; bei jährlicher Zinszahlung wird jedes Jahr derselbe Nominalbetrag verzinst. Beim *Ratendarlehen* ist die Tilgung konstant, deshalb sinken Restschuld und Zinsen. Beim *Annuitätendarlehen* ist die Gesamtzahlung aus Zins und Tilgung konstant; der Zinsanteil fällt und der Tilgungsanteil steigt.
+#form[$ Z_t=i R_(t-1) quad T_t=A_t-Z_t quad R_t=R_(t-1)-T_t $]
+$R$ = Restschuld, $Z$ = Zins, $T$ = Tilgung, $A$ = Gesamtzahlung in €; $i$ = Zins je Zahlungsperiode. Die Klausur verzinst die Restschuld *zu Jahresbeginn*, Zahlungen liegen am Jahresende.
+#form[$ T_"Rate"=D/n quad A_"Annuität"=D frac(i(1+i)^n,(1+i)^n-1) $]
+$D$ = Anfangsschuld in €; $n$ = Zahl der Jahreszahlungen; Annuitätenformel bei $i>0$, konstantem Zins, nachschüssiger jährlicher Zahlung und vollständiger Tilgung. Sie folgt daraus, dass der Barwert aller gleichen Jahreszahlungen der Anfangsschuld entspricht. Keine Sondertilgung oder Gebühren im Modell.
+
+=== 2.10.2 Auszahlungsdisagio und näherungsweiser Effektivzins <a-2-10-2>
+
+Beim Disagio erhält der Schuldner weniger Geld als den Nominalbetrag, zahlt aber auf die vereinbarte Basis Zinsen und muss den vereinbarten Betrag zurückzahlen. Deshalb kann der Nominalzins die jährliche Belastung unterschätzen.
+#form[$ i_"eff,approx" = frac(i_"nom" D+(D-"Aus")/n,"Aus") $]
+$"Aus"$ = Auszahlung in €; $D-"Aus"$ = Disagio in €; $n$ = Laufzeit in Jahren. Das ist die *Praktikerformel für das endfällige Darlehen der Altklausur*: jährlicher Nominalzins plus linear auf die Jahre verteiltes Disagio, bezogen auf die Auszahlung. Sie ist eine Näherung, nicht die exakte Rendite sämtlicher zeitlich diskontierter Zahlungen und nicht die gesetzliche Effektivzinsberechnung jedes Verbraucherkredits.
+
+=== 2.10.3 Zwei unabhängige Einteilungen von Sicherheiten <a-2-10-3>
+
+Eine *Personalsicherheit* gibt einen zusätzlichen Anspruch gegen eine Person, etwa einen Bürgen. Eine *Realsicherheit* erschließt einen Vermögenswert, etwa über eine Grundschuld. Davon unabhängig fragt *akzessorisch*: Ist das Sicherungsrecht rechtlich an den Bestand der gesicherten Forderung gebunden? Die Bürgschaft ist ein Beispiel dafür.
+
+Eine Sicherungsgrundschuld setzt dagegen nicht kraft ihres dinglichen Bestands eine Forderung voraus; ihre Verbindung zum Kredit wird durch die Sicherungsvereinbarung hergestellt. Das ist das hier gesuchte Beispiel eines *fiduziarischen* Sicherungsmittels. „Personal/real“ und „akzessorisch/fiduziarisch“ sind also zwei verschiedene Fragen. Die spätere ausführliche Vorlesung zu Kreditsicherheiten wird hier nicht vorweggenommen.
+#src[K, PDF-S. 1–2 (Klausurseiten 5–6), Aufgabe 1 a–d, insgesamt 13 Punkte; V, PDF-S. 53, Folie 105. Formeln und Herleitung: eigene Lösung zur Klausur. Rechtsabgleich der Beispiele: #link("https://www.gesetze-im-internet.de/bgb/__767.html")[§ 767] und #link("https://www.gesetze-im-internet.de/bgb/__1192.html")[§ 1192 BGB], Abruf 05.11.2026.]
+
+*Der Zusammenhang in Kapitel 2.* Feste Zahlungsansprüche erklären, warum der Gläubiger Bonität und Sicherheiten prüft. Rating und Bankkapital übersetzen Risiko in Bedingungen der Kreditvergabe. Der Vertrag legt Zahlungsfahrplan und Verhaltensgrenzen fest; Zinstage, Zinstermine und Auszahlung bestimmen die Vergleichbarkeit. Tilgung führt die Schuld zurück, während Kündigung und möglicher Zinsschaden den vorzeitigen Ausstieg regeln. Die Altklausur verknüpft diese Bausteine in vollständigen Rechen- und Erklärfällen.
+#src[V, PDF-S. 40–58; K, PDF-S. 1–2. Eigene Zusammenfassung des Kapitels.]
+#hoch(<a-2>, [Kapitelübersicht])
 
 
 = Anhang
@@ -798,7 +1174,26 @@ Geldgrößen immer in derselben Währung und Periode einsetzen. Prozentgrößen 
  [Sofort-AfA im Fall], [$"0,75" times "Anschaffungskosten"$], [Historische Fallannahme 2005; G PDF-S. 13.],
  [Rest-AfA im Fall], [$"0,25" times "Anschaffungskosten"/("Nutzungsdauer"-1)$], [Linear ab Folgejahr, historische Fallannahme; G PDF-S. 13.],
  [Steuer im Fall], [$"0,50" times "positive Steuerbasis nach Verlustverrechnung"$], [Nur historische Modellannahme, keine aktuelle Steuerregel; G PDF-S. 14.],
+ [Aktienzahl], [$N="Grundkapital"/"Nominalwert je Aktie"$], [Gleichartige Aktien; Stück; V PDF-S. 28–30.],
+ [Korrigierter Bilanzkurs], [$("EK"+"stille Reserven")/N$], [€/Aktie, korrigierte Substanzwerte; V PDF-S. 29.],
+ [Ertragswertkurs], [$("künftiger Jahresgewinn"/i)/N$], [Konstanter unbegrenzter Gewinn, $i>0$; V PDF-S. 29.],
+ [KGV / Gewinnrendite], [$"Kurs"/"Gewinn je Aktie"$; Kehrwert × 100 %], [Gewinnrendite zum Marktpreis ≠ JÜ/EK; V PDF-S. 30.],
+ [Dividendenrendite], [$"Dividende je Aktie"/"Kurs" times 100%$], [Positive Kursbasis, keine Kursgewinne enthalten; V PDF-S. 30.],
+ [Cashflow Ratio], [$"Kurs"/("CF"/N)$], [CF-Abgrenzung und Periode festlegen; V PDF-S. 30.],
+ [Working Capital], [$"UV"-"kurzfristiges FK"$], [Bilanzstichtag; von operativem EBK unterscheiden; V PDF-S. 30.],
+ [Kapitalbedarf UV], [$sum_j ("Jahresauszahlungen"_j/360) B_j$], [Gleichmäßige Tagesausgaben; $B_j$ Tage; V PDF-S. 31–32.],
+ [Nettomonetäres UV], [Liquide Mittel + kurzfr. Forderungen − kurzfr. Verbindlichkeiten], [Bestandsgröße in €; keine reine Kasse; V PDF-S. 35–36, Abgrenzung 1.21.],
+ [Durchschnittskapital], [$("Anfang"+"Ende")/2$], [Gleichmäßige Veränderung im Modell; V PDF-S. 38.],
+ [Bank-EK, Folienmodell], [$"Kredit" times 8% times w$], [Vereinfachtes Basel II, $w$ als Faktor; V PDF-S. 43–44.],
+ [Kreditvolumen, Folienmodell], [$"Bank-EK"/(8% times w)$], [Nur diese Grenze bindet; $w>0$; V PDF-S. 43–44.],
+ [Einfacher zeitanteiliger Zins], [$Z=K_0 i t/B$], [Konvention für $t$ und $B$ festlegen; V PDF-S. 55.],
+ [Zinseszins], [$K_n=K_0(1+i)^n$], [Konstanter Periodenzins, Wiederanlage; V PDF-S. 56.],
+ [Monats- zu Jahreszins], [$i_"Jahr"=(1+i_"Monat")^12-1$], [Ohne Gebühren/Steuern, Wiederanlage; V PDF-S. 56.],
+ [Restschuld fortschreiben], [$R_t=R_(t-1)-T_t$; $Z_t=i R_(t-1)$], [Jährlich nachschüssig; €; K PDF-S. 1.],
+ [Ratendarlehen], [$T=D/n$], [Konstante Tilgung, keine Sonderzahlung; K PDF-S. 1.],
+ [Annuität], [$A=D frac(i(1+i)^n,(1+i)^n-1)$], [Konstanter Zins $i>0$, nachschüssig, vollständige Tilgung; K PDF-S. 1.],
+ [Effektivzins, Praktikerformel], [$(i_"nom" D+(D-"Aus")/n)/"Aus"$], [Näherung für endfälligen Kredit mit Disagio; K PDF-S. 2.],
 )
 
-#note("Wichtige Zahlen", [*Folienorientierungen:* L1 10–30 %, L2 ≥ 100 %, L3 ≥ 200 %, AD II ≥ 100 %, EK-Quote mindestens 15–20 %. *Glasspinnerei:* Investition 85 Mio. € = 30 + 55; NOCF 2005 vor/nach laufender Modellsteuer 43,305 Mio. €; Finanzierungslücke 2005 23,029 Mio. €. Diese Werte gelten nur mit den genannten Voraussetzungen.])
-#src[V, PDF-S. 9–27; G, PDF-S. 10–15; Voraussetzungen/Einheiten: eigene Erläuterung. Rechtsabgleich der Zahlungsquote und Überschuldung in Abschnitt 1.8.]
+#note("Wichtige Zahlen", [*Folienorientierungen:* L1 10–30 %, L2 ≥ 100 %, L3 ≥ 200 %, AD II ≥ 100 %, EK-Quote mindestens 15–20 %. *Glasspinnerei:* Investition 85 Mio. € = 30 + 55; NOCF 2005 vor/nach laufender Modellsteuer 43,305 Mio. €; Finanzierungslücke 2005 23,029 Mio. €. *Basel-Folienmodell:* 8 % × Risikogewicht; Basel III mit Kapitalerhaltungspuffer 7 % CET1 und 10,5 % Gesamtkapital/RWA; Leverage Ratio mindestens 3 % mit anderer Bezugsgröße. Diese Werte gelten nur mit den genannten Voraussetzungen.])
+#src[V, PDF-S. 9–56; G, PDF-S. 10–15; K, PDF-S. 1–2; Voraussetzungen/Einheiten: eigene Erläuterung. Rechtsabgleich der Zahlungsquote und Überschuldung in Abschnitt 1.8.]
