@@ -814,7 +814,7 @@ Sei $N$ die Anzahl gleichartiger Aktien und $"NW"$ ihr Nominalwert. Dann gilt im
  [Cashflow Ratio der Folie], [$"Börsenkurs"/("Cashflow"/N)$], [Kurs zu Cashflow je Aktie; gleiche Periode. Nicht die Dividendenrendite.],
 )
 
-Der *relative Bilanzkurs* setzt korrigiertes EK zum Grundkapital ins Verhältnis. Multipliziert mit dem Nominalwert ergibt er den absoluten Bilanzkurs in €/Aktie. Beim Ertragswertkurs wird zuerst der erwartete Jahresgewinn mit dem Kalkulationszins kapitalisiert; erst danach wird auf die Aktien verteilt. Das ist das vereinfachte Modell dieser Folien, keine umfassende Unternehmensbewertung.
+Der *relative Bilanzkurs* setzt korrigiertes EK zum Grundkapital ins Verhältnis. Multipliziert mit dem Nominalwert ergibt er den absoluten Bilanzkurs in €/Aktie. Das ist das vereinfachte Modell dieser Folien, keine umfassende Unternehmensbewertung.
 
 #note("Widersprüche der Musterlösung sichtbar halten", [Folie 59 nennt *Gewinn je Aktie / Börsenkurs* „Eigenkapitalrendite“. Die Rechnung ergibt eine *Gewinnrendite zum Börsenkurs*, nicht die in Abschnitt 1.11 definierte Jahresüberschuss/EK-Rentabilität. Außerdem passen die separat vorgegebenen 0,32 €/Aktie nicht zum bilanziellen Jahresüberschuss von 30 T€ bei 400.000 Aktien. Für KGV und Gewinnrendite werden die ausdrücklich gegebenen 0,32 € verwendet; die Unvereinbarkeit wird nicht weggerundet. Eigene Prüfung.], fill: sand)
 
@@ -1105,6 +1105,7 @@ Ein niedrigerer Wiederanlagezins vergrößert unter sonst gleichen Bedingungen d
 #src[V, PDF-S. 58 (Folien 115–116); N04, PDF-S. 17. Abgrenzung des Schadenersatzes nach #link("https://www.gesetze-im-internet.de/bgb/__490.html")[§ 490 Abs. 2 BGB], Kündigungsrechte nach #link("https://www.gesetze-im-internet.de/bgb/__489.html")[§ 489 BGB], Abruf 05.11.2026. Keine über die Folie hinausgehende konkrete Gebührenberechnung.]
 #hoch(<a-2>, [Kapitelübersicht])
 
+#pagebreak()
 == 2.10 Ergänzung aus der Altklausur 2017: Tilgung, Effektivzins und Sicherheiten <a-2-10>
 
 Die Altklausur-Aufgabe 1 führt die in Folie 105 genannten Vertragsmerkmale zu Rechenfällen zusammen. Diese Ergänzung stammt aus der Klausurquelle und ist als solche von der Vorlesungsgrenze bis Folie 116 getrennt. Fremde handschriftliche Antworten im Scan werden nicht als Musterlösung verwendet.
@@ -1125,6 +1126,7 @@ Beim Disagio erhält der Schuldner weniger Geld als den Nominalbetrag, zahlt abe
 #form[$ i_"eff,approx" = frac(i_"nom" D+(D-"Aus")/n,"Aus") $]
 $"Aus"$ = Auszahlung in €; $D-"Aus"$ = Disagio in €; $n$ = Laufzeit in Jahren. Das ist die *Praktikerformel für das endfällige Darlehen der Altklausur*: jährlicher Nominalzins plus linear auf die Jahre verteiltes Disagio, bezogen auf die Auszahlung. Sie ist eine Näherung, nicht die exakte Rendite sämtlicher zeitlich diskontierter Zahlungen und nicht die gesetzliche Effektivzinsberechnung jedes Verbraucherkredits.
 
+#pagebreak()
 === 2.10.3 Zwei unabhängige Einteilungen von Sicherheiten <a-2-10-3>
 
 Eine *Personalsicherheit* gibt einen zusätzlichen Anspruch gegen eine Person, etwa einen Bürgen. Eine *Realsicherheit* erschließt einen Vermögenswert, etwa über eine Grundschuld. Davon unabhängig fragt *akzessorisch*: Ist das Sicherungsrecht rechtlich an den Bestand der gesicherten Forderung gebunden? Die Bürgschaft ist ein Beispiel dafür.

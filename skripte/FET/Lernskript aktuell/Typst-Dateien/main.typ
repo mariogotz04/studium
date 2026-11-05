@@ -1344,7 +1344,7 @@ Der Wert in der Intervallmitte ist im Allgemeinen kein exakter Ersatz. Auch ein 
 Für die auf $vartheta_0=0$ °C bezogenen *molaren* Tabellenwerte folgt durch Abziehen der beiden Energiezunahmen:
 #form[$ overline(C)_(m,p,12)=frac(overline(C)_(m,p,02)(vartheta_2-vartheta_0)-overline(C)_(m,p,01)(vartheta_1-vartheta_0),vartheta_2-vartheta_1) $]
 Alle Temperaturdifferenzen besitzen dieselbe Schrittweite in K und °C. Hier dürfen die Celsius-Zahlenwerte wegen des ausdrücklich festgelegten Tabellenbezugs verwendet werden; in Gasgleichungen und Logarithmen bleibt Kelvin erforderlich.
-#note("Zwei verschiedene Tabellen", [N03, PDF-S. 7, nennt $c_p,c_v,kappa$ für *0 °C* (alte T-3, heute BT A.4). Die Mittelwerttabelle auf PDF-S. 8 verwendet einen Temperaturbereich seit 0 °C (alte T-4, heute BT A.5). Ihre Luft-Molmassen sind leicht unterschiedlich gerundet. Die Vorlesungsrechnung bleibt deshalb mit $M=28,95$ kg/kmol innerhalb der T-4-Werte.], fill: sand)
+#note("Zwei verschiedene Tabellen", [N03, PDF-S. 7, nennt $c_p,c_v,kappa$ für *0 °C* (alte T-3, heute BT A.4). Die Mittelwerttabelle auf PDF-S. 8 verwendet einen Temperaturbereich seit 0 °C (alte T-4, heute BT A.5). Ihre Luft-Molmassen sind leicht unterschiedlich gerundet. Die Vorlesungsrechnung bleibt deshalb mit $M="28,95"$ kg/kmol innerhalb der T-4-Werte.], fill: sand)
 Für Luft von 400 bis 1200 °C ergibt die Vorlesungsrechnung $overline(C)_(m,p,12)="33,27"$ kJ/(kmol K), $overline(c)_(p,12) approx "1,14922"$ kJ/(kg K) und einen daraus gebildeten *Bereichswert* $kappa approx "1,33315"$. Er ist kein überall unveränderlicher Isentropenexponent; 1,4 ist hier nur der Vergleichswert des konstanten Luftmodells.
 #bild("map-waermekapazitaet", [Mindmap: Prozessbedingung, Bezugsmenge und Mittelwert. Eigene Darstellung.], height: 45mm)
 #src[N03, PDF-S. 4–11, besonders markierter Hinweis „Man muss rechnen & nicht ablesen“ auf PDF-S. 5; BT 6.4, S. 195 / PDF-S. 214, und A.4–A.5, S. 482–483 / PDF-S. 497–498. Werte selbst nachgerechnet.]
@@ -1377,7 +1377,7 @@ Ein *Perpetuum mobile erster Art* würde fortlaufend Arbeit abgeben, ohne eine g
 #pagebreak()
 == 3.10 Ergänzung 4.11. · Düse, Ausfluss, Drossel und Rohr <a-3-10>
 Bei einer *Düse* wird der Strom schneller; bei einer *Drossel* wird vor allem der Druck abgebaut. Beide können nach außen adiabat und ohne technische Arbeitsübertragung sein. Daraus folgt jeweils eine Energiebilanz, aber noch keine Reversibilität.
-#form[$ h_2-h_1+frac(c_2^2-c_1^2,2)+g(z_2-z_1)=0 $]
+#form[$ h_2-h_1+frac(c_2^2-c_1^2, 2)+g(z_2-z_1)=0 $]
 *Voraussetzungen:* stationärer Stoffstrom, $q_12=0$, $w_(t,12)=0$. Die Folienbezeichnung „rigid“ bedeutet hier keine technische Arbeitsübertragung; ein starres Gehäuse allein würde etwa elektrische Arbeit nicht ausschließen. Enthalpien in J/kg verwenden, wenn Geschwindigkeit in m/s eingesetzt wird.
 #bild("stroemung-duese-drossel", [Zwei verschiedene Vereinfachungen derselben Energiebilanz. Eigene Darstellung nach N04, PDF-S. 1.], height: 56mm)
 #tab(columns: (1fr, 1.9fr),
