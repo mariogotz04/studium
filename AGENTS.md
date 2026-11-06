@@ -17,11 +17,15 @@ Sie ist Marios Lernplattform mit vier Reitern:
   zwei Module. Ab 17 Uhr erscheint auf der Startseite der Tagesabschluss (frei aufschreiben, dann 5 Quizfragen aus den
   heutigen Modulen).
 - **Termine:** Fristen und Klausuren mit Countdown, To-dos, Wochenplan.
-- **Lernreihe (Mario, 29.10.2026):** Jedes Modul wird Kapitel für Kapitel der Reihe nach gelernt (`lernreihe()` in
-  vorlage.html). Ein Kapitel ist abgeschlossen, wenn alle Aufgaben selbst gelöst (grün), alle Quizfragen zuletzt richtig
-  und alle Karteikarten einmal gelernt sind. „Heute dran“, „Weiter der Reihe nach“, das Quiz „Der Reihe nach“, neue
-  Karteikarten, Mix-Serie und Probeklausur nehmen nur das aktuelle bzw. schon erreichte Kapitel; fällige Wiederholungen
-  bleiben. Eine nicht selbst gelöste Aufgabe bleibt dran. Das Kapitel kommt aus der Überschrift (`#kapitel`, `## `),
+- **Lernreihe (Mario, 06.11.2026):** Jedes Modul wird Abschnitt für Abschnitt der Reihe nach gelernt (`lernreihe()` in
+  vorlage.html). `Quelle:`/`quelle:` gliedert ein Kapitel in Abschnitte wie 1.1, 1.2 und 1.10; Unterabschnitte wie 1.1.2 gehören zu 1.1.
+  Ein Abschnitt ist abgeschlossen, wenn alle Aufgaben selbst gelöst (grün), alle Quizfragen richtig
+  und alle Karteikarten einmal gelernt sind. Die vollständig bearbeitete Folge ab Modulbeginn wird privat unter `lernpfad:<Modul>:<Kapitel>:<Abschnitt>` synchronisiert.
+  Wiederholungsfehler setzen einen erreichten Abschluss nicht zurück. „Heute dran“, alle Kartenstarts (auch fällige Wiederholungen und freies Üben),
+  Quiz einschließlich Tagesabschluss, Aufgaben, Mix-Serie und Probeklausur nehmen nur den aktuellen bzw. schon erreichten Abschnitt.
+  Früher angeklickter späterer Stoff wartet unter Erhalt seiner Bewertungen und Termine. Gespeicherte IDs und Tagespläne werden erneut geprüft;
+  gültige Ziele und bereits fertige Tageszeilen bleiben erhalten. Die Modulseite zeigt den aktuellen Abschnitt, offene Inhalte und einen Weiter-Button samt Skriptverweis.
+  Eine nicht selbst gelöste Aufgabe bleibt dran. Das Kapitel kommt aus der Überschrift (`#kapitel`, `## `),
   bei Sammelüberschriften („Kapitel 7–12“, „TM1 · Statik“) aus `Quelle:`/`quelle:`. Darum Kapitelüberschriften immer
   mit „Kapitel N“ benennen und jede Aufgabe, Quizfrage und Karte mit Quelle versehen.
 
@@ -98,7 +102,8 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 - `build.py` liest die Dateien ein; jede Karte bekommt eine ID aus Modul und Fragetext. Den Fragetext deshalb
   nur ändern, wenn nötig, sonst beginnt die Karte wieder als neu.
 - Wiederholung wie bei Anki (SM-2): Bewertung Nochmal/Schwer/Gut/Leicht, Abstände wachsen mit der Leichtigkeit,
-  jede Runde wird gemischt. Der Lernstand wird synchronisiert (siehe unten) und lässt sich zusätzlich auf
+  fällige Karten kommen zuerst, neue Karten in numerischer Abschnittsreihenfolge. Freies Üben mischt ausschließlich erreichten Stoff.
+  Der Lernstand wird synchronisiert (siehe unten) und lässt sich zusätzlich auf
   der Seite eines Moduls als Datei sichern und laden.
 - Im Antwortfeld darf Scrollen oder Wischen keine Karte bewerten und keinen Kartenwechsel auslösen.
   Bewertungen erfolgen bewusst über die Bewertungsbuttons oder die vorhandenen Tastaturkürzel 1–4.
@@ -189,6 +194,7 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 ## Stabile Tagesliste und automatische Abschlüsse
 
 - `tagesplan:<Tag>` speichert die vorgeschlagene Liste und Karten-IDs beim ersten Aufruf; während des Tages weder fertige Zeilen austauschen noch neue Vorschläge nachschieben.
+  Ausnahme: offene Vorschläge außerhalb des aktuellen Lernpfads bei Migration oder Quelländerungen bereinigen; gesperrte IDs entfernen bzw. zum aktuellen Schritt desselben Moduls führen. Fertige Tageshistorie erhalten. Planversion 3.
 - `aktiv:<Tag>:<Art>:<Modul>:<ID>` hält wirkliche Bearbeitungen fest, auch beim Einstieg über die Modulnavigation. Aufgabe erst nach Selbsteinschätzung (auch „nicht geschafft“); Quiz nach Auswertung aller Fragen einschließlich Freitext; Karten nach abgeschlossenen Runden, die alle Zielkarten umfassen; Mix/Probe nach Abgabe und Bewertung sämtlicher Aufgaben.
 - Automatisches Abhaken bedeutet bearbeitet, nicht beherrscht. Unsichere Inhalte bleiben in den bestehenden Wiederholungsplänen. Manuelles Überschreiben mit Zeitstempel unter `erledigt:<Tag>` erhalten. Aktivitäten gehören zum Tag des Runden-/Aufgabenstarts.
 - In der Auswertung von Mix-Serie und Probeklausur bleibt die Schritt-für-Schritt-Lösung im selben Versuch. Zurück führt zur Übersicht derselben Aufgaben; Pfeile wechseln nur innerhalb dieser Auswahl. Bewertungen aus Übersicht und Lösung gemeinsam speichern, offene Bewertungen weiterzählen und den Versuch erst nach allen Bewertungen abschließen. `node test_mix.cjs` prüft diesen Ablauf.
@@ -200,6 +206,11 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Kartenbewertung gelten in allen sieben und künftigen Modulen.
 
 ## Änderungsprotokoll
+
+### 06.11.2026 · Verbindlicher Lernpfad in allen Modulen
+- Abschnitte nach Quellenangaben numerisch ordnen; einheitliche Freigabe für neue/fällige/freie Karten, Quiz, Tagesabschluss, Aufgaben und Mix/Probe.
+- Gespeicherte Tagespläne und Start-IDs prüfen; spätere Lernstände erhalten, abgeschlossene Abschnitte bei Wiederholungsfehlern offen halten.
+- `node test_lernpfad.cjs` prüft alle sieben Module und die Migration. Optional prüft ein zweites Argument die Moduldaten einer gebauten `index.html` vollständig.
 
 ### 27.10.2026 · Motivation, vollständige Aufgaben, automatische Tagesliste
 - „Meine Richtung“, belegte Zitate mit Favoriten, Reflexionen und konkrete Fortschrittsanzeige ergänzt; persönliche Daten bleiben privat.

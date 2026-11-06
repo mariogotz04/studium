@@ -37,4 +37,10 @@ Ein GitHub-Workflow sucht wöchentlich nach weiteren passenden Zitaten in den Qu
 
 Prüfen: `python3 -m unittest test_zitate.py` und `node test_zitate.cjs`. Beide Prüfungen laufen im GitHub-Build.
 
-Alles wird Kapitel für Kapitel der Reihe nach gelernt: Ein Modul springt erst ins nächste Kapitel, wenn im aktuellen alle Aufgaben selbst gelöst, alle Quizfragen richtig und alle Karteikarten gelernt sind (siehe AGENTS.md, „Lernreihe“).
+Alle Module werden Abschnitt für Abschnitt der Reihe nach gelernt, etwa 1.1 vor 1.2 vor 1.10.
+Erst wenn im aktuellen Abschnitt alle Aufgaben selbst gelöst, alle Quizfragen richtig und alle Karteikarten gelernt sind, folgt der nächste.
+Die Modulseite zeigt den nächsten Schritt und den passenden Skriptverweis. Neue Inhalte, fällige Karten, freies Üben,
+Quiz einschließlich Tagesabschluss sowie Mix/Probeklausur bleiben innerhalb des erreichten Stoffs.
+Bereits gespeicherte Auswahlen werden erneut geprüft; Bewertungen späterer Inhalte bleiben erhalten und warten auf ihre Freigabe.
+Erreichte Abschlüsse werden synchronisiert und bleiben bei späteren Wiederholungsfehlern erhalten.
+Prüfen: `node test_lernpfad.cjs`, optional `node test_lernpfad.cjs /pfad/zur/gebauten/index.html` mit echten Moduldaten.

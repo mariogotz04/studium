@@ -962,7 +962,7 @@ function lernreihe(name) {
       a.key = `lernpfad:${name}:${e.s}:${nr}`;
       a.rest = a.offen.aufgaben + a.offen.quiz + a.offen.karten;
       a.abgeschlossen = !!db.get(a.key, false) || !a.rest;
-      const quelle = [...a.aufgaben, ...a.quiz, ...a.karten].find(x => x.q?.p || x.s?.p);
+      const quelle = [...a.aufgaben, ...a.quiz, ...a.karten].sort(abschnittVergleich).find(x => x.q?.p || x.s?.p);
       a.quelle = quelle && (quelle.q?.p ? quelle.q : quelle.s);
       abschnitte.push(a);
     }
