@@ -12,7 +12,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 06.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -91,6 +91,8 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "kochtopf-phasen": "abbildungen/kochtopf-phasen.svg",
+  "kochtopf-energie": "abbildungen/kochtopf-energie.svg",
   "turbine-hs-vergleich": "abbildungen/turbine-hs-vergleich.svg",
   "tripel-isochor": "abbildungen/tripel-isochor.svg",
   "dampftrommel-anteile": "abbildungen/dampftrommel-anteile.svg",
@@ -176,6 +178,8 @@
 )
 
 #let bilddeutungen = (
+  "kochtopf-phasen": (titel: "Bild lesen", body: [Links sinkt der Flüssigkeitsspiegel im starren Gefäß. Der frei werdende Raum wird zum Dampfraum; ein kleiner Teil des gebildeten Dampfes bleibt deshalb im Topf. Rechts stehen Druck nach oben und spezifisches Volumen nach rechts. Bei gleichem Druck und gleicher Sättigungstemperatur wandert der Gemischzustand nach rechts: Die Masse sinkt bei festem Gesamtvolumen. Die Phasengrenzen sind schematisch.]),
+  "kochtopf-energie": (titel: "Bild lesen", body: [Die linke Säule zeigt die zugeführte Wärmeleistung und darüber den Beitrag aus der abnehmenden Speicherenergie. Zusammen ergeben sie die rechte Säule des ausströmenden Energiestroms. Grau ist keine zusätzliche äußere Zufuhr: Die gesamte innere Energie im Topf nimmt ab. Alle Höhen zeigen Leistungen; Werte aus Ü 3.6, ungerundet nachgerechnet.]),
   "turbine-hs-vergleich": (titel: "Bild lesen", body: [Waagerecht steht die spezifische Entropie, senkrecht die Enthalpie. Von ① führt der isentrope Vergleich senkrecht zum niedrigsten verglichenen Enthalpiewert am Enddruck. Der reale Austritt liegt rechts und höher. Bei Blockade bleibt die Enthalpie gleich, die Entropie steigt stärker. Die graue Isobare verbindet Tabellenstützstellen bei 10 bar; die gestrichelten Verbindungen zeigen nur den Vergleich der Endzustände.]),
   "tripel-isochor": (titel: "Bild lesen", body: [Links stehen Druck und spezifisches Volumen, rechts Druck und Temperatur. Die Zustände ① und ② überlagern sich: Das Eis schmilzt bei gleichem Druck, gleicher Temperatur und gleichem Gesamtvolumen. Erst nach dem Verschwinden des Eises führt der Weg nach ③ zu höherem Druck und höherer Temperatur. Grau zeigt nur schematische Phasengrenzen.]),
   "dampftrommel-anteile": (titel: "Bild lesen", body: [Die beiden Kästen zeigen je 4 m³, aber unterschiedliche Stoffzustände. Weil das spezifische Flüssigkeitsvolumen viel kleiner ist als das Dampfvolumen je Kilogramm, steckt links deutlich mehr Masse. Die Gleichheit der geometrischen Volumina überträgt sich nicht auf die Massenanteile.]),
@@ -273,7 +277,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand: *05.11.2026*. Eingearbeitet sind die belegten Vorlesungen bis „Ende VL 4.11.“ sowie Tutorium 29.10. und Übungsrechnungen 30.10. Neu hinzu kommen Dreiphasengleichgewicht, weitere Dampftafelanwendungen, Wärmekapazitäten, Kreisprozesse und der zweite Hauptsatz mit Entropie und Zustandsdiagrammen. Aufgaben, Quiz, Karten und Hörfassung wachsen mit; die ältere Altklausurzuordnung bleibt erhalten.
+Stand: *06.11.2026*. Eingearbeitet sind die belegten Vorlesungen bis „Ende VL 4.11.“, Tutorium 29.10. und Übungsrechnungen 30.10. Die neuen Musterlösungen zu Ü 2.11 und Ü 3.6 ergänzen das Tripelgefäß und den instationären Dampfkochtopf. Aufgaben, Quiz, Karten und Hörfassung sind abgeglichen; die ältere Altklausurzuordnung bleibt erhalten.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -283,7 +287,7 @@ Stand: *05.11.2026*. Eingearbeitet sind die belegten Vorlesungen bis „Ende VL 
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; N28 = „Skript FET.pdf“, VL 28.10.; N03 = VL 3.11.; N04 = VL 4.11.; T29 = Tutorium 29.10.; R30 = Übungsrechnungen 30.10.; M13 = Musterlösung Ü 2.13 (5 Seiten); M32 = Musterlösung Ü 3.2 (1 Seite); V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; N28 = „Skript FET.pdf“, VL 28.10.; N03 = VL 3.11.; N04 = VL 4.11.; T29 = Tutorium 29.10.; R30 = Übungsrechnungen 30.10.; M13 = Musterlösung Ü 2.13 (5 Seiten); M32 = Musterlösung Ü 3.2 (1 Seite); M211 = Musterlösung Ü 2.11 (1 Seite); M36 = Musterlösung Ü 3.6 (3 Seiten); V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -1019,7 +1023,8 @@ Die dortige lineare Abschätzung des späteren Dampfdrucks benutzt die *Clapeyro
 #form[$ frac(dif p_s,dif T)=frac(s''-s',v''-v') quad p_3 approx p_"Tr"+(frac(dif p_s,dif T))_"Tr" dot (T_3-T_"Tr") $]
 Mit $s$ in J/(kg K) und $v$ in m³/kg ergibt sich Pa/K. Die konstante Steigung ist die ausdrücklich vorgegebene lokale Näherung der Aufgabe; sie ersetzt keine genaue Dampftafel über große Temperaturbereiche.
 #bild("map-tripel", [Mindmap: Phasenanteile, Gesamtgrößen und Energie im Tripelgefäß. Eigene Darstellung.], height: 45mm)
-#src[R30, PDF-S. 3–4; M13, PDF-S. 2–4; Ü 2.13, PDF-S. 16. Energiebezug und Rundungsstrategie ausdrücklich ergänzt.]
+#note("Abgleich mit der neuen Musterlösung Ü 2.11", [M211 verwendet andere Anfangsmengen und 10 W statt 1 W. Der Rechenweg bleibt gleich. Solange der geschlossene starre Inhalt am Tripelpunkt bleibt, sind *p und V zugleich konstant*: $Delta U=Delta H$ und daher hier auch $Q=Delta H$. Das folgt aus $U=H-p V$; starres V allein würde dafür nicht genügen. Beide Aufgaben stehen mit ihren eigenen Daten und vollständigen Lösungen auf der Lernplattform.], fill: sand)
+#src[R30, PDF-S. 3–4; M13, PDF-S. 2–4; M211, PDF-S. 1; Ü 2.11 / 2.13, PDF-S. 15–16; BT 3.5, S. 72–74 / PDF-S. 92–94. Energiebezug und Rundungsstrategie ausdrücklich ergänzt.]
 #hoch(<a-2>, [Kapitelübersicht])
 
 #pagebreak()
@@ -1058,7 +1063,7 @@ Der Weg bis 600 °C ist als *hypothetisch geschlossene Isochore* zu lesen. Öffn
 = Kapitel 3 · Energiebilanzen: Erster Hauptsatz <a-3>
 
 #überblick([Kapitel 3 auf einen Blick],
- idee(<a-3-1>, [Systemart und Speicherung zuerst.], [Offene Ströme tragen Enthalpie; #link(<a-3-2>)[instationäre Entnahme] behält den Speicherterm.]),
+ idee(<a-3-1>, [Systemart und Speicherung zuerst.], [Offene Ströme tragen Enthalpie; #link(<a-3-2>)[Flüssigkeitsentnahme] und #link(<a-3-12>)[Dampfaustritt] behalten den Speicherterm.]),
  idee(<a-3-4>, [Arbeitsform und Weg gehören zusammen.], [Volumen-, #link(<a-3-5>)[Druck-] und #link(<a-3-7>)[Gaswechselarbeit] haben passende Voraussetzungen.]),
  idee(<a-3-8>, [Stoffwerte schließen die Bilanz.], [#link(<a-3-6>)[U und H] brauchen ein Stoffmodell; Wärmekapazitäten einen Mengen- und Temperaturbezug.]),
  idee(<a-3-9>, [Ein Kreis hat keinen bleibenden Zustandszuwachs.], [Netto-Wärme und Netto-Arbeit können trotzdem übertragen werden.]),
@@ -1409,7 +1414,35 @@ $dot(Q)_"WL">0$ ist hier der vom Wasser zur Luft gerichtete Übertragungsbetrag.
 #src[R30, PDF-S. 1–2; M32, PDF-S. 1; Ü 3.2, PDF-S. 20.]
 #hoch(<a-3>, [Kapitelübersicht])
 
-*Der Zusammenhang in Kapitel 3.* Systemgrenze, Speicheränderung und Stoffzustand bestimmen die Energiebilanz. Der Prozessweg legt die Arbeitsintegrale fest; Wärme- und Verschiebearbeit dürfen nicht doppelt gezählt werden. Wärmekapazitäten verbinden Temperatur- und Energieänderungen. Im Kreisprozess kehren die Zustandsgrößen zurück, während Nettoübertragungen bleiben; Düse, Drossel und Heizregister zeigen verschiedene Bilanzvereinfachungen. Kapitel 4 prüft anschließend, welche dieser energetisch gedachten Abläufe auch möglich sind.
+#pagebreak()
+== 3.12 Ergänzung Musterlösung · Dampfkochtopf mit Dampfaustritt <a-3-12>
+Ein Dampfkochtopf hält über das Ventil den Druck konstant. Solange Flüssigkeit und Dampf gemeinsam im Sättigungsgleichgewicht vorliegen, bleibt damit auch die Temperatur konstant. Der Inhalt ist trotzdem *instationär*: Dampf verlässt den Topf, der Flüssigkeitsspiegel sinkt und der Energiespeicher nimmt ab.
+#bild("kochtopf-phasen", [Phasenbilanz und Zustandsweg von Ü 3.6. Eigene schematische Darstellung nach M36, PDF-S. 1; nicht maßstäblich.], height: 57mm)
+
+=== 3.12.1 Weniger Flüssigkeit ist nicht genau die ausgetretene Masse <a-3-12-1>
+Die Bilanzhülle umfasst den starren Topfinhalt und den Austrittsquerschnitt; es gibt keinen Zufluss. Bei gleichem Sättigungsdruck bleiben die Stoffwerte jeder Phase konstant. Der gesamte Raum bleibt gleich, deshalb wächst der Dampfraum um genau das verlorene Flüssigkeitsvolumen:
+#form[$ Delta V''=-Delta V' quad Delta m'=frac(Delta V',v') quad Delta m''=-frac(Delta V',v'') $]
+Hier ist $Delta V'<0$, $Delta m'<0$, aber $Delta m''>0$: Ein kleiner Teil des neu gebildeten Dampfes *bleibt im Topf*. Aus der gesamten Massenbilanz folgt für die positiv gezählte Ausströmmasse:
+#form[$ m_"aus"=-(Delta m'+Delta m'')=(frac(1,v'')-frac(1,v'))Delta V' quad dot(m)_"aus"=frac(m_"aus",Delta t) $]
+Volumina in m³ und spezifische Volumina in m³/kg liefern kg. Bei konstanter Volumenabnahme je Zeit ist auch der Massenstrom konstant. In Ü 3.6 werden aus 0,6 Litern Flüssigkeitsabnahme rund 0,56945 kg ausströmender Dampf. Die Gleichsetzung mit der gesamten verschwundenen Flüssigkeitsmasse wäre nur eine Näherung.
+Die Restmasse sinkt bei konstantem Gesamtvolumen. Deshalb steigt ihr *spezifisches* Volumen $v=V/m$; der Gemischpunkt wandert im p-v-Diagramm nach rechts. Er bleibt im betrachteten Abschnitt zwischen Siede- und Taulinie.
+#src[M36, PDF-S. 1; Ü 3.6, PDF-S. 21. Stoffwerte nach der Aufgabenangabe; Zustandsgebiet und Massenbilanz ergänzend BT 3.4, S. 60–62 / PDF-S. 80–82.]
+
+#pagebreak()
+=== 3.12.2 Ausströmender Energiestrom und zugeführte Heizleistung <a-3-12-2>
+Der Dampf wird im Aufgabenmodell mit den angegebenen Sattdampfwerten am gewählten Austrittsquerschnitt beschrieben. Aus Querschnitt und Massenstrom folgt seine Geschwindigkeit:
+#form[$ A=frac(pi d^2,4) quad c=frac(dot(m)_"aus" v'',A) quad w_"VS,aus"=p v'' quad e_"aus"=h''+frac(c^2,2) $]
+$c$ in m/s; $p$ in Pa und $v''$ in m³/kg liefern J/kg. Die angegebene *Verschiebearbeit* $p v''$ ist der positive Abgabebetrag beim Herausschieben. Sie steckt bereits in $h''=u''+p v''$ und wird in $e_"aus"$ nicht nochmals addiert. Bei $h''$ in kJ/kg wird der Geschwindigkeitsbeitrag durch 1000 umgerechnet. Lageenergien sind hier vernachlässigt.
+#form[$ frac(dif U_"Sys",dif t)=dot(Q)-dot(m)_"aus" e_"aus" quad Q_01=Delta U+m_"aus" e_"aus" $]
+*Voraussetzungen:* keine weitere Arbeit, vernachlässigbare äußere Speicherenergien und Topfwärmekapazität; gleichbleibende Austrittswerte. Im Topf wird $U$ gespeichert, der austretende Strom trägt dagegen $h''+c^2/2$. Wegen des konstanten gesamten $p V$ darf die Speicheränderung hier auch mit Enthalpien berechnet werden:
+#form[$ Delta U=Delta H=(frac(h',v')-frac(h'',v''))Delta V' $]
+Die spezifischen Phasenwerte bleiben konstant, ihre *Massen* ändern sich. Darum folgt aus konstantem Druck und konstanter Temperatur gerade nicht $Delta U=0$.
+#bild("kochtopf-energie", [Leistungsbilanz von Ü 3.6: rund 528,80 W zugeführt, 639,14 W ausströmend, Speicheränderung −110,35 W. Eigene Nachrechnung nach M36, PDF-S. 2–3.], height: 45mm)
+Für die elektrische Kochplatte gilt $P_"el"=dot(Q)/eta_"ges"$. Der Gesamtwirkungsgrad berücksichtigt laut Aufgabe bereits die Verluste bis zum Topf. Dieselben Verluste werden nicht zusätzlich ein zweites Mal abgezogen. Der größere ausströmende Energiestrom gegenüber der Heizleistung ist durch die Speicherabnahme gedeckt; die Energieerhaltung bleibt erfüllt.
+#src[M36, PDF-S. 2–3; Ü 3.6, PDF-S. 21; BT 4.1, S. 92–93 / PDF-S. 112–113, und 4.4, S. 108 / PDF-S. 128. Instationärer Speicherterm nach M36; Zahlen mit ungerundeten Zwischenwerten nachgerechnet.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 3.* Systemgrenze, Speicheränderung und Stoffzustand bestimmen die Energiebilanz. Der Prozessweg legt die Arbeitsintegrale fest; Wärme- und Verschiebearbeit dürfen nicht doppelt gezählt werden. Wärmekapazitäten verbinden Temperatur- und Energieänderungen. Im Kreisprozess kehren die Zustandsgrößen zurück, während Nettoübertragungen bleiben; Düse, Drossel und Heizregister zeigen verschiedene Bilanzvereinfachungen. Beim Dampfkochtopf bleiben Druck und Temperatur konstant, während Masse und Speicherenergie abnehmen. Kapitel 4 prüft anschließend, welche dieser energetisch gedachten Abläufe auch möglich sind.
 #pagebreak()
 = Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme <a-4>
 #überblick([Kapitel 4 auf einen Blick],
@@ -1586,6 +1619,8 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Entropiestrom], [$dot(S)=dot(m)s$], [kg/s mal kJ/(kg K) ergibt kW/K.],
  [Isobare Flüssigkeitsentnahme], [$Delta m''=frac(v' m_"entn",v''-v')$], [Starrer Behälter, Sättigung, p konstant; Entnahme flüssig.],
  [Instationär, starr, Ausfluss], [$Delta U=E_"zu"-m_"entn" h_"aus"$], [Kein Zufluss; konstantes $h_"aus"$; äußere Energien vernachlässigt.],
+ [Dampfaustritt, starrer Sättigungstopf], [$m_"aus"=(1/v''-1/v')Delta V'$], [p konstant, beide Phasen vorhanden; $Delta V'<0$; daher $m_"aus">0$.],
+ [Dampftopf, Energiebilanz], [$Q=Delta U+m_"aus" dot (h''+c^2/2)$], [Keine weitere Arbeit, Lage-/äußere Speicherenergien vernachlässigt; alle Energieterme einheitlich.],
  [Stickstoff: Heizerenergie], [$E_"zu"=Delta m''(h''-h')$], [Zusätzlich isobare gesättigte Flüssigkeitsentnahme wie in Ü 2.1.],
  [Nutzbare Volumenarbeit], [$W_(v,n)=W_v+p_"∞"(V_2-V_1)$], [Konstanter Umgebungsdruck; $W_v$ mit Absolutdruck. Expansion: abgegebene Nutzarbeit negativ.],
  [Arbeitsformen, gleicher Weg], [$w_p=w_v+p_2 v_2-p_1 v_1$], [Gleicher Zustandsweg und gleiche Massenbasis; $w_t=w_p$ nur bei $j=0$, ohne äußere Energieänderung.],

@@ -225,6 +225,24 @@ Antwort: Änderung der inneren Energie/innere Energieänderung
 Erklärung: Aus dem ersten Hauptsatz bleibt bei unveränderten äußeren Energien die Änderung von U. Die Teilmassen des Endzustands müssen davor neu bestimmt werden.
 Quelle: 2.14.2
 
+### Warum ist die zugeführte Wärme bis zum Verschwinden des Eises im geschlossenen starren Tripelgefäß auch gleich $Delta H$?
+- [x] Sowohl p als auch das Gesamtvolumen V sind konstant; daher ist $Delta(p V)=0$.
+  > Aus $U=H-p V$ folgt unter diesen Bedingungen $Delta U=Delta H$. Ohne weitere Arbeit ist die Wärme gleich dieser Änderung.
+- [ ] Ein starres Gefäß garantiert immer $Delta H=Delta U$, auch bei veränderlichem Druck.
+  > Konstantes Volumen allein streicht die Änderung von pV nicht. Zusätzlich muss der Druck konstant bleiben.
+- [ ] Enthalpie ist grundsätzlich der im Stoff gespeicherte Wärmebestand.
+  > Wärme ist eine Übertragung. Enthalpie ist eine Zustandsgröße und nur unter passenden Bedingungen mit einer Wärmemenge verknüpft.
+Quelle: 2.14.2
+
+### In Ü 2.11 wird die Dampfdruckkurve am Tripelpunkt linear angenähert. Wie ist der so berechnete Druck bei 280 K einzuordnen?
+- [x] Als Näherung mit konstant angenommener lokaler Clapeyron-Steigung.
+  > Genau diese Annahme gibt die Aufgabe vor. Die reale Dampfdruckkurve besitzt keine überall gleiche Steigung.
+- [ ] Als exakter Tabellenwert für jede beliebige höhere Temperatur.
+  > Eine lokale lineare Näherung ersetzt keine genaue Stoffwerttabelle außerhalb ihres Gültigkeitsbereichs.
+- [ ] Als Druckanstieg ohne den anfänglichen Tripeldruck.
+  > Die Steigung mal Temperaturdifferenz liefert zunächst nur die Druckänderung; der Anfangsdruck wird addiert.
+Quelle: 2.14.2
+
 ### Eine Dampftrommel enthält gleich viel Flüssigkeits- und Dampfvolumen. Welche Aussage folgt daraus?
 - [x] Die Massenanteile sind wegen unterschiedlicher spezifischer Volumina verschieden.
   > Teilmassen werden aus Teilvolumen geteilt durch den passenden Stoffwert berechnet.
@@ -488,6 +506,42 @@ Quelle: 3.11
   > Verschiedene spezifische Bezüge müssen zuerst in vergleichbare extensive Leistungen umgerechnet werden.
 Quelle: 3.11
 
+
+### Ein Dampfkochtopf gibt bei konstantem Sättigungsdruck Dampf ab. Welche Aussagen sind richtig, solange beide Phasen vorhanden sind?
+- [x] Die Sättigungstemperatur bleibt konstant.
+  > Im Flüssig-Dampf-Gleichgewicht legt der konstante Druck die Temperatur fest.
+- [x] Masse und gesamte innere Energie im Topf können abnehmen.
+  > Die Phasenmengen ändern sich. Gleichbleibende spezifische Phasenwerte bedeuten keinen unveränderten Gesamtspeicher.
+- [ ] Der Vorgang ist wegen konstantem p und T automatisch stationär.
+  > Die Masse im Kontrollraum nimmt ab; der Speicherterm bleibt in der instationären Bilanz.
+Quelle: 3.12
+
+### Beim Dampfaustritt aus einem starren Topf verschwindet Flüssigkeitsmasse. Warum verlässt nicht genau diese ganze Masse den Topf?
+- [x] Ein kleiner Teil bleibt als Dampf im größer gewordenen Dampfraum.
+  > Das wachsende Dampfvolumen hat eine eigene positive Masse, die in der Gesamtmassenbilanz berücksichtigt wird.
+- [ ] Der Rest wird beim Verdampfen vernichtet.
+  > Gesamtmasse bleibt erhalten. Sie verteilt sich auf den Restbestand und die ausgetretene Masse.
+- [ ] Weil ein starrer Topf grundsätzlich keine Masse abgeben kann.
+  > Starr beschreibt die Geometrie. Das offene Ventil erlaubt weiterhin Stoffaustausch.
+Quelle: 3.12.1
+
+### Der ausströmende Energiestrom beträgt rund 639 W, die Speicheränderung im Topf −110 W. Welche Heizleistung folgt ohne weitere Arbeit?
+- [x] Rund 529 W
+  > $dot(Q)=frac(dif U,dif t)+dot(E)_"aus"$. Ein Teil der Austrittsenergie stammt aus dem abnehmenden Speicher.
+- [ ] Rund 749 W
+  > Hier wird die negative Speicheränderung als positive zusätzliche Anforderung behandelt; das Vorzeichen ist vertauscht.
+- [ ] Rund 639 W, weil der Speicher bei konstantem Druck immer gleich bleibt.
+  > Druckkonstanz macht den entleerenden Topf nicht stationär. Der Speicherterm darf nicht gestrichen werden.
+Quelle: 3.12.2
+
+### Die Enthalpie des austretenden Dampfes ist gegeben; Lageenergie wird vernachlässigt. Welche Formel erfasst seine mitgeführte Energie je kg?
+- [x] $e_"aus"=h''+c^2/2$
+  > Enthalpie enthält den pv-Anteil schon. Die Bewegung ergänzt die Energie; alle Summanden brauchen dieselbe Einheit.
+- [ ] $e_"aus"=h''+p v''+c^2/2$
+  > Das zählt die Verschiebearbeit doppelt, denn $h''=u''+p v''$.
+- [ ] $e_"aus"=u''$ unabhängig von Druck und Strömungsgeschwindigkeit.
+  > Dann fehlen die Verschiebearbeit und die Bewegungsenergie des austretenden Stoffes.
+Quelle: 3.12.2
 
 ## Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme
 

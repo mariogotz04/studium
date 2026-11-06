@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300">
+<rect width="1000" height="300" fill="white"/><g font-family="Arial,sans-serif" font-size="21" fill="#244f70">
+<text x="35" y="35" font-weight="bold">Bilanz: zugeführte Wärme + Speicherabnahme = Ausströmenergie</text>
+<path d="M70 250H930" stroke="#244f70" stroke-width="2"/>
+<rect x="145" y="96.648" width="230" height="153.352" fill="#d4eadf" stroke="#16746d"/>
+<rect x="145" y="64.648" width="230" height="32" fill="#dce2e6" stroke="#8c9da6"/>
+<rect x="625" y="64.648" width="230" height="185.352" fill="#dceaf4" stroke="#244f70"/>
+<text x="175" y="160">Wärme hinein</text><text x="192" y="193" font-weight="bold">528,80 W</text>
+<text x="420" y="85" font-size="18">110,35 W aus U</text><path d="M380 80H411" stroke="#8c9da6" stroke-width="2"/>
+<text x="485" y="190" font-size="38">=</text>
+<text x="659" y="150">Dampf hinaus</text><text x="678" y="185" font-weight="bold">639,14 W</text>
+<text x="134" y="284">ΔU / Δt = −110,35 W</text><text x="623" y="284">h″ + Bewegungsenergie</text>
+</g></svg>

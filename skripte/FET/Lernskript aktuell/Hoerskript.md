@@ -2,14 +2,14 @@
 
 <!-- Redaktionelle Quelle für EPUB und Leseansicht. Nur bereits enthaltenen Stoff zusammenfassen.
 Quelle nennt Skriptabschnitte; jede Denkpause bekommt eine Auflösung. Keine rohe Formelsyntax. -->
-Stand: 05.11.2026
-Skriptstand: 05.11.2026
+Stand: 06.11.2026
+Skriptstand: 06.11.2026
 
 ## Das Modul auf einen Blick
 
 Eine Pumpe, ein Wasserkocher und eine Turbine sehen verschieden aus. Wir betrachten bei allen zunächst denselben Zusammenhang: Welchen Ausschnitt untersuchen wir, was wird gespeichert und was über seine Grenze übertragen? Dann brauchen wir ein Stoffmodell, um Zustand und Energieinhalt zu beschreiben.
 
-Der rote Faden heißt deshalb Systemgrenze, Bilanz, Stoffmodell und Anwendung. Kapitel eins klärt die Sprache und den betrachteten Ausschnitt. Kapitel zwei liefert die Stoffeigenschaften. Kapitel drei verbindet beides zur Energiebilanz. Kapitel vier ergänzt den zweiten Hauptsatz: Entropie, Irreversibilität und Zustandsdiagramme prüfen die mögliche Prozessrichtung. Die Hörfassung folgt dem belegten Vorlesungsstand bis zum vierten November.
+Der rote Faden heißt deshalb Systemgrenze, Bilanz, Stoffmodell und Anwendung. Kapitel eins klärt die Sprache und den betrachteten Ausschnitt. Kapitel zwei liefert die Stoffeigenschaften. Kapitel drei verbindet beides zur Energiebilanz. Kapitel vier ergänzt den zweiten Hauptsatz: Entropie, Irreversibilität und Zustandsdiagramme prüfen die mögliche Prozessrichtung. Die Hörfassung folgt dem belegten Vorlesungsstand bis zum vierten November. Die neuen Musterlösungen ergänzen das Tripelgefäß und den ausströmenden Dampfkochtopf.
 
 ## Kapitel 1 · Grundbegriffe
 Quelle: 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10
@@ -76,6 +76,8 @@ Das Gefäß ist starr und geschlossen. Seine Masse und sein Gesamtvolumen bleibe
 
 Für die Energiebilanz werden die Beiträge aller drei Phasen addiert. Nach dem Verschwinden des Eises müssen die neuen Flüssigkeits- und Dampfmassen aus Massen- und Volumenbilanz berechnet werden. Erst dann ist die Endenergie bekannt. Weil keine Volumenarbeit und keine andere Arbeit übertragen wird, ist die zugeführte Wärme gleich der Änderung der gesamten inneren Energie. Eine konstante kleine Heizleistung kann damit trotzdem viele Stunden zum Schmelzen benötigen.
 
+Die weitere Musterlösung zum Tripelgefäß verwendet andere Füllmengen und eine andere Heizleistung. Sie bestätigt denselben Rechenweg. Bis zum Ende des Schmelzens bleiben sowohl Druck als auch Gesamtvolumen konstant. Deshalb ist die Änderung der gesamten inneren Energie gleich der Änderung der Gesamtenthalpie. Die starre Wand allein würde dafür nicht genügen: Nach Verlassen des Tripelzustands kann sich der Druck ändern. Eine Druckabschätzung mit unveränderter Steigung der Phasengrenze bleibt zudem eine ausdrücklich vorgegebene lokale Näherung.
+
 ### Dampfleitung, Dampftrommel und Überhitzer
 
 In einer Dampfleitung bestimmt der Massenstrom noch nicht allein den Durchmesser. Wir brauchen das spezifische Volumen des heißen Dampfes und die vorgesehene Geschwindigkeit. Das spezifische Volumen macht aus Masse pro Zeit erst Volumen pro Zeit. Anschließend ergibt sich aus Volumenstrom und Geschwindigkeit der freie Querschnitt.
@@ -95,7 +97,7 @@ In einer Trommel nehmen Wasser und Dampf genau den gleichen Raum ein. Warum kann
 Der Dampfgehalt ist ein Anteil der Gesamtmasse. Die Volumenhälften werden zuerst durch das jeweilige spezifische Volumen geteilt. Weil ein Kilogramm Dampf viel mehr Platz braucht, steckt in derselben Volumenhälfte viel weniger Dampfmasse als Flüssigkeitsmasse. Der Volumenanteil beantwortet eine andere Frage als der Massenanteil.
 
 ## Kapitel 3 · Energiebilanzen: Erster Hauptsatz
-Quelle: 3.1, 3.1.1, 3.1.2, 3.1.3, 3.1.4, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11
+Quelle: 3.1, 3.1.1, 3.1.2, 3.1.3, 3.1.4, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
 
 ### Energie über eine gewählte Grenze verfolgen
 
@@ -212,6 +214,26 @@ Du ziehst die äußere Grenze um Wasser, Luft und Lüfter und bezeichnest das Ge
 ### Auflösung
 
 Der Wärmepfeil liegt innerhalb der äußeren Gesamtgrenze. Für die Wasserseite ist er eine Abgabe und für die Luftseite eine Zufuhr. Addieren wir die beiden Bilanzen, verschwindet dieser innere Strom. Die von außen zugeführte Lüfterarbeit und die Enthalpieänderungen beider Stoffströme bleiben dagegen erhalten. Adiabat betrifft die gewählte äußere Grenze, nicht jeden Teilbereich im Inneren.
+
+### Der Dampfkochtopf: gleiche Temperatur, sinkender Energiespeicher
+
+Der Dampfkochtopf wird geheizt und gibt durch das Ventil laufend Dampf ab. Das Ventil hält im Aufgabenmodell den Druck konstant. Solange Wasser und Dampf gemeinsam im Sättigungsgleichgewicht vorhanden sind, bleibt damit auch die Temperatur gleich. Der Inhalt ist trotzdem instationär: Die Masse im Topf nimmt ab.
+
+Wenn der Flüssigkeitsspiegel sinkt, wächst der Dampfraum. Ein kleiner Teil der verdampften Masse füllt diesen zusätzlichen Raum und bleibt im Topf. Deshalb ist die ausgetretene Dampfmasse etwas kleiner als die verschwundene Flüssigkeitsmasse. Auch das spezifische Volumen des Restgemischs wächst: Das gesamte Topfvolumen bleibt gleich und wird durch immer weniger Masse geteilt.
+
+Für den Energiespeicher zählt die gesamte innere Energie. Die Stoffwerte jeder Phase bleiben bei gleichem Sättigungsdruck konstant. Ihre Mengen ändern sich aber. Dadurch kann die gesamte gespeicherte Energie abnehmen, obwohl Temperatur und Druck gleich bleiben.
+
+Der austretende Dampf führt Enthalpie und Bewegungsenergie mit. Die Enthalpie enthält bereits den Druck-Volumen-Anteil, der zum Herausschieben gehört. Diesen Anteil dürfen wir nicht noch einmal zusätzlich addieren. Die verbleibende Geschwindigkeit liefert einen weiteren, in dieser Aufgabe kleinen Energiebeitrag.
+
+### Denkpause
+
+Aus dem Topf strömen mit dem Dampf rund sechshundertneununddreißig Watt hinaus. Die Heizleistung beträgt nur ungefähr fünfhundertneunundzwanzig Watt. Warum ist das kein Widerspruch zur Energieerhaltung? Halte die Wiedergabe an und erkläre, aus welchem Bestand die Differenz kommt.
+
+### Auflösung
+
+Die gesamte innere Energie im Topf nimmt ab. Der austretende Stoff nimmt Energie aus diesem sinkenden Bestand mit, zusätzlich zur Energie der Heizleistung. Die Speicheränderung beträgt ungefähr minus hundertzehn Watt. Die Energiebilanz schließt deshalb: Heizleistung plus Energie aus der Speicherabnahme ergibt den ausströmenden Energiestrom. Konstante Temperatur bedeutet bei einer sich ändernden Masse keinen konstanten Energiespeicher.
+
+Die elektrische Kochplatte braucht wegen des angegebenen Gesamtwirkungsgrads ungefähr ein Kilowatt. Dieser Wirkungsgrad enthält die Verluste bis zur Wärmezufuhr im Topf schon. Dieselben Verluste werden bei dieser Rechnung nicht ein zweites Mal abgezogen. Die Nachrechnung bewahrt die Zwischenwerte; kleine Unterschiede zur handschriftlichen Musterlösung entstehen durch deren frühe Rundungen.
 
 ## Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme
 Quelle: 4.1, 4.2, 4.2.1, 4.2.2, 4.2.3, 4.3, 4.3.1, 4.3.2, 4.3.3, 4.4

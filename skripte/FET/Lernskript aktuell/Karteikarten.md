@@ -400,6 +400,11 @@ Eis, Flüssigkeit und Dampf ändern während der Wärmezufuhr ihre Anteile. Nach
 Quelle: 2.14.2
 Abbildung: map-tripel
 
+### Warum darf beim Schmelzen im geschlossenen starren Tripelgefäß mit der Änderung der Gesamtenthalpie gerechnet werden?
+Die Wärme ändert zunächst die gesamte innere Energie. Weil sowohl der Tripeldruck als auch das Gesamtvolumen konstant bleiben, ändert sich ihr Produkt nicht. Aus $U=H-p V$ folgt dann $Delta U=Delta H$. Erst nach Verlassen des Tripelzustands muss der Druck-Volumen-Anteil wieder geprüft werden.
+Quelle: 2.14.2
+Abbildung: map-tripel
+
 ### Warum legt ein Massenstrom den Durchmesser einer Dampfleitung noch nicht allein fest?
 Man braucht außerdem das spezifische Volumen des Dampfes und die vorgesehene mittlere Geschwindigkeit. Das spezifische Volumen wandelt den Massenstrom in einen Volumenstrom um. Erst aus Volumenstrom und Geschwindigkeit folgt der freie Querschnitt.
 Quelle: 2.15.1
@@ -488,8 +493,8 @@ Die spezifische Entropie $s$ (pro kg) und die gesamte Entropie $S = m s$ können
 Quelle: 3.2.2
 
 ### Zeichne die Begriffslandkarte zu Kapitel 3 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-Die Systemgrenze bestimmt Stoffaustausch und Speicherung. Der erste Hauptsatz verbindet diese mit Wärme, Arbeit und Änderungen der Stoffenergie. Arbeitsformen hängen vom Prozessweg ab; Wärmekapazitäten vom Stoffmodell und vom Temperaturbereich. Ein Kreisprozess besitzt keine bleibende Zustandsänderung, aber Nettoübertragungen; Düse, Drossel und Heizregister verlangen unterschiedliche Bilanzvereinfachungen. Erst Kapitel 4 ergänzt die Prüfung der Prozessrichtung.
-Quelle: 3.11
+Die Systemgrenze bestimmt Stoffaustausch und Speicherung. Der erste Hauptsatz verbindet diese mit Wärme, Arbeit und Änderungen der Stoffenergie. Arbeitsformen hängen vom Prozessweg ab; Wärmekapazitäten vom Stoffmodell und vom Temperaturbereich. Ein Kreisprozess besitzt keine bleibende Zustandsänderung, aber Nettoübertragungen; Düse, Drossel und Heizregister verlangen unterschiedliche Bilanzvereinfachungen. Der Dampfkochtopf zeigt, dass konstantes p und T eine Speicherabnahme beim Massenaustritt nicht ausschließen. Erst Kapitel 4 ergänzt die Prüfung der Prozessrichtung.
+Quelle: 3.12
 
 ### Warum kann sich Wasser in einer adiabaten Turbine erwärmen?
 Adiabat bedeutet nur, dass keine Wärme über die Grenze übertragen wird. Wird nicht die gesamte Gefälleenergie als Wellenarbeit abgegeben, kann der Rest die innere Energie des Wassers erhöhen. Diese Energie verlässt die Turbine mit dem erwärmten Wasser; sie ist kein Wärmeverlust nach außen.
@@ -616,6 +621,26 @@ Sie beziehen sich auf jeweils ein Kilogramm ihres eigenen Stoffes. Erst die Mult
 Quelle: 3.11
 Abbildung: lufterhitzer-grenzen
 
+
+### Warum ist ein Dampfkochtopf bei konstantem Druck und konstanter Temperatur trotzdem instationär?
+Dampf strömt hinaus und die Masse im Topf nimmt ab. Die Stoffwerte der einzelnen Phasen bleiben bei gleichem Sättigungsdruck zwar konstant, aber ihre Mengen ändern sich. Daher ändern sich die gesamten Speichergrößen wie die innere Energie.
+Quelle: 3.12
+Abbildung: kochtopf-phasen
+
+### Warum ist die ausströmende Dampfmasse etwas kleiner als die verschwundene Flüssigkeitsmasse?
+Der sinkende Flüssigkeitsspiegel schafft zusätzlichen Dampfraum. Ein kleiner Teil der verdampften Masse bleibt im Topf und füllt diesen Raum. Nur der übrige Dampf überquert die äußere Grenze.
+Quelle: 3.12.1
+Abbildung: kochtopf-phasen
+
+### Warum kann der ausströmende Energiestrom eines Dampfkochtopfs größer als seine Heizleistung sein?
+Die gespeicherte innere Energie im Topf nimmt ab. Der ausströmende Stoff trägt deshalb sowohl die zugeführte Energie als auch Energie aus dem sinkenden Bestand hinaus. Die Bilanz lautet $dot(Q)=frac(dif U_"Sys",dif t)+dot(E)_"aus"$; bei negativer Speicheränderung ist die Heizleistung kleiner als der ausströmende Energiestrom.
+Quelle: 3.12.2
+Abbildung: kochtopf-energie
+
+### Warum wird beim Dampfaustritt die Verschiebearbeit nicht zusätzlich zur Enthalpie addiert?
+Die Enthalpie enthält bereits innere Energie und Druck-Volumen-Anteil: $h=u+p v$. Die mitgeführte Energie ist bei vernachlässigter Lageenergie deshalb $e=h+c^2/2$. Wer noch einmal $p v$ addiert, zählt dieselbe Verschiebearbeit doppelt.
+Quelle: 3.12.2
+Abbildung: kochtopf-energie
 
 ## Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme
 

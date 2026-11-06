@@ -1086,9 +1086,46 @@ Für eine konsistente Nachrechnung aus den gerundeten Tabellenwerten $H=sum m_i 
 #align(center)[#image("abbildungen/tripel-isochor.svg", width: 100%)]
 ]
 
+// Ergänzung der neu abgelegten Musterlösung Ü 2.11; eigene, unveränderte Aufgabenangabe.
+#aufgabe(titel: "Tripelgefäß mit 1 kg Eis: Phasenbilanz und Heizdauer", art: "rechnen", quelle: "2.14",
+ ergebnis: [$V="0,0226901"$ m³; Eis verschwindet; $Q_01 approx "333,501713"$ kJ; $Delta t_01 approx "33350,17"$ s = 9,26394 h; $p_2 approx "915,67"$ Pa.],
+ tipp: [Beim Schmelzen bleiben p und V gleich. Berechne die neuen Phasenmassen und nutze dann die Änderung der Gesamtenthalpie.])[
+#if not web [*Aufgabe 51* #linebreak()]
+*Gegeben und Annahmen:* Ü 2.11: Geschlossenes starres Gefäß, anfangs 1 kg Wasser, 1 kg Eis und 0,0001 kg Wasserdampf im Gleichgewicht. Zugeführter Wärmestrom 10 W; keine weitere Arbeit, äußere Speicherenergien und Behälterwärmekapazität vernachlässigt. Zustand ①: erste Phase gerade verschwunden. Danach Erwärmung bis $T_2=280$ K. Am Tripelpunkt gelten $T_"Tr"="273,16"$ K, $p_"Tr"="611,657"$ Pa:
+#tab(columns: (1fr, 1.15fr, 1.2fr, 1.2fr), th([Phase], [$v$ / m³/kg], [$h$ / kJ/kg], [$s$ / kJ/(kg K)]),
+ [Wasser ′], [0,0010002], [0,000611783], [0],
+ [Dampf ″], [205,99], [2500,9], [9,1555],
+ [Eis ‴], [0,0010909], [−333,5], [−1,2209],
+)
+Alle Phasenwerte haben denselben Tabellenbezug; $U=H-p V$. Die Steigung der Dampfdruckkurve wird laut Aufgabe in der Umgebung des Tripelpunktes näherungsweise konstant angenommen. $1$ kJ = $1000$ J; $1$ h = $3600$ s.
+*Gesucht:*
+#enum(numbering: "a)")[Anfangsdruck und Anfangstemperatur.][Gefäßvolumen und spezifisches Gesamtvolumen.][Verschwindende Phase, Wärme und Dauer bis Zustand ①.][Näherungsdruck bei 280 K; Einordnung des Zustandswegs.]
+#src[Ü 2.11, PDF-S. 15; M211, PDF-S. 1.]
+][
+*Tripelzustand erkennen:* Drei Phasen desselben Stoffes im Gleichgewicht liefern $T_0="273,16"$ K = 0,01 °C und $p_0="611,657"$ Pa. Die zugeführte Wärme ändert zunächst ihre Mengen, während Druck und Temperatur gleich bleiben.
+][
+*Gesamtmengen addieren:* $m=1+1+"0,0001"="2,0001"$ kg. Das Volumen enthält alle drei Beiträge:
+$V=1 dot "0,0010002"+"0,0001" dot "205,99"+1 dot "0,0010909"="0,0226901"$ m³.
+Damit $v=V/m approx "0,011344483"$ m³/kg. Die Dampfmasse ist sehr klein, ihr Volumenbeitrag ist dagegen der größte.
+][
+*Verschwindende Phase und Endmassen bestimmen:* Bei Wärmezufuhr schmilzt Eis. Mit $m'_1+m''_1=m$ und $m'_1v'+m''_1v''=V$ folgt
+$ m''_1=frac(V-m v',v''-v') approx "0,000100440315"$ kg und $m'_1 approx "1,999999560"$ kg.
+Beide Mengen sind positiv; damit ist ein eisfreier Flüssig-Dampf-Endzustand möglich. Etwas zusätzliches Wasser verdampft und füllt das beim Schmelzen frei werdende Volumen.
+][
+*Speicheränderung aus Enthalpien berechnen:* $H_0=1 dot "0,000611783"+"0,0001" dot "2500,9"-"333,5" approx -"333,249298"$ kJ. Mit den neuen Massen ist $H_1=m'_1h'+m''_1h'' approx "0,252414749"$ kJ. Solange p und V gleich bleiben, ist $Delta(p V)=0$, also $Delta U=Delta H$. Daher
+$Q_01=H_1-H_0 approx "333,501713"$ kJ.
+Das starre Gefäß allein würde $Q=Delta H$ nicht erlauben; die zusätzliche Druckkonstanz bis zum Ende des Tripelabschnitts ist wesentlich.
+][
+*Leistung in Dauer umrechnen:* $Delta t_01=Q_01/dot(Q)="333501,713" thin "J"/(10 thin "J/s") approx "33350,17"$ s $approx "9,26394"$ h. Die Größenkontrolle $1 thin "kg" dot "333,5" thin "kJ/kg"$ stimmt fast mit der gesamten Schmelzwärme überein. M211 rundet V vorzeitig auf 0,0227 m³ und erhält rund 333,5025 kJ; die kleine Abweichung ist eine Rundungsfolge.
+][
+*Clapeyron und Diagramm prüfen:* $frac(dif p_s,dif T)=(s''-s')/(v''-v') approx "44,44655"$ Pa/K; die Entropiewerte vorher mit 1000 in J/(kg K) umrechnen. Mit $Delta T=280-"273,16"="6,84"$ K folgt
+$p_2 approx "611,657"+"44,44655" dot "6,84" approx "915,67"$ Pa $= "9,1567"$ mbar.
+Das ist die verlangte lineare Näherung, keine genaue Dampftafelablesung. Zustand ⓪ und ① liegen im p-v- und p-T-Diagramm übereinander. Danach folgt die geschlossene Isochore im p-v-Diagramm senkrecht nach oben; im p-T-Diagramm folgt sie der Flüssig-Dampf-Grenze.
+]
+
 #aufgabe(titel: "Heißdampfleitung: lichten Durchmesser bestimmen", art: "rechnen", quelle: "2.15.1",
  ergebnis: [$d approx "0,08037"$ m = 80,37 mm.], tipp: [Die Kontinuität benötigt das spezifische Volumen des realen Heißdampfes.])[
-#if not web [*Aufgabe 51* #linebreak()]
+#if not web [*Aufgabe 52* #linebreak()]
 *Gegeben und Annahmen:* Stationärer Heißdampfstrom $dot(m)=8$ t/h bei $p=5$ MPa = 50 bar, $vartheta=500$ °C und mittlerer Geschwindigkeit $c=30$ m/s; kreisförmiger Leitungsquerschnitt. Tabellenwert bei genau diesem Zustand: $v="0,06849"$ m³/kg. $1$ t = $1000$ kg, $1$ h = $3600$ s.
 
 *Gesucht:*
@@ -1107,7 +1144,7 @@ Für eine konsistente Nachrechnung aus den gerundeten Tabellenwerten $H=sum m_i 
 #aufgabe(titel: "Kesseltrommel: halbes Volumen, anderer Massenanteil", art: "rechnen", quelle: "2.15.2",
  ergebnis: [$m approx "3212,306"$ kg; $x approx "3,15803" thin "%"$; $H approx "3,876483"$ GJ.],
  tipp: [Berechne die Teilmassen aus den Teilvolumina; erst danach den Dampfgehalt.])[
-#if not web [*Aufgabe 52* #linebreak()]
+#if not web [*Aufgabe 53* #linebreak()]
 *Gegeben und Annahmen:* Geschlossene Kesseltrommel mit $V="8,0"$ m³, zur Hälfte des Volumens mit gesättigtem Wasser und zur Hälfte mit Sattdampf bei 5,0 MPa = 50 bar gefüllt. Sättigungstemperatur 263,9 °C. Stoffwerte derselben Sättigung: $v''="0,03943"$ m³/kg, $h'=1155$ kJ/kg und $h''=2794$ kJ/kg. Für $v'$ dieselbe im Tutorium vorgegebene Temperaturinterpolation verwenden:
 #tab(columns: (1fr, 1fr), th([Temperatur °C], [$v'$ dm³/kg]), [260], [1,2756], [265], [1,2887])
 $1$ dm³ = $10^(-3)$ m³, $1$ GJ = $10^6$ kJ.
@@ -1130,7 +1167,7 @@ $1$ dm³ = $10^(-3)$ m³, $1$ GJ = $10^6$ kJ.
 #aufgabe(titel: "Abgesperrter Überhitzer: zwei Füllungen und ihre Isochoren", art: "rechnen", quelle: "2.15.3",
  ergebnis: [α: $p_2="11,5"$ bar, $vartheta_2="186,05"$ °C, $vartheta_3 approx "657,895"$ °C, $p_4 approx "24,3114"$ bar, $Q_14 approx "7849,57"$ kJ. β: $p_2 approx "1,12008"$ bar, $vartheta_2 approx "102,8201"$ °C, $p_4 approx "4,10573"$ bar, $Q_14 approx "258,226"$ kJ; Öffnungstemperatur bei 25 bar außerhalb der mitgegebenen Tabelle.],
  tipp: [Für jede Füllung bleibt ihr eigenes $v$ konstant. Bei starrer Erwärmung wird $Delta U$ benötigt, nicht allein $Delta H$.])[
-#if not web [*Aufgabe 53* #linebreak()]
+#if not web [*Aufgabe 54* #linebreak()]
 *Gegeben und Annahmen:* Ü 2.17: Zwei alternativ betrachtete geschlossene, starre Überhitzerfüllungen bei $p_1="0,1"$ MPa = 1 bar: α mit $x_1="0,10"$, β mit $x_1="0,90"$. Anfangswerte wie im Tutorium gerundet: $v'="0,00100"$, $v''="1,69400"$ m³/kg, $h'="417,5"$, $h''=2675$ kJ/kg. Das Sicherheitsventil öffnet bei 25 bar. Zusätzlich wird die hypothetisch geschlossene Erwärmung bis 600 °C betrachtet. Kein weiterer Arbeitsbeitrag, äußere Energien und Wandwärmekapazität vernachlässigt. Geometrie: 28 Rohrschlangen mit je 18 m Länge und 32 mm Innendurchmesser, Sammlervolumen 0,1 m³. $p$ in kPa mal $v$ in m³/kg ergibt kJ/kg; 1 bar = 100 kPa.
 
 *Benötigte Tabellenauszüge (wie T29):*
@@ -1173,7 +1210,7 @@ Die 25-bar-Tabelle endet hier bei 800 °C. Innerhalb der mitgegebenen Stützstel
 
 // 2-1
 #aufgabe(titel: "Erster Hauptsatz mit der Teich-Analogie", art: "verstehen", quelle: "3.1")[
-#if not web [*Aufgabe 54* #linebreak()]
+#if not web [*Aufgabe 55* #linebreak()]
 Erkläre einem Laien mit der Teich-Analogie, was der erste Hauptsatz aussagt und warum Wärme und Arbeit keine Zustandsgrößen sind.
 ][
 Der Wasserstand (gespeicherte Energie) ändert sich um das, was durch die Bäche netto zu- oder abfließt. Ist das Wasser im Teich, weiß man nicht mehr, ob es als „Wärme“ oder „Arbeit“ kam: Gespeichert ist nur Energie. $Q$ und $W$ existieren nur während des Übertragens und hängen vom Weg ab.
@@ -1181,7 +1218,7 @@ Der Wasserstand (gespeicherte Energie) ändert sich um das, was durch die Bäche
 
 // 2-2
 #aufgabe(titel: "Enthalpie im offenen System", art: "verstehen", quelle: "3.1.1")[
-#if not web [*Aufgabe 55* #linebreak()]
+#if not web [*Aufgabe 56* #linebreak()]
 Warum steht im 1. HS für offene Systeme die Enthalpie $h$, im geschlossenen System aber die innere Energie $u$?
 ][
 Im offenen System muss Stoff gegen den Druck hinein- und hinausgeschoben werden. Diese Verschiebearbeit $p v$ steckt in $h=u+p v$. Im geschlossenen System fließt kein Stoff über die Grenze, also gibt es keine Verschiebearbeit.
@@ -1189,7 +1226,7 @@ Im offenen System muss Stoff gegen den Druck hinein- und hinausgeschoben werden.
 
 // 2-3
 #aufgabe(titel: "Druckarbeit und Volumenarbeit", art: "verstehen", quelle: "3.1.2")[
-#if not web [*Aufgabe 56* #linebreak()]
+#if not web [*Aufgabe 57* #linebreak()]
 Welche Arbeit gehört zum offenen, welche zum geschlossenen System: $integral v dif p$ oder $-integral p dif v$? Wozu dient das Minuszeichen?
 ][
 Offen: Druckarbeit $w_p=integral v dif p$ (Teil von $w_t$). Geschlossen: Volumenarbeit $w_v=-integral p dif v$ (Teil von $w_g$). Bei Kompression ist $dif v<0$; das Minus macht die zugeführte Arbeit positiv.
@@ -1197,7 +1234,7 @@ Offen: Druckarbeit $w_p=integral v dif p$ (Teil von $w_t$). Geschlossen: Volumen
 
 // 2-4
 #aufgabe(titel: "Energiemenge und Wärmestrom", art: "verstehen", quelle: "3.1")[
-#if not web [*Aufgabe 57* #linebreak()]
+#if not web [*Aufgabe 58* #linebreak()]
 Was unterscheidet die Energiemenge $Q_12$ von dem Wärmestrom $dot(Q)_12$? Welche Einheiten haben sie, und kann auch ein geschlossenes System einen Wärmestrom aufnehmen?
 ][
 Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunkten: $Q_12$ in kJ. Die offen-stationäre Bilanz verwendet einen Energiestrom: $dot(Q)_12=dot(m)q_12$ in kW. Der Punkt heißt „pro Zeit“; auch ein geschlossenes System kann einen Wärmestrom aufnehmen.
@@ -1205,7 +1242,7 @@ Die geschlossene Bilanz vergleicht hier eine Energiemenge zwischen zwei Zeitpunk
 
 // 2-5
 #aufgabe(titel: "Fallende Bleikugel erwärmt sich", art: "rechnen", quelle: "3.1.4")[
-#if not web [*Aufgabe 58* #linebreak()]
+#if not web [*Aufgabe 59* #linebreak()]
 *Kugel, Variante:*
 
 *Gegeben und Annahmen*
@@ -1231,7 +1268,7 @@ Eine Bleikugel mit $c_"Pb"=130 thin "J/(kg K)"$ fällt aus $z_1=50 thin "m"$ mit
 
 // 2-6
 #aufgabe(titel: "Adiabate Turbine: Leistung mit Vorzeichen", art: "rechnen", quelle: "3.1.1")[
-#if not web [*Aufgabe 59* #linebreak()]
+#if not web [*Aufgabe 60* #linebreak()]
 *Turbine (eigenes Zahlenbeispiel):*
 
 *Gegeben und Annahmen*
@@ -1257,7 +1294,7 @@ Eine adiabate Dampfturbine wird stationär mit $dot(m)=10 thin "kg/s"$ durchstr�
 
 // 2-7
 #aufgabe(titel: "Rührer im starren Behälter", art: "rechnen", quelle: "3.1.3")[
-#if not web [*Aufgabe 60* #linebreak()]
+#if not web [*Aufgabe 61* #linebreak()]
 *Rührer:*
 
 *Gegeben und Annahmen*
@@ -1284,7 +1321,7 @@ In einen starren, adiabaten Behälter werden mit einem Rührer $50 thin "kJ"$ Ar
 
 // 2-8
 #aufgabe(titel: "Düse: Enthalpie wird Bewegungsenergie", art: "rechnen", quelle: "3.1.1")[
-#if not web [*Aufgabe 61* #linebreak()]
+#if not web [*Aufgabe 62* #linebreak()]
 *Düse:*
 
 *Gegeben und Annahmen*
@@ -1312,7 +1349,7 @@ In einer adiabaten Düse ohne technische Arbeit und ohne Höhenänderung sinkt d
 
 // 2-9
 #aufgabe(titel: "Stickstoff: Heizerenergie und Zustandsgrößen", art: "rechnen", quelle: "3.2.1")[
-#if not web [*Aufgabe 62* #linebreak()]
+#if not web [*Aufgabe 63* #linebreak()]
 *Stickstoffgefäß, Ü 2.1 e–g; W23 und M2:*
 
 *Gegeben und Annahmen*
@@ -1388,7 +1425,7 @@ $ Delta U_23+m_"entn" h'="117,69434"+1 dot (-"116,15") thin "kJ"="1,54434" thin 
 #aufgabe(titel: "Pumpspeicherturbine: Wirkungsgrad und Wassererwärmung", art: "rechnen", quelle: "3.3.1",
  ergebnis: [$eta approx "89,2" thin "%"$; $Delta T approx "0,0253" thin "K"$; $P_"Rest"=848 thin "kW"$.],
  tipp: [Bilanz zwischen den freien Wasserspiegeln: $c Delta T-g H=P_t/dot(m)$.])[
-#if not web [*Aufgabe 63* #linebreak()]
+#if not web [*Aufgabe 64* #linebreak()]
 *Gegeben und Annahmen:* Eine adiabate Turbine gibt 7000 kW Wellenleistung ab, also $P_t=-7000$ kW. Durchfluss $dot(V)=8$ m³/s, Höhendifferenz $H=z_1-z_2=100$ m; $rho=1000$ kg/m³, $c=4190$ J/(kg K), $g="9,81"$ m/s². Beide freien Wasserspiegel stehen unter demselben Umgebungsdruck; Geschwindigkeitsänderungen werden vernachlässigt. Wasser inkompressibel, Stoffwerte konstant; stationär, keine zusätzliche Energieabgabe nach außen.
 
 *Gesucht:*
@@ -1411,7 +1448,7 @@ $ Delta U_23+m_"entn" h'="117,69434"+1 dot (-"116,15") thin "kJ"="1,54434" thin 
 #aufgabe(titel: "Offene Dampfanlage: Kesselwärme und Turbinenleistung", art: "rechnen", quelle: "3.3.2",
  ergebnis: [$q_12=3022$ kJ/kg; $w_(t,23)=-800$ kJ/kg; $dot(Q)_12 approx "83,94"$ MW; $P_23 approx -"22,22"$ MW; $eta approx "26,47" thin "%"$.],
  tipp: [Kessel ①–② ohne Wellenarbeit und Turbine ②–③ ohne Wärme getrennt bilanzieren.])[
-#if not web [*Aufgabe 64* #linebreak()]
+#if not web [*Aufgabe 65* #linebreak()]
 *Gegeben und Annahmen:* Stationäre offene Dampfanlage mit Kessel ①–② und anschließender adiabater Turbine ②–③, $dot(m)=100$ t/h; $1$ t = $1000$ kg, $1$ h = $3600$ s. $h_1=128$, $h_2=3150$, $h_3=2350$ kJ/kg. Der Kessel überträgt keine technische Arbeit. Änderungen von Bewegungs- und Lageenergie sind vernachlässigt; weitere Anlagenverluste werden nicht angesetzt.
 #align(center)[#image("abbildungen/kraftwerk-enthalpie.svg", width: 100%)]
 *Gesucht:*
@@ -1434,7 +1471,7 @@ $ Delta U_23+m_"entn" h'="117,69434"+1 dot (-"116,15") thin "kJ"="1,54434" thin 
 #aufgabe(titel: "Verdichtung auf zwei Wegen: gleicher Endzustand, andere Arbeit", art: "rechnen", quelle: "3.4.2",
  ergebnis: [$W_"I"/(p_1 V_1)=ln(10) approx "2,302585"$; $W_"II"/(p_1 V_1)="0,9"$; $W_"I"/W_"II" approx "2,5584"$. Beide Wege: $Q=-W_v$.],
  tipp: [Rechne normiert auf $p_1 V_1$. Dann werden keine zusätzlichen Druck- oder Volumenwerte benötigt.])[
-#if not web [*Aufgabe 65* #linebreak()]
+#if not web [*Aufgabe 66* #linebreak()]
 *Gegeben und Annahmen:* Geschlossene Portion eines idealen Gases, quasistatisch und ohne Dissipation, ruhend bei gleicher Höhe. Verdichtungsverhältnis $epsilon=V_1/V_2=10$, Endtemperatur gleich Anfangstemperatur. Weg I: isotherm ①–②. Weg II: zunächst isobar bei $p_1$ von $V_1$ auf $V_2$, danach isochor bis zum selben Zustand ②. $p_1 V_1$ dient als positive Energie-Bezugsgröße; Zahlenwerte für $p_1$ und $V_1$ sind nicht nötig.
 #align(center)[#image("abbildungen/arbeit-zwei-wege.svg", width: 100%)]
 *Gesucht:*
@@ -1454,7 +1491,7 @@ $ Delta U_23+m_"entn" h'="117,69434"+1 dot (-"116,15") thin "kJ"="1,54434" thin 
 
 #aufgabe(titel: "Expansion: Gesamtarbeit und nutzbare Arbeit unterscheiden", art: "verstehen", quelle: "3.4.3",
  tipp: [Welche Fläche liegt im p-V-Diagramm unter dem Umgebungsdruck?])[
-#if not web [*Aufgabe 66* #linebreak()]
+#if not web [*Aufgabe 67* #linebreak()]
 Ein Gas expandiert quasistatisch von $V_1$ nach $V_2>V_1$ gegen einen konstanten Umgebungsdruck $p_"∞"$. Erkläre mit der Zufuhrkonvention, warum die nutzbare Arbeitsabgabe kleiner ist als die gesamte Volumenarbeitsabgabe und wie sich beide rechnerisch unterscheiden.
 #src[N27, PDF-S. 17; eigene Verständnisfrage.]
 ][
@@ -1466,7 +1503,7 @@ Ein Gas expandiert quasistatisch von $V_1$ nach $V_2>V_1$ gegen einen konstanten
 ]
 
 #aufgabe(titel: "Flüssigkeitspumpe: Arbeit trotz nahezu konstantem Volumen", art: "verstehen", quelle: "3.5.2")[
-#if not web [*Aufgabe 67* #linebreak()]
+#if not web [*Aufgabe 68* #linebreak()]
 Eine ideale, stationär betriebene Pumpe erhöht den Druck einer näherungsweise inkompressiblen Flüssigkeit. Dissipation sowie Änderungen von Bewegungs- und Lageenergie werden vernachlässigt. Warum benötigt sie Arbeit, obwohl sich das spezifische Volumen kaum ändert? Vergleiche Druck- und Volumenarbeit desselben Zustandswegs.
 #src[N27, PDF-S. 18–19; eigene Verständnisfrage.]
 ][
@@ -1478,7 +1515,7 @@ Eine ideale, stationär betriebene Pumpe erhöht den Druck einer näherungsweise
 ]
 
 #aufgabe(titel: "Wärme und Enthalpie: Übertragung ist kein Speicher", art: "verstehen", quelle: "3.6")[
-#if not web [*Aufgabe 68* #linebreak()]
+#if not web [*Aufgabe 69* #linebreak()]
 Jemand sagt: „Ein warmer Stoff enthält Wärme, und bei jedem Heizvorgang ist die zugeführte Wärme gleich seiner Enthalpie.“ Erkläre die beiden Begriffsfehler und nenne die Bedingungen, unter denen $Q=Delta H$ gelten kann.
 #src[N27, PDF-S. 20; eigene Verständnisfrage, Bilanzverknüpfung mit 3.3.2.]
 ][
@@ -1492,7 +1529,7 @@ Jemand sagt: „Ein warmer Stoff enthält Wärme, und bei jedem Heizvorgang ist 
 #aufgabe(titel: "Druckluftmotor: Adiabate und Isotherme mit Gaswechsel", art: "rechnen", quelle: "3.7",
  ergebnis: [Je Arbeitsspiel: adiabat $W_v approx -"249,24"$ J, $W_"Verschiebung" approx -"99,70"$ J, $W_p approx -"348,94"$ J, $Q=0$; isotherm $W_v=W_p approx -"534,94"$ J, $W_"Verschiebung"=0$, $Q approx +"534,94"$ J. Bei einem Arbeitsspiel/Umdrehung: $P_"ad" approx -"3,489"$ kW, $P_"isoth" approx -"5,349"$ kW.],
  tipp: [Zuerst Absolutdruck und Kelvin bilden. Expansionsarbeit allein ist noch nicht die gesamte Gaswechselarbeit.])[
-#if not web [*Aufgabe 69* #linebreak()]
+#if not web [*Aufgabe 70* #linebreak()]
 *Gegeben und Annahmen:* Druckluftmotor ohne Totvolumen, vollständiger Gasaustausch und keine Dissipation. $p_(1,"ü")="22,3"$ bar, $p_2=p_"∞"="0,91"$ bar, $vartheta_1="24,8"$ °C, $V_1="71,16"$ cm³; Drehzahl $N=600$ U/min. $1$ bar = $10^5$ Pa, $1$ cm³ = $10^(-6)$ m³. Vergleiche reversible adiabate und isotherme Expansion einer gleich großen Anfangsportion bis zum selben Enddruck. Füllung bei $p_1$, Ausschiebung bei $p_2$, jeweils konstant; äußere Energien vernachlässigt.
 
 *Stoffmodell aus dem Tafelanschrieb N28:* ideales Gas mit konstanten Werten $R="287,2"$ J/(kg K), $kappa="1,4"$. Konsistent daraus $c_v=R/(kappa-1)=718$ J/(kg K), $c_p=kappa c_v="1005,2"$ J/(kg K). Für die Leistungsrechnung wie im Tafelanschrieb *ein Arbeitsspiel je Umdrehung* verwenden; N28, PDF-S. 7, setzt entsprechend $dot(m)=m N/60$ an.
@@ -1523,7 +1560,7 @@ Jemand sagt: „Ein warmer Stoff enthält Wärme, und bei jedem Heizvorgang ist 
 #aufgabe(titel: "Luft von 400 bis 1200 Grad: passende Wärmekapazitäten", art: "rechnen", quelle: "3.8.2",
  ergebnis: [$overline(C)_(m,p,12)="33,27"$ kJ/(kmol K); $overline(c)_(p,12) approx "1,14922"$, $overline(c)_(v,12) approx "0,862038"$ kJ/(kg K); $kappa_12 approx "1,33315"$.],
  tipp: [Die zwei Tabellenwerte beziehen sich jeweils auf 0 °C. Subtrahiere die zugehörigen Enthalpiezunahmen.])[
-#if not web [*Aufgabe 70* #linebreak()]
+#if not web [*Aufgabe 71* #linebreak()]
 *Gegeben und Annahmen:* Ideale Luft von $vartheta_1=400$ °C bis $vartheta_2=1200$ °C. T-4 beziehungsweise BT A.5 gibt molare Mittelwerte seit 0 °C an:
 #tab(columns: (1fr, 1fr), th([Bereich], [$overline(C)_(m,p)$ kJ/(kmol K)]), [0–400 °C], [29,79], [0–1200 °C], [32,11])
 Innerhalb dieses Datensatzes $M="28,95"$ kg/kmol verwenden; universelle Gaskonstante $R_m="8,314"$ kJ/(kmol K), also $R=R_m/M$. Der gesuchte κ-Wert ist das Verhältnis der *hier berechneten Bereichsmittel*, kein universell konstanter Luftwert.
@@ -1542,7 +1579,7 @@ Innerhalb dieses Datensatzes $M="28,95"$ kg/kmol verwenden; universelle Gaskonst
 ]
 
 #aufgabe(titel: "Kreisprozess: Zustandsrückkehr und Nettoarbeit", art: "verstehen", quelle: "3.9")[
-#if not web [*Aufgabe 71* #linebreak()]
+#if not web [*Aufgabe 72* #linebreak()]
 Eine Dampfkraftanlage besteht aus Pumpe, Kessel, Turbine und Kondensator und läuft stationär. Erkläre, warum im vollständigen Umlauf Zustandsänderungen verschwinden, trotzdem Nettoarbeit abgegeben wird und die Pumpenleistung dabei mitgezählt werden muss. Ordne ein Perpetuum mobile erster Art ein.
 #src[N03, PDF-S. 12–14; eigene Verständnisfrage.]
 ][
@@ -1554,7 +1591,7 @@ Eine Dampfkraftanlage besteht aus Pumpe, Kessel, Turbine und Kondensator und lä
 ]
 
 #aufgabe(titel: "Düse und Drossel: gleiche Bilanz, andere Vereinfachung", art: "verstehen", quelle: "3.10")[
-#if not web [*Aufgabe 72* #linebreak()]
+#if not web [*Aufgabe 73* #linebreak()]
 Vergleiche eine adiabate Düse gleicher Ein-/Austrittshöhe mit einer adiabaten Drossel, bei der außerdem die äußeren Geschwindigkeiten etwa gleich sind. Beide übertragen keine technische Arbeit und werden stationär betrachtet. Welche Energiegröße bleibt jeweils erhalten? Sind beide deswegen reversibel?
 #src[N04, PDF-S. 1; eigene Verständnisfrage.]
 ][
@@ -1568,7 +1605,7 @@ Vergleiche eine adiabate Düse gleicher Ein-/Austrittshöhe mit einer adiabaten 
 #aufgabe(titel: "Überdruckventil: isentropen Austritt mit der Dampftafel bestimmen", art: "rechnen", quelle: "3.10",
  ergebnis: [$h_2 approx "3586,774"$ kJ/kg; $vartheta_2 approx "566,423"$ °C; $c_2 approx "748,634"$ m/s.],
  tipp: [Bestimme zuerst am Enddruck den Enthalpiewert bei unveränderter spezifischer Entropie.])[
-#if not web [*Aufgabe 73* #linebreak()]
+#if not web [*Aufgabe 74* #linebreak()]
 *Gegeben und Annahmen:* Ü 2.18: Dampf strömt aus einem großen Kessel durch ein Überdruckventil. $h_1=3867$ kJ/kg und $s_1="7,166"$ kJ/(kg K); am engsten Querschnitt $p_2=50$ bar, näherungsweise Lavalzustand. Der lokale Ausfluss wird stationär, adiabat und isentrop modelliert; keine technische Arbeit, gleiche Höhe und vernachlässigte Anfangsgeschwindigkeit. $1$ kJ/kg = $1000$ J/kg. Eingangszustand aus demselben Datensatz: $p_1=100$ bar, $vartheta_1=700$ °C, $v_1="0,04355"$ m³/kg.
 #tab(columns: (1fr, 1fr, 1fr, 1fr),
  th([Bei 50 bar: °C], [$v$ m³/kg], [$h$ kJ/kg], [$s$ kJ/(kg K)]),
@@ -1590,7 +1627,7 @@ Vergleiche eine adiabate Düse gleicher Ein-/Austrittshöhe mit einer adiabaten 
 #aufgabe(titel: "Lufterhitzer: Wasser, Luft und Lüfter gemeinsam bilanzieren", art: "rechnen", quelle: "3.11",
  ergebnis: [$dot(Q)_"WL"=21$ kW; $vartheta_"L2" approx "35,5644"$ °C.],
  tipp: [Die Gesamtgrenze ist adiabat. Der Wärmestrom zwischen Wasser und Luft ist darin intern.])[
-#if not web [*Aufgabe 74* #linebreak()]
+#if not web [*Aufgabe 75* #linebreak()]
 *Gegeben und Annahmen:* Ü 3.2: Luftstrom 1600 kg/h, Eintritt −13 °C; zugeführte Lüfterleistung 0,8 kW. Wasserstrom 900 kg/h; Wasser kühlt von 90 °C mit $h_"W1"=377$ kJ/kg auf 70 °C mit $h_"W2"=293$ kJ/kg ab. Luft als ideales Gas mit konstantem $c_p="1,010"$ kJ/(kg K) wie in M32. Das Gesamtgerät ist nach außen adiabat; die Lüfterleistung gelangt vollständig zur Luftseite. Stationär, keine relevante Änderung von Bewegungs- und Lageenergie, keine Mischung der beiden Stoffe; 1 h = 3600 s.
 #align(center)[#image("abbildungen/lufterhitzer-grenzen.svg", width: 100%)]
 *Gesucht:*
@@ -1606,12 +1643,51 @@ Vergleiche eine adiabate Düse gleicher Ein-/Austrittshöhe mit einer adiabaten 
 *Gesamtgrenze als Kontrolle verwenden:* $dot(m)_W Delta h_W+dot(m)_L Delta h_L=-21+"21,8"="0,8"$ kW. Der interne Wärmestrom fällt heraus; nur die Lüfterarbeit kommt von außen hinzu. Das erklärt, warum ein nach außen adiabates Gesamtgerät im Inneren trotzdem Wärme überträgt.
 ]
 
+#aufgabe(titel: "Dampfkochtopf: Massen- und Energiebilanz", art: "rechnen", quelle: "3.12",
+ ergebnis: [$dot(m)_"aus" approx "0,000237269"$ kg/s; $c approx "38,904"$ m/s; $w_"VS"="173,85"$ kJ/kg; $e_"aus" approx "2693,75675"$ kJ/kg; $dot(E)_"aus" approx "639,145"$ W; $Q_01 approx "1269,111"$ kJ; $dot(Q) approx "528,796"$ W; $P_"el" approx "1,000"$ kW.],
+ tipp: [Der konstante Druck hält die Sättigungswerte gleich, aber nicht den gesamten Energiespeicher. Das verlorene Flüssigkeitsvolumen wird zum neuen Dampfraum.])[
+#if not web [*Aufgabe 76* #linebreak()]
+*Gegeben und Annahmen:* Ü 3.6: Im ansonsten adiabaten starren Dampfkochtopf werden bei konstantem Absolutdruck $p="0,15"$ MPa = 150 kPa in 40 min insgesamt 0,6 l Flüssigkeit verdampft. Der entstehende Dampf strömt durch das Überdruckventil; freier Durchmesser $d=3$ mm. Flüssigkeit und Dampf im Topf sind während des ganzen betrachteten Abschnitts im Sättigungsgleichgewicht; keine Zuströmung, keine technische Arbeit. Änderungen äußerer Speicherenergien, Lageenergien und Wärmekapazität des Topfes vernachlässigen. Konstanter Heiz- und Ausströmvorgang im vorgegebenen Modell. Den austretenden Dampf mit den angegebenen Sattdampfwerten beschreiben:
+#tab(columns: (1fr, 1fr, 1fr), th([Größe], [Flüssigkeit ′], [Dampf ″]),
+ [$v$ / m³/kg], [0,0010527], [1,159],
+ [$h$ / kJ/kg], [467,1], [2693],
+)
+Gesamtwirkungsgrad der elektrischen Kochplatte bis zur Wärmezufuhr im Topf $eta_"ges"="0,5288"$. Er erfasst bereits die in der Originalaufgabe genannten Verluste. $u=h-p v$; $1$ l = $10^(-3)$ m³, $1$ mm = $10^(-3)$ m, $1$ kJ = 1000 J.
+*Gesucht:*
+#enum(numbering: "a)")[p-v-Zustandsweg und entweichender Massenstrom.][Geschwindigkeit am gewählten Austrittsquerschnitt.][Spezifische Ausströmverschiebearbeit.][Spezifische Gesamtenergie des austretenden Stoffstroms.][Ausströmender Energiestrom.][Zugeführte Wärme und zeitlich konstanter Wärmestrom.][Erforderliche elektrische Kochplattenleistung.]
+#src[Ü 3.6, PDF-S. 21; M36, PDF-S. 1–3; Schema: eigene Darstellung.]
+][
+*System und Zustandsweg wählen:* Starr ist die äußere Grenze, offen und instationär ist ihr Inhalt. Der Druck und damit die Sättigungstemperatur bleiben gleich, solange beide Phasen vorhanden sind. Die Masse sinkt; daher wächst $v=V/m$. Im p-v-Diagramm bewegt sich der Restgemischzustand auf einer Isobare nach rechts innerhalb der Dampfglocke. Das ist keine geschlossene Isochore.
+#align(center)[#image("abbildungen/kochtopf-phasen.svg", width: 85%)]
+][
+*Massenbilanz über beide Phasen aufstellen:* $Delta V'=-"0,0006"$ m³ und $Delta V''=+"0,0006"$ m³; $Delta t=2400$ s. Deshalb $Delta m'=Delta V'/v' approx -"0,569962952"$ kg und $Delta m''=Delta V''/v'' approx "0,000517688"$ kg. Die neu im Topf verbleibende Dampfmasse wird von der verdampften Flüssigkeitsmasse abgezogen:
+$m_"aus"=-(Delta m'+Delta m'') approx "0,569445265"$ kg,
+$dot(m)_"aus"=m_"aus"/2400 approx "2,37268860" dot 10^(-4)$ kg/s.
+Nur $-Delta m'$ zu verwenden, würde den kleinen Zuwachs des Dampfinhalts übersehen.
+][
+*Kontinuität für den Querschnitt nutzen:* $A=pi("0,003" thin "m")^2/4 approx "7,06858" dot 10^(-6)$ m². Mit $dot(V)_"aus"=dot(m)_"aus"v''$ folgt $c=dot(m)_"aus"v''/A approx "38,903779"$ m/s. Einheiten: kg/s mal m³/kg geteilt durch m² ergibt m/s. Die Sattdampfwerte gehören zum gewählten Querschnitt des Aufgabenmodells; ein weiterer Druckabbau außerhalb dieser Grenze ist hier nicht berechnet.
+][
+*Verschiebearbeit einordnen:* Beim Austritt muss der Stoff gegen den Druck über die Grenze geschoben werden. Der positive Abgabebetrag je kg ist $w_"VS,aus"=p v''=150 thin "kPa" dot "1,159" thin "m"^3/"kg"="173,85"$ kJ/kg. In einer reinen Zufuhrbilanz wäre diese Abgabe negativ. Der Beitrag ist in der Enthalpie bereits enthalten.
+][
+*Energie je kg und Energiestrom trennen:* Bei vernachlässigter Lageenergie ist $e_"aus"=h''+c^2/2$. Der Geschwindigkeitsanteil beträgt $c^2/2 approx "756,752"$ J/kg $= "0,756752"$ kJ/kg. Somit $e_"aus" approx "2693,756752"$ kJ/kg. Nicht zusätzlich noch einmal $p v''$ addieren! Mit dem Massenstrom folgt $dot(E)_"aus"=dot(m)_"aus"e_"aus" approx "0,639144595"$ kJ/s $= "639,144595"$ W. In 2400 s verlassen damit $E_"aus" approx "1533,947027"$ kJ die Grenze.
+][
+*Speicheränderung ausdrücklich berechnen:* Die Phasen haben unveränderte Stoffwerte, aber veränderte Massen. Aus $u'=h'-p v'="466,942095"$ und $u''=h''-p v''="2519,15"$ kJ/kg folgt
+$Delta U=Delta m' u'+Delta m''u'' approx -"264,835562"$ kJ.
+Kontrolle: Wegen des gleichen gesamten pV liefert auch $Delta H=Delta m'h'+Delta m''h''$ denselben Wert. Die Speicheränderung je Zeit ist etwa −110,348151 W; konstantes p und T machen den entleerenden Topf nicht stationär.
+][
+*Instationäre Energiebilanz lösen:* $Delta U=Q_01-E_"aus"$. Daher $Q_01=Delta U+E_"aus" approx -"264,835562"+"1533,947027"="1269,111465"$ kJ und $dot(Q)=Q_01/2400 approx "528,796444"$ W. Der austretende Energiestrom ist größer als der Wärmestrom, weil zusätzlich gespeicherte Energie mit dem Stoff abgegeben wird. M36 rundet den Massenstrom früh auf 2,373 · 10⁻⁴ kg/s und erhält 528,852 W bzw. 1269,244 kJ; wir behalten ungerundete Zwischenwerte bei.
+][
+*Unabhängig prüfen und Kochplatte bestimmen:* Die verdampfte Flüssigkeit braucht $(-Delta m')(h''-h') approx "1268,680536"$ kJ. Dazu kommt die mit dem austretenden Dampf abgeführte Bewegungsenergie $m_"aus" c^2/2 approx "0,430929"$ kJ. Zusammen sind das wieder 1269,111465 kJ. Für die Kochplatte ist der Nutzen die Wärmezufuhr im Topf:
+$P_"el"=dot(Q)/eta_"ges"="528,796444"/"0,5288" approx "999,993"$ W $approx 1$ kW.
+Einheiten und Bilanz schließen; der Gesamtwirkungsgrad wird genau einmal berücksichtigt.
+]
+
 #kapitel("Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme")
 
 #aufgabe(titel: "Stirlingluft: isotherme Verdichtung mit Dissipation", art: "rechnen", quelle: "4.3.1",
  ergebnis: [$Delta S approx -"0,606738"$ J/K; $W_12=240$ J, $W_v=190$ J; $p_2 approx 4$ bar absolut; $S_"erz" approx "0,159668"$ J/K.],
  tipp: [Beim idealen Gas ist isotherm $Delta U=0$. Die gesamte Arbeit enthält auch die dissipierten 50 J.])[
-#if not web [*Aufgabe 75* #linebreak()]
+#if not web [*Aufgabe 77* #linebreak()]
 *Gegeben und Annahmen:* N04, IV-1: $m="1523,917"$ mg ideale Luft wird bei 40 °C von $p_1=1$ bar absolut isotherm verdichtet. Dissipationsarbeit $J_12=50$ J; an der Systemgrenze werden 240 J Wärme abgeführt, also $Q_12=-240$ J. Geschlossene konstante Masse, quasistatisches Volumenarbeitsmodell, keine Änderung äußerer Energien. Konstantes $R="287,2"$ J/(kg K); $T="313,15"$ K. $1$ mg = $10^(-6)$ kg und $1$ bar = $10^5$ Pa. Das Folienmodell schreibt $Delta S=(Q_12+J_12)/T$ und $W_12=W_v+J_12$.
 
 *Gesucht:*
@@ -1632,7 +1708,7 @@ Vergleiche eine adiabate Düse gleicher Ein-/Austrittshöhe mit einer adiabaten 
 #aufgabe(titel: "Abkühlender Stahlblock: Entropie von Block und Umgebung", art: "rechnen", quelle: "4.3.1",
  ergebnis: [$vartheta_2=499$ °C; $Delta S_"Block" approx -"10,19208"$ kJ/K; $Delta S_"Umgebung" approx "26,88044"$ kJ/K; $Delta S_"gesamt" approx "16,68836"$ kJ/K, irreversibel.],
  tipp: [Die Umgebung wird als großes Reservoir bei konstanter Temperatur modelliert; der Block kühlt sich ab.])[
-#if not web [*Aufgabe 76* #linebreak()]
+#if not web [*Aufgabe 78* #linebreak()]
 *Gegeben und Annahmen:* N04, IV-2: Stahlblock mit Volumen 1 m³, Masse 7880 kg und konstanter Wärmekapazität $c="0,5"$ kJ/(kg K). Anfangstemperatur 501 °C; er gibt 7880 kJ Wärme an die große Umgebung bei konstant 20 °C ab. Block näherungsweise inkompressibel; keine Arbeit, keine Änderung äußerer Energien. $T_1="774,15"$ K und $T_"Umg"="293,15"$ K. Das betrachtete Gesamtsystem aus Block und Reservoir tauscht im Modell keine weitere Energie oder Entropie aus.
 
 *Gesucht:*
@@ -1651,7 +1727,7 @@ Vergleiche eine adiabate Düse gleicher Ein-/Austrittshöhe mit einer adiabaten 
 #aufgabe(titel: "Dampfturbine und Blockade: isentroper Vergleich und Entropie", art: "rechnen", quelle: "4.3.3",
  ergebnis: [Betrieb: $vartheta_2 approx 220$ °C, $w_t approx -"574,048"$ kJ/kg, $P_t approx -"1148,095"$ kW, Vergleichsverlust etwa 95,994 kW. Blockade: $h_2=h_1 approx "3449,045"$ kJ/kg, $vartheta_2 approx "486,469"$ °C, $P_t=0$.],
  tipp: [Zuerst den Einlasszustand aus p und s ermitteln, danach den isentropen Vergleichszustand am Enddruck.])[
-#if not web [*Aufgabe 77* #linebreak()]
+#if not web [*Aufgabe 79* #linebreak()]
 *Gegeben und Annahmen:* N04, IV-3: Stationärer Dampfstrom $dot(m)=2$ kg/s bei $p_1=100$ bar und $s_1="6,692"$ kJ/(kg K). Enddruck 10 bar; isentroper Turbinen-Gütegrad $eta_"is"="0,92284"$. Die Turbine ist adiabat; Änderungen von Bewegungs- und Lageenergie werden vernachlässigt. Bei einer anschließenden Blockade strömt der Dampf im vereinfachten Modell ohne technische Arbeitsabgabe durch das Gerät. Folgender konsistenter Tabellenauszug steht zur Verfügung:
 #tab(columns: (1fr, 1fr, 1fr, 1fr),
  th([p bar], [Temperatur °C], [h kJ/kg], [s kJ/(kg K)]),
@@ -1681,7 +1757,7 @@ Verwende lineare Interpolation zwischen den jeweiligen Stützstellen. Als aus de
 ]
 
 #aufgabe(titel: "Zustandsdiagramme: Achsen und Isolinien selbst zeichnen", art: "verstehen", quelle: "4.4")[
-#if not web [*Aufgabe 78* #linebreak()]
+#if not web [*Aufgabe 80* #linebreak()]
 Zeichne die Achsen eines T-s-, h-s- und lg(p)-h-Diagramms. Trage jeweils die unmittelbar horizontalen oder vertikalen Isolinien ein. Erkläre, welche Größe bei Isotherme, Isobare, Isochore, Isentrope, Isenthalpe und Isovapore konstant bleibt. Wann darf die Fläche unter einem T-s-Weg als Wärme gelesen werden?
 #src[N04, PDF-S. 11; N28, PDF-S. 4, Markierung zur Prüfung; eigene Verständnisaufgabe.]
 ][
