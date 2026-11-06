@@ -75,6 +75,9 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 Änderungen an diesen Dateien werden ebenfalls mit dem Upload-Skript veröffentlicht.
 ## Karteikarten
 
+- **Kartenstil in allen Modulen (Mario, 06.11.2026):** Antworten grundsätzlich als kurze Stichpunkte (meist 2–5, ein Gedanke je Punkt), einfache Formulierungen und sparsame fette Schlüsselbegriffe. Vergleiche parallel und Abläufe als Schrittfolgen; Begriffslandkarten als kurze Verbindungen/Pfeilketten statt Textwand. Gilt auch für neue Vorlesungsinhalte und jede Erweiterung einer Rückseite.
+- Bei typischen Verwechslungen gezielt eine eigene Zeile `**Merksatz:** …` ergänzen; `build.py` stellt sie als eigenen hervorgehobenen Absatz dar. Passende sprachliche Alltagsanalogien über `Bild: …` als separates Merkbild anzeigen, vorhandene Fachabbildungen nutzen. Keine beliebigen Bilder erzwingen. Eigene Lernhilfen im Dateikommentar kennzeichnen; Analogien ersetzen keine Fachquelle oder Gültigkeitsbedingung.
+- Bei der Kürzung Formeln, Vorzeichen, Einheiten, Annahmen und Einschränkungen erhalten. Fragen, Kapitel und Quellen möglichst unverändert lassen, damit IDs und Lernstand bestehen bleiben. Nach Pflege die Trennung von Liste, Merksatz und Merkbild, Quellenlinks und iPad-Darstellung prüfen. Die verbindliche redaktionelle Regel steht zusätzlich in Abschnitt 8.5 aller Modul-AGENTS.md.
 - Quelle: je Modul `Lernskript aktuell/Karteikarten.md`. `## …` beginnt ein Kapitel, `### Frage` eine Karte,
   alles darunter ist die Rückseite. Eine Zeile `Bild: …` wird als Merkbild (Analogie) angezeigt.
 - Jede Karte bekommt eine Zeile `Quelle: 1.3` (Abschnittsnummer im Lernskript, bei TM2 z. B. `Quelle: TM2 1.6`).
@@ -206,6 +209,12 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Kartenbewertung gelten in allen sieben und künftigen Modulen.
 
 ## Änderungsprotokoll
+
+### 06.11.2026 · Kurze Kartenantworten und dauerhafte Stilregeln
+- Alle 642 Rückseiten in sieben Modulen als Stichpunkte gegliedert; dichte Erklärungen und Begriffslandkarten vereinfacht. 246 eigene Merksätze und 19 weitere sprachliche Merkbilder ergänzt (jetzt 60); vorhandene Fachabbildungen erhalten.
+- Fragen, Kapitel, Quellen und vorhandene Gleichungen beim Abgleich erhalten. Merksätze werden separat hervorgehoben. Abschnitt 8.5 aller sieben Modul-AGENTS.md und diese Regeln gelten auch für neue Vorlesungsinhalte.
+- Vollständiger lokaler Build ohne Warnungen (7 Skripte und Aufgaben, 746 gesetzte Formeln), 12 Python-Tests und bestehende JavaScript-Tests bestanden; Lernpfad mit den echten Daten über alle 235 Abschnitte geprüft. Browserprüfung aller sieben Module mit echten Bildern/Formeln, Quellenlinks, bewusstem Bewerten und iPad-/Mobilansicht erfolgreich. `test_karten.py` läuft auch in CI.
+- Sicherung der ursprünglichen Karten: `../Sonstiges/Lernplattform-Sicherungen/2026-11-06_vor_Kartenstichpunkten/`.
 
 ### 06.11.2026 · Verbindlicher Lernpfad in allen Modulen
 - Abschnitte nach Quellenangaben numerisch ordnen; einheitliche Freigabe für neue/fällige/freie Karten, Quiz, Tagesabschluss, Aufgaben und Mix/Probe.

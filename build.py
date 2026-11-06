@@ -364,7 +364,8 @@ def antwort_html(zeilen):
 
     def leeren():
         if absatz:
-            teile.append(f"<p>{inline(' '.join(absatz))}</p>")
+            klasse = ' class="merksatz"' if absatz[0].startswith("**Merksatz:**") else ""
+            teile.append(f"<p{klasse}>{inline(' '.join(absatz))}</p>")
             absatz.clear()
         if liste:
             teile.append("<ul>" + "".join(f"<li>{inline(x)}</li>" for x in liste) + "</ul>")

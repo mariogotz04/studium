@@ -7,6 +7,7 @@ von einer GitHub Action zu PDFs kompiliert und auf GitHub Pages veröffentlicht.
 - **Lokal bauen:** `python3 build.py` (braucht `typst`), Ergebnis in `_site/`.
 - **Aufbau:** `skripte/<Modul>/Lernskript aktuell/Typst-Dateien/main.typ`, genau ein aktuelles Skript je Modul; der Titel kommt aus `#set document(title: …)`.
 - **Karteikarten:** `skripte/<Modul>/Lernskript aktuell/Karteikarten.md`, unter „Lernen → Modul → Karteikarten“ neben Aufgaben, Quiz und Probeklausur. Jede Kartenrunde bleibt in einem Modul; „Heute dran“ sorgt weiterhin für Interleaving zwischen den Modulen.
+- **Kartenstil:** kurze Stichpunkte mit einem Gedanken je Punkt, gezielte Merksätze und passende Alltagsbilder. Formeln und Gültigkeitsbedingungen bleiben erhalten. Das gilt laut Abschnitt 8.5 aller Modul-AGENTS.md auch für neue Vorlesungsinhalte. `python3 -m unittest test_karten.py` prüft Quellenstil und Darstellung von Liste, Merksatz und Merkbild.
 - **Aufgaben:** `skripte/<Modul>/Lernskript aktuell/Typst-Dateien/Aufgaben.typ`, **Quiz:** `skripte/<Modul>/Lernskript aktuell/Quiz.md`, beide im Reiter „Lernen“.
 - **Im Skript nachlesen:** Quellenlinks der Lernformate öffnen die passende Seite in der integrierten PDF-Ansicht und markieren die zur jeweiligen Antwort passende Textstelle gelb. Die Positionen werden beim Build neu ermittelt; beim nächsten Verweis wird die vorherige Markierung ersetzt.
 - **Vorlesungsplan:** `Vorlesungsplan.pdf` (thabella-Export), wird von `build.py` eingelesen. Lokal braucht der Build dafür `pip install pypdf pdfplumber`.

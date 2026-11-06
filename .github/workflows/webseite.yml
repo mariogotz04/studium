@@ -32,6 +32,7 @@ jobs:
           node-version: '22'
           package-manager-cache: false
       - run: python3 -m unittest test_zitate.py
+      - run: python3 -m unittest test_karten.py
       - run: node test_zitate.cjs
       - run: node test_mix.cjs
       - run: node test_lernpfad.cjs
