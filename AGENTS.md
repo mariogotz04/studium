@@ -191,6 +191,16 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
   Tabelle `zustand`, eine Zeile je Eintrag, neuere Änderung gewinnt) zwischen Marios Geräten abgeglichen.
   Anmeldung per E-Mail-Link unter „Sync“ oben rechts. Nichts davon steht im Repository.
 
+## Automatischer Lernplan (freigegeben am 06.11.2026)
+
+- Unter **Termine → Lernplan** (`#termine/lernplan`): erst ein veränderbares Beispielbudget, anschließend Vorschau und bewusstes Übernehmen. Kein persönlicher Plan ohne übernommene Einstellungen. Gemeinsame Klausuren erhalten eine gemeinsame Gruppe; freie Tage, Vorlesungen, Schwerpunkt, Lern-/Pausenzeiten und 20 % Puffer berücksichtigen. Ungedeckte Einheiten und verkürzte Wiederholungsphasen sichtbar ausweisen, keine stille Überbuchung.
+- `lernplan.js` enthält die reine Plan-/Statuslogik, `lernplan-ui.js` den Adapter zur bestehenden Lernplattform und `lernplan-pdf.js` die lokale PDF-Erzeugung. `vendor/` enthält fest versionierte Bibliotheken, eine einbettbare Schrift und Lizenzen. Build und Upload müssen alle Dateien mitnehmen; Asset-Inhalte bestimmen die Version in den Script-Adressen.
+- Private Daten ausschließlich im bestehenden DB-/Sync-Zustand: `einst:lernplan` verweist auf `lernplan:version:<ID>`. Planpunkte behalten stabile Ziel-IDs. Zwei neueste Versionen erhalten; historische erledigte Einheiten und der aktuelle Tag werden bei Neuplanung übernommen. Pro Einheit getrennte `lernplan:manuell:<ID>` und monotone `lernplan:abschluss:<ID>`; Verschiebungen unter `lernplan:datum:<Version>:<ID>`, tägliche fällige Ergänzungen unter `lernplan:extra:<Version>:<ID>`, Tageswechsel unter `lernplan:tag:<Version>`. Niemals private Pläne im Build erzeugen oder veröffentlichen.
+- „Heute dran“ übernimmt bei aktivem Plan dieselben Tagesziele. Aufgabenhaken erst nach „selbst gelöst“, Quiz/Karten gemäß vorhandenen Bewertungen; Wiederholungsrunden erst nach tatsächlichem Abschluss in ihrer Wiederholungsphase. Manuell bedeutet eigene Bearbeitung und setzt keinen Lernpfadabschluss. Aufgaben aus jedem Einstieg zählen. Erreichte Einheiten bleiben abgeschlossen; neue Inhalte werden als offen eingeplant. Die bestehende Abschnittsfreigabe niemals umgehen.
+- Beim Tageswechsel offene Einheiten innerhalb freier Puffer vor der jeweiligen Klausur nachholen. Neu fällige, bereits freigegebene Karten nur innerhalb des verbleibenden Budgets ergänzen. Während des Tages keine Ziele nachschieben. Termin-/Quellenänderungen zeigen Neuplanungsbedarf und erfordern eine Vorschau; aktueller Tag und abgeschlossene Historie bleiben bestehen.
+- Gesamt-/Wochen-PDF mit eingebetteter Schrift, Checkboxen, Kapitelstand, Zeitstempel/Version und klickbaren Ziel-/Skriptlinks aus dem aktuellen privaten Plan erzeugen. Quellen aus dem aktuellen Katalog nehmen. Vorhandene Downloads bleiben Momentaufnahmen. Im Viewer bei verändertem Fortschritt Aktualisierung anbieten, das gelesene Dokument nicht automatisch schließen oder ersetzen. Alte Ziel-Links verständlich ins Modul führen.
+- `node test_lernplan.cjs` läuft auch in CI und prüft Kapazität, Reihenfolge, Gruppen, Status, Historie, Wiederholungen und Nachholen. PDF-Layout und Interaktion zusätzlich im Browser mit isolierten Testdaten prüfen.
+
 ## Motivation und persönliche Richtung
 
 - Start zeigt „Mein Warum“ mit dem nächsten offenen Tagesziel und kleinem Einstieg. `#richtung` öffnet den Editor für Warum, Vision, Identitätssatz, Anti-Vision und Wenn-dann-Plan. Alles ist freiwillig und abschaltbar; Anti-Vision bleibt eingeklappt.
@@ -219,11 +229,18 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 
 ## Änderungsprotokoll
 
+### 06.11.2026 · Verknüpfter Lernplan und PDF
+- Freigegebenen Entwurf umgesetzt: Budgets, Vorschau, Wochen-/Tagesplan, Klausurgruppen, Fortschritt, Tagesvorschläge, Neuplanung und PDF-Export. Kapitel bleiben an die bestehenden Lernpfadregeln gebunden.
+- PDFs werden privat im Browser erstellt. Keine persönlichen Pläne oder Beispielbewertungen in den öffentlichen Modulquellen.
+- Mario hat die Veröffentlichung des neuen Lernplan-Features einschließlich Code, Tests und PDF-Bibliotheken ausdrücklich freigegeben. Nur Webseitenänderungen mit `--nur-webseite` hochladen; persönliche Pläne bleiben privat.
+- Validiert: vollständiger Build aller sieben Module ohne Warnungen, 17 Python-Tests und fünf JavaScript-Suiten; bestehender Lernpfad mit 235 Abschnitten erhalten. Browserprüfungen mit echten Moduldaten, sechs Klausuren/sieben Modulen, externen Bewertungen, zwei isolierten Geräteprofilen, Tageswechsel, Neuplanung, neuen Quellen, entfernten Zielen und iPad-/Mobilformaten bestanden. Gesamt-/Wochen-PDF mit eingebetteter Schrift, Links, Aktualisierungshinweis und simuliertem iPad-Teilen geprüft; sämtliche PDF-Seiten auf Druckränder und Stichproben visuell geprüft. Physischer Safari-/Apple-Pencil-Test bleibt geräteabhängig.
+- Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-11-06_vor_Lernplan/`.
+
 ### 06.11.2026 · Unendliches Pencil-Notizblatt und Lernplanentwurf
 - Notizblatt standardmäßig eingeklappt, drei Ansichtsgrößen, unendliche Zeichenfläche mit Zwei-Finger-Zoom und Verschieben. Weltkoordinaten erhalten Schrift und Proportionen beim Größenwechsel. Nur der Stift schreibt; aufliegende Hände zeichnen und verschieben während des Schreibens nicht. Textauswahl und Kontextmenü im gesamten Blatt unterbunden.
 - Begriffslandkarten-Fragen werden in sämtlichen Modulen zentral beim Build entfernt. Übrige Karten und ihre IDs bleiben erhalten; bestehende Tagesplanprüfung entfernt nicht mehr vorhandene offene Ziele.
 - `Lernplan-Vorschlag.md` beschreibt die geplante Verknüpfung von Klausuren, Lernpfad, Aufgaben, Tagesvorschlägen und aktualisierten PDF-Exporten. Noch keine Implementierung dieses Features; Freigabe durch Mario steht aus.
-- Validiert: vollständiger Build aller sieben Module ohne Warnungen; 17 Python-Tests und alle vier JavaScript-Suiten bestanden. 39 Fragen entfernt, übrige 603 Karten-IDs und alle Aufgaben-/Quizdaten erhalten; Lernpfad weiterhin mit 235 Abschnitten geprüft. Isolierter Chrome-Test mit simulierten nativen Stift-/Touch-Ereignissen und iPad-/Mobilformaten bestanden. Ein physischer Apple-Pencil-/Safari-Test steht noch aus. Vorgesehen ist die Veröffentlichung nur der Webseite (`--nur-webseite`); die automatische Freigabeprüfung verlangt dafür noch Marios ausdrückliche Zustimmung.
+- Validiert: vollständiger Build aller sieben Module ohne Warnungen; 17 Python-Tests und alle vier JavaScript-Suiten bestanden. 39 Fragen entfernt, übrige 603 Karten-IDs und alle Aufgaben-/Quizdaten erhalten; Lernpfad weiterhin mit 235 Abschnitten geprüft. Isolierter Chrome-Test mit simulierten nativen Stift-/Touch-Ereignissen und iPad-/Mobilformaten bestanden. Ein physischer Apple-Pencil-/Safari-Test steht noch aus. Nach ausdrücklicher Freigabe von Mario nur die Webseite (`--nur-webseite`) veröffentlicht, Commit `e40980a`; GitHub-Pages-Build erfolgreich.
 - Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-11-06_vor_Zoom_und_Stifteingabe/`.
 
 ### 06.11.2026 · Notizblatt und korrigierte Quellenmarkierungen

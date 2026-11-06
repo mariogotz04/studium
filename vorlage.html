@@ -429,6 +429,23 @@ figure.abb + figure.abb { margin-top: 14px; }
 .mode { font-size: 12px; font-weight: 600; color: var(--hard); }
 /* Ein flüchtiges Blatt neben der aktuellen Frage. Nur im Arbeitsspeicher. */
 body.notizen-aktiv .wrap { max-width: 1420px; }
+.lp-kopf { margin: 20px 0; justify-content: space-between; }
+.lp-budget { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 8px; }
+.lp-budget label { min-width: 0; }
+.lp-budget input { width: 100%; min-width: 0; padding: 10px 6px; }
+.lp-tag { padding: 18px 0; border-top: 1px solid var(--line); }
+.lp-tag h3 { margin: 0; font-size: 21px; }
+.lp-tag.heute { border-left: 3px solid var(--accent); padding-left: 14px; }
+.lp-einheit { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+.lp-einheit .was { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.lp-einheit .was > b, .lp-einheit .was > span { display: block; }
+.lp-einheit .was > span { font-size: 14px; color: var(--muted); margin-top: 5px; }
+.lp-einheit.erledigt > .was > b { color: var(--accent); }
+.lp-modul summary { padding: 12px 0; min-height: 44px; cursor: pointer; }
+#lp-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
+#lp-form textarea { min-height: 80px; }
+.pdfplanlink { position: absolute; z-index: 3; display: block; }
+@media (max-width: 599px) { .lp-budget { grid-template-columns: repeat(4,minmax(0,1fr)); } .lp-einheit { flex-wrap: wrap; } .lp-einheit > .btn { margin-left: 56px; } }
 .lernplatz { display: grid; grid-template-columns: minmax(0, 1fr) var(--notizbreite, clamp(260px, 28vw, 360px)); gap: 20px; align-items: start; min-width: 0; }
 .lernplatz[data-blattgroesse="0"] { --notizbreite: clamp(240px, 24vw, 300px); --notizhoehe: min(48dvh, 420px); }
 .lernplatz[data-blattgroesse="2"] { --notizbreite: clamp(320px, 48vw, 680px); --notizhoehe: min(76dvh, 780px); }
@@ -552,6 +569,8 @@ body.lernen .lerninhalt { display: flex; flex-direction: column; min-height: 0; 
   </div>
 </div>
 <a class="pomopille" id="pomopille" href="#lernen/pomodoro" hidden></a>
+<script src="lernplan.js?v=__LP_ASSET_VERSION__"></script>
+<script src="lernplan-ui.js?v=__LP_ASSET_VERSION__"></script>
 <script>
 // Zeigt Fehler sichtbar an (auch Syntaxfehler im Hauptskript), damit man sie auf dem iPad ohne Konsole sieht.
 window.addEventListener("error", e => {
@@ -645,6 +664,7 @@ const db = {
     this.cache.set(k, r);
     try { localStorage.setItem("db:" + k, JSON.stringify(r)); } catch {}
     if (!vonServer) sync.vormerken(k);
+    if (/^(aufgabe|quiz|karte|lernpfad):/.test(k) && typeof lernplanMerken === "function") lernplanMerken();
   },
   // alle Einträge mit diesem Anfang als Objekt (Rest des Schlüssels → Wert), gelöschte ausgelassen
   objekt(anfang) {
@@ -794,6 +814,7 @@ document.addEventListener("visibilitychange", () => document.visibilityState ===
 window.addEventListener("online", () => sync.jetzt());
 // Wenn ein anderes Gerät etwas geändert hat: Ansicht neu aufbauen, aber keine laufende Runde unterbrechen.
 function neuZeichnen() {
+  if (!pdfAnsicht.hidden && pdfAnsicht.dataset.href?.startsWith("blob:")) { lernplanMerken(); return; }
   if (sitzung || quizRunde || document.activeElement?.matches("input, textarea, select")) return;
   if (/^#lernen\/[^/]+\/(?:probe\/)?aufgabe\//.test(location.hash)) return;
   route(false);
@@ -1120,6 +1141,7 @@ function vorschläge(tag) {
 /* Tagesplan: Vorschläge einmal pro Tag festhalten. Bearbeitet und fachlich sicher sind getrennt.
    Einzelne Aktivitätsschlüssel lassen Abschlüsse verschiedener Geräte zusammenlaufen. */
 function tagesPlan(tag = heuteIso()) {
+  if (typeof lpTagesvorschläge === "function" && lpPlan() && tag === heuteIso()) return { v: 4, items: lpTagesvorschläge(tag) };
   let plan = db.get("tagesplan:" + tag, null);
   // Pläne von vor der Lernreihe (v < 2) heute einmal neu aufbauen; schon Erledigtes bleibt stehen.
   const alt = plan?.items && !plan.v && tag === heuteIso() ? plan.items.filter(v => vorschlagStand(v, tag).fertig) : null;
@@ -1191,6 +1213,7 @@ function lernAktivität(art, modul, id, daten = {}, tag = heuteIso()) {
   db.set(key, { ...db.get(key, {}), ...daten, art, modul, id, t: Date.now() });
 }
 function vorschlagStand(v, tag = heuteIso()) {
+  if (v.art === "lernplan") return lpTagesstand(v);
   const aktiv = tagesAktivitäten(tag).filter(a => a.modul === v.modul);
   let n = 0, ziel = 1, automatisch = false, zeit = 0;
   if (v.art === "aufgabe") {
@@ -1218,6 +1241,7 @@ function vorschlagStand(v, tag = heuteIso()) {
   return { fertig, automatisch, n, ziel };
 }
 function vorschlagStarten(v) {
+  if (v?.art === "lernplan") { const p = lpPlan(); return lpStart(p?.units.find(u => u.id === v.kapitel), p); }
   if (!v) { location.hash = "#lernen"; return; }
   const geprüft = vorschlagPrüfen(v);
   if (!geprüft) {
@@ -1392,10 +1416,10 @@ function startSeite() {
       <div class="panel"><div class="kasten-titel"><h2>Heute dran</h2><span class="tagesfortschritt">${erledigt} von ${tagesliste.length} erledigt</span></div>
         ${tagesliste.length ? tagesliste.map((v, i) => `<div class="vorschlag${stände[i].fertig ? " erledigt" : ""}">
           <button class="haken${stände[i].fertig ? " an" : ""}" data-haken="${i}" aria-label="${stände[i].fertig ? "Wieder öffnen" : "Als erledigt markieren"}: ${esc(v.titel)}" aria-pressed="${stände[i].fertig}">✓</button>
-          <div class="was"><b>${esc(v.titel)}</b><span>${esc(v.text)}${stände[i].ziel > 1 ? ` · ${stände[i].n}/${stände[i].ziel} bewertet` : ""}</span></div>
+          <div class="was"><b>${esc(v.titel)}</b><span>${esc(v.text)}${stände[i].ziel > 1 ? ` · ${stände[i].n}/${stände[i].ziel} bewertet` : ""}</span>${v.art === "lernplan" ? `<a href="${esc(v.link)}">Im Lernplan ansehen</a>` : ""}</div>
           <button class="btn" data-los="${i}">${stände[i].fertig ? "Noch einmal" : "Los"}</button></div>`).join("")
           : `<p class="muted">Sobald Aufgaben, Quizfragen oder Karteikarten da sind, schlage ich dir hier jeden Tag passende Übungen vor.</p>`}
-        <p class="feynman" style="margin-top:12px">Deine Auswahl bleibt heute erhalten. Abgeschlossene Bearbeitungen werden automatisch abgehakt. Erledigt heißt bearbeitet; unsichere Inhalte bleiben zur Wiederholung vorgemerkt.</p>
+        ${typeof lpPlan === "function" && lpPlan() ? `<p class="feynman">Deine heutigen Einheiten kommen aus dem <a href="#termine/lernplan">Lernplan</a>. Aufgaben werden nach dem selbstständigen Lösen abgehakt; manuelle Haken ändern keinen Kapitelabschluss.</p>${stände.every(s => s.fertig) ? `<button class="btn" id="lp-naechster">Freiwillig mit dem nächsten Abschnitt weiter</button>` : ""}` : `<p class="feynman" style="margin-top:12px">Deine Auswahl bleibt heute erhalten. Abgeschlossene Bearbeitungen werden automatisch abgehakt. Erledigt heißt bearbeitet; unsichere Inhalte bleiben zur Wiederholung vorgemerkt.</p>`}
       </div>
       ${tagesErfolgeHtml(tag)}
       ${jetzt.getHours() >= 17 ? abschlussHtml(tag) : ""}
@@ -1408,6 +1432,7 @@ function startSeite() {
     </div></div>`;
   startView.querySelectorAll("[data-haken]").forEach(b => b.onclick = () => {
     const v = tagesliste[+b.dataset.haken], e = db.get("erledigt:" + tag, {});
+    if (v.art === "lernplan") { lpManuell(v.kapitel, false); return startSeite(); }
     e[v.key] = { wert: !vorschlagStand(v, tag).fertig, t: Date.now() };
     db.set("erledigt:" + tag, e); startSeite();
   });
@@ -1416,6 +1441,7 @@ function startSeite() {
     vorschlagStarten(v);
   });
   $("#kurzstart")?.addEventListener("click", () => vorschlagStarten(tagesliste.find(v => !vorschlagStand(v, tag).fertig)));
+  $("#lp-naechster")?.addEventListener("click", () => vorschlagStarten(alleModule.map(schrittVorschlag).find(Boolean)));
   zitatEreignisse(startView);
   todoEreignisse(startView, startSeite);
   $("#ablos")?.addEventListener("click", () => abschlussStarten(tag, $("#abtext").value.trim(), $("#abstrategie")?.value.trim()));
@@ -1495,7 +1521,7 @@ function termineSeite() {
   const f = fristBearbeiten ? { id: fristBearbeiten, ...db.get("frist:" + fristBearbeiten, {}) } : { art: "klausur" };
   const todos = offeneTodos(true), offeneT = todos.filter(t => !t.erledigt), fertigeT = todos.filter(t => t.erledigt);
   kopf("Termine", `${offen.length} Fristen · ${offeneT.length} offene To-dos`);
-  termineView.innerHTML = `<div class="zwei" style="margin-top:18px"><div>
+  termineView.innerHTML = `<div class="panel" style="margin-top:18px"><div class="kasten-titel"><h2>Dein Lernplan</h2><a class="btn primary" href="#termine/lernplan">Lernplan öffnen</a></div><p>Plane deine Klausurvorbereitung nach Wochen und Tagen, verfolge deinen Fortschritt und lade den aktuellen Plan als PDF herunter.</p></div><div class="zwei" style="margin-top:18px"><div>
     ${klausur ? countdownHtml(klausur) : ""}
     <div class="panel"><div class="kasten-titel"><h2>Fristen & Klausuren</h2></div>
       ${offen.map(x => fristZeile(x, true)).join("") || `<p class="muted">Noch nichts eingetragen.</p>`}
@@ -1664,7 +1690,7 @@ async function epubSichern(href, knopf) {
 // Dort zeigt die Seite Lernskripte deshalb in einer eigenen Ansicht (pdf.js) und sichert sie über das Teilen-Menü.
 const APP = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
 const PDFJS = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/legacy/build/";
-const pdfDateiname = href => DATA.find(m => m.file === href)?.download || decodeURIComponent(href.split("/").pop());
+const pdfDateiname = href => href.startsWith("blob:") ? "Lernplan Stand " + heuteIso() + ".pdf" : DATA.find(m => m.file === href)?.download || decodeURIComponent(href.split("/").pop());
 const pdfDateien = new Map();                    // href → File, damit ein zweites Tippen sofort teilen kann
 async function pdfSichern(href, knopf) {
   const name = pdfDateiname(href), text = knopf.textContent;
@@ -1941,6 +1967,18 @@ async function seiteZeichnen(d, dok) {
     await auftrag.promise;
     if (dok !== pdfDok || !d.isConnected || d.pdfLauf !== lauf) { c.width = c.height = 0; return; }
     d.dataset.status = "fertig"; d.appendChild(c);
+    if (pdfAnsicht.dataset.href?.startsWith("blob:")) {
+      const annotations = await seite.getAnnotations();
+      if (dok !== pdfDok || d.pdfLauf !== lauf) return;
+      const base = seite.getViewport({ scale: 1 });
+      for (const a of annotations) {
+        if (!a.url || !/^https?:\/\//.test(a.url)) continue;
+        const rect = base.convertToViewportRectangle(a.rect), link = document.createElement("a");
+        link.className = "pdfplanlink"; link.href = a.url; link.setAttribute("aria-label", "Verknüpftes Lernziel öffnen");
+        Object.assign(link.style, { left: Math.min(rect[0], rect[2]) / base.width * 100 + "%", top: Math.min(rect[1], rect[3]) / base.height * 100 + "%", width: Math.abs(rect[2] - rect[0]) / base.width * 100 + "%", height: Math.abs(rect[3] - rect[1]) / base.height * 100 + "%" });
+        d.appendChild(link);
+      }
+    }
   } catch {
     if (c) c.width = c.height = 0;
     if (d.pdfLauf === lauf) delete d.dataset.status;
@@ -1951,6 +1989,7 @@ function seiteFreigeben(d) {
   delete d.pdfLauf;
   const c = d.querySelector("canvas");
   if (c) { c.width = c.height = 0; c.remove(); }
+  d.querySelectorAll(".pdfplanlink").forEach(a => a.remove());
   delete d.dataset.status;
 }
 function pdfZu() {
@@ -2989,7 +3028,16 @@ function route(oben = true) {
   if (r === "start") startSeite();
   else if (r === "skripte") kopf("Meine Lernskripte", `${DATA.length} Module · PDF-Lernskripte und EPUB-Hörzusammenfassungen`);
   else if (r === "hoeren") hoerSeite(DATA.find(m => m.name === rest[0]), rest[1]);
-  else if (r === "termine") termineSeite();
+  else if (r === "termine") {
+    if (rest[0] === "lernplan") {
+      lernplanSeite(rest[1]);
+      if (rest[1] === "start") {
+        const p = lpPlan(), u = p?.units.find(u => u.id === rest[2]);
+        if (u) lpStart(u, p);
+        else { location.hash = rest[3] ? "#lernen/" + encodeURIComponent(rest[3]) : "#lernen"; meldung("Diese Planeinheit ist nicht mehr verfügbar. Hier kannst du im Modul weiterlernen."); }
+      }
+    } else termineSeite();
+  }
   else if (r === "konto") kontoSeite();
   else if (r === "richtung") richtungSeite();
   else if (r === "lernen") {

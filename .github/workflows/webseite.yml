@@ -36,6 +36,7 @@ jobs:
       - run: node test_zitate.cjs
       - run: node test_mix.cjs
       - run: node test_notizen.cjs
+      - run: node test_lernplan.cjs
       - run: node test_lernpfad.cjs
       - name: Veröffentlichte Zitatdatenbank erhalten
         run: python3 zitate_aktualisieren.py --merge-public

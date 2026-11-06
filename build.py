@@ -1030,8 +1030,17 @@ def main():
             .replace("/*PRUEFUNGEN*/null", einsetzen(pruefungen()))
             .replace("/*BUILD*/null", einsetzen(baustand())))
     page = formeln_setzen(page)
+    asset_version = hashlib.sha256(b"".join((ROOT / name).read_bytes() for name in
+        ("lernplan.js", "lernplan-ui.js", "lernplan-pdf.js"))).hexdigest()[:12]
+    page = page.replace("__LP_ASSET_VERSION__", asset_version)
     print(f"→ {len(FORMELN)} Formeln gesetzt")
     (OUT / "index.html").write_text(page, encoding="utf-8")
+    for name in ("lernplan.js", "lernplan-ui.js", "lernplan-pdf.js", "vendor"):
+        source = ROOT / name
+        if source.is_dir():
+            shutil.copytree(source, OUT / name, dirs_exist_ok=True)
+        else:
+            shutil.copy2(source, OUT / name)
     (OUT / ".nojekyll").touch()
 
     print(f"\n{len(modules)} Lernskripte erzeugt.")
