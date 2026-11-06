@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 06.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,50 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "gesamt-basis-arbeitspunkt": "abbildungen/gesamt-basis-arbeitspunkt.svg",
+  "gesamt-basis-netz": "abbildungen/gesamt-basis-netz.svg",
+  "gesamt-drei-zweige": "abbildungen/gesamt-drei-zweige.svg",
+  "gesamt-fuenf-widerstaende": "abbildungen/gesamt-fuenf-widerstaende.svg",
+  "gesamt-glimmlampe-kennlinie": "abbildungen/gesamt-glimmlampe-kennlinie.svg",
+  "gesamt-glimmlampe-netz": "abbildungen/gesamt-glimmlampe-netz.svg",
+  "gesamt-ideale-quellen-netz": "abbildungen/gesamt-ideale-quellen-netz.svg",
+  "gesamt-kennlinien-addieren": "abbildungen/gesamt-kennlinien-addieren.svg",
+  "gesamt-kirchhoff-allgemein": "abbildungen/gesamt-kirchhoff-allgemein.svg",
+  "gesamt-knoten-netz": "abbildungen/gesamt-knoten-netz.svg",
+  "gesamt-konstantstrom-transistor": "abbildungen/gesamt-konstantstrom-transistor.svg",
+  "gesamt-led-rot-kennlinie": "abbildungen/gesamt-led-rot-kennlinie.svg",
+  "gesamt-led-rot-netz": "abbildungen/gesamt-led-rot-netz.svg",
+  "gesamt-messung-i": "abbildungen/gesamt-messung-i.svg",
+  "gesamt-messung-u": "abbildungen/gesamt-messung-u.svg",
+  "gesamt-nichtlinear-lastkurve": "abbildungen/gesamt-nichtlinear-lastkurve.svg",
+  "gesamt-ntc-bruecke": "abbildungen/gesamt-ntc-bruecke.svg",
+  "gesamt-ntc-kennlinie": "abbildungen/gesamt-ntc-kennlinie.svg",
+  "gesamt-parallel": "abbildungen/gesamt-parallel.svg",
+  "gesamt-potenziometer": "abbildungen/gesamt-potenziometer.svg",
+  "gesamt-pt100": "abbildungen/gesamt-pt100.svg",
+  "gesamt-pufferbatterie": "abbildungen/gesamt-pufferbatterie.svg",
+  "gesamt-quelle-verschieben-i": "abbildungen/gesamt-quelle-verschieben-i.svg",
+  "gesamt-quelle-verschieben-u": "abbildungen/gesamt-quelle-verschieben-u.svg",
+  "gesamt-quellen-ideal-gemischt": "abbildungen/gesamt-quellen-ideal-gemischt.svg",
+  "gesamt-quellen-mischung": "abbildungen/gesamt-quellen-mischung.svg",
+  "gesamt-quellen-parallel": "abbildungen/gesamt-quellen-parallel.svg",
+  "gesamt-quellen-reihe": "abbildungen/gesamt-quellen-reihe.svg",
+  "gesamt-serie": "abbildungen/gesamt-serie.svg",
+  "gesamt-stern-dreieck": "abbildungen/gesamt-stern-dreieck.svg",
+  "gesamt-stromquelle-symbolisch": "abbildungen/gesamt-stromquelle-symbolisch.svg",
+  "gesamt-stromverhaeltnis": "abbildungen/gesamt-stromverhaeltnis.svg",
+  "gesamt-teiler-kaskade": "abbildungen/gesamt-teiler-kaskade.svg",
+  "gesamt-transistor-rc-feld": "abbildungen/gesamt-transistor-rc-feld.svg",
+  "gesamt-transistor-rc-netz": "abbildungen/gesamt-transistor-rc-netz.svg",
+  "gesamt-varistor-kennlinie": "abbildungen/gesamt-varistor-kennlinie.svg",
+  "gesamt-varistor-netz": "abbildungen/gesamt-varistor-netz.svg",
+  "gesamt-wheatstone": "abbildungen/gesamt-wheatstone.svg",
+  "gesamt-zwei-stromquellen": "abbildungen/gesamt-zwei-stromquellen.svg",
+  "gesamt-zweipol-zwei-quellen": "abbildungen/gesamt-zweipol-zwei-quellen.svg",
+  "map-schaltungen": "abbildungen/map-schaltungen.svg",
+  "map-methoden": "abbildungen/map-methoden.svg",
+  "map-zweipol": "abbildungen/map-zweipol.svg",
+
   "led-netzwerk": "abbildungen/led-netzwerk.svg",
   "netzwerk-nichtlinear": "abbildungen/netzwerk-nichtlinear.svg",
   "vl30-bruecke": "abbildungen/vl30-bruecke.svg",
@@ -146,6 +190,50 @@
 )
 
 #let bilddeutungen = (
+  "gesamt-basis-arbeitspunkt": (titel: "Bild lesen", body: [Die steile Kurve ist die Diodenkennlinie, die fallenden Geraden sind das Speisenetz bei zwei Quellspannungen. Die Schnittpunkte ändern sich bei paralleler Verschiebung der Geraden.]),
+  "gesamt-basis-netz": (titel: "Bild lesen", body: [Der Spannungsteiler R1 und R2 speist die Basis-Emitter-Strecke. Die Ausgangsklemmen A und B trennen das lineare Speisenetz von der nichtlinearen Eingangsdiode.]),
+  "gesamt-drei-zweige": (titel: "Bild lesen", body: [Die beiden äußeren Quellen speisen über R1 und R2 denselben Knoten A. Der mittlere Widerstand R3 verbindet A mit dem unteren Bezugsknoten. Der Pfeil I2 ist zunächst zum Knoten A hin gewählt.]),
+  "gesamt-fuenf-widerstaende": (titel: "Bild lesen", body: [R3 verbindet die beiden oberen Knoten. R2 und R4 liegen in den gemeinsam benutzten Zweigen benachbarter Maschen. Die Kreisströme sind gedachte Rechengrößen, deren Beiträge sich dort überlagern.]),
+  "gesamt-glimmlampe-kennlinie": (titel: "Bild lesen", body: [Waagerecht steht die Lampenspannung, senkrecht der Strom in Milliampere. Zunächst fällt die Spannung bei wachsendem Strom. Oberhalb des Knicks steigt sie wieder. Die gestrichelte Linie kennzeichnet den unteren Haltebereich.]),
+  "gesamt-glimmlampe-netz": (titel: "Bild lesen", body: [Die Quelle speist zwei Teiler aus R1/R2 und R3/R4. Die Last im Querzweig besteht aus R5 und der Glimmlampe. Für die Ersatzquelle an der Lampe bleibt R5 im aktiven Teil.]),
+  "gesamt-ideale-quellen-netz": (titel: "Bild lesen", body: [Alle unteren Knoten sind Masse. Die erste Stromquelle liegt oben zwischen B und C, die zweite ganz rechts. Römisch bezeichnete Kreisströme und reale Widerstandsströme müssen getrennt werden.]),
+  "gesamt-kennlinien-addieren": (titel: "Bild lesen", body: [Waagerecht steht U, senkrecht I. Oben werden zu einer gemeinsamen Spannung die beiden Ströme senkrecht addiert. Unten werden für denselben Strom die Teilspannungen waagerecht addiert.]),
+  "gesamt-kirchhoff-allgemein": (titel: "Bild lesen", body: [Die schwarzen Punkte A, B und C sind die drei Knoten, die Pfeile I1 bis I5 definieren Zweigstromrichtungen. Die drei eingezeichneten Umläufe ergänzen zwei unabhängige Knotenbilanzen.]),
+  "gesamt-knoten-netz": (titel: "Bild lesen", body: [Die beiden Quellen sind mit ihren Serienwiderständen in Stromersatzformen überführt. A und B sind die unbekannten Knoten, 0 ist Masse. Der Widerstand R3 koppelt ihre Potenziale.]),
+  "gesamt-konstantstrom-transistor": (titel: "Bild lesen", body: [Oben liegen Verbraucher und Quelleninnenwiderstand im Lastkreis. Unten steht UCE waagerecht und IC senkrecht. Die Hyperbel begrenzt die Transistorleistung; die beiden Quellenlinien markieren die idealisierten Lastgrenzen.]),
+  "gesamt-led-rot-kennlinie": (titel: "Bild lesen", body: [Waagerecht steht die LED-Spannung in Volt, senkrecht der Strom in Milliampere. Die rote Kennlinie steigt bei rund 2 V sehr steil an. Die Schwelle ist keine über alle Stromwerte exakt konstante Spannung.]),
+  "gesamt-led-rot-netz": (titel: "Bild lesen", body: [R1 und der obere Quellenzweig speisen die Klemme A. R3 und R4 bleiben parallel zwischen A und B. Nur die LED wird für die Leerlaufrechnung abgetrennt.]),
+  "gesamt-messung-i": (titel: "Bild lesen", body: [Das Amperemeter liegt im selben Zweig wie der Prüfling. Das Voltmeter umfasst beide Bauteile und misst den Spannungsabfall am Amperemeter mit.]),
+  "gesamt-messung-u": (titel: "Bild lesen", body: [Das Voltmeter liegt direkt parallel zum Prüfling. Das Amperemeter sitzt vor der Verzweigung und misst zusätzlich den Voltmeterstrom. Seine Stromanzeige ist daher für den Prüfling allein zu groß.]),
+  "gesamt-nichtlinear-lastkurve": (titel: "Bild lesen", body: [Waagerecht steht die Lastspannung, senkrecht der Laststrom in Milliampere. Dreiecke kennzeichnen die vorgegebenen Kennlinienpunkte. Zwischenwerte werden grafisch angenähert.]),
+  "gesamt-ntc-bruecke": (titel: "Bild lesen", body: [Oben bildet der Heißleiter mit R1 einen Teiler, unten R2 mit R3. Das Voltmeter verbindet beide Mitten und besitzt einen endlichen Innenwiderstand. Die Quelle speist die Brücke von links nach rechts.]),
+  "gesamt-ntc-kennlinie": (titel: "Bild lesen", body: [Waagerecht steht die Temperatur in Grad Celsius, senkrecht der Heißleiterwiderstand in Ohm auf logarithmischer Skala. Ein gleicher vertikaler Abstand entspricht einem gleichen Faktor, keiner gleichen Widerstandsdifferenz.]),
+  "gesamt-parallel": (titel: "Bild lesen", body: [Die oberen und unteren Leiter verbinden jeweils einen gemeinsamen Knoten. An allen Widerständen liegt dieselbe Spannung U. Der Gesamtstrom teilt sich in I1, I2 und I3 auf.]),
+  "gesamt-potenziometer": (titel: "Bild lesen", body: [Links liegt die feste Eingangsspannung an der gesamten Widerstandsbahn. Der Schleifer legt x und damit R2 fest. Rechts liegt die Last RA parallel zum unteren Bahnstück; IE teilt sich in Last- und Querstrom.]),
+  "gesamt-pt100": (titel: "Bild lesen", body: [Der Vorwiderstand RV speist zwei parallele Wege: den temperaturabhängigen Pt100 und das Instrument RM. Der Strom Im fließt nur durch das Instrument und ist nicht der gesamte Quellenstrom.]),
+  "gesamt-pufferbatterie": (titel: "Bild lesen", body: [Links speist der Generator über seinen Innen- und Vorwiderstand. Die Batterie liegt im mittleren Zweig, der Verbraucher rechts. Ein nach unten gerichteter Batteriestrom bedeutet bei der gezeichneten Polung Ladung der Batterie.]),
+  "gesamt-quelle-verschieben-i": (titel: "Bild lesen", body: [Die Kopien der Quelle rechts führen gleich große Ströme in passend gewählte Richtungen. Im ergänzten Querzweig gleichen sich die Quellenbeiträge aus; sein Strom ist null.]),
+  "gesamt-quelle-verschieben-u": (titel: "Bild lesen", body: [Links liefert eine Quelle ihren Beitrag zu zwei Widerstandszweigen. Rechts erhält jeder dieser Zweige eine gleich große, passend gepolte Kopie. Zwischen den kopierten Quellen heben sich die Spannungsbeiträge auf.]),
+  "gesamt-quellen-ideal-gemischt": (titel: "Bild lesen", body: [Die Spannungsquelle legt das obere Potenzial X gegen Masse fest. Die ideale Stromquelle treibt ihren vorgegebenen Strom durch den 1-kΩ-Widerstand. Der rechte Zweig ist durch seinen Leitwert beschriftet.]),
+  "gesamt-quellen-mischung": (titel: "Bild lesen", body: [Links speist eine Stromquelle einen Parallelwiderstand. Oben liegen 0,5 kΩ und eine Spannungsquelle in Reihe. Rechts bildet 1,5 kΩ einen Teil des aktiven Netzwerks; Ra ist die abtrennbare Last.]),
+  "gesamt-quellen-parallel": (titel: "Bild lesen", body: [Links liegen zwei gleiche Quellen an denselben Klemmen. Jede führt die Hälfte des Laststroms. Rechts bleibt die Quellspannung gleich, der Ersatzinnenwiderstand ist halb so groß.]),
+  "gesamt-quellen-reihe": (titel: "Bild lesen", body: [Oben unterstützen sich die Quellspannungen, unten wirken sie gegeneinander. Die Innenwiderstände stehen jeweils in Reihe und addieren sich. Die Minuszeichen am angenommenen Strom zeigen den Wechsel der tatsächlichen Richtung.]),
+  "gesamt-serie": (titel: "Bild lesen", body: [Der Strom hat zwischen den Widerständen keinen Abzweig. Die beiden Teilspannungen sind im Maschenumlauf gemeinsam der Quellspannung gegenübergestellt. Größerer Widerstand bedeutet bei gleichem Strom größeren Spannungsabfall.]),
+  "gesamt-stern-dreieck": (titel: "Bild lesen", body: [A, B und C bleiben als äußere Klemmen erhalten. Das äußere Dreieck kann durch drei innere Sternarme ersetzt werden. Die Sternmitte ist ein neuer innerer Punkt, kein zusätzlicher äußerer Anschluss.]),
+  "gesamt-stromquelle-symbolisch": (titel: "Bild lesen", body: [Links der idealen Stromquelle liegt ein rein passives Netzwerk, rechts die Klemmen A und B mit R4 und R5. Der Pfeil der Quelle bestimmt die Richtung des übertragenen Stroms und die mögliche negative Klemmenspannung.]),
+  "gesamt-stromverhaeltnis": (titel: "Bild lesen", body: [Die Verzweigungen sind ineinander verschachtelt. Ganz rechts bilden R6 und R7 die innerste Parallelgruppe. Vom inneren Ersatz aus werden die Stromteilungsverhältnisse nach links aufgebaut.]),
+  "gesamt-teiler-kaskade": (titel: "Bild lesen", body: [R2 und R3 bilden einen Serienzweig, der parallel zu R4 liegt. Erst diese Gruppe liegt in Reihe mit R1. Der Strom durch R1 teilt sich am Knoten auf.]),
+  "gesamt-transistor-rc-feld": (titel: "Bild lesen", body: [Waagerecht steht UCE in Volt, senkrecht links IC in Milliampere. Rechts sind die zugehörigen Basisströme in Mikroampere angeschrieben. Zur Auswertung wird die Kurve für 200 Mikroampere verwendet.]),
+  "gesamt-transistor-rc-netz": (titel: "Bild lesen", body: [Der fest vorgegebene Basisstrom wählt eine Ausgangskennlinie. Im Kollektorkreis liegen RC und die Quelle. Ihre Maschenbilanz teilt Uq zwischen Widerstand und Transistor auf.]),
+  "gesamt-varistor-kennlinie": (titel: "Bild lesen", body: [Waagerecht steht die Spannung in Volt, senkrecht der Strom in Milliampere. Die rote Kurve steigt mit der fünften Potenz stark an. Der Wert von 1 A liegt bei 50 V.]),
+  "gesamt-varistor-netz": (titel: "Bild lesen", body: [R1 und R2 bilden den speisenden Teiler. R3 liegt zwischen dessen Abgriff und Klemme A. Der VDR liegt als Last zwischen A und B und belastet den Teiler über R3.]),
+  "gesamt-wheatstone": (titel: "Bild lesen", body: [Die obere und untere Widerstandskette sind zwei Spannungsteiler. Das Galvanometer verbindet ihre Mitten B und C. Beim Abgleich verschwindet der Querzweigstrom; das Widerstandsverhältnis wird am Schleifdraht abgelesen.]),
+  "gesamt-zwei-stromquellen": (titel: "Bild lesen", body: [Die Widerstände R1 und R2 verbinden die drei oberen Knoten A, B und C. R3 führt von B zur Masse. Links speist die 2-mA-Quelle ein, rechts entnimmt die 5-mA-Quelle Strom.]),
+  "gesamt-zweipol-zwei-quellen": (titel: "Bild lesen", body: [Die Last Ra liegt zwischen A und B. R3 verbindet die Last mit dem inneren Quellennetz. Die beiden Spannungsquellen sind gegensinnig gepolt; diese Polungen bleiben beim Bestimmen der Leerlaufspannung aktiv.]),
+  "map-schaltungen": (titel: "Bild lesen", body: [Das dunkelgrüne Zentrum verbindet vier hellblaue Äste. Lies zuerst die vier Hauptideen, dann erkläre die Verbindungen in eigenen Worten. Die Äste zeigen unterschiedliche Zugänge zum selben Kapitel.]),
+  "map-methoden": (titel: "Bild lesen", body: [Das dunkelgrüne Zentrum verbindet vier hellblaue Äste. Lies zuerst die vier Hauptideen, dann erkläre die Verbindungen in eigenen Worten. Die Äste zeigen unterschiedliche Zugänge zum selben Kapitel.]),
+  "map-zweipol": (titel: "Bild lesen", body: [Das dunkelgrüne Zentrum verbindet vier hellblaue Äste. Lies zuerst die vier Hauptideen, dann erkläre die Verbindungen in eigenen Worten. Die Äste zeigen unterschiedliche Zugänge zum selben Kapitel.]),
+
   "vl30-potential": (titel: "Bild lesen", body: [Links verbinden ideale Drähte Punkte gleichen Potenzials. Rechts steht waagerecht die Folge der Schaltungspunkte, senkrecht das Potenzial in V mit D als Nullpunkt. Über Widerständen sinkt es in Stromrichtung, über der Quelle steigt es wieder. Der Anstieg schließt den Umlauf.]),
   "vl30-bruecke": (titel: "Bild lesen", body: [Beide Zweige liegen an 10 V. Links teilen zwei gleiche Widerstände die Spannung auf 5 V. Rechts bleiben unter dem Abgriff 8 V. Der gestrichelte Querzweig ist offen; ein realer Querwiderstand würde beide Spannungsteiler belasten.]),
   "vl30-leitung": (titel: "Bild lesen", body: [A und B liegen am Hinleiter, C und D am Rückleiter. Die Spannungen 220 V und 216 V unterscheiden sich um die Summe der Abfälle beider Leiter. C ist als Bezugspunkt markiert; Masse muss nicht am Minuspol der Quelle liegen.]),
@@ -220,12 +308,12 @@
 #v(5mm)
 #bild("cover", [Grundstromkreis aus Quelle, Innenwiderstand und Lampe. Eigene Darstellung; nicht maßstäblich.], height: 62mm)
 #v(4mm)
-#text(size: 12pt, fill: teal)[Ladung → Strom → Quelle → Grundstromkreis]
+#text(size: 12pt, fill: teal)[Ladung → Strom → Schaltung → Netzwerk → Arbeitspunkt]
 ]
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand 05.11.2026: Die Markierungen vom 30.10. erweitern den behandelten Stoff um Skript S. 20–41: Potenzial, Widerstandsarten, Temperaturgang, Energie und Leistung sowie Knoten- und Maschensatz. Hinzu kommt die Aufgabe zur grünen LED. Der bereits enthaltene Grundstromkreis bleibt erhalten; Aufgaben, Quiz, Karten und Hörfassung auf der Lernplattform sind mit diesem Stand abgeglichen.
+Stand 06.11.2026: Vollständige Feynman-Zusammenfassung zum GET-Vorlesungsskript bis S. 108 als Grundlage für dein Selbststudium. Die bisherigen Markierungen und Mitschriften bleiben einbezogen; die weiteren Kapitel ergänzen Messschaltungen, Netzwerkmethoden und Zweipoltheorie. Aufgaben mit vollständigen Lösungen, Quiz, Verständnis-Karten und Hörfassung werden zusammen auf der Lernplattform gepflegt.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -250,7 +338,13 @@ Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zu
   chunk([Kapitel 2 · Kirchhoff und Grundstromkreis], [Knoten · Maschen · Arbeitspunkt · Leistungsbilanz], ziel: <a-2>),
 )
 
-Ladung, Spannung und Strom bilden die Sprache des Moduls. Mit Widerstand und Leistung beschreibst Du zuerst einfache Schaltungen. Danach erklären die Quelleneffekte, wie eine Spannung entsteht. Potenziale und Kennlinien erweitern die Sprache auf nichtlineare Bauteile. Knoten- und Maschenregel verbinden die Zweige; der Grundstromkreis verbindet die reale Quelle mit dem Verbraucher: Innenwiderstand und Last bestimmen Arbeitspunkt, Verluste und nutzbare Leistung.
+#karte((1fr, auto, 1fr),
+ chunk([Kapitel 3 · Netzwerkmethoden], [Gleichungssystem · Überlagerung · Maschen · Knoten], ziel: <a-3>),
+ pfeil(beschriftung: [vereinfacht das Netz zur]),
+ chunk([Kapitel 4 · Zweipoltheorie], [Ersatzquelle · Kennlinienschnitt · Leistungsgrenze], ziel: <a-4>),
+)
+
+Ladung, Spannung und Strom bilden die Sprache des Moduls. Mit Widerstand und Leistung beschreibst Du zuerst einfache Schaltungen. Danach erklären die Quelleneffekte, wie eine Spannung entsteht. Potenziale und Kennlinien erweitern die Sprache auf nichtlineare Bauteile. Knoten- und Maschenregel verbinden die Zweige; Netzwerkmethoden machen größere Schaltungen berechenbar. Die Zweipoltheorie fasst das Speisenetz zusammen und findet den zulässigen Arbeitspunkt auch mit nichtlinearer Last.
 #src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
 
 #pagebreak()
@@ -353,7 +447,7 @@ Welche Form du nimmst, hängt davon ab, was gegeben ist: $I^2 R$, wenn der Strom
 )
 #form[$ "zwei parallele Widerstände:" quad R_"ges" = (R_1 R_2)/(R_1 + R_2) quad quad "unbelasteter Spannungsteiler:" quad U_2 = U dot.c R_2/(R_1 + R_2) $]
 #note("In eigenen Worten", [Erhöht man in einer Reihenschaltung einen Widerstand, sinken Strom und Gesamtleistung ($P = U^2\/R_"ges"$); die Quelle wird weniger belastet.])
-#src([FK 20–25; Schulwissen, eigene Ergänzung. Im Skript folgen Reihen- und Parallelschaltung ausführlich in V Kap. 2.4.4–2.4.5 (noch nicht behandelt).])
+#src([FK 20–25; Schulwissen, eigene Ergänzung. Vertiefung in Abschnitt 2.4.4–2.4.6 nach V S. 47–54.])
 #hoch(<a-0>, [Kapitelübersicht])
 
 
@@ -376,7 +470,7 @@ $U$: Gesamtspannung in V; $R_1$, $R_2$: Widerstände in Ω; $U_20$: Ausgangsspan
 #note("Fehler vermeiden", [Ein angeschlossener Verbraucher liegt parallel zu $R_2$. Dann ist der untere Widerstand durch den Parallelersatz zu ersetzen; die unbelastete Formel mit unverändertem $R_2$ gilt nicht mehr. Das ist die Bedeutung deiner Randnotiz neben den Ausgangsklemmen.], fill: sand)
 
 *FK 26–27:* Bei einer idealen Quelle entfällt der Innenwiderstand. Bei einer realen Quelle fällt unter Last innen $U_i = I R_i$ ab: Mit $U_q = "1,52" thin "V"$, $R_i = "0,13" thin Omega$ und $I = "0,04" thin "A"$ erhältst du $U_i = "0,0052" thin "V"$ und *$U_"Klemme" = "1,5148" thin "V"$*. Das ist die genauer gerechnete Version des Beispiels in Abschnitt 0.5.
-#note("Selbst erklären", [Warum darfst du die Spannungsteilerregel nicht ohne Prüfung für einen belasteten Ausgang verwenden? \ *Antwort:* Der Laststrom fließt zusätzlich durch $R_1$; $R_1$ und $R_2$ führen dann nicht mehr denselben Strom. Erst den Parallelersatz unten bilden, dann die Regel anwenden.])
+#note("In eigenen Worten", [Der Laststrom fließt zusätzlich durch $R_1$; $R_1$ und $R_2$ führen dann nicht mehr denselben Strom. Erst den Parallelersatz unten bilden, dann die Regel anwenden.])
 #src([FK-N, PDF-S. 6, Aufgaben 25–27 samt handschriftlichen Lösungen; Abschnitt 0.4 und V S. 42 für die Schaltungsregeln. Rechenwege ergänzt und ohne frühes Runden geprüft.])
 
 *Der Zusammenhang in Kapitel 0.* Die Spannung ist die Ursache, der Strom die Folge, der Widerstand bestimmt, wie viel Strom die Spannung antreibt. Die Leistung verknüpft Spannung und Strom zu dem, was am Verbraucher ankommt, und über die Zeit zur Energie, die bezahlt wird. In Schaltungen entscheidet die Schaltungsart, welche Größe überall gleich ist.
@@ -463,7 +557,7 @@ Setzt man in $I = n e l A\/t$ für $l\/t$ eine Geschwindigkeit ein, erhält man,
 $ v_d = (16 thin "A")/("8,44" dot.c 10^22 thin "cm"^(-3) dot.c "1,6" dot.c 10^(-19) thin "As" dot.c "0,01" thin "cm"^2) approx "0,12" thin "cm/s" = "1,2" thin "mm/s" $
 Das ist Schneckentempo; das Berechnungsblatt in V S. 9 vergleicht ausdrücklich mit einer Schnecke (etwa 4,2 m/h = 1,2 mm/s). Dort steht auch ein zweites Zahlenbeispiel: 50 m Kupferleitung mit 1,5 mm² an 12 V, $I approx "16,66" thin "A"$, $v_d approx "0,82" thin "mm/s"$.
 #bild("skript-impuls", [Der Impuls der Elektronen breitet sich rascher aus, als sie sich fortbewegen. V S. 8, Abb. 1.4.], height: 24mm)
-#note("Selbst erklären", [Die Elektronen driften nur mit mm/s. Warum leuchtet die Lampe trotzdem sofort? \ *Antwort:* Das elektrische Feld breitet sich fast mit Lichtgeschwindigkeit aus. Alle Elektronen im Kreis beginnen praktisch gleichzeitig zu driften; kein Elektron muss vom Schalter zur Lampe laufen (V S. 8; M S. 1).])
+#note("In eigenen Worten", [Das elektrische Feld breitet sich fast mit Lichtgeschwindigkeit aus. Alle Elektronen im Kreis beginnen praktisch gleichzeitig zu driften; kein Elektron muss vom Schalter zur Lampe laufen (V S. 8; M S. 1).])
 #note("In eigenen Worten", [_Eigene Ergänzung:_ Ein Gartenschlauch, der schon voll Wasser ist: Drehst du den Hahn auf, kommt vorne sofort Wasser heraus, obwohl das Wasser vom Hahn noch lange nicht vorne ist.])
 #note("Widerspruch in den Unterlagen", [V S. 8 nennt für den 1-mm²-Draht „dauernd 16 A zugelassen“, also 16 A/mm². V S. 10 nennt als zulässige Stromdichte aber nur $S_"zul" = 1 dots 6 thin "A/mm"^2$. Rechne das Beispiel so, wie es dasteht; für die Frage „zulässig?“ gilt S. 10. Am besten in der Vorlesung nachfragen.], fill: sand)
 #note("Fehler vermeiden", [Einheiten konsequent einsetzen: $n$ ist in cm⁻³ gegeben, also $A$ in cm² umrechnen ($1 thin "mm"^2 = "0,01" thin "cm"^2$).], fill: sand)
@@ -524,8 +618,8 @@ $N$: Windungszahl; $A$: Fläche der Leiterschleife $2 r l$; $D^*$: Winkelrichtgr
 #hoch(<a-1>, [Kapitelübersicht])
 
 
-== 1.1.7.1 Qualitative Fragestellung: drei Lampen und ein Schalter <a-1-1-7-1>
-Drei identische Glühlampen liegen in Reihe an einer Batterie, der Schalter S liegt parallel zu Lampe C. Was passiert, wenn S geschlossen wird?
+== 1.1.7.1 Drei Lampen und ein Schalter <a-1-1-7-1>
+Drei identische Glühlampen liegen in Reihe an einer Batterie, der Schalter S liegt parallel zu Lampe C. Beim Schließen überbrückt er diese Lampe und verändert damit den gesamten Stromkreis.
 #note("Modell für die Zahlenfaktoren", [Die Quelle und der Schalter seien ideal, die drei Lampen werden als gleiche *konstante Widerstände* behandelt. Reale Wolframwendeln sind PTCs (Abschnitt 1.4.3.2.1); ihre Widerstände ändern sich mit der Temperatur. Die angegebenen exakten Faktoren gehören daher zum vereinfachten Modell.], fill: sand)
 #grid(columns: (1fr, 1.2fr), gutter: 5mm,
  [#bild("lampen", [Drei gleiche Lampen in Reihe, Schalter S parallel zu C. Eigene Darstellung nach V S. 14, Abb. 1.10.], height: 36mm)],
@@ -588,7 +682,7 @@ $U_q$: Thermospannung in mV; $K$: näherungsweise konstanter Thermokoeffizient; 
 
 *Beispiel, eigene Ergänzung:* Messstelle 80 °C, Vergleichsstelle 20 °C: $Delta vartheta = 60 thin "K"$, also $U_q approx "0,05" thin "mV/K" dot.c 60 thin "K" = 3 thin "mV"$. Werden beide Stellen gleich warm, ist die Spannung null; vertauscht man die Temperaturen, kehrt sich ihre Polung um.
 #note("Gültigkeit und Skriptangabe", [V S. 17 nennt einen Temperaturbereich „bis 1000 °C“. Das darfst du nicht pauschal auf Cu–Konstantan übertragen: Herstellerangaben für Typ T reichen bis etwa 400 °C, abhängig von der Ausführung. Auch der konstante Skriptwert 0,05 mV/K ist eine Rechennäherung. Für unsere Aufgaben verwenden wir den angegebenen Wert; eine reale Messung braucht die passende Kennlinie.], fill: sand)
-#note("Selbst erklären", [Warum reicht „Die Messstelle hat 80 °C“ noch nicht für die Spannung? \ *Antwort:* Es fehlt die Temperatur der Vergleichsstelle. Dieselbe Messstelle liefert bei unterschiedlich warmen Anschlüssen unterschiedliche Spannungen.])
+#note("In eigenen Worten", [Es fehlt die Temperatur der Vergleichsstelle. Dieselbe Messstelle liefert bei unterschiedlich warmen Anschlüssen unterschiedliche Spannungen.])
 #src([N, PDF-S. 4 = V S. 17, Abschnitt 1.2.3; Beispiel und Erklärung der Vergleichsstelle ergänzt. Fachprüfung des Temperaturbereichs: #link("https://www.emerson.com/en/measurement-instrumentation/catalog/temperature-measurement/temperature-sensors/type-t-thermocouple")[Emerson, Type T Thermocouple].])
 #hoch(<a-1>, [Kapitelübersicht])
 
@@ -632,7 +726,7 @@ Drückst oder ziehst du an einem geeigneten Kristall, verschieben sich Ladungen 
 *Schwingquarz als Taktgeber.* Die mechanische Schwingung und die elektrische Spannung beeinflussen sich gegenseitig. Das Ersatzbild rechts beschreibt das Resonanzverhalten; seine Berechnung gehört noch nicht zu dieser Ergänzung. Für die Uhr-Anwendung ist die Frequenzteilung entscheidend:
 #form[$ f_"Quarz" = 32768 thin "Hz" = 2^15 thin "Hz" quad => quad f_"Takt" = f_"Quarz"/2^15 = 1 thin "Hz" quad T = 1/f_"Takt" = 1 thin "s" $]
 *Gültigkeit:* Quarzfrequenz 32768 Hz und elektronische Teilung durch $2^15$. Die Elektronik teilt die Frequenz; der Quarz schwingt weiterhin mit 32768 Hz.
-#note("Selbst erklären", [Wie kann derselbe Effekt Sensor und Antrieb sein? \ *Antwort:* Als Sensor liefert eine mechanische Einwirkung ein elektrisches Signal. Beim umgekehrten Effekt erzeugt eine angelegte Spannung eine mechanische Verformung.])
+#note("In eigenen Worten", [Als Sensor liefert eine mechanische Einwirkung ein elektrisches Signal. Beim umgekehrten Effekt erzeugt eine angelegte Spannung eine mechanische Verformung.])
 #src([N, PDF-S. 6 = V S. 19, Abschnitt 1.2.5 und Abb. 1.15–1.16; Erklärung der Frequenzteilung ergänzt.])
 #hoch(<a-1>, [Kapitelübersicht])
 
@@ -663,6 +757,8 @@ $U_D$: Diodenspannung in V; $R$: Serienwiderstand in Ω; $I$: gemeinsamer Strom 
 #bild("map-quelleneffekte", [Mindmap: Chemie, Induktion, Thermo-, Foto- und Piezoeffekt. Eigene Darstellung nach V S. 15–19.], height: 40mm)
 #src([Zusammenführung von V S. 15–19 und N, PDF-S. 2–6; eigene Darstellung.])
 
+#hoch(<a-1>, [Kapitelübersicht])
+
 == 1.3 Der Potenzialbegriff · VL vom 30.10. <a-1-3>
 Das *Potenzial* $phi_A$ ist die Spannung eines Punktes A gegenüber einem festgelegten Bezugspunkt. Wie bei Höhenangaben brauchst du zuerst „Meereshöhe null“: In der Schaltung ist das meist die *Masse* oder Ground, der du 0 V zuweist. Eine Spannung zwischen zwei Punkten ist dagegen die Differenz ihrer Potenziale.
 #bild("vl30-potential", [Potenziale und Potenzialverlauf. N30, PDF-S. 1 = V S. 20, Abb. 1.17, mit deinen Notizen.], height: 55mm)
@@ -674,7 +770,7 @@ $phi$, $U$ in V. *Voraussetzung:* Alle verglichenen Potenziale beziehen sich auf
 
 #bild("vl30-bruecke", [Zwei Spannungsteiler mit offenem Querzweig. N30, PDF-S. 2 = V S. 21, Abb. 1.18.], height: 47mm)
 Im offenen Querzweig gilt $phi_A = 5 thin "V"$ und $phi_B = 8 thin "V"$. Deshalb ist $U_(A B) = -3 thin "V"$ und $U_(B A) = +3 thin "V"$. Ein negatives Ergebnis bedeutet eine zur gewählten Richtung entgegengesetzte Spannung. Wird zwischen A und B ein Widerstand angeschlossen, belastet er beide Teiler und verändert die Potenziale; die unbelasteten 5 V und 8 V gelten dann nicht unverändert.
-#note("Selbst erklären", [Was passiert mit $U_(A B)$, wenn du einen anderen Punkt zur Masse erklärst? \ *Antwort:* Beide Potenziale verschieben sich um denselben Wert. Ihre Differenz und damit die physikalische Spannung bleibt gleich.])
+#note("In eigenen Worten", [Beide Potenziale verschieben sich um denselben Wert. Ihre Differenz und damit die physikalische Spannung bleibt gleich.])
 #src[N30, PDF-S. 1–2 = V S. 20–21, Abschnitt 1.3; Höhenvergleich und Rechenprüfung ergänzt.]
 #hoch(<a-1>, [Kapitelübersicht])
 
@@ -811,10 +907,10 @@ $alpha_20$ in $"1/K"$, $beta_20$ in $"1/K"^2$, $Delta vartheta$ in K; beide Klam
 #überblick([Kapitel 2 auf einen Blick],
  idee(<a-2-1>, [Am Knoten bleibt Ladung erhalten.], [Die zufließenden und abfließenden Ströme gleichen sich aus.]),
  idee(<a-2-2>, [Eine Masche schließt die Spannungsbilanz.], [Umlaufsinn und Zählpfeile legen die Vorzeichen fest.]),
- idee(<a-2-3>, [Nichtlineare Zweige brauchen ihre Kennlinien.], [Knoten- und Maschenregel gelten weiterhin.]),
+ idee(<a-2-4-5>, [Reihe und Parallel richtig erkennen.], [Spannungs- und Stromteiler folgen aus den beiden Kirchhoffschen Regeln.]),
  idee(<a-2-4-1>, [Die reale Quelle hat einen Innenwiderstand.], [Unter Last sinkt die Klemmenspannung; der Kurzschlussstrom bleibt endlich.]),
- idee(<a-2-4-1-k>, [Der Arbeitspunkt passt zu Quelle und Verbraucher.], [Beide Kennlinien müssen denselben Strom und dieselbe Spannung liefern.]),
- idee(<a-2-4-3>, [Maximale Leistung und hoher Wirkungsgrad sind verschiedene Ziele.], [Bei Anpassung wird ebenso viel Leistung innen wie außen umgesetzt.]),
+ idee(<a-2-4-7>, [Messgeräte belasten die Schaltung.], [Die passende Messanordnung und Brückenabgleich begrenzen den Eigenverbrauch.]),
+ idee(<a-2-5-1>, [Umwandlungen erhalten das Klemmenverhalten.], [Stern, Dreieck und passende Quellenformen vereinfachen vermaschte Netze.]),
 )
 
 #bild("map-netzwerk", [Mindmap: Potenziale, Knoten, Maschen und Kennlinien verbinden. Eigene Darstellung nach V S. 20–21 und 39–41.], height: 40mm)
@@ -832,7 +928,7 @@ $alpha_20$ in $"1/K"$, $beta_20$ in $"1/K"^2$, $Delta vartheta$ in K; beide Klam
 #hoch(<ueberblick>, [Modul auf einen Blick])
 
 
-Mit Knoten- und Maschenregel bestimmst du Ströme und Spannungen über die Erhaltungssätze. Kennlinien ergänzen das Verhalten nichtlinearer Bauteile. Der zuvor vorgezogene Grundstromkreis bleibt als Anwendung mit realer Quelle, Last und Leistungsbilanz erhalten. Neu belegt sind die Abschnitte 2.1–2.3 bis V S. 41.
+Mit Knoten- und Maschenregel bestimmst du Ströme und Spannungen über die Erhaltungssätze. Kennlinien ergänzen das Verhalten nichtlinearer Bauteile. Der zuvor vorgezogene Grundstromkreis bleibt als Anwendung mit realer Quelle, Last und Leistungsbilanz erhalten. Für das Selbststudium folgen nun auch die weiteren Widerstands- und Messschaltungen sowie Netzwerkumwandlungen bis V S. 67.
 
 == 2.1 Der Knotenpunktsatz <a-2-1>
 An einem *Knoten* treffen Leiter zusammen. Im stationären Netzwerk sammelt sich dort keine Ladung an: Was pro Zeit hineinfließt, fließt auch wieder heraus. Das ist dieselbe Ladungserhaltung wie bei der Kontinuität im unverzweigten Draht, jetzt mit mehreren Wegen.
@@ -848,7 +944,7 @@ Eine *Masche* ist ein geschlossener Weg durch die Schaltung. Kehrst du zum Ausga
 #bild("vl30-masche", [Umlaufsinn und Spannungspfeile einer Masche. N30, PDF-S. 21 = V S. 40, Abb. 2.2.], height: 49mm)
 #form[$ sum_(nu=1)^n U_nu = 0 quad "im Bild:" quad U_q + U_1 + U_2 - U_3 = 0 $]
 *Vorgehen:* Umlaufsinn wählen. Spannungspfeile in Umlaufrichtung positiv zählen, entgegen der Umlaufrichtung negativ. An einem ohmschen Widerstand im Verbraucherzählpfeilsystem gilt $U_k = R_k I_k$ mit den gewählten Vorzeichen. Die Polung einer idealen Quelle legt ihren Spannungspfeil fest, unabhängig von der tatsächlichen Stromrichtung.
-#note("Selbst erklären", [Was passiert, wenn du den Umlaufsinn umkehrst? \ *Antwort:* Jedes Vorzeichen kehrt sich um. Die ganze Gleichung wird mit −1 multipliziert und beschreibt denselben physikalischen Zusammenhang.])
+#note("In eigenen Worten", [Jedes Vorzeichen kehrt sich um. Die ganze Gleichung wird mit −1 multipliziert und beschreibt denselben physikalischen Zusammenhang.])
 *Gültigkeit:* das hier behandelte konzentrierte Gleichstromnetzwerk. Ein zusätzlich von außen induzierter Spannungsbeitrag müsste im erweiterten Modell mit erfasst werden.
 #src[N30, PDF-S. 21 = V S. 40, Abschnitt 2.2; Potenzialerklärung und Modellabgrenzung ergänzt.]
 #hoch(<a-2>, [Kapitelübersicht])
@@ -909,6 +1005,21 @@ Probe: Bei $U = U_q$ ist $I = -U_q\/R_i + I_k = 0$. Die Steigung der Quellenkenn
 #hoch(<a-2>, [Kapitelübersicht])
 
 
+
+=== 2.4.1.2 Mehrere reale Spannungsquellen verbinden <a-2-4-1-2>
+In Reihe addieren sich die *vorzeichenrichtig gezählten Quellspannungen*, während sich die Innenwiderstände immer addieren. Zwei gleiche Polungen unterstützen einander; gegeneinander gerichtete Quellen kompensieren sich teilweise.
+#bild("gesamt-quellen-reihe", [Summen- und Gegenschaltung realer Quellen. V S. 43, Abb. 2.4–2.5.], height: 59mm)
+#form[$ U_"q,ers"=sum_k s_k U_(q k) quad R_"i,ers"=sum_k R_(i k) quad I=U_"q,ers"/(R_a+R_"i,ers") $]
+$s_k$ ist +1 oder −1 entsprechend der Polung zum gewählten Umlauf. Das Vorzeichen von $I$ legt die tatsächliche Richtung fest. Eine ideale Spannungsquelle kann dabei auch Leistung aufnehmen; ihre Polung bestimmt nicht allein die Stromrichtung.
+
+Für $n$ *gleiche, gleich gepolte* reale Quellen parallel gilt dagegen:
+#form[$ U_"q,ers"=U_q quad R_"i,ers"=R_i/n quad I=U_q/(R_i/n+R_a) $]
+#bild("gesamt-quellen-parallel", [Gleiche Quellen parallel: gleiche Spannung, geteilter Innenwiderstand. V S. 44, Abb. 2.6.], height: 42mm)
+Jede Quelle trägt im symmetrischen Modell den Anteil $I/n$. Gleiche Akkus können so länger denselben Laststrom liefern; ihre Ladungskapazitäten addieren sich im vereinfachten Modell. *Gültigkeit:* gleiche Quellspannungen und Innenwiderstände, gleiche Polung und kompatibles Quellenmodell. Bei ungleichen Quellen sind Ausgleichsströme möglich; dann ist eine Netzwerkrechnung nötig.
+#src[V S. 43–44; Rechenregeln und Vorzeichenbedingung erläutert.]
+
+#hoch(<a-2>, [Kapitelübersicht])
+
 == 2.4.2 Spannungseinbruch unter Last <a-2-4-2>
 *V S. 43 und Ü 3:* Ein Heizwiderstand von 31,2 Ω wird ans Netz gelegt. Die Netzspannung beträgt im Leerlauf 230 V, im Einschaltmoment sinkt die Klemmenspannung auf 218 V. Die Spannungsdifferenz beschreibt den inneren Spannungsabfall des Quellenmodells.
 + Ersatzschaltbild: Grundstromkreis aus Abschnitt 2.4.1 mit $U_q = 230 thin "V"$ und $R_a = "31,2" thin Omega$.
@@ -916,7 +1027,7 @@ Probe: Bei $U = U_q$ ist $I = -U_q\/R_i + I_k = 0$. Die Steigung der Quellenkenn
 + Spannung, die innen abfällt: $U_i = 230 - 218 = 12 thin "V"$
 + $R_i = U_i\/I = 12\/"6,99" approx "1,7" thin Omega$, wie auf dem Übungsblatt.
 #note("In eigenen Worten", [Die Differenz zwischen Leerlauf- und Klemmenspannung fällt immer an $R_i$ ab.])
-#note("Deinen Rechenweg einordnen", [DC, PDF-S. 4, unterscheidet den Leerlauf ($I = 0$, kein innerer Spannungsabfall) und den Lastfall (12 V Spannungsabfall bei rund 7 A). Die dort notierten 135 A Kurzschlussstrom entstehen aus dem gerundeten $R_i = 1,7$ Ω; mit dem ungerundeten Wert sind es rund 134 A. Das ist eine Modellrechnung, kein zusätzlich gemessener Wert.])
+#note("Deinen Rechenweg einordnen", [DC, PDF-S. 4, unterscheidet den Leerlauf ($I = 0$, kein innerer Spannungsabfall) und den Lastfall (12 V Spannungsabfall bei rund 7 A). Die dort notierten 135 A Kurzschlussstrom entstehen aus dem gerundeten $R_i = "1,7"$ Ω; mit dem ungerundeten Wert sind es rund 134 A. Das ist eine Modellrechnung, kein zusätzlich gemessener Wert.])
 #src([V S. 43; Ü 3; DC, PDF-S. 1 und 4.])
 #hoch(<a-2>, [Kapitelübersicht])
 
@@ -940,9 +1051,335 @@ _Eigene Ergänzung:_ In der Nachrichtentechnik (Antenne, Lautsprecher) ist Anpas
 #note("Fehler vermeiden", [Leistungsanpassung ist *nicht* der Fall mit dem besten Wirkungsgrad. $eta$ steigt, je größer $R_a$ gegenüber $R_i$ ist; im Kurzschluss ist $eta = 0$.], fill: sand)
 #src([V S. 44–46; Z S. 1; FK 30.])
 
-*Der Zusammenhang in Kapitel 2.* Die Knotenbilanz erhält die Ladung, der Maschenumlauf verbindet die Potenziale. Kennlinien liefern das nichtlineare Bauteilverhalten. Im Grundstromkreis erklärt der Innenwiderstand Spannungseinbruch und endlichen Kurzschlussstrom. Der Arbeitspunkt erfüllt Quellen- und Verbraucherkennlinie zugleich. Die Leistungsbilanz unterscheidet nutzbare Leistung, innere Verluste und Wirkungsgrad; bei Leistungsanpassung wird innen genauso viel umgesetzt wie außen.
 #hoch(<a-2>, [Kapitelübersicht])
 
+== 2.4.4 Reihenschaltung und Spannungsteiler <a-2-4-4>
+In einer *Reihenschaltung* gibt es zwischen den Bauteilen keine Stromverzweigung. Derselbe Strom fließt durch alle Widerstände. Wie bei mehreren Engstellen hintereinander addieren sich die nötigen Spannungsabfälle.
+#bild("gesamt-serie", [Reihenschaltung mit frei gewähltem Maschenumlauf. V S. 47, Abb. 2.10.], height: 32mm)
+#form[$ R_"ges" = sum_(nu=1)^n R_nu quad U_k = U_"ges" R_k/R_"ges" quad U_1/U_2 = R_1/R_2 $]
+*Voraussetzung:* lineare Widerstände und derselbe Strom durch die betrachteten Teile. Ein Spannungsteiler belastet seine Quelle; sein Ausgang ist nur dann *unbelastet*, wenn dort kein zusätzlicher Strom abfließt. Die größere Teilresistenz übernimmt bei gleichem Strom den größeren Spannungsabfall.
+#note("Fehler vermeiden", [„Hintereinander gezeichnet“ genügt nicht. Ein zusätzlicher Zweig am Zwischenknoten beendet die reine Reihenschaltung. Dann zuerst die tatsächlich parallelen Teile zusammenfassen.], fill: sand)
+#src[V S. 47, Abschnitt 2.4.4; Erklärbild und Abgrenzung ergänzt.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.4.5 Parallelschaltung und Stromteiler <a-2-4-5>
+*Parallel* heißt: Beide Anschlüsse eines Bauteils liegen an denselben zwei Knoten wie die Anschlüsse des anderen. Deshalb ist die Spannung gleich. Der besser leitende Zweig übernimmt mehr Strom.
+#bild("gesamt-parallel", [Parallele Zweige mit gemeinsamer Spannung. V S. 48, Abb. 2.11.], height: 38mm)
+#form[$ G_"ges" = sum_k G_k quad 1/R_"ges" = sum_k 1/R_k quad I_k/I_"ges" = G_k/G_"ges" = R_"ges"/R_k $]
+Für zwei Zweige:
+#form[$ R_1 parallel R_2 = (R_1 R_2)/(R_1+R_2) quad I_1 = I_"ges" R_2/(R_1+R_2) $]
+$G$ in S, $R$ in Ω, $I$ in A. *Voraussetzung:* ohmsche Zweige zwischen denselben Knoten. Der Ersatzwiderstand ist kleiner als der kleinste Einzelwiderstand: Der zweite Weg erleichtert den Ladungstransport.
+#note("Der richtige Gesamtwiderstand", [In der Stromteilerregel bezeichnet $R_"ges"$ nur den Ersatz der gerade betrachteten Verzweigung. Ein davor liegender Serienwiderstand gehört nicht in diesen Quotienten. Beim Zweig 1 steht für zwei Zweige der Widerstand des anderen Zweigs im Zähler.], fill: sand)
+#bild("gesamt-teiler-kaskade", [Gemischtes Netzwerk: erst Teilnetze erkennen. V S. 49, Abb. 2.12.], height: 37mm)
+*Vom Detail zum Ganzen und zurück:* Erst innere Serien- und Parallelgruppen ersetzen. Dann den Gesamtstrom bestimmen. Anschließend vom äußeren Ersatzschaltbild zurück zu den Teilspannungen und Teilströmen gehen. Die beiden Beispiele von V S. 49–50 stehen vollständig in den Aufgaben.
+#src[V S. 48–50, Abschnitt 2.4.5; Vorgehensfolge als eigene Zusammenführung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.4.6 Der belastete Spannungsteiler <a-2-4-6>
+Bei einem *Potenziometer* teilt ein beweglicher Schleifer den Gesamtwiderstand $R_S$ in $R_1$ und $R_2$. Eine angeschlossene Last $R_A$ liegt parallel zum unteren Teil $R_2$. Sie zieht dessen Ersatzwiderstand nach unten: Die Ausgangsspannung fällt kleiner aus als im Leerlauf.
+#bild("gesamt-potenziometer", [Belasteter Stellwiderstand mit Schleiferstellung x. V S. 51, Abb. 2.14.], height: 48mm)
+#form[$ R_S = R_1+R_2 quad x = R_2/R_S quad R_p = R_2 parallel R_A quad U_A = U_E R_p/(R_1+R_p) $]
+Mit $R_1=(1-x)R_S$ und $R_2=x R_S$ folgt die normierte Stellkennlinie:
+#form[$ U_A/U_E = I_A/I_"A,max" = x/(1+(R_S/R_A)(x-x^2)) quad I_"A,max" = U_E/R_A $]
+*Gültigkeit:* ideale konstante Eingangsspannung, lineare positive Widerstände, feste Last, $0 <= x <= 1$. Der zusätzliche Term im Nenner erklärt die Abweichung von der idealen Geraden $U_A/U_E=x$. Für $R_S << R_A$ ist die Lastwirkung klein.
+#note("Belastbarkeit des Schleifers", [Für die Auslegung eines gewendelten Teilers verlangt V S. 54 $I_"zul" >= U_E/R_A + U_E/R_S$. Nahe der oberen Endstellung kann die letzte Windung praktisch Laststrom und Querstrom zugleich führen. Eine hohe Nennleistung des gesamten Widerstands erlaubt nicht automatisch jeden Schleiferstrom.], fill: sand)
+#src[V S. 51–54, Abschnitt 2.4.6; Ersatzbildung und Nennerdeutung erläutert.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.4.7 Widerstand messen: Das Messgerät gehört zur Schaltung <a-2-4-7>
+Ein reales Amperemeter besitzt einen kleinen Innenwiderstand $R_"AM"$ und verbraucht Spannung. Ein reales Voltmeter besitzt einen großen Innenwiderstand $R_"VM"$ und zieht Strom. Der Quotient aus den beiden Anzeigen kann deshalb vom gesuchten Widerstand abweichen.
+#tab(columns: (1fr,1.65fr,1.65fr), th([Schaltung],[Spannungsrichtig],[Stromrichtig]),
+ [Direkt richtig], [Spannung am Prüfling], [Strom durch den Prüfling],
+ [Miterfasst], [Voltmeterstrom beim Amperemeter], [Amperemeter-Spannung beim Voltmeter],
+ [Unkorrigiertes $U/I$], [zu klein], [zu groß],
+ [Günstig], [$R_x << R_"VM"$], [$R_x >> R_"AM"$],
+)
+#grid(columns: (1fr,1fr), gutter: 5mm,
+ [#bild("gesamt-messung-u", [Spannungsrichtig. V S. 55, Abb. 2.16.], height: 42mm)],
+ [#bild("gesamt-messung-i", [Stromrichtig. V S. 56, Abb. 2.17.], height: 42mm)],
+)
+#form[$ "spannungsrichtig:" quad R_x = U_x/(I-U_x/R_"VM") quad "stromrichtig:" quad R_x = U/I_x-R_"AM" $]
+Instrumentenwerte aus Angaben auf dem Messgerät:
+#form[$ R_"AM" = (Delta U_"Endwert")/I_"Endwert" quad R_"VM" = K U_"Bereichsendwert" $]
+$K$ ist hier die Empfindlichkeit in Ω/V, kein Temperaturkoeffizient. *Gültigkeit:* die gezeigte Gleichstrommessung mit ohmschem Prüfling und Instrumentenwiderständen im gewählten Messbereich. Die Korrektur des Eigenverbrauchs beseitigt nicht automatisch alle Messunsicherheiten. Die Geräteklasse im Relaisbeispiel bezieht sich auf den Bereichsendwert.
+#src[V S. 54–57, Abschnitte 2.4.7–2.4.7.3; Vorzeichen der Messabweichung und Grenzen erläutert.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.4.8 Pt100: Widerstandsänderung wird zur Anzeige <a-2-4-8>
+Ein *Pt100* ist ein Platinwiderstand mit 100 Ω bei 0 °C. Im Skriptmodell steigt sein Widerstand linear mit der Temperatur. Das Anzeigeinstrument liegt parallel zum Sensor und wird deshalb von ihm mitbelastet.
+#bild("gesamt-pt100", [Temperaturfühler und Anzeigeinstrument hinter dem Vorwiderstand. V S. 58.], height: 38mm)
+#form[$ R_vartheta = R_0 (1+alpha (vartheta-vartheta_0)) quad I_m = (U_B R_vartheta)/(R_V R_M+R_V R_vartheta+R_M R_vartheta) $]
+$R_M$: Instrumentenwiderstand, $R_V$: Vorwiderstand, $U_B$: Speisespannung, $I_m$: tatsächlicher Instrumentenstrom. *Voraussetzung:* das ausdrücklich vorgegebene lineare Pt100-Modell mit $R_0=100 thin Omega$ bei $vartheta_0=0 thin "°C"$, $alpha="3,85" dot.c 10^(-3) thin "1/K"$. Der Modellbereich der Aufgabe reicht bis 400 °C; dies ist keine Zusage einer exakt linearen realen Pt100-Kennlinie.
+Die Temperatur verändert einen Widerstand, daraus folgt eine nichtlineare Stromaufteilung. Eine lineare Skala des Drehspulinstruments ist daher nicht automatisch eine lineare Temperaturskala. Die Dimensionierung und Nullpunktanzeige werden im Aufgabenband berechnet.
+#src[V S. 58–59, Abschnitt 2.4.8; Stromformel aus dem Parallelersatz hergeleitet, Modellabgrenzung ergänzt.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.4.9 Die Wheatstone-Brücke <a-2-4-9>
+Eine *Messbrücke* vergleicht zwei Spannungsteiler. Beim Abgleich haben ihre Mitten dasselbe Potenzial; durch das Messinstrument im Querzweig fließt dann kein Strom. Das Nullsignal ist die entscheidende Information.
+#bild("gesamt-wheatstone", [Abgeglichene Wheatstone-Brücke mit Schleifdraht. V S. 60, Abb. 2.21.], height: 51mm)
+#form[$ U_(B C)=0 quad => quad R_x/R_N=R_1/R_2 quad => quad R_x=R_N R_1/R_2=R_N l_1/l_2 $]
+*Gültigkeit:* abgeglichene Brücke; die Längenform zusätzlich nur bei homogenem Schleifdraht mit gleichem Material und Querschnitt. $R_N$ ist der bekannte Normwiderstand. Seine Größenordnung legt den Messbereich fest, das Verhältnis den Feinabgleich.
+#note("Abgleich und belastete Brücke", [Außerhalb des Abgleichs zieht ein reales Messgerät Querzweigstrom. Dann lassen sich die beiden Seiten nicht unabhängig als unbelastete Teiler behandeln. Beim Nulldurchgang verschwindet gerade dieser Einfluss im idealisierten Widerstandsmodell.], fill: sand)
+#src[V S. 60–61, Abschnitt 2.4.9; Vergleich mit zwei Spannungsteilern erläutert.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.5.1 Stern und Dreieck: drei Klemmen gleichwertig ersetzen <a-2-5-1>
+Eine Brückenschaltung lässt sich oft nicht direkt in Reihe und parallel zerlegen. Die *Stern-Dreieck-Transformation* ersetzt ein Teilnetz zwischen drei äußeren Klemmen so, dass es von außen dasselbe Verhalten zeigt. Innere Einzelströme dürfen sich dabei ändern.
+#bild("gesamt-stern-dreieck", [Drei äußere Klemmen A, B und C; Stern im Dreieck. V S. 62, Abb. 2.22.], height: 45mm)
+Um Verwechslungen zu vermeiden, bezeichnen wir die Sternarme nach ihren äußeren Klemmen: $r_A$, $r_B$, $r_C$. Die Dreieckseiten heißen $R_(A B)$, $R_(B C)$ und $R_(C A)$.
+#form[$ S_D=R_(A B)+R_(B C)+R_(C A) quad r_A=(R_(A B) R_(C A))/S_D $]
+Die beiden anderen Sternarme entstehen zyklisch: Am Knoten B steht das Produkt der dort anliegenden Dreieckseiten, am Knoten C ebenso. Umgekehrt:
+#form[$ S_Y=r_A r_B+r_B r_C+r_C r_A quad R_(A B)=S_Y/r_C quad R_(B C)=S_Y/r_A quad R_(C A)=S_Y/r_B $]
+*Gültigkeit:* das umgewandelte Teilnetz besteht aus linearen Widerständen ohne Quellen. Der übrige Stromkreis darf Quellen enthalten. In der Rückrichtung steht der gegenüberliegende Sternarm im Nenner. Nicht bloß die geometrische Lage der Beschriftung übernehmen.
+#bild("gesamt-ntc-bruecke", [Belastete Messbrücke mit Heißleiter und realem Voltmeter. V S. 65, Abb. 2.24.], height: 42mm)
+Das Voltmeter im Heißleiterbeispiel hat $R_"VM"=30 thin "k"Omega$ und verändert die Brücke. Es gehört in die Rechnung. Die Umwandlung kann einen Gesamtstrom vereinfachen; gesuchte Ströme im ursprünglichen Teilnetz werden anschließend aus den ursprünglichen Potenzialen rekonstruiert.
+#src[V S. 62–65, Abschnitte 2.5.1–2.5.1.1; klemmennamenbezogene Notation als eigene Darstellung der gleichen Transformation.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.5.2 Eine Spannungsquelle gezielt verschieben <a-2-5-2>
+Eine ideale Spannungsquelle darf nicht beliebig im Schaltbild versetzt werden. Im gezeigten Spezialfall wird ihr Spannungsbeitrag in alle betroffenen Zweige mit demselben Wert und passender Polung übernommen. Dadurch bleiben die Maschengleichungen des übrigen Netzes erhalten.
+#bild("gesamt-quelle-verschieben-u", [Gleichwertige Aufteilung einer Spannungsquelle in die betroffenen Zweige. V S. 66, Abb. 2.26.], height: 49mm)
+*Prüfidee:* Jede ursprüngliche Masche muss denselben resultierenden Quellenbeitrag enthalten. Die neue Masche zwischen den beiden kopierten Quellen enthält deren Differenz; gleiche Beiträge heben sich dort auf. Danach kann eine Quelle mit Serienwiderstand leichter in eine Ersatzstromquelle umgewandelt werden (Kapitel 4).
+#note("Grenze der Gleichwertigkeit", [Die ursprünglichen Zweigwiderstände bleiben erhalten. Eine Kopie nur in einen von mehreren betroffenen Zweigen einzusetzen würde das Netzwerk verändern. Die Gleichwertigkeit wird an den betrachteten Klemmen geprüft.], fill: sand)
+#src[V S. 66, Abschnitt 2.5.2; Erläuterung der unveränderten Maschenbeiträge ergänzt.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.5.3 Eine Stromquelle gezielt verschieben <a-2-5-3>
+Die entsprechende Stromumformung erhält die Knotenbilanzen. Im gezeigten Ersatz entstehen zwei gleich große Quellen; an dem ergänzten Verbindungsknoten heben sich ihre Beiträge auf.
+#bild("gesamt-quelle-verschieben-i", [Stromquellenumformung unter Erhaltung der Knotenbilanzen. V S. 67, Abb. 2.27.], height: 48mm)
+#form[$ I_Q-I_Q+I_"quer"=0 quad => quad I_"quer"=0 $]
+Damit bleibt auch die Bilanz am ursprünglichen Knoten gleich. *Voraussetzung:* genau die gezeigte Topologie und die richtigen Quellenrichtungen. Die Vorschrift ist eine begründete Netzwerkumformung, keine allgemeine Erlaubnis, Stromquellen zwischen beliebigen Knoten zu versetzen.
+#bild("map-schaltungen", [Mindmap: Schaltung erkennen, ersetzen, messen und prüfen. Eigene Darstellung.], height: 43mm)
+#src[V S. 67, Abschnitt 2.5.3; Zusammenhang mit dem Knotenpunktsatz erläutert.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+*Der Zusammenhang in Kapitel 2.* Die Knotenbilanz erhält die Ladung, der Maschenumlauf verbindet die Potenziale. Kennlinien liefern das nichtlineare Bauteilverhalten. Im Grundstromkreis erklärt der Innenwiderstand Spannungseinbruch und endlichen Kurzschlussstrom. Der Arbeitspunkt erfüllt Quellen- und Verbraucherkennlinie zugleich. Die Leistungsbilanz unterscheidet nutzbare Leistung, innere Verluste und Wirkungsgrad; bei Leistungsanpassung wird innen genauso viel umgesetzt wie außen. Reihen- und Parallelregeln zerlegen einfache Netze; belastete Teiler und Messgeräte zeigen die Grenzen dieses Zerlegens. Messbrücken nutzen Potenzialgleichheit. Stern-Dreieck- und Quellenumformungen erhalten das äußere Klemmenverhalten.
+#hoch(<a-2>, [Kapitelübersicht])
+
+
+#pagebreak(weak: true)
+= Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen <a-3>
+#überblick([Kapitel 3 auf einen Blick],
+ idee(<a-3-1>, [Genug unabhängige Gleichungen aufstellen.], [Zweigströme, Knotenbilanzen und Maschen schließen ein gemeinsames Gleichungssystem.]),
+ idee(<a-3-2-1>, [Lineare Quellenwirkungen überlagern.], [Teilspannungen und Teilströme mit ihren Vorzeichen addieren.]),
+ idee(<a-3-2-2>, [Maschenströme sparen Unbekannte.], [Fiktive Kreisströme werden anschließend in reale Zweigströme übersetzt.]),
+ idee(<a-3-2-3>, [Knotenpotenziale beschreiben das ganze Netz.], [Leitwerte verbinden unbekannte Potenziale mit den eingespeisten Strömen.]),
+ idee(<a-3-2-4>, [Ideale Quellen geben eine Größe fest vor.], [Die andere Größe folgt aus dem restlichen Netzwerk.]),
+)
+#ablauf(
+ chunk([Topologie und Bezug wählen], [Knoten · Zweige · Zählpfeile], ziel: <a-3-1>),
+ entscheidung([Welche Unbekannten sind am günstigsten?],
+  chunk([Wenige unabhängige Maschen], [Maschenströme und Spannungsbilanzen], ziel: <a-3-2-2>),
+  chunk([Wenige unbekannte Potenziale], [Knotenbilanzen mit Leitwerten], ziel: <a-3-2-3>)),
+ chunk([Zur physikalischen Lösung zurück], [Zweiggrößen · Vorzeichen · Bilanzprüfung], ziel: <a-3-2-4>),
+)
+#src[Eigene Zusammenführung von V S. 69–86.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
+Die Gesetze bleiben gleich; nur die Wahl der Unbekannten ändert sich. Eine passende Methode kann aus fünf Zweigströmen drei Maschenströme oder zwei Knotenpotenziale machen. Nach dem Lösen prüfst du stets dieselbe physikalische Schaltung. Ein negatives Ergebnis beschreibt dabei die Gegenrichtung zum gewählten Pfeil.
+
+== 3.1 Direkte Netzwerkanalyse und lineares Gleichungssystem <a-3-1>
+Ein *Zweig* verbindet zwei Knoten und führt einen Zweigstrom. Für jeden unbekannten Zweigstrom wählst du zuerst eine Richtung. Danach formulierst du Knotenbilanzen und Maschenbilanzen mit denselben Pfeilen.
+#bild("gesamt-kirchhoff-allgemein", [Netzwerk mit fünf Zweigströmen und drei Knoten. V S. 70, Abb. 3.1.], height: 50mm)
+Für ein zusammenhängendes Netz mit $z$ Zweigen und $k$ Knoten gibt es $k-1$ unabhängige Knotengleichungen. Ergänzt werden $z-k+1$ unabhängige Maschengleichungen. Im Beispiel sind das zwei Knoten- und drei Maschengleichungen für fünf Ströme.
+
+*Unabhängig* heißt: Keine Gleichung folgt bereits aus den anderen. Die letzte Knotenbilanz ist redundant, weil jede Verbindung bei einer Gesamtsumme einmal hinein- und einmal herausgezählt wird. Ein bereits verwendeter Maschenumlauf liefert durch bloßes Umkehren keine neue Gleichung.
+#form[$ A bold(I)=bold(b) quad I_j=D_j/D quad D=det(A) != 0 $]
+$A$: Koeffizientenmatrix, $bold(I)$: Vektor der unbekannten Ströme, $bold(b)$: bekannte Quellenbeiträge. *Cramers Regel:* In $D_j$ wird die *Spalte* des gesuchten Stroms durch die rechte Seite ersetzt. Die Zeilen und Spalten müssen während der ganzen Rechnung in derselben Reihenfolge bleiben.
+#tab(columns: (1fr,2.5fr), th([Werkzeug],[Bedeutung]),
+ [2×2-Determinante], [$det(mat(a,b;c,d))=a d-b c$],
+ [3×3-Determinante], [Sarrus: drei positive und drei negative Diagonalprodukte; nur für 3×3.],
+ [Größere Systeme], [Gauß-Elimination oder ein geeignetes lineares Lösungsverfahren; Sarrus nicht fortsetzen.],
+)
+*Gültigkeit:* lineares Gleichstromnetzwerk mit konsistenten, unabhängigen Gleichungen. $D=0$ verlangt eine Prüfung auf fehlende Eindeutigkeit oder widersprüchliche Vorgaben. Eine beliebige Lösung darf dann nicht durch Division durch null erzwungen werden.
+#note("Nach dem Rechnen", [Setze die Ströme in die ursprünglichen Knoten- und Maschenbilanzen ein. Einheiten helfen: Eine Spannungszeile enthält Ω mal A gleich V; eine Knotenzeile nur Ströme. Die zugehörigen Aufgaben zeigen das Aufstellen, Lösen und Prüfen an konkreten Netzen.], fill: sand)
+#src[V S. 69–73, Abb. 3.1–3.2 und Fußnote zu Determinanten; Gauß-Verfahren als ergänzende Rechenhilfe.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.2.1 Überlagerung: eine Quelle nach der anderen <a-3-2-1>
+In einem *linearen Netzwerk* kannst du die Wirkung mehrerer unabhängiger Quellen getrennt berechnen. Es ist wie das Addieren mehrerer linearer Ursachen: Jeder Teilbeitrag verwendet dasselbe Widerstandsnetz, am Ende werden die vorzeichenbehafteten Ströme oder Spannungen addiert.
+#form[$ I_k=sum_j I_(k j) quad U_k=sum_j U_(k j) $]
+Beim einzelnen Teilfall bleibt eine Quelle aktiv. Alle anderen *unabhängigen* Quellen werden auf null gesetzt:
+#tab(columns: (1fr,1fr,1.5fr), th([Quelle],[Null setzen],[Bleibt erhalten]),
+ [Ideale Spannungsquelle], [Kurzschluss: $U_q=0$], [vorhandener Innenwiderstand],
+ [Ideale Stromquelle], [Leerlauf: $I_q=0$], [vorhandener Parallelwiderstand],
+)
+#bild("gesamt-drei-zweige", [Zwei Quellen wirken auf denselben mittleren Verbraucher. V S. 72, Abb. 3.2.], height: 45mm)
+Im Beispiel trägt jede Quelle zu allen drei Zweigströmen bei. Die auf V S. 75 verwendete Richtung von $I_2$ ist gegenüber der Anfangsannahme auf S. 72 umgekehrt: $-"0,732" thin "A"$ in der ursprünglichen Richtung und $+"0,732" thin "A"$ in der umgekehrten Richtung beschreiben dieselbe Lösung.
+#note("Leistungen werden nicht überlagert", [Erst den Gesamtstrom bzw. die Gesamtspannung bilden, dann $P=U I$ oder $P=R I^2$ berechnen. Aus $R(I_a+I_b)^2$ entsteht zusätzlich der Mischterm $2 R I_a I_b$. Die Summe der einzelnen Teilleistungen wäre deshalb im Allgemeinen falsch.], fill: sand)
+*Gültigkeit:* lineares Bauteilverhalten. Eine nichtlineare Diode kann nicht durch dieselbe einfache Addition vollständiger Großsignal-Arbeitspunkte behandelt werden.
+#src[V S. 73–75, Abschnitt 3.2.1; Leistungsausschluss aus der vorhandenen Leistungsformel hergeleitet, Vorzeichenwechsel ausdrücklich erläutert.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.2.2 Maschenströme: Kreisströme als Rechenhilfe <a-3-2-2>
+Ein *Maschenstrom* ist eine gedachte Rechengröße, die um eine gewählte Masche läuft. Durch einen Randwiderstand fließt oft nur ein Maschenstrom. Einen gemeinsamen Widerstand durchsetzen dagegen zwei Maschenströme; der reale Zweigstrom ist ihre vorzeichenrichtige Summe oder Differenz.
+#bild("gesamt-fuenf-widerstaende", [Drei Maschenströme für ein Netzwerk mit fünf Widerständen. V S. 77, Abb. 3.6.], height: 47mm)
+Bei gleichsinnig orientierten Nachbarmaschen ist ein gemeinsamer Zweig entgegengesetzt durchlaufen. Dann trägt er etwa $R(I_"I"-I_"II")$ zur ersten Masche bei. Daraus folgt für die übliche Matrix: Summe der eigenen Widerstände auf der Diagonale, gemeinsamer Widerstand mit negativem Vorzeichen daneben. Andere Umlaufrichtungen können andere Vorzeichen ergeben.
+#form[$ sum "Spannungsbeiträge einer Masche" = 0 quad I_"Zweig"=s_1 I_"I"+s_2 I_"II" $]
+$s_1$, $s_2$ sind die Richtungszeichen. *Voraussetzung:* geeignete unabhängige Maschen und lineare Widerstände. Die Knotenbilanz steckt bereits in der Zerlegung in Kreisströme; sie ist anschließend eine gute Kontrolle.
+#bild("gesamt-pufferbatterie", [Generator, Pufferbatterie und Verbraucher. V S. 79, Abb. 3.8.], height: 44mm)
+Bei der Pufferbatterie entscheidet das Vorzeichen ihres Zweigstroms, ob sie den Verbraucher zusätzlich speist oder geladen wird. Gleiche Polung zweier Quellen garantiert keinen Stromfluss in derselben Richtung.
+
+=== 3.2.2.1 Ideale Stromquellen in Maschen <a-3-2-2-1>
+Eine ideale Stromquelle am Rand legt einen Maschenstrom direkt fest. Liegt sie im gemeinsamen Zweig zweier Maschen, legt sie die *Differenz* der Maschenströme fest. Ihre Spannung ist eine zusätzliche unbekannte Größe; sie darf nicht als null eingesetzt werden.
+#bild("gesamt-ideale-quellen-netz", [Umgeordnetes Netzwerk mit zwei idealen Stromquellen. V S. 81, Abb. 3.10.], height: 48mm)
+#note("Skriptpräzisierung auf S. 80", [„Stromquellenströme sind Maschenströme“ gilt unmittelbar nur für die passende Randmasche. Die formal notierten Umläufe 2 und 4 lassen die unbekannten Spannungen der idealen Stromquellen aus; als vollständige Spannungsbilanzen wären sie so nicht gültig. Für die Rechnung werden die fest vorgegebenen Ströme der Randmaschen und die gültigen Widerstandsmaschen I und III verwendet. Anschließend ergeben sich die Quellenspannungen aus den Knotenpotenzialen.], fill: sand)
+Eine Umformung zu einer Ersatzspannungsquelle verlangt einen passenden endlichen Parallelwiderstand. Eine alleinstehende ideale Stromquelle besitzt diesen nicht. Quellenumformungen erhalten außerdem die äußeren Klemmenwerte, nicht automatisch sämtliche inneren Zweigströme.
+#src[V S. 76–84, Abschnitt 3.2.2; Spezialfälle idealer Stromquellen und fehlende Quellenspannungsbeiträge aus den Kirchhoffschen Bilanzen präzisiert.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.2.3 Knotenpotenziale: erst die Spannungen bestimmen <a-3-2-3>
+Du wählst einen Knoten als Masse. Die übrigen *Knotenpotenziale* sind die Unbekannten. Ein Widerstand zwischen zwei Knoten übersetzt ihre Potenzialdifferenz in einen Strom; die Knotenbilanz verbindet alle Zweige.
+#form[$ I_(A B)=G_(A B)(phi_A-phi_B) quad G_(A B)=1/R_(A B) $]
+#bild("gesamt-knoten-netz", [Zwei unbekannte Potenziale und umgeformte Quellen. V S. 84, Abb. 3.14.], height: 40mm)
+Für das dortige Netzwerk:
+#form[$
+ mat(G_1+G_2+G_3,-G_3;-G_3,G_3+G_4+G_5)
+ vec(U_20,U_40)
+ =
+ vec(U_(q 1) G_1,U_(q 2) G_5)
+ $]
+Die Diagonale enthält die Summe aller am Knoten angeschlossenen Leitwerte. Der negative Nebeneintrag verbindet die beiden Knoten über $G_3$. Die rechte Seite enthält die vorzeichenrichtig eingespeisten Quellenströme. Danach folgen Zweigspannungen aus Potenzialdifferenzen und Ströme aus dem Ohmschen Gesetz.
+#note("Vorzeichen und Druckfehler", [Die Richtung von $U_3$ in V S. 84 ist so gewählt, dass $U_3=U_40-U_20$. In der skalaren Zwischenzeile auf S. 85 muss rechts $U_(q 2)G_5$ stehen; das dortige $G_3$ ist ein Druckfehler. Die darunter gezeigte Matrix verwendet bereits korrekt $G_5$.], fill: sand)
+*Gültigkeit:* die angegebene Leitwertmatrix für das gezeigte lineare Netzwerk. V nutzt nach Quellenumformung nur Stromquellen. Die Knotenpotenzialmethode ist allgemeiner: Eine ideale Spannungsquelle gegen Masse kann ein bekanntes Potenzial vorgeben; bei einer Quelle zwischen unbekannten Knoten braucht man eine zusätzliche Spannungsbedingung. Für die hier gerechnete Standardform genügt die Quellenumwandlung.
+#src[V S. 84–85, Abschnitt 3.2.3; Druckfehler durch Vergleich von Knotenbilanz und Matrix belegt, Einordnung idealer Quellen ergänzt.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.2.4 Ideale Quellen und die Wahl der Methode <a-3-2-4>
+Eine ideale Spannungsquelle hält ihre Spannung fest, ihr Strom folgt aus dem Netzwerk. Eine ideale Stromquelle hält ihren Strom fest, ihre Spannung folgt aus dem Netzwerk. Beide können im idealen Modell beliebig große Werte der jeweils anderen Größe annehmen.
+#bild("gesamt-quellen-ideal-gemischt", [Eine Spannungsquelle und eine Stromquelle mit Widerständen. V S. 86, Abb. 3.15.], height: 44mm)
+Ein sehr hohes berechnetes Potenzial an einer idealen Stromquelle widerspricht daher nicht ihrer Modellvorgabe. Eine reale Quelle besitzt dagegen einen begrenzten Arbeitsbereich. Bei der Auswertung muss außerdem *Leitwert* von Widerstand unterschieden werden: $1 thin "mS"$ entspricht $1 thin "k"Omega$.
+#tab(columns: (1fr,2.3fr), th([Methode],[Besonders hilfreich, wenn …]),
+ [Direkt mit Kirchhoff], [nur wenige Zweige vorkommen oder ideale Quellen viele Größen festlegen.],
+ [Überlagerung], [der Beitrag einer einzelnen Quelle interessiert und das Netz linear ist.],
+ [Maschenströme], [wenige unabhängige Maschen und viele Serienzweige vorliegen.],
+ [Knotenpotenziale], [wenige unbekannte Knoten und viele Parallelzweige vorliegen.],
+)
+#bild("map-methoden", [Mindmap: Vier Wege, dieselbe Schaltung zu beschreiben. Eigene Darstellung.], height: 44mm)
+*Der Zusammenhang in Kapitel 3.* Knoten und Maschen liefern die Erhaltungsgleichungen. Die direkte Rechnung verwendet Zweigströme; Überlagerung zerlegt Quellenwirkungen. Maschenströme und Knotenpotenziale reduzieren die Zahl der Unbekannten. Erst die Rückübersetzung in reale Ströme, Spannungen und Leistungen schließt die Lösung ab.
+#src[V S. 69–86, besonders Abschnitt 3.2.4; Methodenvergleich als eigene Zusammenführung.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+= Kapitel 4 · Zweipoltheorie und nichtlineare Arbeitspunkte <a-4>
+#überblick([Kapitel 4 auf einen Blick],
+ idee(<a-4-1>, [Ein lineares Netz kann von außen sehr einfach sein.], [Eine Ersatzquelle beschreibt das Verhalten zwischen zwei gewählten Klemmen.]),
+ idee(<a-4-2>, [Leerlauf, Kurzschluss und Innenwiderstand verbinden sich.], [Zwei korrekt bestimmte Größen legen die dritte fest.]),
+ idee(<a-4-3>, [Der Arbeitspunkt erfüllt Quelle und Last zugleich.], [Die Quelle liefert eine Gerade, die Last ihre eigene Kennlinie.]),
+ idee(<a-4-3-1>, [Nichtlineare Lasten bleiben mit ihrer Kennlinie erhalten.], [In Reihe werden Spannungen, parallel Ströme addiert.]),
+ idee(<a-4-4>, [Leistungsgrenzen gehören zur Lösung.], [Eine elektrisch mögliche Lösung kann thermisch unzulässig sein.]),
+)
+#ablauf(
+ chunk([Zwei Klemmen wählen], [gesuchte Last abtrennen · restliches Netz festlegen], ziel: <a-4-2>),
+ chunk([Ersatzquelle bestimmen], [Leerlaufspannung · Innenwiderstand · Kurzschlussprobe], ziel: <a-4-2-1>),
+ entscheidung([Ist die Last linear?],
+  chunk([Berechnen], [Ohmsches Gesetz im Ersatzkreis], ziel: <a-4-3>),
+  chunk([Kennlinien schneiden], [graphisch oder mit Bauteilgleichung], ziel: <a-4-3-1>)),
+ chunk([Betriebsgrenzen kontrollieren], [Leistung · Kennlinienbereich · innere Originalgrößen], ziel: <a-4-4>),
+)
+#src[Eigene Zusammenführung von V S. 87–108.]
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
+Wenn nur der Strom einer bestimmten Last interessiert, musst du das übrige Netzwerk nicht für jeden Lastwert neu lösen. Die Zweipoltheorie fasst es an zwei Klemmen zusammen. Gerade für eine Diode, einen Varistor oder einen Transistor ist das hilfreich: Der lineare Quellenteil wird einfach, die nichtlineare Last bleibt sichtbar.
+
+== 4.1 Ersatzspannungsquelle und Ersatzstromquelle <a-4-1>
+Ein *Zweipol* besitzt zwei Anschlussklemmen. Ein lineares aktives Widerstandsnetzwerk mit unabhängigen Quellen lässt sich an diesen Klemmen durch eine *Ersatzspannungsquelle* $U_l$ mit Serienwiderstand $R_i$ darstellen. Alternativ steht eine *Ersatzstromquelle* $I_k$ mit Parallelwiderstand $R_i$ dafür.
+#form[$ U=U_l-I R_i quad I=I_k-U/R_i quad U_l=I_k R_i $]
+Die Stromquelle liefert intern ihren eingeprägten Strom; dieser teilt sich zwischen Innen- und Lastwiderstand auf. Daher ist der *Laststrom* einer realen Ersatzstromquelle nicht generell gleich ihrem Quellenstrom.
+#tab(columns: (1fr,1.7fr,1.7fr), th([Blick von den Klemmen],[Spannungsersatz],[Stromersatz]),
+ [Quelle], [$U_l$ mit $R_i$ in Reihe], [$I_k$ mit $R_i$ parallel],
+ [Leerlauf], [$U=U_l$, $I=0$], [Strom durch $R_i$ erzeugt $U_l=I_k R_i$],
+ [Kurzschluss], [$I=U_l/R_i$], [$I=I_k$, $U=0$],
+ [Ohmsche Last], [$I_a=U_l/(R_i+R_a)$], [$I_a=I_k R_i/(R_i+R_a)$],
+)
+*Gültigkeit:* endlicher positiver Ersatzwiderstand für die hier betrachteten linearen Widerstandsnetze mit unabhängigen Quellen. Ideale Spannungs- und Stromquellen sind Grenzfälle; eine alleinstehende ideale Stromquelle lässt sich nicht in eine endliche ideale Spannungsquelle umrechnen.
+#note("Von außen gleichwertig", [Die Ersatzbilder liefern an denselben Klemmen dieselben Spannungen und Lastströme. Sie versprechen keine Gleichheit aller inneren Ströme oder Verlustleistungen. Eine gesuchte ursprüngliche Quellenleistung musst du im Originalnetz bestimmen.], fill: sand)
+#src[V S. 87–89 und S. 83–84 zur Grenze innerer Gleichwertigkeit; Ersatzformen algebraisch zusammengefasst.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.2 Ersatzgrößen Schritt für Schritt bestimmen <a-4-2>
+Lege die Klemmen an die Last, deren Verhalten du untersuchen willst. *Last abtrennen* heißt nur diesen Zweig entfernen. Alle anderen Widerstände und Quellen bleiben Bestandteil des aktiven Netzes.
+#bild("gesamt-zweipol-zwei-quellen", [Aktiver Zweipol links der Klemmen A–B; Ra ist die abtrennbare Last. V S. 90, Abb. 4.6.], height: 47mm)
+
+=== 4.2.1 Innenwiderstand: unabhängige Quellen auf null setzen <a-4-2-1>
+Schau von den offenen Klemmen in das Netz: Ideale Spannungsquellen werden kurzgeschlossen, ideale Stromquellen geöffnet. Widerstände bleiben erhalten. Im gezeigten Beispiel ist der Zugangswiderstand in Reihe mit dem Parallelersatz der beiden Quellenzweige.
+#form[$ R_i=R_3+(R_1 parallel R_2) $]
+*Voraussetzung des Nullsetz-Tricks:* die hier vorhandenen unabhängigen Quellen und linearen Widerstände. Das Nullsetzen ist ein mathematischer Rechenschritt am Ersatzmodell.
+
+=== 4.2.2 Leerlaufspannung: Laststrom null, innere Ströme möglich <a-4-2-2>
+Für $U_l=U_(A B)$ wird nur der Lastzweig geöffnet. Durch den Zugangswiderstand fließt dann kein Laststrom, also fällt dort keine Spannung ab. Zwischen den inneren Quellen kann trotzdem ein Kreisstrom fließen. Die Quellen bleiben zur Leerlaufrechnung aktiv.
+#note("Nicht verwechseln", [Für $R_i$ werden Quellen null gesetzt. Für $U_l$ bleiben sie aktiv. Wer beides vermischt, berechnet eine andere Schaltung.], fill: sand)
+
+=== 4.2.3 Kurzschlussstrom und Gegenprobe <a-4-2-3>
+Verbinde A und B gedanklich mit einem idealen Draht. Der Zweigstrom ist $I_k$ in der festgelegten Richtung. Nach zwei unabhängig berechneten Ersatzgrößen dient die dritte als Probe:
+#form[$ I_k=U_l/R_i quad U_l=I_k R_i $]
+Im Beispiel ist ungerundet $R_i=88/7 thin Omega$ und $U_l=50/7 thin "V"$, also $I_k=25/44 thin "A" approx "0,568" thin "A"$. V S. 90–92 nennt gerundet 12,6 Ω, 7,14 V und 0,566 A. Die leicht abweichenden letzten Stellen entstehen durch gerundete Zwischenwerte.
+#src[V S. 90–92, Abschnitte 4.2–4.2.3; exakte Bruchwerte als geprüfte Nachrechnung.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.3 Die grafische Lösung <a-4-3>
+Die fallende Quellenkennlinie beschreibt alle vom aktiven Zweipol angebotenen Kombinationen aus Spannung und Strom. Die Lastkennlinie beschreibt alle Kombinationen, die zur Last passen. Ihr Schnittpunkt ist der *Arbeitspunkt*.
+#form[$ I_"Quelle"(U)=(U_l-U)/R_i quad I_"Last"=f(U) quad I_"Quelle"(U_"AP")=I_"Last"(U_"AP") $]
+Waagerecht steht die Klemmenspannung, senkrecht der Laststrom. Die Quellenlinie verläuft von $(0,I_k)$ nach $(U_l,0)$. Ihre Steigung ist $-1/R_i$. Bei unverändertem $R_i$ verschiebt eine andere Quellspannung diese Gerade parallel. Bei unverändertem $U_l$ dreht eine Änderung von $R_i$ die Linie um den Spannungsschnittpunkt.
+#note("Last wählen und anschließend prüfen", [Eine neue Last erhält einen neuen Arbeitspunkt auf derselben Quellenlinie, solange das aktive Netzwerk unverändert bleibt. Ein abgelesener Wert ist immer so genau wie Raster, Linienbreite und Kennlinie. Mit Zahlen aus einer Grafik keine scheinbar exakten Nachkommastellen erzeugen.], fill: sand)
+#src[V S. 93–94, Abschnitt 4.3 und Abb. 4.9–4.10; Ableseregeln erläutert.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.3.1 Nichtlineare Lasten und zusammengesetzte Kennlinien <a-4-3-1>
+Eine nichtlineare Last braucht keinen konstanten Ersatzwiderstand. Ihre Kennlinie darf gekrümmt sein; der lineare Quellenteil bleibt trotzdem durch $U_l$ und $R_i$ beschrieben. Mehrere Lastbauteile können zunächst zu einer *resultierenden Kennlinie* verbunden werden.
+#bild("gesamt-kennlinien-addieren", [Oben parallel: Ströme addieren. Unten in Reihe: Spannungen addieren. V S. 96, Abb. 4.12–4.13.], height: 76mm)
+#form[$ "parallel:" quad I(U)=I_1(U)+I_2(U) quad "in Reihe:" quad U(I)=U_1(I)+U_2(I) $]
+*Voraussetzung:* gleicher Spannungswert in den parallelen Zweigen bzw. derselbe Strom in der Reihe; zu jedem Wert passende Betriebspunkte der jeweiligen Kennlinie. Die Addition erfolgt bei gleicher gemeinsamer Größe, nicht an beliebigen Punkten beider Kurven.
+Beim Überspannungsschutz nimmt der Varistor bei ansteigender Spannung viel mehr Strom auf. Dadurch steigt der Spannungsabfall im vorgeschalteten Netz; die Lastspannung wächst weniger stark als ohne Schutz. Seine Verlustleistung muss trotzdem geprüft werden.
+#src[V S. 95–98, besonders Abschnitte 4.3.1 und 4.3.1.1; Verknüpfung mit den Schaltungsregeln erläutert.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.3.2 Transistor: Eingangsdiode und Ausgangskennlinien trennen <a-4-3-2>
+Am Eingang kann die Basis-Emitter-Strecke als Diodenkennlinie behandelt werden. Der speisende Spannungsteiler wird zur Ersatzquelle. Der Schnittpunkt bestimmt $I_B$ und $U_(B E)$; der Basisstrom ist eine Belastung des Teilers.
+#bild("gesamt-basis-arbeitspunkt", [Basis-Emitter-Kennlinie und zwei Quellenlinien. V S. 100, Abb. 4.17.], height: 47mm)
+Im Ausgangskreis wird dagegen eine Kennlinie für den gewählten Basisstrom verwendet. Der ungefähr konstante Kollektorstrom gilt nur in einem geeigneten Bereich der Kollektor-Emitter-Spannung. Zu geringe Spannung führt aus dem aktiven Bereich heraus, zu hohe Spannung kann die Verlustleistungsgrenze überschreiten.
+#form[$ P_T=U_(C E) I_C quad I_(C,"zul")=P_"max"/U_(C E) $]
+Die Grenze gleicher Leistung ist im Kennlinienfeld eine Hyperbel. Für den Konstantstromfall mit Serienwiderstand gilt näherungsweise:
+#form[$ U_(C E)=U_q-I_C(R_a+R_"iq") $]
+*Gültigkeit:* der Basisstrom bleibt passend vorgegeben; hier vernachlässigt das Skript im Lastkreis den kleinen Unterschied zwischen Emitter- und Kollektorstrom.
+#note("Grenznäherung des Skripts", [V S. 101–102 liest für 100 mA ungefähr 90–190 Ω ab. Die obere Grenze setzt näherungsweise $U_(C E)=0$ an. Ein realer Transistor braucht eine positive Mindestspannung für zuverlässigen Konstantstrombetrieb; mit vorgegebenem $U_(C E,"min")$ wäre $R_"a,max"=(U_q-U_(C E,"min"))/I_C-R_"iq"$. Die Skriptgrenze ist daher ein idealisierter Diagramm-Grenzfall.], fill: sand)
+#src[V S. 99–102, Abschnitte 4.3.2.1–4.3.2.2; Mindestspannungsbedingung aus der Maschenbilanz ergänzt.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.4 Anwendungen: Polung, Kennlinie und Leistungsgrenze verbinden <a-4-4>
+Die abschließenden Skriptaufgaben verbinden bekannte Bausteine. Der folgende Überblick erklärt die Modelle; die vollständig vorgegebenen Aufgaben mit allen Lösungsschritten stehen auf der Lernplattform.
+
+=== 4.4.1 Eine Stromquelle kann an den Klemmen negative Spannung erzeugen <a-4-4-1>
+Die Richtung der Quelle und der Bezug $U_(A B)=phi_A-phi_B$ entscheiden gemeinsam über das Vorzeichen. Eine negative Leerlaufspannung ist kein Rechenfehler. Die Leistung einer Quelle muss mit ihrer tatsächlichen Spannung und Stromrichtung ausgewertet werden; bei Strom vom niedrigeren zum höheren Potenzial gibt sie Leistung ab.
+#src[V S. 103, Abschnitt 4.4.1; Potenzial- und Leistungsdeutung erläutert.]
+
+=== 4.4.2 Glimmlampe: negativer differenzieller Widerstand <a-4-4-2>
+In einer Gasentladung können freie Ladungsträger durch Stöße weitere Träger erzeugen. Die angelegte Spannung treibt die Entladung, Licht entsteht beim Übergang angeregter Zustände. Die Glimmlampe enthält ein Gas bei niedrigem Druck; „luftleer“ in V ist keine vollständige Abwesenheit von Gas.
+#bild("gesamt-glimmlampe-kennlinie", [Kennlinie einer Glimmlampe mit markiertem Glimmbereich. V S. 105, Abb. 4.21.], height: 72mm)
+Auf dem fallenden Kurvenabschnitt sinkt die Spannung bei steigendem Strom: $dif U/dif I<0$. Das ist ein *negativer differenzieller Widerstand*. Der statische Quotient $U/I$ kann dabei weiterhin positiv sein. Der Vorwiderstand begrenzt den Strom; beim Absenken der Quelle kann die Entladung unterhalb ihres Haltebereichs erlöschen. Zündgrenze und Haltegrenze sind verschiedene Betriebsbedingungen.
+#src[V S. 103–105, Abschnitt 4.4.2 und Kennlinie; Formulierung „luftleer“ und Widerstandsbegriffe physikalisch präzisiert.]
+
+=== 4.4.3 Quellen zusammenfassen, innere Leistungen im Original prüfen <a-4-4-3>
+Eine reale Spannungsquelle mit Serienwiderstand und eine reale Stromquelle mit Parallelwiderstand lassen sich umformen. Gleichgerichtete parallele Quellenströme werden addiert; gegengerichtete subtrahiert. Die widerstandsbehafteten Zweige bleiben als Parallelleitwerte im Netz.
+#form[$ I_"q,ers"=sum_k s_k I_(q k) quad G_"i,ers"=sum_k G_(i k) quad U_l=I_"q,ers"/G_"i,ers" $]
+*Gültigkeit:* gemeinsame Klemmen, unabhängige Quellen mit passenden linearen Innenwiderständen. Maximalleistung an einer variablen ohmschen Last ist weiterhin bei $R_a=R_i$ erreicht. Eine nichtlineare Last wird stattdessen über ihren Kennlinienschnitt bestimmt.
+#src[V S. 106 und 87–94; Quellenzusammenfassung als eigene Zusammenführung.]
+
+=== 4.4.4 LED: Leerlaufspannung ist noch kein Arbeitspunkt <a-4-4-4>
+Die Leerlaufspannung eines Netzwerks wird ohne LED bestimmt. Beim Anschließen zieht die LED Strom; die Klemmenspannung fällt entsprechend dem Innenwiderstand. Das Quellennetz wird daher zuerst ersetzt, anschließend wird die LED-Kennlinie geschnitten.
+#bild("gesamt-led-rot-kennlinie", [Steile Durchlasskennlinie der roten LED. V S. 107, Abb. 4.22, Kennlinienteil.], height: 55mm)
+Die in V genannte Schwelle von ungefähr 1,9 V ist eine Größenordnung im vereinfachten Energiebild. In der gezeigten Durchlasskennlinie ist die LED-Spannung positiv. Der tatsächliche Durchlasswert gehört zum gewählten Strom und zur Temperatur.
+#src[V S. 107, Abschnitt 4.4.4 einschließlich Fußnote; Schwellenwert als Näherung eingeordnet.]
+
+=== 4.4.5 Transistor mit Kollektorwiderstand <a-4-4-5>
+Bei festem Basisstrom wählst du die passende Ausgangskennlinie. Die Quellenlinie besitzt den Spannungsschnittpunkt $U_q$ und die Steigung $-1/R_C$. Am zulässigen Grenzarbeitspunkt erfüllt die Kennlinie zusätzlich die Verlustleistungshyperbel.
+#bild("gesamt-transistor-rc-feld", [Ausgangskennlinien für verschiedene Basisströme. V S. 108.], height: 65mm)
+#form[$ U_q=U_(C E)+I_C R_C quad P_T=U_(C E) I_C quad P_(R C)=I_C^2 R_C $]
+*Voraussetzung:* das vorgegebene Basisstromniveau und der betrachtete Gleichstrom-Arbeitspunkt; die Verlustleistung der Basis wird im Skriptmodell vernachlässigt. Die Transistorleistung und die Widerstandsleistung sind getrennt zu berechnen. Ein höherer zulässiger Quellenwert ergibt sich nicht durch Prüfen des Widerstands allein.
+#bild("map-zweipol", [Mindmap: Vom Netzwerk zum zulässigen Arbeitspunkt. Eigene Darstellung.], height: 44mm)
+*Der Zusammenhang in Kapitel 4.* Zwei Klemmen legen fest, welcher Teil ersetzt wird. Leerlaufspannung, Kurzschlussstrom und Innenwiderstand beschreiben den linearen aktiven Teil. Die Lastkennlinie findet den Arbeitspunkt; ihre Form entscheidet über Strom, Spannung und mögliche Mehrdeutigkeiten. Die abschließende Leistungsprüfung grenzt das mathematisch Mögliche auf den zulässigen Betrieb ein.
+#src[V S. 108, Abschnitt 4.4.5; Verbindung der Maschen- und Leistungsbilanz erläutert.]
+#hoch(<a-4>, [Kapitelübersicht])
 
 #pagebreak(weak: true)
 = Anhang
@@ -978,6 +1415,22 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Transistor], [$I_C approx beta I_B$; $P_T = U_(C E) I_C$], [Aktiver Bereich; Lastgerade und Verlustleistungsgrenze prüfen.],
  [Zeitabhängige Leistung], [$p(t) = u(t)i(t)$; $W = integral_0^(t_1) p(t) dif t$; $P_"mittel" = W/t_1$], [Integration über denselben Zeitraum; W in J, mittlere Leistung in W.],
  [Knoten und Maschen], [$sum I_nu = 0$; $sum U_nu = 0$], [Vorzeichen gemäß Zählpfeilen; konzentriertes Netzwerkmodell.],
+ [Quellen in Reihe], [$U_"q,ers"=sum s_k U_(q k)$; $R_"i,ers"=sum R_(i k)$], [Polungen zählen; innere Widerstände addieren.],
+ [Gleiche Quellen parallel], [$U_"q,ers"=U_q$; $R_"i,ers"=R_i/n$], [Gleiche Polung, gleiche Quellenparameter.],
+ [Stromteiler], [$I_k=I_"ges" G_k/G_"ges"$], [Nur Leitwerte der betrachteten Verzweigung.],
+ [Potenziometer], [$U_A/U_E=x/(1+(R_S/R_A)(x-x^2))$], [$x=R_2/R_S$; feste ohmsche Last.],
+ [Spannungsrichtige Messung], [$R_x=U_x/(I-U_x/R_"VM")$], [Voltmeterstrom vom gemessenen Strom abziehen.],
+ [Stromrichtige Messung], [$R_x=U/I_x-R_"AM"$], [Amperemeterwiderstand abziehen.],
+ [Messgeräte], [$R_"AM"=Delta U/I_"Endwert"$; $R_"VM"=K U_"Endwert"$], [$K$ in Ω/V; zum gewählten Messbereich.],
+ [Brückenabgleich], [$R_x=R_N R_1/R_2$], [Querzweigstrom null; Schleifdraht zusätzlich homogen.],
+ [Dreieck zu Stern], [$r_A=R_(A B) R_(C A)/(R_(A B)+R_(B C)+R_(C A))$], [Zyklisch für B und C; quellenfreies Widerstands-Teilnetz.],
+ [Stern zu Dreieck], [$R_(A B)=(r_A r_B+r_B r_C+r_C r_A)/r_C$], [Gegenüberliegender Arm im Nenner.],
+ [Lineares Netz], [$A bold(I)=bold(b)$; $I_j=D_j/det(A)$], [Unabhängige Gleichungen; $det(A)!=0$.],
+ [Knotenpotenziale], [$I_(A B)=G_(A B)(phi_A-phi_B)$], [Gleicher Bezug; Vorzeichen gemäß gewählter Richtung.],
+ [Zweipol], [$U_l=I_k R_i$; $U=U_l-I R_i$], [Linearer aktiver Quellenteil; gleiche Klemmen.],
+ [Nichtlineare Last], [$I_"Last"(U)=(U_l-U)/R_i$], [Arbeitspunkt als Schnitt; mehrere Lösungen möglich.],
+ [Kennlinien addieren], [Parallel: $I(U)=I_1(U)+I_2(U)$; Reihe: $U(I)=U_1(I)+U_2(I)$], [Gleiche Spannung bzw. gleicher Strom.],
+ [Verlustleistungsgrenze], [$I_"zul"=P_"max"/U$], [Leistungshyperbel; positive Größen im betrachteten Betrieb.],
  [Ladung im Leiter], [$Q = n e A l$], [$n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-3)$.],
  [Driftgeschwindigkeit], [$I = n e v_d A$; $v_d = I\/(n e A)$], [Einheiten passend (cm oder m); Größenordnung mm/s.],
  [Stromdichte], [$S = I\/A$], [A/mm²; zulässig etwa 1 … 6 A/mm² (V S. 10).],
@@ -996,7 +1449,7 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Fehlanpassung], [$P_a\/P_"a,max" = 4 (R_a\/R_i)\/(1 + R_a\/R_i)^2$], [Nach V S. 46.],
 )
 
-#src([Ergänzte Formeln: N30, PDF-S. 1–18 und 20–22 = V S. 20–37 und 39–41; LED, PDF-S. 1; FK-N, PDF-S. 6; V S. 17–19; N, PDF-S. 3 und 6. Voraussetzungen und belasteter Teiler wie in Abschnitt 0.6 und 1.2.3–1.2.6 hergeleitet.])
+#src([Gesamtskript-Erweiterung: V S. 43–108, insbesondere 47–67, 69–85 und 87–108. Ergänzte Formeln: N30, PDF-S. 1–18 und 20–22 = V S. 20–37 und 39–41; LED, PDF-S. 1; FK-N, PDF-S. 6; V S. 17–19; N, PDF-S. 3 und 6. Voraussetzungen und belasteter Teiler wie in Abschnitt 0.6 und 1.2.3–1.2.6 hergeleitet.])
 
 #note("Wichtige Zahlen", [
 $e = "1,602176634" dot.c 10^(-19) thin "As"$ (gerundet $"1,602" dot.c 10^(-19)$); 1 A ≈ $"6,25" dot.c 10^18$ Elektronen pro Sekunde; $n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-3)$.

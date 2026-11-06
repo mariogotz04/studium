@@ -3,14 +3,16 @@
 <!-- Redaktionelle Quelle für EPUB und Leseansicht. Kapitel und Abschnittsquellen folgen main.typ.
 Denkpause/Auflösung sind Paare; Formeln und Einheiten werden in Worten erklärt.
 Eigene Alltagsbilder dienen der Erklärung, nicht als zusätzliche Lehrquelle. -->
-Stand: 05.11.2026
-Skriptstand: 05.11.2026
+Stand: 06.11.2026
+Skriptstand: 06.11.2026
 
 ## Das Modul auf einen Blick
 
 Spannung treibt, Strom transportiert Ladung, Widerstand beeinflusst den Strom und Leistung beschreibt die Energie pro Zeit. Aus diesen vier Größen entsteht zuerst ein Bild einfacher Stromkreise. Danach fragen wir, wie Quellen Ladungen trennen und wie Potenziale und Kennlinien unterschiedliche Bauteile beschreiben. Knoten- und Maschenregel verbinden die Zweige eines Netzwerks. Der reale Grundstromkreis führt beides zusammen: Quelle, innere Verluste und Verbraucher müssen zu demselben Arbeitspunkt passen.
 
 Beim Hören geht es vor allem um diese Zusammenhänge. Zeichne Schaltungen und Kennlinien beim späteren Nacharbeiten im Lernskript selbst nach. Dann kannst Du prüfen, ob Deine Erklärung auch zur konkreten Verschaltung passt.
+
+Für Dein Selbststudium erweitert der vollständige Stand die Grundlagen um Messschaltungen, systematische Netzwerkmethoden und die Zweipoltheorie. So führt der Weg von der einzelnen Ladung bis zum zulässigen Arbeitspunkt einer nichtlinearen Last.
 
 ## Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung
 Quelle: 0.1, 0.2, 0.3, 0.4, 0.5, 0.6
@@ -132,7 +134,7 @@ Damit würdest Du ein Rechteck unterstellen, obwohl die Leistung zu Beginn noch 
 
 
 ## Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis
-Quelle: 2.1, 2.2, 2.3, 2.4.1, 2.4.2, 2.4.3
+Quelle: 2.1, 2.2, 2.3, 2.4.1, 2.4.1.2, 2.4.2, 2.4.3, 2.4.4, 2.4.5, 2.4.6, 2.4.7, 2.4.8, 2.4.9, 2.5.1, 2.5.2, 2.5.3
 
 ### Die Bilanzen verbinden die Zweige
 
@@ -174,3 +176,171 @@ Warum ist Leistungsanpassung nicht gleichzeitig der Fall mit dem besten Wirkungs
 Bei gleichen Widerständen geht die Hälfte der Leistung innen verloren. Ein deutlich größerer Außenwiderstand erhält einen größeren Anteil der Quellspannung, und der Wirkungsgrad steigt. Gleichzeitig wird der Strom kleiner. Im Grenzfall des Leerlaufs ist die Verbraucherleistung trotz hoher Klemmenspannung null. Maximaler Anteil und maximaler Leistungsbetrag sind verschiedene Ziele.
 
 Erkläre eine neue Schaltung deshalb immer in dieser Reihenfolge: Ersatzmodell, Strom und Spannungen, Leistungsbilanz und erst dann die Bewertung des gewünschten Betriebszustands.
+
+### Schaltungen zuerst erkennen
+
+In einer Reihenschaltung fließt überall derselbe Strom. Der größere Widerstand übernimmt deshalb den größeren Spannungsabfall. In parallelen Zweigen ist dagegen die Spannung gleich. Der besser leitende Zweig übernimmt mehr Strom. Entscheidend sind die angeschlossenen Knoten, nicht die Anordnung auf dem Papier.
+
+Bei verschachtelten Netzen arbeitest Du zuerst von innen nach außen. Ersetze kleine Gruppen durch ihren Gesamtwiderstand. Bestimme dann den Gesamtstrom und gehe anschließend rückwärts zu den Teilgrößen. In der Stromteilerregel darfst Du nur den Ersatzwiderstand der gerade betrachteten Verzweigung verwenden. Ein davor liegender Widerstand gehört nicht in dieses Teilungsverhältnis.
+
+Mehrere reale Quellen brauchen ebenfalls eine passende Verschaltung. In Reihe addieren sich die vorzeichenrichtig gezählten Quellspannungen. Die Innenwiderstände addieren sich unabhängig davon. Zwei gleiche gleich gepolte Quellen parallel behalten ihre Spannung und teilen sich die Last. Ihr gemeinsamer Innenwiderstand wird kleiner. Ungleiche Quellen können sich gegenseitig belasten; dann genügt die einfache Symmetrieregel nicht.
+
+### Denkpause
+
+Ein Potenziometer steht genau in der Mitte. Du schließt einen endlichen Lastwiderstand zwischen Schleifer und unterem Anschluss an. Muss am Ausgang noch die halbe Eingangsspannung liegen? Halte die Wiedergabe an und erkläre die Stromwege.
+
+### Auflösung
+
+Die Last liegt parallel zum unteren Teil der Widerstandsbahn. Sie verkleinert dessen wirksamen Widerstand. Dadurch übernimmt der obere Teil mehr Spannungsabfall, und die Ausgangsspannung liegt unter der Hälfte. Der Zusammenhang zwischen Schleiferstellung und Ausgangsspannung wird gekrümmt. Für eine annähernd lineare Stellkennlinie sollte die Last den Teiler nur wenig belasten. Auch der Schleiferstrom muss für die ungünstigste Stellung zulässig sein.
+
+### Messgeräte verändern ihr Messobjekt
+
+Ein Amperemeter benötigt einen kleinen Spannungsabfall. Ein Voltmeter zieht einen kleinen Strom. Beide Effekte können die gesuchte Widerstandsmessung beeinflussen.
+
+Spannungsrichtig heißt: Das Voltmeter liegt direkt über dem Prüfling. Das Amperemeter misst zusätzlich den Voltmeterstrom. Ohne Korrektur ergibt Spannung geteilt durch Strom einen zu kleinen Widerstand. Stromrichtig heißt: Das Amperemeter liegt direkt im Prüflingszweig. Das Voltmeter misst den zusätzlichen Spannungsabfall am Amperemeter mit. Ohne Korrektur fällt der Widerstandswert zu groß aus.
+
+Wähle die Anordnung, die die kleinere Eigenverbrauchskorrektur erfordert. Die Korrektur beseitigt nicht automatisch die übrigen Unsicherheiten der Instrumente. Auch die Messbereichswahl beeinflusst den Instrumentenwiderstand.
+
+### Vom Sensor zum Nullsignal
+
+Ein Pt100 besitzt bei null Grad Celsius einen Widerstand von hundert Ohm. Im verwendeten Modell steigt er linear mit der Temperatur. Die Anzeige muss trotzdem nicht linear mitsteigen. Der Sensor liegt parallel zum Messinstrument, und die ganze Stromaufteilung verändert sich. Eine lineare Stromskala ist deshalb nicht automatisch eine lineare Temperaturskala.
+
+Eine Wheatstone-Brücke nutzt einen anderen Zugang. Sie vergleicht die Mitten zweier Spannungsteiler. Beim Abgleich haben beide Mitten dasselbe Potenzial. Durch das verbindende Messgerät fließt dann kein Strom. Aus dem passenden Widerstandsverhältnis wird der unbekannte Widerstand bestimmt. Eine Schleifdrahtbrücke ersetzt das Widerstandsverhältnis durch ein Längenverhältnis, wenn der Draht überall dasselbe Material und denselben Querschnitt hat.
+
+Außerhalb des Abgleichs belastet ein reales Voltmeter die Brücke. Bei der Heißleiteraufgabe muss sein Innenwiderstand deshalb mitgerechnet werden. Die logarithmische Widerstandsskala des Heißleiters zeigt Faktoren, keine gleich großen Widerstandsschritte.
+
+### Denkpause
+
+Du ersetzt ein Widerstandsdreieck durch einen gleichwertigen Stern. Darfst Du den Strom eines Sternarms anschließend einfach dem Strom einer früheren Dreieckseite gleichsetzen? Begründe Deine Antwort, bevor Du weiterhörst.
+
+### Auflösung
+
+Die Umwandlung erhält das Verhalten an den drei äußeren Klemmen. Die inneren Verbindungen sind aber andere. Deshalb können sich auch die inneren Ströme ändern. Berechne einen gesuchten ursprünglichen Strom aus den ursprünglichen Widerständen und den erhaltenen äußeren Potenzialen zurück.
+
+### Umformen mit einer Erhaltungsidee
+
+Stern und Dreieck helfen, wenn Reihe und Parallel eine vermaschte Brücke nicht direkt zerlegen. Bei der Umwandlung zum Stern steht im Zähler das Produkt der beiden am äußeren Knoten anliegenden Dreieckseiten. Bei der Rückrichtung gehört der gegenüberliegende Sternarm in den Nenner. Am sichersten beschriftest Du die Klemmen zuerst, statt eine Formel nach der Zeichenposition auswendig einzusetzen.
+
+Auch das Verschieben einer Quelle muss begründet sein. Eine Spannungsquelle wird im gezeigten Spezialfall passend in alle betroffenen Zweige übernommen, damit die Maschenbeiträge gleich bleiben. Bei der entsprechenden Stromquellenumformung heben sich die Quellenbeiträge am ergänzten Knoten auf. So bleiben die Knotenbilanzen erhalten. Diese Vorschriften gelten für die gezeigten Verbindungen und Polungen; Quellen können nicht beliebig im Netz versetzt werden.
+
+## Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen
+
+Quelle: 3.1, 3.2.1, 3.2.2, 3.2.2.1, 3.2.3, 3.2.4
+
+### Dieselbe Physik, günstigere Unbekannte
+
+Bei einem größeren Netzwerk ist oft nicht die Physik neu, sondern die Zahl der Unbekannten. Du kannst jeden Zweigstrom einzeln berechnen. Du kannst aber auch gedachte Kreisströme oder Spannungen der Knoten gegen Masse als Unbekannte wählen. Alle Wege müssen am Ende dieselben Ströme und Spannungen liefern.
+
+Beginne mit klaren Knoten, Zweigen und Pfeilen. In einem zusammenhängenden Netz ist eine der Knotenbilanzen bereits in den übrigen enthalten. Du brauchst unabhängige Beziehungen statt bloß möglichst vieler Gleichungen. Ergänze passende Maschenbilanzen und ordne die Unbekannten in einer festen Reihenfolge.
+
+Die Matrix ist eine übersichtliche Schreibweise dieser Gleichungen. Bei Cramers Regel wird die Spalte des gesuchten Stroms durch die bekannte rechte Seite ersetzt. Das funktioniert nur bei einer von null verschiedenen Determinante. Die Regel von Sarrus gilt für drei Zeilen und drei Spalten; sie wird nicht einfach auf größere Matrizen verlängert.
+
+### Die Wirkung der Quellen trennen
+
+Überlagerung ist für lineare Netze gedacht. Lasse eine unabhängige Quelle wirken und setze die anderen auf null. Eine ideale Nullvoltquelle wird zum Draht. Eine ideale Nullstromquelle wird zur offenen Verbindung. Die zugehörigen Widerstände bleiben erhalten.
+
+Berechne alle Teilbeiträge mit denselben Bezugspfeilen. Addiere anschließend die vorzeichenbehafteten Teilströme oder Teilspannungen. Ein negatives Ergebnis bedeutet einen Beitrag entgegen dem gewählten Pfeil. Drehe nicht mitten in der Rechnung unbemerkt die Bezugsrichtung um.
+
+### Denkpause
+
+Zwei Quellen erzeugen einzeln jeweils einen Strom durch denselben Widerstand. Du kennst beide Teilströme. Darfst Du die beiden einzeln berechneten Wärmeleistungen einfach addieren, um die gemeinsame Wärmeleistung zu erhalten?
+
+### Auflösung
+
+Nein. Die Leistung hängt vom Quadrat des gesamten Stroms ab. Beim Quadrieren einer Summe entsteht ein zusätzlicher gemischter Term. Bilde zuerst den vorzeichenrichtigen Gesamtstrom und berechne erst daraus die Leistung. Überlagerbar sind hier Ströme und Spannungen, nicht die Teilleistungen.
+
+### Gedachte Kreisströme und reale Zweigströme
+
+Beim Maschenstromverfahren führst Du Kreisströme als Rechenhilfen ein. Ein Widerstand am Rand gehört oft nur zu einer Masche. In einem gemeinsamen Zweig wirken mehrere Kreisbeiträge. Laufen sie entgegengesetzt durch den Widerstand, wird subtrahiert. Erst diese Summe oder Differenz ist der messbare Zweigstrom.
+
+Die Pufferbatterie zeigt, warum die Rückübersetzung wichtig ist. Das Vorzeichen des Batteriestroms entscheidet, ob sie gerade Energie liefert oder aufnimmt. Ihre aufgedruckte Polung legt nicht allein die Stromrichtung fest.
+
+Eine ideale Stromquelle in einer Randmasche kann einen Kreisstrom unmittelbar festlegen. Im gemeinsamen Zweig legt sie dagegen eine Beziehung zwischen zwei Kreisströmen fest. Ihre Spannung ist zunächst unbekannt und darf in einer Spannungsbilanz nicht verschwinden. Einige formale Umläufe des Originalskripts lassen diesen Beitrag aus; die ergänzte Lösung arbeitet deshalb mit den gültigen Widerstandsumläufen und den fest vorgegebenen Quellenströmen.
+
+### Potenziale als gemeinsame Sprache
+
+Beim Knotenpotenzialverfahren erklärst Du einen Knoten zur Masse. Jede unbekannte Knotenspannung wird gegenüber dieser Masse gemessen. Ein Widerstandsstrom folgt aus der Potenzialdifferenz seiner Anschlüsse geteilt durch den Widerstand.
+
+Die Knotenbilanz sammelt diese Ströme. In der Leitwertmatrix stehen auf der Diagonale die angeschlossenen Leitwerte. Ein negativer Nebeneintrag verbindet zwei unbekannte Knoten über ihren gemeinsamen Zweig. Die bekannte rechte Seite enthält die Quellenströme. Aus den berechneten Potenzialen folgen danach alle Zweigspannungen und Ströme.
+
+### Denkpause
+
+Eine ideale Stromquelle erzwingt einen Ampere durch einen Widerstand von einem Kiloohm. In der Rechnung erscheint deshalb eine sehr hohe Spannung. Ist das allein schon ein Beweis, dass die Rechnung falsch ist? Halte die Wiedergabe an und trenne Modell und reales Bauteil.
+
+### Auflösung
+
+Im idealen Modell ist der Strom festgelegt, der mögliche Spannungsbereich aber nicht begrenzt. Eine hohe Spannung kann deshalb zum Modell passen. Eine reale Stromquelle erreicht dagegen nur einen begrenzten Arbeitsbereich. Die mathematische Lösung und ihre praktische Realisierbarkeit sind getrennte Prüfungen.
+
+### Nach jeder Methode dieselben Kontrollen
+
+Prüfe die ursprünglichen Knotenbilanzen und Maschenbilanzen. Kontrolliere die zugehörigen Potenzialdifferenzen, Einheiten und Leistungen. Ein negatives Potenzial ist lediglich eine Spannung unterhalb des gewählten Nullpunkts. Ein negativer Zweigstrom bezeichnet die Gegenrichtung zum angenommenen Pfeil.
+
+## Kapitel 4 · Zweipoltheorie und nichtlineare Arbeitspunkte
+
+Quelle: 4.1, 4.2, 4.2.1, 4.2.2, 4.2.3, 4.3, 4.3.1, 4.3.2, 4.4, 4.4.1, 4.4.2, 4.4.3, 4.4.4, 4.4.5
+
+### Ein komplexes Netz von zwei Klemmen aus betrachten
+
+Du möchtest wissen, wie sich eine bestimmte Last verhält. Lege zwei Klemmen um diesen Lastzweig und trenne ihn gedanklich ab. Das übrige lineare Netzwerk kann von diesen Klemmen aus durch eine einfache Ersatzquelle beschrieben werden.
+
+Die Ersatzspannungsquelle besitzt eine Leerlaufspannung und einen Innenwiderstand in Reihe. Die gleichwertige Ersatzstromquelle besitzt einen eingeprägten Quellenstrom und einen Innenwiderstand parallel. Ihr Laststrom ist nicht automatisch der ganze Quellenstrom. Ein Teil kann durch den Innenwiderstand fließen.
+
+Gleichwertig bedeutet, dass das angeschlossene äußere Netz dieselbe Strom-Spannungs-Beziehung sieht. Es bedeutet nicht, dass alle ursprünglichen inneren Ströme oder Wärmeverluste gleich bleiben.
+
+### Drei Ersatzgrößen, zwei Rechnungen und eine Probe
+
+Für den Innenwiderstand setzt Du unabhängige Quellen auf null. Spannungsquellen werden kurzgeschlossen, Stromquellen geöffnet. Ihre Widerstände bleiben erhalten. Schaue von den offenen Lastklemmen in das Netzwerk.
+
+Für die Leerlaufspannung bleiben die Quellen aktiv. Nur die Last ist entfernt. Ein Parallelwiderstand im aktiven Netz bleibt angeschlossen. Auch wenn außen kein Strom fließt, können innere Quellen weiterhin Kreisströme treiben.
+
+Der Kurzschlussstrom ist der Strom durch eine gedachte Verbindung der beiden Klemmen. Leerlaufspannung geteilt durch Innenwiderstand muss denselben Wert ergeben. Zwei korrekt bestimmte Ersatzgrößen legen die dritte fest. Kleine Abweichungen wegen gerundeter Zwischenwerte werden von echten Polungsfehlern unterschieden.
+
+### Denkpause
+
+Du bestimmst die Leerlaufspannung eines Netzwerks vor einer LED. Neben der LED liegt noch ein Widerstand zwischen den Ausgangsklemmen. Musst Du für den Leerlauf beide entfernen? Begründe Deine Entscheidung.
+
+### Auflösung
+
+Entfernt wird nur die festgelegte LED-Last. Der andere Widerstand gehört weiterhin zum aktiven Netz. Er beeinflusst dessen Leerlaufspannung und Innenwiderstand. Würdest Du ihn ebenfalls entfernen, würdest Du eine andere Ersatzquelle berechnen.
+
+### Der Schnittpunkt verbindet Angebot und Last
+
+Im Strom-Spannungs-Diagramm ist die Quellenkennlinie eine fallende Gerade. Am Spannungsschnittpunkt fließt kein Strom. Am Stromschnittpunkt ist die Spannung null. Dazwischen liegen alle Kombinationen, die diese Quelle einer Last anbieten kann.
+
+Die Last besitzt ihre eigene Kennlinie. Nur ein gemeinsamer Schnitt erfüllt beide Seiten zugleich. Wenn Du die Leerlaufspannung bei gleichem Innenwiderstand änderst, verschiebt sich die Quellenlinie parallel. Wenn Du nur den Innenwiderstand bei gleicher Leerlaufspannung änderst, verändert sich ihre Steigung.
+
+Die Last muss nicht linear sein. Eine Diode oder ein Varistor behält seine gekrümmte Kennlinie, während das speisende lineare Netz einfach wird. Bei mehreren parallelen Lasten addierst Du die Ströme zur gleichen Spannung. In einer Reihe addierst Du die Spannungen zum gleichen Strom.
+
+### Begrenzen heißt auch Leistung aufnehmen
+
+Ein Varistor wird bei höherer Spannung viel leitfähiger. Dadurch fällt mehr Spannung im vorgeschalteten Netz ab, und die Ausgangsspannung steigt weniger stark an. Gleichzeitig nimmt der Varistor Leistung auf. Dass er die Spannung begrenzt, beweist noch nicht, dass er den Betrieb thermisch aushält.
+
+Bei der Basis-Emitter-Diode zeigt der Kennlinienschnitt, wie stark ein speisender Spannungsteiler belastet wird. Die Teilerspannung ohne Basisstrom ist noch nicht die tatsächliche Diodenspannung. Eine feste Durchlassspannung ist nur eine Näherung für einen bestimmten Betrieb.
+
+### Denkpause
+
+Die Spannung einer Glimmlampe sinkt auf einem Kennlinienabschnitt, obwohl der Strom zunimmt. Bedeutet das, dass die Lampe auf diesem Abschnitt elektrische Energie liefert?
+
+### Auflösung
+
+Nicht zwangsläufig. Die fallende Kennlinie bedeutet einen negativen differenziellen Widerstand: Sie beschreibt eine Änderung zwischen benachbarten Arbeitspunkten. Die tatsächliche Leistung ist Spannung mal Strom. Sind beide positiv, nimmt die Lampe weiterhin Leistung auf. Statischer Quotient, lokale Steigung und Leistung sind verschiedene Aussagen.
+
+### Haltegrenze und Transistorgrenze
+
+Eine Glimmlampe enthält Gas bei niedrigem Druck. Die Entladung kann Licht erzeugen, solange ihr Arbeitspunkt im passenden Haltebereich liegt. Beim Absenken der Quelle kann sie erlöschen. Zünden und Aufrechterhalten der Entladung sind dabei verschiedene Bedingungen.
+
+Beim Transistor kommt eine andere Grenze hinzu. Der Basisstrom wählt eine Ausgangskennlinie. Der Kollektorstrom ist nur in einem geeigneten Spannungsbereich näherungsweise konstant. Die Verlustleistung ist das Produkt aus Kollektor-Emitter-Spannung und Kollektorstrom. Punkte gleicher zulässiger Leistung bilden im Diagramm eine Hyperbel.
+
+Eine zu kleine Last lässt bei vorgegebenem Strom viel Spannung und damit viel Leistung am Transistor. Eine zu große Last beansprucht fast die gesamte Quellspannung. Dann fehlt dem Transistor Spannung für den aktiven Bereich. Die obere Lastgrenze des vereinfachten Skriptmodells mit null Volt am Transistor ist deshalb ein idealisierter Grenzfall.
+
+Für die abschließende Verstärkeraufgabe wählst Du die Kurve des gegebenen Basisstroms und schneidest sie mit der Verlustleistungshyperbel. Der Grenzpunkt bestimmt über Transistorspannung plus Widerstandsabfall die größte zulässige Quellspannung. Die Wärmeleistung des Kollektorwiderstands wird separat geprüft.
+
+### Denkpause
+
+Zwei Ersatzschaltungen liefern an denselben Klemmen dieselbe Spannung und denselben Laststrom. Ist damit auch die Leistung jeder ursprünglichen inneren Quelle bekannt?
+
+### Auflösung
+
+Nein. Die äußere Gleichwertigkeit erhält das Klemmenverhalten. Innere Quellen und Widerstände können anders zusammengesetzt sein und andere Ströme führen. Für eine ursprüngliche innere Quellenleistung gehst Du zurück zur Originalschaltung und bestimmst dort ihre tatsächliche Spannung und ihren Strom.
+
+Der rote Faden endet deshalb mit einer vollständigen Prüfung: Klemmen und Last wählen, Ersatzquelle bestimmen, Arbeitspunkt finden und Betriebsgrenzen kontrollieren. Mit dieser Reihenfolge kannst Du Dir die Schaltungen des ganzen Skripts selbst erschließen und anschließend ohne Vorlage erklären.

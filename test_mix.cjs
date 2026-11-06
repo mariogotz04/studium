@@ -57,6 +57,8 @@ const bewerten = (id, s) => {
   assert(button, 'Bewertungsbutton vorhanden'); button.onclick();
 };
 
+// Diese Serie wurde aus bereits erreichten Kapiteln gestartet.
+for (let i = 0; i < 7; i++) stand.set(`lernpfad:Finanzierung:${1000 + i}:0`, true);
 state.set('probe:lauf', { ...lauf(true), ab: 0 });
 gehen(zurück);
 nodes.get('#pab').onclick({ target: node('#pab') });

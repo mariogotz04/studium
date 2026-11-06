@@ -427,6 +427,170 @@ Quelle: 2.4.3
 Abbildung: skript-anpassung
 
 ### Zeichne die Begriffslandkarte zu Kapitel 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-Die Knotenregel erhält die Ladung, die Maschenregel schließt die Spannungsbilanz. Kennlinien verbinden die Größen der nichtlinearen Zweige. Das Ersatzschaltbild verbindet die ideale Quellspannung mit Innen- und Außenwiderstand. Der Maschenumlauf liefert Strom und Klemmenspannung; der Kennlinienschnitt beschreibt denselben Arbeitspunkt. Die Quellenleistung verteilt sich auf innere Verluste und Lastleistung. Leistungsanpassung bedeutet gleicher Außen- und Innenwiderstand und maximale Lastleistung, aber nur 50 % Wirkungsgrad; ein hoher Wirkungsgrad erfordert einen anderen Lastfall.
+Die Knotenregel erhält die Ladung, die Maschenregel schließt die Spannungsbilanz. Kennlinien verbinden die Größen der nichtlinearen Zweige. Das Ersatzschaltbild verbindet die ideale Quellspannung mit Innen- und Außenwiderstand. Der Maschenumlauf liefert Strom und Klemmenspannung; der Kennlinienschnitt beschreibt denselben Arbeitspunkt. Die Quellenleistung verteilt sich auf innere Verluste und Lastleistung. Leistungsanpassung bedeutet gleicher Außen- und Innenwiderstand und maximale Lastleistung, aber nur 50 % Wirkungsgrad; ein hoher Wirkungsgrad erfordert einen anderen Lastfall. Reihen- und Parallelregeln führen zu Spannungsteilung und Stromteilung. Belastete Teiler und Messgeräte verändern die Schaltung. Brücken nutzen gleiche Potenziale; Stern-Dreieck- und Quellenumformungen erhalten das Klemmenverhalten.
 Quelle: 2.4.1
 
+
+### Warum werden gleiche Quellen parallel steifer, ohne ihre Quellspannung zu erhöhen?
+Beide Quellen halten dieselbe Leerlaufspannung. Unter Last übernimmt jede einen Teil des Stroms, sodass ihr innerer Spannungsabfall kleiner wird. Im symmetrischen Modell halbiert sich bei zwei Quellen der Ersatzinnenwiderstand. Das setzt gleiche Parameter und passende Polung voraus.
+Quelle: 2.4.1.2
+Abbildung: gesamt-quellen-parallel
+
+### Warum ist die Spannungsteilung in Reihe proportional zu den Widerständen?
+Alle Widerstände führen denselben Strom. Der Spannungsabfall ist jeweils Strom mal Widerstand. Deshalb bekommt der größere Widerstand den größeren Anteil der Gesamtspannung. Eine Belastung am Abgriff muss vorher in das Modell aufgenommen werden.
+Quelle: 2.4.4
+Abbildung: gesamt-serie
+
+### Warum erhält der kleinere Parallelwiderstand den größeren Strom?
+An beiden Zweigen liegt dieselbe Spannung. Bei gleichem U führt ein kleinerer Widerstand einen größeren Strom. Deshalb teilen sich die Ströme proportional zu den Leitwerten und umgekehrt zu den Widerständen.
+Quelle: 2.4.5
+Abbildung: gesamt-parallel
+
+### Warum ist eine halbe Schleiferstellung unter Last nicht automatisch die halbe Eingangsspannung?
+Die Last liegt parallel zum unteren Bahnabschnitt und senkt dessen wirksamen Widerstand. Der obere Abschnitt übernimmt dadurch mehr Spannungsabfall. Die ideale Proportionalität gilt nur ohne Last oder näherungsweise bei sehr kleiner Belastung.
+Quelle: 2.4.6
+Abbildung: gesamt-potenziometer
+
+### Wie unterscheidest du stromrichtige und spannungsrichtige Messung?
+Spannungsrichtig misst U direkt am Prüfling, aber I enthält den Voltmeterstrom. Stromrichtig misst I direkt im Prüfling, aber U enthält den Amperemeterabfall. Wähle die Schaltung mit der kleineren Eigenverbrauchskorrektur. Andere Geräteunsicherheiten bleiben bestehen.
+Quelle: 2.4.7
+Abbildung: gesamt-messung-u
+
+### Warum kann eine lineare Stromskala bei der Pt100-Schaltung eine ungleichmäßige Temperaturskala benötigen?
+Die Sensorannahme ist zwar linear, die elektrische Übertragung enthält aber Parallelbelastung und Spannungsteilung. Der Instrumentenstrom steigt daher nicht automatisch proportional zur Temperatur. Die Skala muss nach der gesamten Stromfunktion geeicht werden.
+Quelle: 2.4.8
+Abbildung: gesamt-pt100
+
+### Warum ist die Nullanzeige der Wheatstone-Brücke besonders hilfreich?
+Bei Nullanzeige haben beide Mitten dasselbe Potenzial. Das Messgerät führt dann keinen Querzweigstrom und belastet die Teiler an diesem Punkt nicht. Aus den gleichen Teilspannungen folgt das Verhältnis der Widerstände.
+Quelle: 2.4.9
+Abbildung: gesamt-wheatstone
+
+### Was bleibt bei einer Stern-Dreieck-Umwandlung gleich?
+Das Verhalten an den drei äußeren Klemmen bleibt gleich, sodass sich der übrige Stromkreis gleich verhält. Die inneren Ströme müssen nicht gleich sein. Das umgewandelte Teilnetz enthält hier nur lineare Widerstände ohne Quellen.
+Quelle: 2.5.1
+Abbildung: gesamt-stern-dreieck
+
+### Warum darf eine Spannungsquelle nicht einfach an eine beliebige Stelle verschoben werden?
+Die Quelle tritt in bestimmten Maschengleichungen auf. Eine beliebige Verschiebung verändert diese Bilanzen. Eine zulässige Umformung übernimmt Wert und Polung in alle betroffenen Zweige und erhält damit das betrachtete Klemmenverhalten.
+Quelle: 2.5.2
+Abbildung: gesamt-quelle-verschieben-u
+
+### Welche Erhaltungsidee begründet die gezeigte Stromquellenumformung?
+Die Knotenbilanzen bleiben erhalten. Die eingefügten Quellenströme gleichen sich am zusätzlichen Knoten aus, sodass der Querzweig stromlos bleibt. Die Vorschrift gilt für die dargestellte Topologie und passende Quellenrichtungen.
+Quelle: 2.5.3
+Abbildung: gesamt-quelle-verschieben-i
+
+## Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen
+
+### Warum brauchst du unabhängige statt bloß viele Gleichungen?
+Eine wiederholte oder umgekehrte Gleichung enthält keine neue Information. Für die eindeutige Bestimmung der Unbekannten braucht das lineare System genügend unabhängige Beziehungen. Die letzte Knotenbilanz ist bereits in den übrigen enthalten.
+Quelle: 3.1
+Abbildung: gesamt-kirchhoff-allgemein
+
+### Warum funktioniert Überlagerung für Ströme in linearen Netzen, aber nicht durch Addieren der Teilleistungen?
+Die linearen Gleichungen erlauben die Addition der Quellenwirkungen auf Ströme und Spannungen. Leistung enthält dagegen Produkte bzw. Quadrate. Die Gesamtleistung muss deshalb aus dem gesamten Strom und der gesamten Spannung berechnet werden.
+Quelle: 3.2.1
+Abbildung: gesamt-drei-zweige
+
+### Wie kommst du von Maschenströmen zu messbaren Zweigströmen zurück?
+Du prüfst, welche Kreisströme den betreffenden Zweig durchlaufen. Ihre Beiträge werden passend zum festgelegten Zweigpfeil addiert oder subtrahiert. Ein Randzweig kann nur einen Kreisbeitrag enthalten. Ein gemeinsamer Zweig enthält mehrere.
+Quelle: 3.2.2
+Abbildung: gesamt-fuenf-widerstaende
+
+### Wann ist ein Stromquellenstrom direkt gleich einem Maschenstrom?
+Wenn die Quelle in einem geeigneten Randzweig liegt, der nur von dieser Masche durchlaufen wird. In einem gemeinsamen Zweig legt sie dagegen eine Beziehung zwischen mehreren Maschenströmen fest. Die Quellenspannung bleibt dabei zunächst unbekannt.
+Quelle: 3.2.2.1
+Abbildung: gesamt-ideale-quellen-netz
+
+### Warum reichen die Knotenpotenziale aus, um das lineare Widerstandsnetz auszuwerten?
+Jede Zweigspannung ist die Differenz der angeschlossenen Potenziale. Mit dem jeweiligen Widerstand folgt daraus der Zweigstrom. Danach lassen sich auch die Leistungen bestimmen. Alle Potenziale müssen denselben Bezugspunkt verwenden.
+Quelle: 3.2.3
+Abbildung: gesamt-knoten-netz
+
+### Was ist der entscheidende Unterschied zwischen idealer Spannungs- und idealer Stromquelle?
+Die Spannungsquelle hält U fest, I folgt aus dem Netz. Die Stromquelle hält I fest, U folgt aus dem Netz. Reale Quellen erreichen diese Bedingungen nur innerhalb ihres Arbeitsbereichs.
+Quelle: 3.2.4
+Abbildung: gesamt-quellen-ideal-gemischt
+
+### Zeichne die Begriffslandkarte zu Kapitel 3 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Knoten und Maschen liefern unabhängige Gleichungen. Die direkte Rechnung verwendet Zweigströme; Überlagerung trennt Quellenwirkungen im linearen Netz. Maschenströme sind gedachte Kreisbeiträge, Knotenpotenziale Spannungen gegen Masse. Alle Methoden werden in reale Zweiggrößen übersetzt und mit den ursprünglichen Bilanzen geprüft.
+Quelle: 3.1
+Abbildung: map-methoden
+
+## Kapitel 4 · Zweipoltheorie und nichtlineare Arbeitspunkte
+
+### Warum können zwei gleichwertige Ersatzquellen intern unterschiedliche Leistungen besitzen?
+Gleichwertigkeit bezieht sich auf die äußeren Klemmen. Der innere Aufbau aus idealem Quellenanteil und Widerstand unterscheidet sich. Für ursprüngliche innere Leistungen muss die Originalschaltung ausgewertet werden.
+Quelle: 4.1
+Abbildung: map-zweipol
+
+### Warum musst du vor jeder Zweipolrechnung die Last und ihre Klemmen genau festlegen?
+Nur so ist eindeutig, welcher Zweig abgetrennt wird und was im aktiven Netz bleibt. Ein Parallelwiderstand kann zum Quellennetz gehören, obwohl er optisch neben der Last liegt. Andere Klemmen liefern andere Ersatzgrößen.
+Quelle: 4.2
+Abbildung: gesamt-zweipol-zwei-quellen
+
+### Warum verschwinden beim Nullsetzen der Quellen nicht auch ihre Innenwiderstände?
+Die Quelle wird als Vorgabe auf null gesetzt. Der Widerstand beschreibt weiterhin die lineare Verbindung im Netzwerk. Ihn zu entfernen würde die Struktur verändern und einen falschen Ersatzinnenwiderstand ergeben.
+Quelle: 4.2.1
+Abbildung: gesamt-zweipol-zwei-quellen
+
+### Warum bedeutet Leerlauf nur Laststrom null und nicht zwangsläufig alle Ströme null?
+Der Lastzweig ist offen, aber das aktive Netz kann innere geschlossene Wege enthalten. Unterschiedliche Quellen können dort weiterhin Strom treiben. Diese inneren Ströme bestimmen mit, welche Leerlaufspannung an den Klemmen entsteht.
+Quelle: 4.2.2
+Abbildung: gesamt-zweipol-zwei-quellen
+
+### Wie hilft die Beziehung zwischen Leerlaufspannung und Kurzschlussstrom beim Prüfen der Ersatzquelle?
+Bei endlichem Innenwiderstand muss ihr Quotient denselben Innenwiderstand ergeben wie der Blick in das nullgesetzte Netz. Die Bezugsrichtungen müssen zusammenpassen. Eine unabhängige zweite Rechnung findet deshalb leicht Polungs- oder Topologiefehler.
+Quelle: 4.2.3
+Abbildung: map-zweipol
+
+### Warum müssen Quellen- und Lastkennlinie denselben Strom und dieselbe Spannung liefern?
+Beide beschreiben dieselben verbundenen Klemmen. Eine Seite kann keinen anderen stationären Strom oder eine andere Klemmenspannung als die andere besitzen. Der Schnittpunkt erfüllt beide Bedingungen zugleich.
+Quelle: 4.3
+Abbildung: map-zweipol
+
+### Warum lässt die Zweipoltheorie eine nichtlineare Last zu, obwohl die Ersatzquelle linear ist?
+Ersetzt wird nur der lineare aktive Teil vor den Klemmen. Die Last bleibt mit ihrer eigenen gekrümmten Kennlinie erhalten. Der gemeinsame Arbeitspunkt ist der Schnitt beider Beschreibungen.
+Quelle: 4.3.1
+Abbildung: gesamt-kennlinien-addieren
+
+### Warum begrenzen sowohl zu kleine als auch zu große Lastwiderstände den Konstantstrombetrieb?
+Eine kleine Last lässt viel Spannung am Transistor, sodass seine Verlustleistung zu groß werden kann. Eine große Last beansprucht fast die ganze Quellspannung, sodass dem Transistor zu wenig Spannung für den aktiven Bereich bleibt. Zwischen beiden Bedingungen liegt der nutzbare Bereich.
+Quelle: 4.3.2
+Abbildung: gesamt-konstantstrom-transistor
+
+### Welche Schritte gehören zur vollständigen Beurteilung eines Zweipol-Arbeitspunkts?
+Lege Klemmen und Last fest, bestimme die Ersatzquelle und finde den gemeinsamen Arbeitspunkt. Danach prüfst du Kennlinienbereich und Leistungen der betroffenen Bauteile. Bei ursprünglichen inneren Größen gehst du zur Originalschaltung zurück.
+Quelle: 4.4
+Abbildung: map-zweipol
+
+### Warum ist ein negatives Ul bei der Zweipolrechnung kein automatischer Fehler?
+Ul ist eine vorzeichenbehaftete Potenzialdifferenz. Ein negatives Ergebnis bedeutet eine Polung entgegen der gewählten Richtung. Die Quelle kann trotzdem ein passives Widerstandsnetz versorgen und besitzt hier weiterhin einen positiven Ersatzinnenwiderstand.
+Quelle: 4.4.1
+Abbildung: gesamt-stromquelle-symbolisch
+
+### Wie kann ein negativer differenzieller Widerstand mit positiver Leistungsaufnahme zusammenpassen?
+Die Steigung beschreibt nur die Änderung zwischen benachbarten Arbeitspunkten. Die momentane Leistung hängt dagegen vom Produkt aus tatsächlicher Spannung und tatsächlichem Strom ab. Sind beide positiv, nimmt das Bauteil Leistung auf, auch wenn die Kennlinie lokal fällt.
+Quelle: 4.4.2
+Abbildung: gesamt-glimmlampe-kennlinie
+
+### Warum darfst du eine gegebene nichtlineare Last nicht einfach auf Ra gleich Ri setzen?
+Die Kennlinie legt die möglichen Strom-Spannungs-Kombinationen der Last fest. Der tatsächliche Punkt muss zusätzlich zur Quellenlinie passen. Die Anpassungsregel gilt für eine frei variierte konstante ohmsche Last, nicht für das freie Ersetzen einer vorgegebenen gekrümmten Kennlinie.
+Quelle: 4.4.3
+Abbildung: gesamt-nichtlinear-lastkurve
+
+### Warum ist die Leerlaufspannung eines LED-Speisenetzes keine feste LED-Spannung?
+Leerlauf heißt, dass die LED noch keinen Laststrom entnimmt. Beim Anschließen verschiebt der Laststrom die Klemmenspannung entlang der Quellenlinie. Der Schnitt mit der LED-Kennlinie bestimmt erst den Betriebspunkt.
+Quelle: 4.4.4
+Abbildung: gesamt-led-rot-netz
+
+### Wie findest du die maximal zulässige Quellspannung im Ausgangskennlinienfeld?
+Wähle zuerst die Kurve des vorgegebenen Basisstroms. Bestimme ihren Schnitt mit der Verlustleistungshyperbel. Durch diesen Grenzpunkt verläuft die passende Lastgerade; aus Transistorspannung plus Widerstandsabfall folgt die Quellspannung.
+Quelle: 4.4.5
+Abbildung: gesamt-transistor-rc-feld
+
+### Zeichne die Begriffslandkarte zu Kapitel 4 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
+Die Klemmen trennen Last und aktives Netz. Leerlaufspannung, Kurzschlussstrom und Innenwiderstand beschreiben die lineare Ersatzquelle. Die Lastkennlinie bestimmt zusammen mit der Quellenlinie den Arbeitspunkt. Leistungsgrenzen und Modellbereich entscheiden, ob er zulässig ist. Ursprüngliche innere Größen werden im Originalnetz berechnet.
+Quelle: 4.1
+Abbildung: map-zweipol

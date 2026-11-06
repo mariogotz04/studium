@@ -889,11 +889,11 @@ function planListe(tag, jetzt = new Date()) {
 // Neuestes Kapitel eines Moduls = Kapitel der letzten Karte/Aufgabe (die Dateien wachsen mit der Vorlesung nach unten).
 const kapitelVon = liste => [...new Set(liste.map(x => x.k).filter(Boolean))];
 
-/* Lernreihe (Mario, 29.10.2026): Jedes Modul wird Kapitel für Kapitel der Reihe nach gelernt, weil spätere Kapitel
+/* Lernreihe (Mario, 06.11.2026): Jedes Modul wird Abschnitt für Abschnitt der Reihe nach gelernt, weil spätere Kapitel
    auf früheren aufbauen. Ein Kapitel ist abgeschlossen, wenn alle Aufgaben selbst gelöst (grün), alle Quizfragen
    zuletzt richtig beantwortet und alle Karteikarten einmal gelernt sind (aus der Lernphase in der Wiederholung).
    Erst dann schlagen „Heute dran“, „Weiter der Reihe nach“, Quiz, Mix-Serie und Probeklausur das nächste Kapitel vor.
-   Fällige Wiederholungen von Karteikarten bleiben davon unberührt.
+   Dieselbe Grenze gilt für neue Inhalte, fällige Wiederholungen, freie Runden und gespeicherte Vorschläge.
    Das Kapitel steht in der Überschrift; fasst sie mehrere zusammen („Kapitel 7–12“, „TM1 · Statik“), entscheidet die
    Quelle (Abschnittsnummer, n). TM1 und TM2 sind zwei Teile: erst alle Kapitel von TM1, dann TM2. */
 function kapitelSchlüssel(x) {
@@ -904,6 +904,18 @@ function kapitelSchlüssel(x) {
   return teil * 1000 + (ausKopf ? +ausKopf[1] : ausQuelle ? +ausQuelle[1] : 999);
 }
 const karteGelernt = s => !!s && (s.typ === "wdh" || s.lapses > 0);
+const abschnittNummer = x => +((x.n || "").replace(/^TM\s*\d\s+/, "").match(/^\d+\.(\d+)/)?.[1] || 0);
+function abschnittVergleich(a, b) {
+  const kap = kapitelSchlüssel(a) - kapitelSchlüssel(b);
+  if (kap) return kap;
+  const x = (a.n || "").replace(/^TM\s*\d\s+/, "").split(".").map(Number);
+  const y = (b.n || "").replace(/^TM\s*\d\s+/, "").split(".").map(Number);
+  for (let i = 0; i < Math.max(x.length, y.length); i++) {
+    const diff = (x[i] || 0) - (y[i] || 0);
+    if (diff) return diff;
+  }
+  return 0;
+}
 function lernreihe(name) {
   const modul = LERNEN.find(x => x.name === name), deck = DECKS.find(d => d.name === name);
   const st = deck ? kartenStand(name) : {}, tm = [...(modul?.aufgaben || []), ...(deck?.cards || [])].some(x => /TM\s*\d/.test(x.k || ""));
@@ -934,9 +946,41 @@ function lernreihe(name) {
     e.name = e.name || e.kurz;
     e.rest = e.offen.aufgaben + e.offen.quiz + e.offen.karten;
   });
-  const front = kapitel.find(e => e.rest) || null;
-  return { kapitel, front, erreicht: x => !front || kapitelSchlüssel(x) <= front.s,
-    nachher: front ? kapitel[kapitel.indexOf(front) + 1] || null : null };
+  const abschnitte = [];
+  for (const e of kapitel) {
+    const nummern = [...new Set([...e.aufgaben, ...e.quiz, ...e.karten].map(abschnittNummer))].sort((a, b) => a - b);
+    for (const nr of nummern) {
+      const a = { s: e.s, nr, offen: {}, kapitel: e };
+      for (const teil of ["aufgaben", "quiz", "karten"]) {
+        a[teil] = e[teil].filter(x => abschnittNummer(x) === nr).sort(abschnittVergleich);
+        a.offen[teil] = a[teil].filter(x => teil === "aufgaben" ? aufgabeStand(x)?.s !== "ok"
+          : teil === "quiz" ? quizStand(x)?.ok !== true : !karteGelernt(st[x.id])).length;
+      }
+      const mitQuelle = [...a.aufgaben, ...a.quiz, ...a.karten].some(x => /^\d+\./.test((x.n || "").replace(/^TM\s*\d\s+/, "")));
+      a.kurz = mitQuelle ? `${tm ? `TM${Math.floor(e.s / 1000)} ` : ""}Abschnitt ${e.s % 1000}.${nr}` : e.kurz;
+      a.name = a.kurz;
+      a.key = `lernpfad:${name}:${e.s}:${nr}`;
+      a.rest = a.offen.aufgaben + a.offen.quiz + a.offen.karten;
+      a.abgeschlossen = !!db.get(a.key, false) || !a.rest;
+      const quelle = [...a.aufgaben, ...a.quiz, ...a.karten].find(x => x.q?.p || x.s?.p);
+      a.quelle = quelle && (quelle.q?.p ? quelle.q : quelle.s);
+      abschnitte.push(a);
+    }
+    e.abgeschlossen = abschnitte.filter(a => a.s === e.s).every(a => a.abgeschlossen);
+  }
+  const schritt = abschnitte.find(a => !a.abgeschlossen) || null;
+  const front = schritt?.kapitel || null;
+  return { kapitel, abschnitte, front, schritt,
+    erreicht: x => !schritt || kapitelSchlüssel(x) < schritt.s || (kapitelSchlüssel(x) === schritt.s && abschnittNummer(x) <= schritt.nr),
+    nachher: schritt ? abschnitte[abschnitte.indexOf(schritt) + 1] || null : null };
+}
+// Ein erreichter Abschluss bleibt erhalten, wenn später eine Wiederholungsfrage falsch beantwortet wird.
+// Ausschließlich die vollständig bearbeitete Folge ab Modulbeginn festhalten, nie vorgegriffene spätere Abschnitte.
+function lernFortschritt(name) {
+  for (const a of lernreihe(name).abschnitte) {
+    if (!a.abgeschlossen) break;
+    if (!db.get(a.key, false)) db.set(a.key, true);
+  }
 }
 // „Noch offen: 3 Aufgaben, 2 Quizfragen und 5 Karteikarten“
 function offenText(e) {
@@ -969,7 +1013,7 @@ function vorschläge(tag) {
     // Klausurtyp gewichtet: Transfer → mehr Rechnen und Probeklausuren, Abfrage → mehr Quiz und Karteikarten
     const typ = klausurInfo(m).typ, bonus = { transfer: { r: 0.4, q: 0, k: 0 }, gemischt: { r: 0.1, q: 0.2, k: 0.2 }, abfrage: { r: -0.6, q: 0.6, k: 0.4 } }[typ];
     const klausurTage = g.tage ?? 99;
-    const reihe = lernreihe(m), front = reihe.front;
+    const reihe = lernreihe(m), front = reihe.schritt;
     const auf = (modul?.aufgaben || []).filter(a => a.art === "rechnen"), erreicht = auf.filter(reihe.erreicht);
     const standText = a => aufgabeStand(a) ? " · " + { ok: "schon gelöst", hilfe: "letztes Mal mit Hilfe", nein: "letztes Mal nicht geschafft" }[aufgabeStand(a).s] : "";
     // Der Reihe nach: die erste noch nicht grüne Aufgabe des aktuellen Kapitels (Rechnen oder Verstehen)
@@ -1065,10 +1109,48 @@ function tagesPlan(tag = heuteIso()) {
       return item;
     });
     if (alt) items = [...alt, ...items.filter(v => !alt.some(a => a.key === v.key))].slice(0, Math.max(4, alt.length + 2));
-    plan = { erstellt: Date.now(), v: 2, items };
+    plan = { erstellt: Date.now(), v: 3, items };
     db.set("tagesplan:" + tag, plan);
   }
+  // Gespeicherte Auswahlen ebenfalls prüfen. Fertige Zeilen bleiben als Tageshistorie erhalten.
+  // Nur unzulässige offene Zeilen ersetzen; gültige Tagesziele und ihre IDs bleiben stabil.
+  if (tag === heuteIso()) {
+    const items = plan.items.map(v => vorschlagStand(v, tag).fertig ? v : vorschlagPrüfen(v) || schrittVorschlag(v.modul)).filter(Boolean);
+    if (plan.v !== 3 || JSON.stringify(items) !== JSON.stringify(plan.items)) {
+      plan = { ...plan, v: 3, items };
+      db.set("tagesplan:" + tag, plan);
+    }
+  }
   return plan;
+}
+function schrittVorschlag(name) {
+  const s = lernreihe(name).schritt;
+  if (!s) return null;
+  const a = s.aufgaben.find(x => aufgabeStand(x)?.s !== "ok");
+  if (a) return { key: `aufgabe:${name}:${a.id}`, art: "aufgabe", modul: name, kapitel: a.id,
+    titel: `${a.art === "rechnen" ? "Rechenaufgabe" : "Verständnisfrage"}: ${a.t}`,
+    text: `${name} · ${s.kurz} der Reihe nach`, link: `#lernen/${encodeURIComponent(name)}/aufgabe/${a.id}` };
+  const ids = s.quiz.filter(f => !quizStand(f)?.ok).slice(0, 10).map(f => f.id);
+  if (ids.length) return { key: `quiz:${name}:reihe`, art: "quiz", modul: name, kapitel: "reihe", ids, anzahl: ids.length,
+    titel: `Quiz ${name}: ${s.kurz}`, text: `${ids.length} Fragen · der Reihe nach` };
+  const st = kartenStand(name), karten = s.karten.filter(c => !karteGelernt(st[c.id])).slice(0, kartenEinst().neu).map(c => c.id);
+  return karten.length ? { key: `karten:${name}:reihe`, art: "karten", modul: name, kapitel: "reihe", ids: karten,
+    titel: `Karteikarten ${name}: ${s.kurz}`, text: `${karten.length} Karten bewusst bewerten · ${name}` } : null;
+}
+function vorschlagPrüfen(v) {
+  const m = LERNEN.find(m => m.name === v.modul), d = DECKS.find(d => d.name === v.modul), r = lernreihe(v.modul);
+  if (v.art === "aufgabe") return (m?.aufgaben || []).some(a => a.id === v.kapitel && r.erreicht(a)) ? v : null;
+  if (v.art === "karten" || v.art === "fällig" || v.art === "quiz") {
+    const pool = (v.art === "quiz" ? m?.quiz : d?.cards) || [];
+    const ids = (v.ids || pool.filter(x => !v.kapitel || x.k === v.kapitel).map(x => x.id))
+      .filter(id => pool.some(x => x.id === id && r.erreicht(x)));
+    if (!ids.length) return null;
+    if (v.ids && ids.length === v.ids.length) return v;
+    return { ...v, ids, ...(v.art === "quiz" ? { anzahl: ids.length, text: `${ids.length} Fragen · ${v.modul} · der Reihe nach` }
+      : { titel: `${ids.length} ${v.art === "fällig" ? "fällige " : ""}Karteikarten ${v.modul}${r.schritt ? ": bis " + r.schritt.kurz : ""}`,
+        text: `${ids.length} Karten bewusst bewerten · ${v.modul}` }) };
+  }
+  return v;
 }
 const tagesAktivitäten = tag => Object.values(db.objekt("aktiv:" + tag + ":"));
 function lernAktivität(art, modul, id, daten = {}, tag = heuteIso()) {
@@ -1104,12 +1186,18 @@ function vorschlagStand(v, tag = heuteIso()) {
 }
 function vorschlagStarten(v) {
   if (!v) { location.hash = "#lernen"; return; }
+  const geprüft = vorschlagPrüfen(v);
+  if (!geprüft) {
+    location.hash = `#lernen/${encodeURIComponent(v.modul)}`;
+    return meldung("Dieser Inhalt kommt später. Mach mit dem aktuellen Abschnitt weiter.");
+  }
+  v = geprüft;
   const m = LERNEN.find(m => m.name === v.modul);
   if (v.art === "aufgabe") location.hash = v.link;
   else if (v.art === "quiz") quizStarten(m, v.ids ? { ids: v.ids } : { kapitel: v.kapitel, anzahl: 10, modus: "mix" });
   else if (v.art === "mix") probeStarten(m, true);
   else if (v.art === "probe") { store.set("lernen:teil", "probe"); location.hash = "#lernen/" + encodeURIComponent(v.modul); }
-  else if (v.art === "karten" && v.ids) kartenMitIds(v.modul, v.ids);
+  else if ((v.art === "karten" || v.art === "fällig") && v.ids) kartenMitIds(v.modul, v.ids, v.art === "fällig" ? "fällig" : "plan");
   else {
     store.set("karteikarten:kapitel:" + v.modul, v.art === "karten" ? v.kapitel : "");
     location.hash = kartenLink(v.modul);
@@ -1730,8 +1818,8 @@ const kartenStand = name => db.objekt(`karte:${name}:`);
 const kartenEinst = () => ({ neu: 20, ...db.get("einst:karten", {}) });
 const kartenLink = name => `#lernen/${encodeURIComponent(name)}/karteikarten`;
 // Kartenrunde mit genau diesen Karten starten (aus dem Tagesplan); deckSeite holt den Auftrag ab.
-function kartenMitIds(name, ids) {
-  store.set("karten:start", { modul: name, ids });
+function kartenMitIds(name, ids, modus = "plan") {
+  store.set("karten:start", { modul: name, ids, modus });
   if (location.hash === kartenLink(name)) route(); else location.hash = kartenLink(name);
 }
 const einstellungAendern = (k, v) => db.set("einst:karten", { ...kartenEinst(), [k]: v });
@@ -1750,7 +1838,8 @@ function mischen(a) {
 }
 function zählen(deck, kapitel) {
   const st = kartenStand(deck.name);
-  const karten = deck.cards.filter(c => !kapitel || c.k === kapitel);
+  const reihe = lernreihe(deck.name);
+  const karten = deck.cards.filter(c => (!kapitel || c.k === kapitel) && reihe.erreicht(c));
   const r = { due: 0, neu: 0, ok: 0, lern: 0, gesamt: karten.length, nächste: Infinity };
   for (const c of karten) {
     const s = st[c.id];
@@ -1798,7 +1887,8 @@ function dauer(s, jetzt = Date.now()) {
 function deckSeite(deck) {
   sitzung = null;
   const einst = kartenEinst();
-  const kapitel = [...new Set(deck.cards.map(c => c.k).filter(Boolean))];
+  const r = lernreihe(deck.name), erlaubt = deck.cards.filter(r.erreicht);
+  const kapitel = [...new Set(erlaubt.map(c => c.k).filter(Boolean))];
   const gewählt = store.get("karteikarten:kapitel:" + deck.name, "");
   const k = kapitel.includes(gewählt) ? gewählt : "";
   const z = zählen(deck, k);
@@ -1808,14 +1898,15 @@ function deckSeite(deck) {
       <div class="muted"><b>${z.lern}</b>in Arbeit</div><div class="c-ok"><b>${z.ok}</b>sicher</div></div>
     <div class="panel">
       <div class="row"><label class="l" for="kap">Kapitel</label>
-        <select id="kap"><option value="">Alle Kapitel (${deck.cards.length})</option>${kapitel.map(x =>
+        <select id="kap"><option value="">Erreichte Abschnitte (${erlaubt.length})</option>${kapitel.map(x =>
           `<option${x === k ? " selected" : ""}>${esc(x)}</option>`).join("")}</select></div>
       <div class="row"><label class="l" for="neu">Neue Karten pro Runde</label>
         <select id="neu">${[5, 10, 20, 30, 1000].map(n => `<option value="${n}"${n === einst.neu ? " selected" : ""}>${n === 1000 ? "alle" : n}</option>`).join("")}</select></div>
       <div class="row" style="margin-top:16px">
         <button class="btn primary" id="start"${z.due + z.neu ? "" : " disabled"}>Lernen starten (${z.due + Math.min(z.neu, einst.neu)} Karten)</button>
         <button class="btn" id="nurdue"${z.due ? "" : " disabled"}>Nur fällige (${z.due})</button>
-        <button class="btn" id="frei">Frei üben (alle ${z.gesamt} gemischt)</button></div>
+        <button class="btn" id="frei"${z.gesamt ? "" : " disabled"}>Erreichten Stoff frei üben (${z.gesamt})</button></div>
+      ${deck.cards.length > erlaubt.length ? `<p class="muted" style="margin:12px 0 0">${deck.cards.length - erlaubt.length} Karten aus späteren Abschnitten warten, bis du dort angekommen bist. Das gilt auch für bereits fällige Karten.</p>` : ""}
       ${z.due + z.neu ? "" : `<p class="muted" style="margin:12px 0 0">Für heute ist alles erledigt.${nächste ? ` Nächste Wiederholung: ${nächste}.` : ""} Mit „Frei üben“ kannst du trotzdem alles durchgehen, ohne den Plan zu ändern.</p>`}
     </div>
     </div><div class="seite">
@@ -1831,6 +1922,7 @@ function deckSeite(deck) {
   view.querySelector("#reset").onclick = () => {
     if (!confirm(`Lernfortschritt für ${deck.name} wirklich löschen?`)) return;
     for (const id of Object.keys(kartenStand(deck.name))) db.set(`karte:${deck.name}:${id}`, null);
+    for (const key of Object.keys(db.objekt(`lernpfad:${deck.name}:`))) db.set(`lernpfad:${deck.name}:${key}`, null);
     deckSeite(deck);
   };
   view.querySelector("#export").onclick = () => {
@@ -1853,31 +1945,35 @@ function deckSeite(deck) {
   const auftrag = store.get("karten:start", null);
   if (auftrag) {
     localStorage.removeItem("karten:start");
-    if (auftrag.modul === deck.name) starten(deck, "", "plan", auftrag.ids);
+    if (auftrag.modul === deck.name) starten(deck, "", auftrag.modus || "plan", auftrag.ids);
   }
 }
 
 // modus: "plan" = fällige + neue, "fällig" = nur fällige, "frei" = alles ohne Plan.
 // Jede Runde gehört genau zu einem Modul.
 function fälligeKarten(d, kapitel) {
-  const st = kartenStand(d.name);
-  return d.cards.filter(c => (!kapitel || c.k === kapitel) && fällig(st[c.id])).sort((a, b) => st[a.id].due - st[b.id].due);
+  if (!d) return [];
+  const st = kartenStand(d.name), r = lernreihe(d.name);
+  return d.cards.filter(c => (!kapitel || c.k === kapitel) && r.erreicht(c) && fällig(st[c.id])).sort((a, b) => st[a.id].due - st[b.id].due);
 }
 function starten(deck, kapitel, modus, ids = null) {
   const frei = modus === "frei", einst = kartenEinst();
   let queue;
   if (!deck) return;
+  sitzung = null;
+  lernFortschritt(deck.name);
+  const r = lernreihe(deck.name), erlaubt = deck.cards.filter(r.erreicht);
   if (ids) {
     // feste Auswahl aus dem Tagesplan: neue Karten in der Reihenfolge der Datei, fällige davor
-    const st = kartenStand(deck.name), wahl = deck.cards.filter(c => ids.includes(c.id));
-    queue = [...wahl.filter(c => fällig(st[c.id])), ...wahl.filter(c => !st[c.id])];
-  } else if (frei) queue = mischen(deck.cards.filter(c => !kapitel || c.k === kapitel));
+    const st = kartenStand(deck.name), wahl = erlaubt.filter(c => ids.includes(c.id)).sort(abschnittVergleich);
+    queue = [...wahl.filter(c => fällig(st[c.id])), ...(modus === "fällig" ? [] : wahl.filter(c => !st[c.id]))];
+  } else if (frei) queue = mischen(erlaubt.filter(c => !kapitel || c.k === kapitel));
   else {
     const st = kartenStand(deck.name);
-    const neu = modus === "fällig" ? [] : deck.cards.filter(c => (!kapitel || c.k === kapitel) && !st[c.id]).slice(0, einst.neu);
-    queue = mischen([...fälligeKarten(deck, kapitel), ...neu]);
+    const neu = modus === "fällig" ? [] : erlaubt.filter(c => (!kapitel || c.k === kapitel) && !st[c.id]).sort(abschnittVergleich).slice(0, einst.neu);
+    queue = [...fälligeKarten(deck, kapitel), ...neu];
   }
-  if (!queue.length) return;
+  if (!queue.length) return meldung("In den erreichten Abschnitten gibt es für diese Auswahl gerade keine Karten.");
   sitzung = { deck, kapitel, frei, modus, queue, gesehen: new Set(), fertig: 0, start: queue.length, beginn: Date.now(), tag: heuteIso(), stats: { 1: 0, 2: 0, 3: 0, 4: 0 }, umgedreht: false };
   zeigen();
 }
@@ -1946,8 +2042,10 @@ function bewerten(n) {
   let nochmal;
   if (s.frei) nochmal = n === 1;
   else {
+    lernFortschritt(c.d.name);
     const neu = planen(kartenStand(c.d.name)[c.id], n);
     db.set(`karte:${c.d.name}:${c.id}`, neu);
+    lernFortschritt(c.d.name);
     nochmal = neu.typ !== "wdh";
   }
   if (nochmal) {
@@ -2015,6 +2113,7 @@ function lernenÜbersicht() {
 }
 
 function modulSeite(m, teil) {
+  lernFortschritt(m.name);
   teil = teil || store.get("lernen:teil", "aufgaben");
   const auf = m.aufgaben || [], quiz = m.quiz || [], probe = auf.some(a => a.art === "rechnen");
   const deck = DECKS.find(d => d.name === m.name);
@@ -2024,13 +2123,15 @@ function modulSeite(m, teil) {
   kopf(m.name, `Lernen · ${auf.length} Aufgaben · ${quiz.length} Quizfragen${deck ? ` · ${deck.cards.length} Karteikarten` : ""}${kl ? ` · Klausur am ${fmtDate(kl.datum)}${kl.zeit ? ", " + kl.zeit + " Uhr" : ""}` : ""}`);
   const filter = store.get("lernen:filter", "alle");
   const passt = a => filter === "alle" || (filter === "offen" ? aufgabeStand(a)?.s !== "ok" : a.art === filter);
-  const reihe = lernreihe(m.name), front = reihe.front;
+  const reihe = lernreihe(m.name), front = reihe.schritt;
   // Wo du der Reihe nach stehst: aktuelles Kapitel, was dort noch offen ist, was danach kommt
   const reiheHtml = !reihe.kapitel.length ? "" : `<div class="panel reihe"><div class="reihe-kap">${reihe.kapitel.map(e =>
-      `<span class="${e === front ? "r-jetzt" : e.rest ? "" : "r-fertig"}" title="${esc(e.name)}">${e.rest ? "" : "✓ "}${esc(e.kurz.replace("Kapitel ", "Kap. "))}</span>`).join("")}</div>
-    <p style="margin:8px 0 0">${front ? `Der Reihe nach bist du in <b>${esc(front.name)}</b>. Noch offen: ${offenText(front)}.
-      ${reihe.nachher ? `Erst wenn alles davon grün ist, geht es mit ${esc(reihe.nachher.kurz)} weiter.` : "Danach ist das Modul einmal komplett durch."}`
-      : "Alle Kapitel sind abgeschlossen. Ab jetzt wiederholst du verteilt über das ganze Modul."}</p></div>`;
+      `<span class="${e === reihe.front ? "r-jetzt" : e.abgeschlossen ? "r-fertig" : ""}" title="${esc(e.name)}">${e.abgeschlossen ? "✓ " : ""}${esc(e.kurz.replace("Kapitel ", "Kap. "))}</span>`).join("")}</div>
+    <p style="margin:8px 0 0">${front ? `Jetzt dran: <b>${esc(front.name)}</b>. Noch offen: ${offenText(front)}.
+      ${reihe.nachher ? `Danach folgt ${esc(reihe.nachher.kurz)}.` : "Danach ist das Modul einmal komplett durch."}`
+      : "Alle Abschnitte sind abgeschlossen. Ab jetzt wiederholst du verteilt über das ganze Modul."}</p>
+    ${front ? `<p class="muted" style="margin:8px 0">Lies zuerst den Abschnitt im Skript. Prüfe dann dein Verständnis mit den passenden Übungen. Wiederholungen kommen nur aus erreichtem Stoff.</p>
+      <div class="row">${front.quelle ? quellenLink(m.pdf || deck?.pdf, front.quelle) : ""}<button class="btn primary" id="lernweiter">Mit ${esc(front.kurz)} weitermachen</button></div>` : ""}</div>`;
   let inhalt;
   if (teil === "aufgaben") {
     const liste = auf.filter(passt);
@@ -2039,11 +2140,11 @@ function modulSeite(m, teil) {
         .map(([k, n]) => `<button data-f="${k}" aria-pressed="${filter === k}">${n}</button>`).join("")}</div>
       <button class="btn primary" id="reihe">Weiter der Reihe nach</button>
       ${m.apdf ? `<a class="btn" href="${m.apdf}" target="_blank" rel="noopener">Alle als PDF</a>` : ""}</div>
-      ${kapitelVon(liste).map(k => { const e = kapZu(k); return `<div class="kapitelkopf">${esc(k)}${!e ? "" : e === front ?  ' <span class="reihe-chip r-jetzt">jetzt dran</span>'
-        : !e.rest ?  ' <span class="reihe-chip r-fertig">abgeschlossen</span>' : front && e.s > front.s ? ' <span class="reihe-chip">später</span>' : ""}</div><div class="aliste">${liste.filter(a => a.k === k).map(a => {
-        const st = aufgabeStand(a);
-        return `<a class="azeile" href="#lernen/${encodeURIComponent(m.name)}/aufgabe/${a.id}"><span class="punkt ${st?.s || ""}"></span>
-          <b>${esc(a.t)}</b><span class="chip ${a.art}">${a.art === "rechnen" ? "Rechnen" : "Verstehen"}</span></a>`;
+      ${kapitelVon(liste).map(k => { const e = kapZu(k); return `<div class="kapitelkopf">${esc(k)}${!e ? "" : e === reihe.front ?  ' <span class="reihe-chip r-jetzt">jetzt dran</span>'
+        : e.abgeschlossen ? ' <span class="reihe-chip r-fertig">abgeschlossen</span>' : front && e.s > front.s ? ' <span class="reihe-chip">später</span>' : ""}</div><div class="aliste">${liste.filter(a => a.k === k).map(a => {
+        const st = aufgabeStand(a), frei = reihe.erreicht(a), tag = frei ? "a" : "div";
+        return `<${tag} class="azeile" ${frei ? `href="#lernen/${encodeURIComponent(m.name)}/aufgabe/${a.id}"` : 'aria-disabled="true" style="opacity:.55"'}><span class="punkt ${st?.s || ""}"></span>
+          <b>${esc(a.t)}${frei ? "" : ' <span class="reihe-chip">später</span>'}</b><span class="chip ${a.art}">${a.art === "rechnen" ? "Rechnen" : "Verstehen"}</span></${tag}>`;
       }).join("")}</div>`; }).join("") || `<p class="muted">Keine Aufgaben in dieser Auswahl.</p>`}
       <p class="muted" style="margin-top:18px;font-size:14px"><span class="punkt ok" style="display:inline-block;vertical-align:-2px"></span> selbst gelöst
         <span class="punkt hilfe" style="display:inline-block;vertical-align:-2px;margin-left:12px"></span> mit Hilfe
@@ -2052,10 +2153,12 @@ function modulSeite(m, teil) {
   else if (teil === "probe") inhalt = probeEinstellungen(m);
   else {
     const qs = quiz.map(f => [f, quizStand(f)]);
-    const kq = store.get("quiz:kapitel:" + m.name, front ? "reihe" : "");
+    const verfügbar = quiz.filter(reihe.erreicht), kapitel = kapitelVon(verfügbar);
+    const gespeichert = store.get("quiz:kapitel:" + m.name, front ? "reihe" : "");
+    const kq = !gespeichert || gespeichert === "reihe" || kapitel.includes(gespeichert) ? gespeichert : front ? "reihe" : "";
     inhalt = `<div class="zwei"><div class="panel"><h2>Quiz starten</h2>
-        <div class="row"><label class="l" for="qkap">Kapitel</label><select id="qkap">${front?.quiz.length ? `<option value="reihe"${kq === "reihe" ? " selected" : ""}>Der Reihe nach: ${esc(front.kurz)} (${front.quiz.length})</option>` : ""}<option value="">Alle Kapitel (${quiz.length})</option>
-          ${kapitelVon(quiz).map(k => `<option${k === kq ? " selected" : ""}>${esc(k)}</option>`).join("")}</select></div>
+        <div class="row"><label class="l" for="qkap">Auswahl</label><select id="qkap">${front ? `<option value="reihe"${kq === "reihe" ? " selected" : ""}>Der Reihe nach: ${esc(front.kurz)} (${front.quiz.length})</option>` : ""}<option value="">Erreichte Abschnitte (${verfügbar.length})</option>
+          ${kapitel.map(k => `<option${k === kq ? " selected" : ""}>${esc(k)}</option>`).join("")}</select></div>
         <div class="row"><label class="l">Fragen</label><div class="seg" id="qanz">${[5, 10, 20, 0].map(n => `<button data-n="${n}" aria-pressed="${n === store.get("quiz:anzahl", 10)}">${n || "alle"}</button>`).join("")}</div></div>
         <div class="row"><label class="l">Auswahl</label><div class="seg" id="qmodus">${[["mix", "Gemischt"], ["falsch", "Falsch beantwortete"], ["neu", "Neue"]]
           .map(([k, n]) => `<button data-m="${k}" aria-pressed="${k === store.get("quiz:modus", "mix")}">${n}</button>`).join("")}</div></div>
@@ -2075,6 +2178,7 @@ function modulSeite(m, teil) {
       ${probe ? `<button data-t="probe" aria-pressed="${teil === "probe"}">Probeklausur</button>` : ""}
       ${deck?.cards.length ? `<button data-t="karteikarten" aria-pressed="${teil === "karteikarten"}">Karteikarten (${deck.cards.length})</button>` : ""}</div>
       ${m.pdf ? `<a class="btn" href="${m.pdf}" target="_blank" rel="noopener">Lernskript öffnen</a>` : ""}</div>${teil === "probe" ? "" : reiheHtml}${inhalt}`;
+  $("#lernweiter")?.addEventListener("click", () => vorschlagStarten(schrittVorschlag(m.name)));
   lernView.querySelectorAll("#teil button").forEach(b => b.onclick = () => {
     store.set("lernen:teil", b.dataset.t);
     const ziel = `#lernen/${encodeURIComponent(m.name)}/${b.dataset.t}`;
@@ -2085,7 +2189,7 @@ function modulSeite(m, teil) {
     // erste nicht grüne Aufgabe im aktuellen Kapitel; dort alles gelöst → erst Quiz und Karten des Kapitels
     const a = front ? front.aufgaben.find(x => aufgabeStand(x)?.s !== "ok") : auf.find(x => aufgabeStand(x)?.s !== "ok");
     if (a) { store.set("lernen:filter", "alle"); location.hash = `#lernen/${encodeURIComponent(m.name)}/aufgabe/${a.id}`; }
-    else meldung(front ? `Alle Aufgaben in ${front.kurz} sind gelöst. Offen sind dort noch ${offenText(front)}. Danach geht es mit dem nächsten Kapitel weiter.`
+    else meldung(front ? `Alle Aufgaben in ${front.kurz} sind gelöst. Offen sind dort noch ${offenText(front)}. Nutze oben „Mit ${front.kurz} weitermachen“.`
       : "Alle Aufgaben sind selbst gelöst.", 6500);
   });
   $("#qkap")?.addEventListener("change", e => store.set("quiz:kapitel:" + m.name, e.target.value));
@@ -2099,9 +2203,15 @@ function modulSeite(m, teil) {
 // Eine Aufgabe: erst selbst rechnen, dann Tipp, Ergebnis und Lösung Schritt für Schritt aufdecken, am Ende ehrlich bewerten.
 let offenAufgabe = null;
 function aufgabeSeite(m, a, probe = null) {
+  lernFortschritt(m.name);
+  const reihe = lernreihe(m.name);
+  if (!probe && !reihe.erreicht(a)) {
+    modulSeite(m, "aufgaben");
+    return meldung(`Diese Aufgabe kommt später. Jetzt ist ${reihe.schritt.kurz} dran.`);
+  }
   const liste = probe ? probe.ids.map(id => (m.aufgaben || []).find(x => x.id === id)).filter(Boolean) :
     (m.aufgaben || []).filter(x => { const f = store.get("lernen:filter", "alle"); return f === "alle" || (f === "offen" ? aufgabeStand(x)?.s !== "ok" || x === a : x.art === f); });
-  const i = liste.indexOf(a), vor = liste[i - 1], nach = liste[i + 1];
+  const i = liste.indexOf(a), vor = liste.slice(0, i).findLast(x => probe || reihe.erreicht(x)), nach = liste.slice(i + 1).find(x => probe || reihe.erreicht(x));
   const kontext = `${m.name}:${probe?.start || "einzeln"}`;
   if (offenAufgabe?.id !== a.id || offenAufgabe?.kontext !== kontext) offenAufgabe = { id: a.id, kontext, schritte: 0, tipp: false, erg: false, tag: probe ? probe.tag || iso(new Date(probe.start)) : heuteIso() };
   const o = offenAufgabe, status = probe ? probe.bew[a.id] : aufgabeStand(a)?.s;
@@ -2146,8 +2256,10 @@ function aufgabeSeite(m, a, probe = null) {
       location.hash = zurück;
       return;
     }
+    lernFortschritt(m.name);
     const alt = aufgabeStand(a) || { n: 0 };
     db.set(`aufgabe:${m.name}:${a.id}`, { s: b.dataset.s, n: alt.n + 1, t: Date.now() });
+    lernFortschritt(m.name);
     lernAktivität("aufgabe", m.name, a.id, { status: b.dataset.s, vorher: alt.s || "", titel: a.t }, o.tag);
     if (richtungEinst().impulse && b.dataset.s === "ok" && ["hilfe", "nein"].includes(alt.s)) meldung("Beim vorigen Versuch noch mit Hilfe oder offen – diesmal selbst gelöst. Welche Strategie hat dir geholfen?", 6500);
     // Der Reihe nach: Weiter geht es erst, wenn die Aufgabe selbst gelöst ist, dann zur nächsten noch nicht grünen.
@@ -2156,10 +2268,10 @@ function aufgabeSeite(m, a, probe = null) {
       meldung("Gespeichert. Die Aufgabe bleibt dran, bis du sie selbst löst: Rechne sie gleich noch einmal ohne Lösung oder morgen wieder.", 6500);
       return;
     }
-    const weiter = liste.slice(i + 1).find(x => aufgabeStand(x)?.s !== "ok") || nach, r = lernreihe(m.name);
+    const r = lernreihe(m.name), weiter = r.schritt?.aufgaben.find(x => aufgabeStand(x)?.s !== "ok") || liste.slice(i + 1).find(x => aufgabeStand(x)?.s !== "ok") || nach;
     if (weiter && r.front && !r.erreicht(weiter)) {
       offenAufgabe = null; location.hash = `#lernen/${encodeURIComponent(m.name)}`;
-      meldung(`Alle Aufgaben in ${r.front.kurz} sind gelöst. Offen sind dort noch ${offenText(r.front)}. Erst danach geht es mit dem nächsten Kapitel weiter.`, 7000);
+      meldung(`Alle Aufgaben in ${r.schritt.kurz} sind gelöst. Offen sind dort noch ${offenText(r.schritt)}. Erst danach folgt der nächste Abschnitt.`, 7000);
     } else if (weiter) { offenAufgabe = null; location.hash = link(weiter); } else { meldung("Gespeichert. Das war die letzte Aufgabe in dieser Liste."); neu(); }
   });
 }
@@ -2187,6 +2299,7 @@ function probeZiehen(pool, budget, anzahl) {
   return wahl;
 }
 function probeStarten(m, mix) {
+  lernFortschritt(m.name);
   // nur Kapitel, die du der Reihe nach schon erreicht hast
   const k = klausurInfo(m.name), tempo = store.get("probe:tempo", 0.8), auf = (m.aufgaben || []).filter(lernreihe(m.name).erreicht);
   const rechnen = auf.filter(a => a.art === "rechnen"), verstehen = auf.filter(a => a.art === "verstehen");
@@ -2213,7 +2326,7 @@ function probeEinstellungen(m) {
   const seg = (id, liste, aktiv) => `<div class="seg" id="${id}">${liste.map(([v, n]) => `<button data-v="${v}" aria-pressed="${v == aktiv}">${n}</button>`).join("")}</div>`;
   return `<div class="zwei"><div class="panel"><h2>Probeklausur</h2>
       <p style="margin-top:0">Aufgaben aus verschiedenen Kapiteln, gemischt und ohne Überschrift, mit Uhr. Wie in der Klausur erkennst du selbst, welche Methode passt.
-        ${lernreihe(m.name).front ? `Es kommen nur Kapitel dran, die du der Reihe nach schon erreicht hast (bis ${esc(lernreihe(m.name).front.kurz)}).` : ""}</p>
+        ${lernreihe(m.name).schritt ? `Es kommt nur erreichter Stoff dran (bis ${esc(lernreihe(m.name).schritt.kurz)}).` : ""}</p>
       ${lauf && lauf.modul === m.name ? `<div class="row" style="margin-bottom:12px"><a class="btn${lauf.ab ? "" : " primary gross"}" href="#lernen/${encodeURIComponent(m.name)}/probe">${lauf.ab ? "Letzte Auswertung öffnen" : (lauf.mix ? "Mix-Serie" : "Probeklausur") + " fortsetzen"}</a></div>` : ""}
       <div class="row"><label class="l">Klausurdauer</label>${seg("pdauer", [60, 90, 120, 180].map(n => [n, n + " min"]), k.dauer)}</div>
       <div class="row"><label class="l">Tempo</label>${seg("ptempo", [[0.8, "80 % der Zeit"], [1, "volle Zeit"]], tempo)}</div>
@@ -2256,10 +2369,12 @@ function probeBewerten(m, a, status) {
   const l = store.get("probe:lauf", null);
   if (!l?.ab || l.modul !== m.name || !l.ids.includes(a.id)) return;
   const auf = l.ids.map(id => (m.aufgaben || []).find(x => x.id === id)).filter(Boolean);
+  lernFortschritt(m.name);
   const alt = aufgabeStand(a) || { n: 0 }, tag = l.tag || iso(new Date(l.start));
   l.bew[a.id] = status;
   store.set("probe:lauf", l);
   db.set(`aufgabe:${m.name}:${a.id}`, { s: status, n: alt.n + 1, t: Date.now() });
+  lernFortschritt(m.name);
   lernAktivität("aufgabe", m.name, a.id, { status, vorher: alt.s || "", titel: a.t }, tag);
   if (auf.every(x => l.bew[x.id])) lernAktivität(l.mix ? "mix" : "probe", m.name, String(l.start), { fertig: true, anzahl: auf.length }, tag);
   probeSpeichern(l, auf);
@@ -2267,6 +2382,11 @@ function probeBewerten(m, a, status) {
 function probeSeite(m) {
   const l = store.get("probe:lauf", null);
   const auf = l.ids.map(id => (m.aufgaben || []).find(a => a.id === id)).filter(Boolean);
+  const r = lernreihe(m.name);
+  if (!l.ab && auf.some(a => !r.erreicht(a))) {
+    modulSeite(m, "probe");
+    return meldung("Dieser ältere Versuch enthält späteren Stoff. Starte einen neuen Versuch aus den erreichten Abschnitten.", 6500);
+  }
   const name = l.mix ? "Mix-Serie" : "Probeklausur", zurück = `#lernen/${encodeURIComponent(m.name)}`;
   if (!l.ab) {
     kopf(`${name} ${m.name}`, `${auf.length} Aufgaben${l.mix ? "" : ` · ${l.dauer} Minuten`}`);
@@ -2312,10 +2432,13 @@ function probeSeite(m) {
 let quizRunde = null;
 const quizZurück = q => q.m.abschluss ? "#start" : `#lernen/${encodeURIComponent(q.m.name)}`;
 function quizStarten(m, { kapitel = "", anzahl = 10, modus = "mix", ids = null } = {}) {
+  if (!m) return;
+  if (!m.abschluss) lernFortschritt(m.name);
   // kapitel "reihe" = das Kapitel, in dem du gerade der Reihe nach steckst; ids = feste Auswahl aus dem Tagesplan
-  const front = kapitel === "reihe" ? lernreihe(m.name).front : null;
+  const r = lernreihe(m.name), front = kapitel === "reihe" ? r.schritt : null;
   let pool = ids ? ids.map(id => (m.quiz || []).find(f => f.id === id)).filter(Boolean)
     : front ? front.quiz : (m.quiz || []).filter(f => !kapitel || kapitel === "reihe" || f.k === kapitel);
+  pool = pool.filter(f => m.abschluss ? f.m && lernreihe(f.m.name).erreicht(f) : r.erreicht(f));
   if (modus === "falsch") pool = pool.filter(f => quizStand(f) && !quizStand(f).ok);
   if (modus === "neu") pool = pool.filter(f => !quizStand(f));
   if (!pool.length) return meldung(modus === "falsch" ? "Keine falsch beantworteten Fragen – stark!" : "Keine passenden Fragen.");
@@ -2344,8 +2467,10 @@ const lückeRichtig = (f, werte) => werte.every((w, i) => {
   return x && gültig.some(g => g === x || (g.length > 5 && abstand(g, x) <= 1));
 });
 function quizSpeichern(f, ok) {
+  lernFortschritt(f.m.name);
   const alt = quizStand(f) || { r: 0, f: 0 };
   db.set(`quiz:${f.m.name}:${f.id}`, { ok, r: alt.r + (ok ? 1 : 0), f: alt.f + (ok ? 0 : 1), t: Date.now() });
+  lernFortschritt(f.m.name);
 }
 function quizSeite() {
   const q = quizRunde;

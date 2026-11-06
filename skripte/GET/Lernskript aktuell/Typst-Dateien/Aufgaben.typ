@@ -1977,3 +1977,599 @@ Eine Quelle hat 12 V Leerlaufspannung und 6 A Kurzschlussstrom.
 *Prüfen rechnerisch:* $I = 12\/(2 + 6) = "1,5" thin "A"$, $U = 6 dot.c "1,5" = 9 thin "V"$. Der abgelesene Punkt muss (9 V | 1,5 A) sein.
 ]
 
+
+#kapitel("Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis")
+
+#aufgabe(titel: "Reale Quellen in Reihe und parallel vergleichen", art: "verstehen", quelle: "2.4.1.2",
+ ergebnis: [Reihe: $2U_q$, $2R_i$; gegenläufig: 0, $2R_i$; parallel: $U_q$, $R_i/2$.])[
+#if not web [*Aufgabe 105* #linebreak()]
+*Gegeben und Annahmen:* Zwei gleiche reale Quellen mit Quellspannung $U_q$ und Innenwiderstand $R_i>0$, ohmsche Last $R_a>0$. Nur die Verschaltung wird verändert.
+
+*Gesucht:*
+#enum(numbering: "a)")[Ersatzgrößen bei unterstützender und entgegengesetzter Reihenschaltung.][Ersatzgrößen und Laststrom bei gleich gepolter Parallelschaltung.][Ob die Lastströme bei Parallel- und Reihenschaltung grundsätzlich gleich sind.]
+#src[V S. 43–44; Vergleichsfrage als eigene Zusammenführung.]
+][
+*Polungen zählen:* Unterstützend ist $U_"ers"=2U_q$, gegensinnig ist die Differenz gleicher Quellen null. In beiden Reihenfällen ist $R_"ers"=2R_i$. Die Widerstände werden durch eine Gegenpolung nicht negativ.
+
+][
+*Parallele Quellen ersetzen:* Bei gleichen Quellen teilt sich der Laststrom symmetrisch. Es gilt $U_"ers"=U_q$, $R_"ers"=R_i/2$ und $I=U_q/(R_a+R_i/2)$.
+
+][
+*Lastwirkung prüfen:* Unterstützend in Reihe fließt $I=2U_q/(R_a+2R_i)$. Das ist nicht generell derselbe Wert wie parallel. Bei genau entgegengesetzten gleichen Quellen ist der Laststrom in diesem Modell null.
+]
+
+#aufgabe(titel: "Gemischtes Netz: dieselbe Teilspannung auf zwei Wegen", art: "rechnen", quelle: "2.4.5",
+ ergebnis: [$R_"ges"=124 thin Omega$, $I approx "0,806" thin "A"$, $U_2 approx "16,13" thin "V"$.])[
+#if not web [*Aufgabe 106* #linebreak()]
+*Gegeben und Annahmen:* Ideale Quelle $U=100 thin "V"$, lineare Widerstände $R_1=100 thin Omega$, $R_2=50 thin Omega$, $R_3=10 thin Omega$, $R_4=40 thin Omega$. R1 liegt in Reihe mit der Parallelgruppe aus R4 und der Reihe R2–R3.
+#image("abbildungen/gesamt-teiler-kaskade.svg", width: 100%, height: 44mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Gesamtwiderstand und Gesamtstrom.][Spannung U2 über R2 mittels Stromteiler.][Kontrolle mittels zweifachem Spannungsteiler.]
+#src[V S. 49–50, Beispiel 1; ohne frühe Zwischenrundung nachgerechnet.]
+][
+*Von innen ersetzen:* $R_23=50+10=60 thin Omega$, $R_234=40 parallel 60=24 thin Omega$. R1 liegt erst außerhalb dieser Verzweigung: $R_"ges"=100+24=124 thin Omega$.
+
+][
+*Gesamtstrom berechnen:* $I=100/124 thin "A" approx "0,80645" thin "A"$. Der Stromteiler verwendet nur $R_234$, nicht 124 Ω: $I_23=I dot.c 24/60 approx "0,32258" thin "A"$.
+
+][
+*Teilspannung bestimmen:* $U_2=I_23 R_2 approx "16,129" thin "V"$. Quelle und Widerstände sind konstant, deshalb ist das Ohmsche Gesetz hier zulässig.
+
+][
+*Unabhängig prüfen:* $U_234=100 dot.c 24/124 approx "19,3548" thin "V"$. Innerhalb der Reihe R2–R3 gilt $U_2=U_234 dot.c 50/60 approx "16,129" thin "V"$. V rundet früh auf 16,2 V; ohne frühes Runden erhältst du etwa 16,1 V.
+]
+
+#aufgabe(titel: "Verschachtelte Stromteiler: Verhältnis ohne Quellspannung", art: "rechnen", quelle: "2.4.5",
+ ergebnis: [$I_1/I_4=8$.])[
+#if not web [*Aufgabe 107* #linebreak()]
+*Gegeben und Annahmen:* Das gezeigte lineare Widerstandsnetz mit $R_2=4 thin Omega$, $R_3=8 thin Omega$, $R_4=8 thin Omega$, $R_5=5 thin Omega$, $R_6=4 thin Omega$, $R_7=12 thin Omega$. Es fließt ein von null verschiedener Eingangsstrom I1; seine Größe ist für das Verhältnis nicht nötig.
+#image("abbildungen/gesamt-stromverhaeltnis.svg", width: 100%, height: 44mm, fit: "contain")
+
+*Gesucht:* Das Verhältnis $I_1/I_4$.
+#src[V S. 50, Beispiel 2.]
+][
+*Innerste Verzweigung ersetzen:* $R_67=4 parallel 12=3 thin Omega$. Damit ist $R_567=5+3=8 thin Omega$ und $R_4567=8 parallel 8=4 thin Omega$.
+
+][
+*Rechte Stromteilung:* Der Strom I3 teilt sich auf zwei 8-Ω-Wege. Deshalb ist $I_4/I_3=1/2$.
+
+][
+*Linke Stromteilung:* Der rechte Gesamtzweig hat $R_3+R_4567=12 thin Omega$; parallel dazu liegen 4 Ω. Daher $I_3/I_1=4/(4+12)=1/4$.
+
+][
+*Verhältnisse verbinden:* $I_4/I_1=(1/2)(1/4)=1/8$, also $I_1/I_4=8$. Die unbekannte Quellspannung kürzt sich im linearen Netz heraus.
+]
+
+#aufgabe(titel: "Potenziometer: Lastfehler und Grenzstrom", art: "rechnen", quelle: "2.4.6",
+ ergebnis: [$U_A=4 thin "V"$ statt 5 V; $I_E=12 thin "mA"$; $I_"zul">=20 thin "mA"$.])[
+#if not web [*Aufgabe 108* #linebreak()]
+*Gegeben und Annahmen:* Eigene Modellanwendung der Gleichungen von V S. 51–54: $U_E=10 thin "V"$, $R_S=1 thin "k"Omega$, $R_A=1 thin "k"Omega$, $x="0,5"$. Ideale Quelle, ohmsche Widerstände.
+
+*Gesucht:*
+#enum(numbering: "a)")[Ausgangsspannung mit und ohne Last.][Laststrom und Eingangsstrom bei dieser Stellung.][Erforderlicher Grenzstrom nach der Skriptregel.]
+#src[Eigene Modellanwendung nach V S. 51–54; Zahlen ausdrücklich als ergänztes Beispiel.]
+][
+*Widerstandsbahn teilen:* Bei halber Stellung sind $R_1=R_2=500 thin Omega$. Unbelastet wäre $U_A=5 thin "V"$. Unter Last ist $R_p=500 parallel 1000= "333,33" thin Omega$.
+
+][
+*Belastete Spannung berechnen:* $U_A=10 dot.c "333,33"/(500+"333,33")=4 thin "V"$. Die normierte Formel liefert dasselbe: $"0,5"/(1+1 dot.c "0,25")="0,4"$.
+
+][
+*Ströme trennen:* $I_A=4/1000=4 thin "mA"$, $I_Q=4/500=8 thin "mA"$ und $I_E=12 thin "mA"$. Die Last verringert die Spannung um 20 % gegenüber dem unbelasteten 5-V-Wert.
+
+][
+*Grenzstellung auslegen:* Nach V muss $I_"zul" >= U_E/R_A+U_E/R_S=10 thin "mA"+10 thin "mA"=20 thin "mA"$ sein. Der Strom bei halber Stellung genügt nicht als alleiniger Auslegungswert.
+]
+
+#aufgabe(titel: "Relaisspule stromrichtig oder spannungsrichtig messen", art: "rechnen", quelle: "2.4.7",
+ ergebnis: [$R_"VM"=30 thin "k"Omega$, $R_"AM"=5 thin Omega$; stromrichtig ist günstiger.])[
+#if not web [*Aufgabe 109* #linebreak()]
+*Gegeben und Annahmen:* Relaisspule mit Nennwerten 24 V und 10 mA. Voltmeterbereich 0–30 V, Empfindlichkeit 1000 Ω/V; Amperemeterbereich 0–30 mA, Spannungsabfall am Endwert 150 mV; Geräteklasse 2,5 %. Für den Vergleich wird der Spulenwiderstand aus den Nennwerten abgeschätzt. Die Quelle mit 110 V im Skript erfordert eine passende Strom-/Spannungseinstellung; 110 V werden nicht ungebremst an die 24-V-Spule gelegt.
+
+*Gesucht:*
+#enum(numbering: "a)")[Innenwiderstände der Geräte und Größenordnung der Spule.][Unkorrigiertes Messergebnis bei spannungsrichtiger Messung.][Unkorrigiertes Ergebnis bei stromrichtiger Messung und günstigere Anordnung.]
+#src[V S. 56–57, Relaisbeispiel; Einordnung der 110-V-Quelle ergänzt.]
+][
+*Geräte in Widerstände übersetzen:* $R_"VM"=1000 thin "Ω/V" dot.c 30 thin "V"=30 thin "k"Omega$. $R_"AM"="0,15" thin "V"/"0,03" thin "A"=5 thin Omega$. Die Spule hat näherungsweise $R_x=24/"0,01"=2400 thin Omega$.
+
+][
+*Spannungsrichtig:* Bei 24 V zieht das Voltmeter zusätzlich $24/30000="0,8" thin "mA"$. Das Amperemeter zeigt 10,8 mA. Ohne Korrektur ergibt sich $24/"0,0108" approx 2222 thin Omega$, rund 7,4 % zu wenig. Mit Abzug des Voltmeterstroms erhältst du wieder 2400 Ω.
+
+][
+*Stromrichtig:* Bei 10 mA fallen zusätzlich $"0,01" dot.c 5="0,05" thin "V"$ am Amperemeter ab. $U/I="24,05"/"0,01"=2405 thin Omega$, rund 0,21 % zu viel. Der Abzug von 5 Ω korrigiert diesen Eigenverbrauch.
+
+][
+*Bewerten:* Stromrichtig benötigt hier die viel kleinere Korrektur. Die Genauigkeitsklasse bleibt eine zusätzliche Geräteunsicherheit; die Rechnung des Eigenverbrauchs macht die Messung nicht fehlerfrei.
+]
+
+#aufgabe(titel: "Pt100 mit Drehspulinstrument dimensionieren", art: "rechnen", quelle: "2.4.8",
+ ergebnis: [$R_V approx "20,053" thin "k"Omega$; bei 0 °C etwa 45,1 % Vollausschlag.])[
+#if not web [*Aufgabe 110* #linebreak()]
+*Gegeben und Annahmen:* $U_B=10 thin "V"$, $R_M=1 thin "k"Omega$, Vollausschlag $I_M=100 thin "µA"$. Sensor $R_vartheta=R_0(1+alpha(vartheta-vartheta_0))$ mit $R_0=100 thin Omega$, $vartheta_0=0 thin "°C"$ und $alpha="3,85" dot.c 10^(-3) thin "1/K"$. Das ausdrücklich lineare Skriptmodell wird verwendet; Sensor und Instrument liegen parallel hinter RV.
+#image("abbildungen/gesamt-pt100.svg", width: 100%, height: 35mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Allgemeine Stromfunktion Im(Temperatur).][Vorwiderstand RV für Vollausschlag bei 400 °C.][Anzeige bei 0 °C als Anteil des Vollausschlags.]
+#src[V S. 58–59, Aufgabe 2.4.8.]
+][
+*Messnetz ersetzen:* $R_p=R_M R_vartheta/(R_M+R_vartheta)$. Über der Parallelgruppe liegen $U_M=U_B R_p/(R_V+R_p)$. Durch das Instrument fließt $I_m=U_M/R_M$.
+
+][
+*Funktion vereinfachen:* $I_m=U_B R_vartheta/(R_V R_M+R_V R_vartheta+R_M R_vartheta)$. Die Temperatur wirkt über Rvartheta, die Stromaufteilung ist daher trotz linearer Sensorannahme nicht linear.
+
+][
+*Endwert einstellen:* Bei 400 °C ist $R_vartheta=100(1+"0,00385" dot.c 400)=254 thin Omega$. Aus der Stromfunktion folgt $R_V=((U_B/I_M-R_M)R_vartheta)/(R_M+R_vartheta) approx "20052,63" thin Omega$.
+
+][
+*Nullpunktanzeige prüfen:* Bei 0 °C ist Rvartheta=100 Ω. Einsetzen liefert $I_m approx "45,13" thin "µA"$, also $I_m/I_M approx "0,4513"$. Auf der linearen Stromskala steht der Zeiger bereits bei etwa 45,1 %.
+]
+
+#aufgabe(titel: "Wheatstone-Abgleich und Schleifdraht", art: "rechnen", quelle: "2.4.9",
+ ergebnis: [$R_x=143 thin Omega$.])[
+#if not web [*Aufgabe 111* #linebreak()]
+*Gegeben und Annahmen:* Abgeglichene Wheatstone-Brücke mit Normwiderstand $R_N=100 thin Omega$ und Schleifdrahtverhältnis $l_1/l_2="1,43"$. Der Draht hat gleichförmigen Querschnitt und dasselbe Material entlang seiner Länge.
+
+*Gesucht:*
+#enum(numbering: "a)")[Prüflingswiderstand Rx.][Begründung, warum der Querzweig den Abgleich nicht belastet.]
+#src[V S. 60–61, Beispiel zur Schleifdrahtbrücke.]
+][
+*Nullsignal deuten:* Beim Abgleich haben die beiden Mitten gleiches Potenzial. Die Spannung und damit der Strom im Messquerzweig sind null.
+
+][
+*Verhältnis verwenden:* Aus den beiden unbelasteten Teilern folgt $R_x/R_N=R_1/R_2=l_1/l_2$. Also $R_x=100 dot.c "1,43"=143 thin Omega$.
+
+][
+*Voraussetzungen prüfen:* Die Längenregel braucht einen homogenen Draht. Außerhalb des Abgleichs würde ein reales Messgerät Strom zwischen den Mitten ziehen; dann gilt die unbelastete Auswertung nicht unverändert.
+]
+
+#aufgabe(titel: "Brückennetz durch Stern-Dreieck-Umwandlung zerlegen", art: "rechnen", quelle: "2.5.1",
+ ergebnis: [$R_"ges"=r_A+((r_B+R_4) parallel (r_C+R_5))$, $I_3=(I_4 R_4-I_5 R_5)/R_3$.])[
+#if not web [*Aufgabe 112* #linebreak()]
+*Gegeben und Annahmen:* Quellenfreies Widerstandsteilnetz: links Klemme A, rechts D. R1 zwischen A–B, R2 zwischen A–C, R3 zwischen B–C; R4 zwischen B–D und R5 zwischen C–D. Alle Ri sind positive lineare Widerstände; eine ideale Spannung U speist A gegen D. Diese symbolischen Werte sind die vollständigen Vorgaben.
+
+*Gesucht:*
+#enum(numbering: "a)")[Gesamtwiderstand zwischen A–D und Eingangsstrom.][Vorgehen zur Rückrechnung des ursprünglichen Stroms durch R3 von B nach C.]
+#src[V S. 64, symbolisches Brückenbeispiel; Klemmenzuordnung vollständig ausgeschrieben.]
+][
+*Linkes Dreieck ersetzen:* Setze $S=R_1+R_2+R_3$. Die Sternarme zu A, B, C sind $r_A=R_1 R_2/S$, $r_B=R_1 R_3/S$, $r_C=R_2 R_3/S$. Jeder Zähler enthält die am betreffenden Knoten anliegenden Dreieckseiten.
+
+][
+*Ersatznetz zusammenfassen:* $R_"ges"=r_A+((r_B+R_4) parallel (r_C+R_5))$. Jetzt sind nur noch Reihe und Parallel enthalten. Der Eingangsstrom ist $I=U/R_"ges"$.
+
+][
+*Äußere Zweige zurückrechnen:* Die beiden Parallelzweigströme bestimmen die ursprünglichen I4 und I5. Gegen D als Masse sind $phi_B=I_4 R_4$ und $phi_C=I_5 R_5$.
+
+][
+*Inneren Originalstrom bestimmen:* Im ursprünglichen Widerstand gilt $I_3=(phi_B-phi_C)/R_3$. Dieser Strom wird nicht einfach aus einem neuen Sternarm übernommen. Ein negatives Ergebnis bedeutet Fluss von C nach B.
+]
+
+#aufgabe(titel: "Heißleiterbrücke mit endlichem Voltmeterwiderstand", art: "rechnen", quelle: "2.5.1",
+ ergebnis: [$R_"VM"=30 thin "k"Omega$; bei 100 °C etwa 14,9 V; Nullanzeige bei etwa −20 °C.])[
+#if not web [*Aufgabe 113* #linebreak()]
+*Gegeben und Annahmen:* Ideale Quelle 30 V zwischen linkem und rechtem Knoten (rechts Masse). Oben RHL in Reihe mit R1=3 kΩ; unten R2=100 kΩ in Reihe mit R3=10 kΩ. Das Voltmeter verbindet die Mitten A oben und B unten; Messbereich 30 V, Empfindlichkeit 1000 Ω/V. Eigenerwärmung des NTC vernachlässigbar.
+#image("abbildungen/gesamt-ntc-bruecke.svg", width: 100%, height: 40mm, fit: "contain")#image("abbildungen/gesamt-ntc-kennlinie.svg", width: 100%, height: 52mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Instrumentenwiderstand.][Anzeige bei 100 °C mit Widerstandsablesung aus der Kennlinie.][Temperatur für 0 V Anzeige.]
+#src[V S. 64–65, Aufgabe 2.5.1.1; gleichwertige Lösung über den späteren Zweipolersatz.]
+][
+*Messlast bestimmen:* $R_"VM"=1000 thin "Ω/V" dot.c 30 thin "V"=30 thin "k"Omega$. Bei 100 °C liest man aus der logarithmischen Kurve ungefähr RHL=1 kΩ ab.
+
+][
+*Unbelastete Mitten berechnen:* $phi_A=30 dot.c 3/(1+3)="22,5" thin "V"$. $phi_B=30 dot.c 10/(100+10) approx "2,727" thin "V"$. Die Leerlaufdifferenz ist damit etwa 19,773 V.
+
+][
+*Belastung einarbeiten:* Von A–B gesehen ist $R_i=(1 parallel 3)+(100 parallel 10) approx "9,841" thin "k"Omega$. Deshalb zeigt das Instrument $U_"VM"="19,773" dot.c 30/(30+"9,841") approx "14,89" thin "V"$. Das ist gleichwertig zur vollständigen Brückenrechnung.
+
+][
+*Nullpunkt bestimmen:* Bei UAB=0 zieht das Messgerät keinen Strom. Dann gilt $R_"HL"/R_1=R_2/R_3=10$, also RHL=30 kΩ. Die Kennlinie ordnet diesen Wert ungefähr −20 °C zu. Ablesegenauigkeit und vernachlässigte Eigenerwärmung begrenzen die Aussage.
+]
+
+
+#aufgabe(titel: "Quellen verschieben heißt Bilanzen erhalten", art: "verstehen", quelle: "2.5.2",
+ ergebnis: [Maschenbeiträge bzw. Knotenbilanzen bleiben unverändert; $I_"quer"=0$.])[
+#if not web [*Aufgabe 114* #linebreak()]
+Vergleiche die beiden Umformungen. Erkläre, warum die Spannungsquelle in beide betroffenen Zweige übernommen wird und warum bei der Stromquellenumformung kein Strom im ergänzten Querzweig fließt.
+#image("abbildungen/gesamt-quelle-verschieben-u.svg", width: 100%, height: 40mm, fit: "contain")#image("abbildungen/gesamt-quelle-verschieben-i.svg", width: 100%, height: 40mm, fit: "contain")
+#src[V S. 66–67; Vergleichsfrage als eigene Zusammenführung.]
+][
+*Spannungsbilanzen vergleichen:* Jeder ursprünglich von Uq durchsetzte Umlauf muss denselben Spannungsbeitrag behalten. Nur eine Kopie in einem Zweig würde einen anderen Umlauf verändern. Zwischen zwei gleich gepolten Kopien heben sich die Quellenbeiträge auf.
+
+][
+*Strombilanz vergleichen:* Am ergänzten Knoten lautet die Bilanz $I_Q-I_Q+I_"quer"=0$. Deshalb ist Iquer=0, die ursprüngliche Knotenbilanz bleibt erhalten.
+
+][
+*Grenze nennen:* Die gezeigte Topologie und Polung sind wesentlich. Die Umformung verspricht dasselbe Verhalten des übrigen Netzes an den betrachteten Anschlüssen, keine beliebige Verschiebbarkeit von Quellen.
+]
+#kapitel("Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen")
+
+#aufgabe(titel: "Zwei Quellen und drei Zweige direkt mit Kirchhoff lösen", art: "rechnen", quelle: "3.1",
+ ergebnis: [$I_1 approx "1,951" thin "A"$, $I_2 approx -"0,732" thin "A"$, $I_3 approx "1,220" thin "A"$.])[
+#if not web [*Aufgabe 115* #linebreak()]
+*Gegeben und Annahmen:* Ideale Quellen Uq1=20 V und Uq2=10 V, beide Plus oben. R1=4 Ω und R2=3 Ω liegen in den Quellenzweigen; R3=10 Ω liegt vom gemeinsamen oberen Knoten A nach Masse. I1 und I2 seien zum Knoten A gerichtet, I3 von A nach Masse.
+#image("abbildungen/gesamt-drei-zweige.svg", width: 100%, height: 42mm, fit: "contain")
+
+*Gesucht:* Alle drei Ströme samt tatsächlicher Richtung und eine Bilanzprobe.
+#src[V S. 72–73, Abschnitt 3.1.]
+][
+*Unbekannte konsequent ordnen:* Die Knotenbilanz lautet $I_1+I_2-I_3=0$. Die linken und rechten Umläufe liefern $4I_1+10I_3=20$ und $3I_2+10I_3=10$ bei Ω, A und V als zusammenpassenden Einheiten.
+
+][
+*Gleichungssystem lösen:* In der Reihenfolge I1,I2,I3 ist die Matrix $mat(1,1,-1;4,0,10;0,3,10)$. Ihre Determinante ist −82 Ω². Cramer liefert $I_1=160/82 approx "1,9512" thin "A"$, $I_2=-60/82 approx -"0,7317" thin "A"$, $I_3=100/82 approx "1,2195" thin "A"$.
+
+][
+*Richtung deuten:* I2 fließt tatsächlich vom gemeinsamen Knoten in den 10-V-Quellenzweig. Die Quelle Uq2 nimmt hier Strom am Pluspol auf. I1 und I3 folgen ihren angenommenen Pfeilen.
+
+][
+*Physikalisch prüfen:* Der Knoten hat $phi_A=10I_3 approx "12,1951" thin "V"$. Damit ist $(20-phi_A)/4=I_1$ und $(10-phi_A)/3=I_2$. Auch $I_1+I_2=I_3$ stimmt.
+]
+
+#aufgabe(titel: "Dasselbe Dreizweignetz mit Überlagerung lösen", art: "rechnen", quelle: "3.2.1",
+ ergebnis: [Gleiche Gesamtströme wie bei direkter Kirchhoffrechnung; $P_3 approx "14,87" thin "W"$.])[
+#if not web [*Aufgabe 116* #linebreak()]
+*Gegeben und Annahmen:* Lineares Dreizweignetz: Uq1=20 V über R1=4 Ω und Uq2=10 V über R2=3 Ω zum gemeinsamen Knoten A; beide Quellen Plus oben. R3=10 Ω führt von A nach Masse. I1 und I2 zeigen von den Quellen nach A, I3 von A nach Masse.
+#image("abbildungen/gesamt-drei-zweige.svg", width: 100%, height: 40mm, fit: "contain")
+
+*Gesucht:* Alle Teilströme und Gesamtströme mit unverändertem Bezugspfeil.
+#src[V S. 73–75; Bezugsrichtungen von S. 72 durchgehend beibehalten.]
+][
+*Nur Uq1 aktiv:* Uq2 wird kurzgeschlossen, R2 bleibt erhalten. $R_2 parallel R_3=30/13 thin Omega$. Der Knoten liegt bei $U_A=300/41 approx "7,3171" thin "V"$. Daraus folgen $I_(1,1)=130/41$, $I_(2,1)=-100/41$ und $I_(3,1)=30/41$, jeweils in A.
+
+][
+*Nur Uq2 aktiv:* Uq1 wird kurzgeschlossen, R1 bleibt. $R_1 parallel R_3=20/7 thin Omega$. $U_A=200/41 approx "4,8780" thin "V"$. Daher $I_(1,2)=-50/41$, $I_(2,2)=70/41$ und $I_(3,2)=20/41$, jeweils in A.
+
+][
+*Vorzeichenrichtig addieren:* $I_1=80/41 approx "1,9512" thin "A"$, $I_2=-30/41 approx -"0,7317" thin "A"$, $I_3=50/41 approx "1,2195" thin "A"$. Die negativen Teilbeiträge laufen entgegen den anfänglichen Pfeilen.
+
+][
+*Leistung erst danach:* Im R3 ist $P_3=I_3^2 R_3 approx "14,87" thin "W"$. Die einzelnen Teilleistungen würden den Mischterm auslassen und dürfen nicht einfach addiert werden.
+]
+
+#aufgabe(titel: "Fünf Widerstände mit Maschenströmen berechnen", art: "rechnen", quelle: "3.2.2",
+ ergebnis: [$I_1="0,477"$, $I_2="0,595"$, $I_3="0,118"$, $I_4="0,461"$, $I_5="0,578" thin "A"$ in den angegebenen realen Richtungen.])[
+#if not web [*Aufgabe 117* #linebreak()]
+*Gegeben und Annahmen:* Uq1=10 V und Uq2=12 V, Plus jeweils oben; R1=6 Ω, R2=12 Ω, R3=2 Ω, R4=16 Ω, R5=8 Ω. Obere Knoten A links und B rechts; R3 zwischen ihnen. R2/R4 führen nach Masse, R1/R5 jeweils über die Quellen nach Masse.
+#image("abbildungen/gesamt-fuenf-widerstaende.svg", width: 100%, height: 45mm, fit: "contain")
+
+*Gesucht:* Maschenströme wie eingezeichnet und reale Zweigströme. Reale Richtungen: I1 linke Quelle nach A, I2 A nach Masse, I3 B nach A, I4 B nach Masse, I5 rechte Quelle nach B.
+#src[V S. 77–78, Beispiel 3.2.2.1.]
+][
+*Gemeinsame Widerstände erfassen:* Mit den eingezeichneten römischen Maschenströmen lauten die geordneten Gleichungen $-18I_"I"+12I_"II"=10$, $-12I_"I"+30I_"II"-16I_"III"=0$, $-16I_"II"+24I_"III"=12$. Die Koeffizienten haben die Einheit Ω.
+
+][
+*System lösen:* Es folgt $I_"I" approx -"0,477124" thin "A"$, $I_"II" approx "0,117647" thin "A"$ und $I_"III" approx "0,578431" thin "A"$. Der erste tatsächliche Kreisbeitrag läuft gegen die angenommene Richtung.
+
+][
+*In Zweigströme übersetzen:* $I_1=-I_"I" approx "0,4771" thin "A"$, $I_2=-I_"I"+I_"II" approx "0,5948" thin "A"$, $I_3=I_"II" approx "0,1176" thin "A"$, $I_4=I_"III"-I_"II" approx "0,4608" thin "A"$ und $I_5=I_"III" approx "0,5784" thin "A"$.
+
+][
+*Knoten und Spannungen prüfen:* $phi_A=12I_2 approx "7,1373" thin "V"$, $phi_B=16I_4 approx "7,3725" thin "V"$. Daher $(phi_B-phi_A)/2=I_3$. An A gilt I1+I3=I2, an B I5=I3+I4.
+]
+
+#aufgabe(titel: "Pufferbatterie: Stromverteilung und stromlose Batterie", art: "rechnen", quelle: "3.2.2",
+ ergebnis: [$I approx "6,98" thin "A"$, $I_a approx "7,91" thin "A"$; Batterie liefert etwa 0,93 A; $R_v="1,5" thin Omega$ für IB=0.])[
+#if not web [*Aufgabe 118* #linebreak()]
+*Gegeben und Annahmen:* Generator Uq=100 V, RiG=1 Ω, vorgeschalteter Rv=2 Ω. Pufferbatterie UB=80 V mit RiB=1 Ω. Last Ra=10 Ω liegt parallel zum Batteriezweig; alle positiven Quellenpole oben. Generatorstrom I zum Lastknoten, Laststrom Ia nach unten, Batteriestrom IB nach unten definiert.
+#image("abbildungen/gesamt-pufferbatterie.svg", width: 100%, height: 40mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Stromverteilung und Lastspannung.][Ob die Batterie lädt oder entlädt.][Rv für IB=0 bei unveränderten Quellen.]
+#src[V S. 79–80, Beispiel 3.2.2.2.]
+][
+*Zwei Maschen wählen:* Generator- und Lastmasche führen die Ströme I und Ia. Die Gleichungen sind $4I-I_a=20$ und $-I+11I_a=80$. Der Batteriestrom ist die Differenz $I_B=I-I_a$.
+
+][
+*System lösen:* $I=300/43 approx "6,9767" thin "A"$ und $I_a=340/43 approx "7,9070" thin "A"$. Die Lastspannung ist $U_a=10I_a approx "79,0698" thin "V"$.
+
+][
+*Batterierichtung deuten:* $I_B=-40/43 approx -"0,9302" thin "A"$. Der Strom fließt also nach oben aus der Batterie zum Verbraucher: Die Batterie entlädt. Ihre innere Polung wird dadurch nicht vertauscht.
+
+][
+*Batterie stromlos einstellen:* Für IB=0 ist Ua=UB=80 V und Ia=8 A. Am Generatorzweig müssen 20 V bei 8 A abfallen: $R_"iG"+R_v=20/8="2,5" thin Omega$. Also $R_v="1,5" thin Omega$. Probe: $(100-80)/(1+"1,5")=8 thin "A"$.
+]
+
+#aufgabe(titel: "Ideale Stromquellen in einem Viermaschennetz", art: "rechnen", quelle: "3.2.2.1",
+ ergebnis: [$phi_E approx -"1,091"$, $phi_A approx -"4,636"$, $phi_B approx -"6,636"$, $phi_C="8,625"$, $phi_D="6,875" thin "V"$.])[
+#if not web [*Aufgabe 119* #linebreak()]
+*Gegeben und Annahmen:* Alle unteren Leiter sind Masse. Quellknoten F=+6 V, G=−5 V, H=+3 V, J=+3 V. Widerstände: R2=3 kΩ zwischen E–F, R4=1,5 kΩ E–A, R3=1 kΩ A–G, R1=1 kΩ A–B, R5=5 kΩ C–H, R6=2 kΩ C–D, R7=1 kΩ D–J. Stromquelle I1=2 mA von B nach C, I2=3 mA von Masse nach D. Quellen und Widerstände ideal.
+#image("abbildungen/gesamt-ideale-quellen-netz.svg", width: 100%, height: 40mm, fit: "contain")
+
+*Gesucht:* Alle Potenziale E,A,B,C,D und Widerstandsströme sowie Spannung UBC über I1.
+#src[V S. 80–84, Beispiel 3.2.2.3; Quellenspannungen korrekt mitgeführt.]
+][
+*Eingeprägte Maschenströme nutzen:* In der passenden Randmasche ist $I_"II"=2 thin "mA"$ und $I_"IV"=-3 thin "mA"$. Für den linken Widerstandsumlauf folgt $I_"I"=(6+5+2 thin "mA" dot.c 1 thin "k"Omega)/("5,5" thin "k"Omega) approx "2,363636" thin "mA"$. Im Nenner sind 5,5 kΩ gemeint.
+
+][
+*Linke Potenziale berechnen:* Durch R2 fließen 2,363636 mA von F nach E, durch R4 von E nach A. Damit $phi_E=6-"2,363636" dot.c 3 approx -"1,09091" thin "V"$ und $phi_A=phi_E-"2,363636" dot.c "1,5" approx -"4,63636" thin "V"$. Durch R3 fließen $"0,363636" thin "mA"$ nach G. R1 führt 2 mA von A nach B, also $phi_B=phi_A-2 approx -"6,63636" thin "V"$.
+
+][
+*Rechte Widerstandsmasche lösen:* $I_"III"=(3-3+2 thin "mA" dot.c 5 thin "k"Omega-3 thin "mA" dot.c 1 thin "k"Omega)/(8 thin "k"Omega)="0,875" thin "mA"$. Damit I_R6=0,875 mA C→D; I_R5=2−0,875=1,125 mA C→H. Es folgt $phi_C=3+"1,125" dot.c 5="8,625" thin "V"$, $phi_D=phi_C-"0,875" dot.c 2="6,875" thin "V"$.
+
+][
+*Reststrom und Quellen-Spannung prüfen:* I_R7=0,875+3=3,875 mA nach J. $U_(B C)=phi_B-phi_C approx -"15,26136" thin "V"$. Die ideale Stromquelle hebt das Potenzial in Stromrichtung an; ihre Spannung ist nicht null.
+
+][
+*Skriptfehler vermeiden:* Die auf S. 80 formal aufgeführten Maschen 2 und 4 benötigen zusätzlich die unbekannten Spannungen der Stromquellen. Hier wurden nur die gültigen Widerstandsumläufe und die eingeprägten Randströme benutzt. Die Knotenbilanzen bestätigen alle sieben Widerstandsströme.
+]
+
+#aufgabe(titel: "Fünf Widerstände mit Knotenpotenzialen kontrollieren", art: "rechnen", quelle: "3.2.3",
+ ergebnis: [$phi_A approx "7,137" thin "V"$, $phi_B approx "7,373" thin "V"$, $I_3 approx "0,118" thin "A"$ von B nach A.])[
+#if not web [*Aufgabe 120* #linebreak()]
+*Gegeben und Annahmen:* Quellen Uq1=10 V und Uq2=12 V gegen Masse. R1=6 Ω zwischen 10-V-Quellknoten und A, R2=12 Ω A–Masse, R3=2 Ω A–B, R4=16 Ω B–Masse, R5=8 Ω zwischen B und 12-V-Quellknoten. Positive U3 sei von B nach A gerichtet.
+
+*Gesucht:* Potenziale A/B, U3 und Strom von B nach A; Lösung mit Leitwertmatrix.
+#src[V S. 84–85, Abschnitt 3.2.3.1.]
+][
+*Leitwerte eintragen:* $G_1=1/6$, $G_2=1/12$, $G_3=1/2$, $G_4=1/16$, $G_5=1/8$, jeweils in S. Die Quellenströme der Ersatzformen sind $10/6 thin "A"$ links und $12/8 thin "A"$ rechts.
+
+][
+*Knotenbilanzen ordnen:* $(G_1+G_2+G_3)phi_A-G_3 phi_B=10G_1$ und $-G_3 phi_A+(G_3+G_4+G_5)phi_B=12G_5$. Rechts steht G5, nicht der Druckfehler G3 aus einer Zwischenzeile von V S. 85.
+
+][
+*System lösen:* $phi_A approx "7,137255" thin "V"$ und $phi_B approx "7,372549" thin "V"$. Diese zwei Unbekannten ersetzen die fünf ursprünglichen Zweigströme.
+
+][
+*Gesuchte Richtung prüfen:* $U_3=phi_B-phi_A approx "0,235294" thin "V"$. Daher $I_3=U_3/2 approx "0,117647" thin "A"$ von B nach A. Die Rückrechnung stimmt mit dem Maschenstromverfahren überein.
+]
+
+#aufgabe(titel: "Eine ideale Spannungsquelle und eine ideale Stromquelle", art: "rechnen", quelle: "3.2.4",
+ ergebnis: [$phi_X=1 thin "V"$, $phi_Y=1001 thin "V"$; Strom in der Spannungsquelle 0,899 A nach unten.])[
+#if not web [*Aufgabe 121* #linebreak()]
+*Gegeben und Annahmen:* Masse unten; ideale 1-V-Quelle Plus oben legt Knoten X fest. Parallel dazu 10 Ω sowie ein Zweig mit 1 mS Leitwert. Ein weiterer paralleler Zweig enthält eine ideale Stromquelle 1 A nach oben zum Knoten Y und darüber 1 kΩ von Y nach X.
+#image("abbildungen/gesamt-quellen-ideal-gemischt.svg", width: 100%, height: 41mm, fit: "contain")
+
+*Gesucht:* Alle Ströme/Spannungen samt Richtung sowie Potenziale X und Y.
+#src[V S. 86, Aufgabe 3.2.4.1; vollständige Leistungsprobe ergänzt.]
+][
+*Feste Größen zuerst:* Die Spannungsquelle setzt $phi_X=1 thin "V"$. Die Stromquelle erzwingt 1 A von Masse nach Y und weiter durch 1 kΩ nach X.
+
+][
+*Hohes Potenzial berechnen:* Am 1-kΩ-Widerstand fallen in Stromrichtung Y→X 1000 V ab. Deshalb $phi_Y=phi_X+1000=1001 thin "V"$. Die Stromquelle hat somit 1001 V zwischen Y und Masse.
+
+][
+*Parallele Zweige auswerten:* Durch 10 Ω fließen 0,1 A nach unten. 1 mS entspricht 1 kΩ, dort fließt 0,001 A nach unten. Beide Spannungen betragen 1 V nach unten.
+
+][
+*Quellenstrom bilanzieren:* Von oben nach unten durch die 1-V-Quelle gilt $I_U=1-"0,1"-"0,001"="0,899" thin "A"$. Sie nimmt in diesem Fall Leistung auf. Probe: Die Stromquelle liefert 1001 W; Widerstände setzen zusammen 1000,101 W um, die Spannungsquelle nimmt 0,899 W auf. Die Summe ist 1001 W.
+]
+
+#aufgabe(titel: "Zwei ideale Stromquellen: negative Knotenpotenziale", art: "rechnen", quelle: "3.2.4",
+ ergebnis: [$phi_A=1 thin "V"$, $phi_B=-3 thin "V"$, $phi_C=-18 thin "V"$.])[
+#if not web [*Aufgabe 122* #linebreak()]
+*Gegeben und Annahmen:* R1=2 kΩ A–B, R2=3 kΩ B–C, R3=1 kΩ B–Masse. I1=2 mA speist von Masse nach A; I2=5 mA führt von C nach Masse.
+#image("abbildungen/gesamt-zwei-stromquellen.svg", width: 100%, height: 40mm, fit: "contain")
+
+*Gesucht:* Potenziale A, B und C gegen Masse.
+#src[V S. 86, Aufgabe 3.2.4.2.]
+][
+*Quellenströme in Nachbarzweigen:* A hat nur Quelle und R1, deshalb fließen 2 mA von A nach B. Bei C müssen 5 mA von B nach C fließen.
+
+][
+*Knoten B bilanzieren:* Mit R3-Strom nach unten gilt $I_3=2-5=-3 thin "mA"$. R3 führt tatsächlich 3 mA von Masse nach B. Daher $phi_B=I_3 R_3=-3 thin "V"$.
+
+][
+*Nachbarknoten berechnen:* $phi_A=phi_B+2 thin "mA" dot.c 2 thin "k"Omega=1 thin "V"$. $phi_C=phi_B-5 thin "mA" dot.c 3 thin "k"Omega=-18 thin "V"$.
+
+][
+*Prüfen:* Negative Potenziale sind relativ zu Masse zulässig. Die Quellenspannungen passen sich den vorgegebenen Strömen an; die idealen Quellen sind nicht durch einen realen Spannungsbereich begrenzt.
+]
+
+#kapitel("Kapitel 4 · Zweipoltheorie und nichtlineare Arbeitspunkte")
+
+#aufgabe(titel: "Zweipolersatz mit zwei gegensinnig gepolten Quellen", art: "rechnen", quelle: "4.2",
+ ergebnis: [$U_l approx "7,143" thin "V"$, $R_i approx "12,571" thin Omega$, $I_a approx "0,3165" thin "A"$.])[
+#if not web [*Aufgabe 123* #linebreak()]
+*Gegeben und Annahmen:* Masse B. Linker Zweig: Quelle +20 V gegen B und darüber R1=15 Ω zum gemeinsamen inneren Knoten N. Mittlerer Zweig: Quelle mit oberem Pol −10 V gegen B und darüber R2=20 Ω nach N. R3=4 Ω von N nach A. Last Ra=10 Ω A–B.
+#image("abbildungen/gesamt-zweipol-zwei-quellen.svg", width: 100%, height: 45mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Ri und Ul bezüglich A–B.][Ik als Probe.][Laststrom, Lastspannung und Lastleistung.]
+#src[V S. 90–92; Last Ra=10 Ω bereits in Abb. 4.6 vorgegeben.]
+][
+*Last abtrennen und Ri bilden:* Für Ri werden beide unabhängigen Spannungsquellen kurzgeschlossen. Von A nach B sieht man $R_i=4+(15 parallel 20)=88/7 thin Omega approx "12,5714" thin Omega$.
+
+][
+*Leerlauf bei aktiven Quellen:* Durch R3 fließt kein Strom. Am inneren Knoten gilt $(U_l-20)/15+(U_l+10)/20=0$. Daraus $U_l=50/7 thin "V" approx "7,142857" thin "V"$. Die entgegengesetzte zweite Quelle darf nicht als +10 V eingesetzt werden.
+
+][
+*Kurzschlussprobe:* $I_k=U_l/R_i=25/44 thin "A" approx "0,56818" thin "A"$. Die Skriptangabe 0,566 A entsteht aus zuvor gerundeten Werten; alle drei exakten Ersatzgrößen erfüllen Ul=Ik Ri.
+
+][
+*Last wieder anschließen:* $I_a=U_l/(R_i+10)=25/79 thin "A" approx "0,31646" thin "A"$. $U_a=10I_a approx "3,16456" thin "V"$; $P_a=I_a^2 dot.c 10 approx "1,0014" thin "W"$. Probe: $U_l=I_a R_i+U_a$.
+]
+
+#aufgabe(titel: "Nichtlineare Kennlinien richtig zusammenfügen", art: "verstehen", quelle: "4.3.1",
+ ergebnis: [Parallel Ströme bei gleichem U, in Reihe Spannungen bei gleichem I addieren.])[
+#if not web [*Aufgabe 124* #linebreak()]
+Zwei nichtlineare Widerstände besitzen bekannte I-U-Kennlinien. Beschreibe jeweils eine konstruktive Vorschrift für ihre Gesamtkennlinie in Reihen- und Parallelschaltung. Erkläre außerdem, warum die statischen Quotienten U/I einzelner Arbeitspunkte keine allgemein konstanten Ersatzwiderstände sind.
+#src[V S. 95–96, Abschnitt 4.3.1.]
+][
+*Parallel gemeinsame Spannung wählen:* Suche auf beiden Kennlinien denselben U-Wert, lies I1 und I2 ab und bilde I=I1+I2. Wiederhole dies für mehrere Spannungen. Die Summe wird im I-U-Bild senkrecht gebildet.
+
+][
+*In Reihe gemeinsamen Strom wählen:* Suche auf beiden Kennlinien denselben I-Wert, lies U1 und U2 ab und bilde U=U1+U2. Die Summe wird waagerecht gebildet.
+
+][
+*Arbeitspunktabhängigkeit nennen:* Bei gekrümmten Kennlinien ändert sich U/I mit dem Punkt. Ein einzelner Quotient ist keine Beschreibung der gesamten Kurve. Erst die Gesamtkennlinie kann mit der Quellenlinie geschnitten werden.
+]
+
+#aufgabe(titel: "Varistor am Festspannungsteiler: drei Arbeitspunkte", art: "rechnen", quelle: "4.3.1",
+ ergebnis: [Bei 100 V etwa 30 V/77 mA; bei 200 V etwa 40 V/311 mA; mit Rp etwa 23 V.])[
+#if not web [*Aufgabe 125* #linebreak()]
+*Gegeben und Annahmen:* R1=75 Ω und R2=50 Ω bilden einen Teiler an UE. R3=100 Ω liegt vom Teilerabgriff zur Klemme A, B ist Masse. VDR A–B mit $I(U)=1 thin "A" dot.c (U/(50 thin "V"))^5$ für U≥0.
+#image("abbildungen/gesamt-varistor-netz.svg", width: 100%, height: 38mm, fit: "contain")#image("abbildungen/gesamt-varistor-kennlinie.svg", width: 100%, height: 57mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Arbeitspunkt und VDR-Leistung bei UE=100 V.][Arbeitspunkt bei UE=200 V.][Spannung bei UE=100 V und zusätzlichem Rp=200 Ω parallel zum VDR.]
+#src[V S. 97–98, Aufgabe 4.3.1.1; grafische Werte von numerischer Nachrechnung getrennt.]
+][
+*Aktiven Teil ersetzen:* Ohne VDR ist $U_l=U_E dot.c 50/(75+50)="0,4"U_E$. Bei kurzgeschlossener Quelle ist $R_i=100+(75 parallel 50)=130 thin Omega$. R3 bleibt auch im Leerlauffall als Teil des aktiven Netzes erhalten, führt dann aber keinen Strom.
+
+][
+*Ersten Schnitt finden:* Für UE=100 V lautet die Quellenlinie $I=(40-U)/130$ mit V, Ω und A. Schneide sie mit der roten Kennlinie. Grafisch etwa U=30 V, I≈75–78 mA. Mit der Gleichung nachgerechnet: U≈29,96 V, I≈77,24 mA, also P≈2,31 W. Die gedruckten 2,25 W beruhen auf den grob abgelesenen 30 V und 75 mA.
+
+][
+*Überspannungsfall:* Nun ist Ul=80 V, Ri bleibt 130 Ω. Der Schnitt liegt bei U≈39,58 V und I≈310,91 mA; grafisch rund 40 V/310 mA. Die VDR-Leistung beträgt ungefähr 12,3 W. Eine reale Eignung verlangt zusätzlich eine zulässige Leistungs-/Energieangabe.
+
+][
+*Zusätzliche Last berücksichtigen:* Für Rp=200 Ω teilt sich der Quellenstrom: $(40-U)/130=(U/50)^5+U/200$. Der Schnitt ergibt U≈22,72 V, also grafisch rund 23 V. Nur den VDR abzuklemmen würde Rp in der Ersatzrechnung angeschlossen lassen; alternativ addierst du seine Kennlinie wie hier.
+
+][
+*Plausibilität prüfen:* Verdoppeltes UE verdoppelt UAB nicht, weil der VDR erheblich leitfähiger wird. Der zusätzliche Parallelverbraucher senkt UAB weiter. Kein Zweigstrom darf mit dem gesamten Quellenstrom verwechselt werden.
+]
+
+#aufgabe(titel: "Basis-Emitter-Diode am Spannungsteiler", art: "rechnen", quelle: "4.3.2",
+ ergebnis: [$U_l approx "2,31" thin "V"$, $R_i approx "1,154" thin "k"Omega$, $I_k=2 thin "mA"$; $U_q' approx "7,8" thin "V"$.])[
+#if not web [*Aufgabe 126* #linebreak()]
+*Gegeben und Annahmen:* Quelle Uq=10 V, R1=5 kΩ oben und R2=1,5 kΩ unten als Teiler; Basis-Emitter-Diode an dessen Ausgang. Die gedruckte Kennlinie liefert ungefähr UBE=0,9 V bei IB≈1,2 mA sowie UBE≈0,88 V bei IB=0,8 mA; dies sind Ablesedaten.
+
+*Gesucht:*
+#enum(numbering: "a)")[Ul, Ri und Ik des speisenden Teilers.][Kontrolle des ersten grafischen Arbeitspunkts.][Neue Quellspannung für IB=0,8 mA.]
+#src[V S. 99–100, Beispiel 4.3.2.1; Kennlinienwerte ausdrücklich grafisch.]
+][
+*Quelle ersetzen:* $U_l=10 dot.c "1,5"/"6,5" approx "2,30769" thin "V"$. $R_i=5 parallel "1,5" approx "1,15385" thin "k"Omega$. Im Kurzschluss wird R2 überbrückt: Ik=10/5000=2 mA.
+
+][
+*Grafischen Punkt kontrollieren:* Mit UBE=0,9 V liefert die Quellenlinie $("2,30769"-"0,9")/"1153,85" approx "0,00122" thin "A" = "1,22" thin "mA"$. Dies stimmt innerhalb der grafischen Genauigkeit mit 1,2 mA überein.
+
+][
+*Neue Leerlaufspannung bestimmen:* Für IB=0,8 mA und den abgelesenen UBE≈0,88 V gilt $U_l' approx "0,88"+"0,8" thin "mA" dot.c "1,15385" thin "k"Omega approx "1,80308" thin "V"$. Die Quellenlinie wird parallel verschoben, da Ri gleich bleibt.
+
+][
+*Auf die Versorgung zurückrechnen:* $U_q'=U_l' dot.c "6,5"/"1,5" approx "7,81" thin "V"$. Das entspricht der grob grafischen Skriptlösung 7,8 V. UBE ist dabei kein für jeden Strom konstant vorgegebener Spannungsabfall.
+]
+
+#aufgabe(titel: "Konstantstrom-Transistor: zulässiger Lastbereich", art: "rechnen", quelle: "4.3.2",
+ ergebnis: [Skript-Grenznäherung 90–190 Ω; ein positives UCE,min verkleinert den oberen Wert.])[
+#if not web [*Aufgabe 127* #linebreak()]
+*Gegeben und Annahmen:* Uq=20 V, Quelleninnenwiderstand Riq=10 Ω, vorgegebener Basisstrom IB=1 mA und Verstärkungsmodell IC≈100 mA. Maximale Transistorleistung 1 W; variable Last Ra in Reihe. Für die gedruckte obere Grenznäherung wird UCE,min=0 V gesetzt; anschließend soll diese Idealisierung erläutert werden.
+
+*Gesucht:*
+#enum(numbering: "a)")[Leistungshyperbel und kleinster Lastwiderstand.][Oberer Lastgrenzwert des idealisierten Skriptmodells.][Allgemeine Korrektur bei benötigter positiver Mindestspannung.]
+#src[V S. 101–102, Beispiel 4.3.2.2; obere Modellgrenze präzisiert.]
+][
+*Leistung in Spannung übersetzen:* Bei IC=0,1 A ist höchstens $U_(C E)=1/"0,1"=10 thin "V"$ erlaubt. Allgemein gilt $I_"zul"=1 thin "W"/U_(C E)$.
+
+][
+*Kleinsten Lastwiderstand berechnen:* $20=10+"0,1"(R_a+10)$ ergibt Ra,min=90 Ω. Kleinere Lastwiderstände lassen im Konstantstrommodell mehr Spannung am Transistor und überschreiten 1 W.
+
+][
+*Idealisierten oberen Grenzwert bestimmen:* Mit UCE=0 ist $R_"a,max"=20/"0,1"-10=190 thin Omega$. Im Grenzfall bleibt dem Transistor keine Kollektor-Emitter-Spannung; zuverlässiger realer Konstantstrombetrieb ist dort nicht zugesichert.
+
+][
+*Modellgrenze ausdrücken:* Bei positiv vorgegebenem UCE,min lautet $R_"a,max"=(20 thin "V"-U_(C E,"min"))/("0,1" thin "A")-10 thin Omega$. Für eine reale Auslegung braucht man diese Mindestspannung bzw. eine ausreichend genaue Ausgangskennlinie.
+]
+
+#aufgabe(titel: "Symbolische Ersatzquelle und ursprüngliche Quellenleistung", art: "rechnen", quelle: "4.4.1",
+ ergebnis: [$U_l=-I_q(R_4 parallel R_5)$; $R_i=R_4 parallel R_5$; $P_q approx "14,89" thin "W"$.])[
+#if not web [*Aufgabe 128* #linebreak()]
+*Gegeben und Annahmen:* Links der idealen Stromquelle liegt R3 nach Masse parallel zur Reihe R2–R1. Rechts liegt der Ausgang A mit R4 und R5 jeweils nach Masse B. Die Stromquelle Iq zeigt von A nach links.
+#image("abbildungen/gesamt-stromquelle-symbolisch.svg", width: 100%, height: 32mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[U1 über R1 nach unten.][Ul, Ri und Ik an A–B mit beiden Widerständen R4/R5 im aktiven Teil.][Abgegebene Quellenleistung bei Iq=2 A und Ri=i Ω für i=1,…,5.]
+#src[V S. 103, Aufgabe 4.4.1; Gesamtleistung ohne frühe Rundung geprüft.]
+][
+*Linken Stromteiler auswerten:* Der Strom durch R1 und R2 beträgt $I_q R_3/(R_1+R_2+R_3)$. Deshalb $U_1=I_q R_1 R_3/(R_1+R_2+R_3)$.
+
+][
+*Rechte Klemmen bestimmen:* Die Quelle zieht Iq aus A ab. Deshalb $U_l=-I_q(R_4 parallel R_5)$. Für Ri wird die ideale Stromquelle geöffnet; links ist dann kein Beitrag mehr sichtbar. $R_i=R_4 parallel R_5$ und $I_k=U_l/R_i=-I_q$.
+
+][
+*Innere Quellenspannung im Originalnetz:* Mit den Zahlen ist der linke Ersatz $(R_1+R_2) parallel R_3=3 parallel 3="1,5" thin Omega$, rechts $R_4 parallel R_5=20/9 thin Omega$. Links der Stromquelle herrschen 3 V, rechts −40/9 V.
+
+][
+*Leistung und Bilanz prüfen:* Der Quellenstrom läuft vom niedrigeren zum höheren Potenzial. Die abgegebene Leistung ist $P_q=I_q^2("1,5"+20/9) approx "14,889" thin "W"$. V nennt 14,8 W nach Rundung; die ungerundete Widerstandssumme ergibt 14,89 W. Die im Ersatzbild sichtbare Lastleistung allein wäre nicht die gesamte ursprüngliche Quellenleistung.
+]
+
+#aufgabe(titel: "Glimmlampe in der Brücke: Arbeitspunkt und Erlöschen", art: "rechnen", quelle: "4.4.2",
+ ergebnis: [$U_l=150 thin "V"$, $R_i="11,6" thin "k"Omega$; AP etwa 70 V/7 mA, R5 etwa 0,5 W; Absenkung rund 50 V.])[
+#if not web [*Aufgabe 129* #linebreak()]
+*Gegeben und Annahmen:* Quelle Uq=250 V zwischen links (+) und rechts (−). Oberer Teiler R1=1 kΩ links, R2=4 kΩ rechts; unterer Teiler R3=4 kΩ links, R4=1 kΩ rechts. Zwischen oberer und unterer Mitte liegen R5=10 kΩ und die Glimmlampe in Reihe. Die Kennlinie zeigt auch die Haltegrenze bei ungefähr 1 mA und 110 V.
+#image("abbildungen/gesamt-glimmlampe-netz.svg", width: 100%, height: 43mm, fit: "contain")#image("abbildungen/gesamt-glimmlampe-kennlinie.svg", width: 100%, height: 65mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Ersatzquelle an den Lampenklemmen.][Grafischer Arbeitspunkt.][Erforderliche Dauerleistung von R5.][Ungefähre Absenkung von Uq bis zum Erlöschen.]
+#src[V S. 103–105, Aufgabe 4.4.2; grafische Genauigkeit explizit eingeordnet.]
+][
+*Leerlaufdifferenz bilden:* Ohne Lampenstrom fällt an R5 nichts ab. Die obere Mitte hat $250 dot.c 4/5=200$ V gegen rechts, die untere $250 dot.c 1/5=50$ V. Also Ul=150 V. Mit kurzgeschlossener Quelle ist $R_i=10+(1 parallel 4)+(4 parallel 1)="11,6" thin "k"Omega$.
+
+][
+*Kurzschluss und Lastlinie:* $I_k=150/11600 approx "12,93" thin "mA"$. Die Lastlinie $I=(150-U)/11600$ schneidet die Lampenkennlinie ungefähr bei U=70 V und I=7 mA. Mit genau 70 V liefert die Linie 6,90 mA; die Diagrammablesung ist entsprechend grob.
+
+][
+*Widerstand belasten:* Durch R5 fließt derselbe Lampenstrom. Mit 7 mA ist $P_5=I^2 R_5=("0,007")^2 dot.c 10000="0,49" thin "W"$. Damit fordert das Skript mindestens die 0,5-W-Größenordnung; eine reale Reserve wäre nach Betriebsbedingungen festzulegen.
+
+][
+*Haltegrenze verschieben:* Für die abgelesene Grenze 110 V/1 mA muss $U_l' approx 110+"0,001" dot.c 11600="121,6" thin "V"$ sein. Weil $U_l="0,6"U_q$, folgt Uq'≈202,7 V. Grafisch ist dies rund 200 V, also etwa 50 V Absenkung. Die grobe Skriptangabe ist kein auf einzelne Volt genauer Grenzwert.
+
+][
+*Kennlinie richtig deuten:* Auf dem fallenden Teil ist der differenzielle Widerstand negativ, während U und I positiv und damit die aufgenommene Leistung positiv bleiben. Die Haltegrenze ist von der Zündbedingung zu unterscheiden.
+]
+
+#aufgabe(titel: "Gemischte Quellen und eine nichtlineare Last", art: "rechnen", quelle: "4.4.3",
+ ergebnis: [$U_l="7,5" thin "V"$, $R_i=750 thin Omega$; Anpassung 18,75 mW, nichtlineare Last etwa 12 mW.])[
+#if not web [*Aufgabe 130* #linebreak()]
+*Gegeben und Annahmen:* Stromquelle 10 mA nach oben parallel zu 1 kΩ. Vom oberen linken Knoten führen 0,5 kΩ und eine ideale 5-V-Quelle (Spannungsanhebung nach rechts) zur Klemme A. Zwischen A und Masse B bleibt ein 1,5-kΩ-Widerstand. Die Last Ra ist zusätzlich an A–B angeschlossen.
+#image("abbildungen/gesamt-quellen-mischung.svg", width: 100%, height: 32mm, fit: "contain")#image("abbildungen/gesamt-nichtlinear-lastkurve.svg", width: 100%, height: 43mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Ul und Ri ohne Ra.][Ohmsche Last für Maximalleistung mit Strom, Spannung und Leistung.][Arbeitspunkt und Leistung für die gegebene nichtlineare Lastkennlinie.]
+#src[V S. 106, Aufgabe 4.4.3.]
+][
+*Linke Quelle umformen:* 10 mA parallel 1 kΩ entsprechen einer 10-V-Quelle mit 1 kΩ in Reihe. Die weitere 5-V-Quelle unterstützt sie. Zusammen sind dies 15 V mit 1,5 kΩ in Reihe; der feste 1,5-kΩ-Widerstand bleibt als Belastung erhalten.
+
+][
+*Äußere Ersatzquelle berechnen:* Der unbelastete Ausgang gegenüber der zusätzlichen Ra-Last hat $U_l=15 dot.c "1,5"/("1,5"+"1,5")="7,5" thin "V"$. Quellen null setzen ergibt $R_i=(1+"0,5") parallel "1,5"="0,75" thin "k"Omega=750 thin Omega$.
+
+][
+*Ohmsche Leistungsanpassung:* Bei Ra=750 Ω gilt Ia=7,5/1500=5 mA, Ua=3,75 V und Pa=Ua Ia=18,75 mW. Der Wirkungsgrad des Ersatzkreises ist 50 %; das ist keine Aussage über alle ursprünglichen inneren Leistungen.
+
+][
+*Nichtlineare Last schneiden:* Die Quellenlinie verläuft von 10 mA bei U=0 nach 7,5 V bei I=0. Ihr Schnitt mit der vorgegebenen Kurve liegt bei etwa 6 V und 2 mA. Daher nimmt die Last $P_a approx 6 thin "V" dot.c 2 thin "mA"=12 thin "mW"$ auf.
+]
+
+#aufgabe(titel: "Rote LED an einem Netz mit zwei Spannungsquellen", art: "rechnen", quelle: "4.4.4",
+ ergebnis: [$R_i=200 thin Omega$, $I_"LED" approx 15 thin "mA"$, $U_"q1"=12 thin "V"$.])[
+#if not web [*Aufgabe 131* #linebreak()]
+*Gegeben und Annahmen:* R1=R2=1200 Ω, R3=R4=600 Ω. R1 von oberem Uq1-Knoten nach A; R2 vom Knoten Uq1+6 V nach A. R3 und R4 von A nach Masse B. Die zusätzliche rote LED liegt A–B. Quelle Uq2=6 V hebt das Potenzial vom linken zum rechten oberen Knoten an. Gefordert ist ohne LED eine Leerlaufspannung UAB=5 V.
+#image("abbildungen/gesamt-led-rot-netz.svg", width: 100%, height: 45mm, fit: "contain")#image("abbildungen/gesamt-led-rot-kennlinie.svg", width: 100%, height: 55mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Ri und LED-Strom bei vorgegebener Leerlaufspannung.][Erforderliche Uq1 für diese Leerlaufspannung.]
+#src[V S. 107, Aufgabe 4.4.4.]
+][
+*Innenwiderstand mit nullgesetzten Quellen:* Nach Kurzschluss beider Spannungsquellen liegen alle vier Widerstände parallel. $1/R_i=2/1200+2/600=1/200$, also Ri=200 Ω.
+
+][
+*Quellenlinie zeichnen:* Sie läuft von 5 V bei I=0 nach 25 mA bei U=0. Der Schnitt mit der LED-Kennlinie liegt ungefähr bei 2 V und 15 mA. Probe: $(5-2)/200="0,015" thin "A"$. Die 5 V liegen beim angeschlossenen Bauteil nicht unverändert an der LED.
+
+][
+*Leerlauf-Knotenbilanz:* Ohne LED gilt $(U_"q1"-5)/1200+(U_"q1"+6-5)/1200=5/600+5/600$. Multiplizieren mit 1200 ergibt $2U_"q1"-4=20$, also Uq1=12 V.
+
+][
+*Polung und Größe prüfen:* Allgemein ist $U_l=(2U_"q1"+6)/6=U_"q1"/3+1 thin "V"$. Mit 12 V ergeben sich 5 V. Die positive Durchlasskennlinie liefert hier die tatsächliche LED-Spannung; die Schwellenangabe von etwa 1,9 V ist eine Näherung.
+]
+
+#aufgabe(titel: "Transistor: größte Quellspannung bei 0,4 Watt Verlust", art: "rechnen", quelle: "4.4.5",
+ ergebnis: [AP ungefähr 40 mA/10 V; $U_"q,max" approx 18 thin "V"$; $P_(R C) approx "0,32" thin "W"$.])[
+#if not web [*Aufgabe 132* #linebreak()]
+*Gegeben und Annahmen:* Kollektorwiderstand RC=200 Ω, Basisstrom IB=200 µA, zulässige Transistorleistung PT=0,4 W. Ausgangskennlinienfeld wie unten; Basisleistung wird im Skriptmodell vernachlässigt.
+#image("abbildungen/gesamt-transistor-rc-netz.svg", width: 100%, height: 30mm, fit: "contain")#image("abbildungen/gesamt-transistor-rc-feld.svg", width: 100%, height: 65mm, fit: "contain")
+
+*Gesucht:*
+#enum(numbering: "a)")[Verlustleistungshyperbel.][Grafisch größtmögliche Uq für den gewählten Basisstrom.][Zugehöriger Arbeitspunkt.][Wärmeleistung in RC.]
+#src[V S. 108, Aufgabe 4.4.5; Werte aus der Grafik angenähert, Leistungsbilanz ergänzt.]
+][
+*Leistungsgrenze eintragen:* $I_C="0,4" thin "W"/U_(C E)$. Geeignete Punkte sind 4 V/100 mA, 8 V/50 mA und 10 V/40 mA. Oberhalb der Hyperbel würde der Transistor mehr als 0,4 W umsetzen.
+
+][
+*Basisstromkurve auswählen:* Verwendet wird ausschließlich die Kurve für 200 µA. Ihr Schnitt mit der Hyperbel liegt ungefähr bei IC=40 mA und UCE=10 V. Die grafische Auflösung erlaubt nur ungefähre Werte.
+
+][
+*Quelle über die Masche bestimmen:* $U_q=U_(C E)+I_C R_C approx 10 thin "V"+"0,04" thin "A" dot.c 200 thin Omega=18 thin "V"$. Die Lastgerade mit Steigung −1/200 Ω wird durch den Grenzpunkt gelegt.
+
+][
+*Widerstandsleistung getrennt prüfen:* $P_(R C)=I_C^2 R_C approx ("0,04")^2 dot.c 200="0,32" thin "W"$. Kontrolle: Die Kollektorquelle liefert ungefähr 18 V·40 mA=0,72 W; 0,4 W Transistor plus 0,32 W Widerstand ergeben dieselbe Summe.
+]
