@@ -429,19 +429,26 @@ figure.abb + figure.abb { margin-top: 14px; }
 .mode { font-size: 12px; font-weight: 600; color: var(--hard); }
 /* Ein flüchtiges Blatt neben der aktuellen Frage. Nur im Arbeitsspeicher. */
 body.notizen-aktiv .wrap { max-width: 1420px; }
-.lernplatz { display: grid; grid-template-columns: minmax(0, 1fr) clamp(260px, 28vw, 360px); gap: 20px; align-items: start; min-width: 0; }
+.lernplatz { display: grid; grid-template-columns: minmax(0, 1fr) var(--notizbreite, clamp(260px, 28vw, 360px)); gap: 20px; align-items: start; min-width: 0; }
+.lernplatz[data-blattgroesse="0"] { --notizbreite: clamp(240px, 24vw, 300px); --notizhoehe: min(48dvh, 420px); }
+.lernplatz[data-blattgroesse="2"] { --notizbreite: clamp(320px, 48vw, 680px); --notizhoehe: min(76dvh, 780px); }
 .lernplatz.notizen-zu { grid-template-columns: minmax(0, 1fr) auto; }
 .lerninhalt { min-width: 0; }
 body.lernen .lernplatz { flex: 1; min-height: 0; align-items: stretch; }
 body.lernen .lerninhalt { display: flex; flex-direction: column; min-height: 0; }
 .lernplatz .quiz { max-width: none; }
 .lernplatz .inhalt.mit-bild { grid-template-columns: 1fr; }
-.notizblatt { position: sticky; top: 16px; align-self: start; min-width: 0; }
+.notizblatt { position: sticky; top: 16px; align-self: start; min-width: 0;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.notizblatt * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .notizblatt summary { cursor: pointer; min-height: 44px; padding: 8px 0; color: var(--accent); font-weight: 600; }
 .notizwerkzeug { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 8px; }
 .notizwerkzeug .btn { padding: 0 9px; font-size: 13px; min-height: 44px; }
 .notizwerkzeug [aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.notizpapier { position: relative; height: min(64dvh, 600px); min-height: 340px; background: #fff; border: 1px solid var(--line);
+.notizansicht { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-bottom: 8px; }
+.notizansicht .btn { padding: 0 9px; font-size: 13px; min-height: 44px; }
+.notizansicht output { min-width: 48px; text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; }
+.notizpapier { position: relative; height: var(--notizhoehe, min(64dvh, 600px)); min-height: 240px; background: #fff; border: 1px solid var(--line);
   border-radius: 3px; box-shadow: 0 4px 18px rgba(60, 50, 30, .07); overflow: hidden; }
 .notizpapier canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; -webkit-user-select: none; user-select: none; }
 .notizpapier canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
@@ -449,7 +456,7 @@ body.lernen .lerninhalt { display: flex; flex-direction: column; min-height: 0; 
 @media (max-width: 799px) {
   .lernplatz, .lernplatz.notizen-zu { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .notizblatt { position: static; order: -1; }
-  .notizpapier { height: 320px; min-height: 0; }
+  .notizpapier { height: var(--notizhoehe, min(56dvh, 440px)); min-height: 0; }
 }
 #controls { padding-bottom: 4px; }
 .grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -1698,7 +1705,9 @@ function notizenBeenden() {
 }
 function notizenAnzeigen(bereich, kontext) {
   notizAbbauen?.();
-  if (notizZustand?.kontext !== kontext) notizZustand = { kontext, striche: [], werkzeug: "stift", offen: window.innerWidth >= 800 };
+  if (notizZustand?.kontext !== kontext) notizZustand = {
+    kontext, striche: [], werkzeug: "stift", offen: false, größe: 1, ansicht: { x: 0, y: 0, zoom: 1 }
+  };
   const n = notizZustand;
   document.body.classList.add("notizen-aktiv");
   const platz = document.createElement("div"), inhalt = document.createElement("div"), blatt = document.createElement("details");
@@ -1709,78 +1718,135 @@ function notizenAnzeigen(bereich, kontext) {
     <button type="button" class="btn" data-werkzeug="radierer" aria-pressed="${n.werkzeug === "radierer"}">Radierer</button>
     <button type="button" class="btn" data-notiz="zurueck" aria-label="Letzten Strich rückgängig machen">↶</button>
     <button type="button" class="btn" data-notiz="leeren">Leeren</button></div>
-    <div class="notizpapier"><canvas tabindex="0" aria-label="Leeres Notizblatt zum Schreiben und Zeichnen mit Stift oder Finger"></canvas></div>
-    <p class="notizinfo">Für deine Gedanken. Bei der nächsten Frage wieder leer.</p>`;
+    <div class="notizansicht" role="group" aria-label="Blattansicht">
+      <button type="button" class="btn" data-notiz="zoom-aus" aria-label="Herauszoomen">−</button>
+      <output aria-label="Zoom">100 %</output>
+      <button type="button" class="btn" data-notiz="zoom-ein" aria-label="Hineinzoomen">+</button>
+      <button type="button" class="btn" data-notiz="ursprung" aria-label="Zum Anfang des Notizblatts bei 100 Prozent">Zum Anfang</button>
+      <button type="button" class="btn" data-notiz="kleiner" aria-label="Notizblatt verkleinern">Kleiner</button>
+      <button type="button" class="btn" data-notiz="größer" aria-label="Notizblatt vergrößern">Größer</button></div>
+    <div class="notizpapier"><canvas tabindex="0" aria-label="Unendliches leeres Notizblatt. Mit dem Apple Pencil schreiben, mit zwei Fingern verschieben und zoomen."></canvas></div>
+    <p class="notizinfo">Apple Pencil zum Schreiben · zwei Finger zum Verschieben und Zoomen. Unendlich Platz. Bei der nächsten Frage wieder leer.</p>`;
   platz.append(inhalt, blatt); bereich.appendChild(platz);
   const canvas = blatt.querySelector("canvas"), ctx = canvas.getContext("2d");
-  let aktiv = null, aktivTyp = null, strich = null;
+  const finger = new Map(), v = n.ansicht;
+  let aktiv = null, strich = null, geste = null, fingerGesperrt = false;
+  const zoomGrenze = z => Math.max(.2, Math.min(5, z));
+  const lokal = e => {
+    const r = canvas.getBoundingClientRect();
+    return [e.clientX - r.left, e.clientY - r.top];
+  };
+  // Weltkoordinaten statt Seitenrändern: Der sichtbare Ausschnitt kann in jede Richtung wandern.
+  const punkt = e => { const [x, y] = lokal(e); return [(x - v.x) / v.zoom, (y - v.y) / v.zoom]; };
   const zeichnen = s => {
     ctx.globalCompositeOperation = s.werkzeug === "radierer" ? "destination-out" : "source-over";
     ctx.strokeStyle = ctx.fillStyle = "#20242a";
-    ctx.lineWidth = s.werkzeug === "radierer" ? 20 : 2.3;
+    ctx.lineWidth = s.breite;
     ctx.lineCap = ctx.lineJoin = "round";
-    const w = canvas.clientWidth, h = canvas.clientHeight, p = s.punkte;
+    const p = s.punkte;
     if (!p.length) return;
-    ctx.beginPath(); ctx.moveTo(p[0][0] * w, p[0][1] * h);
-    if (p.length === 1) { ctx.arc(p[0][0] * w, p[0][1] * h, ctx.lineWidth / 2, 0, 2 * Math.PI); ctx.fill(); }
-    else { p.slice(1).forEach(([x, y]) => ctx.lineTo(x * w, y * h)); ctx.stroke(); }
+    ctx.beginPath(); ctx.moveTo(...p[0]);
+    if (p.length === 1) { ctx.arc(...p[0], ctx.lineWidth / 2, 0, 2 * Math.PI); ctx.fill(); }
+    else { p.slice(1).forEach(([x, y]) => ctx.lineTo(x, y)); ctx.stroke(); }
   };
   const malen = () => {
-    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.setTransform(dpr * v.zoom, 0, 0, dpr * v.zoom, dpr * v.x, dpr * v.y);
     n.striche.forEach(zeichnen);
+    blatt.querySelector("output").textContent = Math.round(v.zoom * 100) + " %";
   };
   const größe = () => {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); malen();
+    malen();
   };
-  const punkt = e => {
-    const r = canvas.getBoundingClientRect();
-    return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height];
+  const fingerPaar = () => {
+    const [a, b] = [...finger.values()];
+    return { x: (a[0] + b[0]) / 2, y: (a[1] + b[1]) / 2, abstand: Math.hypot(a[0] - b[0], a[1] - b[1]) };
+  };
+  const gesteStarten = () => {
+    geste = null;
+    if (finger.size === 2 && aktiv === null && !fingerGesperrt) geste = { ...fingerPaar(), ansicht: { ...v } };
+  };
+  const freigeben = id => { if (canvas.hasPointerCapture(id)) canvas.releasePointerCapture(id); };
+  const linie = e => {
+    const start = strich.punkte.at(-1), events = e.getCoalescedEvents?.();
+    const neu = (events?.length ? events : [e]).map(punkt);
+    strich.punkte.push(...neu);
+    zeichnen({ ...strich, punkte: [start, ...neu] });
   };
   canvas.onpointerdown = e => {
-    if (e.pointerType === "pen" && aktivTyp === "touch") {
-      if (canvas.hasPointerCapture(aktiv)) canvas.releasePointerCapture(aktiv);
-      n.striche.pop(); aktiv = null; strich = null; malen();
+    if (e.pointerType === "touch") {
+      e.preventDefault(); canvas.setPointerCapture(e.pointerId);
+      finger.set(e.pointerId, lokal(e));
+      if (aktiv !== null) fingerGesperrt = true;
+      gesteStarten(); return;
     }
-    if (aktiv !== null || (e.pointerType === "mouse" && e.button !== 0)) return;
-    if (e.pointerType === "touch" && e.isPrimary === false) return;
+    // Finger und Handballen erzeugen niemals Tinte, auch nicht vor dem ersten Stiftkontakt.
+    if (e.pointerType !== "pen" || aktiv !== null) return;
     e.preventDefault(); canvas.focus({ preventScroll: true }); canvas.setPointerCapture(e.pointerId);
-    aktiv = e.pointerId; aktivTyp = e.pointerType; strich = { werkzeug: n.werkzeug, punkte: [punkt(e)] };
+    geste = null; fingerGesperrt = finger.size > 0;
+    aktiv = e.pointerId; strich = { werkzeug: n.werkzeug, breite: (n.werkzeug === "radierer" ? 20 : 2.3) / v.zoom, punkte: [punkt(e)] };
     n.striche.push(strich); zeichnen(strich);
   };
   canvas.onpointermove = e => {
-    if (e.pointerId !== aktiv) return;
-    e.preventDefault();
-    const start = strich.punkte.at(-1);
-    const events = e.getCoalescedEvents?.();
-    const neu = (events?.length ? events : [e]).map(punkt);
-    strich.punkte.push(...neu);
-    zeichnen({ werkzeug: strich.werkzeug, punkte: [start, ...neu] });
+    if (e.pointerId === aktiv) { e.preventDefault(); linie(e); return; }
+    if (!finger.has(e.pointerId)) return;
+    e.preventDefault(); finger.set(e.pointerId, lokal(e));
+    if (!geste || aktiv !== null || fingerGesperrt) return;
+    const p = fingerPaar(), alt = geste.ansicht;
+    v.zoom = zoomGrenze(alt.zoom * p.abstand / Math.max(1, geste.abstand));
+    v.x = p.x - (geste.x - alt.x) * v.zoom / alt.zoom;
+    v.y = p.y - (geste.y - alt.y) * v.zoom / alt.zoom;
+    malen();
   };
   const ende = e => {
-    if (e.pointerId !== aktiv) return;
-    if (e.type === "pointerup") {
-      const start = strich.punkte.at(-1), neu = punkt(e);
-      strich.punkte.push(neu); zeichnen({ werkzeug: strich.werkzeug, punkte: [start, neu] });
+    if (finger.delete(e.pointerId)) {
+      if (!finger.size) fingerGesperrt = false;
+      gesteStarten(); freigeben(e.pointerId); return;
     }
-    if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
-    aktiv = null; aktivTyp = null; strich = null;
+    if (e.pointerId !== aktiv) return;
+    if (e.type === "pointerup") linie(e);
+    aktiv = null; strich = null; geste = null; fingerGesperrt = finger.size > 0;
+    freigeben(e.pointerId);
   };
   canvas.onpointerup = canvas.onpointercancel = canvas.onlostpointercapture = ende;
+  const keinMenü = e => e.preventDefault();
+  blatt.oncontextmenu = blatt.onselectstart = keinMenü;
+  for (const art of ["touchstart", "touchmove", "gesturestart", "gesturechange", "gestureend"]) {
+    canvas.addEventListener(art, keinMenü, { passive: false });
+  }
   blatt.querySelectorAll("[data-werkzeug]").forEach(b => b.onclick = () => {
     n.werkzeug = b.dataset.werkzeug;
     blatt.querySelectorAll("[data-werkzeug]").forEach(x => x.setAttribute("aria-pressed", x === b));
   });
   blatt.querySelector('[data-notiz="zurueck"]').onclick = () => { n.striche.pop(); malen(); };
-  blatt.querySelector('[data-notiz="leeren"]').onclick = () => { n.striche = []; malen(); };
+  blatt.querySelector('[data-notiz="leeren"]').onclick = () => { n.striche = []; Object.assign(v, { x: 0, y: 0, zoom: 1 }); malen(); };
+  const zoomen = faktor => {
+    if (aktiv !== null || finger.size) return;
+    const x = canvas.clientWidth / 2, y = canvas.clientHeight / 2, z = zoomGrenze(v.zoom * faktor) / v.zoom;
+    v.x = x - (x - v.x) * z; v.y = y - (y - v.y) * z; v.zoom *= z; malen();
+  };
+  blatt.querySelector('[data-notiz="zoom-aus"]').onclick = () => zoomen(1 / 1.25);
+  blatt.querySelector('[data-notiz="zoom-ein"]').onclick = () => zoomen(1.25);
+  blatt.querySelector('[data-notiz="ursprung"]').onclick = () => { Object.assign(v, { x: 0, y: 0, zoom: 1 }); malen(); };
+  const blattGröße = delta => {
+    n.größe = Math.max(0, Math.min(2, n.größe + delta)); platz.dataset.blattgroesse = n.größe;
+    blatt.querySelector('[data-notiz="kleiner"]').disabled = n.größe === 0;
+    blatt.querySelector('[data-notiz="größer"]').disabled = n.größe === 2;
+    größe();
+  };
+  blatt.querySelector('[data-notiz="kleiner"]').onclick = () => blattGröße(-1);
+  blatt.querySelector('[data-notiz="größer"]').onclick = () => blattGröße(1);
+  blattGröße(0);
   const toggle = () => { n.offen = blatt.open; platz.classList.toggle("notizen-zu", !n.offen); if (n.offen) größe(); };
   blatt.addEventListener("toggle", toggle); toggle();
   const beobachter = new ResizeObserver(größe); beobachter.observe(canvas);
   notizAbbauen = () => {
-    beobachter.disconnect(); aktiv = null; strich = null;
+    beobachter.disconnect(); aktiv = null; strich = null; geste = null; finger.clear();
     canvas.width = canvas.height = 0; blatt.remove();
   };
 }

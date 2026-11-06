@@ -75,7 +75,8 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 Änderungen an diesen Dateien werden ebenfalls mit dem Upload-Skript veröffentlicht.
 ## Karteikarten
 
-- **Kartenstil in allen Modulen (Mario, 06.11.2026):** Antworten grundsätzlich als kurze Stichpunkte (meist 2–5, ein Gedanke je Punkt), einfache Formulierungen und sparsame fette Schlüsselbegriffe. Vergleiche parallel und Abläufe als Schrittfolgen; Begriffslandkarten als kurze Verbindungen/Pfeilketten statt Textwand. Gilt auch für neue Vorlesungsinhalte und jede Erweiterung einer Rückseite.
+- **Kartenstil in allen Modulen (Mario, 06.11.2026):** Antworten grundsätzlich als kurze Stichpunkte (meist 2–5, ein Gedanke je Punkt), einfache Formulierungen und sparsame fette Schlüsselbegriffe. Vergleiche parallel und Abläufe als Schrittfolgen. Gilt auch für neue Vorlesungsinhalte und jede Erweiterung einer Rückseite.
+- **Entfernter Fragetyp (Mario, 06.11.2026):** Keine „Zeichne die Begriffslandkarte …“-Fragen mehr anbieten, auch nicht in neuen Modulen. `build.py` filtert diesen Typ zentral aus älteren und künftigen Kartenquellen, bevor IDs, Lernpfad und Tagesvorschläge auf der Seite verwendet werden. Die übrigen Karten-IDs und gespeicherten Bewertungen bleiben erhalten. Diese Vorgabe ersetzt frühere Regeln zur Aufnahme solcher Karten.
 - Bei typischen Verwechslungen gezielt eine eigene Zeile `**Merksatz:** …` ergänzen; `build.py` stellt sie als eigenen hervorgehobenen Absatz dar. Passende sprachliche Alltagsanalogien über `Bild: …` als separates Merkbild anzeigen, vorhandene Fachabbildungen nutzen. Keine beliebigen Bilder erzwingen. Eigene Lernhilfen im Dateikommentar kennzeichnen; Analogien ersetzen keine Fachquelle oder Gültigkeitsbedingung.
 - Bei der Kürzung Formeln, Vorzeichen, Einheiten, Annahmen und Einschränkungen erhalten. Fragen, Kapitel und Quellen möglichst unverändert lassen, damit IDs und Lernstand bestehen bleiben. Nach Pflege die Trennung von Liste, Merksatz und Merkbild, Quellenlinks und iPad-Darstellung prüfen. Die verbindliche redaktionelle Regel steht zusätzlich in Abschnitt 8.5 aller Modul-AGENTS.md.
 - Quelle: je Modul `Lernskript aktuell/Karteikarten.md`. `## …` beginnt ein Kapitel, `### Frage` eine Karte,
@@ -114,9 +115,10 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 
 ## Flüchtiges Notizblatt und zuverlässige Quellen
 
-- Karteikarten, Verständnisfragen und Quiz zeigen ein weißes beschreibbares Notizblatt rechts neben der Frage. Unter 800 px steht es einklappbar über dem Inhalt. Stift/Finger/Maus, Radierer, Rückgängig und Leeren werden unterstützt. Rechenaufgaben erhalten kein Blatt.
+- Karteikarten, Verständnisfragen und Quiz bieten ein zunächst eingeklapptes weißes Notizblatt rechts neben der Frage. Unter 800 px steht es über dem Inhalt. Ausschließlich Stifteingaben (`pointerType === "pen"`, insbesondere Apple Pencil) erzeugen Striche; Finger und Handballen niemals. Radierer, Rückgängig und Leeren bleiben verfügbar. Rechenaufgaben erhalten kein Blatt.
+- Die Fläche ist in Weltkoordinaten unbegrenzt verschiebbar; zwei Finger verschieben und zoomen den Ausschnitt (20–500 %). Einzelne Finger bewegen das Blatt nicht. Während des Schreibens und bis zum Abheben aufliegender Kontakte sind Fingergesten gesperrt. Kontextmenü, Textauswahl und iOS-Touch-Callout im Notizblatt unterbinden. „Kleiner/Größer“ ändern die Ansichtsgröße ohne Striche zu verzerren; Zoomknöpfe und „Zum Anfang“ ergänzen die Gesten. Jede neue Frage startet wieder eingeklappt.
 - Striche liegen ausschließlich im Arbeitsspeicher. Beim Aufdecken einer Antwort, eines Tipps oder Lösungsschritts, bei Quizauswahl, Ein-/Ausklappen und Größenwechsel erhalten; beim Bewerten einer Karte/Aufgabe, Fragenwechsel, Rundenende oder Verlassen der Übung verwerfen. Niemals Browser-Speicher, Export oder Sync für Notizen verwenden.
-- Begriffslandkarten verweisen auf die Kapitelübersicht vor dem ersten Unterabschnitt; ihre ursprüngliche Abschnittsnummer `n` bleibt für Lernpfad und IDs erhalten. Zusammengehörige Übersichtspunkte gemeinsam markieren. Allgemeine Quellenmarkierungen erfordern mehrere passende Antwortbegriffe und ausreichende Textabdeckung. Bei unsicherem Treffer nur den Abschnitt öffnen und dies im Viewer anzeigen.
+- Allgemeine Quellenmarkierungen erfordern mehrere passende Antwortbegriffe und ausreichende Textabdeckung. Bei unsicherem Treffer nur den Abschnitt öffnen und dies im Viewer anzeigen. Die Zuordnung alter Begriffslandkarten zur Kapitelübersicht bleibt intern abwärtskompatibel; dieser Fragetyp wird nicht mehr veröffentlicht.
 - `node test_notizen.cjs` prüft Zeichnen und Lebensdauer; `python3 -m unittest test_quellen.py` prüft falsche Worttreffer und nach dem Build das echte Konstruktionsbeispiel. Beide laufen in CI.
 
 Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort alles mit dem Stand aus dem Uni-Ordner.
@@ -216,6 +218,13 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Kartenbewertung gelten in allen sieben und künftigen Modulen.
 
 ## Änderungsprotokoll
+
+### 06.11.2026 · Unendliches Pencil-Notizblatt und Lernplanentwurf
+- Notizblatt standardmäßig eingeklappt, drei Ansichtsgrößen, unendliche Zeichenfläche mit Zwei-Finger-Zoom und Verschieben. Weltkoordinaten erhalten Schrift und Proportionen beim Größenwechsel. Nur der Stift schreibt; aufliegende Hände zeichnen und verschieben während des Schreibens nicht. Textauswahl und Kontextmenü im gesamten Blatt unterbunden.
+- Begriffslandkarten-Fragen werden in sämtlichen Modulen zentral beim Build entfernt. Übrige Karten und ihre IDs bleiben erhalten; bestehende Tagesplanprüfung entfernt nicht mehr vorhandene offene Ziele.
+- `Lernplan-Vorschlag.md` beschreibt die geplante Verknüpfung von Klausuren, Lernpfad, Aufgaben, Tagesvorschlägen und aktualisierten PDF-Exporten. Noch keine Implementierung dieses Features; Freigabe durch Mario steht aus.
+- Validiert: vollständiger Build aller sieben Module ohne Warnungen; 17 Python-Tests und alle vier JavaScript-Suiten bestanden. 39 Fragen entfernt, übrige 603 Karten-IDs und alle Aufgaben-/Quizdaten erhalten; Lernpfad weiterhin mit 235 Abschnitten geprüft. Isolierter Chrome-Test mit simulierten nativen Stift-/Touch-Ereignissen und iPad-/Mobilformaten bestanden. Ein physischer Apple-Pencil-/Safari-Test steht noch aus. Vorgesehen ist die Veröffentlichung nur der Webseite (`--nur-webseite`); die automatische Freigabeprüfung verlangt dafür noch Marios ausdrückliche Zustimmung.
+- Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-11-06_vor_Zoom_und_Stifteingabe/`.
 
 ### 06.11.2026 · Notizblatt und korrigierte Quellenmarkierungen
 - Flüchtiges weißes Zeichenblatt für Karten, Verständnisfragen und Quiz; Stift, Radierer, Rückgängig und Leeren. Beim Aufdecken erhalten, beim Fragenwechsel und Verlassen verwerfen. Rechenaufgaben bleiben ohne Blatt.

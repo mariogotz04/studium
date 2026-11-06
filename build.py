@@ -433,7 +433,9 @@ def karteikarten(md, modul, abschnitte=(), skript=None, stellen=None):
     warnen = lambda titel, text: print(f"::warning title={titel}::{modul}: {text}", file=sys.stderr)
 
     def abschließen():
-        if not karte or not karte["q"]:
+        # Mario, 06.11.2026: diesen Fragetyp in keinem Modul mehr anbieten.
+        # Zentral filtern, damit auch ältere oder neu ergänzte Modulquellen ihn nicht zurückbringen.
+        if not karte or not karte["q"] or "begriffslandkarte" in suchtext(karte["q"]):
             return
         zeilen, quelle, bilder = [], None, []
         for z in karte.pop("zeilen"):

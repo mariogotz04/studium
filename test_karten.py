@@ -1,5 +1,6 @@
 """Kartenstil und die Trennung von Antwort, Merksatz und Merkbild absichern."""
 import re
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -7,6 +8,18 @@ import build
 
 
 class KartenstilTest(unittest.TestCase):
+    def test_begriffslandkarten_in_allen_modulen_entfernt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            md = Path(tmp) / 'Karteikarten.md'
+            (Path(tmp) / 'Typst-Dateien').mkdir()
+            (Path(tmp) / 'Typst-Dateien' / 'main.typ').write_text('')
+            md.write_text('## Kapitel 1\n### Normale Frage\n- Antwort\nQuelle: 1.1\n'
+                          '### Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf.\n- Übersicht\nQuelle: 1.1\n')
+            for modul in ['FET', 'Finanzierung', 'GET', 'Investitionsrechnung', 'Konstruktion', 'Physik', 'technische Mechanik']:
+                with self.subTest(modul=modul):
+                    karten = build.karteikarten(md, modul)
+                    self.assertEqual([k['q'] for k in karten], ['Normale Frage'])
+
     def test_liste_merksatz_und_merkbild_bleiben_getrennt(self):
         text, bild = build.antwort_html([
             '- **Zustand:** beschreibt die Momentaufnahme.',
