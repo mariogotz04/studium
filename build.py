@@ -112,7 +112,7 @@ STOPPWÖRTER = set("aber alle allem allen aller alles also als am an andere auch
                  "nur oder ohne pro richtig sein seine sich sie sind so sowie statt über um und uns unter vom "
                  "von vor warum was welche welcher welches wenn wer werden wie wieder wir wird wo zu zum zur "
                  "zwischen erklären erkläre beispiel frage antwort schritt prüfen gegeben gesucht bestimmen "
-                 "bestimme berechne berechnen".split())
+                 "bestimme berechne berechnen kapitel merksatz zeichne kopf begriffe gehören zusammen".split())
 
 
 def suchtext(text):
@@ -228,6 +228,16 @@ class Skriptstellen:
         return blöcke
 
     def verweis(self, treffer, frage, antwort):
+        übersicht = "begriffslandkarte" in suchtext(frage)
+        if übersicht:
+            # Diese Fragen fassen ein ganzes Kapitel zusammen. Die Quelle 1.1 dient weiterhin
+            # der Lernreihenfolge, die passende Erklärung steht aber vor 1.1 in der Übersicht.
+            i = next((i for i, a in enumerate(self.abschnitte) if a[0] == treffer[0]), None)
+            if i is not None:
+                kapitel = next((a for a in reversed(self.abschnitte[:i + 1])
+                                if re.match(r"(?:TM[12]\s*[·:]?\s*)?Kapitel\s+\d", a[0])), None)
+                if kapitel:
+                    treffer = kapitel[:2]
         quelle = {"t": treffer[0], "p": treffer[1]}
         blöcke = self.blöcke(treffer[0])
         if not blöcke:
@@ -237,11 +247,16 @@ class Skriptstellen:
         gewichte = {w: (2 if w in a else 1) * (1 + math.log(1 + len(blöcke) / (1 + häufigkeit[w])))
                     for w in a.keys() | f.keys()}
 
+        def gemeinsam(b, wort):
+            wörter = b["wörter"]
+            return 1 if wort in wörter else (.35 if len(wort) >= 6 and any(
+                len(k) >= 6 and (wort in k or k in wort) for k in wörter) else 0)
+
         def bewerten(b):
             wörter = b["wörter"]
             # Auch Komposita erkennen, etwa „Bauteilfunktion“ ↔ „Funktion“. Exakte Wörter bleiben stärker.
-            punkte = sum(g * min(wörter[w] or (.35 if len(w) >= 6 and any(
-                len(k) >= 6 and (w in k or k in w) for k in wörter) else 0), 2) for w, g in gewichte.items())
+            # Wiederholte Kapitelbegriffe dürfen fehlende Antwortbegriffe nicht überstimmen.
+            punkte = sum(g * gemeinsam(b, w) for w, g in gewichte.items())
             # Längere gemeinsame Wortfolgen sind stärker als bloß gleiche Kapitelbegriffe.
             text = re.sub(r"\s+", " ", suchtext(b["text"]))
             for teil in re.split(r"[.!?;\n]", suchtext(antwort)):
@@ -250,22 +265,38 @@ class Skriptstellen:
                     punkte += 15
             return punkte / (1 + .035 * len(wörter))
 
-        index = max(range(len(blöcke)), key=lambda i: bewerten(blöcke[i]))
-        if bewerten(blöcke[index]) <= 0:
+        def passend(b):
+            basis = a or f
+            gemeinsamkeit = sum(gemeinsam(b, w) for w in basis)
+            abdeckung = sum(gewichte[w] * gemeinsam(b, w) for w in basis) / max(1, sum(gewichte[w] for w in basis))
+            # Ein einzelnes gemeinsames Wort ist kein Beleg für die Antwort. Im Zweifel
+            # nur den angegebenen Abschnitt öffnen, ohne eine vermeintlich sichere Markierung.
+            return gemeinsamkeit >= 2 and abdeckung >= .18 and bewerten(b) >= 5
+
+        kandidaten = [i for i, b in enumerate(blöcke) if passend(b)]
+        übersichtsblöcke = [b for b in blöcke if b["text"].lstrip().startswith("→")]
+        zusammen = {"text": " ".join(b["text"] for b in übersichtsblöcke),
+                    "wörter": sum((b["wörter"] for b in übersichtsblöcke), Counter())}
+        if übersicht and übersichtsblöcke and passend(zusammen):
+            auswahl = übersichtsblöcke
+            index = 0
+        elif not kandidaten:
             return quelle     # Keine unpassende Stelle als vermeintliche Antwort markieren.
-        auswahl = [blöcke[index]]
+        else:
+            index = max(kandidaten, key=lambda i: bewerten(blöcke[i]))
+            auswahl = [blöcke[index]]
         def formelblock(b):
             return (len(b["z"]) <= 3 and len(b["wörter"]) <= 6 and
                     min(z["x0"] for z in b["z"]) > b["w"] * .22 and re.search(r"[=∑∫]", b["text"]))
 
         # Die angrenzende abgesetzte Formel mitnehmen: Bei Rechenaufgaben soll neben der
         # anschaulichen Erklärung auch der zugehörige mathematische Ansatz erkennbar sein.
-        if index + 1 < len(blöcke):
+        if not übersicht and index + 1 < len(blöcke):
             b, danach = blöcke[index], blöcke[index + 1]
             if ((b["text"].rstrip().endswith(":") or formelblock(danach)) and danach["p"] == b["p"] and
                 danach["z"][0]["top"] - b["z"][-1]["bottom"] < 25):
                 auswahl.append(danach)
-        if index:
+        if not übersicht and index:
             b, davor = blöcke[index], blöcke[index - 1]
             if (formelblock(davor) and davor["p"] == b["p"] and
                 b["z"][0]["top"] - davor["z"][-1]["bottom"] < 20):

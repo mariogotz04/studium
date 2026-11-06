@@ -112,6 +112,13 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
   Bewertungen erfolgen bewusst über die Bewertungsbuttons oder die vorhandenen Tastaturkürzel 1–4.
   Keine automatische Bewertung durch Touch- oder Wischgesten einbauen; das gilt auch beim freien Üben.
 
+## Flüchtiges Notizblatt und zuverlässige Quellen
+
+- Karteikarten, Verständnisfragen und Quiz zeigen ein weißes beschreibbares Notizblatt rechts neben der Frage. Unter 800 px steht es einklappbar über dem Inhalt. Stift/Finger/Maus, Radierer, Rückgängig und Leeren werden unterstützt. Rechenaufgaben erhalten kein Blatt.
+- Striche liegen ausschließlich im Arbeitsspeicher. Beim Aufdecken einer Antwort, eines Tipps oder Lösungsschritts, bei Quizauswahl, Ein-/Ausklappen und Größenwechsel erhalten; beim Bewerten einer Karte/Aufgabe, Fragenwechsel, Rundenende oder Verlassen der Übung verwerfen. Niemals Browser-Speicher, Export oder Sync für Notizen verwenden.
+- Begriffslandkarten verweisen auf die Kapitelübersicht vor dem ersten Unterabschnitt; ihre ursprüngliche Abschnittsnummer `n` bleibt für Lernpfad und IDs erhalten. Zusammengehörige Übersichtspunkte gemeinsam markieren. Allgemeine Quellenmarkierungen erfordern mehrere passende Antwortbegriffe und ausreichende Textabdeckung. Bei unsicherem Treffer nur den Abschnitt öffnen und dies im Viewer anzeigen.
+- `node test_notizen.cjs` prüft Zeichnen und Lebensdauer; `python3 -m unittest test_quellen.py` prüft falsche Worttreffer und nach dem Build das echte Konstruktionsbeispiel. Beide laufen in CI.
+
 Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort alles mit dem Stand aus dem Uni-Ordner.
 
 ## Lernen: Aufgaben
@@ -209,6 +216,12 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Kartenbewertung gelten in allen sieben und künftigen Modulen.
 
 ## Änderungsprotokoll
+
+### 06.11.2026 · Notizblatt und korrigierte Quellenmarkierungen
+- Flüchtiges weißes Zeichenblatt für Karten, Verständnisfragen und Quiz; Stift, Radierer, Rückgängig und Leeren. Beim Aufdecken erhalten, beim Fragenwechsel und Verlassen verwerfen. Rechenaufgaben bleiben ohne Blatt.
+- Begriffslandkarten führen zur zusammengehörigen Kapitelübersicht. Wiederholte allgemeine Wörter überstimmen keine fehlenden Antwortbegriffe mehr; unsichere Treffer öffnen den Abschnitt ohne Markierung mit Hinweis.
+- Validiert: vollständiger Build aller sieben Module ohne Warnungen, 16 Python-Tests und alle JavaScript-Suiten; Lernpfad mit 235 echten Abschnitten. Browserprüfung mit echten PDFs, Quellenmarkierungen, Zeichnen, Radieren, Aufdecken, Fragenwechsel sowie iPad quer/hoch und Mobilansicht. Alle 642 Karten- und 1212 Aufgaben-/Quiz-IDs sowie Lernpfadabschnitte unverändert.
+- Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-11-06_vor_Notizblatt_Quellenkorrektur/`. Veröffentlichung ausschließlich der Webseite (`--nur-webseite`).
 
 ### 06.11.2026 · Kurze Kartenantworten und dauerhafte Stilregeln
 - Alle 642 Rückseiten in sieben Modulen als Stichpunkte gegliedert; dichte Erklärungen und Begriffslandkarten vereinfacht. 246 eigene Merksätze und 19 weitere sprachliche Merkbilder ergänzt (jetzt 60); vorhandene Fachabbildungen erhalten.

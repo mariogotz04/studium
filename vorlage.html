@@ -427,6 +427,30 @@ figure.abb + figure.abb { margin-top: 14px; }
 .merkbild b { display: block; color: var(--bild-ink); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
 .hint { text-align: center; font-size: 15px; color: var(--muted); }
 .mode { font-size: 12px; font-weight: 600; color: var(--hard); }
+/* Ein flüchtiges Blatt neben der aktuellen Frage. Nur im Arbeitsspeicher. */
+body.notizen-aktiv .wrap { max-width: 1420px; }
+.lernplatz { display: grid; grid-template-columns: minmax(0, 1fr) clamp(260px, 28vw, 360px); gap: 20px; align-items: start; min-width: 0; }
+.lernplatz.notizen-zu { grid-template-columns: minmax(0, 1fr) auto; }
+.lerninhalt { min-width: 0; }
+body.lernen .lernplatz { flex: 1; min-height: 0; align-items: stretch; }
+body.lernen .lerninhalt { display: flex; flex-direction: column; min-height: 0; }
+.lernplatz .quiz { max-width: none; }
+.lernplatz .inhalt.mit-bild { grid-template-columns: 1fr; }
+.notizblatt { position: sticky; top: 16px; align-self: start; min-width: 0; }
+.notizblatt summary { cursor: pointer; min-height: 44px; padding: 8px 0; color: var(--accent); font-weight: 600; }
+.notizwerkzeug { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 8px; }
+.notizwerkzeug .btn { padding: 0 9px; font-size: 13px; min-height: 44px; }
+.notizwerkzeug [aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.notizpapier { position: relative; height: min(64dvh, 600px); min-height: 340px; background: #fff; border: 1px solid var(--line);
+  border-radius: 3px; box-shadow: 0 4px 18px rgba(60, 50, 30, .07); overflow: hidden; }
+.notizpapier canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; -webkit-user-select: none; user-select: none; }
+.notizpapier canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+.notizinfo { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
+@media (max-width: 799px) {
+  .lernplatz, .lernplatz.notizen-zu { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .notizblatt { position: static; order: -1; }
+  .notizpapier { height: 320px; min-height: 0; }
+}
 #controls { padding-bottom: 4px; }
 .grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .grade button { font: inherit; font-size: 19px; border-radius: 16px; min-height: 76px; padding: 10px 4px; cursor: pointer;
@@ -1665,6 +1689,102 @@ async function pdfSichern(href, knopf) {
 }
 // Jeder Quellenlink trägt nur die Markierungen seiner Antwort. Auch bei schnellem Schließen oder
 // erneutem Öffnen darf eine ältere PDF-Ladung die aktuelle Ansicht nicht überschreiben.
+/* Notizen gehören nur zur gerade bearbeiteten Frage. Aufdecken und Größenwechsel erhalten
+   die Striche, Fragenwechsel und Verlassen der Übung verwerfen sie. Kein Store/Sync. */
+let notizZustand = null, notizAbbauen = null;
+function notizenBeenden() {
+  notizAbbauen?.(); notizAbbauen = null; notizZustand = null;
+  document.body.classList.remove("notizen-aktiv");
+}
+function notizenAnzeigen(bereich, kontext) {
+  notizAbbauen?.();
+  if (notizZustand?.kontext !== kontext) notizZustand = { kontext, striche: [], werkzeug: "stift", offen: window.innerWidth >= 800 };
+  const n = notizZustand;
+  document.body.classList.add("notizen-aktiv");
+  const platz = document.createElement("div"), inhalt = document.createElement("div"), blatt = document.createElement("details");
+  platz.className = "lernplatz"; inhalt.className = "lerninhalt"; blatt.className = "notizblatt"; blatt.open = n.offen;
+  while (bereich.firstChild) inhalt.appendChild(bereich.firstChild);
+  blatt.innerHTML = `<summary>Notizblatt</summary><div class="notizwerkzeug" role="group" aria-label="Zeichenwerkzeuge">
+    <button type="button" class="btn" data-werkzeug="stift" aria-pressed="${n.werkzeug === "stift"}">Stift</button>
+    <button type="button" class="btn" data-werkzeug="radierer" aria-pressed="${n.werkzeug === "radierer"}">Radierer</button>
+    <button type="button" class="btn" data-notiz="zurueck" aria-label="Letzten Strich rückgängig machen">↶</button>
+    <button type="button" class="btn" data-notiz="leeren">Leeren</button></div>
+    <div class="notizpapier"><canvas tabindex="0" aria-label="Leeres Notizblatt zum Schreiben und Zeichnen mit Stift oder Finger"></canvas></div>
+    <p class="notizinfo">Für deine Gedanken. Bei der nächsten Frage wieder leer.</p>`;
+  platz.append(inhalt, blatt); bereich.appendChild(platz);
+  const canvas = blatt.querySelector("canvas"), ctx = canvas.getContext("2d");
+  let aktiv = null, aktivTyp = null, strich = null;
+  const zeichnen = s => {
+    ctx.globalCompositeOperation = s.werkzeug === "radierer" ? "destination-out" : "source-over";
+    ctx.strokeStyle = ctx.fillStyle = "#20242a";
+    ctx.lineWidth = s.werkzeug === "radierer" ? 20 : 2.3;
+    ctx.lineCap = ctx.lineJoin = "round";
+    const w = canvas.clientWidth, h = canvas.clientHeight, p = s.punkte;
+    if (!p.length) return;
+    ctx.beginPath(); ctx.moveTo(p[0][0] * w, p[0][1] * h);
+    if (p.length === 1) { ctx.arc(p[0][0] * w, p[0][1] * h, ctx.lineWidth / 2, 0, 2 * Math.PI); ctx.fill(); }
+    else { p.slice(1).forEach(([x, y]) => ctx.lineTo(x * w, y * h)); ctx.stroke(); }
+  };
+  const malen = () => {
+    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    n.striche.forEach(zeichnen);
+  };
+  const größe = () => {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (!w || !h) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); malen();
+  };
+  const punkt = e => {
+    const r = canvas.getBoundingClientRect();
+    return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height];
+  };
+  canvas.onpointerdown = e => {
+    if (e.pointerType === "pen" && aktivTyp === "touch") {
+      if (canvas.hasPointerCapture(aktiv)) canvas.releasePointerCapture(aktiv);
+      n.striche.pop(); aktiv = null; strich = null; malen();
+    }
+    if (aktiv !== null || (e.pointerType === "mouse" && e.button !== 0)) return;
+    if (e.pointerType === "touch" && e.isPrimary === false) return;
+    e.preventDefault(); canvas.focus({ preventScroll: true }); canvas.setPointerCapture(e.pointerId);
+    aktiv = e.pointerId; aktivTyp = e.pointerType; strich = { werkzeug: n.werkzeug, punkte: [punkt(e)] };
+    n.striche.push(strich); zeichnen(strich);
+  };
+  canvas.onpointermove = e => {
+    if (e.pointerId !== aktiv) return;
+    e.preventDefault();
+    const start = strich.punkte.at(-1);
+    const events = e.getCoalescedEvents?.();
+    const neu = (events?.length ? events : [e]).map(punkt);
+    strich.punkte.push(...neu);
+    zeichnen({ werkzeug: strich.werkzeug, punkte: [start, ...neu] });
+  };
+  const ende = e => {
+    if (e.pointerId !== aktiv) return;
+    if (e.type === "pointerup") {
+      const start = strich.punkte.at(-1), neu = punkt(e);
+      strich.punkte.push(neu); zeichnen({ werkzeug: strich.werkzeug, punkte: [start, neu] });
+    }
+    if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
+    aktiv = null; aktivTyp = null; strich = null;
+  };
+  canvas.onpointerup = canvas.onpointercancel = canvas.onlostpointercapture = ende;
+  blatt.querySelectorAll("[data-werkzeug]").forEach(b => b.onclick = () => {
+    n.werkzeug = b.dataset.werkzeug;
+    blatt.querySelectorAll("[data-werkzeug]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  });
+  blatt.querySelector('[data-notiz="zurueck"]').onclick = () => { n.striche.pop(); malen(); };
+  blatt.querySelector('[data-notiz="leeren"]').onclick = () => { n.striche = []; malen(); };
+  const toggle = () => { n.offen = blatt.open; platz.classList.toggle("notizen-zu", !n.offen); if (n.offen) größe(); };
+  blatt.addEventListener("toggle", toggle); toggle();
+  const beobachter = new ResizeObserver(größe); beobachter.observe(canvas);
+  notizAbbauen = () => {
+    beobachter.disconnect(); aktiv = null; strich = null;
+    canvas.width = canvas.height = 0; blatt.remove();
+  };
+}
+
 function quellenLink(datei, quelle) {
   if (!datei || !quelle) return "";
   return `<a class="quelle" href="${esc(datei)}#page=${quelle.p}" data-skriptquelle
@@ -1723,6 +1843,9 @@ async function pdfOeffnen(href, titel, markierungen = []) {
     const ersteMarkierung = pdfSeiten.querySelector(".pdfmarkierung");
     if (ersteMarkierung) {
       hinweis.textContent = `Passende Stelle gelb markiert · S. ${ersteMarkierung.parentElement.dataset.n}`;
+      hinweis.hidden = false;
+    } else if (anker) {
+      hinweis.textContent = `Abschnitt im Lernskript · S. ${Math.min(start, dok.numPages)} · Keine eindeutige Textstelle zum Markieren gefunden`;
       hinweis.hidden = false;
     }
     // Nur Seiten in der Nähe zeichnen und entfernte wieder freigeben (iPad-Speicher für Canvas ist knapp)
@@ -2022,6 +2145,7 @@ function zeigen() {
   };
   flash.onclick = e => { if (!e.target.closest("a, button")) umdrehen(); };
   view.querySelector("#flip").onclick = umdrehen;
+  notizenAnzeigen(view, {});
   // Im Antwortbereich wird nur gelesen und gescrollt. Wischgesten bewerten keine Karten.
 }
 
@@ -2059,6 +2183,7 @@ function bewerten(n) {
 }
 
 function ende() {
+  notizenBeenden();
   const s = sitzung;
   lernAktivität("kartenrunde", s.deck.name, String(s.beginn), { fertig: true, ids: [...s.gesehen], kapitel: s.kapitel, frei: s.frei }, s.tag);
   document.body.classList.remove("lernen");
@@ -2246,12 +2371,15 @@ function aufgabeSeite(m, a, probe = null) {
           .map(([k, n, s]) => `<button class="${k}${status === k ? " gewählt" : ""}" data-s="${k}">${n}<small>${s}</small></button>`).join("")}</div>` : ""}
       ${quellenLink(m.pdf, a.q)}
     </div>${probe ? `<div class="row" style="margin-top:18px"><a class="btn gross" href="${zurück}">${esc(rücktext)}</a></div>` : ""}`;
+  if (a.art === "verstehen") notizenAnzeigen(lernView, o);
+  else notizenBeenden();
   const neu = () => aufgabeSeite(m, a, probe);
   $("#weiter")?.addEventListener("click", () => { o.schritte++; neu(); lernView.querySelectorAll(".schritt")[o.schritte - 1]?.scrollIntoView({ behavior: "smooth", block: "start" }); });
   $("#tipp")?.addEventListener("click", () => { o.tipp = true; neu(); });
   $("#erg")?.addEventListener("click", () => { o.erg = true; neu(); });
   $("#alle")?.addEventListener("click", () => { o.schritte = a.s.length; neu(); });
   lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
+    notizenBeenden();
     if (probe) {
       probeBewerten(m, a, b.dataset.s);
       offenAufgabe = null;
@@ -2513,6 +2641,7 @@ function quizSeite() {
           ${f.typ === "mehrfach" && !a?.geprüft ? `<button class="btn primary" id="qprüfen"${a?.wahl?.length ? "" : " disabled"}>Antwort prüfen</button>`
             : `<button class="btn primary" id="qweiter">${q.i + 1 < q.fragen.length ? "Weiter" : "Auswerten"}</button>`}</div></div>
     </div></div>`;
+  notizenAnzeigen(lernView, q.fragen[q.i]);
   const extra = (html, kl) => { $("#qextra").innerHTML = `<div class="qextra ${kl}">${html}</div>`; };
   $("#qtipp")?.addEventListener("click", () => extra(f.tipp, "tipp"));
   $("#qerkl")?.addEventListener("click", () => extra((f.erkl || "") + quellenLink(f.m.pdf, f.s), "erkl"));
@@ -2554,6 +2683,7 @@ function quizSeite() {
   });
 }
 function quizAuswertung() {
+  notizenBeenden();
   const q = quizRunde, bewertet = q.antw.filter(a => a && a.richtig !== undefined);
   if (!q.m.abschluss && bewertet.length === q.fragen.length && !q.protokolliert) {
     lernAktivität("quiz", q.m.name, String(q.beginn), { fertig: true, kapitel: q.ziel.kapitel,
@@ -2773,6 +2903,7 @@ function kontoSeite() {
 /* ───────────── Navigation ───────────── */
 const VIEWS = { start: "view-start", skripte: "view-skripte", hoeren: "view-hoeren", lernen: "view-lernen", termine: "view-termine", konto: "view-konto", richtung: "view-richtung" };
 function route(oben = true) {
+  notizenBeenden();
   if (!pdfAnsicht.hidden) pdfZu();
   const h = decodeURIComponent(location.hash.slice(1));
   const [teil, ...rest] = h.split("/");

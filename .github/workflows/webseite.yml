@@ -35,6 +35,7 @@ jobs:
       - run: python3 -m unittest test_karten.py
       - run: node test_zitate.cjs
       - run: node test_mix.cjs
+      - run: node test_notizen.cjs
       - run: node test_lernpfad.cjs
       - name: Veröffentlichte Zitatdatenbank erhalten
         run: python3 zitate_aktualisieren.py --merge-public
@@ -42,6 +43,7 @@ jobs:
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: python3 zitate_aktualisieren.py --limit 10
       - run: python3 build.py
+      - run: python3 -m unittest test_quellen.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

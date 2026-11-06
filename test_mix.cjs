@@ -41,6 +41,7 @@ const c = {
     querySelector: () => null, querySelectorAll: () => [] },
   window: { scrollTo() {}, scrollY: 0 }, pdfAnsicht: { hidden: true }, pomodoro: { tick() {} },
   setTimeout() {}, clearInterval() {}, sitzung: null, quizRunde: null,
+  notizenBeenden() {}, notizenAnzeigen() {},
   modulSeite: () => { view.innerHTML = 'Modulauswahl'; },
 };
 vm.createContext(c);
