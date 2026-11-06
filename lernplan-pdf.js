@@ -40,7 +40,7 @@ async function create({plan,catalog,week='',status,date,base,lectures=[]}){
  }
  const allWeeks=week?[week]:[...new Set(plan.units.map(u=>date(u)).filter(Boolean).map(Lernplan.week))].sort();
  for(const w of allWeeks){dayTitle='';section='KW '+Lernplan.kw(w)+' · '+dformat(w)+' bis '+dformat(Lernplan.add(w,6));newPage(section);
-  para('20 % Puffer eingeplant. Freie Zeit auch für neue Vorlesungsinhalte und unsichere Aufgaben nutzen.',9,muted);
+  para('Die Grundplanung enthält 20 % Puffer. Beim Nachholen wird dieser Puffer bei Bedarf genutzt.',9,muted);
   for(let i=0;i<7;i++){
    const d=Lernplan.add(w,i),us=plan.units.filter(u=>date(u)===d),cap=Lernplan.capacity(plan.config,d,lectures),min=us.reduce((s,u)=>s+Lernplan.cost(u,plan.config),0);
    dayTitle=dformat(d);need(68,false);page.drawRectangle({x:left,y:y-10,width,height:27,color:paper});text(dformat(d),left+8,y,11,teal);y-=29;

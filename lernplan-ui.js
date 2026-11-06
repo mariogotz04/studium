@@ -2,7 +2,7 @@
 let lpVorschau=null,lpEntwurf=null,lpWoche='',lpDatei=null,lpPdfStand='',lpExportWoche='',lpErfolgTimer=false;
 const lpArt={lesen:'Skript',aufgaben:'Aufgaben',quiz:'Quiz',karten:'Karten',probe:'Probeklausur'};
 function lpPrüfungen(){return Lernplan.exams(fristen().filter(f=>f.art==='klausur').map(f=>({...f,modules:f.module?.length?f.module:f.modul?[f.modul]:[],duration:f.amtlich?.dauer||klausurInfo(f.modul).dauer})),heuteIso());}
-function lpPlan(){const id=db.get('einst:lernplan',{}).version,p=id?db.get('lernplan:version:'+id,null):null;if(!p)return null;
+function lpPlan(id=db.get('einst:lernplan',{}).version){const p=id?db.get('lernplan:version:'+id,null):null;if(!p)return null;
  const ids=new Set(p.units.map(u=>u.id));return {...p,units:[...p.units,...Object.values(db.objekt('lernplan:extra:'+id+':')).filter(u=>!ids.has(u.id))]};}
 function lpKatalog(plan=lpPlan()){
  const bekannt=plan?new Set(plan.known):null;
@@ -24,23 +24,35 @@ function lpAktivitäten(){return Object.entries(db.objekt('aktiv:')).map(([k,v])
 function lpStand(u,catalog=lpKatalog(),plan=lpPlan()){
  return Lernplan.status({...u,date:lpDatum(u,plan),since:u.since||plan?.created||0},catalog,{manual:db.get('lernplan:manuell:'+u.id,false),latch:db.get('lernplan:abschluss:'+u.id,false),activities:u.review?lpAktivitäten():[]});
 }
-function lpDatum(u,plan=lpPlan()){return plan?db.get('lernplan:datum:'+plan.id+':'+u.id,null)||u.date:u.date;}
+function lpDatum(u,plan=lpPlan()){
+ if(!plan)return u.date||null;
+ const automatic=db.get('lernplan:automatik:'+plan.id,null);
+ if(automatic?.dates&&Object.hasOwn(automatic.dates,u.id))return automatic.dates[u.id];
+ return db.get('lernplan:datum:'+plan.id+':'+u.id,null)||u.date||null;
+}
 function lernplanMerken(){
  if(lpErfolgTimer)return;lpErfolgTimer=true;
  queueMicrotask(()=>{lpErfolgTimer=false;const p=lpPlan();if(!p)return;const c=lpKatalog(p);
   for(const u of p.units)if(!db.get('lernplan:abschluss:'+u.id,false)&&lpStand(u,c,p).success)db.set('lernplan:abschluss:'+u.id,{t:Date.now()});
   if(lpDatei&&!pdfAnsicht.hidden&&lpPdfStand!==lpSignatur(p,c)){
-   const h=document.getElementById('pdfhinweis');h.hidden=false;h.innerHTML='Dein Fortschritt hat sich geändert. <button class="btn klein" id="lp-pdf-neu">Aktuellen Plan laden</button>';
+   const h=document.getElementById('pdfhinweis');h.hidden=false;h.innerHTML='Dein Lernplan oder Fortschritt hat sich geändert. <button class="btn klein" id="lp-pdf-neu">Aktuellen Plan laden</button>';
    document.getElementById('lp-pdf-neu').onclick=()=>lpPdf(false);
   }
  });
 }
 function lpVorlesungen(){return PLAN.termine.map(t=>({...t,min:minuten(t.bis)-minuten(t.von)}));}
 function lpTageswechsel(p){
- const today=heuteIso();if(!p||db.get('lernplan:tag:'+p.id,'')>=today)return;
+ const today=heuteIso();if(!p)return false;
+ const previous=db.get('lernplan:automatik:'+p.id,null);
+ if(previous?.v===2&&previous.day>=today&&db.get('lernplan:tag:'+p.id,'')>=today)return false;
  const cat=lpKatalog(p),dates=Object.fromEntries(p.units.map(u=>[u.id,lpDatum(u,p)]));
- const shifts=Lernplan.carry(p,today,u=>lpStand(u,cat,p),dates,lpVorlesungen());
- for(const [id,d] of Object.entries(shifts))db.set('lernplan:datum:'+p.id+':'+id,d);
+ const states=new Map(p.units.map(u=>[u.id,lpStand(u,cat,p)])),status=u=>states.get(u.id);
+ const missed=p.units.filter(u=>!status(u).done&&(dates[u.id]?dates[u.id]<today:(u.originalDate||u.date||p.config.start)<today));
+ const shifts=Lernplan.carry(p,today,status,dates,lpVorlesungen()),nextDates={...dates,...shifts};
+ const moved=Object.values(shifts).filter(Boolean).length;
+ const note=Object.keys(shifts).length?{day:today,detected:missed.length,moved}:previous?.note||null;
+ // Eine zusammenhängende Terminverteilung synchronisieren; keine halben Tagespläne aus zwei Geräten mischen.
+ db.set('lernplan:automatik:'+p.id,{v:2,day:today,dates:nextDates,note});
  // Neu fällige Karten aus dem freigegebenen Stoff nutzen nur noch freien Tagespuffer.
  let free=Lernplan.capacity(p.config,today,lpVorlesungen())-p.units.filter(u=>lpDatum(u,p)===today).reduce((s,u)=>s+Lernplan.cost(u,p.config),0);
  const covered=new Set(p.units.filter(u=>u.type==='karten'&&(lpDatum(u,p)===today||u.fällig&&!lpStand(u,cat,p).done)).flatMap(u=>u.targets.map(id=>u.module+'|'+id)));
@@ -54,6 +66,33 @@ function lpTageswechsel(p){
   db.set('lernplan:extra:'+p.id+':'+u.id,u);free-=Lernplan.cost(u,p.config);
  }
  db.set('lernplan:tag:'+p.id,today);
+ lernplanMerken();return true;
+}
+function lpHinweisHtml(p=lpPlan()){
+ const note=p&&db.get('lernplan:automatik:'+p.id,null)?.note;if(!note)return '';
+ return `<p class="hinweis" role="status">Automatisch angepasst am ${fmtDate(note.day)}: ${note.detected} nicht erledigte ${note.detected===1?'Einheit erkannt':'Einheiten erkannt'}, ${note.moved} offene ${note.moved===1?'Einheit auf einen neuen Lerntag verteilt':'Einheiten auf neue Lerntage verteilt'}. Erledigte Einheiten bleiben erhalten.</p>`;
+}
+function lpAnzeigePlan(p,c){
+ const missing=p.units.filter(u=>!lpDatum(u,p)&&!lpStand(u,c,p).done).reduce((n,u)=>n+Lernplan.cost(u,p.config),0);
+ const warnings=p.warnings.filter(w=>!/^\d+ (Minuten passen|Einheiten liegen)/.test(w));
+ if(missing)warnings.push(`${missing} Minuten haben vor den Klausuren noch keinen passenden Termin. Bitte erhöhe bei Bedarf deine Lernzeit oder passe freie Tage und Einheitenlänge an.`);
+ const squeezed=p.units.filter(u=>!u.review&&lpDatum(u,p)&&lpDatum(u,p)>=heuteIso()&&lpDatum(u,p)>=Lernplan.add(u.deadline,-10)).length;
+ if(squeezed)warnings.push(`${squeezed} Einheiten liegen in der vorgesehenen Wiederholungsphase. Dafür bleibt weniger Wiederholungszeit.`);
+ return {...p,warnings,missing};
+}
+function lernplanAutomatikPrüfen(){
+ if(document.visibilityState!=='visible'||location.hash.startsWith('#lernen')||document.activeElement?.matches('input,textarea,select'))return;
+ const p=lpPlan();if(!p)return;
+ if(lpTageswechsel(p)){
+  document.getElementById('datum').textContent=new Date().toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'});
+  if(!pdfAnsicht.hidden)lernplanMerken();
+  else if(!location.hash||location.hash==='#start'||location.hash.startsWith('#termine/lernplan'))neuZeichnen();
+ }
+}
+function lernplanAutomatikStarten(){
+ setInterval(lernplanAutomatikPrüfen,30000);
+ document.addEventListener('visibilitychange',lernplanAutomatikPrüfen);
+ window.addEventListener('pageshow',lernplanAutomatikPrüfen);
 }
 function lpSignatur(p,c=lpKatalog(p)){return Lernplan.hash(JSON.stringify(p.units.map(u=>[u.id,lpDatum(u,p),lpStand(u,c,p)])));}
 function lpStart(u,p=lpPlan()){
@@ -86,7 +125,7 @@ function lpTagesvorschläge(tag){
  return p.units.filter(u=>lpDatum(u,p)===tag).map(u=>({key:'lernplan:'+u.id,art:'lernplan',modul:u.module,kapitel:u.id,plan:p.id,
   titel:u.module+' · '+u.label+' · '+lpArt[u.type],text:`Aus deinem Lernplan · KW ${Lernplan.kw(tag)} · ca. ${u.min} Min. · ${u.title}`,link:'#termine/lernplan/'+Lernplan.week(tag),ids:u.targets}));
 }
-function lpTagesstand(v){const p=db.get('lernplan:version:'+v.plan,null),u=p?.units.find(u=>u.id===v.kapitel);if(!u)return {fertig:false,n:0,ziel:1};const s=lpStand(u,lpKatalog(p),p);return {fertig:s.done,automatisch:s.success,n:s.n,ziel:s.total};}
+function lpTagesstand(v){const p=lpPlan(v.plan),u=p?.units.find(u=>u.id===v.kapitel);if(!u)return {fertig:false,n:0,ziel:1};const s=lpStand(u,lpKatalog(p),p);return {fertig:s.done,automatisch:s.success,n:s.n,ziel:s.total};}
 function lpManuell(id,render=true){const p=lpPlan(),u=p?.units.find(u=>u.id===id);if(!u)return;db.set('lernplan:manuell:'+id,!db.get('lernplan:manuell:'+id,false));if(render)lernplanSeite(lpWoche);}
 function lpStandard(){return Lernplan.config({start:heuteIso(),minutes:[60,60,60,60,60,90,0],block:35,exams:lpPrüfungen().map(e=>e.id)},heuteIso());}
 function lpForm(c){const exam=lpPrüfungen();return `<form id="lp-form" class="formular">
@@ -99,22 +138,24 @@ function lpForm(c){const exam=lpPrüfungen();return `<form id="lp-form" class="f
  <label class="ganz schalter"><input type="checkbox" name="lectures"${c.lectures?' checked':''}>Vorlesungszeiten berücksichtigen (höchstens 8 Stunden Vorlesung und Lernen zusammen)</label>
  <label class="ganz schalter"><input type="checkbox" name="reading"${c.reading?' checked':''}>Skriptlektüre als eigene Einheit einplanen</label>
  <fieldset class="ganz"><legend>Klausuren</legend>${exam.map(e=>`<label class="schalter"><input name="exam" type="checkbox" value="${e.id}"${c.exams.includes(e.id)?' checked':''}>${esc(e.title)} · ${fmtDate(e.date)} · ${esc(e.modules.join(' + '))}</label>`).join('')||'<p>Trage zuerst eine Klausur mit Datum und Modul ein.</p>'}</fieldset>
- <p class="muted ganz">Die vorgegebenen Zeiten sind ein veränderbares Beispiel. 20 % bleiben als Puffer frei; Pausen zählen zum Budget. Aufgabenzeiten sind Schätzungen, Quiz etwa 2 Min. und Karten etwa 0,6 Min.</p>
+ <p class="muted ganz">Die vorgegebenen Zeiten sind ein veränderbares Beispiel. Die Grundplanung hält 20 % als Puffer frei; Nachholen nutzt den Puffer bei Bedarf. Pausen zählen zum Budget. Aufgabenzeiten sind Schätzungen, Quiz etwa 2 Min. und Karten etwa 0,6 Min.</p>
  <div class="ganz row"><button class="btn primary"${exam.length?'':' disabled'}>Vorschau berechnen</button><span id="lp-formfehler" role="alert"></span></div></form>`;}
 function lpEinheit(u,p,c){const s=lpStand(u,c,p),free=lpFreigegeben(u),d=lpDatum(u,p),m=c.find(m=>m.name===u.module),source=m?.sections.find(s=>s.key===u.section)?.source;return `<div class="lp-einheit${s.done?' erledigt':''}" id="lp-${u.id}">
  <button class="haken${s.done?' an':''}" data-lp-haken="${u.id}" aria-label="${s.manual?'Manuellen Haken entfernen':'Manuell erledigt markieren'}: ${esc(u.title)}" aria-pressed="${s.done}">${s.done?'✓':''}</button>
  <div class="was"><b>${esc(u.module)} · ${esc(u.label)}</b><span>${esc(lpArt[u.type])} · ca. ${u.min} Min.${u.min>=20?' + '+p.config.pause+' Min. Pause':''} · ${esc(u.title)}</span>
- <span>${s.success?'Erfolgreich abgeschlossen':s.manual?'Manuell erledigt':s.worked?'Bearbeitet, noch offen':free?'Offen':'Wartet auf den vorherigen Abschnitt'}${s.total>1?' · '+s.n+'/'+s.total+' Ziele':''}${u.date&&d!==u.date?' · nachgeholt vom '+fmtDate(u.date):''}</span>
+ <span>${s.success?'Erfolgreich abgeschlossen':s.manual?'Manuell erledigt':s.worked?'Bearbeitet, noch offen':free?'Offen':'Wartet auf den vorherigen Abschnitt'}${s.total>1?' · '+s.n+'/'+s.total+' Ziele':''}${u.date&&d!==u.date?' · '+(d?'Verschoben vom ':'Ursprünglich geplant am ')+fmtDate(u.originalDate||u.date):''}</span>
  ${source?quellenLink(m.pdf,source):''}</div><button class="btn" data-lp-start="${u.id}"${free?'':' disabled'}>${u.type==='lesen'?'Lesen':s.done?'Noch einmal':'Starten'}</button></div>`;}
 function lpKapitel(c){return c.map(m=>{const chapters=new Map();for(const s of m.sections){const k=s.label.replace(/Abschnitt (\d+)\.\d+/, 'Kapitel $1');if(!chapters.has(k))chapters.set(k,[]);chapters.get(k).push(s);}
  return `<details class="lp-modul"><summary>${esc(m.name)} · ${m.sections.filter(s=>s.complete).length}/${m.sections.length} Abschnitte</summary>${[...chapters].map(([name,ss])=>`<p>${ss.every(s=>s.complete)?'☑':'☐'} <b>${esc(name)}</b> · ${ss.filter(s=>s.complete).length}/${ss.length} Abschnitte abgeschlossen</p>`).join('')}</details>`;}).join('');}
 function lernplanSeite(woche){
  const today=heuteIso();let p=lpPlan();lpTageswechsel(p);p=lpPlan();lpWoche=woche&&/^\d{4}-\d{2}-\d{2}$/.test(woche)?Lernplan.week(woche):Lernplan.week(today);
  const c=lpKatalog(p),exams=lpPrüfungen(),cfg=lpEntwurf||p?.config||lpStandard();
+ if(p)p=lpAnzeigePlan(p,c);
  kopf('Lernplan','Deine Klausuren, Wochen und nächsten Schritte');
  const changed=p&&p.signature!==Lernplan.signature(c,exams,p.config),weeks=p?[...new Set([...p.units.map(u=>lpDatum(u,p)).filter(Boolean).map(Lernplan.week),Lernplan.week(today)])].sort():[];
  const missing=alleModule.filter(m=>!exams.some(e=>e.modules.includes(m)));
  termineView.innerHTML=`<div class="lp-kopf row"><a href="#termine">← Termine</a><span class="muted">${p?'Planversion '+(p.number||1):'Noch kein persönlicher Plan'}</span></div>
+ ${lpHinweisHtml(p)}
  ${changed?'<div class="hinweis">Klausuren oder Inhalte haben sich geändert. Prüfe eine Neuplanung; erreichte Abschlüsse bleiben erhalten.</div>':''}
  <details class="panel"${!p||lpVorschau?' open':''}><summary><b>${p?'Zeitbudget und Neuplanung':'Deinen Lernplan erstellen'}</b></summary>${lpForm(cfg)}</details>
  ${lpVorschau?`<div class="panel lp-vorschau"><h2>Vorschau der ${p?'Neuplanung':'Planung'}</h2><p>${lpVorschau.units.length} Einheiten bis ${fmtDate(lpVorschau.end)}. ${p?'Erledigte Einheiten und der aktuelle Tag bleiben erhalten.':'Erst nach Übernehmen wird dein persönlicher Plan gespeichert.'}</p>
@@ -160,7 +201,7 @@ function lernplanSeite(woche){
  lernplanMerken();
 }
 async function lpPdf(download=false,week=''){
- const p=lpPlan();if(!p)return;const buttons=[...termineView.querySelectorAll('#lp-pdf,#lp-download,#lp-wochenpdf')];buttons.forEach(b=>b.disabled=true);
+ let p=lpPlan();if(!p)return;lpTageswechsel(p);p=lpAnzeigePlan(lpPlan(),lpKatalog());const buttons=[...termineView.querySelectorAll('#lp-pdf,#lp-download,#lp-wochenpdf')];buttons.forEach(b=>b.disabled=true);
  try{
   const shareButton=document.getElementById(week?'lp-wochenpdf':'lp-download');
   if(APP&&download&&lpDatei&&lpExportWoche===week&&lpPdfStand===lpSignatur(p)) { await pdfSichern(lpDatei,shareButton);return; }

@@ -1414,6 +1414,7 @@ function startSeite() {
     </div><div>
       ${klausur ? countdownHtml(klausur) : ""}
       <div class="panel"><div class="kasten-titel"><h2>Heute dran</h2><span class="tagesfortschritt">${erledigt} von ${tagesliste.length} erledigt</span></div>
+        ${typeof lpHinweisHtml === "function" ? lpHinweisHtml() : ""}
         ${tagesliste.length ? tagesliste.map((v, i) => `<div class="vorschlag${stände[i].fertig ? " erledigt" : ""}">
           <button class="haken${stände[i].fertig ? " an" : ""}" data-haken="${i}" aria-label="${stände[i].fertig ? "Wieder öffnen" : "Als erledigt markieren"}: ${esc(v.titel)}" aria-pressed="${stände[i].fertig}">✓</button>
           <div class="was"><b>${esc(v.titel)}</b><span>${esc(v.text)}${stände[i].ziel > 1 ? ` · ${stände[i].n}/${stände[i].ziel} bewertet` : ""}</span>${v.art === "lernplan" ? `<a href="${esc(v.link)}">Im Lernplan ansehen</a>` : ""}</div>
@@ -3071,6 +3072,7 @@ if (rückkehr) kontoHinweis = rückkehr === "ok" ? "Angemeldet. Deine Daten werd
 sync.anzeigen(auth.s ? "an" : "aus");
 tagesPlan();
 route();
+lernplanAutomatikStarten();
 sync.jetzt();
 </script>
 </body>

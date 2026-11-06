@@ -68,3 +68,52 @@ dueCard.dueAt=2000;const nextCycle=L.create(cfg,dueCat,exams,{today});
 assert.notEqual(nextCycle.units.find(u=>u.module===dueCat[0].name&&u.fällig).id,firstDue.id,'Jede Wiederholungsfälligkeit hat ein eigenes Ziel');
 const cycleReplan=L.create(cfg,dueCat,exams,{old:duePlan,status:u=>({done:u.id===firstDue.id}),today});
 assert(cycleReplan.units.some(u=>u.fällig&&u.id!==firstDue.id&&u.notBefore===today),'Neue Fälligkeit bleibt bei Neuplanung sofort verfügbar');
+// Automatische Neuverteilung: belegte Folgetage, Reihenfolge, Pausen, Ausfalltage und Nulltermine.
+const followToday='2026-11-07';
+const followConfig=L.config({start:'2026-11-06',minutes:[60,60,60,60,60,60,60],pause:0},followToday);
+const followUnit=(id,date,min,extra={})=>({id,module:'GET',type:'aufgaben',section:'lernpfad:GET:1000:1',date,min,deadline:'2026-11-12',targets:[id],...extra});
+const followPlan={config:followConfig,units:[followUnit('verpasst','2026-11-06',30),followUnit('heute','2026-11-07',60),followUnit('danach','2026-11-08',30,{section:'lernpfad:GET:1000:2'}),followUnit('fertig','2026-11-06',20),followUnit('voraus','2026-11-08',10)]};
+const isDone=u=>({done:['fertig','voraus'].includes(u.id)});
+const sourcePlan=JSON.stringify(followPlan),redistribution=L.carry(followPlan,followToday,isDone);
+assert.equal(redistribution.verpasst,followToday,'Nicht erledigte Aufgabe kommt automatisch auf den nächsten passenden Tag');
+assert(redistribution.heute>followToday,'Belegte Folgetage werden bei Bedarf automatisch verschoben');
+assert(redistribution.danach>=redistribution.heute,'Spätere Abschnitte bleiben hinter ihrem Vorgänger');
+assert(!Object.hasOwn(redistribution,'fertig')&&!Object.hasOwn(redistribution,'voraus'),'Fertige Einheiten bleiben an ihrem Datum');
+assert.equal(JSON.stringify(followPlan),sourcePlan,'Keine Änderung an Quellplan oder Ziel-IDs');
+const assignments=Object.fromEntries(followPlan.units.map(u=>[u.id,Object.hasOwn(redistribution,u.id)?redistribution[u.id]:u.date]));
+for(const date of new Set(Object.values(assignments).filter(Boolean))){
+ const sum=followPlan.units.filter(u=>assignments[u.id]===date).reduce((n,u)=>n+L.cost(u,followConfig),0);
+ assert(sum<=L.capacity(followConfig,date),'Auch die Nachplanung hält das Tagesbudget ein');
+}
+assert.deepEqual(L.carry(followPlan,followToday,isDone,assignments),{},'Erneutes Prüfen am selben Tag verschiebt nichts doppelt');
+const freePlan=structuredClone(followPlan);freePlan.config.off=[followToday,'2026-11-08'];
+const freeShifts=L.carry(freePlan,followToday,isDone);assert.equal(freeShifts.verpasst,'2026-11-09','Freie Tage werden übersprungen');
+const tightPlan={config:followConfig,units:[followUnit('zu-lang','2026-11-06',90,{deadline:'2026-11-08'}),followUnit('nachfolger','2026-11-07',10,{deadline:'2026-11-08',section:'lernpfad:GET:1000:2'})]};
+const tight=L.carry(tightPlan,followToday,()=>({done:false}));assert.equal(tight['zu-lang'],null);assert.equal(tight.nachfolger,null,'Unmögliche Termine bleiben ausdrücklich offen, statt Lernreihenfolge oder Klausurdatum zu verletzen');
+assert.deepEqual(L.carry({...followPlan,units:[followUnit('morgen','2026-11-08',30)]},followToday,()=>({done:false})),{},'Ohne verpasste Ziele bleibt die Tagesliste stabil');
+const oldShifts={verpasst:'2026-11-10',heute:'2026-11-06'};
+const repaired=L.carry(followPlan,followToday,isDone,oldShifts);
+assert(repaired.verpasst<=repaired.heute,'Eine frühere Puffer-Verschiebung wird bei erneuter Nachplanung in die richtige Abschnittsfolge gebracht');
+const reopened=L.carry(tightPlan,followToday,()=>({done:false}),{'zu-lang':null,nachfolger:null});
+assert.deepEqual(reopened,{},'Explizit nicht einplanbare Ziele werden nicht auf alte Daten zurückgesetzt');
+console.log('OK: Automatische Folgetage; kein Überbuchen; erledigte Historie; freie Tage; Reihenfolge; unveränderte IDs; offene Nulltermine; wiederholtes Öffnen.');
+// Der öffentliche Adapter liest einen vollständigen automatischen Plan atomar, einschließlich Nullterminen.
+{
+ const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+ const source=fs.readFileSync(path.join(__dirname,'lernplan-ui.js'),'utf8'),state=new Map();
+ const adapter={db:{get:(key,fallback)=>state.get(key)??fallback,objekt:prefix=>Object.fromEntries([...state].filter(([k,v])=>k.startsWith(prefix)&&v!=null).map(([k,v])=>[k.slice(prefix.length),v]))}};
+ vm.createContext(adapter);
+ vm.runInContext(source.slice(source.indexOf('function lpPlan('),source.indexOf('function lpKatalog(')),adapter);
+ vm.runInContext(source.slice(source.indexOf('function lpDatum('),source.indexOf('function lernplanMerken(')),adapter);
+ state.set('einst:lernplan',{version:'lesen'});state.set('lernplan:version:lesen',{id:'lesen',units:followPlan.units});
+ state.set('lernplan:datum:lesen:verpasst','2026-11-09');
+ assert.equal(adapter.lpDatum(followPlan.units[0]),'2026-11-09','Alte Verschiebungen bleiben bis zur Migration lesbar');
+ state.set('lernplan:automatik:lesen',{v:2,day:followToday,dates:{verpasst:null,heute:'2026-11-10'}});
+ assert.equal(adapter.lpDatum(followPlan.units[0]),null,'Explizit ohne Termin überschreibt auch ein altes Verschiebedatum');
+ assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-10');
+ state.set('lernplan:datum:lesen:heute','2026-11-08');
+ assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-10','Ein älteres Gerät zerlegt die atomare Verteilung nicht');
+ state.set('lernplan:extra:lesen:extra',{...followPlan.units[0],id:'extra',date:followToday});
+ assert(adapter.lpPlan('lesen').units.some(u=>u.id==='extra'),'Ergänzte Kartenrunden gehören ebenfalls zum Planstatus');
+ console.log('OK: Adapter-Migration; Nulltermine; atomarer Geräteabgleich; ergänzte Einheiten.');
+}

@@ -121,17 +121,52 @@ function status(u,catalog,{manual=false,latch=false,activities=[]}={}){
  return {done:success||!!manual,success,manual:!!manual,n,total:targets.length,worked:seen>0};
 }
 function carry(plan,today,status,dates={},lectures=[]){
- const result={},usage={};
- for(const u of plan.units){const d=dates[u.id]||u.date;if(d&&d>=today)usage[d]=(usage[d]||0)+cost(u,plan.config);}
- const overdue=plan.units.filter(u=>(dates[u.id]||u.date)&& (dates[u.id]||u.date)<today&&!status(u).done).sort((a,b)=>a.deadline.localeCompare(b.deadline));
- for(const u of overdue){
-  for(let d=today;d<u.deadline;d=add(d,1)){
-   const cap=capacity(plan.config,d,lectures);
-   // Erst Puffer nutzen; neue Einheiten und der heutige Tagesplan werden nicht verdrängt.
-   if((usage[d]||0)+cost(u,plan.config)<=cap){result[u.id]=d;usage[d]=(usage[d]||0)+cost(u,plan.config);break;}
+ const assigned=u=>Object.hasOwn(dates,u.id)?dates[u.id]:u.date;
+ const done=new Map(plan.units.map(u=>[u.id,!!status(u).done]));
+ const late=u=>!done.get(u.id)&&(assigned(u)?assigned(u)<today:(u.originalDate||u.date||plan.config.start)<today);
+ if(!plan.units.some(late))return {};
+ const result={},usage={},queues=new Map(),indices=new Map(plan.units.map((u,i)=>[u.id,i]));
+ const typeOrder={lesen:0,aufgaben:1,quiz:2,karten:3,probe:4};
+ const section=u=>(u.section||'').match(/:(\d+):(\d+)$/)?.slice(1).map(Number);
+ // Abschnittsfolge auch nach älteren Puffer-Verschiebungen erhalten.
+ const order=(a,b)=>{
+  if(!!a.review!==!!b.review)return a.review?1:-1;
+  if(a.review)return (assigned(a)||a.notBefore||today).localeCompare(assigned(b)||b.notBefore||today)||indices.get(a.id)-indices.get(b.id);
+  const x=section(a),y=section(b);
+  if(x&&y&&(x[0]!==y[0]||x[1]!==y[1]))return x[0]-y[0]||x[1]-y[1];
+  if(a.section===b.section)return (typeOrder[a.type]??9)-(typeOrder[b.type]??9)||indices.get(a.id)-indices.get(b.id);
+  return indices.get(a.id)-indices.get(b.id);
+ };
+ for(const u of plan.units){
+  const d=assigned(u);
+  if(done.get(u.id)){if(d&&d>=today)usage[d]=(usage[d]||0)+cost(u,plan.config);continue;}
+  if(!queues.has(u.module))queues.set(u.module,[]);
+  queues.get(u.module).push(u);result[u.id]=null;
+ }
+ for(const q of queues.values())q.sort(order);
+ const end=plan.units.map(u=>u.deadline).filter(Boolean).sort().at(-1)||today;
+ for(let d=today;d<end&&days(today,d)<=730;d=add(d,1)){
+  let free=Math.max(0,capacity(plan.config,d,lectures)-(usage[d]||0)),last='';
+  while(free>0){
+   const candidates=[];
+   for(const [name,q] of queues){
+    // Abgelaufene / zu große Ziele bleiben sichtbar offen und sperren ihren späteren Stoff.
+    const floor=u=>[today,u.notBefore||today,assigned(u)&&assigned(u)>=today&&(u.originalDate||u.date||assigned(u))>=today?assigned(u):today].sort().at(-1);
+    const u=q.find(u=>u.fällig&&u.deadline>d&&floor(u)<=d&&cost(u,plan.config)<=free)||q[0];
+    if(!u||u.deadline<=d||cost(u,plan.config)>free)continue;
+    const earliest=floor(u);
+    if(earliest>d)continue;
+    const remaining=q.reduce((s,u)=>s+cost(u,plan.config),0);
+    const score=remaining/Math.max(1,days(d,u.deadline))*(late(u)?2:1)*(name===last?.7:1);
+    candidates.push({name,u,score});
+   }
+   candidates.sort((a,b)=>b.score-a.score||a.u.deadline.localeCompare(b.u.deadline)||a.name.localeCompare(b.name));
+   const chosen=candidates[0];if(!chosen)break;
+   result[chosen.u.id]=d;free-=cost(chosen.u,plan.config);last=chosen.name;
+   const q=queues.get(last);q.splice(q.indexOf(chosen.u),1);
   }
  }
- return result;
+ return Object.fromEntries(Object.entries(result).filter(([id,d])=>d!==assigned(plan.units[indices.get(id)])));
 }
 root.Lernplan={add,days,weekday,week,kw,hash,config,exams,capacity,cost,create,status,signature,carry};
 if(typeof module!=='undefined')module.exports=root.Lernplan;
