@@ -105,6 +105,10 @@ assert([...merged].every(([date,n])=>n<=L.capacity(cfg,date)),'Nachholen überzi
   const pdf=await PDFLib.PDFDocument.load(bytes);assert(pdf.getPageCount()>1);
   assert(pdf.getPages().some(p=>p.node.Annots()?.size()>0),'PDF enthält klickbare Zielverweise');
   assert(pdf.getPages().every(p=>Math.abs(p.getWidth()-595.28)<.01),'PDF im A4-Hochformat');
+  const weeklyPlan=L.create({...cfg,mode:'weekly',weeklyMinutes:900,buffer:.05},cat,exams,{today});
+  const weeklyBytes=await LernplanPDF.create({plan:weeklyPlan,catalog:cat,week:L.week(today),status:u=>L.status(u,cat),date:u=>u.week,base:'https://lernen.test/'});
+  const weeklyPdf=await PDFLib.PDFDocument.load(weeklyBytes);
+  assert(weeklyPdf.getPageCount()>0);assert(weeklyPdf.getPages().some(p=>p.node.Annots()?.size()>0),'Wochenlisten-PDF enthält Zielverweise ohne Tageszuordnungen');
   console.log('OK: Lokale PDF-Erzeugung mit eingebetteter Schrift, mehreren A4-Seiten und Zielverweisen.');
  }finally{global.fetch=fetchBefore;}
 })().catch(e=>{console.error(e);process.exitCode=1;});
@@ -148,7 +152,7 @@ console.log('OK: Automatische Folgetage; kein Überbuchen; erledigte Historie; f
 {
  const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
  const source=fs.readFileSync(path.join(__dirname,'lernplan-ui.js'),'utf8'),state=new Map();
- const adapter={db:{get:(key,fallback)=>state.get(key)??fallback,objekt:prefix=>Object.fromEntries([...state].filter(([k,v])=>k.startsWith(prefix)&&v!=null).map(([k,v])=>[k.slice(prefix.length),v]))}};
+ const adapter={Lernplan:L,heuteIso:()=>followToday,db:{get:(key,fallback)=>state.get(key)??fallback,objekt:prefix=>Object.fromEntries([...state].filter(([k,v])=>k.startsWith(prefix)&&v!=null).map(([k,v])=>[k.slice(prefix.length),v]))}};
  vm.createContext(adapter);
  vm.runInContext(source.slice(source.indexOf('function lpPlan('),source.indexOf('function lpKatalog(')),adapter);
  vm.runInContext(source.slice(source.indexOf('function lpDatum('),source.indexOf('function lernplanMerken(')),adapter);
@@ -157,9 +161,13 @@ console.log('OK: Automatische Folgetage; kein Überbuchen; erledigte Historie; f
  assert.equal(adapter.lpDatum(followPlan.units[0]),'2026-11-09','Alte Verschiebungen bleiben bis zur Migration lesbar');
  state.set('lernplan:automatik:lesen',{v:2,day:followToday,dates:{verpasst:null,heute:'2026-11-10'}});
  assert.equal(adapter.lpDatum(followPlan.units[0]),null,'Explizit ohne Termin überschreibt auch ein altes Verschiebedatum');
- assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-10');
+ assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-09','Alte Tageszuordnungen werden als Zielwoche gelesen');
  state.set('lernplan:datum:lesen:heute','2026-11-08');
- assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-10','Ein älteres Gerät zerlegt die atomare Verteilung nicht');
+ assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-09','Alte Tagesverschiebungen bleiben bis zur Wochenmigration konsistent');
+ state.set('lernplan:wochen:lesen',{v:3,week:'2026-11-09',weeks:{verpasst:null,heute:'2026-11-16'}});
+ state.set('lernplan:automatik:lesen',{v:2,dates:{verpasst:'2026-11-08',heute:'2026-11-10'}});
+ assert.equal(adapter.lpDatum(followPlan.units[0]),null,'Explizite offene Wochenziele bleiben trotz älterer Tagesdaten ohne Termin');
+ assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-16','Ein älteres Gerät überschreibt die neue Wochenzuordnung nicht');
  state.set('lernplan:extra:lesen:extra',{...followPlan.units[0],id:'extra',date:followToday});
  assert(adapter.lpPlan('lesen').units.some(u=>u.id==='extra'),'Ergänzte Kartenrunden gehören ebenfalls zum Planstatus');
  adapter.Lernplan=L;
@@ -168,4 +176,48 @@ console.log('OK: Automatische Folgetage; kein Überbuchen; erledigte Historie; f
  assert.notEqual(adapter.lpSignatur(pdfPlan,[]),adapter.lpSignatur({...pdfPlan,config:{buffer:.05}},[]),'Eine geänderte Reserve aktualisiert die PDF auch bei unveränderten Lerntagen');
  assert.notEqual(adapter.lpSignatur(pdfPlan,[]),adapter.lpSignatur({...pdfPlan,id:'neu'},[]),'Eine neue Planversion gehört zum PDF-Stand');
  console.log('OK: Adapter-Migration; Nulltermine; atomarer Geräteabgleich; ergänzte Einheiten.');
+}
+
+// Wochenziele: ein Budget statt sieben Tagesbudgets, echte Fristen und stabile Wochen.
+{
+ const start='2026-11-09',modules=['GET','Finanzierung','Investitionsrechnung'].map(moduleData);
+ const wc=L.config({mode:'weekly',start,weeklyMinutes:600,buffer:.05,exams:exams.map(e=>e.id)},start);
+ const wp=L.create(wc,modules,exams,{today:start});
+ assert.equal(wp.mode,'weekly');assert.equal(wp.missing,0);assert(wp.units.every(u=>u.week&&u.date===null));
+ for(const w of new Set(wp.units.map(u=>u.week))){
+  const used=wp.units.filter(u=>u.week===w).reduce((n,u)=>n+L.cost(u,wc),0);
+  assert(used<=Math.floor(L.weeklyCapacity(wc,w)*.95),'Die Wochenziele halten das Budget samt Reserve ein');
+  assert(L.fitsWeek(wc,wp.units.filter(u=>u.week===w),w,{today:start}),'Jede Wochenliste ist vor den echten Klausurfristen zeitlich möglich');
+ }
+ for(const m of modules){const dates=wp.units.filter(u=>u.module===m.name&&!u.review).map(u=>u.week);assert.deepEqual(dates,[...dates].sort());}
+ const noTime=L.create({...wc,weeklyMinutes:0},modules,exams,{today:start});assert(noTime.missing>0);assert(noTime.units.every(u=>u.week===null));
+ const need=L.weeklyBudget(wc,modules,exams,{today:start});assert.equal(need.state,'ready');
+ assert.equal(L.create({...wc,weeklyMinutes:need.weekly},modules,exams,{today:start}).missing,0);
+ const pauseCopy=L.create({...wc,pause:15},modules,exams,{today:start});assert(pauseCopy.units.every(u=>wp.units.find(x=>x.id===u.id)?.min===u.min),'Bearbeitungszeiten bleiben unabhängig vom Wochenbudget erhalten');
+ const oneDay={...wc,start:'2026-11-15',weeklyMinutes:1500,buffer:0};assert.equal(L.weeklyCapacity(oneDay,'2026-11-09'),600,'Ein einziger verbleibender Kalendertag erzeugt kein volles Wochenbudget');
+ assert.equal(L.weeklyCapacity(oneDay,'2026-11-09',[],oneDay.start,1200),1500,'Bereits erledigte Wochenzeit wird bei einer angefangenen Woche mitgezählt');
+ const offWeek={...wc,off:Array.from({length:7},(_,i)=>L.add(start,i))};assert.equal(L.weeklyCapacity(offWeek,start),0);
+ assert(L.create(offWeek,modules,exams,{today:start}).units.every(u=>u.week!==start),'Eine vollständig freie Woche enthält keine Ziele');
+ const deadlineUnit=(id,min,extra={})=>({id,module:'GET',type:'aufgaben',section:'lernpfad:GET:1000:1',targets:[id],min,week:start,date:null,notBefore:start,deadline:'2026-11-10',exam:'exam',...extra});
+ assert.equal(L.fitsWeek({...wc,weeklyMinutes:1500,buffer:0},[deadlineUnit('a',350),deadlineUnit('b',350)],start,{today:start}),false,'Vor einer Dienstagsklausur stehen nicht alle sieben Tage der Woche zur Verfügung');
+ const window=L.windowFor(deadlineUnit('release',10,{review:true,notBefore:'2026-11-12',deadline:'2026-11-17'}),start,wc);
+ assert.deepEqual(window,{from:'2026-11-12',until:'2026-11-15'});
+ assert.equal(L.windowFor(deadlineUnit('history-window',10,{deadline:'2026-12-01'}),start,{...wc,start:'2026-11-16'}).from,start,'Ein neuer Planstart verändert kein historisches Wochenfenster');
+ const next='2026-11-16',followConfig=L.config({mode:'weekly',start,weeklyMinutes:60,buffer:.2,pause:0},start),unit=(id,w,min,section=1)=>deadlineUnit(id,min,{week:w,deadline:'2026-12-07',section:'lernpfad:GET:1000:'+section});
+ const follow={mode:'weekly',config:followConfig,exams:[{id:'exam',date:'2026-12-07'}],units:[unit('missed',start,30),unit('current',next,60),unit('later','2026-11-23',30,2),unit('done',start,20)]},done=u=>({done:u.id==='done'}),before=JSON.stringify(follow);
+ assert.deepEqual(L.carryWeekly(follow,'2026-11-10',done),{},'Innerhalb einer Woche bleiben offene Ziele stehen');
+ const changes=L.carryWeekly(follow,next,done);assert.equal(changes.missed,next);assert(changes.current>next);assert(changes.later>=changes.current);assert(!Object.hasOwn(changes,'done'));assert.equal(JSON.stringify(follow),before);
+ const merged=Object.fromEntries(follow.units.map(u=>[u.id,Object.hasOwn(changes,u.id)?changes[u.id]:u.week]));
+ for(const w of new Set(Object.values(merged).filter(Boolean)))assert(follow.units.filter(u=>merged[u.id]===w).reduce((n,u)=>n+L.cost(u,followConfig),0)<=60,'Auch beim Nachholen wird die Woche nicht überbucht');
+ assert.deepEqual(L.carryWeekly(follow,next,done,merged),{},'Erneutes Öffnen derselben Woche verändert die Zuordnung nicht');
+ assert.deepEqual(L.carryWeekly({...follow,units:[unit('never',null,20)]},next,done),{},'Nie eingeplante Einheiten werden nicht als verpasste Wochenziele behandelt');
+ const cross={...follow,units:[unit('older',start,40),{...unit('current-other',next,50),module:'Finanzierung'}]};
+ const crossChanges=L.carryWeekly(cross,next,()=>({done:false}));assert.equal(crossChanges.older,next,'Offene Vorwochenziele haben auch gegenüber einem anderen Fach Vorrang');assert(crossChanges['current-other']>next);
+ const tight=L.carryWeekly({...follow,config:{...followConfig,weeklyMinutes:0}},next,done);assert.equal(tight.missed,null);assert.equal(tight.current,null);
+ const history={...wp,units:wp.units.map((u,i)=>i?u:{...u,week:start})},isDone=u=>({done:u.id===history.units[0].id});
+ const revised=L.create(wc,modules,exams,{old:history,status:isDone,today:next});assert.equal(revised.units.find(u=>u.id===history.units[0].id).week,start,'Fertige Wochenhistorie bleibt bei Neuplanung erhalten');
+ const mixedModules=[['Gross',40],['Klein',10]].map(([name,n])=>({name,typ:'transfer',duration:90,sections:[{key:name+':1.1',label:'Abschnitt 1.1',items:Array.from({length:n},(_,i)=>item(name+i,'aufgaben',15))}]}));
+ const mixed=L.create({...wc,weeklyMinutes:300,buffer:0,reading:false,exams:['mix']},mixedModules,[{id:'mix',date:'2026-12-10',modules:['Gross','Klein'],duration:90}],{today:start});
+ assert.equal(new Set(mixed.units.filter(u=>u.week===start&&!u.review).map(u=>u.module)).size,2,'Eine größere Stoffmenge verdrängt ein anderes Fach nicht aus der ganzen Woche');
+ console.log('OK: Freie Wochenziele; Wochenbudget/Reserve; Klausurfristen; Wiederholungsfenster; freie Wochen; Wochenwechsel; kein tägliches Verschieben; Historie und Nullzuordnungen.');
 }

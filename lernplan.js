@@ -9,7 +9,7 @@ const hash=s=>{let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul
 const week=s=>add(s,-weekday(s));
 function kw(s){const d=new Date(s+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+3-weekday(s));return Math.ceil(((d-new Date(Date.UTC(d.getUTCFullYear(),0,1)))/DAY+1)/7);}
 function config(c={},today){
- return {start:c.start||today,minutes:Array.from({length:7},(_,i)=>Math.max(0,Math.min(600,+c.minutes?.[i]||0))),
+ return {start:c.start||today,mode:c.mode==='weekly'?'weekly':'daily',weeklyMinutes:Math.max(0,Math.min(4200,Number.isFinite(c.weeklyMinutes)?c.weeklyMinutes:(c.minutes||[]).reduce((s,n)=>s+(+n||0),0))),minutes:Array.from({length:7},(_,i)=>Math.max(0,Math.min(600,+c.minutes?.[i]||0))),
   block:Math.max(15,Math.min(90,+c.block||35)),pause:Math.max(0,Math.min(30,Number.isFinite(+c.pause)?+c.pause:5)),buffer:Number.isFinite(c.buffer)?Math.max(0,Math.min(.5,c.buffer)):.2,
   off:[...new Set(c.off||[])].sort(),exams:c.exams||[],focus:c.focus||'',lectures:!!c.lectures,reading:c.reading!==false};
 }
@@ -71,7 +71,8 @@ function units(c,catalog,examination,old=null,status=()=>({done:false}),today=c.
  return {units:result,known:catalog.flatMap(m=>m.sections.flatMap(s=>s.items.map(x=>m.name+'|'+x.type+'|'+x.id)))};
 }
 function create(c,catalog,examination,{old=null,status=()=>({done:false}),today=c.start,lectures=[],version='v1'}={}){
- c=config(c,today);const selected=examination.filter(e=>c.exams.includes(e.id));
+ c=config(c,today);if(c.mode==='weekly')return createWeekly(c,catalog,examination,{old,status,today,lectures,version});
+ const selected=examination.filter(e=>c.exams.includes(e.id));
  const built=units(c,catalog,selected,old,status,today),all=built.units;
  const end=selected.map(e=>e.date).sort().at(-1)||c.start;
  if(days(c.start,end)>730)throw new Error('Bitte einen Planzeitraum von höchstens zwei Jahren wählen.');
@@ -103,10 +104,132 @@ function create(c,catalog,examination,{old=null,status=()=>({done:false}),today=
  return {id:version,number:(old?.number||0)+1,created:Date.now(),config:c,exams:selected,units:all,known:built.known,end,warnings,missing,
   signature:signature(catalog,examination,c),lastDay:today};
 }
+function dayLimit(c,d,lectures=[]){
+ if(d<c.start||c.off.includes(d))return 0;
+ return c.lectures?Math.max(0,480-lectures.filter(t=>t.d===d).reduce((s,t)=>s+Math.max(0,t.min||0),0)):600;
+}
+function weeklyCapacity(c,w,lectures=[],from=c.start,spent=0){
+ let available=0;for(let i=0;i<7;i++){const d=add(week(w),i);if(d>=from)available+=dayLimit(c,d,lectures);}
+ return Math.min(c.weeklyMinutes,spent+available);
+}
+function windowFor(u,w,c){
+ const start=c.start<=add(week(w),6)?c.start:week(w);
+ const from=[week(w),start,u.notBefore||start].sort().at(-1),until=[add(week(w),6),add(u.deadline,-1)].sort()[0];
+ return {from,until};
+}
+// Kalendertage prüfen nur, ob die Wochenziele vor ihren echten Fristen machbar sind.
+// Die Einheiten erhalten ausschließlich eine Zielwoche, keinen vorgeschriebenen Lerntag.
+function scheduleWeeks(c,input,examination,{today=c.start,status=()=>({done:false}),lectures=[],strict=false,floors={},reserve=c.buffer,priority=new Set()}={}){
+ const all=input.map(u=>({...u})),done=new Map(all.map(u=>[u.id,!!status(u).done]));
+ const start=[c.start,today].sort().at(-1),end=examination.map(e=>e.date).sort().at(-1)||start;
+ const queues=new Map(),indices=new Map(all.map((u,i)=>[u.id,i])),usedWeeks={},usedDays={},usedModules={},lastDay={};let overbooked=0;
+ const assigned=u=>u.week!==undefined?u.week:u.date?week(u.date):null;
+ const order=(a,b)=>{
+  if(!!a.review!==!!b.review)return a.review?1:-1;
+  if(a.review)return (a.notBefore||start).localeCompare(b.notBefore||start)||indices.get(a.id)-indices.get(b.id);
+  const aa=(a.section||'').match(/:(\d+):(\d+)$/),bb=(b.section||'').match(/:(\d+):(\d+)$/);
+  if(aa&&bb&&(aa[1]!==bb[1]||aa[2]!==bb[2]))return +aa[1]-bb[1]||+aa[2]-bb[2];
+  return indices.get(a.id)-indices.get(b.id);
+ };
+ const latest=u=>!u.review&&strict?week(add(u.deadline,-10)):u.deadline;
+ const slot=(u,w)=>{
+  const from=[start,w,u.notBefore||start,lastDay[u.module]||start,floors[u.id]||start].sort().at(-1);
+  const until=[add(w,7),latest(u)].sort()[0],n=cost(u,c);
+  for(let d=from;d<until;d=add(d,1))if(n<=dayLimit(c,d,lectures)-(usedDays[d]||0))return d;
+  return null;
+ };
+ for(const u of all){
+  const w=assigned(u);
+  if(done.get(u.id)){
+   u.week=w;
+   if(w&&w>=week(start)){
+    usedWeeks[w]=(usedWeeks[w]||0)+cost(u,c);
+    usedModules[w+'|'+u.module]=(usedModules[w+'|'+u.module]||0)+cost(u,c);
+   }
+   continue;
+  }
+  u.date=null;u.week=null;
+  if(!queues.has(u.module))queues.set(u.module,[]);queues.get(u.module).push(u);
+ }
+ for(const q of queues.values())q.sort(order);
+ for(let w=week(start);w<end&&days(start,w)<=730;w=add(w,7)){
+  const cap=Math.floor(weeklyCapacity(c,w,lectures,start,usedWeeks[w]||0)*(1-reserve));
+  if((usedWeeks[w]||0)>cap)overbooked+=(usedWeeks[w]||0)-cap;
+  let free=Math.max(0,cap-(usedWeeks[w]||0)),last='';
+  while(free>0){
+   const candidates=[];
+   for(const [name,q] of queues){
+    const u=q.find(u=>u.fällig&&cost(u,c)<=free&&slot(u,w))||q[0];if(!u||cost(u,c)>free)continue;
+    const d=slot(u,w);if(!d)continue;
+    const due=latest(u),remaining=q.reduce((s,x)=>s+cost(x,c),0);
+    const urgent=due<=add(w,7)?1e9/Math.max(1,days(start,due)):0;
+    const spread=1+(usedModules[w+'|'+name]||0)/Math.max(60,c.block*2);
+    candidates.push({name,u,d,score:urgent+(priority.has(u.id)?1e8:0)+remaining/Math.max(1,days(w,due))*(name===c.focus?1.5:1)*(name===last?.85:1)/spread});
+   }
+   candidates.sort((a,b)=>b.score-a.score||a.u.deadline.localeCompare(b.u.deadline)||a.name.localeCompare(b.name));
+   const chosen=candidates[0];if(!chosen)break;
+   chosen.u.week=w;const n=cost(chosen.u,c);free-=n;usedWeeks[w]=(usedWeeks[w]||0)+n;usedDays[chosen.d]=(usedDays[chosen.d]||0)+n;
+   usedModules[w+'|'+chosen.name]=(usedModules[w+'|'+chosen.name]||0)+n;
+   if(!chosen.u.fällig)lastDay[chosen.name]=chosen.d;
+   last=chosen.name;const q=queues.get(last);q.splice(q.indexOf(chosen.u),1);
+  }
+ }
+ const missing=all.filter(u=>!u.week&&!done.get(u.id)).reduce((s,u)=>s+cost(u,c),0);
+ const squeezed=all.filter(u=>!u.review&&!done.get(u.id)&&u.week&&add(u.week,6)>=add(u.deadline,-10)).length;
+ return {units:all,missing,squeezed,overbooked,scheduledWeeklyMax:Math.max(0,...Object.values(usedWeeks))};
+}
+function createWeekly(c,catalog,examination,{old=null,status=()=>({done:false}),today=c.start,lectures=[],version='v1'}={}){
+ c=config({...c,mode:'weekly'},today);const selected=examination.filter(e=>c.exams.includes(e.id)),end=selected.map(e=>e.date).sort().at(-1)||c.start;
+ if(days(c.start,end)>730)throw new Error('Bitte einen Planzeitraum von höchstens zwei Jahren wählen.');
+ const history=old?{...old,units:old.units.filter(u=>status(u).done)}:null;
+ const built=units(c,catalog,selected,history,status,today);
+ const options={status,today,lectures},reserved=scheduleWeeks(c,built.units,selected,{...options,strict:true});
+ const relaxed=reserved.missing?scheduleWeeks(c,built.units,selected,options):reserved;
+ const result=relaxed.missing<reserved.missing?relaxed:reserved,warnings=[];
+ if(result.missing)warnings.push(`${result.missing} Minuten haben vor den Klausuren noch keine passende Woche. Dein Wochenbudget bleibt eingehalten; diese Einheiten bleiben sichtbar offen.`);
+ if(result.squeezed)warnings.push(`${result.squeezed} Einheiten liegen in Wochen, die sich mit der vorgesehenen Wiederholungsphase überschneiden.`);
+ if(result.overbooked)warnings.push('Erledigte Einheiten belegen in einer Woche mehr als das neue Budget. Ihre Historie bleibt erhalten.');
+ return {id:version,mode:'weekly',number:(old?.number||0)+1,created:Date.now(),config:c,exams:selected,units:result.units,known:built.known,end,warnings,missing:result.missing,overbooked:result.overbooked,
+  signature:signature(catalog,examination,c),lastWeek:week(today)};
+}
+function weeklyNeed(c,catalog,examination,options={}){
+ const today=options.today||c.start;c=config({...c,mode:'weekly'},today);
+ if(!examination.some(e=>c.exams.includes(e.id)))return {state:'empty'};
+ const states=new Map(),status=u=>{if(!states.has(u.id))states.set(u.id,options.status?.(u)||{done:false});return states.get(u.id);};
+ const cache=new Map(),run=weeklyMinutes=>{
+  if(cache.has(weeklyMinutes))return cache.get(weeklyMinutes);
+  const p=createWeekly({...c,weeklyMinutes},catalog,examination,{...options,today,status}),usage={};
+  for(const u of p.units)if(u.week&&u.week>=week(today))usage[u.week]=(usage[u.week]||0)+cost(u,c);
+  const result={fits:!p.missing&&!p.overbooked,missing:p.missing,squeezed:p.units.filter(u=>!u.review&&!status(u).done&&u.week&&add(u.week,6)>=add(u.deadline,-10)).length,scheduledWeeklyMax:Math.max(0,...Object.values(usage))};
+  cache.set(weeklyMinutes,result);return result;
+ };
+ const current=run(c.weeklyMinutes),maximum=run(4200),base={current:c.weeklyMinutes,missing:current.missing,squeezed:current.squeezed};
+ if(!maximum.fits)return {...base,state:'impossible'};
+ const reviewReserved=!maximum.squeezed,works=r=>r.fits&&(!reviewReserved||!r.squeezed);let low=0,high=works(current)?c.weeklyMinutes:4200;
+ while(low<high){const mid=Math.floor((low+high)/2);if(works(run(mid)))high=mid;else low=mid+1;}
+ const target=run(high);return {...base,state:'ready',weekly:high,reviewReserved,scheduledWeeklyMax:target.scheduledWeeklyMax,reserveWeekly:Math.ceil(high*c.buffer)};
+}
+function carryWeekly(plan,today,status,weeks={},lectures=[]){
+ const current=week(today),assigned=u=>Object.hasOwn(weeks,u.id)?weeks[u.id]:u.week!==undefined?u.week:u.date?week(u.date):null;
+ const done=new Map(plan.units.map(u=>[u.id,!!status(u).done]));
+ const late=u=>{const original=u.week||((u.originalDate||u.date)?week(u.originalDate||u.date):null);return !done.get(u.id)&&(assigned(u)?assigned(u)<current:original&&original<current);};
+ if(!plan.units.some(late))return {};
+ const floors=Object.fromEntries(plan.units.filter(u=>!done.get(u.id)).map(u=>[u.id,assigned(u)&&assigned(u)>current?assigned(u):current]));
+ const original=new Map(plan.units.map(u=>[u.id,assigned(u)]));
+ const priority=new Set(plan.units.filter(late).map(u=>u.id));
+ const input=plan.units.map(u=>({...u,week:assigned(u)})),result=scheduleWeeks(plan.config,input,plan.exams,{today,status:u=>({done:done.get(u.id)}),lectures,floors,reserve:0,priority});
+ return Object.fromEntries(result.units.filter(u=>!done.get(u.id)&&u.week!==original.get(u.id)).map(u=>[u.id,u.week]));
+}
+function fitsWeek(c,input,w,{today=c.start,status=()=>({done:false}),lectures=[]}={}){
+ const examination=[...new Map(input.map(u=>[u.exam,{id:u.exam,date:u.deadline}])).values()];
+ const result=scheduleWeeks(c,input,examination,{today,status,lectures,reserve:0,floors:Object.fromEntries(input.map(u=>[u.id,w]))});
+ return !result.missing&&!result.overbooked&&result.units.every(u=>status(u).done||u.week===w);
+}
 function signature(catalog,examination,c){return hash(JSON.stringify({examination:examination.filter(e=>c.exams.includes(e.id)),
  catalog:catalog.map(m=>[m.name,m.typ,m.duration,m.sections.map(s=>[s.key,s.source,s.items.map(x=>[x.id,x.type,x.min])])])}));}
 function weeklyBudget(c,catalog,examination,options={}){
  const today=options.today||c.start;c=config(c,today);
+ if(c.mode==='weekly')return weeklyNeed(c,catalog,examination,options);
  if(!examination.some(e=>c.exams.includes(e.id)))return {state:'empty'};
  // Die eingegebenen Minuten geben nur das Verhältnis der Lerntage vor. Bei null Minuten
  // dient eine gleichmäßige Woche als Ausgangspunkt, ohne die Eingabefelder zu verändern.
@@ -208,6 +331,6 @@ function carry(plan,today,status,dates={},lectures=[]){
  }
  return Object.fromEntries(Object.entries(result).filter(([id,d])=>d!==assigned(plan.units[indices.get(id)])));
 }
-root.Lernplan={add,days,weekday,week,kw,hash,config,exams,capacity,cost,create,status,signature,weeklyBudget,carry};
+root.Lernplan={add,days,weekday,week,kw,hash,config,exams,capacity,cost,create,status,signature,weeklyBudget,carry,weeklyCapacity,windowFor,carryWeekly,fitsWeek};
 if(typeof module!=='undefined')module.exports=root.Lernplan;
 })(typeof globalThis!=='undefined'?globalThis:this);

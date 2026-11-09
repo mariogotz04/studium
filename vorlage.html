@@ -449,13 +449,23 @@ body.notizen-aktiv .wrap { max-width: 1420px; }
 .lp-einheit .was > b, .lp-einheit .was > span { display: block; }
 .lp-einheit .was > span { font-size: 14px; color: var(--muted); margin-top: 5px; }
 .lp-einheit.erledigt > .was > b { color: var(--accent); }
+.lp-wochenkopf { flex-wrap: wrap; }
+.lp-wochenkopf select { min-width: 0; max-width: 100%; }
+.lp-fortschritt { display: block; width: 100%; height: 12px; accent-color: var(--accent); margin: 12px 0; }
+.lp-wochenmodul { margin-top: 18px; border: 1px solid var(--line); border-radius: 14px; padding: 0 14px; }
+.lp-wochenmodul > summary { padding: 14px 0; cursor: pointer; min-height: 48px; }
+.lp-wochenmodul > summary > span { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; }
+.lp-frist { color: var(--hard) !important; font-weight: 600; }
+.lp-startmodul { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--line); padding: 14px 0; }
+.lp-startmodul > div { flex: 1; min-width: min(180px,100%); }
+.lp-startmodul span { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; }
 .lp-modul summary { padding: 12px 0; min-height: 44px; cursor: pointer; }
 #lp-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
 #lp-form textarea { min-height: 80px; }
 #lp-form input[type=number] { min-height: 46px; padding: 10px 12px; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; }
 #lp-form .lp-budget input { padding: 10px 6px; }
 .pdfplanlink { position: absolute; z-index: 3; display: block; }
-@media (max-width: 599px) { .lp-budget { grid-template-columns: repeat(4,minmax(0,1fr)); } .lp-einheit { flex-wrap: wrap; } .lp-einheit > .btn { margin-left: 56px; } }
+@media (max-width: 599px) { .lp-budget { grid-template-columns: repeat(4,minmax(0,1fr)); } .lp-einheit { flex-wrap: wrap; } .lp-einheit > .was { flex-basis: calc(100% - 56px); } .lp-einheit > .btn { margin-left: 56px; } }
 .lernplatz { display: grid; grid-template-columns: minmax(0, 1fr) var(--notizbreite, clamp(260px, 28vw, 360px)); gap: 20px; align-items: start; min-width: 0; }
 .lernplatz[data-blattgroesse="0"] { --notizbreite: clamp(240px, 24vw, 300px); --notizhoehe: min(48dvh, 420px); }
 .lernplatz[data-blattgroesse="2"] { --notizbreite: clamp(320px, 48vw, 680px); --notizhoehe: min(76dvh, 780px); }
@@ -1336,16 +1346,17 @@ function zitatSammlung(root) {
 function richtungHtml(tag) {
   const e = richtungEinst();
   if (!e.anzeigen) return `<p class="muted" style="margin-top:16px"><a href="#richtung">Meine Richtung bearbeiten</a></p>`;
-  const offen = tagesPlan(tag).items.find(v => !vorschlagStand(v, tag).fertig);
+  const wochenplan = typeof lpPlan === "function" && lpPlan();
+  const offen = tagesPlan(tag).items.find(v => !vorschlagStand(v, tag).fertig && (v.art !== "lernplan" || lpFreigegeben(wochenplan.units.find(u => u.id === v.kapitel))));
   return `<div class="panel richtung"><div class="row" style="justify-content:space-between"><span class="augenbraue">Mein Warum</span>
       <a class="back" href="#richtung">Meine Richtung bearbeiten ›</a></div>
     <p class="warum">${esc(e.warum || "Wofür möchtest du dir dieses Wissen aneignen?")}</p>
     ${e.vision ? `<p class="muted">Meine Richtung: ${esc(e.vision)}</p>` : ""}
     ${e.identitaet ? `<p>${esc(e.identitaet)}</p>` : ""}
-    <p><b>Mein Schritt heute</b><br>${offen ? esc(offen.titel) : "Dein Tagesplan ist bearbeitet. Du entscheidest, ob du vertiefst oder Pause machst."}</p>
+    <p><b>${wochenplan ? "Mein nächster Schritt" : "Mein Schritt heute"}</b><br>${offen ? esc(offen.titel) : wochenplan ? "Wähle deine nächsten Ziele in der Wochenübersicht." : "Dein Tagesplan ist bearbeitet. Du entscheidest, ob du vertiefst oder Pause machst."}</p>
     <div class="row"><button class="btn primary" type="button" id="kurzstart">${offen ? "Mit fünf Minuten anfangen" : "Lernen öffnen"}</button>
       ${!e.warum ? `<a class="btn" href="#richtung">Mein Warum festhalten</a>` : ""}</div>
-    ${offen ? `<p class="muted" style="font-size:13px;margin-bottom:0">Öffnet deine erste offene Tagesaufgabe. Für den Einstieg darf ein kleiner Schritt reichen.</p>` : ""}
+    ${offen ? `<p class="muted" style="font-size:13px;margin-bottom:0">Öffnet eine ${wochenplan ? "verfügbare Wochenaufgabe" : "offene Tagesaufgabe"}. Für den Einstieg darf ein kleiner Schritt reichen.</p>` : ""}
     ${e.anti || e.wenn || e.dann ? `<details><summary>Wenn ich aufschiebe</summary>${e.anti ? `<p><b>Das möchte ich vermeiden:</b> ${esc(e.anti)}</p>` : ""}
       ${e.wenn || e.dann ? `<p><b>Mein Plan:</b> Wenn ${esc(e.wenn || "ich aufschiebe")}, dann ${esc(e.dann || "beginne ich mit einem kleinen Schritt")}.</p>` : ""}</details>` : ""}
     ${e.zitate ? zitatHtml(tagesZitat(tag)) : ""}</div>`;
@@ -1423,7 +1434,7 @@ function startSeite() {
         ${planListe(morgenTag, jetzt)}</div>
     </div><div>
       ${klausur ? countdownHtml(klausur) : ""}
-      <div class="panel"><div class="kasten-titel"><h2>Heute dran</h2><span class="tagesfortschritt">${erledigt} von ${tagesliste.length} erledigt</span></div>
+      ${typeof lpPlan === "function" && lpPlan() ? lpStartWocheHtml() : `<div class="panel"><div class="kasten-titel"><h2>Heute dran</h2><span class="tagesfortschritt">${erledigt} von ${tagesliste.length} erledigt</span></div>
         ${typeof lpHinweisHtml === "function" ? lpHinweisHtml() : ""}
         ${tagesliste.length ? tagesliste.map((v, i) => `<div class="vorschlag${stände[i].fertig ? " erledigt" : ""}">
           <button class="haken${stände[i].fertig ? " an" : ""}" data-haken="${i}" aria-label="${stände[i].fertig ? "Wieder öffnen" : "Als erledigt markieren"}: ${esc(v.titel)}" aria-pressed="${stände[i].fertig}">✓</button>
@@ -1431,7 +1442,7 @@ function startSeite() {
           <button class="btn" data-los="${i}">${stände[i].fertig ? "Noch einmal" : "Los"}</button></div>`).join("")
           : `<p class="muted">Sobald Aufgaben, Quizfragen oder Karteikarten da sind, schlage ich dir hier jeden Tag passende Übungen vor.</p>`}
         ${typeof lpPlan === "function" && lpPlan() ? `<p class="feynman">Deine heutigen Einheiten kommen aus dem <a href="#termine/lernplan">Lernplan</a>. Aufgaben werden nach dem selbstständigen Lösen abgehakt; manuelle Haken ändern keinen Kapitelabschluss.</p>${stände.every(s => s.fertig) ? `<button class="btn" id="lp-naechster">Freiwillig mit dem nächsten Abschnitt weiter</button>` : ""}` : `<p class="feynman" style="margin-top:12px">Deine Auswahl bleibt heute erhalten. Abgeschlossene Bearbeitungen werden automatisch abgehakt. Erledigt heißt bearbeitet; unsichere Inhalte bleiben zur Wiederholung vorgemerkt.</p>`}
-      </div>
+      </div>`}
       ${tagesErfolgeHtml(tag)}
       ${jetzt.getHours() >= 17 ? abschlussHtml(tag) : ""}
       <div class="panel"><div class="kasten-titel"><h2>Fristen</h2><a href="#termine">Alle ›</a></div>
@@ -1532,7 +1543,7 @@ function termineSeite() {
   const f = fristBearbeiten ? { id: fristBearbeiten, ...db.get("frist:" + fristBearbeiten, {}) } : { art: "klausur" };
   const todos = offeneTodos(true), offeneT = todos.filter(t => !t.erledigt), fertigeT = todos.filter(t => t.erledigt);
   kopf("Termine", `${offen.length} Fristen · ${offeneT.length} offene To-dos`);
-  termineView.innerHTML = `<div class="panel" style="margin-top:18px"><div class="kasten-titel"><h2>Dein Lernplan</h2><a class="btn primary" href="#termine/lernplan">Lernplan öffnen</a></div><p>Plane deine Klausurvorbereitung nach Wochen und Tagen, verfolge deinen Fortschritt und lade den aktuellen Plan als PDF herunter.</p></div><div class="zwei" style="margin-top:18px"><div>
+  termineView.innerHTML = `<div class="panel" style="margin-top:18px"><div class="kasten-titel"><h2>Dein Lernplan</h2><a class="btn primary" href="#termine/lernplan">Lernplan öffnen</a></div><p>Plane deine Klausurvorbereitung mit einem Wochenbudget und frei einteilbaren Wochenaufgaben. Verfolge deinen Fortschritt und lade die Aufgabenliste als PDF herunter.</p></div><div class="zwei" style="margin-top:18px"><div>
     ${klausur ? countdownHtml(klausur) : ""}
     <div class="panel"><div class="kasten-titel"><h2>Fristen & Klausuren</h2></div>
       ${offen.map(x => fristZeile(x, true)).join("") || `<p class="muted">Noch nichts eingetragen.</p>`}

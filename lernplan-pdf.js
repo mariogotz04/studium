@@ -38,30 +38,44 @@ async function create({plan,catalog,week='',status,date,base,lectures=[]}){
    for(const [name,ss] of chapters){need(25);const n=ss.filter(s=>s.complete).length;check(left,y,n===ss.length);text(name+' · '+n+'/'+ss.length+' Abschnitte abgeschlossen',left+20,y,10);y-=25;}
   }
  }
- const allWeeks=week?[week]:[...new Set(plan.units.map(u=>date(u)).filter(Boolean).map(Lernplan.week))].sort();
- for(const w of allWeeks){dayTitle='';section='KW '+Lernplan.kw(w)+' · '+dformat(w)+' bis '+dformat(Lernplan.add(w,6));newPage(section);
-  para('Die Grundplanung hält '+Math.round((plan.config.buffer??.2)*100)+' % des Zeitbudgets als Reserve frei. Beim Nachholen wird diese Reserve bei Bedarf genutzt.',9,muted);
-  for(let i=0;i<7;i++){
-   const d=Lernplan.add(w,i),us=plan.units.filter(u=>date(u)===d),cap=Lernplan.capacity(plan.config,d,lectures),min=us.reduce((s,u)=>s+Lernplan.cost(u,plan.config),0);
-   dayTitle=dformat(d);need(68,false);page.drawRectangle({x:left,y:y-10,width,height:27,color:paper});text(dformat(d),left+8,y,11,teal);y-=29;
-   text(min+' / '+cap+' Min. verplant · '+Math.max(0,cap-min)+' Min. frei / Puffer',left,y,8.5,muted);y-=22;
-   if(!us.length){text('Keine Einheit geplant.',left+20,y,10,muted);y-=27;continue;}
-   for(const u of us){const source=catalog.find(m=>m.name===u.module)?.sections.find(s=>s.key===u.section)?.source,currentPdf=catalog.find(m=>m.name===u.module)?.pdf;const st=status(u),heading=wrap(u.module+' · '+u.label+' · '+u.min+' Min.'+(u.min>=20?' + '+plan.config.pause+' Min. Pause':''),10,width-26);
+ function unitRow(u,group=''){const source=catalog.find(m=>m.name===u.module)?.sections.find(s=>s.key===u.section)?.source,currentPdf=catalog.find(m=>m.name===u.module)?.pdf;const st=status(u),heading=wrap(u.module+' · '+u.label+' · '+u.min+' Min.'+(u.min>=20?' + '+plan.config.pause+' Min. Pause':''),10,width-26);
     const body=wrap(u.title,9,width-26),state=st.success?'Erfolgreich abgeschlossen':st.manual?'Manuell erledigt':st.worked?'Bearbeitet, noch offen':'Offen';
-    const height=(heading.length+body.length)*14+38+(source?16:0);need(height);
+    const bounds=plan.mode==='weekly'?Lernplan.windowFor(u,date(u),plan.config):null;
+    const limits=bounds?wrap([bounds.from>date(u)?'Ab '+dformat(bounds.from):'',bounds.until<Lernplan.add(date(u),6)?'Spätestens '+dformat(bounds.until):''].filter(Boolean).join(' · '),8,width-26):[];
+    const height=(heading.length+body.length)*14+38+(source?16:0)+limits.length*12;need(height+(group?26:0));
+    if(group){text(group,left,y,13,teal);y-=26;}
     check(left,y,st.done);for(const l of heading){text(l,left+22,y,10,teal);y-=14;}for(const l of body){text(l,left+22,y,9);y-=14;}
     text(state+(st.total>1?' · '+st.n+'/'+st.total+' Ziele':''),left+22,y,8,muted);y-=15;
+    for(const l of limits){text(l,left+22,y,8,teal);y-=12;}
     const startUrl=base+'#termine/lernplan/start/'+u.id+'/'+encodeURIComponent(u.module);
     text('In der Plattform starten',left+22,y,8,teal);link(startUrl,left+22,y,120,10);
     if(source){const label='Lernskript S. '+source.p+' · '+source.t;const ls=wrap(label,8,width-175);
      text(ls[0],left+160,y,8,teal);link(new URL(currentPdf,base).href+'#page='+source.p,left+160,y,Math.min(330,font.widthOfTextAtSize(ls[0],8)),10);}
     y-=23;
-   }
+
+ }
+ const allWeeks=week?[week]:[...new Set(plan.units.map(u=>date(u)).filter(Boolean).map(Lernplan.week))].sort();
+ for(const w of allWeeks){dayTitle='';section='KW '+Lernplan.kw(w)+' · '+dformat(w)+' bis '+dformat(Lernplan.add(w,6));newPage(section);
+  para('Die Grundplanung hält '+Math.round((plan.config.buffer??.2)*100)+' % des Zeitbudgets als Reserve frei. Beim Nachholen wird diese Reserve bei Bedarf genutzt.',9,muted);
+  if(plan.mode==='weekly'){
+   const us=plan.units.filter(u=>date(u)===w),finished=us.filter(u=>status(u).done).length,total=us.reduce((n,u)=>n+Lernplan.cost(u,plan.config),0),remaining=us.filter(u=>!status(u).done).reduce((n,u)=>n+Lernplan.cost(u,plan.config),0),budget=Lernplan.weeklyCapacity(plan.config,w,lectures,plan.config.start,us.filter(u=>status(u).done).reduce((n,u)=>n+Lernplan.cost(u,plan.config),0));
+   para(finished+' von '+us.length+' Einheiten erledigt · noch ca. '+remaining+' Min. einschließlich Pausen.');
+   para((Lernplan.add(w,6)<plan.config.start?'Abgeschlossene Wochenhistorie · '+total+' Min. ursprüngliche Ziele.':total+' / '+budget+' Min. belegt.')+' Du entscheidest, an welchen Tagen du die Wochenziele erledigst. Abschnittsreihenfolge und echte Fristen gelten weiterhin.',9,muted);
+   for(const name of [...new Set(us.map(u=>u.module))])us.filter(u=>u.module===name).forEach((u,i)=>unitRow(u,i?'':name));
+   if(!us.length)para('Für diese Woche sind keine Einheiten eingeplant.',10,muted);
+   continue;
+  }
+  for(let i=0;i<7;i++){
+   const d=Lernplan.add(w,i),us=plan.units.filter(u=>date(u)===d),cap=Lernplan.capacity(plan.config,d,lectures),min=us.reduce((s,u)=>s+Lernplan.cost(u,plan.config),0);
+   dayTitle=dformat(d);need(68,false);page.drawRectangle({x:left,y:y-10,width,height:27,color:paper});text(dformat(d),left+8,y,11,teal);y-=29;
+   text(min+' / '+cap+' Min. verplant · '+Math.max(0,cap-min)+' Min. frei / Puffer',left,y,8.5,muted);y-=22;
+   if(!us.length){text('Keine Einheit geplant.',left+20,y,10,muted);y-=27;continue;}
+   for(const u of us)unitRow(u);
    need(20);page.drawLine({start:{x:left+22,y:y},end:{x:right,y:y},color:line,thickness:.5});y-=24;
   }
  }
  const pending=plan.units.filter(u=>!date(u)&&!status(u).done);
- if(pending.length&&!week){dayTitle='';section='Noch ohne Termin';newPage(section);para('Diese Einheiten passen noch nicht ins Zeitbudget. Sie sind nicht ausgelassen; passe das Budget an und prüfe die Neuplanung.',10,teal);
+ if(pending.length&&!week){dayTitle='';section='Noch ohne Termin';newPage(section);para('Diese Einheiten haben vor ihren Klausuren noch keine passende Woche im Zeitbudget. Sie sind nicht ausgelassen; passe das Budget an und prüfe die Neuplanung.',10,teal);
   for(const u of pending)para(u.module+' · '+u.label+' · '+u.title+' · '+u.min+' Min.',9);
  }
  if(!doc.getPageCount())newPage('Keine Einheiten in dieser Woche');
