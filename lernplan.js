@@ -28,6 +28,10 @@ function capacity(c,date,lectures=[]){
  return n;
 }
 const cost=(u,c)=>u.min+(u.min>=20?c.pause:0);
+function duration(value){
+ const number=Number(value),minutes=Number.isFinite(number)?Math.max(0,Math.round(number)):0,hours=Math.floor(minutes/60),rest=minutes%60;
+ return hours?`${hours} Std.${rest?' '+rest+' Min.':''}`:`${rest} Min.`;
+}
 function units(c,catalog,examination,old=null,status=()=>({done:false}),today=c.start){
  const kept=(old?.units||[]).filter(u=>u.date&&u.date<=today||status(u).done)
   .map(u=>u.date<today&&!status(u).done?{...u,date:null,originalDate:u.originalDate||u.date}:{...u});
@@ -98,7 +102,7 @@ function create(c,catalog,examination,{old=null,status=()=>({done:false}),today=
  }
  const backlog=all.filter(u=>!u.date&&!status(u).done),warnings=[];
  const missing=backlog.reduce((s,u)=>s+cost(u,c),0);
- if(missing)warnings.push(`${missing} Minuten passen vor den Klausuren noch nicht in dein Zeitbudget. Lernzeit erhöhen, freie Tage prüfen oder frühere Einheiten einplanen.`);
+ if(missing)warnings.push(`Offener Zeitbedarf vor den Klausuren: ${duration(missing)}. Lernzeit erhöhen, freie Tage prüfen oder frühere Einheiten einplanen.`);
  const squeezed=all.filter(u=>!u.review&&u.date&&u.date>=add(u.deadline,-10)&&u.date>=today);
  if(squeezed.length)warnings.push(`${squeezed.length} Einheiten liegen in der vorgesehenen Wiederholungsphase. Dafür bleibt weniger Wiederholungszeit.`);
  return {id:version,number:(old?.number||0)+1,created:Date.now(),config:c,exams:selected,units:all,known:built.known,end,warnings,missing,
@@ -186,7 +190,7 @@ function createWeekly(c,catalog,examination,{old=null,status=()=>({done:false}),
  const options={status,today,lectures},reserved=scheduleWeeks(c,built.units,selected,{...options,strict:true});
  const relaxed=reserved.missing?scheduleWeeks(c,built.units,selected,options):reserved;
  const result=relaxed.missing<reserved.missing?relaxed:reserved,warnings=[];
- if(result.missing)warnings.push(`${result.missing} Minuten haben vor den Klausuren noch keine passende Woche. Dein Wochenbudget bleibt eingehalten; diese Einheiten bleiben sichtbar offen.`);
+ if(result.missing)warnings.push(`Noch ohne passende Woche: ${duration(result.missing)}. Dein Wochenbudget bleibt eingehalten; diese Einheiten bleiben sichtbar offen.`);
  if(result.squeezed)warnings.push(`${result.squeezed} Einheiten liegen in Wochen, die sich mit der vorgesehenen Wiederholungsphase überschneiden.`);
  if(result.overbooked)warnings.push('Erledigte Einheiten belegen in einer Woche mehr als das neue Budget. Ihre Historie bleibt erhalten.');
  return {id:version,mode:'weekly',number:(old?.number||0)+1,created:Date.now(),config:c,exams:selected,units:result.units,known:built.known,end,warnings,missing:result.missing,overbooked:result.overbooked,
@@ -331,6 +335,6 @@ function carry(plan,today,status,dates={},lectures=[]){
  }
  return Object.fromEntries(Object.entries(result).filter(([id,d])=>d!==assigned(plan.units[indices.get(id)])));
 }
-root.Lernplan={add,days,weekday,week,kw,hash,config,exams,capacity,cost,create,status,signature,weeklyBudget,carry,weeklyCapacity,windowFor,carryWeekly,fitsWeek};
+root.Lernplan={add,days,weekday,week,kw,hash,config,exams,capacity,cost,duration,create,status,signature,weeklyBudget,carry,weeklyCapacity,windowFor,carryWeekly,fitsWeek};
 if(typeof module!=='undefined')module.exports=root.Lernplan;
 })(typeof globalThis!=='undefined'?globalThis:this);

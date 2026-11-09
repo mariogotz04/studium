@@ -8,7 +8,7 @@ const moduleNamen = ['FET', 'GET', 'Finanzierung', 'Investitionsrechnung', 'Kons
 const clone = x => JSON.parse(JSON.stringify(x));
 function umgebung(lernen, decks) {
   const state = new Map(), settings = new Map(), meldungen = [];
-  const c = { LERNEN: lernen, DECKS: decks, PLAN: { termine: [], tage: {} }, alleModule: lernen.map(m => m.name),
+  const c = { Lernplan: require('./lernplan.js'), LERNEN: lernen, DECKS: decks, PLAN: { termine: [], tage: {} }, alleModule: lernen.map(m => m.name),
     document: { getElementById: () => ({}), addEventListener() {} }, location: { hash: '' },
     db: { get: (k, d) => state.get(k) ?? d, set: (k, v) => state.set(k, clone(v)),
       objekt: p => Object.fromEntries([...state].filter(([k, v]) => k.startsWith(p) && v != null).map(([k, v]) => [k.slice(p.length), clone(v)])) },

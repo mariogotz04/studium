@@ -202,6 +202,7 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Innerhalb einer Woche bleiben offene Ziele stabil, auch beim Tageswechsel und erneuten Öffnen. Zum Wochenwechsel offene Vorwochenziele zuerst verteilen und spätere offene Ziele bei Bedarf verschieben. Erledigte Einheiten bleiben erhalten. Nachholen darf die Reserve nutzen, aber nie das gesamte Wochenbudget überschreiten. Nicht einplanbare Ziele bleiben ausdrücklich ohne Woche. Nie eingeplante Ziele nicht fälschlich als versäumte Vorwochenziele zählen. Fällige freigegebene Karten höchstens einmal pro Wochenstart und nur bei nachgewiesen freiem Budget ergänzen.
 - Die Wochenprüfung läuft beim Öffnen von Start/Lernplan, beim Aktivieren und während geöffneter Ansichten innerhalb von 30 Sekunden. Laufende Übungen und Formulare erhalten. Tageswechsel aktualisieren Datum, Verfügbarkeit und Fortschritt, ohne die Wochenziele zu verschieben. Klausur-/Quellenänderungen und ein anderes Budget benötigen weiterhin Vorschau und Übernahme.
 - Gesamt- und Wochen-PDF als nach Fächern gegliederte Aufgabenliste ohne tägliche Vorgaben erzeugen: eingebettete Schrift, Checkboxen, Wochenbudget/Reserve, Kapitelstand, Version/Zeitstempel, echte Fristen sowie klickbare Ziel- und aktuelle Quellenlinks. Bereits heruntergeladene Dateien bleiben Momentaufnahmen. Änderungen an Plan, Budget, Zuordnung und Fortschritt invalidieren den PDF-Stand; im offenen Viewer Aktualisierung anbieten, das gelesene Dokument nicht automatisch ersetzen.
+- Dauern in der Oberfläche und im PDF mit `Lernplan.duration` darstellen: ab 60 Minuten Stunden und Restminuten, etwa „1 Std. 30 Min.“; kürzere Dauern als Minuten. Gilt auch für Restzeiten, Budgetvergleiche, Fachsummen und Zeitbedarfswarnungen.
 - Alle Plan-/PDF-Dateien und `vendor/` über Build und Upload mitnehmen; Dateiinhalte bestimmen die Version der Script-Adressen. `node test_lernplan.cjs` prüft auch Wochenbudget, Fristen, Reihenfolge, Wochenwechsel, Historie und Migration. Browserprüfungen mit isolierten Testdaten und gerenderte Wochen-PDFs ergänzen die automatischen Tests. Nur Webseitenänderungen mit `--nur-webseite` hochladen.
 
 ## Motivation und persönliche Richtung
@@ -231,6 +232,12 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Kartenbewertung gelten in allen sieben und künftigen Modulen.
 
 ## Änderungsprotokoll
+
+### 09.11.2026 · Stunden und Minuten statt großer Minutenzahlen
+- Gemeinsame Dauerformatierung `Lernplan.duration`: ab 60 Minuten Stunden und Restminuten, unter einer Stunde Minuten. Restzeiten, Wochenbudgetvergleiche, Fachsummen, Einheiten, offene Zeitbedarfe, Startseite und PDF entsprechend anzeigen. Probeklausur-/Klausurdauern und Pomodoro-Auswertungen verwenden dieselbe Darstellung. Numerische Einstellungen und gespeicherte Berechnungswerte behalten ihre bisherigen Einheiten.
+- Beispiele: 90 → 1 Std. 30 Min.; 94 → 1 Std. 34 Min.; 1179 → 19 Std. 39 Min.; 1366 / 1460 → 22 Std. 46 Min. / 24 Std. 20 Min.
+- Validiert: fünf JavaScript-Suiten, vollständiger Browserablauf auf Desktop/iPad/Mobil und gerenderte PDF-Seiten mit Wochenbudget sowie langer Probeklausur-Einheit geprüft.
+- Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-11-09_vor_Stundenanzeige/`.
 
 ### 09.11.2026 · Frei einteilbare Wochenziele
 - Ein Wochenbudget in Stunden ersetzt die sieben Tagesbudgets. Konkrete Einheiten werden nach Fächern mit Fortschritt, Restzeit und Startknöpfen angezeigt. Start übernimmt die offenen Wochenziele; echte Klausurfristen und der Beginn von Wiederholungen stehen bei den betroffenen Einheiten.

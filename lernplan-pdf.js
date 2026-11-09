@@ -38,7 +38,7 @@ async function create({plan,catalog,week='',status,date,base,lectures=[]}){
    for(const [name,ss] of chapters){need(25);const n=ss.filter(s=>s.complete).length;check(left,y,n===ss.length);text(name+' · '+n+'/'+ss.length+' Abschnitte abgeschlossen',left+20,y,10);y-=25;}
   }
  }
- function unitRow(u,group=''){const source=catalog.find(m=>m.name===u.module)?.sections.find(s=>s.key===u.section)?.source,currentPdf=catalog.find(m=>m.name===u.module)?.pdf;const st=status(u),heading=wrap(u.module+' · '+u.label+' · '+u.min+' Min.'+(u.min>=20?' + '+plan.config.pause+' Min. Pause':''),10,width-26);
+ function unitRow(u,group=''){const source=catalog.find(m=>m.name===u.module)?.sections.find(s=>s.key===u.section)?.source,currentPdf=catalog.find(m=>m.name===u.module)?.pdf;const st=status(u),heading=wrap(u.module+' · '+u.label+' · '+Lernplan.duration(u.min)+(u.min>=20?' + '+Lernplan.duration(plan.config.pause)+' Pause':''),10,width-26);
     const body=wrap(u.title,9,width-26),state=st.success?'Erfolgreich abgeschlossen':st.manual?'Manuell erledigt':st.worked?'Bearbeitet, noch offen':'Offen';
     const bounds=plan.mode==='weekly'?Lernplan.windowFor(u,date(u),plan.config):null;
     const limits=bounds?wrap([bounds.from>date(u)?'Ab '+dformat(bounds.from):'',bounds.until<Lernplan.add(date(u),6)?'Spätestens '+dformat(bounds.until):''].filter(Boolean).join(' · '),8,width-26):[];
@@ -59,8 +59,8 @@ async function create({plan,catalog,week='',status,date,base,lectures=[]}){
   para('Die Grundplanung hält '+Math.round((plan.config.buffer??.2)*100)+' % des Zeitbudgets als Reserve frei. Beim Nachholen wird diese Reserve bei Bedarf genutzt.',9,muted);
   if(plan.mode==='weekly'){
    const us=plan.units.filter(u=>date(u)===w),finished=us.filter(u=>status(u).done).length,total=us.reduce((n,u)=>n+Lernplan.cost(u,plan.config),0),remaining=us.filter(u=>!status(u).done).reduce((n,u)=>n+Lernplan.cost(u,plan.config),0),budget=Lernplan.weeklyCapacity(plan.config,w,lectures,plan.config.start,us.filter(u=>status(u).done).reduce((n,u)=>n+Lernplan.cost(u,plan.config),0));
-   para(finished+' von '+us.length+' Einheiten erledigt · noch ca. '+remaining+' Min. einschließlich Pausen.');
-   para((Lernplan.add(w,6)<plan.config.start?'Abgeschlossene Wochenhistorie · '+total+' Min. ursprüngliche Ziele.':total+' / '+budget+' Min. belegt.')+' Du entscheidest, an welchen Tagen du die Wochenziele erledigst. Abschnittsreihenfolge und echte Fristen gelten weiterhin.',9,muted);
+   para(finished+' von '+us.length+' Einheiten erledigt · noch ca. '+Lernplan.duration(remaining)+' einschließlich Pausen.');
+   para((Lernplan.add(w,6)<plan.config.start?'Abgeschlossene Wochenhistorie · '+Lernplan.duration(total)+' ursprüngliche Ziele.':Lernplan.duration(total)+' / '+Lernplan.duration(budget)+' belegt.')+' Du entscheidest, an welchen Tagen du die Wochenziele erledigst. Abschnittsreihenfolge und echte Fristen gelten weiterhin.',9,muted);
    for(const name of [...new Set(us.map(u=>u.module))])us.filter(u=>u.module===name).forEach((u,i)=>unitRow(u,i?'':name));
    if(!us.length)para('Für diese Woche sind keine Einheiten eingeplant.',10,muted);
    continue;
@@ -68,7 +68,7 @@ async function create({plan,catalog,week='',status,date,base,lectures=[]}){
   for(let i=0;i<7;i++){
    const d=Lernplan.add(w,i),us=plan.units.filter(u=>date(u)===d),cap=Lernplan.capacity(plan.config,d,lectures),min=us.reduce((s,u)=>s+Lernplan.cost(u,plan.config),0);
    dayTitle=dformat(d);need(68,false);page.drawRectangle({x:left,y:y-10,width,height:27,color:paper});text(dformat(d),left+8,y,11,teal);y-=29;
-   text(min+' / '+cap+' Min. verplant · '+Math.max(0,cap-min)+' Min. frei / Puffer',left,y,8.5,muted);y-=22;
+   text(Lernplan.duration(min)+' / '+Lernplan.duration(cap)+' verplant · '+Lernplan.duration(Math.max(0,cap-min))+' frei / Puffer',left,y,8.5,muted);y-=22;
    if(!us.length){text('Keine Einheit geplant.',left+20,y,10,muted);y-=27;continue;}
    for(const u of us)unitRow(u);
    need(20);page.drawLine({start:{x:left+22,y:y},end:{x:right,y:y},color:line,thickness:.5});y-=24;
@@ -76,7 +76,7 @@ async function create({plan,catalog,week='',status,date,base,lectures=[]}){
  }
  const pending=plan.units.filter(u=>!date(u)&&!status(u).done);
  if(pending.length&&!week){dayTitle='';section='Noch ohne Termin';newPage(section);para('Diese Einheiten haben vor ihren Klausuren noch keine passende Woche im Zeitbudget. Sie sind nicht ausgelassen; passe das Budget an und prüfe die Neuplanung.',10,teal);
-  for(const u of pending)para(u.module+' · '+u.label+' · '+u.title+' · '+u.min+' Min.',9);
+  for(const u of pending)para(u.module+' · '+u.label+' · '+u.title+' · '+Lernplan.duration(u.min),9);
  }
  if(!doc.getPageCount())newPage('Keine Einheiten in dieser Woche');
  const pages=doc.getPages();for(let i=0;i<pages.length;i++){page=pages[i];text('Stand '+stamp+' · Version '+(plan.number||1),left,28,7.5,muted);text((i+1)+' / '+pages.length,right-45,28,8,muted);}

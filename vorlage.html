@@ -856,7 +856,7 @@ const alleModule = [...new Set([...DATA.map(m => m.name), ...DECKS.map(d => d.na
 function fristen(mitErledigten = false) {
   const amtlich = PRUEFUNGEN.pruefungen.filter(p => p.angemeldet).map(p => ({ id: "pruefung-" + p.nummer + "-" + p.datum, titel: "Klausur " + p.titel,
     datum: p.datum, zeit: p.zeit || "", art: "klausur", modul: (p.module || [])[0] || "", module: p.module || [], amtlich: p,
-    notiz: [p.dauer ? p.dauer + " min" : "", p.versuch > 1 ? p.versuch + ". Versuch" : "", p.hinweis || ""].filter(Boolean).join(" · ") }));
+    notiz: [p.dauer ? Lernplan.duration(p.dauer) : "", p.versuch > 1 ? p.versuch + ". Versuch" : "", p.hinweis || ""].filter(Boolean).join(" · ") }));
   const doppelt = f => amtlich.some(a => a.datum === f.datum && (!f.modul || a.module.includes(f.modul)));
   const eigene = Object.entries(db.objekt("frist:")).map(([id, f]) => ({ id, ...f })).filter(f => f.art !== "klausur" || !doppelt(f));
   const ausPlan = PLAN.termine.filter(t => t.art === "Prüfung").map(t => ({ id: "plan-" + t.d + t.von, titel: t.t, datum: t.d, zeit: t.von,
@@ -912,7 +912,7 @@ function notenHtml() {
     ${N ? `<div class="notenkopf"><div><b>${noteText(N.schnitt)}</b><span>Notenschnitt</span></div><div><b>${N.ects}</b><span>ECTS erreicht</span></div>
       <div><b>${an.length}</b><span>Klausuren angemeldet</span></div></div>` : ""}
     ${an.length ? `<div class="kapitelkopf">Angemeldet im ${esc(PRUEFUNGEN.semester || "Semester")}</div>
-      ${an.map(p => `<div class="note"><div class="was"><b>${esc(p.titel)}</b><span>${mitJahr(p.datum)}${p.zeit ? `, ${p.zeit} Uhr` : ""}${p.dauer ? ` · ${p.dauer} min` : ""}${p.versuch > 1 ? ` · ${p.versuch}. Versuch` : ""}${p.hinweis ? " · " + esc(p.hinweis) : ""}<br>${esc(p.pruefer || "")}${p.nummer ? ` · Nr. ${esc(p.nummer)}` : ""}</span></div>
+      ${an.map(p => `<div class="note"><div class="was"><b>${esc(p.titel)}</b><span>${mitJahr(p.datum)}${p.zeit ? `, ${p.zeit} Uhr` : ""}${p.dauer ? ` · ${Lernplan.duration(p.dauer)}` : ""}${p.versuch > 1 ? ` · ${p.versuch}. Versuch` : ""}${p.hinweis ? " · " + esc(p.hinweis) : ""}<br>${esc(p.pruefer || "")}${p.nummer ? ` · Nr. ${esc(p.nummer)}` : ""}</span></div>
         <div class="wert klein">${p.ects ? p.ects + " ECTS" : ""}</div></div>`).join("")}` : ""}
     ${nicht.length ? `<p class="muted" style="margin:10px 0 0;font-size:14px">Nicht angemeldet: ${nicht.map(p => `${esc(p.titel)} (${fmtDate(p.datum)})`).join(", ")}.</p>` : ""}
     ${N ? `<details style="margin-top:12px"><summary class="muted" style="min-height:44px;cursor:pointer">Notenblatt (${N.faecher.length} Einträge)</summary>
@@ -1107,7 +1107,7 @@ function vorschläge(tag) {
     if (erreicht.length >= 5 && typ !== "abfrage") {
       const k = klausurInfo(m), min = Math.round(k.dauer * store.get("probe:tempo", 0.8));
       if (klausurTage <= 28) kandidaten.push({ key: `probe:${m}`, p: g.p + 1 + rnd() * 0.5, modul: m, titel: `Probeklausur ${m}`,
-        text: `${min} Minuten unter Zeitdruck${bis} · ${g.text}`, los: () => { store.set("lernen:teil", "probe"); location.hash = "#lernen/" + encodeURIComponent(m); } });
+        text: `${Lernplan.duration(min)} unter Zeitdruck${bis} · ${g.text}`, los: () => { store.set("lernen:teil", "probe"); location.hash = "#lernen/" + encodeURIComponent(m); } });
       else if (kapitelVon(erreicht).length >= 2 && (heute.includes(m) || gestern.includes(m) || woche.includes(m))) kandidaten.push({ key: `mix:${m}`, p: jitter() - 0.1 + bonus.r, modul: m,
         titel: `Mix-Serie ${m}`, text: `5 Aufgaben aus verschiedenen Kapiteln${bis} · ${g.text}`, los: () => probeStarten(modul, true) });
     }
@@ -1427,7 +1427,7 @@ function startSeite() {
         ${PLAN.tage[tag] ? `<div class="hinweis">${esc(PLAN.tage[tag])}</div>` : ""}
         ${läuft ? `<div class="jetzt">Gerade läuft<b>${esc(läuft.t)}</b>bis ${läuft.bis} Uhr${läuft.raum ? " · " + esc(läuft.raum) : ""}</div>`
           : nächste ? `<div class="jetzt">Als Nächstes um ${nächste.von} Uhr<b>${esc(nächste.t)}</b>${nächste.raum ? esc(nächste.raum) : ""}</div>` : ""}
-        ${pomo ? `<p class="muted" style="margin:12px 0 0">Heute schon ${pomo.n} Lerneinheit${pomo.n === 1 ? "" : "en"} (${pomo.min} Minuten) mit dem Pomodoro-Timer.</p>` : ""}
+        ${pomo ? `<p class="muted" style="margin:12px 0 0">Heute schon ${pomo.n} Lerneinheit${pomo.n === 1 ? "" : "en"} (${Lernplan.duration(pomo.min)}) mit dem Pomodoro-Timer.</p>` : ""}
       </div>
       <div class="panel"><div class="kasten-titel"><h2>Heute in der Hochschule</h2></div>${planListe(tag, jetzt)}
         <div class="kasten-titel" style="margin-top:20px"><h2 style="font-size:18px">${tagPlus(tag, 1) === morgenTag ? "Morgen" : wochentag(morgenTag) + ", " + langDatum(morgenTag).split(", ")[1]}</h2></div>
@@ -1560,7 +1560,7 @@ function termineSeite() {
         <div class="ganz" id="klausurfelder"${(f.art || "klausur") === "klausur" && f.modul ? "" : " hidden"}>
           <div class="row"><span style="font-size:14px;color:var(--muted)">Klausurtyp</span><div class="seg" id="ktyp">${Object.entries(KLAUSURTYPEN).map(([k, n]) =>
             `<button type="button" data-v="${k}" aria-pressed="${k === klausurInfo(f.modul).typ}">${n}</button>`).join("")}</div>
-            <label style="display:flex;align-items:center;gap:8px">Dauer<select name="kdauer">${[60, 90, 120, 180].map(n => `<option value="${n}"${n === klausurInfo(f.modul).dauer ? " selected" : ""}>${n} min</option>`).join("")}</select></label></div>
+            <label style="display:flex;align-items:center;gap:8px">Dauer<select name="kdauer">${[60, 90, 120, 180].map(n => `<option value="${n}"${n === klausurInfo(f.modul).dauer ? " selected" : ""}>${Lernplan.duration(n)}</option>`).join("")}</select></label></div>
           <p class="muted" style="margin:8px 0 0;font-size:14px">Transfer: Verstehen und Rechnen. Abfrage: Wissen abrufen. Danach richten sich Probeklausur und Tagesvorschläge.</p></div>
         <div class="ganz row"><button class="btn primary">${fristBearbeiten ? "Speichern" : "Eintragen"}</button>
           ${fristBearbeiten ? `<button type="button" class="btn" id="frist-abbrechen">Abbrechen</button><button type="button" class="link" id="frist-löschen">Löschen</button>` : ""}</div>
@@ -2350,7 +2350,7 @@ function lernenÜbersicht() {
   lernView.innerHTML = `<div class="panel pomokarte" style="margin-top:22px"><div class="zahl">🍅</div>
       <div><b style="font-family:var(--serif);font-size:20px">Pomodoro-Timer</b>
         <p class="muted" style="margin:2px 0 0">${pomodoro.läuft() ? `Läuft gerade: ${pomodoro.phaseName()} · ${pomodoro.anzeige()}` :
-          `Konzentriert lernen in festen Blöcken mit Pausen.${pomo ? ` Heute: ${pomo.n} Einheit${pomo.n === 1 ? "" : "en"}, ${pomo.min} Minuten.` : ""}`}</p></div>
+          `Konzentriert lernen in festen Blöcken mit Pausen.${pomo ? ` Heute: ${pomo.n} Einheit${pomo.n === 1 ? "" : "en"}, ${Lernplan.duration(pomo.min)}.` : ""}`}</p></div>
       <a class="btn primary" href="#lernen/pomodoro">${pomodoro.läuft() ? "Öffnen" : "Timer starten"}</a></div>
     <div class="modgrid">${LERNEN.map(m => {
       const auf = m.aufgaben || [], quiz = m.quiz || [];
@@ -2585,18 +2585,18 @@ function probeEinstellungen(m) {
       <p style="margin-top:0">Aufgaben aus verschiedenen Kapiteln, gemischt und ohne Überschrift, mit Uhr. Wie in der Klausur erkennst du selbst, welche Methode passt.
         ${lernreihe(m.name).schritt ? `Es kommt nur erreichter Stoff dran (bis ${esc(lernreihe(m.name).schritt.kurz)}).` : ""}</p>
       ${lauf && lauf.modul === m.name ? `<div class="row" style="margin-bottom:12px"><a class="btn${lauf.ab ? "" : " primary gross"}" href="#lernen/${encodeURIComponent(m.name)}/probe">${lauf.ab ? "Letzte Auswertung öffnen" : (lauf.mix ? "Mix-Serie" : "Probeklausur") + " fortsetzen"}</a></div>` : ""}
-      <div class="row"><label class="l">Klausurdauer</label>${seg("pdauer", [60, 90, 120, 180].map(n => [n, n + " min"]), k.dauer)}</div>
+      <div class="row"><label class="l">Klausurdauer</label>${seg("pdauer", [60, 90, 120, 180].map(n => [n, Lernplan.duration(n)]), k.dauer)}</div>
       <div class="row"><label class="l">Tempo</label>${seg("ptempo", [[0.8, "80 % der Zeit"], [1, "volle Zeit"]], tempo)}</div>
       <div class="row"><label class="l">Klausurtyp</label>${seg("ptyp", Object.entries(KLAUSURTYPEN), k.typ)}</div>
-      <p class="muted" style="margin:14px 0 0">Du hast <b>${Math.round(k.dauer * tempo)} Minuten</b>. ${k.typ === "transfer" ? "Fast nur Rechenaufgaben." : k.typ === "gemischt" ? "Rechenaufgaben und ein Teil Verständnisfragen." : "Etwa die Hälfte Verständnisfragen."}
+      <p class="muted" style="margin:14px 0 0">Du hast <b>${Lernplan.duration(Math.round(k.dauer * tempo))}</b>. ${k.typ === "transfer" ? "Fast nur Rechenaufgaben." : k.typ === "gemischt" ? "Rechenaufgaben und ein Teil Verständnisfragen." : "Etwa die Hälfte Verständnisfragen."}
         Aufgaben, die noch nicht sitzen, kommen bevorzugt.</p>
       <div class="row" style="margin-top:18px"><button class="btn primary gross" id="plos">Probeklausur starten</button></div>
       <p class="feynman" style="margin-top:16px">Rechne auf Papier, ohne Lernskript. Der Klausurtyp gilt auch für die Vorschläge auf der Startseite.</p></div>
     <div class="panel"><h2>Mix-Serie</h2>
       <p style="margin-top:0">Fünf Rechenaufgaben aus fünf verschiedenen Kapiteln, ohne Uhr. Gut für zwischendurch.</p>
       <button class="btn gross" id="pmix">Mix-Serie starten</button>
-      ${alt.length ? `<h2 style="margin-top:24px">Bisherige Versuche</h2>${alt.map(([t, e]) => `<div class="probezeile"><span>${new Date(+t).toLocaleDateString("de-DE", { day: "numeric", month: "short" })} · ${e.mix ? "Mix-Serie" : `Probeklausur ${e.dauer} min`}</span>
-        <span class="muted"><b style="color:var(--ink)">${e.ok}</b> von ${e.n} selbst gelöst${e.mix ? "" : ` · ${e.min} min gebraucht`}</span></div>`).join("")}` : ""}
+      ${alt.length ? `<h2 style="margin-top:24px">Bisherige Versuche</h2>${alt.map(([t, e]) => `<div class="probezeile"><span>${new Date(+t).toLocaleDateString("de-DE", { day: "numeric", month: "short" })} · ${e.mix ? "Mix-Serie" : `Probeklausur ${Lernplan.duration(e.dauer)}`}</span>
+        <span class="muted"><b style="color:var(--ink)">${e.ok}</b> von ${e.n} selbst gelöst${e.mix ? "" : ` · ${Lernplan.duration(e.min)} gebraucht`}</span></div>`).join("")}` : ""}
     </div></div>`;
 }
 function probeEreignisse(m) {
@@ -2646,11 +2646,11 @@ function probeSeite(m) {
   }
   const name = l.mix ? "Mix-Serie" : "Probeklausur", zurück = `#lernen/${encodeURIComponent(m.name)}`;
   if (!l.ab) {
-    kopf(`${name} ${m.name}`, `${auf.length} Aufgaben${l.mix ? "" : ` · ${l.dauer} Minuten`}`);
+    kopf(`${name} ${m.name}`, `${auf.length} Aufgaben${l.mix ? "" : ` · ${Lernplan.duration(l.dauer)}`}`);
     lernView.innerHTML = `<div class="probekopf"><a class="back" href="${zurück}">← Unterbrechen</a>
         ${l.mix ? `<b>${name}</b>` : `<div class="probeuhr" id="puhr">–<small>verbleibend</small></div>`}
         <button class="btn primary" id="pab">Abgeben</button></div>
-      ${auf.map((a, i) => `<div class="akarte"><div class="plab">Aufgabe ${i + 1} von ${auf.length}${l.mix ? "" : ` · etwa ${aufgabeMinuten(a)} min`}</div>
+      ${auf.map((a, i) => `<div class="akarte"><div class="plab">Aufgabe ${i + 1} von ${auf.length}${l.mix ? "" : ` · etwa ${Lernplan.duration(aufgabeMinuten(a))}`}</div>
         <div style="margin-top:10px">${baustein(a.a, "Aufgabe " + (i + 1))}</div></div>`).join("")}
       <p class="feynman" style="margin-top:18px">Ohne Lernskript und ohne Tipps. Wenn eine Aufgabe hängt: überspringen und später wiederkommen, wie in der echten Klausur.</p>`;
     let sicher = false;
@@ -2665,8 +2665,8 @@ function probeSeite(m) {
   const min = Math.round((l.ab - l.start) / 6e4), bewertet = auf.filter(a => l.bew[a.id]).length;
   kopf(`${name} ${m.name}`, "Auswertung");
   lernView.innerHTML = `<a class="back" href="${zurück}">← ${esc(m.name)}</a>
-    <div class="panel"><h2 style="margin-top:0">${l.mix ? "Mix-Serie geschafft" : `${min} von ${l.dauer} Minuten gebraucht`}</h2>
-      <p style="margin:0">${l.mix ? "" : min > l.dauer ? `Du warst ${min - l.dauer} Minuten über der Zeit. Übe die langsamen Aufgabentypen gezielt. ` : "In der Zeit geblieben. "}
+    <div class="panel"><h2 style="margin-top:0">${l.mix ? "Mix-Serie geschafft" : `${Lernplan.duration(min)} von ${Lernplan.duration(l.dauer)} gebraucht`}</h2>
+      <p style="margin:0">${l.mix ? "" : min > l.dauer ? `Du warst ${Lernplan.duration(min - l.dauer)} über der Zeit. Übe die langsamen Aufgabentypen gezielt. ` : "In der Zeit geblieben. "}
         Bewerte jetzt jede Aufgabe ehrlich. ${bewertet < auf.length ? `Noch ${auf.length - bewertet} offen.` : "Alles bewertet, die Vorschläge auf der Startseite richten sich danach."}</p></div>
     ${auf.map((a, i) => `<div class="akarte"><div class="plab">Aufgabe ${i + 1} · ${esc(a.k)}</div><h2>${esc(a.t)}</h2>
       ${l.erg[a.id] && a.erg ? `<div class="extra erg"><div class="lab">Ergebnis zum Vergleichen</div>${baustein(a.erg, "Ergebnis")}</div>` : ""}
@@ -2919,7 +2919,7 @@ function pomodoroSeite() {
   const e = pomodoro.einst(), z = pomodoro.z, tag = db.get("pomo:" + heuteIso(), null);
   kopf("Pomodoro-Timer", `${pomodoro.phaseName()} · Runde ${z.runde}`);
   const stepper = (k, name, min, max, schritt) => `<div class="stepper"><span>${name}</span><div class="w">
-    <button data-k="${k}" data-d="${-schritt}" aria-label="weniger">−</button><b>${e[k]}${k === "runden" ? "" : " min"}</b>
+    <button data-k="${k}" data-d="${-schritt}" aria-label="weniger">−</button><b>${k === "runden" ? e[k] : Lernplan.duration(e[k])}</b>
     <button data-k="${k}" data-d="${schritt}" data-max="${max}" data-min="${min}" aria-label="mehr">+</button></div></div>`;
   lernView.innerHTML = `<a class="back" href="#lernen">← Lernen</a><div class="pomo"><div class="panel" style="text-align:center">
       <div class="seg" style="margin-bottom:6px">${["lern", "pause", "lang"].map(p => `<button data-p="${p}" aria-pressed="${z.phase === p}">${pomodoro.phaseName(p)}</button>`).join("")}</div>
@@ -2934,8 +2934,8 @@ function pomodoroSeite() {
       <div class="panel"><h2>Einstellungen</h2>
         ${stepper("lern", "Lernzeit", 5, 120, 5)}${stepper("pause", "Kurze Pause", 1, 30, 1)}${stepper("lang", "Lange Pause", 5, 60, 5)}${stepper("runden", "Lange Pause nach … Runden", 2, 8, 1)}
         <label class="schalter"><input type="checkbox" id="pauto"${e.auto ? " checked" : ""}> Nächste Phase automatisch starten</label></div>
-      <div class="panel"><h2>Heute</h2><p style="margin:0">${tag ? `<b>${tag.n}</b> Lerneinheit${tag.n === 1 ? "" : "en"}, <b>${tag.min}</b> Minuten konzentriert gelernt.` : "Noch keine abgeschlossene Lerneinheit."}</p>
-        ${tag?.module ? `<p class="muted" style="margin:6px 0 0">${Object.entries(tag.module).map(([m, n]) => `${esc(m)}: ${n} min`).join(" · ")}</p>` : ""}
+      <div class="panel"><h2>Heute</h2><p style="margin:0">${tag ? `<b>${tag.n}</b> Lerneinheit${tag.n === 1 ? "" : "en"}, <b>${Lernplan.duration(tag.min)}</b> konzentriert gelernt.` : "Noch keine abgeschlossene Lerneinheit."}</p>
+        ${tag?.module ? `<p class="muted" style="margin:6px 0 0">${Object.entries(tag.module).map(([m, n]) => `${esc(m)}: ${Lernplan.duration(n)}`).join(" · ")}</p>` : ""}
         <p class="feynman" style="margin-top:12px">In der Pause wirklich weg vom Stoff: aufstehen, trinken, aus dem Fenster schauen. Danach in einem Satz sagen, was du gerade gelernt hast.</p></div>
     </div></div>`;
   $("#pstart")?.addEventListener("click", () => { pomodoro.start(); pomodoroSeite(); });

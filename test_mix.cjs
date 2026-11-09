@@ -27,7 +27,7 @@ const view = {
 const m = { name: 'Finanzierung', aufgaben: Array.from({ length: 7 }, (_, i) => ({
   id: 'a' + i, nr: i + 1, k: 'Kapitel ' + i, t: 'Aufgabe ' + i, art: 'rechnen', a: {}, erg: {}, s: [{}, {}],
 })) };
-const c = {
+const c = { Lernplan: require('./lernplan.js'),
   LERNEN: [m], DECKS: [], lernView: view, location: { hash: '' },
   store: { get: (k, d) => clone(state.has(k) ? state.get(k) : d), set: (k, v) => state.set(k, clone(v)) },
   db: { get: (k, d) => stand.get(k) ?? d, set: (k, v) => stand.set(k, v) },

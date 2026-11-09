@@ -85,7 +85,7 @@ function lpAnzeigePlan(p,c){
  const missing=p.units.filter(u=>!lpDatum(u,p)&&!lpStand(u,c,p).done).reduce((n,u)=>n+Lernplan.cost(u,p.config),0);
  const warnings=[];
  if(p.overbooked)warnings.push('Erledigte Einheiten belegen in einer Woche mehr als das neue Budget. Ihre Historie bleibt erhalten.');
- if(missing)warnings.push(`${missing} Minuten haben vor den Klausuren noch keine passende Woche. Sie bleiben sichtbar offen; dein Wochenbudget wird eingehalten.`);
+ if(missing)warnings.push(`Noch ohne passende Woche: ${Lernplan.duration(missing)}. Die Einheiten bleiben sichtbar offen; dein Wochenbudget wird eingehalten.`);
  const squeezed=p.units.filter(u=>!u.review&&lpDatum(u,p)&&!lpStand(u,c,p).done&&Lernplan.add(lpDatum(u,p),6)>=Lernplan.add(u.deadline,-10)).length;
  if(squeezed)warnings.push(`${squeezed} Einheiten liegen in Wochen, die sich mit der Wiederholungsphase überschneiden.`);
  const expired=p.units.filter(u=>!lpStand(u,c,p).done&&u.deadline<=heuteIso()).length;
@@ -136,13 +136,13 @@ function lpFreigegeben(u){
 function lpTagesvorschläge(tag){
  let p=lpPlan();if(!p)return null;lpTageswechsel(p);p=lpPlan();const w=Lernplan.week(tag);
  return p.units.filter(u=>lpDatum(u,p)===w).map(u=>({key:'lernplan:'+u.id,art:'lernplan',modul:u.module,kapitel:u.id,plan:p.id,
-  titel:u.module+' · '+u.label+' · '+lpArt[u.type],text:`Dein Wochenziel · KW ${Lernplan.kw(w)} · ca. ${u.min} Min. · ${u.title}`,link:'#termine/lernplan/'+w,ids:u.targets}));
+  titel:u.module+' · '+u.label+' · '+lpArt[u.type],text:`Dein Wochenziel · KW ${Lernplan.kw(w)} · ca. ${Lernplan.duration(u.min)} · ${u.title}`,link:'#termine/lernplan/'+w,ids:u.targets}));
 }
 function lpStartWocheHtml(){
  const p=lpPlan();if(!p)return '';const c=lpKatalog(p),w=Lernplan.week(heuteIso()),us=p.units.filter(u=>lpDatum(u,p)===w),done=us.filter(u=>lpStand(u,c,p).done),open=us.filter(u=>!lpStand(u,c,p).done),minutes=open.reduce((n,u)=>n+Lernplan.cost(u,p.config),0);
  return `<div class="panel lp-startwoche"><div class="kasten-titel"><h2>Diese Woche</h2><span class="tagesfortschritt">${done.length} von ${us.length} erledigt</span></div>${lpHinweisHtml(p)}
- <p><b>Noch ${open.length} Einheiten · ca. ${minutes} Min. einschließlich Pausen</b></p><p class="muted">Du entscheidest, an welchen Tagen du deine Wochenziele erledigst. Innerhalb eines Fachs bleibt die Abschnittsreihenfolge erhalten.</p>
- ${[...new Set(us.map(u=>u.module))].map(name=>{const tasks=us.filter(u=>u.module===name),left=tasks.filter(u=>!lpStand(u,c,p).done),next=left.find(lpFreigegeben),index=next?tagesliste.findIndex(v=>v.kapitel===next.id):-1;return `<div class="lp-startmodul"><div><b>${esc(name)}</b><span>${tasks.length-left.length}/${tasks.length} Einheiten · noch ca. ${left.reduce((n,u)=>n+Lernplan.cost(u,p.config),0)} Min.</span></div>${next?`<button class="btn" data-los="${index}">Starten</button>`:`<span class="muted">${left.length?(left.some(u=>u.notBefore>heuteIso())?'Weitere Ziele ab ihrer Wiederholungsphase':'Zuerst frühere Abschnitte bearbeiten'):'Erledigt'}</span>`}</div>`;}).join('')||'<p class="muted">Für diese Woche sind keine Einheiten eingeplant.</p>'}
+ <p><b>Noch ${open.length} Einheiten · ca. ${Lernplan.duration(minutes)} einschließlich Pausen</b></p><p class="muted">Du entscheidest, an welchen Tagen du deine Wochenziele erledigst. Innerhalb eines Fachs bleibt die Abschnittsreihenfolge erhalten.</p>
+ ${[...new Set(us.map(u=>u.module))].map(name=>{const tasks=us.filter(u=>u.module===name),left=tasks.filter(u=>!lpStand(u,c,p).done),next=left.find(lpFreigegeben),index=next?tagesliste.findIndex(v=>v.kapitel===next.id):-1;return `<div class="lp-startmodul"><div><b>${esc(name)}</b><span>${tasks.length-left.length}/${tasks.length} Einheiten · noch ca. ${Lernplan.duration(left.reduce((n,u)=>n+Lernplan.cost(u,p.config),0))}</span></div>${next?`<button class="btn" data-los="${index}">Starten</button>`:`<span class="muted">${left.length?(left.some(u=>u.notBefore>heuteIso())?'Weitere Ziele ab ihrer Wiederholungsphase':'Zuerst frühere Abschnitte bearbeiten'):'Erledigt'}</span>`}</div>`;}).join('')||'<p class="muted">Für diese Woche sind keine Einheiten eingeplant.</p>'}
  ${p.units.some(u=>!lpDatum(u,p)&&!lpStand(u,c,p).done)?'<p class="hinweis">Es gibt noch Einheiten ohne passende Woche. Prüfe die offenen Ziele im Lernplan.</p>':''}
  <p><a class="btn primary" href="#termine/lernplan/${w}">Alle Wochenaufgaben ansehen</a></p></div>`;
 }
@@ -157,11 +157,11 @@ function lpFormConfig(form,today=heuteIso()){
 }
 function lpBedarfHtml(c,catalog,exams,p){
  const old=p?{...p,units:p.units.map(u=>({...u,week:lpDatum(u,p)}))}:null;
- const b=Lernplan.weeklyBudget(c,catalog,exams,{old,status:u=>lpStand(u,catalog,p),today:heuteIso(),lectures:lpVorlesungen()}),format=n=>`${Math.floor(n/60)} Std.${n%60?' '+n%60+' Min.':''}`;
+ const b=Lernplan.weeklyBudget(c,catalog,exams,{old,status:u=>lpStand(u,catalog,p),today:heuteIso(),lectures:lpVorlesungen()}),format=Lernplan.duration;
  const reserve=Math.ceil(c.weeklyMinutes*c.buffer),usable=Math.floor(c.weeklyMinutes*(1-c.buffer));
- return `<h2>Dein Wochenbudget</h2><p class="lp-bedarf-zahl"><b>${format(c.weeklyMinutes)}</b><span>${c.weeklyMinutes} Minuten pro Woche · du teilst sie selbst ein</span></p>
+ return `<h2>Dein Wochenbudget</h2><p class="lp-bedarf-zahl"><b>${format(c.weeklyMinutes)}</b><span>Du teilst deine Lernzeit innerhalb der Woche selbst ein</span></p>
  <div class="lp-bedarf-anteile"><p><b>${format(usable)}</b><span>für Wochenaufgaben einschließlich Pausen verfügbar</span></p><p><b>${format(reserve)}</b><span>als ${Math.round(c.buffer*100)} % Reserve freigehalten</span></p></div>
- ${b.state==='empty'?'<p>Wähle deine Klausuren, um die Wochenziele zu berechnen.</p>':b.state==='impossible'?'<p class="hinweis">Für einzelne Einheiten gibt es vor der Klausur keine passende Woche. Prüfe Startdatum, freie Tage, Klausurtermine und die Einheitenlänge.</p>':`<p>Der Richtwert für den vollständigen bekannten Stoff liegt bei <b>${format(b.weekly)} pro Woche</b>${b.reviewReserved?' einschließlich einer freien Wiederholungsphase':''}.</p>${b.missing?`<p class="hinweis">Bei deinem Budget haben ${b.missing} Minuten noch keine passende Woche. Die Vorschau zeigt die verbleibende Lücke.</p>`:b.squeezed?'<p class="hinweis">Die Einheiten passen ins Budget; einige Wochen überschneiden sich mit der Wiederholungsphase.</p>':'<p>Der bekannte Stoff lässt sich mit diesem Budget vollständig einplanen.</p>'}`}
+ ${b.state==='empty'?'<p>Wähle deine Klausuren, um die Wochenziele zu berechnen.</p>':b.state==='impossible'?'<p class="hinweis">Für einzelne Einheiten gibt es vor der Klausur keine passende Woche. Prüfe Startdatum, freie Tage, Klausurtermine und die Einheitenlänge.</p>':`<p>Der Richtwert für den vollständigen bekannten Stoff liegt bei <b>${format(b.weekly)} pro Woche</b>${b.reviewReserved?' einschließlich einer freien Wiederholungsphase':''}.</p>${b.missing?`<p class="hinweis">Noch ohne passende Woche bei deinem Budget: ${format(b.missing)}. Die Vorschau zeigt die verbleibende Lücke.</p>`:b.squeezed?'<p class="hinweis">Die Einheiten passen ins Budget; einige Wochen überschneiden sich mit der Wiederholungsphase.</p>':'<p>Der bekannte Stoff lässt sich mit diesem Budget vollständig einplanen.</p>'}`}
  <p class="muted">Das Budget gilt für deine verfügbare Zeit neben den Vorlesungen. Die Zeitansätze sind Schätzungen. ${c.buffer<.1?'Mit wenig Reserve bleibt weniger Spielraum zum Nachholen.':''} Eine neue Planung wird erst nach der Vorschau und deinem Übernehmen gespeichert.</p>`;
 }
 function lpForm(c){const exam=lpPrüfungen();return `<form id="lp-form" class="formular">
@@ -175,23 +175,23 @@ function lpForm(c){const exam=lpPrüfungen();return `<form id="lp-form" class="f
 
  <label class="ganz schalter"><input type="checkbox" name="reading"${c.reading?' checked':''}>Skriptlektüre als eigene Einheit einplanen</label>
  <fieldset class="ganz"><legend>Klausuren</legend>${exam.map(e=>`<label class="schalter"><input name="exam" type="checkbox" value="${e.id}"${c.exams.includes(e.id)?' checked':''}>${esc(e.title)} · ${fmtDate(e.date)} · ${esc(e.modules.join(' + '))}</label>`).join('')||'<p>Trage zuerst eine Klausur mit Datum und Modul ein.</p>'}</fieldset>
- <p class="muted ganz">Die vorgegebenen Zeiten sind ein veränderbares Beispiel. Deine eingestellte Zeitreserve bleibt als Puffer frei; Nachholen nutzt sie bei Bedarf. Pausen zählen zum Budget. Aufgabenzeiten sind Schätzungen, Quiz etwa 2 Min. und Karten etwa 0,6 Min.</p>
+ <p class="muted ganz">Die vorgegebenen Zeiten sind ein veränderbares Beispiel. Deine eingestellte Zeitreserve bleibt als Puffer frei; Nachholen nutzt sie bei Bedarf. Pausen zählen zum Budget. Aufgabenzeiten sind Schätzungen, Quiz etwa 2 Min. und Karten etwa 36 Sek.</p>
  <div class="ganz row"><button class="btn primary"${exam.length?'':' disabled'}>Vorschau berechnen</button><span id="lp-formfehler" role="alert"></span></div></form>`;}
 function lpEinheit(u,p,c){
  const s=lpStand(u,c,p),free=lpFreigegeben(u),w=lpDatum(u,p),m=c.find(m=>m.name===u.module),source=m?.sections.find(s=>s.key===u.section)?.source;
  const window=w?Lernplan.windowFor(u,w,p.config):null,dates=window?[window.from>w?'Ab '+fmtDate(window.from):'',window.until<Lernplan.add(w,6)?'Spätestens '+fmtDate(window.until):''].filter(Boolean).join(' · '):'';
  return `<div class="lp-einheit${s.done?' erledigt':''}" id="lp-${u.id}"><button class="haken${s.done?' an':''}" data-lp-haken="${u.id}" aria-label="${s.manual?'Manuellen Haken entfernen':'Manuell erledigt markieren'}: ${esc(u.title)}" aria-pressed="${s.done}">${s.done?'✓':''}</button>
- <div class="was"><b>${esc(u.label)} · ${esc(lpArt[u.type])}</b><span>${esc(u.title)} · ca. ${u.min} Min.${u.min>=20?' + '+p.config.pause+' Min. Pause':''}</span>
+ <div class="was"><b>${esc(u.label)} · ${esc(lpArt[u.type])}</b><span>${esc(u.title)} · ca. ${Lernplan.duration(u.min)}${u.min>=20?' + '+Lernplan.duration(p.config.pause)+' Pause':''}</span>
  <span>${s.success?'Erfolgreich abgeschlossen':s.manual?'Manuell erledigt':s.worked?'Bearbeitet, noch offen':u.notBefore>heuteIso()?'Verfügbar ab '+fmtDate(u.notBefore):free?'Offen':'Zuerst den vorherigen Abschnitt abschließen'}${s.total>1?' · '+s.n+'/'+s.total+' Ziele':''}</span>
  ${dates?`<span class="lp-frist">${esc(dates)}</span>`:''}${!s.done&&u.deadline<=heuteIso()?'<span class="hinweis">Klausurfrist bereits verstrichen</span>':''}${source?quellenLink(m.pdf,source):''}</div>
  <button class="btn" data-lp-start="${u.id}"${free?'':' disabled'}>${u.type==='lesen'?'Lesen':s.done?'Noch einmal':'Starten'}</button></div>`;
 }
 function lpWochenliste(p,c,w){
  const us=p.units.filter(u=>lpDatum(u,p)===w),done=us.filter(u=>lpStand(u,c,p).done),open=us.filter(u=>!lpStand(u,c,p).done),total=us.reduce((n,u)=>n+Lernplan.cost(u,p.config),0),remaining=open.reduce((n,u)=>n+Lernplan.cost(u,p.config),0),budget=Lernplan.weeklyCapacity(p.config,w,lpVorlesungen(),p.config.start,done.reduce((n,u)=>n+Lernplan.cost(u,p.config),0));
- return `<p class="lp-wochenfortschritt"><b>${done.length} von ${us.length} Einheiten erledigt</b> · noch ${open.length} Einheiten mit ca. ${remaining} Min. einschließlich Pausen</p>
+ return `<p class="lp-wochenfortschritt"><b>${done.length} von ${us.length} Einheiten erledigt</b> · noch ${open.length} Einheiten mit ca. ${Lernplan.duration(remaining)} einschließlich Pausen</p>
  <progress class="lp-fortschritt" value="${done.length}" max="${Math.max(1,us.length)}" aria-label="Fortschritt dieser Woche"></progress>
- <p class="muted">${Lernplan.add(w,6)<p.config.start?'Abgeschlossene Wochenhistorie · '+total+' Min. ursprüngliche Ziele.':total+' / '+budget+' Min. belegt · '+Math.max(0,budget-total)+' Min. frei einschließlich Reserve.'} Du entscheidest, wann du diese Woche lernst. Fristen und Beginn der Wiederholungen stehen bei den betreffenden Einheiten.</p>
- ${[...new Set(us.map(u=>u.module))].map(name=>{const tasks=us.filter(u=>u.module===name),finished=tasks.filter(u=>lpStand(u,c,p).done).length;return `<details class="lp-wochenmodul" open><summary><b>${esc(name)}</b><span>${finished}/${tasks.length} erledigt · ca. ${tasks.filter(u=>!lpStand(u,c,p).done).reduce((n,u)=>n+Lernplan.cost(u,p.config),0)} Min. offen</span></summary>${tasks.map(u=>lpEinheit(u,p,c)).join('')}</details>`;}).join('')||'<p class="muted">Für diese Woche sind keine Einheiten eingeplant.</p>'}`;
+ <p class="muted">${Lernplan.add(w,6)<p.config.start?'Abgeschlossene Wochenhistorie · '+Lernplan.duration(total)+' ursprüngliche Ziele.':Lernplan.duration(total)+' / '+Lernplan.duration(budget)+' belegt · '+Lernplan.duration(Math.max(0,budget-total))+' frei einschließlich Reserve.'} Du entscheidest, wann du diese Woche lernst. Fristen und Beginn der Wiederholungen stehen bei den betreffenden Einheiten.</p>
+ ${[...new Set(us.map(u=>u.module))].map(name=>{const tasks=us.filter(u=>u.module===name),finished=tasks.filter(u=>lpStand(u,c,p).done).length;return `<details class="lp-wochenmodul" open><summary><b>${esc(name)}</b><span>${finished}/${tasks.length} erledigt · ca. ${Lernplan.duration(tasks.filter(u=>!lpStand(u,c,p).done).reduce((n,u)=>n+Lernplan.cost(u,p.config),0))} offen</span></summary>${tasks.map(u=>lpEinheit(u,p,c)).join('')}</details>`;}).join('')||'<p class="muted">Für diese Woche sind keine Einheiten eingeplant.</p>'}`;
 }
 function lpKapitel(c){return c.map(m=>{const chapters=new Map();for(const s of m.sections){const k=s.label.replace(/Abschnitt (\d+)\.\d+/, 'Kapitel $1');if(!chapters.has(k))chapters.set(k,[]);chapters.get(k).push(s);}
  return `<details class="lp-modul"><summary>${esc(m.name)} · ${m.sections.filter(s=>s.complete).length}/${m.sections.length} Abschnitte</summary>${[...chapters].map(([name,ss])=>`<p>${ss.every(s=>s.complete)?'☑':'☐'} <b>${esc(name)}</b> · ${ss.filter(s=>s.complete).length}/${ss.length} Abschnitte abgeschlossen</p>`).join('')}</details>`;}).join('');}
