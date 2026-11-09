@@ -178,6 +178,38 @@ console.log('OK: Automatische Folgetage; kein Überbuchen; erledigte Historie; f
  console.log('OK: Adapter-Migration; Nulltermine; atomarer Geräteabgleich; ergänzte Einheiten.');
 }
 
+// Ansicht und Rückkehr bleiben unabhängig vom Lernstand und von der Planversion erhalten.
+{
+ const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+ const source=fs.readFileSync(path.join(__dirname,'lernplan-ui.js'),'utf8'),state=new Map(),session=new Map();
+ const c={Lernplan:L,heuteIso:()=> '2026-11-09',lpDatum:u=>u.week,location:{hash:'#termine/lernplan/2026-11-16'},
+  db:{get:(k,d)=>state.get(k)??d,set:(k,v)=>state.set(k,v)},
+  sessionStorage:{getItem:k=>session.get(k)??null,setItem:(k,v)=>session.set(k,v),removeItem:k=>session.delete(k)},
+  termineView:{querySelectorAll:()=>[]},window:{scrollY:315}};
+ vm.createContext(c);vm.runInContext('let lpAnsicht=null,lpRueckkehr;'+source.slice(source.indexOf('function lpModulOffen('),source.indexOf('function lpStandard(')),c);
+ assert(c.lpModulOffen('FET'));
+ const el={isConnected:true,dataset:{lpModul:'FET'},open:false};
+ vm.runInContext('lpAnsicht={plan:"test",week:"2026-11-16"}',c);c.lpModulMerken(el);
+ assert.equal(c.lpModulOffen('FET'),false);
+ state.set('einst:lernplan:modul:FET',true);c.lpModulMerken(el);assert(c.lpModulOffen('FET'),'Eine unveränderte Ansicht überschreibt keine neu synchronisierte Einstellung');
+ state.set('einst:lernplan:modul:FET',false);
+ c.lpAnsichtVerlassen();assert.equal(session.get('studium:lernplan:scroll:test:2026-11-16'),'315');
+ el.open=true;c.lpModulMerken(el);assert.equal(c.lpModulOffen('FET'),false,'Eine ausgeblendete alte Ansicht überschreibt die Einstellung nicht');
+ const u={id:'ziel',module:'technische Mechanik',type:'aufgaben',week:'2026-11-09'};
+ c.lpRueckkehrSpeichern(u,{id:'test'});assert.equal(c.lpRueckkehrLesen().week,'2026-11-16','Ausgewählte Woche hat Vorrang');
+ c.location.hash='#lernen/technische%20Mechanik/aufgabe/a1';c.lpNavigationPruefen();assert(c.lpRueckkehrAktiv());
+ const target='#termine/lernplan/2026-11-16/ziel/ziel/technische%20Mechanik';
+ assert.equal(c.lpRueckweg('#lernen'),target);assert.equal(c.lpRuecktext('Modul'),'Zum Wochenplan');
+ vm.runInContext('lpRueckkehr=undefined',c);assert.equal(c.lpRueckweg('#lernen'),target,'Neuladen einer Übung erhält den Rückweg');
+ c.location.hash=target;c.lpNavigationPruefen();assert(c.lpRueckkehrLesen());
+ c.location.hash='#start';c.lpNavigationPruefen();assert.equal(c.lpRueckkehrLesen(),null);
+ c.location.hash='#lernen/technische%20Mechanik/aufgabe/a1';assert.equal(c.lpRueckweg('#lernen'),'#lernen','Normaler Einstieg übernimmt keinen alten Rückweg');
+ c.location.hash='#termine/lernplan';c.lpRueckkehrSpeichern(u,{id:'test'});
+ c.location.hash='#lernen/technische%20Mechanik/quiz';assert.equal(c.lpRueckkehrAktiv(),false,'Der Rückweg gilt nur für das gestartete Lernformat');
+ c.location.hash='#termine/lernplan';c.lpNavigationPruefen();assert(c.lpRueckkehrLesen(),'Browser-Zurück zur aktuellen Woche erhält das Ziel');
+ console.log('OK: Fachlisten gespeichert; Wochenposition; gewählte Woche; Übungs-Neuladen; Browser-Zurück; normaler Einstieg ohne fremden Rückweg.');
+}
+
 // Wochenziele: ein Budget statt sieben Tagesbudgets, echte Fristen und stabile Wochen.
 {
  const start='2026-11-09',modules=['GET','Finanzierung','Investitionsrechnung'].map(moduleData);

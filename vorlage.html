@@ -2235,7 +2235,7 @@ function zeigen() {
   if (!s.queue.length) return ende();
   const c = s.queue[0];
   const st = s.frei ? null : kartenStand(c.d.name)[c.id];
-  const zurück = kartenLink(s.deck.name);
+  const zurück = lpRueckweg(kartenLink(s.deck.name));
   s.umgedreht = false;
   const vorschau = s.frei ? ["heute nochmal", "", "", ""] : [1, 2, 3, 4].map(n => dauer(planen(st, n)));
   const offen = s.queue.length;
@@ -2243,7 +2243,7 @@ function zeigen() {
   const bilder = (c.i || []).map((b, n) => `<figure class="abb"><button type="button" data-bild="${n}" aria-label="Abbildung groß ansehen">
       <img src="${b.src}" alt="${esc(ohneTags(b.cap))}" loading="lazy"></button>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`).join("");
   const quelle = quellenLink(c.d.pdf, c.s);
-  view.innerHTML = `<div class="topbar"><a class="back" href="${zurück}">← ${esc(s.deck.name)}</a>
+  view.innerHTML = `<div class="topbar"><a class="back" href="${zurück}">← ${esc(lpRuecktext(s.deck.name))}</a>
       <div class="bar"><i style="width:${Math.round(100 * s.fertig / (s.fertig + offen))}%"></i></div>
       <span class="zahl">${s.fertig} / ${s.fertig + offen}</span></div>
     <div class="status"><span>${esc(c.k)}</span>
@@ -2315,13 +2315,13 @@ function ende() {
   lernAktivität("kartenrunde", s.deck.name, String(s.beginn), { fertig: true, ids: [...s.gesehen], kapitel: s.kapitel, frei: s.frei }, s.tag);
   document.body.classList.remove("lernen");
   const nochNeu = s.modus === "plan" && zählen(s.deck, s.kapitel).neu > 0;
-  view.innerHTML = `<a class="back" href="${kartenLink(s.deck.name)}">← ${esc(s.deck.name)}</a>
+  view.innerHTML = `<a class="back" href="${lpRueckweg(kartenLink(s.deck.name))}">← ${esc(lpRuecktext(s.deck.name))}</a>
     <div class="panel done"><h2>Runde geschafft 🎉</h2>
       <p class="muted">${s.fertig} Karten erledigt · ${s.stats[1]}× Nochmal${s.frei ? "" : ` · ${s.stats[2]}× Schwer · ${s.stats[3]}× Gut · ${s.stats[4]}× Leicht`}</p>
       <p>Die Karten, bei denen deine Erklärung gehakt hat, kommen bald wieder. Die sicheren erst in einigen Tagen.</p>
       ${lernImpuls()}<div class="row">${nochNeu ? `<button class="btn primary" id="mehr">Weitere neue Karten</button>` : ""}
         <button class="btn" id="frei">Frei üben (neu gemischt)</button>
-        <a class="btn" href="${kartenLink(s.deck.name)}">Zur Kartenauswahl</a>
+        <a class="btn" href="${lpRueckweg(kartenLink(s.deck.name))}">${lpRuecktext("Zur Kartenauswahl")}</a>
         <a class="btn" href="#lernen">Alle Module</a></div></div>`;
   sitzung = null;
   view.querySelector("#mehr")?.addEventListener("click", () => starten(s.deck, s.kapitel, s.modus));
@@ -2425,7 +2425,7 @@ function modulSeite(m, teil) {
         }).join("")}
         <p class="feynman" style="margin-top:14px">Bei jeder Antwort steht, warum sie stimmt oder nicht. Lies auch die Erklärungen der falschen Antworten: Genau dort sitzen die typischen Denkfehler.</p></div></div>`;
   }
-  lernView.innerHTML = `<a class="back" href="#lernen">← Lernen</a>
+  lernView.innerHTML = `<a class="back" href="${lpRueckweg("#lernen")}">← ${lpRuecktext("Lernen")}</a>
     <div class="row" style="justify-content:space-between;margin:6px 0 4px"><div class="seg" id="teil">
       ${auf.length ? `<button data-t="aufgaben" aria-pressed="${teil === "aufgaben"}">Aufgaben (${auf.length})</button>` : ""}
       ${quiz.length ? `<button data-t="quiz" aria-pressed="${teil === "quiz"}">Quiz (${quiz.length})</button>` : ""}
@@ -2470,10 +2470,11 @@ function aufgabeSeite(m, a, probe = null) {
   if (offenAufgabe?.id !== a.id || offenAufgabe?.kontext !== kontext) offenAufgabe = { id: a.id, kontext, schritte: 0, tipp: false, erg: false, tag: probe ? probe.tag || iso(new Date(probe.start)) : heuteIso() };
   const o = offenAufgabe, status = probe ? probe.bew[a.id] : aufgabeStand(a)?.s;
   const name = probe ? probe.mix ? "Mix-Serie" : "Probeklausur" : "Lernen";
-  const zurück = `#lernen/${encodeURIComponent(m.name)}${probe ? "/probe" : ""}`;
-  const rücktext = probe ? probe.mix ? "Zur Mix-Übersicht" : "Zur Auswertung" : m.name;
+  const basis = `#lernen/${encodeURIComponent(m.name)}${probe ? "/probe" : ""}`;
+  const zurück = probe ? basis : lpRueckweg(basis);
+  const rücktext = probe ? probe.mix ? "Zur Mix-Übersicht" : "Zur Auswertung" : lpRuecktext(m.name);
   kopf(m.name, `${name} · Aufgabe ${i + 1} von ${liste.length}`);
-  const link = x => `${zurück}/aufgabe/${x.id}`;
+  const link = x => `${basis}/aufgabe/${x.id}`;
   const fertig = o.schritte >= a.s.length;
   lernView.innerHTML = `<div class="topbar" style="margin-top:8px;flex-wrap:wrap"><a class="back" href="${zurück}">← ${esc(rücktext)}</a>
       <span class="zahl">${i + 1} / ${liste.length}</span>
@@ -2525,6 +2526,8 @@ function aufgabeSeite(m, a, probe = null) {
       meldung("Gespeichert. Die Aufgabe bleibt dran, bis du sie selbst löst: Rechne sie gleich noch einmal ohne Lösung oder morgen wieder.", 6500);
       return;
     }
+    const wochenplan = lpRueckweg("");
+    if (wochenplan) { offenAufgabe = null; location.hash = wochenplan; return; }
     const r = lernreihe(m.name), weiter = r.schritt?.aufgaben.find(x => aufgabeStand(x)?.s !== "ok") || liste.slice(i + 1).find(x => aufgabeStand(x)?.s !== "ok") || nach;
     if (weiter && r.front && !r.erreicht(weiter)) {
       offenAufgabe = null; location.hash = `#lernen/${encodeURIComponent(m.name)}`;
@@ -2644,10 +2647,10 @@ function probeSeite(m) {
     modulSeite(m, "probe");
     return meldung("Dieser ältere Versuch enthält späteren Stoff. Starte einen neuen Versuch aus den erreichten Abschnitten.", 6500);
   }
-  const name = l.mix ? "Mix-Serie" : "Probeklausur", zurück = `#lernen/${encodeURIComponent(m.name)}`;
+  const name = l.mix ? "Mix-Serie" : "Probeklausur", basis = `#lernen/${encodeURIComponent(m.name)}`, zurück = lpRueckweg(basis);
   if (!l.ab) {
     kopf(`${name} ${m.name}`, `${auf.length} Aufgaben${l.mix ? "" : ` · ${Lernplan.duration(l.dauer)}`}`);
-    lernView.innerHTML = `<div class="probekopf"><a class="back" href="${zurück}">← Unterbrechen</a>
+    lernView.innerHTML = `<div class="probekopf"><a class="back" href="${zurück}">← ${lpRuecktext("Unterbrechen")}</a>
         ${l.mix ? `<b>${name}</b>` : `<div class="probeuhr" id="puhr">–<small>verbleibend</small></div>`}
         <button class="btn primary" id="pab">Abgeben</button></div>
       ${auf.map((a, i) => `<div class="akarte"><div class="plab">Aufgabe ${i + 1} von ${auf.length}${l.mix ? "" : ` · etwa ${Lernplan.duration(aufgabeMinuten(a))}`}</div>
@@ -2664,7 +2667,7 @@ function probeSeite(m) {
   // Auswertung: jede Aufgabe ehrlich bewerten, Ergebnis und Lösung aufdecken
   const min = Math.round((l.ab - l.start) / 6e4), bewertet = auf.filter(a => l.bew[a.id]).length;
   kopf(`${name} ${m.name}`, "Auswertung");
-  lernView.innerHTML = `<a class="back" href="${zurück}">← ${esc(m.name)}</a>
+  lernView.innerHTML = `<a class="back" href="${zurück}">← ${esc(lpRuecktext(m.name))}</a>
     <div class="panel"><h2 style="margin-top:0">${l.mix ? "Mix-Serie geschafft" : `${Lernplan.duration(min)} von ${Lernplan.duration(l.dauer)} gebraucht`}</h2>
       <p style="margin:0">${l.mix ? "" : min > l.dauer ? `Du warst ${Lernplan.duration(min - l.dauer)} über der Zeit. Übe die langsamen Aufgabentypen gezielt. ` : "In der Zeit geblieben. "}
         Bewerte jetzt jede Aufgabe ehrlich. ${bewertet < auf.length ? `Noch ${auf.length - bewertet} offen.` : "Alles bewertet, die Vorschläge auf der Startseite richten sich danach."}</p></div>
@@ -2675,19 +2678,19 @@ function probeSeite(m) {
       <div class="bewerten">${[["ok", "Selbst gelöst"], ["hilfe", "Selbst gelöst mit Fehlern"], ["nein", "Nicht geschafft"]]
         .map(([k, n]) => `<button class="${k}${l.bew[a.id] === k ? " gewählt" : ""}" data-id="${a.id}" data-s="${k}">${n}</button>`).join("")}</div>
       ${quellenLink(m.pdf, a.q)}</div>`).join("")}
-    ${bewertet === auf.length ? lernImpuls() : ""}<div class="row" style="margin-top:18px"><button class="btn primary gross" id="pneu">Neuer Versuch</button><a class="btn gross" href="${zurück}">Fertig</a></div>`;
+    ${bewertet === auf.length ? lernImpuls() : ""}<div class="row" style="margin-top:18px"><button class="btn primary gross" id="pneu">Neuer Versuch</button><a class="btn gross" href="${zurück}">${lpRuecktext("Fertig")}</a></div>`;
   lernView.querySelectorAll("[data-erg]").forEach(b => b.onclick = () => { l.erg[b.dataset.erg] = 1; store.set("probe:lauf", l); probeSeite(m); });
   lernView.querySelectorAll(".bewerten button").forEach(b => b.onclick = () => {
     probeBewerten(m, auf.find(x => x.id === b.dataset.id), b.dataset.s);
     const y = window.scrollY; probeSeite(m); window.scrollTo(0, y);
   });
-  $("#pneu").onclick = () => { store.set("probe:lauf", null); store.set("lernen:teil", "probe"); location.hash = zurück; };
+  $("#pneu").onclick = () => { store.set("probe:lauf", null); store.set("lernen:teil", "probe"); location.hash = basis; };
 }
 
 /* Quiz: Einfachauswahl (sofortige Rückmeldung mit Erklärung zu jeder Antwort), Mehrfachauswahl (prüfen),
    Lückentext und Freitext (werden wie bei NotebookLM am Ende bewertet; Freitext bewertest du selbst). */
 let quizRunde = null;
-const quizZurück = q => q.m.abschluss ? "#start" : `#lernen/${encodeURIComponent(q.m.name)}`;
+const quizZurück = q => lpRueckweg(q.m.abschluss ? "#start" : `#lernen/${encodeURIComponent(q.m.name)}`);
 function quizStarten(m, { kapitel = "", anzahl = 10, modus = "mix", ids = null } = {}) {
   if (!m) return;
   if (!m.abschluss) lernFortschritt(m.name);
@@ -2756,7 +2759,7 @@ function quizSeite() {
   const frage = f.typ === "lücke"
     ? f.q.map((t, n) => t + (n < f.q.length - 1 ? `<input type="text" data-l="${n}" placeholder="Text eingeben …" autocomplete="off" autocapitalize="off" value="${esc(a?.werte?.[n] || "")}">` : "")).join("")
     : f.q;
-  lernView.innerHTML = `<div class="quiz"><div class="topbar" style="margin-top:8px"><a class="back" href="${quizZurück(q)}">← Beenden</a>
+  lernView.innerHTML = `<div class="quiz"><div class="topbar" style="margin-top:8px"><a class="back" href="${quizZurück(q)}">← ${lpRuecktext("Beenden")}</a>
       <div class="bar"><i style="width:${Math.round(100 * q.i / q.fragen.length)}%"></i></div></div>
     <div class="qkarte"><div class="qnr">${q.i + 1} von ${q.fragen.length}${f.k ? ` · ${esc(f.k)}` : ""}</div>
       <div class="qfrage">${frage}</div>${körper}
@@ -2821,12 +2824,12 @@ function quizAuswertung() {
   const falsche = q.fragen.filter((_, n) => q.antw[n]?.richtig !== true).map(x => x.f);
   if (q.m.abschluss) db.set("abschluss:" + q.m.tag, { ...db.get("abschluss:" + q.m.tag, {}), quiz: { r: punkte, n: q.fragen.length } });
   kopf(`Quiz ${q.m.titel || q.m.name}`, "Auswertung");
-  lernView.innerHTML = `<div class="quiz"><a class="back" href="${quizZurück(q)}">← ${esc(q.m.abschluss ? "Start" : q.m.name)}</a>
+  lernView.innerHTML = `<div class="quiz"><a class="back" href="${quizZurück(q)}">← ${esc(lpRuecktext(q.m.abschluss ? "Start" : q.m.name))}</a>
     <div class="qkarte qauswertung"><div class="row" style="gap:20px"><div class="ring">${String(punkte).replace(".", ",")}</div>
       <div><b style="font-size:20px">von ${q.fragen.length} Fragen richtig</b><p class="muted" style="margin:2px 0 0">${bewertet.length < q.fragen.length ? "Bewerte unten noch deine Freitext-Antworten." :
         punkte === q.fragen.length ? "Alles richtig. Sehr stark!" : "Schau dir die falschen in Ruhe an: Die Erklärungen zeigen, wo der Denkfehler liegt."}</p></div></div>
       <div class="row" style="margin-top:16px">${falsche.length ? `<button class="btn primary" id="qfalsch">Falsche wiederholen (${falsche.length})</button>` : ""}
-        <button class="btn" id="qneu">Neues Quiz</button></div>
+        <button class="btn" id="qneu">Neues Quiz</button>${lpRueckkehrAktiv() ? `<a class="btn primary" href="${quizZurück(q)}">Zum Wochenplan</a>` : ""}</div>
       ${bewertet.length === q.fragen.length ? lernImpuls() : ""}<div class="qliste">${q.fragen.map(({ f, o }, n) => {
         const a = q.antw[n] || {};
         const k = a.richtig === true ? ["ok", "✓ Richtig"] : a.richtig === "teil" ? ["teil", "◐ Teilweise"] : a.richtig === false ? ["no", a.übersprungen ? "– Übersprungen" : "✗ Falsch"] : ["", "Selbst bewerten"];
@@ -3030,6 +3033,8 @@ function kontoSeite() {
 /* ───────────── Navigation ───────────── */
 const VIEWS = { start: "view-start", skripte: "view-skripte", hoeren: "view-hoeren", lernen: "view-lernen", termine: "view-termine", konto: "view-konto", richtung: "view-richtung" };
 function route(oben = true) {
+  lpAnsichtVerlassen();
+  lpNavigationPruefen();
   notizenBeenden();
   if (!pdfAnsicht.hidden) pdfZu();
   const h = decodeURIComponent(location.hash.slice(1));
@@ -3082,6 +3087,7 @@ function route(oben = true) {
   if (oben) window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", () => route());
+window.addEventListener("pagehide", lpAnsichtMerken);
 // Links auf die gerade offene Adresse (z. B. Zurück aus einer Runde): selbst neu aufbauen.
 document.addEventListener("click", e => {
   const a = e.target.closest("a[href^='#']");

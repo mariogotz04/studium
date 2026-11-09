@@ -1,5 +1,6 @@
 /* Private Lernpläne: Adapter zum bestehenden Lernstand, Ansicht, Tagesliste und PDF-Export. */
 let lpVorschau=null,lpEntwurf=null,lpWoche='',lpDatei=null,lpPdfStand='',lpExportWoche='',lpErfolgTimer=false;
+let lpAnsicht=null,lpRueckkehr;
 const lpArt={lesen:'Skript',aufgaben:'Aufgaben',quiz:'Quiz',karten:'Karten',probe:'Probeklausur'};
 function lpPrüfungen(){return Lernplan.exams(fristen().filter(f=>f.art==='klausur').map(f=>({...f,modules:f.module?.length?f.module:f.modul?[f.modul]:[],duration:f.amtlich?.dauer||klausurInfo(f.modul).dauer})),heuteIso());}
 function lpPlan(id=db.get('einst:lernplan',{}).version){
@@ -114,12 +115,13 @@ function lpStart(u,p=lpPlan()){
  if(u.type==='lesen'){
   const first=s?.items[0],x=[...(real.aufgaben||[]),...(real.quiz||[]),...(DECKS.find(d=>d.name===u.module)?.cards||[])].find(x=>x.id===first?.id);
   if(x&&!r.erreicht(x))return meldung('Dieser Abschnitt kommt später. Schließe zuerst den aktuellen Abschnitt ab.');
-  if(m.pdf&&s?.source)pdfOeffnen(m.pdf+'#page='+s.source.p,u.module+' · '+u.label);else location.hash='#lernen/'+encodeURIComponent(u.module);return;
+  lpAnsichtMerken();if(m.pdf&&s?.source)pdfOeffnen(m.pdf+'#page='+s.source.p,u.module+' · '+u.label);else location.hash='#lernen/'+encodeURIComponent(u.module);return;
  }
- if(u.type==='probe'){probeStarten(real,false);return;}
+ if(u.type==='probe'){lpRueckkehrSpeichern(u,p);probeStarten(real,false);if(!lpRueckkehrAktiv())lpRueckkehrLoeschen();return;}
  const pool=u.type==='aufgaben'?real.aufgaben:u.type==='quiz'?real.quiz:DECKS.find(d=>d.name===u.module)?.cards;
  const targets=(pool||[]).filter(x=>u.targets.includes(x.id)&&r.erreicht(x));
  if(!targets.length){location.hash='#lernen/'+encodeURIComponent(u.module);return meldung('Die Ziele sind entfernt oder noch gesperrt. Mach mit dem aktuellen Abschnitt weiter.');}
+ lpRueckkehrSpeichern(u,p);
  if(u.type==='aufgaben'){
   const target=targets.find(x=>aufgabeStand(x)?.s!=='ok')||targets[0];location.hash='#lernen/'+encodeURIComponent(u.module)+'/aufgabe/'+target.id;
  }else if(u.type==='quiz')quizStarten(real,{ids:targets.map(x=>x.id)});
@@ -148,6 +150,65 @@ function lpStartWocheHtml(){
 }
 function lpTagesstand(v){const p=lpPlan(v.plan),u=p?.units.find(u=>u.id===v.kapitel);if(!u)return {fertig:false,n:0,ziel:1};const s=lpStand(u,lpKatalog(p),p);return {fertig:s.done,automatisch:s.success,n:s.n,ziel:s.total};}
 function lpManuell(id,render=true){const p=lpPlan(),u=p?.units.find(u=>u.id===id);if(!u)return;db.set('lernplan:manuell:'+id,!db.get('lernplan:manuell:'+id,false));if(render)lernplanSeite(lpWoche);}
+function lpModulOffen(name){return db.get('einst:lernplan:modul:'+name,true)!==false;}
+function lpModulMerken(el){
+ if(!el.isConnected||!lpAnsicht)return;
+ if(el.dataset.lpOffen===String(el.open))return;
+ el.dataset.lpOffen=String(el.open);
+ const key='einst:lernplan:modul:'+el.dataset.lpModul;
+ if(db.get(key,true)!==el.open)db.set(key,el.open);
+}
+function lpAnsichtMerken(){
+ if(!lpAnsicht)return;
+ termineView.querySelectorAll('[data-lp-modul]').forEach(lpModulMerken);
+ try{sessionStorage.setItem('studium:lernplan:scroll:'+lpAnsicht.plan+':'+lpAnsicht.week,String(window.scrollY));}catch{}
+}
+function lpAnsichtVerlassen(){lpAnsichtMerken();lpAnsicht=null;}
+function lpRueckkehrLesen(){
+ if(lpRueckkehr!==undefined)return lpRueckkehr;
+ try{const v=JSON.parse(sessionStorage.getItem('studium:lernplan:rueckkehr')||'null');
+  lpRueckkehr=v&&/^\d{4}-\d{2}-\d{2}$/.test(v.week)&&typeof v.module==='string'&&typeof v.unit==='string'&&['aufgaben','quiz','karten','probe'].includes(v.type)?v:null;
+ }catch{lpRueckkehr=null;}
+ return lpRueckkehr;
+}
+function lpRueckkehrLoeschen(){lpRueckkehr=null;try{sessionStorage.removeItem('studium:lernplan:rueckkehr');}catch{}}
+function lpRueckkehrSpeichern(u,p){
+ lpAnsichtMerken();const match=location.hash.match(/^#termine\/lernplan\/(\d{4}-\d{2}-\d{2})(?:\/|$)/);
+ lpRueckkehr={plan:p.id,week:match?Lernplan.week(match[1]):lpDatum(u,p)||Lernplan.week(heuteIso()),module:u.module,unit:u.id,type:u.type};
+ try{sessionStorage.setItem('studium:lernplan:rueckkehr',JSON.stringify(lpRueckkehr));}catch{}
+}
+function lpRueckkehrAktiv(){
+ const c=lpRueckkehrLesen();if(!c)return false;
+ try{const [view,name,part]=decodeURIComponent(location.hash.slice(1)).split('/');return view==='lernen'&&name===c.module&&part===({aufgaben:'aufgabe',quiz:'quiz',karten:'karteikarten',probe:'probe'}[c.type]);}catch{return false;}
+}
+function lpRueckweg(fallback){
+ const c=lpRueckkehrLesen();return c&&lpRueckkehrAktiv()?'#termine/lernplan/'+c.week+'/ziel/'+encodeURIComponent(c.unit)+'/'+encodeURIComponent(c.module):fallback;
+}
+function lpRuecktext(fallback){return lpRueckkehrAktiv()?'Zum Wochenplan':fallback;}
+function lpNavigationPruefen(){
+ const c=lpRueckkehrLesen();if(!c||lpRueckkehrAktiv())return;
+ const currentWeek=/^#termine\/lernplan\/?$/.test(location.hash)&&c.week===Lernplan.week(heuteIso());
+ if(!currentWeek&&!new RegExp('^#termine/lernplan/'+c.week+'(?:/|$)').test(location.hash))lpRueckkehrLoeschen();
+}
+function lpAnsichtWiederherstellen(p,w){
+ const view=lpAnsicht,c=lpRueckkehrLesen();let goal=null;
+ try{const parts=decodeURIComponent(location.hash.slice(1)).split('/');if(parts[0]==='termine'&&parts[1]==='lernplan'&&parts[2]===w&&parts[3]==='ziel')goal={unit:parts[4],module:parts.slice(5).join('/')};}catch{}
+ if(!goal&&c?.week===w)goal=c;
+ let y=null;try{const value=sessionStorage.getItem('studium:lernplan:scroll:'+p.id+':'+w);if(value!==null&&Number.isFinite(+value))y=Math.max(0,+value);}catch{}
+ if(goal)lpRueckkehrLoeschen();
+ requestAnimationFrame(()=>{
+  if(lpAnsicht!==view||termineView.hidden)return;
+  if(goal){
+   const unit=document.getElementById('lp-'+goal.unit),module=[...termineView.querySelectorAll('[data-lp-modul]')].find(el=>el.dataset.lpModul===goal.module)||unit?.closest('[data-lp-modul]');
+   let target=module?.querySelector('summary')||document.getElementById('lp-woche');
+   if(module?.open&&unit&&module.contains(unit))target=unit.classList.contains('erledigt')?[...module.querySelectorAll('.lp-einheit:not(.erledigt)')].find(el=>!el.querySelector('[data-lp-start]')?.disabled)||unit:unit;
+   target?.scrollIntoView({block:'center'});
+   (target?.querySelector('[data-lp-start]:not(:disabled)')||target?.querySelector('summary')||target)?.focus({preventScroll:true});
+   history.replaceState(history.state,'','#termine/lernplan/'+w);
+   lpAnsichtMerken();
+  }else if(y!==null)window.scrollTo(0,y);
+ });
+}
 function lpStandard(){return Lernplan.config({mode:'weekly',start:heuteIso(),weeklyMinutes:1500,buffer:.05,block:35,exams:lpPrüfungen().map(e=>e.id)},heuteIso());}
 function lpFormConfig(form,today=heuteIso()){
  const f=new FormData(form),off=String(f.get('off')||'').split(/[\s,;]+/).filter(Boolean),valid=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)&&Number.isFinite(Date.parse(d+'T12:00:00Z'))&&new Date(d+'T12:00:00Z').toISOString().slice(0,10)===d;
@@ -191,11 +252,12 @@ function lpWochenliste(p,c,w){
  return `<p class="lp-wochenfortschritt"><b>${done.length} von ${us.length} Einheiten erledigt</b> · noch ${open.length} Einheiten mit ca. ${Lernplan.duration(remaining)} einschließlich Pausen</p>
  <progress class="lp-fortschritt" value="${done.length}" max="${Math.max(1,us.length)}" aria-label="Fortschritt dieser Woche"></progress>
  <p class="muted">${Lernplan.add(w,6)<p.config.start?'Abgeschlossene Wochenhistorie · '+Lernplan.duration(total)+' ursprüngliche Ziele.':Lernplan.duration(total)+' / '+Lernplan.duration(budget)+' belegt · '+Lernplan.duration(Math.max(0,budget-total))+' frei einschließlich Reserve.'} Du entscheidest, wann du diese Woche lernst. Fristen und Beginn der Wiederholungen stehen bei den betreffenden Einheiten.</p>
- ${[...new Set(us.map(u=>u.module))].map(name=>{const tasks=us.filter(u=>u.module===name),finished=tasks.filter(u=>lpStand(u,c,p).done).length;return `<details class="lp-wochenmodul" open><summary><b>${esc(name)}</b><span>${finished}/${tasks.length} erledigt · ca. ${Lernplan.duration(tasks.filter(u=>!lpStand(u,c,p).done).reduce((n,u)=>n+Lernplan.cost(u,p.config),0))} offen</span></summary>${tasks.map(u=>lpEinheit(u,p,c)).join('')}</details>`;}).join('')||'<p class="muted">Für diese Woche sind keine Einheiten eingeplant.</p>'}`;
+ ${[...new Set(us.map(u=>u.module))].map(name=>{const tasks=us.filter(u=>u.module===name),finished=tasks.filter(u=>lpStand(u,c,p).done).length;return `<details class="lp-wochenmodul" data-lp-modul="${esc(name)}"${lpModulOffen(name)?' open':''}><summary><b>${esc(name)}</b><span>${finished}/${tasks.length} erledigt · ca. ${Lernplan.duration(tasks.filter(u=>!lpStand(u,c,p).done).reduce((n,u)=>n+Lernplan.cost(u,p.config),0))} offen</span></summary>${tasks.map(u=>lpEinheit(u,p,c)).join('')}</details>`;}).join('')||'<p class="muted">Für diese Woche sind keine Einheiten eingeplant.</p>'}`;
 }
 function lpKapitel(c){return c.map(m=>{const chapters=new Map();for(const s of m.sections){const k=s.label.replace(/Abschnitt (\d+)\.\d+/, 'Kapitel $1');if(!chapters.has(k))chapters.set(k,[]);chapters.get(k).push(s);}
  return `<details class="lp-modul"><summary>${esc(m.name)} · ${m.sections.filter(s=>s.complete).length}/${m.sections.length} Abschnitte</summary>${[...chapters].map(([name,ss])=>`<p>${ss.every(s=>s.complete)?'☑':'☐'} <b>${esc(name)}</b> · ${ss.filter(s=>s.complete).length}/${ss.length} Abschnitte abgeschlossen</p>`).join('')}</details>`;}).join('');}
 function lernplanSeite(woche){
+ lpAnsichtMerken();lpAnsicht=null;
  const today=heuteIso();let p=lpPlan();lpTageswechsel(p);p=lpPlan();lpWoche=woche&&/^\d{4}-\d{2}-\d{2}$/.test(woche)?Lernplan.week(woche):Lernplan.week(today);
  const c=lpKatalog(p),exams=lpPrüfungen(),cfg=lpEntwurf||p?.config||lpStandard();
  if(p)p=lpAnzeigePlan(p,c);
@@ -261,6 +323,7 @@ function lernplanSeite(woche){
  document.getElementById('lp-pdf')?.addEventListener('click',()=>lpPdf(false));
  document.getElementById('lp-download')?.addEventListener('click',()=>lpPdf(true));
  document.getElementById('lp-wochenpdf')?.addEventListener('click',()=>lpPdf(true,lpWoche));
+ if(p){lpAnsicht={plan:p.id,week:lpWoche};termineView.querySelectorAll('[data-lp-modul]').forEach(el=>{el.dataset.lpOffen=String(el.open);el.addEventListener('toggle',()=>lpModulMerken(el));});lpAnsichtWiederherstellen(p,lpWoche);}
  lernplanMerken();
 }
 async function lpPdf(download=false,week=''){

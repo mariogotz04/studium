@@ -28,6 +28,8 @@ const m = { name: 'Finanzierung', aufgaben: Array.from({ length: 7 }, (_, i) => 
   id: 'a' + i, nr: i + 1, k: 'Kapitel ' + i, t: 'Aufgabe ' + i, art: 'rechnen', a: {}, erg: {}, s: [{}, {}],
 })) };
 const c = { Lernplan: require('./lernplan.js'),
+  lpRueckweg: f => f, lpRuecktext: f => f, lpRueckkehrAktiv: () => false,
+  lpAnsichtVerlassen() {}, lpNavigationPruefen() {},
   LERNEN: [m], DECKS: [], lernView: view, location: { hash: '' },
   store: { get: (k, d) => clone(state.has(k) ? state.get(k) : d), set: (k, v) => state.set(k, clone(v)) },
   db: { get: (k, d) => stand.get(k) ?? d, set: (k, v) => stand.set(k, v) },
@@ -143,4 +145,18 @@ assert.equal(c.location.hash, '#lernen/Finanzierung', 'Kapitel 3 erst, wenn die 
 assert.equal(c.lernreihe('Finanzierung').front.kurz, 'Kapitel 2');
 c.kartenStand = () => ({ k2: { typ: 'wdh', lapses: 0 } });
 assert.equal(c.lernreihe('Finanzierung').front.kurz, 'Kapitel 3');
+stand.clear();c.DECKS=[];
+for (let i=0;i<7;i++) stand.set(`lernpfad:Finanzierung:${1000+i}:0`,true);
+const wochenplan='#termine/lernplan/2026-11-09/ziel/ziel/Finanzierung';
+c.lpRueckweg=()=>wochenplan;c.lpRuecktext=()=> 'Zum Wochenplan';
+gehen('#lernen/Finanzierung/aufgabe/a0');
+assert(view.html.includes('href="'+wochenplan+'"'));
+assert(view.html.includes('href="#lernen/Finanzierung/aufgabe/a1"'),'Aufgabenpfeile bleiben gültige Aufgabenadressen');
+node('#alle').click();bewerten(null,'hilfe');
+assert.equal(c.location.hash,'#lernen/Finanzierung/aufgabe/a0','Mit Hilfe bleibt die Aufgabe zum Wiederholen offen');
+node('#alle').click();bewerten(null,'ok');
+assert.equal(c.location.hash,wochenplan,'Selbst gelöste Wochenaufgabe führt direkt zum nächsten Wochenziel');
+assert.equal(stand.get('aufgabe:Finanzierung:a0').s,'ok');
+state.set('probe:lauf',lauf(false));gehen(`${zurück}/aufgabe/a5`);node('#alle').click();bewerten(null,'ok');
+assert.equal(c.location.hash,zurück,'Auch mit Wochenkontext bleibt die Probelösung bei derselben Auswertung');
 console.log('OK: Abgabebestätigung; fünf Mix-Aufgaben; einzelne Lösungsschritte; Rückkehr mit Ergebnis/Bewertung; Serienabschluss erst nach allen Bewertungen; Starttag; Probeklausur; Einzelaufgaben.');
