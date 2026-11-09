@@ -437,6 +437,10 @@ body.notizen-aktiv .wrap { max-width: 1420px; }
 .lp-bedarf h2 { margin-top: 0; }
 .lp-bedarf-zahl { color: var(--accent); font-size: clamp(22px, 4vw, 30px); margin: 14px 0; }
 .lp-bedarf-zahl span { display: block; color: var(--muted); font-size: 15px; margin-top: 4px; }
+.lp-bedarf-anteile { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(220px,100%),1fr)); gap: 12px; margin: 16px 0; }
+.lp-bedarf-anteile p { margin: 0; padding: 14px; background: var(--accent-soft); border-radius: 12px; }
+.lp-bedarf-anteile b { display: block; color: var(--accent); font-size: 20px; }
+.lp-bedarf-anteile span { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; }
 .lp-tag { padding: 18px 0; border-top: 1px solid var(--line); }
 .lp-tag h3 { margin: 0; font-size: 21px; }
 .lp-tag.heute { display: block; border-left: 3px solid var(--accent); padding-left: 14px; }
@@ -448,6 +452,8 @@ body.notizen-aktiv .wrap { max-width: 1420px; }
 .lp-modul summary { padding: 12px 0; min-height: 44px; cursor: pointer; }
 #lp-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
 #lp-form textarea { min-height: 80px; }
+#lp-form input[type=number] { min-height: 46px; padding: 10px 12px; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; }
+#lp-form .lp-budget input { padding: 10px 6px; }
 .pdfplanlink { position: absolute; z-index: 3; display: block; }
 @media (max-width: 599px) { .lp-budget { grid-template-columns: repeat(4,minmax(0,1fr)); } .lp-einheit { flex-wrap: wrap; } .lp-einheit > .btn { margin-left: 56px; } }
 .lernplatz { display: grid; grid-template-columns: minmax(0, 1fr) var(--notizbreite, clamp(260px, 28vw, 360px)); gap: 20px; align-items: start; min-width: 0; }

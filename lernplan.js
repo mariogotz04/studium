@@ -10,7 +10,7 @@ const week=s=>add(s,-weekday(s));
 function kw(s){const d=new Date(s+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+3-weekday(s));return Math.ceil(((d-new Date(Date.UTC(d.getUTCFullYear(),0,1)))/DAY+1)/7);}
 function config(c={},today){
  return {start:c.start||today,minutes:Array.from({length:7},(_,i)=>Math.max(0,Math.min(600,+c.minutes?.[i]||0))),
-  block:Math.max(15,Math.min(90,+c.block||35)),pause:Math.max(0,Math.min(30,Number.isFinite(+c.pause)?+c.pause:5)),buffer:.2,
+  block:Math.max(15,Math.min(90,+c.block||35)),pause:Math.max(0,Math.min(30,Number.isFinite(+c.pause)?+c.pause:5)),buffer:Number.isFinite(c.buffer)?Math.max(0,Math.min(.5,c.buffer)):.2,
   off:[...new Set(c.off||[])].sort(),exams:c.exams||[],focus:c.focus||'',lectures:!!c.lectures,reading:c.reading!==false};
 }
 function exams(raw,today){
@@ -79,7 +79,7 @@ function create(c,catalog,examination,{old=null,status=()=>({done:false}),today=
  const start=old&&c.start<=today?add(today,1):c.start;
  const usage={};for(const u of all)if(u.date)usage[u.date]=(usage[u.date]||0)+cost(u,c);
  for(let d=start;d<end;d=add(d,1)){
-  let free=Math.max(0,Math.floor(capacity(c,d,lectures)*.8)-(usage[d]||0)),last='',seen=new Set();
+  let free=Math.max(0,Math.floor(capacity(c,d,lectures)*(1-c.buffer))-(usage[d]||0)),last='',seen=new Set();
   while(free>0){
    const candidates=[];
    for(const [name,q] of queues){
@@ -128,11 +128,11 @@ function weeklyBudget(c,catalog,examination,options={}){
  const states=new Map(),status=u=>{if(!states.has(u.id))states.set(u.id,options.status?.(u)||{done:false});return states.get(u.id);};
  const cache=new Map(),run=minutes=>{
   const key=minutes.join(',');if(cache.has(key))return cache.get(key);
-  const plan=create({...c,minutes},catalog,examination,{...options,today,status}),usage={};
-  for(const u of plan.units)if(u.date&&u.date>=today)usage[u.date]=(usage[u.date]||0)+cost(u,c);
-  const fits=!plan.missing&&Object.entries(usage).every(([d,n])=>n<=Math.floor(capacity(plan.config,d,options.lectures)*.8));
+  const plan=create({...c,minutes},catalog,examination,{...options,today,status}),usage={},weekly={};
+  for(const u of plan.units)if(u.date&&u.date>=today){usage[u.date]=(usage[u.date]||0)+cost(u,c);weekly[week(u.date)]=(weekly[week(u.date)]||0)+cost(u,c);}
+  const fits=!plan.missing&&Object.entries(usage).every(([d,n])=>n<=Math.floor(capacity(plan.config,d,options.lectures)*(1-c.buffer)));
   const squeezed=plan.units.filter(u=>!u.review&&u.date&&u.date>=today&&u.date>=add(u.deadline,-10)).length;
-  const result={fits,missing:plan.missing,squeezed};cache.set(key,result);return result;
+  const result={fits,missing:plan.missing,squeezed,scheduledWeeklyMax:Math.max(0,...Object.values(weekly))};cache.set(key,result);return result;
  };
  const current=run(c.minutes),maximum=run(weights.map(n=>n?600:0));
  const base={current:c.minutes.reduce((s,n)=>s+n,0),missing:current.missing,squeezed:current.squeezed,days:active.length,balanced:!c.minutes.some(Boolean)};
@@ -143,7 +143,7 @@ function weeklyBudget(c,catalog,examination,options={}){
  if(works(current))high=base.current;
  while(low<high){const mid=Math.floor((low+high)/2);if(works(run(distribute(mid))))high=mid;else low=mid+1;}
  const minutes=distribute(high),check=run(minutes);
- return {...base,state:'ready',weekly:high,minutes,reviewReserved,squeezedAtTarget:check.squeezed};
+ return {...base,state:'ready',weekly:high,minutes,reviewReserved,squeezedAtTarget:check.squeezed,scheduledWeeklyMax:check.scheduledWeeklyMax,reserveWeekly:Math.ceil(high*c.buffer)};
 }
 function status(u,catalog,{manual=false,latch=false,activities=[]}={}){
  const m=catalog.find(m=>m.name===u.module),items=m?.sections.flatMap(s=>s.items)||[],targets=u.targets.map(id=>items.find(x=>x.type===u.type&&x.id===id)).filter(Boolean);

@@ -75,6 +75,18 @@ assert.equal(pre.done,false,'Neue Inhalte haken die spätere Klausurwiederholung
  assert.equal(L.create({...lateConfig,minutes:lateNeed.minutes},budgetCat,budgetExams).missing,0);
  const lower=L.weeklyBudget({...config,minutes:need.minutes},budgetCat,budgetExams);
  assert(Math.abs(lower.weekly-need.weekly)<=need.days,'Ganzzahlige Tagesminuten ändern den erneuten Richtwert höchstens um Rundungsminuten');
+ const smallBuffer={...config,buffer:.05},smallNeed=L.weeklyBudget(smallBuffer,budgetCat,budgetExams);
+ assert(smallNeed.weekly<need.weekly,'Weniger freigehaltene Reserve reduziert das verfügbare Wochenbudget');
+ const smallPlan=L.create({...smallBuffer,minutes:smallNeed.minutes},budgetCat,budgetExams),weekly={};
+ assert.equal(smallPlan.missing,0);assert.equal(smallPlan.warnings.length,0);
+ assert.deepEqual(smallPlan.units.map(u=>[u.id,u.min,u.targets]),sufficient.units.map(u=>[u.id,u.min,u.targets]),'Eine andere Reserve ändert weder Lernstoff noch Zeitansätze, einschließlich Probeklausuren');
+ for(const unit of smallPlan.units)weekly[L.week(unit.date)]=(weekly[L.week(unit.date)]||0)+L.cost(unit,smallBuffer);
+ assert.equal(smallNeed.scheduledWeeklyMax,Math.max(...Object.values(weekly)),'Verplante Wochenzeit kommt aus den tatsächlichen Einheiten einschließlich Pausen');
+ assert.equal(smallNeed.reserveWeekly,Math.ceil(smallNeed.weekly*.05));
+ for(const date of new Set(smallPlan.units.map(u=>u.date)))assert(smallPlan.units.filter(u=>u.date===date).reduce((s,u)=>s+L.cost(u,smallBuffer),0)<=Math.floor(L.capacity(smallPlan.config,date)*.95),'Auch bei 5 % Reserve wird die verfügbare Kapazität eingehalten');
+ assert.equal(L.config({buffer:0},start).buffer,0,'Null Prozent Reserve bleiben ausdrücklich möglich');
+ assert.equal(L.config({},start).buffer,.2,'Bestehende Pläne und neue Beispiele behalten standardmäßig 20 % Reserve');
+ assert.equal(L.config({buffer:1},start).buffer,.5);assert.equal(L.config({buffer:-1},start).buffer,0);
  console.log('OK: Wochenbedarf; frühe Klausuren; Pausen/Puffer; freie Lerntage; Vorlesungen; Nullbudget; unmögliche Pläne; Wiederholungsphase; unveränderte Quelldaten.');
 }
 const historic=structuredClone(plan);historic.units[0].date=L.add(today,-1);
@@ -150,5 +162,10 @@ console.log('OK: Automatische Folgetage; kein Überbuchen; erledigte Historie; f
  assert.equal(adapter.lpDatum(followPlan.units[1]),'2026-11-10','Ein älteres Gerät zerlegt die atomare Verteilung nicht');
  state.set('lernplan:extra:lesen:extra',{...followPlan.units[0],id:'extra',date:followToday});
  assert(adapter.lpPlan('lesen').units.some(u=>u.id==='extra'),'Ergänzte Kartenrunden gehören ebenfalls zum Planstatus');
+ adapter.Lernplan=L;
+ vm.runInContext(source.slice(source.indexOf('function lpSignatur('),source.indexOf('function lpStart(')),adapter);
+ const pdfPlan={id:'pdf',config:{buffer:.2},units:[]};
+ assert.notEqual(adapter.lpSignatur(pdfPlan,[]),adapter.lpSignatur({...pdfPlan,config:{buffer:.05}},[]),'Eine geänderte Reserve aktualisiert die PDF auch bei unveränderten Lerntagen');
+ assert.notEqual(adapter.lpSignatur(pdfPlan,[]),adapter.lpSignatur({...pdfPlan,id:'neu'},[]),'Eine neue Planversion gehört zum PDF-Stand');
  console.log('OK: Adapter-Migration; Nulltermine; atomarer Geräteabgleich; ergänzte Einheiten.');
 }
