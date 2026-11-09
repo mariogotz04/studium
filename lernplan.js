@@ -105,6 +105,46 @@ function create(c,catalog,examination,{old=null,status=()=>({done:false}),today=
 }
 function signature(catalog,examination,c){return hash(JSON.stringify({examination:examination.filter(e=>c.exams.includes(e.id)),
  catalog:catalog.map(m=>[m.name,m.typ,m.duration,m.sections.map(s=>[s.key,s.source,s.items.map(x=>[x.id,x.type,x.min])])])}));}
+function weeklyBudget(c,catalog,examination,options={}){
+ const today=options.today||c.start;c=config(c,today);
+ if(!examination.some(e=>c.exams.includes(e.id)))return {state:'empty'};
+ // Die eingegebenen Minuten geben nur das Verhältnis der Lerntage vor. Bei null Minuten
+ // dient eine gleichmäßige Woche als Ausgangspunkt, ohne die Eingabefelder zu verändern.
+ const weights=c.minutes.some(Boolean)?c.minutes:c.minutes.map(()=>1),active=weights.map((n,i)=>n?i:-1).filter(i=>i>=0);
+ const distribute=total=>{
+  const minutes=weights.map(()=>0);let left=total,open=[...active];
+  while(open.length){
+   const sum=open.reduce((s,i)=>s+weights[i],0),full=open.filter(i=>left*weights[i]/sum>=600);
+   if(full.length){for(const i of full){minutes[i]=600;left-=600;}open=open.filter(i=>!full.includes(i));continue;}
+   const shares=open.map(i=>({i,n:left*weights[i]/sum}));
+   for(const {i,n} of shares)minutes[i]=Math.floor(n);
+   const rest=total-minutes.reduce((s,n)=>s+n,0);
+   shares.sort((a,b)=>(b.n-Math.floor(b.n))-(a.n-Math.floor(a.n))||a.i-b.i);
+   for(const {i} of shares.slice(0,rest))minutes[i]++;
+   break;
+  }
+  return minutes;
+ };
+ const states=new Map(),status=u=>{if(!states.has(u.id))states.set(u.id,options.status?.(u)||{done:false});return states.get(u.id);};
+ const cache=new Map(),run=minutes=>{
+  const key=minutes.join(',');if(cache.has(key))return cache.get(key);
+  const plan=create({...c,minutes},catalog,examination,{...options,today,status}),usage={};
+  for(const u of plan.units)if(u.date&&u.date>=today)usage[u.date]=(usage[u.date]||0)+cost(u,c);
+  const fits=!plan.missing&&Object.entries(usage).every(([d,n])=>n<=Math.floor(capacity(plan.config,d,options.lectures)*.8));
+  const squeezed=plan.units.filter(u=>!u.review&&u.date&&u.date>=today&&u.date>=add(u.deadline,-10)).length;
+  const result={fits,missing:plan.missing,squeezed};cache.set(key,result);return result;
+ };
+ const current=run(c.minutes),maximum=run(weights.map(n=>n?600:0));
+ const base={current:c.minutes.reduce((s,n)=>s+n,0),missing:current.missing,squeezed:current.squeezed,days:active.length,balanced:!c.minutes.some(Boolean)};
+ if(!maximum.fits)return {...base,state:'impossible',missingAtMaximum:maximum.missing};
+ // Die komplette Wiederholungsphase bleibt frei, sofern das mit diesen Lerntagen möglich ist.
+ const reviewReserved=!maximum.squeezed,works=result=>result.fits&&(!reviewReserved||!result.squeezed);
+ let low=0,high=600*active.length;
+ if(works(current))high=base.current;
+ while(low<high){const mid=Math.floor((low+high)/2);if(works(run(distribute(mid))))high=mid;else low=mid+1;}
+ const minutes=distribute(high),check=run(minutes);
+ return {...base,state:'ready',weekly:high,minutes,reviewReserved,squeezedAtTarget:check.squeezed};
+}
 function status(u,catalog,{manual=false,latch=false,activities=[]}={}){
  const m=catalog.find(m=>m.name===u.module),items=m?.sections.flatMap(s=>s.items)||[],targets=u.targets.map(id=>items.find(x=>x.type===u.type&&x.id===id)).filter(Boolean);
  if(latch)return {done:true,success:true,n:u.targets.length,total:u.targets.length,manual:false};
@@ -168,6 +208,6 @@ function carry(plan,today,status,dates={},lectures=[]){
  }
  return Object.fromEntries(Object.entries(result).filter(([id,d])=>d!==assigned(plan.units[indices.get(id)])));
 }
-root.Lernplan={add,days,weekday,week,kw,hash,config,exams,capacity,cost,create,status,signature,carry};
+root.Lernplan={add,days,weekday,week,kw,hash,config,exams,capacity,cost,create,status,signature,weeklyBudget,carry};
 if(typeof module!=='undefined')module.exports=root.Lernplan;
 })(typeof globalThis!=='undefined'?globalThis:this);

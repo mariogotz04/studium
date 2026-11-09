@@ -42,6 +42,41 @@ assert.equal(L.config({...cfg,pause:0},today).pause,0,'Pausen können ausgeschal
 assert.equal(L.capacity(cfg,'2026-11-05'),0,'Keine Kapazität vor Planbeginn');
 const pre=L.status({...review,since:100},cat,{activities:[{art:'quiz',modul:review.module,t:101,tag:L.add(review.notBefore,-1),fertig:true,fragen:review.targets.map(id=>({id}))}]});
 assert.equal(pre.done,false,'Neue Inhalte haken die spätere Klausurwiederholung nicht vorzeitig ab');
+// Wochenbedarf: mit echten Klausurgrenzen simulieren, statt nur Gesamtminuten zu mitteln.
+{
+ const start='2026-11-09',budgetCat=['Früh','Spät'].map(name=>({name,typ:'transfer',duration:90,sections:[{
+  key:name+':1.1',label:'Abschnitt 1.1',items:Array.from({length:60},(_,i)=>item(name+i,'aufgaben',20))
+ }]})),budgetExams=[{id:'early',date:'2026-11-30',modules:['Früh'],duration:90},{id:'late',date:'2027-02-11',modules:['Spät'],duration:90}];
+ const config=L.config({start,minutes:[60,60,60,60,60,90,0],reading:false,exams:['early','late']},start),before=JSON.stringify({config,budgetCat,budgetExams});
+ const need=L.weeklyBudget(config,budgetCat,budgetExams,{today:start});
+ assert.equal(need.state,'ready');assert(need.weekly>need.current);assert(need.reviewReserved);
+ assert.equal(need.minutes[6],0,'Ein freier Wochentag bleibt in der Bedarfsschätzung frei');
+ assert(need.minutes[5]>need.minutes[0],'Das Verhältnis der eingetragenen Tagesminuten bleibt Grundlage des Richtwerts');
+ assert.equal(need.minutes.reduce((s,n)=>s+n,0),need.weekly);
+ const sufficient=L.create({...config,minutes:need.minutes},budgetCat,budgetExams,{today:start});
+ assert.equal(sufficient.missing,0,'Der empfohlene Wochenbedarf lässt sich vollständig einplanen');
+ assert.equal(sufficient.warnings.length,0,'Die vollständige Wiederholungsphase bleibt frei');
+ assert.equal(JSON.stringify({config,budgetCat,budgetExams}),before,'Die Bedarfsschätzung verändert weder Einstellungen noch Lernstand');
+ const later=L.weeklyBudget(config,budgetCat,budgetExams.map(e=>({...e,date:'2027-02-11'})),{today:start});
+ assert(later.weekly<need.weekly,'Eine frühe Klausur erhöht den Bedarf auch bei gleichem Gesamtumfang');
+ const morePause=L.weeklyBudget({...config,pause:15},budgetCat,budgetExams,{today:start});
+ assert(morePause.weekly>need.weekly,'Pausen zählen zum benötigten Wochenbudget');
+ const allZero=L.weeklyBudget({...config,minutes:Array(7).fill(0)},budgetCat,budgetExams,{today:start});
+ assert.equal(allZero.state,'ready');assert(allZero.balanced);assert(allZero.weekly>0);
+ assert.equal(L.create({...config,minutes:allZero.minutes},budgetCat,budgetExams).missing,0,'Auch ohne eingetragenes Budget entsteht ein brauchbarer Richtwert');
+ const off=Array.from({length:L.days(start,'2026-11-30')},(_,i)=>L.add(start,i));
+ assert.equal(L.weeklyBudget({...config,off},budgetCat,budgetExams).state,'impossible','Keine falsche Minutenempfehlung ohne freie Termine');
+ const lectures=off.map(d=>({d,min:480}));
+ assert.equal(L.weeklyBudget({...config,lectures:true},budgetCat,budgetExams,{lectures}).state,'impossible','Vorlesungen können die Restkapazität vollständig belegen');
+ assert.equal(L.weeklyBudget({...config,exams:[]},budgetCat,budgetExams).state,'empty');
+ const lateConfig={...config,start:'2026-11-23',minutes:Array(7).fill(60)};
+ const lateNeed=L.weeklyBudget(lateConfig,budgetCat,budgetExams);
+ assert.equal(lateNeed.state,'ready');assert.equal(lateNeed.reviewReserved,false,'Bei spätem Start wird eine verkürzte Wiederholungsphase ehrlich ausgewiesen');
+ assert.equal(L.create({...lateConfig,minutes:lateNeed.minutes},budgetCat,budgetExams).missing,0);
+ const lower=L.weeklyBudget({...config,minutes:need.minutes},budgetCat,budgetExams);
+ assert(Math.abs(lower.weekly-need.weekly)<=need.days,'Ganzzahlige Tagesminuten ändern den erneuten Richtwert höchstens um Rundungsminuten');
+ console.log('OK: Wochenbedarf; frühe Klausuren; Pausen/Puffer; freie Lerntage; Vorlesungen; Nullbudget; unmögliche Pläne; Wiederholungsphase; unveränderte Quelldaten.');
+}
 const historic=structuredClone(plan);historic.units[0].date=L.add(today,-1);
 const again=L.create(cfg,cat,exams,{old:historic,status:()=>({done:false}),today});
 assert(again.units.find(u=>u.id===historic.units[0].id).date>today,'Offene Altlasten werden bei Neuplanung neu verteilt');

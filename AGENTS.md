@@ -231,6 +231,13 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 
 ## Änderungsprotokoll
 
+### 09.11.2026 · Benötigte Lernminuten pro Woche
+- Oberhalb des Lernplanformulars den Wochenbedarf, die eingetragene Summe und fehlende Minuten anzeigen. Richtwert mit dem bestehenden Planer für die aktuelle Tagesverteilung simulieren; Klausurgrenzen, freie Tage, optionale Vorlesungen, Pausen und 20 % Puffer beachten. Die vollständige Wiederholungsphase erhalten, sofern mit diesen Lerntagen möglich; Verkürzung oder unmögliche Planung sichtbar ausweisen.
+- Bei Änderungen am Formular den Bedarf neu berechnen und die überholte Vorschau entfernen. Tagesminuten bleiben frei einteilbar; Berechnungen allein speichern keinen persönlichen Plan. Bei Nullbudget eine gleichmäßige Woche als Berechnungsgrundlage verwenden. Der Richtwert gilt für den bekannten Stoff, nicht als Garantie für künftige Ergänzungen.
+- Eine bestehende Kollision der Tagesmarkierung „heute“ mit dem Raster der Startseite behoben; der aktuelle Lerntag bleibt auch auf dem iPad untereinander lesbar.
+- Validiert: fünf JavaScript-Suiten einschließlich neuer Wochenbedarfsfälle und 17 Python-Tests (ein Test ohne lokal gebaute PDFs übersprungen). Browserprüfung mit allen veröffentlichten Moduldaten: Richtwert vollständig einplanbar, keine verkürzte Wiederholungsphase, automatische Neuberechnung, veraltete Vorschau verworfen, keine implizite Speicherung, Übernahme und erneutes Öffnen, Desktop/iPad/Mobil ohne horizontale Überbreite. Bestehender Lernpfad mit sieben Modulen und 235 Abschnitten erhalten.
+- Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-11-09_vor_Wochenbedarf/`.
+
 ### 06.11.2026 · Automatische Nachplanung bei verpassten Einheiten
 - Unerledigte Einheiten am nächsten Lerntag automatisch einplanen und offene Folgetage nötigenfalls mitverschieben. Einmalige Tagesprüfung, auch beim Wiederöffnen und während einer geöffneten Start-/Planansicht; laufende Übungen bleiben erhalten.
 - Budget, Pausen, freie Tage, Reihenfolge und Klausurtermin beachten; fertige Historie und Ziel-IDs erhalten. Unmögliche Termine bleiben sichtbar offen. Startseite, Wochenplan und neu erzeugte PDFs nutzen dieselben aktualisierten Termine.

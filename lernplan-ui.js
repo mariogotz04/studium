@@ -128,6 +128,24 @@ function lpTagesvorschläge(tag){
 function lpTagesstand(v){const p=lpPlan(v.plan),u=p?.units.find(u=>u.id===v.kapitel);if(!u)return {fertig:false,n:0,ziel:1};const s=lpStand(u,lpKatalog(p),p);return {fertig:s.done,automatisch:s.success,n:s.n,ziel:s.total};}
 function lpManuell(id,render=true){const p=lpPlan(),u=p?.units.find(u=>u.id===id);if(!u)return;db.set('lernplan:manuell:'+id,!db.get('lernplan:manuell:'+id,false));if(render)lernplanSeite(lpWoche);}
 function lpStandard(){return Lernplan.config({start:heuteIso(),minutes:[60,60,60,60,60,90,0],block:35,exams:lpPrüfungen().map(e=>e.id)},heuteIso());}
+function lpFormConfig(form,today=heuteIso()){
+ const f=new FormData(form),off=String(f.get('off')||'').split(/[\s,;]+/).filter(Boolean),valid=d=>/^\d{4}-\d{2}-\d{2}$/.test(d)&&Number.isFinite(Date.parse(d+'T12:00:00Z'))&&new Date(d+'T12:00:00Z').toISOString().slice(0,10)===d;
+ if(off.some(d=>!valid(d)))throw new Error('Freie Tage bitte als JJJJ-MM-TT eingeben.');
+ if(!valid(f.get('start')))throw new Error('Bitte ein gültiges Startdatum eingeben.');
+ return Lernplan.config({start:f.get('start'),block:+f.get('block'),pause:+f.get('pause'),minutes:Array.from({length:7},(_,i)=>+f.get('min'+i)),off,exams:f.getAll('exam'),focus:f.get('focus'),reading:f.has('reading'),lectures:f.has('lectures')},today);
+}
+function lpBedarfHtml(c,catalog,exams,p){
+ const old=p?{...p,units:p.units.map(u=>({...u,date:lpDatum(u,p)}))}:null;
+ const b=Lernplan.weeklyBudget(c,catalog,exams,{old,status:u=>lpStand(u,catalog,p),today:heuteIso(),lectures:lpVorlesungen()});
+ if(b.state==='empty')return '<h2>Benötigte Lernzeit pro Woche</h2><p>Wähle deine Klausuren aus, um den Wochenbedarf zu berechnen.</p>';
+ if(b.state==='impossible')return '<h2>Benötigte Lernzeit pro Woche</h2><p class="hinweis">Mit diesen Lerntagen und Terminen lässt sich der Plan auch mit dem höchsten Tagesbudget nicht vollständig verteilen. Prüfe zusätzliche Lerntage, freie Tage, Startdatum und die Länge einzelner Einheiten.</p><p class="muted">Aktuell eingetragen: '+b.current+' Min./Woche. Die Tagesgrenze liegt bei 600 Minuten, mit Vorlesungen gegebenenfalls darunter.</p>';
+ const extra=Math.max(0,b.weekly-b.current),hours=Math.floor(b.weekly/60),minutes=b.weekly%60;
+ const comparison=extra?`Für den Richtwert fehlen noch <b>${extra} Min./Woche</b>.`:b.missing?`Bei deiner aktuellen Verteilung haben noch <b>${b.missing} Minuten</b> keinen Termin. Prüfe die Tagesverteilung und die Vorschau.`:'Dein eingetragenes Wochenbudget reicht für die berechnete Planung aus.';
+ return `<h2>Benötigte Lernzeit pro Woche</h2><p class="lp-bedarf-zahl">ca. <b>${b.weekly} Min./Woche</b><span>${hours} Std.${minutes?' '+minutes+' Min.':''} pro Woche</span></p>
+ <p>Aktuell eingetragen: <b>${b.current} Min./Woche</b>. ${comparison}</p>
+ <p class="muted">${b.balanced?'Richtwert bei gleichmäßiger Verteilung auf sieben Lerntage.':'Richtwert für deine aktuelle Tagesverteilung auf '+b.days+' Lerntage.'} Mit Pausen, Wiederholungseinheiten und 20 % Puffer. Freie Tage${c.lectures?', Vorlesungen':''} und Klausurtermine sind berücksichtigt. ${b.reviewReserved?'Die letzten zehn Tage vor jeder Klausur bleiben für Wiederholung frei.':'Die vorgesehene Wiederholungsphase bleibt dabei verkürzt.'}</p>
+ <p class="muted">Verteile die Minuten unten selbst. Der Bedarf aktualisiert sich bei Änderungen; prüfe danach die Vorschau. Gilt für den derzeit bekannten Lernstoff.</p>`;
+}
 function lpForm(c){const exam=lpPrüfungen();return `<form id="lp-form" class="formular">
  <label>Startdatum<input type="date" name="start" required value="${esc(c.start)}"></label>
  <label>Einheit in Minuten<input type="number" name="block" min="15" max="90" value="${c.block}" required></label>
@@ -157,6 +175,7 @@ function lernplanSeite(woche){
  termineView.innerHTML=`<div class="lp-kopf row"><a href="#termine">← Termine</a><span class="muted">${p?'Planversion '+(p.number||1):'Noch kein persönlicher Plan'}</span></div>
  ${lpHinweisHtml(p)}
  ${changed?'<div class="hinweis">Klausuren oder Inhalte haben sich geändert. Prüfe eine Neuplanung; erreichte Abschlüsse bleiben erhalten.</div>':''}
+ <section class="panel lp-bedarf" id="lp-wochenbedarf" aria-live="polite">${lpBedarfHtml(cfg,c,exams,p)}</section>
  <details class="panel"${!p||lpVorschau?' open':''}><summary><b>${p?'Zeitbudget und Neuplanung':'Deinen Lernplan erstellen'}</b></summary>${lpForm(cfg)}</details>
  ${lpVorschau?`<div class="panel lp-vorschau"><h2>Vorschau der ${p?'Neuplanung':'Planung'}</h2><p>${lpVorschau.units.length} Einheiten bis ${fmtDate(lpVorschau.end)}. ${p?'Erledigte Einheiten und der aktuelle Tag bleiben erhalten.':'Erst nach Übernehmen wird dein persönlicher Plan gespeichert.'}</p>
  ${lpVorschau.warnings.map(w=>`<p class="hinweis">${esc(w)}</p>`).join('')}${p?`<p>${lpVorschau.units.filter(u=>{const old=p.units.find(x=>x.id===u.id);return old&&lpDatum(old,p)!==u.date;}).length} vorhandene Einheiten werden verschoben.</p>`:''}
@@ -172,10 +191,23 @@ function lernplanSeite(woche){
  ${p.units.some(u=>!lpDatum(u,p)&&!lpStand(u,c,p).done)?`<details class="panel"><summary>Noch ohne Termin</summary>${p.units.filter(u=>!lpDatum(u,p)&&!lpStand(u,c,p).done).map(u=>lpEinheit(u,p,c)).join('')}</details>`:''}
  <details class="panel"><summary>Kapitel und Fortschritt</summary>${lpKapitel(c.filter(m=>p.exams.some(e=>e.modules.includes(m.name))))}</details>
  ${p.units.filter(u=>lpDatum(u,p)<today&&!lpStand(u,c,p).done).length?'<p class="hinweis">Es gibt überfällige Einheiten ohne freien Puffer vor ihrer Klausur. Prüfe dein Zeitbudget und die Neuplanung.</p>':''}`:'<p class="muted">Dein Plan wird privat gespeichert und mit dem bestehenden Lernstand synchronisiert.</p>'}`;
- document.getElementById('lp-form').onsubmit=e=>{
-  e.preventDefault();const f=new FormData(e.target),off=String(f.get('off')).split(/[\s,;]+/).filter(Boolean);
-  if(off.some(d=>!/^\d{4}-\d{2}-\d{2}$/.test(d)||!Number.isFinite(Date.parse(d+'T12:00:00Z'))||new Date(d+'T12:00:00Z').toISOString().slice(0,10)!==d)){document.getElementById('lp-formfehler').textContent='Freie Tage bitte als JJJJ-MM-TT eingeben.';return;}
-  lpEntwurf=Lernplan.config({start:f.get('start'),block:+f.get('block'),pause:+f.get('pause'),minutes:Array.from({length:7},(_,i)=>+f.get('min'+i)),off,exams:f.getAll('exam'),focus:f.get('focus'),reading:f.has('reading'),lectures:f.has('lectures')},today);
+ const form=document.getElementById('lp-form');let bedarfTimer;
+ form.oninput=()=>{
+  clearTimeout(bedarfTimer);lpVorschau=null;termineView.querySelector('.lp-vorschau')?.remove();
+  bedarfTimer=setTimeout(()=>{
+   if(!form.isConnected)return;
+   const output=document.getElementById('lp-wochenbedarf');
+   if(!form.checkValidity()){output.innerHTML='<h2>Benötigte Lernzeit pro Woche</h2><p>Vervollständige die gültigen Angaben für die Berechnung.</p>';return;}
+   try{
+    const config=lpFormConfig(form,today);
+    if(config.start<today&&!p)throw new Error('Das Startdatum darf nicht in der Vergangenheit liegen.');
+    lpEntwurf=config;output.innerHTML=lpBedarfHtml(config,c,exams,p);document.getElementById('lp-formfehler').textContent='';
+   }catch(err){output.innerHTML='<h2>Benötigte Lernzeit pro Woche</h2><p>'+esc(err.message)+'</p>';}
+  },250);
+ };
+ form.onsubmit=e=>{
+  e.preventDefault();clearTimeout(bedarfTimer);
+  try{lpEntwurf=lpFormConfig(form,today);}catch(err){document.getElementById('lp-formfehler').textContent=err.message;return;}
   if(!lpEntwurf.exams.length){document.getElementById('lp-formfehler').textContent='Bitte mindestens eine Klausur auswählen.';return;}
   if(lpEntwurf.start<today&&!p){document.getElementById('lp-formfehler').textContent='Das Startdatum darf nicht in der Vergangenheit liegen.';return;}
   try{const old=p?{...p,units:p.units.map(u=>({...u,date:lpDatum(u,p)}))}:null;
