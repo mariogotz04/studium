@@ -17,7 +17,9 @@
 // #kapitel steht nichts (auf der Webseite wird jede Aufgabe und jeder Schritt einzeln gesetzt).
 // ─── Kopf: nicht ändern ───────────────────────────────────────────────────────
 #import "main.typ": *
-#let web = "web" in sys.inputs
+// web: Bausteine der Webseite. blatt: nur Aufgabenstellungen für die Wochen-PDF zum Selbstlösen.
+#let blatt = "blatt" in sys.inputs
+#let web = "web" in sys.inputs or blatt
 #let stelle(ziel) = {
   let teile = str(ziel).split("-").slice(1).filter(t => t.len() > 1 or t.match(regex("\d")) != none)
   let nr = teile.join(".")
@@ -31,22 +33,39 @@
 #set enum(indent: 0.6em, body-indent: 0.5em, spacing: 0.6em)
 #set math.equation(numbering: none)
 #show math.equation.where(block: true): it => block(above: 0.6em, below: 0.6em, breakable: false)[#it]
-#set page(..if web { (width: 140mm, height: auto, margin: (x: 1.5mm, y: 2.5mm), header: none, footer: none, fill: none) }
+#set page(..if blatt { (width: 176mm, height: auto, margin: (x: 0mm, y: 1mm), header: none, footer: none, fill: none) }
+  else if web { (width: 140mm, height: auto, margin: (x: 1.5mm, y: 2.5mm), header: none, footer: none, fill: none) }
   else { (paper: "a4", margin: (x: 20mm, y: 20mm), numbering: "1") })
 #let _kapitel = state("aufgaben-kapitel", "")
 #let kapitel(titel) = {
   _kapitel.update(titel)
   if not web { pagebreak(weak: true); text(size: 20pt, weight: "bold", fill: navy, titel); v(4mm) }
 }
-#let aufgabe(titel: none, art: "rechnen", quelle: none, ergebnis: none, tipp: none, minuten: none, ..teile) = {
+// herkunft: "original" (Aufgabe des Professors), "variante" (von Claude nach einer Vorlage, z. B. andere Zahlen),
+// "eigen" (von Claude ohne direkte Vorlage). vorlage: Fundstelle, z. B. "Übung 3, Aufg. 2" oder "Altklausur WS 23/24, Aufg. 4".
+#let herkunft-text(herkunft, vorlage) = {
+  if herkunft == "original" { "Original" + if vorlage != none { " · " + vorlage } }
+  else if herkunft == "variante" { "Von Claude erstellt · nach " + if vorlage != none { vorlage } else { "Vorlage" } }
+  else if herkunft == "eigen" { "Von Claude erstellt" } else { none }
+}
+#let aufgabe(titel: none, art: "rechnen", quelle: none, ergebnis: none, tipp: none, minuten: none,
+  herkunft: none, vorlage: none, platz: none, ..teile) = {
   assert(titel != none, message: "Jede Aufgabe braucht einen titel")
   assert(art in ("rechnen", "verstehen"), message: "art ist \"rechnen\" oder \"verstehen\": " + titel)
+  assert(herkunft in (none, "original", "variante", "eigen"), message: "herkunft ist \"original\", \"variante\" oder \"eigen\": " + titel)
+  assert(herkunft != "variante" or vorlage != none, message: "Eine Variante braucht vorlage: " + titel)
   let teile = teile.pos()
   assert(teile.len() >= 2, message: "Aufgabe ohne Lösungsschritte: " + titel)
   let (text-aufgabe, ..schritte) = teile
   let info = context [#metadata((titel: titel, art: art, quelle: quelle, minuten: minuten, kapitel: _kapitel.get(),
-    schritte: schritte.len(), ergebnis: ergebnis != none, tipp: tipp != none)) <aufgabe>]
-  if web {
+    herkunft: herkunft, vorlage: vorlage, platz: platz,
+    schritte: if blatt { 0 } else { schritte.len() }, ergebnis: ergebnis != none and not blatt, tipp: tipp != none and not blatt)) <aufgabe>]
+  if blatt {
+    // Eine Seite je Aufgabe, nur die Aufgabenstellung: Die Webseite setzt sie auf A4 und ergänzt den Schreibraum.
+    pagebreak(weak: true)
+    info
+    text-aufgabe
+  } else if web {
     // Jede Seite ist ein Baustein der Webseite: Aufgabe, Tipp, Ergebnis, dann die Schritte.
     pagebreak(weak: true)
     info
@@ -54,9 +73,11 @@
     for teil in (tipp, ergebnis).filter(t => t != none) + schritte { pagebreak(); teil }
   } else {
     info
+    let hk = herkunft-text(herkunft, vorlage)
     block(breakable: false, above: 1.4em, below: 0.6em)[
       #text(weight: "bold", fill: navy, size: 12.5pt, titel)
       #h(1fr) #text(size: 8.5pt, fill: muted)[#if art == "rechnen" [Rechenaufgabe] else [Verständnisfrage]#if quelle != none [ · Abschnitt #quelle]]
+      #if hk != none { linebreak(); text(size: 8.5pt, fill: if herkunft == "original" { teal } else { muted }, style: "italic", hk) }
       #v(1mm) #text-aufgabe
     ]
     if tipp != none { block(fill: sand, inset: 7pt, width: 100%)[*Tipp:* #tipp] }

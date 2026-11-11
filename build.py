@@ -525,6 +525,14 @@ def aufgaben(typ, modul, abschnitte, stellen=None):
         return None
     pdf = OUT / "pdf" / f"{slug}_Aufgaben.pdf"
     subprocess.run(["typst", "compile", "--root", str(typ.parent), str(typ), str(pdf)], capture_output=True)
+    # Nur die Aufgabenstellungen, eine Seite je Aufgabe in Reihenfolge: Grundlage der Wochen-PDF zum Selbstlösen.
+    blatt = OUT / "pdf" / f"{slug}_Blatt.pdf"
+    r = subprocess.run(["typst", "compile", "--root", str(typ.parent), "--input", "blatt=1", str(typ), str(blatt)],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        print(r.stderr, file=sys.stderr)
+        warnen("Aufgabenblatt fehlt", "Aufgabenstellungen für die Wochen-PDF ließen sich nicht setzen")
+        blatt.unlink(missing_ok=True)
 
     texte = []
     if stellen:
@@ -548,7 +556,7 @@ def aufgaben(typ, modul, abschnitte, stellen=None):
         b, h = svg_größe(seiten[n])
         return {"src": f"a/{slug}/{seiten[n].name}", "w": round(b, 1), "h": round(h, 1)}
 
-    liste, n, ids = [], 0, set()
+    liste, n, ids, ohne_herkunft = [], 0, set(), 0
     for nummer, info in enumerate(infos, 1):
         anfang = n
         id_ = hashlib.sha1(f"{modul}|{info['titel']}".encode()).hexdigest()[:10]
@@ -565,6 +573,14 @@ def aufgaben(typ, modul, abschnitte, stellen=None):
         n += info["schritte"]
         if info.get("minuten"):
             a["min"] = info["minuten"]
+        if info.get("herkunft"):
+            a["h"] = info["herkunft"]
+            if info.get("vorlage"):
+                a["v"] = info["vorlage"]
+        else:
+            ohne_herkunft += 1
+        if info.get("platz"):
+            a["platz"] = info["platz"]
         if info.get("quelle"):
             a["n"] = str(info["quelle"])
             treffer = abschnitt_finden(str(info["quelle"]), abschnitte)
@@ -574,7 +590,10 @@ def aufgaben(typ, modul, abschnitte, stellen=None):
             elif abschnitte:
                 warnen("Quelle nicht im Lernskript", f"{info['quelle']} ({info['titel']})")
         liste.append(a)
-    return {"pdf": f"pdf/{pdf.name}" if pdf.exists() else "", "items": liste}
+    if ohne_herkunft:
+        warnen("Herkunft fehlt", f"{ohne_herkunft} Aufgaben ohne herkunft: original/variante/eigen")
+    return {"pdf": f"pdf/{pdf.name}" if pdf.exists() else "", "blatt": f"pdf/{blatt.name}" if blatt.exists() else "",
+            "items": liste}
 
 
 # ───────────── Quiz ─────────────
@@ -999,7 +1018,7 @@ def main():
         eintrag = {"name": modul, "pdf": next((m["file"] for m in modules if m["name"] == modul), "")}
         typ = SRC / modul / "Lernskript aktuell" / "Typst-Dateien" / "Aufgaben.typ"
         if typ.exists() and (a := aufgaben(typ, modul, abschnitte.get(modul, []), stellen=stellen.get(modul))):
-            eintrag["aufgaben"], eintrag["apdf"] = a["items"], a["pdf"]
+            eintrag["aufgaben"], eintrag["apdf"], eintrag["ablatt"] = a["items"], a["pdf"], a["blatt"]
             print(f"→ {modul}: {len(a['items'])} Aufgaben ({sum(x['art'] == 'rechnen' for x in a['items'])} Rechenaufgaben)")
         md = SRC / modul / "Lernskript aktuell" / "Quiz.md"
         if md.exists():
