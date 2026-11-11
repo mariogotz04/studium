@@ -2930,41 +2930,74 @@ Buchkapitel 15 wiederholt das ganze Buch an einem Teil. Gehe die Schritte in die
 == Formelsammlung mit Voraussetzungen
 Die Beziehungen beziehen sich auf die beschriebenen Zeichen- und Rechenmodelle. Vor jedem Einsetzen Normfassung, Bezugsstrecke und Einheiten prüfen.
 
+=== Kapitel 1 · Grundlagen und Zeichnungserstellung
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
- table.cell(colspan: 3, rowspan: 1)[Grundlagen (Kapitel 1, B1)],
  [Blattformat A0], [$ x   dot  y  = 1 thin "m" ^(2) , quad  y  = sqrt(2)  thin x $], [x ≈ 841 mm, y ≈ 1189 mm; jedes nächste Format = Hälfte],
  [Fläche An], [$ A _("An")  = 1 thin "m" ^(2)  / 2^(n) $], [A4 = 1/16 m²],
+)
+
+=== Kapitel 3 · Werkstücke darstellen
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Maßstab], [$ M  = l _(Z)  / l _(W) $], [1 : 2 = Verkleinerung, 2 : 1 = Vergrößerung; Maßzahl immer wirkliche Länge],
- table.cell(colspan: 3, rowspan: 1)[Oberflächen (Kapitel 5, S. 109–111)],
+)
+
+=== Kapitel 5 · Oberflächen und Kanten
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Rautiefe], [$ R _(z)  = R _(p)  + R _(v) $], [höchste Spitze + tiefstes Tal in einer Einzelmessstrecke],
  [Mittenrauwert], [$ R _(a)  = frac(1, l)  integral _(0) ^(l)  |y (x )| thin "d" x $], [Rechteck gleicher Fläche; unempfindlich gegen Ausreißer],
  [Rillenbreite], [$ R _("Sm")  = frac(1, m)  sum  X _(s ,i) $], [mittlere Breite der Profilelemente],
- table.cell(colspan: 3, rowspan: 1)[Toleranzen und Passungen (Kapitel 6, S. 136, 155)],
+)
+
+=== Kapitel 6 · Toleranzen und Passungen
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Abmaße], [$ "ES"  = G _(o)  - N , quad  "EI"  = G _(u)  - N $], [Bohrung groß (ES, EI), Welle klein (es, ei)],
  [Maßtoleranz], [$ T  = G _(o)  - G _(u)  = "ES"  - "EI" $], [immer positiv],
  [Höchstpassung], [$ P _(O)  = "ES"  - "ei" $], [positiv = Spiel],
  [Mindestpassung], [$ P _(U)  = "EI"  - "es" $], [negativ = Übermaß],
  [Passtoleranz], [$ P _(T)  = P _(O)  - P _(U)  = T _(I)  + T _(A) $], [Spiel: P#sub[U] ≥ 0; Übermaß: P#sub[O] ≤ 0; sonst Übergang],
  [Maßkette (Restmaß)], [min = Gesamt#sub[min] − Σ Teilmaße#sub[max]], [Toleranzen addieren sich (Kapitel 13, S. 281)],
- table.cell(colspan: 3, rowspan: 1)[Gewinde (Kapitel 7, S. 174–178, 193)],
+)
+
+=== Kapitel 7 · Gewinde und Schraubenverbindungen
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Flankendurchmesser], [$ d _(2)  = d  - 0","64953 thin P $], [M16: P = 2 mm],
  [Kerndurchmesser], [$ d _(3)  = d  - 1","22687 thin P , quad  D _(1)  = d  - 1","08253 thin P $], [d#sub[3] Bolzen, D#sub[1] Mutter],
  [Gangzahl], [$ n  = P _(h)  / P $], [Tr40×14 P7 → n = 2],
  [Festigkeitsklasse x.y], [$ R _(m)  = x   dot  100, quad  R _("p0,2")  = frac(y,10) dot R_(m) $], [in N/mm²; 8.8 → 800 / 640 (Regel abgeleitet)],
  [Gewindeauslauf], [x ≈ 2,5 · P], [M16: x = 5 mm (Tabellenwert)],
- table.cell(colspan: 3, rowspan: 1)[Wellen, Sicherungen, Lager (Kapitel 8–D4)],
+)
+
+=== Kapitel 9 · Sicherungselemente
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Nuttiefe Sicherungsring], [$ t  = (d _(1)  - d _(2) )/2 $], [d#sub[2] = Nutgrund],
  [Axialspiel Sicherungsring], [Spiel#sub[max] = m#sub[max] − s#sub[min]], [Spiel#sub[min] = m#sub[min] − s#sub[max]],
+)
+
+=== Kapitel 10 · Wälzlager und Lageranordnungen
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Lagerquerschnitt], [$ H  = (D  - d )/2 $], [D#sub[W] ≈ H/2, H#sub[R] ≈ H/3, R ≈ H/9 (S. 235)],
  [Lagerbohrung], [d = Bohrungskennzahl · 5], [ab Kennzahl 04; 00/01/02/03 = 10/12/15/17 mm (Ergänzung)],
- table.cell(colspan: 3, rowspan: 1)[Zahnräder (Kapitel 12, S. 260–261)],
+)
+
+=== Kapitel 12 · Zahnräder
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Modul], [$ m  = d  / z $], [beide Räder gleicher Modul; DIN 780 Reihe I bevorzugt],
  [Kopf- / Fußhöhe], [$ h _(a)  = m , quad  h _(f)  = m  + c $], [c = Kopfspiel (Bruchteil von m)],
  [Kopf- / Fußkreis], [$ d _(a)  = m (z +2), quad  d _(f)  = d  - 2h _(f) $], [abgeleitet],
  [Teilung], [$ p  =  pi   dot  m $], [abgeleitet],
  [Achsabstand, Übersetzung], [$ a  = (d _(1)  + d _(2) )/2, quad  i  = z _(2) /z _(1) $], [Ergänzung],
 )
+
+=== Kapitel 13 · Zeichnungen lesen und erstellen
+Maßkette (Restmaß) beim Lesen einer Gesamtzeichnung: siehe Kapitel 6.
 
 #note("Wichtige Zahlen", [1 mm = 1000 µm. A4: 210 × 297 mm; A3: 297 × 420 mm. Bei Projektionsmethode 1 liegt die Draufsicht unten, die Seitenansicht von links rechts. H: EI = 0; h: es = 0. Zahlen aus Normtabellen immer mit Nennmaßbereich und Tabelle lesen; nicht außerhalb ihres Bereichs übertragen.])
 #src[B S. 6, 43–46, 136, 139–142; weitere Quellen der Formeln in den zugehörigen Kapiteln. Die ergänzten Zahnradbeziehungen gelten für ein unverschobenes außenverzahntes geradverzahntes Paar; Einschraub- und Lagerproportionen sind Zeichenrichtwerte.]
