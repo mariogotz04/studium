@@ -653,6 +653,8 @@ Bei gleichem Stückerlös und gleicher Menge fällt der Erlös im Gewinnvergleic
 
 Alle Beträge und Mengen beziehen sich innerhalb einer Rechnung auf dieselbe Periode. Die erste Tabelle betrifft das lineare Einproduktmodell aus Kapitel 1; die zweite die statischen Investitionsverfahren aus Kapitel 2. Für die KLR gilt das lineare Einproduktmodell; für einen gegebenen Mehrproduktfall werden die Gesamt-DB addiert und gemeinsame Fixkosten einmal abgezogen.
 
+=== Kapitel 1 · KLR und Deckungsbeitragsrechnung
+
 #tab(columns: (1.35fr, 2fr, 2fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Kosten], [$K_v=k_v x$; $K=K_f+k_v x$], [proportionales $K_v$; gleiches $K_f,k_v$ im Bereich; €/Periode],
@@ -682,8 +684,10 @@ Alle Beträge und Mengen beziehen sich innerhalb einer Rechnung auf dieselbe Per
 #src[Ü 1 und 4, PDF-S. 1–2; Foto Ü 4; Werte nachgerechnet.]
 
 
+=== Kapitel 2 · Statische Investitionsrechnung
+
 #tab(columns: (1.35fr, 2fr, 2fr),
- th([Statische Verfahren], [Formel], [Voraussetzung / Einheit]),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Abschreibung], [$A=(A K-R W)/n$], [linear; €/Jahr],
  [Mittlere Kapitalbindung], [$overline(K)_"geb"=(A K+R W)/2$], [linearer Kapitalabbau; €; S32 gibt $A K/2$ vor],
  [Kalkulatorische Zinsen], [$Z=overline(K)_"geb" i$], [$i$ pro Jahr als Dezimalzahl; €/Jahr],
