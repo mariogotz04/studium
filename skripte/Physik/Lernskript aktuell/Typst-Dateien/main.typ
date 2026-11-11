@@ -729,6 +729,7 @@ $f_S$ ist die Senderfrequenz in Hz; $f_"an"$ und $f_"ent"$ sind die vom ruhenden
 
 = Anhang
 == Formelsammlung mit Voraussetzungen
+=== Kapitel 5 · Schwingungen
 #tab(columns: (1.1fr, 2fr, 1.9fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Federpendel], [$omega_0=sqrt(D/m)$; $T=2pi sqrt(m/D)$], [Linear, ungedämpft; gesamte schwingende Masse],
@@ -740,15 +741,15 @@ $f_S$ ist die Senderfrequenz in Hz; $f_"an"$ und $f_"ent"$ sind die vom ruhenden
  [Eigenmoden], [$psi_1=x_1+x_2$; $psi_2=x_1-x_2$], [Identische Massen und äußere Federn],
  [Modenfrequenzen], [$omega_"gl"=sqrt(D/m)$; $omega_"gg"=sqrt((D+2D_k)/m)$], [Linear und ungedämpft],
  [Austauschzyklus], [$T_s=2pi/(omega_"gg"-omega_"gl")$], [Vollständiger Hüllenzyklus; $D_k>0$],
+)
+=== Kapitel 6 · Wellen
+#tab(columns: (1.1fr, 2fr, 1.9fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Puls], [$psi(x,t)=u(x plus.minus c t)$], [Unveränderte Form; − nach +x, + nach −x],
  [Harmonische Welle], [$psi=psi_0 sin(k x-omega t-phi_0)$], [Laufende Sinuswelle],
  [Wellenzahl], [$k=2pi/lambda$], [$k$ in m⁻¹, $lambda$ in m],
  [Ausbreitung], [$c=lambda f=omega/k$], [Phasengeschwindigkeit der betrachteten Welle],
  [Schnelle], [$s=partial psi/partial t$; $s_"max"=psi_0 omega$], [Ableitung bei festem Ort; harmonischer Maximalwert],
-)
-#pagebreak()
-#tab(columns: (1.1fr, 2fr, 1.9fr),
- th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Saite], [$c=sqrt(F/(rho A))$], [Zugkraft F in N; $rho A$ in kg/m],
  [Festkörper], [$c_T=sqrt(G/rho)$; $c_L=sqrt(E/rho)$], [Behandelte Scher-/Torsions- und Stabmodelle],
  [Flüssigkeit], [$c=sqrt(K/rho)$], [Longitudinal; K in Pa],
