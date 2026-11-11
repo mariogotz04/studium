@@ -127,7 +127,7 @@ assert(view.html.includes('href="#lernen/Finanzierung"'));
 node('#alle').click();
 bewerten(null, 'ok');
 assert.equal(c.location.hash, '#lernen/Finanzierung/aufgabe/a1', 'Einzelaufgaben behalten ihre Navigation');
-// Der Reihe nach: nicht gelöst → die Aufgabe bleibt; gelöst → nächste offene; offene Karten sperren das nächste Kapitel
+// Der Reihe nach: nicht gelöst → die Aufgabe bleibt; gelöst → nächste offene; nur Aufgaben bestimmen den Kapitelabschluss
 stand.clear();
 gehen('#lernen/Finanzierung/aufgabe/a0');
 node('#alle').click();
@@ -141,9 +141,7 @@ assert.equal(c.location.hash, '#lernen/Finanzierung/aufgabe/a2', 'Gelöste Aufga
 gehen('#lernen/Finanzierung/aufgabe/a2');
 node('#alle').click();
 bewerten(null, 'ok');
-assert.equal(c.location.hash, '#lernen/Finanzierung', 'Kapitel 3 erst, wenn die Karten aus Kapitel 2 gelernt sind');
-assert.equal(c.lernreihe('Finanzierung').front.kurz, 'Kapitel 2');
-c.kartenStand = () => ({ k2: { typ: 'wdh', lapses: 0 } });
+assert.equal(c.location.hash, '#lernen/Finanzierung/aufgabe/a3', 'Seit 11.11.2026 zählen nur Aufgaben: offene Karten sperren Kapitel 3 nicht mehr');
 assert.equal(c.lernreihe('Finanzierung').front.kurz, 'Kapitel 3');
 stand.clear();c.DECKS=[];
 for (let i=0;i<7;i++) stand.set(`lernpfad:Finanzierung:${1000+i}:0`,true);

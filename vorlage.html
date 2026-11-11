@@ -1020,7 +1020,7 @@ function lernreihe(name) {
     const kurz = `${tm ? `TM${Math.floor(e.s / 1000)} ` : ""}Kapitel ${e.s % 1000}`;
     e.kurz = e.s % 1000 === 999 ? "Ohne Kapitel" : kurz;
     e.name = e.name || e.kurz;
-    e.rest = e.offen.aufgaben + e.offen.quiz + e.offen.karten;
+    e.rest = e.offen.aufgaben;
   });
   const abschnitte = [];
   for (const e of kapitel) {
@@ -1036,7 +1036,7 @@ function lernreihe(name) {
       a.kurz = mitQuelle ? `${tm ? `TM${Math.floor(e.s / 1000)} ` : ""}Abschnitt ${e.s % 1000}.${nr}` : e.kurz;
       a.name = a.kurz;
       a.key = `lernpfad:${name}:${e.s}:${nr}`;
-      a.rest = a.offen.aufgaben + a.offen.quiz + a.offen.karten;
+      a.rest = a.offen.aufgaben;   // Seit 11.11.2026 zählen für den Abschluss nur die Aufgaben (Quiz/Karten entfallen)
       a.abgeschlossen = !!db.get(a.key, false) || !a.rest;
       const quelle = [...a.aufgaben, ...a.quiz, ...a.karten].sort(abschnittVergleich).find(x => x.q?.p || x.s?.p);
       a.quelle = quelle && (quelle.q?.p ? quelle.q : quelle.s);
@@ -1545,7 +1545,7 @@ function termineSeite() {
   const f = fristBearbeiten ? { id: fristBearbeiten, ...db.get("frist:" + fristBearbeiten, {}) } : { art: "klausur" };
   const todos = offeneTodos(true), offeneT = todos.filter(t => !t.erledigt), fertigeT = todos.filter(t => t.erledigt);
   kopf("Termine", `${offen.length} Fristen · ${offeneT.length} offene To-dos`);
-  termineView.innerHTML = `<div class="panel" style="margin-top:18px"><div class="kasten-titel"><h2>Dein Lernplan</h2><a class="btn primary" href="#termine/lernplan">Lernplan öffnen</a></div><p>Plane deine Klausurvorbereitung mit einem Wochenbudget und frei einteilbaren Wochenaufgaben. Verfolge deinen Fortschritt und lade die Aufgabenliste als PDF herunter.</p></div><div class="zwei" style="margin-top:18px"><div>
+  termineView.innerHTML = `<div class="panel" style="margin-top:18px"><div class="kasten-titel"><h2>Dein Lernplan</h2><a class="btn primary" href="#termine/lernplan">Lernplan öffnen</a></div><p>Alle Aufgaben gleichmäßig bis zur Probephase vor jeder Klausur verteilt. Jede Woche als A4-PDF mit Platz zum handschriftlichen Lösen.</p></div><div class="zwei" style="margin-top:18px"><div>
     ${klausur ? countdownHtml(klausur) : ""}
     <div class="panel"><div class="kasten-titel"><h2>Fristen & Klausuren</h2></div>
       ${offen.map(x => fristZeile(x, true)).join("") || `<p class="muted">Noch nichts eingetragen.</p>`}
@@ -1714,7 +1714,8 @@ async function epubSichern(href, knopf) {
 // Dort zeigt die Seite Lernskripte deshalb in einer eigenen Ansicht (pdf.js) und sichert sie über das Teilen-Menü.
 const APP = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
 const PDFJS = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/legacy/build/";
-const pdfDateiname = href => href.startsWith("blob:") ? "Lernplan Stand " + heuteIso() + ".pdf" : DATA.find(m => m.file === href)?.download || decodeURIComponent(href.split("/").pop());
+const pdfNamen = new Map();                      // Blob-Adresse → Dateiname, z. B. „Aufgaben KW 47.pdf“
+const pdfDateiname = href => pdfNamen.get(href) || (href.startsWith("blob:") ? "Lernplan Stand " + heuteIso() + ".pdf" : DATA.find(m => m.file === href)?.download || decodeURIComponent(href.split("/").pop()));
 const pdfDateien = new Map();                    // href → File, damit ein zweites Tippen sofort teilen kann
 async function pdfSichern(href, knopf) {
   const name = pdfDateiname(href), text = knopf.textContent;
@@ -2340,9 +2341,6 @@ document.addEventListener("keydown", e => {
 });
 
 /* ───────────── Lernen: Rechenaufgaben, Quiz, Pomodoro ───────────── */
-// Herkunft einer Aufgabe: Original des Professors oder von Claude erstellt (Variante nach Vorlage / eigen).
-const herkunftText = a => a.h === "original" ? "Original" + (a.v ? " · " + a.v : "") : a.h === "variante" ? "Von Claude erstellt · nach " + (a.v || "Vorlage") : a.h === "eigen" ? "Von Claude erstellt" : "";
-const herkunftChip = a => a.h ? `<span class="herkunft ${a.h}">${esc(herkunftText(a))}</span>` : "";
 const lernView = document.getElementById("view-lernen");
 const aufgabeStand = a => db.get(`aufgabe:${a.m.name}:${a.id}`, null);
 const quizStand = f => db.get(`quiz:${f.m.name}:${f.id}`, null);
@@ -2461,6 +2459,9 @@ function modulSeite(m, teil) {
 
 // Eine Aufgabe: erst selbst rechnen, dann Tipp, Ergebnis und Lösung Schritt für Schritt aufdecken, am Ende ehrlich bewerten.
 let offenAufgabe = null;
+// Herkunft einer Aufgabe: Original des Professors oder von Claude erstellt (Variante nach Vorlage / eigen).
+function herkunftText(a) { return a.h === "original" ? "Original" + (a.v ? " · " + a.v : "") : a.h === "variante" ? "Von Claude erstellt · nach " + (a.v || "Vorlage") : a.h === "eigen" ? "Von Claude erstellt" : ""; }
+function herkunftChip(a) { return a.h ? `<span class="herkunft ${a.h}">${esc(herkunftText(a))}</span>` : ""; }
 function aufgabeSeite(m, a, probe = null) {
   lernFortschritt(m.name);
   const reihe = lernreihe(m.name);
