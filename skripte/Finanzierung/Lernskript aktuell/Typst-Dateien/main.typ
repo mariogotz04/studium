@@ -1148,6 +1148,8 @@ Eine Sicherungsgrundschuld setzt dagegen nicht kraft ihres dinglichen Bestands e
 
 Geldgrößen immer in derselben Währung und Periode einsetzen. Prozentgrößen einheitlich als Dezimalzahl oder Prozentwert verwenden; Bestandsgrößen und jährliche Zahlungsströme unterscheiden.
 
+=== Kapitel 1 · Grundlagen der Finanzplanung
+
 #tab(columns: (1.2fr, 1.9fr, 1.8fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Gewinn], [$"Erträge"-"Aufwendungen"$], [Erfolg einer Periode, €; V PDF-S. 9–10.],
@@ -1196,6 +1198,12 @@ Geldgrößen immer in derselben Währung und Periode einsetzen. Prozentgrößen 
  [Kapitalbedarf UV], [$sum_j ("Jahresauszahlungen"_j/360) B_j$], [Gleichmäßige Tagesausgaben; $B_j$ Tage; V PDF-S. 31–32.],
  [Nettomonetäres UV], [Liquide Mittel + kurzfr. Forderungen − kurzfr. Verbindlichkeiten], [Bestandsgröße in €; keine reine Kasse; V PDF-S. 35–36, Abgrenzung 1.21.],
  [Durchschnittskapital], [$("Anfang"+"Ende")/2$], [Gleichmäßige Veränderung im Modell; V PDF-S. 38.],
+)
+
+=== Kapitel 2 · Fremdfinanzierung
+
+#tab(columns: (1.2fr, 1.9fr, 1.8fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Bank-EK, Folienmodell], [$"Kredit" times 8% times w$], [Vereinfachtes Basel II, $w$ als Faktor; V PDF-S. 43–44.],
  [Kreditvolumen, Folienmodell], [$"Bank-EK"/(8% times w)$], [Nur diese Grenze bindet; $w>0$; V PDF-S. 43–44.],
  [Einfacher zeitanteiliger Zins], [$Z=K_0 i t/B$], [Konvention für $t$ und $B$ festlegen; V PDF-S. 55.],
