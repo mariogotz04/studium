@@ -1387,6 +1387,7 @@ Bei festem Basisstrom wählst du die passende Ausgangskennlinie. Die Quellenlini
 == Formelsammlung mit Voraussetzungen
 Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ → −). Bei Drahtwiderständen $l$ in m und $A$ in mm².
 
+=== Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Ladung und Strom], [$Q = I dot.c t$; $I = Q\/t$; $i(t) = dif Q\/dif t$], [$1 thin "C" = 1 thin "As"$; konstanter Strom für $Q = I t$.],
@@ -1398,6 +1399,20 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Parallelschaltung], [$1\/R_"ges" = sum 1\/R_k$; zwei: $R_1 R_2\/(R_1 + R_2)$], [$U$ an allen Zweigen gleich.],
  [Spannungsteiler], [$U_2 = U dot.c R_2\/(R_1 + R_2)$], [Unbelastet (kein Strom abgegriffen).],
  [Belasteter Spannungsteiler], [$R_p = R_2 R_L/(R_2 + R_L)$; $U_a = U R_p/(R_1 + R_p)$], [Ohmsche Last $R_L$ parallel zu $R_2$; ideale Quelle.],
+)
+
+=== Kapitel 1 · Grundbegriffe: Strom, Spannung, Widerstand, Leistung
+#tab(columns: (1.15fr, 1.8fr, 1.7fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
+ [Ladung im Leiter], [$Q = n e A l$], [$n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-3)$.],
+ [Driftgeschwindigkeit], [$I = n e v_d A$; $v_d = I\/(n e A)$], [Einheiten passend (cm oder m); Größenordnung mm/s.],
+ [Stromdichte], [$S = I\/A$], [A/mm²; zulässig etwa 1 … 6 A/mm² (V S. 10).],
+ [Kontinuität], [$I_"Ein" = I_"Aus"$; $S_1 A_1 = S_2 A_2$], [Unverzweigter Leiter.],
+ [Lorentzkraft], [$arrow(F)_L = Q (arrow(v) times arrow(B)) = I (arrow(l) times arrow(B))$; $F = I l B$], [Betragsform bei $arrow(l) perp arrow(B)$; parallel: $F = 0$.],
+ [Drehspulinstrument], [$M_"el" = N A B I$; $phi = N A B\/D^* dot.c I$], [$A = 2 r l$; $phi ∼ I$.],
+ [Wechselstrom], [$T = 1\/f$; $I_"eff" = hat(i)\/sqrt(2)$], [Effektivwert nur für Sinusform; 50 Hz → 20 ms.],
+ [Induktion], [$u_i = -N dif Phi\/dif t = -N A dif B\/dif t$], [Fluss in Wb; zweite Form nur bei fester Fläche und Orientierung sowie homogenem senkrechtem Feld.],
+ [Transformator], [$U_1\/U_2 = N_1\/N_2 = I_2\/I_1$], [Wechselstrom; ideal, ohne Verluste.],
  [Thermoeffekt], [$U_q approx K Delta vartheta$; $Delta vartheta = vartheta_1 - vartheta_2$], [Cu–Konstantan: Skriptwert $K = "0,05" thin "mV/K"$; lineare Näherung.],
  [Photonenergie], [$E_"Photon" = h nu = h c/lambda$], [Energie in J; $1 thin "eV" = "1,602176634" dot.c 10^(-19) thin "J"$.],
  [Bandlückenschwelle], [$nu_g = W/h$; $lambda_g = h c/W$], [Bandlücke $W$ in J; im einfachen Modell $h nu >= W$ bzw. $lambda <= lambda_g$.],
@@ -1408,15 +1423,27 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Dioden-Arbeitsgerade], [$I = (U_q - U_D)/R$], [Quelle, Vorwiderstand, Diode in Reihe; Schnittpunkt mit Diodenkennlinie.],
  [Potenzial und Spannung], [$U_(A B) = phi_A - phi_B$], [Gleicher Bezugspunkt; Potenziale und Spannung in V.],
  [NTC], [$R(T) = R_(T_0) e^(B(1/T-1/T_0))$], [$T$, $T_0$, $B$ in K; passendes Materialmodell.],
- [Temperaturgang], [$R approx R_20(1+alpha_20 Delta vartheta+beta_20(Delta vartheta)^2)$], [Linear: quadratischen Term weglassen; Materialbereich beachten.],
  [Diode], [$I_D = I_S(e^(U_D/(n U_T))-1)$; $U_T = k T/e$], [Shockley-Modell außerhalb des Durchbruchs; $U_T approx 26 thin "mV"$ bei Raumtemperatur.],
  [Diodenwiderstände], [$R_D = U_D/I_D$; $r_e approx n U_T/I_D$], [Statischer Quotient bzw. lokale Tangente; zweite Form bei $I_D >> I_S$.],
  [LED], [$U_"Schwelle" = h c/(e lambda)$; $P_"opt" = eta_"LED" U_D I_D$], [Vereinfachte Photonenergie; Wirkungsgrad bezogen auf die LED.],
  [Transistor], [$I_C approx beta I_B$; $P_T = U_(C E) I_C$], [Aktiver Bereich; Lastgerade und Verlustleistungsgrenze prüfen.],
+ [Temperaturgang], [$R approx R_20(1+alpha_20 Delta vartheta+beta_20(Delta vartheta)^2)$], [Linear: quadratischen Term weglassen; Materialbereich beachten.],
  [Zeitabhängige Leistung], [$p(t) = u(t)i(t)$; $W = integral_0^(t_1) p(t) dif t$; $P_"mittel" = W/t_1$], [Integration über denselben Zeitraum; W in J, mittlere Leistung in W.],
+)
+
+=== Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis
+#tab(columns: (1.15fr, 1.8fr, 1.7fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Knoten und Maschen], [$sum I_nu = 0$; $sum U_nu = 0$], [Vorzeichen gemäß Zählpfeilen; konzentriertes Netzwerkmodell.],
+ [Grundstromkreis], [$I = U_q\/(R_i + R_a)$; $U_a = U_q - I R_i$], [Reale Quelle = $U_q$ mit $R_i$ in Reihe; Entladebetrieb.],
+ [Innenwiderstand], [$R_i = U_l\/I_k$; $I_k = U_q\/R_i$], [Leerlaufspannung $U_l = U_q$.],
+ [Quellenkennlinie], [$I(U) = -U\/R_i + I_k$], [Steigung $-1\/R_i$.],
  [Quellen in Reihe], [$U_"q,ers"=sum s_k U_(q k)$; $R_"i,ers"=sum R_(i k)$], [Polungen zählen; innere Widerstände addieren.],
  [Gleiche Quellen parallel], [$U_"q,ers"=U_q$; $R_"i,ers"=R_i/n$], [Gleiche Polung, gleiche Quellenparameter.],
+ [Leistungsbilanz], [$U_q I = I^2 R_i + U_a I$], [$P_q = P_v + P_a$.],
+ [Wirkungsgrad], [$eta = P_a\/P_q = R_a\/(R_i + R_a)$], [Allgemein $eta = P_"Nutz"\/P_"Aufwand"$.],
+ [Leistungsanpassung], [$R_a = R_i$: $P_"a,max" = U_q^2\/(4 R_i)$, $U_a = U_q\/2$, $I = I_k\/2$], [$eta = 50 thin %$.],
+ [Fehlanpassung], [$P_a\/P_"a,max" = 4 (R_a\/R_i)\/(1 + R_a\/R_i)^2$], [Nach V S. 46.],
  [Stromteiler], [$I_k=I_"ges" G_k/G_"ges"$], [Nur Leitwerte der betrachteten Verzweigung.],
  [Potenziometer], [$U_A/U_E=x/(1+(R_S/R_A)(x-x^2))$], [$x=R_2/R_S$; feste ohmsche Last.],
  [Spannungsrichtige Messung], [$R_x=U_x/(I-U_x/R_"VM")$], [Voltmeterstrom vom gemessenen Strom abziehen.],
@@ -1425,28 +1452,22 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Brückenabgleich], [$R_x=R_N R_1/R_2$], [Querzweigstrom null; Schleifdraht zusätzlich homogen.],
  [Dreieck zu Stern], [$r_A=R_(A B) R_(C A)/(R_(A B)+R_(B C)+R_(C A))$], [Zyklisch für B und C; quellenfreies Widerstands-Teilnetz.],
  [Stern zu Dreieck], [$R_(A B)=(r_A r_B+r_B r_C+r_C r_A)/r_C$], [Gegenüberliegender Arm im Nenner.],
+)
+
+=== Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen
+#tab(columns: (1.15fr, 1.8fr, 1.7fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Lineares Netz], [$A bold(I)=bold(b)$; $I_j=D_j/det(A)$], [Unabhängige Gleichungen; $det(A)!=0$.],
  [Knotenpotenziale], [$I_(A B)=G_(A B)(phi_A-phi_B)$], [Gleicher Bezug; Vorzeichen gemäß gewählter Richtung.],
+)
+
+=== Kapitel 4 · Zweipoltheorie und nichtlineare Arbeitspunkte
+#tab(columns: (1.15fr, 1.8fr, 1.7fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Zweipol], [$U_l=I_k R_i$; $U=U_l-I R_i$], [Linearer aktiver Quellenteil; gleiche Klemmen.],
  [Nichtlineare Last], [$I_"Last"(U)=(U_l-U)/R_i$], [Arbeitspunkt als Schnitt; mehrere Lösungen möglich.],
  [Kennlinien addieren], [Parallel: $I(U)=I_1(U)+I_2(U)$; Reihe: $U(I)=U_1(I)+U_2(I)$], [Gleiche Spannung bzw. gleicher Strom.],
  [Verlustleistungsgrenze], [$I_"zul"=P_"max"/U$], [Leistungshyperbel; positive Größen im betrachteten Betrieb.],
- [Ladung im Leiter], [$Q = n e A l$], [$n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-3)$.],
- [Driftgeschwindigkeit], [$I = n e v_d A$; $v_d = I\/(n e A)$], [Einheiten passend (cm oder m); Größenordnung mm/s.],
- [Stromdichte], [$S = I\/A$], [A/mm²; zulässig etwa 1 … 6 A/mm² (V S. 10).],
- [Kontinuität], [$I_"Ein" = I_"Aus"$; $S_1 A_1 = S_2 A_2$], [Unverzweigter Leiter.],
- [Transformator], [$U_1\/U_2 = N_1\/N_2 = I_2\/I_1$], [Wechselstrom; ideal, ohne Verluste.],
- [Lorentzkraft], [$arrow(F)_L = Q (arrow(v) times arrow(B)) = I (arrow(l) times arrow(B))$; $F = I l B$], [Betragsform bei $arrow(l) perp arrow(B)$; parallel: $F = 0$.],
- [Drehspulinstrument], [$M_"el" = N A B I$; $phi = N A B\/D^* dot.c I$], [$A = 2 r l$; $phi ∼ I$.],
- [Wechselstrom], [$T = 1\/f$; $I_"eff" = hat(i)\/sqrt(2)$], [Effektivwert nur für Sinusform; 50 Hz → 20 ms.],
- [Induktion], [$u_i = -N dif Phi\/dif t = -N A dif B\/dif t$], [Fluss in Wb; zweite Form nur bei fester Fläche und Orientierung sowie homogenem senkrechtem Feld.],
- [Grundstromkreis], [$I = U_q\/(R_i + R_a)$; $U_a = U_q - I R_i$], [Reale Quelle = $U_q$ mit $R_i$ in Reihe; Entladebetrieb.],
- [Innenwiderstand], [$R_i = U_l\/I_k$; $I_k = U_q\/R_i$], [Leerlaufspannung $U_l = U_q$.],
- [Quellenkennlinie], [$I(U) = -U\/R_i + I_k$], [Steigung $-1\/R_i$.],
- [Leistungsbilanz], [$U_q I = I^2 R_i + U_a I$], [$P_q = P_v + P_a$.],
- [Wirkungsgrad], [$eta = P_a\/P_q = R_a\/(R_i + R_a)$], [Allgemein $eta = P_"Nutz"\/P_"Aufwand"$.],
- [Leistungsanpassung], [$R_a = R_i$: $P_"a,max" = U_q^2\/(4 R_i)$, $U_a = U_q\/2$, $I = I_k\/2$], [$eta = 50 thin %$.],
- [Fehlanpassung], [$P_a\/P_"a,max" = 4 (R_a\/R_i)\/(1 + R_a\/R_i)^2$], [Nach V S. 46.],
 )
 
 #src([Gesamtskript-Erweiterung: V S. 43–108, insbesondere 47–67, 69–85 und 87–108. Ergänzte Formeln: N30, PDF-S. 1–18 und 20–22 = V S. 20–37 und 39–41; LED, PDF-S. 1; FK-N, PDF-S. 6; V S. 17–19; N, PDF-S. 3 und 6. Voraussetzungen und belasteter Teiler wie in Abschnitt 0.6 und 1.2.3–1.2.6 hergeleitet.])
