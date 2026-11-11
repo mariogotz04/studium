@@ -162,25 +162,8 @@ Ein Maschinenbauer braucht im März 500.000 € für eine Fräsmaschine. Die Ban
 - „Die Art der Mittel“: Zur Laufzeit des zugesagten Kredits macht der Fragetext keine Angabe. Der verspätete Geldzufluss belegt hier den Fehler beim Zeitpunkt.
 ]
 
-#aufgabe(titel: "Begriffslandkarte Kapitel 1", art: "verstehen", quelle: "1.1", herkunft: "eigen")[
-#if not web [*Aufgabe 4* #linebreak()]
-Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-#src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
-][
-*Kurz erklärt:*
-- *Ziele → Finanzierungsformen:* Herkunft innen/außen; Rechte Eigen-/Fremdkapital.
-- *Erfolg von Zahlung trennen → Cashflow:* direkt/indirekt, drei Bereiche, Free Cashflow.
-- *Finanzplan:* Zahlungen terminieren, Lücken und Insolvenzgefahr früh erkennen.
-- *Kennzahlen und Leverage:* Deckung, Kapitalstruktur, Rentabilität und Risiko beurteilen.
-- *Aktienkennzahlen:* Buch-/Ertragswert vom Marktpreis trennen.
-- *Working Capital:* Bilanzpuffer; *Bindungsdauer:* operativen Finanzierungsbedarf bestimmen.
-- *Glasspinnerei:* Absatz → EBK → NOCF → Finanzplan → Kapitalbedarf → Planbilanz.
-][
-*Bild:* Wie eine Reiseplanung: Erst klären, wer zahlt, dann wann das Geld gebraucht wird, dann ob die Kasse unterwegs reicht.
-]
-
 #aufgabe(titel: "Vier Unterschiede: außen und innen", art: "verstehen", quelle: "1.2", herkunft: "original", vorlage: "Vorlesung PDF-S. 6, Folie 11, Aufgabe")[
-#if not web [*Aufgabe 5* #linebreak()]
+#if not web [*Aufgabe 4* #linebreak()]
 #text("Nenne die vier Unterschiede zwischen Außen- und Innenfinanzierung.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A4. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -188,7 +171,7 @@ Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehöre
 ]
 
 #aufgabe(titel: "Sechs Merkmale von Eigen- und Fremdkapital", art: "verstehen", quelle: "1.2", herkunft: "original", vorlage: "Vorlesung PDF-S. 5, Folie 10, Aufgabe")[
-#if not web [*Aufgabe 6* #linebreak()]
+#if not web [*Aufgabe 5* #linebreak()]
 #text("Nenne die sechs Merkmale, in denen sich Eigen- und Fremdkapital unterscheiden.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A7. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -196,7 +179,7 @@ Zeichne die Begriffslandkarte zu Kapitel 1 aus dem Kopf: Welche Begriffe gehöre
 ]
 
 #aufgabe(titel: "Klausur: weitere Formen der Innenfinanzierung", art: "verstehen", quelle: "1.2", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 4 (Zusatzfrage)", minuten: 2)[
-#if not web [*Aufgabe 7* #linebreak()]
+#if not web [*Aufgabe 6* #linebreak()]
 #text("Nenne zwei weitere Formen der Innenfinanzierung, die einem Unternehmen neben der Selbstfinanzierung zur Verfügung stehen.")
 #src[K, PDF-S. 6 (Klausurseite 10). Verfahren: #stelle(<a-1-2>), #stelle(<a-1-5>).]
 ][
@@ -211,7 +194,7 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 ]
 
 #aufgabe(titel: "Außen- und Innenfinanzierung definieren", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 8* #linebreak()]
+#if not web [*Aufgabe 7* #linebreak()]
 #text("Definiere Außen- und Innenfinanzierung in je einem Satz.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A3. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -219,7 +202,7 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 ]
 
 #aufgabe(titel: "Es kommt auf die Gegenleistung an", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 9* #linebreak()]
+#if not web [*Aufgabe 8* #linebreak()]
 #text("„Es kommt immer auf die Gegenleistung an.“ Erkläre den Satz anhand von Zins, Gewinn, Rückzahlung, Stimmrechten und Kündigungsrecht.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A5. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -227,7 +210,7 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 ]
 
 #aufgabe(titel: "Einfluss der Bank ohne Leitungsrechte", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 10* #linebreak()]
+#if not web [*Aufgabe 9* #linebreak()]
 #text("Warum kann eine Bank faktisch Einfluss auf ein Unternehmen nehmen, obwohl Fremdkapitalgeber keine Leitungsrechte haben?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A6. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -235,7 +218,7 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 ]
 
 #aufgabe(titel: "Finanzierungsformen nach Drukarczyk zuordnen", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 11* #linebreak()]
+#if not web [*Aufgabe 10* #linebreak()]
 #text("Ordne den Finanzierungsformen nach Drukarczyk zu (Nr. 1–9): a) Bankkredit, b) Darlehen eines GmbHGesellschafters an seine GmbH, c) Kapitalerhöhung durch die bisherigen Gesellschafter, d) Aufnahme eines neuen Gesellschafters, e) Gewinn wird nicht ausgeschüttet, f) Verkauf einer nicht mehr benötigten Lagerhalle.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A8. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -243,7 +226,7 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 ]
 
 #aufgabe(titel: "Eigenfinanzierung und Selbstfinanzierung", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 12* #linebreak()]
+#if not web [*Aufgabe 11* #linebreak()]
 #text("Worin unterscheiden sich Eigenfinanzierung und Selbstfinanzierung?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A9. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -260,7 +243,7 @@ In „Klausur: Cashflow der Rhein GmbH“ sind das genau die 7 Mio. € Abschrei
 ]
 
 #aufgabe(titel: "Finanzierungsformen außen, innen, EK, FK", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 13* #linebreak()]
+#if not web [*Aufgabe 12* #linebreak()]
 #text("Finanzierungsformen (Teil A2): Ordne zu (Nr. 1–9 nach Drukarczyk, außen/innen, EK/FK): a) Ausgabe neuer Aktien an neue Aktionäre, b) Gewinn wird einbehalten, c) Verkauf einer nicht mehr benötigten Halle, d) Ausgabe einer Anleihe, e) die bisherigen Gesellschafter erhöhen ihre Einlage.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü15. Verfahren: #stelle(<a-1-2>).]
 ][
@@ -268,7 +251,7 @@ a) Nr. 4 Beteiligungsfinanzierung: außen, EK. b) Nr. 6 offene Selbstfinanzierun
 ]
 
 #aufgabe(titel: "Gesellschafterdarlehen einordnen", art: "verstehen", quelle: "1.2", herkunft: "eigen", tipp: [Stell zwei Fragen getrennt: Woher kommt das Geld? Welche Rechte bekommt der Geber?])[
-#if not web [*Aufgabe 14* #linebreak()]
+#if not web [*Aufgabe 13* #linebreak()]
 Ein Gesellschafter gibt seiner GmbH ein Darlehen. Ist das Eigen- oder Fremdkapital, Außen- oder Innenfinanzierung? Begründe mit Herkunft und Rechten.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -290,7 +273,7 @@ Ein Gesellschafter gibt seiner GmbH ein Darlehen. Ist das Eigen- oder Fremdkapit
 ]
 
 #aufgabe(titel: "Formen der Innenfinanzierung erkennen", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 15* #linebreak()]
+#if not web [*Aufgabe 14* #linebreak()]
 Welche Finanzierungsformen gehören zur Innenfinanzierung? Prüfe dabei auch Beteiligungsfinanzierung durch einen neuen Gesellschafter und hybride Finanzierung und begründe jeweils.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -305,7 +288,7 @@ Welche Finanzierungsformen gehören zur Innenfinanzierung? Prüfe dabei auch Bet
 ]
 
 #aufgabe(titel: "Fremdkapital im Grundmodell", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 16* #linebreak()]
+#if not web [*Aufgabe 15* #linebreak()]
 Was gilt im Grundmodell der Vorlesung für Fremdkapital? Gehe auf Erfolgsbeteiligung, Befristung und Zahlungsanspruch, Rückzahlungssicherheit und Stimmrechte ein.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -318,7 +301,7 @@ Was gilt im Grundmodell der Vorlesung für Fremdkapital? Gehe auf Erfolgsbeteili
 ]
 
 #aufgabe(titel: "Zwei Fragen zur Einordnung", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 17* #linebreak()]
+#if not web [*Aufgabe 16* #linebreak()]
 Nach welchen zwei Fragen ordnet man einen Finanzierungsvorgang?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -333,7 +316,7 @@ Nach welchen zwei Fragen ordnet man einen Finanzierungsvorgang?
 ]
 
 #aufgabe(titel: "Eigenkapital und Fremdkapital im Vergleich", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 18* #linebreak()]
+#if not web [*Aufgabe 17* #linebreak()]
 Was unterscheidet Eigenkapital von Fremdkapital?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -348,7 +331,7 @@ Was unterscheidet Eigenkapital von Fremdkapital?
 ]
 
 #aufgabe(titel: "„Fremdkapital haftet nicht“ richtig lesen", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 19* #linebreak()]
+#if not web [*Aufgabe 18* #linebreak()]
 Heißt „Fremdkapital haftet nicht“, dass der Gläubiger sein Geld sicher zurückbekommt?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -361,7 +344,7 @@ Heißt „Fremdkapital haftet nicht“, dass der Gläubiger sein Geld sicher zur
 ]
 
 #aufgabe(titel: "Planbarkeit von Außen- und Innenfinanzierung", art: "verstehen", quelle: "1.2", herkunft: "eigen")[
-#if not web [*Aufgabe 20* #linebreak()]
+#if not web [*Aufgabe 19* #linebreak()]
 Was unterscheidet Außen- und Innenfinanzierung in der Planbarkeit?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -374,7 +357,7 @@ Was unterscheidet Außen- und Innenfinanzierung in der Planbarkeit?
 ]
 
 #aufgabe(titel: "Vorlesung: Anlage mit der geringsten Liquidität", art: "verstehen", quelle: "1.3", herkunft: "original", vorlage: "Vorlesung PDF-S. 8, Folie 15, Aufgabe", minuten: 4)[
-#if not web [*Aufgabe 21* #linebreak()]
+#if not web [*Aufgabe 20* #linebreak()]
 Welche der folgenden Anlagen weist die geringste Liquidität auf? Begründe für jede der vier Anlagen, wie schnell du an dein Geld kommst.
 - üblicher Sparbrief über 4 % p. a. mit einer Restlaufzeit von 2 Jahren
 - Bundesanleihe mit einer Restlaufzeit von 4 Jahren
@@ -392,7 +375,7 @@ Welche der folgenden Anlagen weist die geringste Liquidität auf? Begründe für
 ]
 
 #aufgabe(titel: "Bundesanleihe gegen Sparbrief", art: "verstehen", quelle: "1.3", herkunft: "variante", vorlage: "Vorlesung PDF-S. 8, Folie 15, Aufgabe")[
-#if not web [*Aufgabe 22* #linebreak()]
+#if not web [*Aufgabe 21* #linebreak()]
 #text("Warum ist eine 4-jährige Bundesanleihe liquider als ein Sparbrief mit 2 Jahren Restlaufzeit?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A13. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -414,7 +397,7 @@ Welche der folgenden Anlagen weist die geringste Liquidität auf? Begründe für
 ]
 
 #aufgabe(titel: "Liquidität als oberstes Ziel", art: "verstehen", quelle: "1.3", herkunft: "eigen")[
-#if not web [*Aufgabe 23* #linebreak()]
+#if not web [*Aufgabe 22* #linebreak()]
 #text("Definiere Liquidität. Warum hat das Liquiditätsziel die höchste Bedeutung in der Zielhierarchie?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A10. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -435,7 +418,7 @@ Liquidität heißt: fällige Zahlungen fristgerecht und betragsgenau erfüllen k
 ]
 
 #aufgabe(titel: "Gewinn und trotzdem zahlungsunfähig", art: "verstehen", quelle: "1.3", herkunft: "eigen")[
-#if not web [*Aufgabe 24* #linebreak()]
+#if not web [*Aufgabe 23* #linebreak()]
 #text("Erkläre an einem Beispiel, wie ein Unternehmen Gewinn machen und trotzdem zahlungsunfähig werden kann.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A11. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -460,7 +443,7 @@ Liquidität heißt: fällige Zahlungen fristgerecht und betragsgenau erfüllen k
 ]
 
 #aufgabe(titel: "Vier Liquiditätsquellen", art: "verstehen", quelle: "1.3", herkunft: "eigen")[
-#if not web [*Aufgabe 25* #linebreak()]
+#if not web [*Aufgabe 24* #linebreak()]
 #text("Nenne die vier Liquiditätsquellen aus Folie 14 mit je einem Beispiel.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A12. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -468,7 +451,7 @@ Liquidität heißt: fällige Zahlungen fristgerecht und betragsgenau erfüllen k
 ]
 
 #aufgabe(titel: "Warum die Bilanz Liquidität schlecht misst", art: "verstehen", quelle: "1.3", herkunft: "eigen")[
-#if not web [*Aufgabe 26* #linebreak()]
+#if not web [*Aufgabe 25* #linebreak()]
 #text("Warum ist die Bilanz nur bedingt geeignet, die Liquidität zu messen?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A14. Verfahren: #stelle(<a-1-3>).]
 ][
@@ -476,7 +459,7 @@ Die Bilanz zeigt Vermögens- und Kapitalbestände an einem Stichtag; die GuV arb
 ]
 
 #aufgabe(titel: "Grundstück beleihen: welche Liquidität?", art: "verstehen", quelle: "1.3", herkunft: "eigen")[
-#if not web [*Aufgabe 27* #linebreak()]
+#if not web [*Aufgabe 26* #linebreak()]
 Ein Unternehmen beleiht ein Grundstück, um an Geld zu kommen. Welche Liquiditätsart nutzt es? Grenze sie von den anderen drei Liquiditätsquellen ab.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -489,7 +472,7 @@ Ein Unternehmen beleiht ein Grundstück, um an Geld zu kommen. Welche Liquiditä
 ]
 
 #aufgabe(titel: "Liquidisierbarkeit", art: "verstehen", quelle: "1.3", herkunft: "eigen")[
-#if not web [*Aufgabe 28* #linebreak()]
+#if not web [*Aufgabe 27* #linebreak()]
 Was bedeutet Liquidisierbarkeit?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -501,7 +484,7 @@ Was bedeutet Liquidisierbarkeit?
 ]
 
 #aufgabe(titel: "Aufwand, Auszahlung, Ertrag, Einzahlung", art: "verstehen", quelle: "1.4", herkunft: "eigen")[
-#if not web [*Aufgabe 29* #linebreak()]
+#if not web [*Aufgabe 28* #linebreak()]
 #text("Erkläre den Unterschied zwischen Aufwand und Auszahlung sowie zwischen Ertrag und Einzahlung mit je einem Beispiel.")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A15. Verfahren: #stelle(<a-1-4>).]
 ][
@@ -519,7 +502,7 @@ Was bedeutet Liquidisierbarkeit?
 ]
 
 #aufgabe(titel: "Auszahlung, Aufwand, Einzahlung oder Ertrag?", art: "verstehen", quelle: "1.4", herkunft: "eigen")[
-#if not web [*Aufgabe 30* #linebreak()]
+#if not web [*Aufgabe 29* #linebreak()]
 #text("Zuordnung: Entscheide jeweils: Auszahlung? Aufwand? Einzahlung? Ertrag? (in dieser Periode) a) Barkauf einer Maschine für 100.000 € b) Abschreibung auf diese Maschine 20.000 € c) Lohnzahlung d) Zuführung zu einer Rückstellung e) Verkauf auf Ziel f) erhaltene Kundenanzahlung g) Kreditaufnahme h) Kredittilgung i) Kauf eines Grundstücks")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A22. Verfahren: #stelle(<a-1-4>).]
 ][
@@ -539,7 +522,7 @@ Im dargestellten Anschaffungs-/Buchungszeitpunkt gilt:
 ]
 
 #aufgabe(titel: "Auszahlung ohne Aufwand, Einzahlung ohne Ertrag", art: "verstehen", quelle: "1.4", herkunft: "eigen", tipp: [Frag bei jedem Vorgang: Fließt Geld herein? Steigt der Erfolg in dieser Periode?])[
-#if not web [*Aufgabe 31* #linebreak()]
+#if not web [*Aufgabe 30* #linebreak()]
 Nenne Beispiele für Auszahlungen ohne Aufwand und für Einzahlungen ohne entsprechenden Ertrag. Begründe jeweils, warum der Erfolg nicht berührt wird.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -560,7 +543,7 @@ Nenne Beispiele für Auszahlungen ohne Aufwand und für Einzahlungen ohne entspr
 ]
 
 #aufgabe(titel: "Kredittilgung: Aufwand oder Auszahlung?", art: "verstehen", quelle: "1.4", herkunft: "eigen")[
-#if not web [*Aufgabe 32* #linebreak()]
+#if not web [*Aufgabe 31* #linebreak()]
 Ein Unternehmen tilgt einen Kredit über 10.000 €. Ist das Aufwand, Auszahlung, beides oder keins von beidem? Begründe.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -573,7 +556,7 @@ Ein Unternehmen tilgt einen Kredit über 10.000 €. Ist das Aufwand, Auszahlung
 ]
 
 #aufgabe(titel: "Abschreibungen im indirekten Cashflow", art: "verstehen", quelle: "1.5", herkunft: "eigen")[
-#if not web [*Aufgabe 33* #linebreak()]
+#if not web [*Aufgabe 32* #linebreak()]
 #text("Warum werden bei der indirekten Cashflow-Methode die Abschreibungen zum Jahresüberschuss addiert?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A16. Verfahren: #stelle(<a-1-5>).]
 ][
@@ -597,7 +580,7 @@ Ein Unternehmen tilgt einen Kredit über 10.000 €. Ist das Aufwand, Auszahlung
 ]
 
 #aufgabe(titel: "Was der Cashflow verrät", art: "verstehen", quelle: "1.5", herkunft: "eigen")[
-#if not web [*Aufgabe 34* #linebreak()]
+#if not web [*Aufgabe 33* #linebreak()]
 #text("Über welche vier Fähigkeiten eines Unternehmens informiert der Cashflow?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A17. Verfahren: #stelle(<a-1-5>).]
 ][
@@ -605,7 +588,7 @@ Ein Unternehmen tilgt einen Kredit über 10.000 €. Ist das Aufwand, Auszahlung
 ]
 
 #aufgabe(titel: "Pizzeria: Gewinn, Abschreibung und Kasse", art: "verstehen", quelle: "1.5", herkunft: "eigen", tipp: [Cashflow indirekt = Jahresüberschuss + auszahlungsloser Aufwand. Achte auf die Periode.])[
-#if not web [*Aufgabe 35* #linebreak()]
+#if not web [*Aufgabe 34* #linebreak()]
 Marios Pizzeria macht 2.000 € Gewinn im Monat; der Backofen wird mit 6.000 € im Jahr abgeschrieben. Wie hoch ist der Cashflow im Monat (vereinfachtes Modell), und was zeigt das Beispiel über Gewinn, Abschreibung und Cashflow?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -625,7 +608,7 @@ Marios Pizzeria macht 2.000 € Gewinn im Monat; der Backofen wird mit 6.000 €
 ]
 
 #aufgabe(titel: "XYZ GmbH 2009: Cashflow indirekt", art: "verstehen", quelle: "1.5", herkunft: "eigen")[
-#if not web [*Aufgabe 36* #linebreak()]
+#if not web [*Aufgabe 35* #linebreak()]
 Die XYZ GmbH hat 2009 einen Jahresüberschuss von 380, Abschreibungen von 500 und eine Zuführung zu Pensionsrückstellungen von 300 (Mio. €). Wie hoch ist der Cashflow nach der indirekten Methode? Begründe die Vorzeichen.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -638,7 +621,7 @@ Die XYZ GmbH hat 2009 einen Jahresüberschuss von 380, Abschreibungen von 500 un
 ]
 
 #aufgabe(titel: "Was ist der Cashflow?", art: "verstehen", quelle: "1.5", herkunft: "eigen")[
-#if not web [*Aufgabe 37* #linebreak()]
+#if not web [*Aufgabe 36* #linebreak()]
 Was ist der Cashflow?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -649,7 +632,7 @@ Was ist der Cashflow?
 ]
 
 #aufgabe(titel: "Klausur: Cashflow der Rhein GmbH", art: "rechnen", quelle: "1.5", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 4", minuten: 5)[
-#if not web [*Aufgabe 38* #linebreak()]
+#if not web [*Aufgabe 37* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Rhein GmbH legt für 2015 diese GuV vor (Mio. €): Materialaufwand 21, Personalaufwand 23, Aufwand aus Zuführung zu Pensionsrückstellungen 4, Abschreibungen 7, sonstiger Aufwand 5, Jahresüberschuss 9; Umsatzerlöse 69.
@@ -674,7 +657,7 @@ Die Rhein GmbH legt für 2015 diese GuV vor (Mio. €): Materialaufwand 21, Pers
 ]
 
 #aufgabe(titel: "Jahresüberschuss und Cashflow eines Kleinunternehmens", art: "rechnen", quelle: "1.5", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 4")[
-#if not web [*Aufgabe 39* #linebreak()]
+#if not web [*Aufgabe 38* #linebreak()]
 *Gegeben und Annahmen*
 
 Kleinunternehmen: Umsatzerlöse 900 T€ (alle bezahlt), Materialaufwand 350 T€, Personalaufwand 280 T€, Abschreibungen 60 T€, Zuführung zu Pensionsrückstellungen 40 T€, Zinsaufwand 30 T€ (alles bezahlt).
@@ -701,7 +684,7 @@ Kleinunternehmen: Umsatzerlöse 900 T€ (alle bezahlt), Materialaufwand 350 T�
 ]
 
 #aufgabe(titel: "Cashflow indirekt mit Rückstellungen", art: "rechnen", quelle: "1.5", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 4")[
-#if not web [*Aufgabe 40* #linebreak()]
+#if not web [*Aufgabe 39* #linebreak()]
 *Gegeben und Annahmen*
 
 Cashflow indirekt: JÜ 250, Abschreibungen 90, Zuführung zu Rückstellungen 30, Auflösung von Rückstellungen 10 (T€).
@@ -720,7 +703,7 @@ Cashflow indirekt: JÜ 250, Abschreibungen 90, Zuführung zu Rückstellungen 30,
 ]
 
 #aufgabe(titel: "Cashflow direkt", art: "rechnen", quelle: "1.5", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 4")[
-#if not web [*Aufgabe 41* #linebreak()]
+#if not web [*Aufgabe 40* #linebreak()]
 *Gegeben und Annahmen*
 
 Cashflow direkt: Einzahlungen aus Umsatz 1.200, Auszahlungen für Material 500, Personal 350, Zinsen 40 (T€).
@@ -739,7 +722,7 @@ Cashflow direkt: Einzahlungen aus Umsatz 1.200, Auszahlungen für Material 500, 
 ]
 
 #aufgabe(titel: "Vorlesung: Marios Pizzeria – Gewinn oder Kasse?", art: "rechnen", quelle: "1.5", herkunft: "original", vorlage: "Vorlesung PDF-S. 11, Folie 21, Beispiel", minuten: 6, ergebnis: [Beide haben recht: Gewinn 2.000 €, Cashflow 2.500 € je Monat; 500 € bleiben monatlich für einen neuen Ofen.])[
-#if not web [*Aufgabe 42* #linebreak()]
+#if not web [*Aufgabe 41* #linebreak()]
 *Gegeben und Annahmen*
 
 Marios Pizzeria läuft gut. Sein Steuerberater hat ihm ausgerechnet, dass er monatlich 2.000 € verdient. „Das stimmt gar nicht“, meint Mario, „am Monatsende habe ich immer viel mehr in der Kasse: 2.500 €.“ Der Backofen wird jährlich mit 6.000 € abgeschrieben. Alle Umsätze und übrigen Aufwendungen sind im selben Monat bezahlt.
@@ -763,7 +746,7 @@ Marios Pizzeria läuft gut. Sein Steuerberater hat ihm ausgerechnet, dass er mon
 ]
 
 #aufgabe(titel: "Pizzeria: Lieferwagen und Abschreibung", art: "rechnen", quelle: "1.5", herkunft: "variante", vorlage: "Vorlesung PDF-S. 11, Folie 21, Beispiel")[
-#if not web [*Aufgabe 43* #linebreak()]
+#if not web [*Aufgabe 42* #linebreak()]
 *Gegeben und Annahmen*
 
 Pizzeria, Variante: Mario kauft einen Lieferwagen für 36.000 €, Nutzungsdauer 6 Jahre (lineare Abschreibung). Sein Gewinn beträgt 3.000 € pro Monat.
@@ -789,7 +772,7 @@ Pizzeria, Variante: Mario kauft einen Lieferwagen für 36.000 €, Nutzungsdauer
 ]
 
 #aufgabe(titel: "Bäckerei: Ofen und Abschreibung", art: "rechnen", quelle: "1.5", herkunft: "variante", vorlage: "Vorlesung PDF-S. 11, Folie 21, Beispiel")[
-#if not web [*Aufgabe 44* #linebreak()]
+#if not web [*Aufgabe 43* #linebreak()]
 *Gegeben und Annahmen*
 
 Bäckerei (Teil A4): Ein Ofen kostet 48.000 €, Nutzungsdauer 8 Jahre (linear). Gewinn 4.000 € pro Monat, der komplett entnommen wird.
@@ -814,7 +797,7 @@ Bäckerei (Teil A4): Ein Ofen kostet 48.000 €, Nutzungsdauer 8 Jahre (linear).
 ]
 
 #aufgabe(titel: "Vorlesung: Cashflow der XYZ GmbH 2009", art: "rechnen", quelle: "1.5", herkunft: "original", vorlage: "Vorlesung PDF-S. 11, Folie 22, Beispiel", minuten: 6, ergebnis: [Cashflow 2009 = 1.180 Mio. € (direkt und indirekt)])[
-#if not web [*Aufgabe 45* #linebreak()]
+#if not web [*Aufgabe 44* #linebreak()]
 *Gegeben und Annahmen*
 
 GuV der XYZ GmbH 2009 in Mio. €: Aufwand: Materialaufwand 2.800, Personalaufwand 1.900, Pensionsrückstellungen (Zuführung) 300, Abschreibungen 500, Zinsaufwand 520, Jahresüberschuss 380; Summe 6.400. Ertrag: Umsatzerlöse 6.000, Zinsertrag 400; Summe 6.400. Alle Erträge und alle übrigen Aufwendungen sind im Jahr voll zahlungswirksam.
@@ -837,7 +820,7 @@ GuV der XYZ GmbH 2009 in Mio. €: Aufwand: Materialaufwand 2.800, Personalaufwa
 ]
 
 #aufgabe(titel: "Cashflow der XYZ GmbH direkt und indirekt", art: "rechnen", quelle: "1.5", herkunft: "variante", vorlage: "Vorlesung PDF-S. 11, Folie 22, Beispiel")[
-#if not web [*Aufgabe 46* #linebreak()]
+#if not web [*Aufgabe 45* #linebreak()]
 *Gegeben und Annahmen*
 
 GuV XYZ GmbH 2008 (Folie 22, Mio. €): Materialaufwand 1.540, Personalaufwand 1.600, Pensionsrückstellungen 200, Abschreibungen 100, Zinsaufwand 200, Jahresüberschuss 648; Umsatzerlöse 4.000, Zinsertrag 288.
@@ -862,7 +845,7 @@ GuV XYZ GmbH 2008 (Folie 22, Mio. €): Materialaufwand 1.540, Personalaufwand 1
 ]
 
 #aufgabe(titel: "Drei Bereiche der Kapitalflussrechnung", art: "verstehen", quelle: "1.6", herkunft: "eigen")[
-#if not web [*Aufgabe 47* #linebreak()]
+#if not web [*Aufgabe 46* #linebreak()]
 #text("Nenne die drei Bereiche der Kapitalflussrechnung. Ist ein negativer Cashflow aus Investitionstätigkeit ein schlechtes Zeichen?")
 #src[L15, PDF-S. 10–15; ursprüngliche Aufgabe A18. Verfahren: #stelle(<a-1-6>).]
 ][
@@ -886,7 +869,7 @@ GuV XYZ GmbH 2008 (Folie 22, Mio. €): Materialaufwand 1.540, Personalaufwand 1
 ]
 
 #aufgabe(titel: "Warnsignal oder nicht?", art: "verstehen", quelle: "1.6", herkunft: "eigen")[
-#if not web [*Aufgabe 48* #linebreak()]
+#if not web [*Aufgabe 47* #linebreak()]
 #text("Beurteile jeweils, ob das ein Warnsignal ist: a) negativer Cashflow aus Investitionstätigkeit bei hohem operativem Cashflow, b) Gewinn steigt, Kassenbestand sinkt, c) Anlagendeckung II von 80 %.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü20. Verfahren: #stelle(<a-1-6>).]
 ][
@@ -894,7 +877,7 @@ a) Hoher operativer CF und negativer Investitions-CF können selbst finanzierte 
 ]
 
 #aufgabe(titel: "Free Cashflow definieren", art: "verstehen", quelle: "1.6", herkunft: "eigen")[
-#if not web [*Aufgabe 49* #linebreak()]
+#if not web [*Aufgabe 48* #linebreak()]
 Wie ist der Free Cashflow in der Vorlesung definiert, und was sagt er aus?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -915,7 +898,7 @@ Wie ist der Free Cashflow in der Vorlesung definiert, und was sagt er aus?
 ]
 
 #aufgabe(titel: "Dividende in der Kapitalflussrechnung", art: "verstehen", quelle: "1.6", herkunft: "eigen")[
-#if not web [*Aufgabe 50* #linebreak()]
+#if not web [*Aufgabe 49* #linebreak()]
 Wohin gehört eine Dividendenzahlung in der Kapitalflussrechnung nach dem Modell der Vorlesung? Begründe, warum sie dort und nicht in einem anderen Bereich steht.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -928,7 +911,7 @@ Wohin gehört eine Dividendenzahlung in der Kapitalflussrechnung nach dem Modell
 ]
 
 #aufgabe(titel: "Kapitalflussrechnung mit Kassenbestand", art: "rechnen", quelle: "1.6", herkunft: "eigen")[
-#if not web [*Aufgabe 51* #linebreak()]
+#if not web [*Aufgabe 50* #linebreak()]
 *Gegeben und Annahmen*
 
 Kapitalflussrechnung (T€): Jahresüberschuss 200, Abschreibungen 80, Erhöhung Pensionsrückstellungen 20, Erhöhung Forderungen L&L 30, Kauf einer Maschine 150, Verkauf eines Grundstücks 40, Kreditaufnahme 100, Tilgung 60, Dividendenzahlung 50, Kassenbestand am Periodenanfang 70.
@@ -962,7 +945,7 @@ Kapitalflussrechnung (T€): Jahresüberschuss 200, Abschreibungen 80, Erhöhung
 ]
 
 #aufgabe(titel: "Free Cashflow und Dividende", art: "rechnen", quelle: "1.6", herkunft: "eigen")[
-#if not web [*Aufgabe 52* #linebreak()]
+#if not web [*Aufgabe 51* #linebreak()]
 *Gegeben und Annahmen*
 
 Free Cashflow: CF aus operativer Tätigkeit 1.250 T€, Investitionen in Sachanlagen 700 T€. Das Unternehmen möchte 200 T€ Dividende zahlen.
@@ -984,7 +967,7 @@ Free Cashflow: CF aus operativer Tätigkeit 1.250 T€, Investitionen in Sachanl
 ]
 
 #aufgabe(titel: "Kapitalflussrechnung mit Forderungen und Verbindlichkeiten", art: "rechnen", quelle: "1.6", herkunft: "eigen")[
-#if not web [*Aufgabe 53* #linebreak()]
+#if not web [*Aufgabe 52* #linebreak()]
 *Gegeben und Annahmen*
 
 Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderungen L&L 25, Erhöhung Verbindlichkeiten L&L 15, Kauf einer Maschine 90, Kreditaufnahme 50, Dividende 30, Kasse am Anfang 20 (T€).
@@ -1011,7 +994,7 @@ Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderunge
 ]
 
 #aufgabe(titel: "Aufgaben und Prinzipien der Finanzplanung", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 54* #linebreak()]
+#if not web [*Aufgabe 53* #linebreak()]
 #text("Nenne die Aufgaben der Finanzplanung und die drei Prinzipien eines Finanzplans.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B1. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -1026,7 +1009,7 @@ Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderunge
 ]
 
 #aufgabe(titel: "Über- und Unterliquidität", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 55* #linebreak()]
+#if not web [*Aufgabe 54* #linebreak()]
 #text("Was sind die Folgen von Über- bzw. Unterliquidität?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B2. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -1034,7 +1017,7 @@ Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderunge
 ]
 
 #aufgabe(titel: "Finanzplanung abstimmen", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 56* #linebreak()]
+#if not web [*Aufgabe 55* #linebreak()]
 #text("Warum muss die Finanzplanung mit Produktions-, Absatz- und Investitionsplanung abgestimmt werden?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B3. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -1042,7 +1025,7 @@ Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderunge
 ]
 
 #aufgabe(titel: "Kennzahlen und Finanzplan", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 57* #linebreak()]
+#if not web [*Aufgabe 56* #linebreak()]
 #text("Worin unterscheiden sich finanzwirtschaftliche Kennzahlen und Finanzplan?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B12. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -1050,7 +1033,7 @@ Kapitalflussrechnung (Teil A4): JÜ 120, Abschreibungen 40, Erhöhung Forderunge
 ]
 
 #aufgabe(titel: "Gewinn ersetzt keinen Finanzplan", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 58* #linebreak()]
+#if not web [*Aufgabe 57* #linebreak()]
 #text("Eine Gründerin sagt: „Mein Plan zeigt ab Jahr 1 Gewinn, einen Finanzplan brauche ich nicht.“ Nimm begründet Stellung.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü18. Verfahren: #stelle(<a-1-7>).]
 ][
@@ -1058,7 +1041,7 @@ Gewinn ist keine Zahlungsplanung. Die Gründerin muss Anlauf- und Investitionsza
 ]
 
 #aufgabe(titel: "Freie Kreditlinie im Februar", art: "verstehen", quelle: "1.7", herkunft: "eigen", tipp: [Erst $K_t = K_(t-1) + E_t - A_t$, dann von der Linie den genutzten Teil abziehen.])[
-#if not web [*Aufgabe 59* #linebreak()]
+#if not web [*Aufgabe 58* #linebreak()]
 Ein Finanzplan beginnt den Februar mit 20.000 €, Einzahlungen sind 45.000 €, Auszahlungen 70.000 €. Der Kontokorrentrahmen beträgt 10.000 €. Wie viel freie Linie bleibt am Monatsende?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1071,7 +1054,7 @@ Ein Finanzplan beginnt den Februar mit 20.000 €, Einzahlungen sind 45.000 €,
 ]
 
 #aufgabe(titel: "Bruttoprinzip in der Finanzplanung", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 60* #linebreak()]
+#if not web [*Aufgabe 59* #linebreak()]
 Was bedeutet das Bruttoprinzip in der Finanzplanung, und warum ist es wichtig?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1084,7 +1067,7 @@ Was bedeutet das Bruttoprinzip in der Finanzplanung, und warum ist es wichtig?
 ]
 
 #aufgabe(titel: "Was leistet ein Finanzplan?", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 61* #linebreak()]
+#if not web [*Aufgabe 60* #linebreak()]
 Was leistet ein Finanzplan?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1100,7 +1083,7 @@ $ "Endbestand" = "Anfangsbestand" + "Einzahlungen" - "Auszahlungen" $
 ]
 
 #aufgabe(titel: "Negativer Endbestand im Finanzplan", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 62* #linebreak()]
+#if not web [*Aufgabe 61* #linebreak()]
 Was bedeutet ein negativer Endbestand im Finanzplan?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1117,7 +1100,7 @@ Was bedeutet ein negativer Endbestand im Finanzplan?
 ]
 
 #aufgabe(titel: "Verfügbare Liquidität mit Kontokorrent", art: "verstehen", quelle: "1.7", herkunft: "eigen")[
-#if not web [*Aufgabe 63* #linebreak()]
+#if not web [*Aufgabe 62* #linebreak()]
 Wie berechnet man die verfügbare Liquidität mit einem Kontokorrentkredit?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1130,7 +1113,7 @@ Wie berechnet man die verfügbare Liquidität mit einem Kontokorrentkredit?
 ]
 
 #aufgabe(titel: "Vorlesung: Monatsfinanzplan mit zwei Abwandlungen", art: "rechnen", quelle: "1.7", herkunft: "original", vorlage: "Vorlesung PDF-S. 34, Folie 67, Übungsaufgabe 2", ergebnis: [Grundfall 3.050 / 1.900 / 2.450 €; Abwandlung 50 / −1.100 / −550 €; Linie im Februar um 100 € zu klein.])[
-#if not web [*Aufgabe 64* #linebreak()]
+#if not web [*Aufgabe 63* #linebreak()]
 *Gegeben und Annahmen*
 
 Anfangsbestand am 1. Januar 0 € (wie in der Folienlösung), monatlich zu zahlende Miete 1.000 € und Löhne 450 €. Einzahlungen aus Umsatz: Januar 4.000 €, Februar 300 €, März 2.000 €; USt-Erstattung im Januar 500 €. Jahresabschreibung 5.000 €, ohne weitere Zahlungen dafür in diesen Monaten. Keine weiteren Ein-/Auszahlungen. Monatssalden-Modell; untermonatliche Fälligkeiten nicht vorgegeben.
@@ -1152,7 +1135,7 @@ Anfangsbestand am 1. Januar 0 € (wie in der Folienlösung), monatlich zu zahle
 ]
 
 #aufgabe(titel: "Liquiditätsplan über drei Quartale", art: "rechnen", quelle: "1.7", herkunft: "variante", vorlage: "Vorlesung PDF-S. 34, Folie 67, Übungsaufgabe 2")[
-#if not web [*Aufgabe 65* #linebreak()]
+#if not web [*Aufgabe 64* #linebreak()]
 *Gegeben und Annahmen*
 
 Liquiditätsplan: Anfangsbestand Q1: 8.000 €. Einzahlungen Q1/Q2/Q3: 30.000 / 25.000 / 40.000 €. Auszahlungen: 35.000 / 34.000 / 31.000 €. Kontokorrentlinie 5.000 €.
@@ -1181,7 +1164,7 @@ Liquiditätsplan: Anfangsbestand Q1: 8.000 €. Einzahlungen Q1/Q2/Q3: 30.000 / 
 ]
 
 #aufgabe(titel: "Endbestand und freie Kreditlinie", art: "rechnen", quelle: "1.7", herkunft: "variante", vorlage: "Vorlesung PDF-S. 34, Folie 67, Übungsaufgabe 2")[
-#if not web [*Aufgabe 66* #linebreak()]
+#if not web [*Aufgabe 65* #linebreak()]
 *Gegeben und Annahmen*
 
 Liquiditätsplan: Anfangsbestand 5.000 €, Einzahlungen 22.000 €, Auszahlungen 30.000 €, Kontokorrentlinie 6.000 €.
@@ -1202,7 +1185,7 @@ Liquiditätsplan: Anfangsbestand 5.000 €, Einzahlungen 22.000 €, Auszahlunge
 ]
 
 #aufgabe(titel: "Liquiditätsplan einer Gründung", art: "rechnen", quelle: "1.7", herkunft: "variante", vorlage: "Vorlesung PDF-S. 34, Folie 67, Übungsaufgabe 2")[
-#if not web [*Aufgabe 67* #linebreak()]
+#if not web [*Aufgabe 66* #linebreak()]
 *Gegeben und Annahmen*
 
 Anfangskasse 10 000 €. Ein-/Auszahlungen: Q1 15 000/28 000 €, Q2 30 000/26 000 €, Q3 35 000/25 000 €. Kontokorrentlinie 5 000 €.
@@ -1225,7 +1208,7 @@ Anfangskasse 10 000 €. Ein-/Auszahlungen: Q1 15 000/28 000 €, Q2 30 000/26 0
 ]
 
 #aufgabe(titel: "Vorlesung: Gewinn 1.000 €, Kasse 100 €", art: "rechnen", quelle: "1.7", herkunft: "original", vorlage: "Vorlesung PDF-S. 16, Folie 31, Beispiel (Notiz)", minuten: 6, ergebnis: [Endbestand 100 €])[
-#if not web [*Aufgabe 68* #linebreak()]
+#if not web [*Aufgabe 67* #linebreak()]
 *Gegeben und Annahmen*
 
 Beispiel aus der Vorlesung zum Finanzplan: Ein Unternehmen startet mit 0 € auf dem Konto. In der Periode erzielt es einen Gewinn von 1.000 €, der vereinfacht voll zahlungswirksam ist. Es schüttet 500 € aus, kauft ein Grundstück für 800 € und nimmt einen Kredit über 400 € auf. Keine weiteren Vorgänge.
@@ -1247,7 +1230,7 @@ Beispiel aus der Vorlesung zum Finanzplan: Ein Unternehmen startet mit 0 € auf
 ]
 
 #aufgabe(titel: "Gewinn gegen Kasse", art: "rechnen", quelle: "1.7", herkunft: "variante", vorlage: "Vorlesung PDF-S. 16, Folie 31, Beispiel (Notiz)")[
-#if not web [*Aufgabe 69* #linebreak()]
+#if not web [*Aufgabe 68* #linebreak()]
 *Gegeben und Annahmen*
 
 Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erzielt einen (zahlungswirksamen) Gewinn von 3.000 €, schüttet 1.500 € aus, kauft eine Maschine für 4.000 € und nimmt einen Kredit über 1.000 € auf.
@@ -1271,7 +1254,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Drei Insolvenzgründe", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 70* #linebreak()]
+#if not web [*Aufgabe 69* #linebreak()]
 #text("Nenne die drei Insolvenzgründe mit Paragraf. Welcher gilt nur für juristische Personen?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B4. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1279,7 +1262,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Zahlungsunfähigkeit nach dem BGH", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 71* #linebreak()]
+#if not web [*Aufgabe 70* #linebreak()]
 #text("Wann ist ein Unternehmen nach der Rechtsprechung des BGH zahlungsunfähig?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B5. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1287,7 +1270,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Zahlungsunfähigkeit und Überschuldung", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 72* #linebreak()]
+#if not web [*Aufgabe 71* #linebreak()]
 #text("Erkläre den Unterschied zwischen Zahlungsunfähigkeit und Überschuldung mit eigenen Worten.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B6. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1297,7 +1280,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Rechnerisch überschuldet, aber kein Insolvenzgrund", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 73* #linebreak()]
+#if not web [*Aufgabe 72* #linebreak()]
 #text("Wann liegt trotz rechnerischer Überschuldung kein Insolvenzgrund vor?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B7. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1305,7 +1288,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Warum ein Kredit gegen Überschuldung nicht hilft", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 74* #linebreak()]
+#if not web [*Aufgabe 73* #linebreak()]
 #text("Warum hilft bei Überschuldung kein neuer Bankkredit? Was hilft stattdessen?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B8. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1331,7 +1314,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Frist für den Insolvenzantrag", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 75* #linebreak()]
+#if not web [*Aufgabe 74* #linebreak()]
 #text("Wie lange hat die Geschäftsführung Zeit, den Insolvenzantrag zu stellen, und was droht bei Verspätung?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B9. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1343,7 +1326,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Sechs Maßnahmen gegen ein Liquiditätsdefizit", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 76* #linebreak()]
+#if not web [*Aufgabe 75* #linebreak()]
 #text("Nenne die sechs Gruppen von Maßnahmen gegen ein Liquiditätsdefizit mit je einem Beispiel.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B10. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1351,7 +1334,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Ausgänge eines Insolvenzverfahrens", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 77* #linebreak()]
+#if not web [*Aufgabe 76* #linebreak()]
 #text("Welche Ausgänge kann ein Insolvenzverfahren nehmen? Was bedeutet „Abweisung mangels Masse“?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B11. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1359,7 +1342,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Insolvenzgrund und Gegenmaßnahme", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 78* #linebreak()]
+#if not web [*Aufgabe 77* #linebreak()]
 #text("Insolvenzgründe (Teil A5): Bestimme Insolvenzgrund und passende Gegenmaßnahme. (i) GmbH: Vermögen 2,0 Mio. €, Schulden 2,3 Mio. €, keine positive Fortführungsprognose. (ii) Unternehmen kann in drei Wochen nur 70 % der fälligen Rechnungen bezahlen. (iii) GmbH erwartet, eine im März fällige Kreditrate nicht bezahlen zu können.")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü16. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1367,7 +1350,7 @@ Gewinn vs. Kasse: Ein Unternehmen startet mit 2.000 € auf dem Konto. Es erziel
 ]
 
 #aufgabe(titel: "Neuer Kredit bei Überschuldung", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 79* #linebreak()]
+#if not web [*Aufgabe 78* #linebreak()]
 #text("Ein Kunde deiner Bank ist bilanziell überschuldet und bittet um einen zusätzlichen Kredit, „um die Lücke zu schließen“. Was antwortest du?")
 #src[L15, PDF-S. 31–34; ursprüngliche Aufgabe Ü21. Verfahren: #stelle(<a-1-8>).]
 ][
@@ -1375,7 +1358,7 @@ Ein gewöhnlicher Kredit vergrößert Vermögen und Schulden um denselben Betrag
 ]
 
 #aufgabe(titel: "Zahlungsengpass oder Überschuldung: passende Maßnahme", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 80* #linebreak()]
+#if not web [*Aufgabe 79* #linebreak()]
 Welche Maßnahmen helfen gegen einen Zahlungsengpass, welche gegen eine rechnerische Unterdeckung (negatives Eigenkapital)? Begründe den Unterschied.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1392,7 +1375,7 @@ Welche Maßnahmen helfen gegen einen Zahlungsengpass, welche gegen eine rechneri
 ]
 
 #aufgabe(titel: "Insolvenzgründe: Aussagen prüfen", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 81* #linebreak()]
+#if not web [*Aufgabe 80* #linebreak()]
 Prüfe die folgenden vier Aussagen zu den Insolvenzgründen und begründe jeweils, ob sie stimmen: (1) Zahlungsunfähigkeit (§ 17) liegt vor, wenn fällige Zahlungspflichten nicht erfüllt werden können. (2) Bei drohender Zahlungsunfähigkeit (§ 18) beträgt der Prognosezeitraum in aller Regel 24 Monate. (3) Ein negatives bilanzielles Eigenkapital ist automatisch eine Überschuldung im Sinne von § 19. (4) Bei Überschuldung muss der Antrag spätestens nach drei Wochen gestellt werden.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1406,7 +1389,7 @@ Prüfe die folgenden vier Aussagen zu den Insolvenzgründen und begründe jeweil
 ]
 
 #aufgabe(titel: "Drei Insolvenzgründe abgrenzen", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 82* #linebreak()]
+#if not web [*Aufgabe 81* #linebreak()]
 Was unterscheidet Zahlungsunfähigkeit, drohende Zahlungsunfähigkeit und Überschuldung?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1418,7 +1401,7 @@ Was unterscheidet Zahlungsunfähigkeit, drohende Zahlungsunfähigkeit und Übers
 ]
 
 #aufgabe(titel: "Sale-and-lease-back", art: "verstehen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 83* #linebreak()]
+#if not web [*Aufgabe 82* #linebreak()]
 Was ist Sale-and-lease-back?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1428,7 +1411,7 @@ Was ist Sale-and-lease-back?
 ]
 
 #aufgabe(titel: "Vorlesung: Verlustpolster und Überschuldung in der Bilanz", art: "rechnen", quelle: "1.8", herkunft: "original", vorlage: "Vorlesung PDF-S. 17, Folie 33, Beispiel (Notiz)", minuten: 8, ergebnis: [Polster 20; nach AfA 30: Vermögen 70 < Schulden 80, Fehlbetrag 10])[
-#if not web [*Aufgabe 84* #linebreak()]
+#if not web [*Aufgabe 83* #linebreak()]
 *Gegeben und Annahmen*
 
 Beispiel aus der Vorlesung zur Überschuldung (Werte in T€): Aktiva: Anlagevermögen 50, Umlaufvermögen 50. Passiva: Eigenkapital 20, Fremdkapital 80. Im Laufe des Jahres entsteht eine Abschreibung von 30 auf das Anlagevermögen; sonst ändert sich nichts.
@@ -1454,7 +1437,7 @@ Beispiel aus der Vorlesung zur Überschuldung (Werte in T€): Aktiva: Anlagever
 ]
 
 #aufgabe(titel: "Verlustpolster und bilanzielle Unterdeckung", art: "rechnen", quelle: "1.8", herkunft: "variante", vorlage: "Vorlesung PDF-S. 17, Folie 33, Beispiel (Notiz)")[
-#if not web [*Aufgabe 85* #linebreak()]
+#if not web [*Aufgabe 84* #linebreak()]
 *Gegeben und Annahmen*
 
 Überschuldung : Bilanz einer GmbH: Anlagevermögen 300, Umlaufvermögen 200; Eigenkapital 60, Fremdkapital 440 (T€).
@@ -1479,7 +1462,7 @@ Beispiel aus der Vorlesung zur Überschuldung (Werte in T€): Aktiva: Anlagever
 ]
 
 #aufgabe(titel: "Bilanzielles Verlustpolster", art: "rechnen", quelle: "1.8", herkunft: "variante", vorlage: "Vorlesung PDF-S. 17, Folie 33, Beispiel (Notiz)")[
-#if not web [*Aufgabe 86* #linebreak()]
+#if not web [*Aufgabe 85* #linebreak()]
 *Gegeben und Annahmen*
 
 Bilanzielles Verlustpolster: AV 120, UV 80, EK 40, FK 160 (T€). Ein Abschreibungsverlust von 50 entsteht.
@@ -1500,7 +1483,7 @@ Bilanzielles Verlustpolster: AV 120, UV 80, EK 40, FK 160 (T€). Ein Abschreibu
 ]
 
 #aufgabe(titel: "BGH-Regel mit 430.000 €", art: "rechnen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 87* #linebreak()]
+#if not web [*Aufgabe 86* #linebreak()]
 *Gegeben und Annahmen*
 
 BGH-Regel: Fällige Verbindlichkeiten 500.000 €. Innerhalb der nächsten drei Wochen kann das Unternehmen 430.000 € bezahlen.
@@ -1522,7 +1505,7 @@ BGH-Regel: Fällige Verbindlichkeiten 500.000 €. Innerhalb der nächsten drei 
 ]
 
 #aufgabe(titel: "BGH-Regel mit 800.000 €", art: "rechnen", quelle: "1.8", herkunft: "eigen")[
-#if not web [*Aufgabe 88* #linebreak()]
+#if not web [*Aufgabe 87* #linebreak()]
 *Gegeben und Annahmen*
 
 Fällige Verbindlichkeiten 800 000 €; innerhalb von drei Wochen zahlbar 700 000 €. Historischer Übungsfall zur im Lernskript erläuterten BGH-Regel.
@@ -1541,7 +1524,7 @@ Fällige Verbindlichkeiten 800 000 €; innerhalb von drei Wochen zahlbar 700 00
 ]
 
 #aufgabe(titel: "Drei Liquiditätsgrade", art: "verstehen", quelle: "1.9", herkunft: "eigen")[
-#if not web [*Aufgabe 89* #linebreak()]
+#if not web [*Aufgabe 88* #linebreak()]
 #text("Nenne die drei Liquiditätsgrade mit Formel und Zielwert.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B13. Verfahren: #stelle(<a-1-9>).]
 ][
@@ -1566,7 +1549,7 @@ Fällige Verbindlichkeiten 800 000 €; innerhalb von drei Wochen zahlbar 700 00
 ]
 
 #aufgabe(titel: "Hoher Liquiditätsgrad 3 und die Rechnung von morgen", art: "verstehen", quelle: "1.9", herkunft: "eigen", tipp: [Was steckt im Umlaufvermögen, und wie schnell wird es zu Geld?])[
-#if not web [*Aufgabe 90* #linebreak()]
+#if not web [*Aufgabe 89* #linebreak()]
 Ein Unternehmen hat einen dritten Liquiditätsgrad von 250 %. Ist damit sicher, dass es morgen eine fällige Rechnung bezahlen kann? Begründe.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1583,7 +1566,7 @@ Ein Unternehmen hat einen dritten Liquiditätsgrad von 250 %. Ist damit sicher, 
 ]
 
 #aufgabe(titel: "Goldene Bilanzregel", art: "verstehen", quelle: "1.10", herkunft: "eigen")[
-#if not web [*Aufgabe 91* #linebreak()]
+#if not web [*Aufgabe 90* #linebreak()]
 #text("Formuliere die goldene Bilanzregel. Welche Kennzahl prüft sie, und welcher Wert sollte mindestens erreicht werden?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B14. Verfahren: #stelle(<a-1-10>).]
 ][
@@ -1607,7 +1590,7 @@ $ "Anlagendeckung II" = ("EK" + "langfristiges FK")/"AV" $
 ]
 
 #aufgabe(titel: "Anlageintensität zu hoch oder zu gering", art: "verstehen", quelle: "1.10", herkunft: "eigen")[
-#if not web [*Aufgabe 92* #linebreak()]
+#if not web [*Aufgabe 91* #linebreak()]
 #text("Warum kann eine zu hohe, aber auch eine zu geringe Anlageintensität problematisch sein?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B15. Verfahren: #stelle(<a-1-10>).]
 ][
@@ -1620,7 +1603,7 @@ $ "Anlagendeckung II" = ("EK" + "langfristiges FK")/"AV" $
 ]
 
 #aufgabe(titel: "Eigenkapitalquote", art: "verstehen", quelle: "1.10", herkunft: "eigen")[
-#if not web [*Aufgabe 93* #linebreak()]
+#if not web [*Aufgabe 92* #linebreak()]
 #text("Was sagt die Eigenkapitalquote aus, und welcher Zielwert gilt?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B16. Verfahren: #stelle(<a-1-10>).]
 ][
@@ -1634,7 +1617,7 @@ $ "Anlagendeckung II" = ("EK" + "langfristiges FK")/"AV" $
 ]
 
 #aufgabe(titel: "Schuldentilgungsdauer deuten", art: "verstehen", quelle: "1.10", herkunft: "eigen")[
-#if not web [*Aufgabe 94* #linebreak()]
+#if not web [*Aufgabe 93* #linebreak()]
 Ein Unternehmen hat 100 Mio. € Verbindlichkeiten und einen jährlichen Cashflow von 25 Mio. €. Was sagt die Schuldentilgungsdauer (Verbindlichkeiten / Cashflow) aus, und was sagt sie nicht?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1652,7 +1635,7 @@ Ein Unternehmen hat 100 Mio. € Verbindlichkeiten und einen jährlichen Cashflo
 ]
 
 #aufgabe(titel: "EK-Rentabilität über dem Marktzins", art: "verstehen", quelle: "1.11", herkunft: "eigen")[
-#if not web [*Aufgabe 95* #linebreak()]
+#if not web [*Aufgabe 94* #linebreak()]
 #text("Warum sollte die EK-Rentabilität deutlich über dem Marktzins für langfristige Anlagen liegen?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B17. Verfahren: #stelle(<a-1-11>).]
 ][
@@ -1660,7 +1643,7 @@ Ein Unternehmen hat 100 Mio. € Verbindlichkeiten und einen jährlichen Cashflo
 ]
 
 #aufgabe(titel: "Hubert + Maier: Risiko aus der Kapitalstruktur", art: "verstehen", quelle: "1.11", herkunft: "eigen")[
-#if not web [*Aufgabe 96* #linebreak()]
+#if not web [*Aufgabe 95* #linebreak()]
 #text("Erkläre am Beispiel Hubert + Maier GmbH, warum das Risiko von Alternative B aus der Kapitalstruktur kommt.")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B18. Verfahren: #stelle(<a-1-11>).]
 ][
@@ -1682,7 +1665,7 @@ Ein Unternehmen hat 100 Mio. € Verbindlichkeiten und einen jährlichen Cashflo
 ]
 
 #aufgabe(titel: "EK-Rentabilität und Umsatzrentabilität", art: "verstehen", quelle: "1.11", herkunft: "eigen")[
-#if not web [*Aufgabe 97* #linebreak()]
+#if not web [*Aufgabe 96* #linebreak()]
 Was unterscheidet Eigenkapitalrentabilität und Umsatzrentabilität?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1697,7 +1680,7 @@ $ "Umsatzrentabilität" = "Jahresüberschuss"/"Umsatz" $
 ]
 
 #aufgabe(titel: "Vorlesung: Hubert + Maier GmbH in zwei Bilanzen", art: "rechnen", quelle: "1.11", herkunft: "original", vorlage: "Vorlesung PDF-S. 25, Folien 49–50, Beispiel Hubert + Maier", minuten: 12, ergebnis: [A: EK 80.000 €; B: EK 0, Fehlbetrag 8.000 €])[
-#if not web [*Aufgabe 98* #linebreak()]
+#if not web [*Aufgabe 97* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Hubert + Maier GmbH beabsichtigt am 01.01.01, für 90.000 € ein Grundstück zu kaufen. Hubert und Maier wollen die GmbH mit 100.000 € Kapital ausstatten; was nicht ins Grundstück fließt, bleibt in der Kasse. Zwei Finanzierungsalternativen:
@@ -1726,7 +1709,7 @@ Im Jahr 01 ist das Grundstück wegen Altlasten nur noch 70.000 € wert. Die Zin
 ]
 
 #aufgabe(titel: "Kapitalstruktur und Risiko in zwei Bilanzen", art: "rechnen", quelle: "1.11", herkunft: "variante", vorlage: "Vorlesung PDF-S. 25, Folien 49–50, Beispiel Hubert + Maier")[
-#if not web [*Aufgabe 99* #linebreak()]
+#if not web [*Aufgabe 98* #linebreak()]
 *Gegeben und Annahmen*
 
 Kapitalstruktur und Risiko (Teil A5, wie Folie 49/50): Eine GmbH kauft eine Maschine für 150.000 € und behält 50.000 € in der Kasse. A: 200.000 € EK. B: 40.000 € EK + 160.000 € FK zu 8 % (Zinsen aus der Kasse bezahlt). Die Maschine verliert 30.000 € an Wert.
@@ -1749,7 +1732,7 @@ Kapitalstruktur und Risiko (Teil A5, wie Folie 49/50): Eine GmbH kauft eine Masc
 ]
 
 #aufgabe(titel: "Klausur: Leverage deuten und Risiken der Verschuldung", art: "verstehen", quelle: "1.12", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 3 b–c", minuten: 3)[
-#if not web [*Aufgabe 100* #linebreak()]
+#if not web [*Aufgabe 99* #linebreak()]
 #text("b) Beschreibe den Leverage-Effekt anhand Deiner Ergebnisse aus „Klausur: Gründung mit 800.000 € Kapital“ (2 P.). c) Nenne zwei betriebswirtschaftliche Aspekte, die gegen eine hohe Verschuldung eines Unternehmens sprechen (1 P.).")
 #src[K, PDF-S. 5 (Klausurseite 9). Verfahren: #stelle(<a-1-12>), #stelle(<a-1-11>).]
 ][
@@ -1765,7 +1748,7 @@ Kapitalstruktur und Risiko (Teil A5, wie Folie 49/50): Eine GmbH kauft eine Masc
 ]
 
 #aufgabe(titel: "Leverage-Effekt", art: "verstehen", quelle: "1.12", herkunft: "eigen")[
-#if not web [*Aufgabe 101* #linebreak()]
+#if not web [*Aufgabe 100* #linebreak()]
 #text("Was ist der Leverage-Effekt, und unter welcher Bedingung tritt er auf?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B19. Verfahren: #stelle(<a-1-12>).]
 ][
@@ -1785,7 +1768,7 @@ $ r_e = r_G + (r_G - r_f) dot "FK"/"EK" $
 ]
 
 #aufgabe(titel: "Risikoeffekt", art: "verstehen", quelle: "1.12", herkunft: "eigen")[
-#if not web [*Aufgabe 102* #linebreak()]
+#if not web [*Aufgabe 101* #linebreak()]
 #text("Was beschreibt der Risikoeffekt? Warum ist die höhere EK-Rendite „kein zusätzlicher Wert“?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B20. Verfahren: #stelle(<a-1-12>).]
 ][
@@ -1793,7 +1776,7 @@ $ r_e = r_G + (r_G - r_f) dot "FK"/"EK" $
 ]
 
 #aufgabe(titel: "Warum nicht vollständig fremdfinanzieren", art: "verstehen", quelle: "1.12", herkunft: "eigen")[
-#if not web [*Aufgabe 103* #linebreak()]
+#if not web [*Aufgabe 102* #linebreak()]
 #text("Warum ist eine vollständige Fremdfinanzierung trotz Leverage-Effekt keine gute Idee?")
 #src[L15, PDF-S. 25–30; ursprüngliche Aufgabe B21. Verfahren: #stelle(<a-1-12>).]
 ][
@@ -1811,7 +1794,7 @@ $ r_e = r_G + (r_G - r_f) dot "FK"/"EK" $
 ]
 
 #aufgabe(titel: "Leverage mit 50 EK und 50 FK", art: "verstehen", quelle: "1.12", herkunft: "eigen", tipp: [$r_e = r_G + (r_G - r_f) "FK"\/"EK"$])[
-#if not web [*Aufgabe 104* #linebreak()]
+#if not web [*Aufgabe 103* #linebreak()]
 Ohne Fremdkapital erwirtschaftet ein Unternehmen mit 100 Gesamtkapital einen Gewinn vor Zinsen von 20. Jetzt wird es zu 50 EK und 50 FK zu 10 % finanziert. Wie hoch ist die EK-Rendite?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1824,7 +1807,7 @@ Ohne Fremdkapital erwirtschaftet ein Unternehmen mit 100 Gesamtkapital einen Gew
 ]
 
 #aufgabe(titel: "Wann Verschuldung die EK-Rendite senkt", art: "verstehen", quelle: "1.12", herkunft: "eigen")[
-#if not web [*Aufgabe 105* #linebreak()]
+#if not web [*Aufgabe 104* #linebreak()]
 Wann verringert zusätzliche Verschuldung die Eigenkapitalrendite? Begründe mit der Leverage-Formel.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -1837,7 +1820,7 @@ Wann verringert zusätzliche Verschuldung die Eigenkapitalrendite? Begründe mit
 ]
 
 #aufgabe(titel: "Klausur: Gründung mit 800.000 € Kapital", art: "rechnen", quelle: "1.12", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 3 a", minuten: 8)[
-#if not web [*Aufgabe 106* #linebreak()]
+#if not web [*Aufgabe 105* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Investor plant eine Unternehmensgründung mit 800.000 € Gesamtkapital. Er kann 300.000 € bis 500.000 € Eigenkapital einbringen, der Rest ist Fremdkapital. Das Unternehmen erwartet jährlich einen Bruttogewinn (Gewinn vor Abzug der Fremdkapitalzinsen) von 70.000 €.
@@ -1870,7 +1853,7 @@ Rechenweg Fall 2: $(70000 - "0,06" times 500000)/300000 = 40000/300000 = "13,33"
 ]
 
 #aufgabe(titel: "Leverage im guten und schlechten Jahr", art: "rechnen", quelle: "1.12", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 3 a")[
-#if not web [*Aufgabe 107* #linebreak()]
+#if not web [*Aufgabe 106* #linebreak()]
 *Gegeben und Annahmen*
 
 Leverage : Ein Projekt erfordert 200.000 € Kapital und bringt einen Gewinn vor Zinsen von 24.000 €. FKZins 6 %.
@@ -1899,7 +1882,7 @@ Mit Formel: $12+(12-6) times 0=12$, $12+(12-6) times 1=18$, $12+(12-6) times 3=3
 ]
 
 #aufgabe(titel: "Vorlesung: Leverage beim Aktienkauf mit Kredit", art: "rechnen", quelle: "1.12", herkunft: "original", vorlage: "Vorlesung PDF-S. 26, Folie 51, Beispiel Leverage-Effekt (Notiz)", minuten: 8, ergebnis: [Ohne FK: +20 % / −50 %; mit FK: +40 % / −100 %])[
-#if not web [*Aufgabe 108* #linebreak()]
+#if not web [*Aufgabe 107* #linebreak()]
 *Gegeben und Annahmen*
 
 Beispiel aus der Vorlesung: Du hast 5.000 € Eigenkapital und kaufst Aktien. Fall 1: Der Kurs steigt um 20 %. Fall 2: Der Kurs fällt um 50 %. Variante mit Kredit: Du nimmst zusätzlich 5.000 € Fremdkapital auf und legst 10.000 € in Aktien an. Zinsen werden vereinfachend vernachlässigt; am Ende wird der Kredit zurückgezahlt.
@@ -1923,7 +1906,7 @@ Beispiel aus der Vorlesung: Du hast 5.000 € Eigenkapital und kaufst Aktien. Fa
 ]
 
 #aufgabe(titel: "Leverage beim Aktienkauf mit Zinsen (Variante)", art: "rechnen", quelle: "1.12", herkunft: "variante", vorlage: "Vorlesung PDF-S. 26, Folie 51, Beispiel Leverage-Effekt (Notiz)", minuten: 10, ergebnis: [Ohne Zinsen +37,5 % / −75 %; mit 4 % Zinsen +31,5 % / −81 %])[
-#if not web [*Aufgabe 109* #linebreak()]
+#if not web [*Aufgabe 108* #linebreak()]
 *Gegeben und Annahmen*
 
 Du hast 8.000 € Eigenkapital und nimmst 12.000 € Kredit auf; du kaufst für 20.000 € Aktien. Nach einem Jahr ist der Kurs entweder um 15 % gestiegen (Fall 1) oder um 30 % gefallen (Fall 2). Danach verkaufst du und zahlst den Kredit zurück. Keine Gebühren, keine Steuern, keine Dividenden.
@@ -1947,7 +1930,7 @@ Du hast 8.000 € Eigenkapital und nimmst 12.000 € Kredit auf; du kaufst für 
 ]
 
 #aufgabe(titel: "Vorlesung: Zahlenbeispiel Leverage-Effekt", art: "rechnen", quelle: "1.12", herkunft: "original", vorlage: "Vorlesung PDF-S. 27, Folie 53, Zahlenbeispiel Leverage-Effekt", minuten: 6, ergebnis: [100 % EK: 20 %; 50 % FK: 30 %; Gewinn sinkt von 20 auf 15])[
-#if not web [*Aufgabe 110* #linebreak()]
+#if not web [*Aufgabe 109* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Unternehmen hat ein Gesamtkapital von 100 und erzielt einen Gewinn vor Zinsen von 20. Fall 1: 100 % Eigenkapitalfinanzierung. Fall 2: 50 % Fremdkapital (50) zu 10 % Zinsen, 50 % Eigenkapital. Keine Steuern.
@@ -1971,7 +1954,7 @@ Ein Unternehmen hat ein Gesamtkapital von 100 und erzielt einen Gewinn vor Zinse
 ]
 
 #aufgabe(titel: "Leverage-Formel anwenden", art: "rechnen", quelle: "1.12", herkunft: "variante", vorlage: "Vorlesung PDF-S. 27, Folie 53, Zahlenbeispiel Leverage-Effekt")[
-#if not web [*Aufgabe 111* #linebreak()]
+#if not web [*Aufgabe 110* #linebreak()]
 *Gegeben und Annahmen*
 
 Leverage: rG = 9 %, rf = 5 %, EK 40, FK 60.
@@ -1992,7 +1975,7 @@ Leverage: rG = 9 %, rf = 5 %, EK 40, FK 60.
 ]
 
 #aufgabe(titel: "Leverage im schlechten Jahr", art: "rechnen", quelle: "1.12", herkunft: "variante", vorlage: "Vorlesung PDF-S. 27, Folie 53, Zahlenbeispiel Leverage-Effekt")[
-#if not web [*Aufgabe 112* #linebreak()]
+#if not web [*Aufgabe 111* #linebreak()]
 *Gegeben und Annahmen*
 
 Leverage im schlechten Jahr (Teil A5): Gesamtkapital 500.000 € (EK 100.000, FK 400.000), Gewinn vor Zinsen 40.000 €, FK-Zins 10 %. EK-Rentabilität?
@@ -2015,7 +1998,7 @@ Leverage im schlechten Jahr (Teil A5): Gesamtkapital 500.000 € (EK 100.000, FK
 ]
 
 #aufgabe(titel: "FK-Quote von 50 auf 85 Prozent", art: "rechnen", quelle: "1.12", herkunft: "variante", vorlage: "Vorlesung PDF-S. 27, Folie 53, Zahlenbeispiel Leverage-Effekt")[
-#if not web [*Aufgabe 113* #linebreak()]
+#if not web [*Aufgabe 112* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Unternehmen mit rG = 12 % und rf = 7 % will die EK-Rendite steigern und die FK-Quote von 50 % auf 85 % erhöhen.
@@ -2039,7 +2022,7 @@ Ein Unternehmen mit rG = 12 % und rf = 7 % will die EK-Rendite steigern und die 
 ]
 
 #aufgabe(titel: "Glasspinnerei: Finanzplan, Plan-GuV, Planbilanz", art: "verstehen", quelle: "1.13", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 4 und 7 (Planungsverbund)")[
-#if not web [*Aufgabe 114* #linebreak()]
+#if not web [*Aufgabe 113* #linebreak()]
 #text("Warum benötigt die Glasspinnerei gleichzeitig Finanzplan, Plan-GuV und Planbilanz? Erkläre die Rückkopplung über Zinsen, Steuern und Betriebskapital.")
 #src[G, PDF-S. 4 und 7. Verfahren: #stelle(<a-1-13>).]
 ][
@@ -2052,7 +2035,7 @@ Die Bilanz liefert die operative Kapitalbindung und Finanzierungsbestände. Die 
 ]
 
 #aufgabe(titel: "Glasspinnerei: Nettoumsatz und Kapazität", art: "rechnen", quelle: "1.13", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 3, 5 und 11 (Umsatz und Kapazität)")[
-#if not web [*Aufgabe 115* #linebreak()]
+#if not web [*Aufgabe 114* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei: Absatz 2005 20 000 t, Preis 13 500 €/t; Tageskapazität 75 t bei 365 Tagen im Jahr. Geplantes Mengenwachstum zunächst jährlich 12,5 %; 2006 22 500 t, 2007 rund 25 313 t.
@@ -2074,7 +2057,7 @@ Glasspinnerei: Absatz 2005 20 000 t, Preis 13 500 €/t; Tageskapazität 75 t be
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: Umsatz und Kapazität (Variante)", art: "rechnen", quelle: "1.13", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 3, 5 und 11 (Umsatz und Kapazität)", minuten: 8, ergebnis: [2025: 137,2 Mio. €; 2027 begrenzt auf 17.520 t])[
-#if not web [*Aufgabe 116* #linebreak()]
+#if not web [*Aufgabe 115* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Dämmstoffwerk setzt 2025 14.000 t zu 9.800 €/t ab. Geplant ist ein Mengenwachstum von 15 % pro Jahr und eine Preissteigerung von 5 % pro Jahr. Die Anlage läuft an 365 Tagen und schafft höchstens 48 t pro Tag.
@@ -2098,7 +2081,7 @@ Ein Dämmstoffwerk setzt 2025 14.000 t zu 9.800 €/t ab. Geplant ist ein Mengen
 ]
 
 #aufgabe(titel: "Aufbau des EBK", art: "verstehen", quelle: "1.14", herkunft: "eigen")[
-#if not web [*Aufgabe 117* #linebreak()]
+#if not web [*Aufgabe 116* #linebreak()]
 Wie ist das erforderliche Betriebskapital (EBK) aufgebaut? Nenne die Positionen, die Kapital binden, und die, die Mittel freisetzen.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2121,7 +2104,7 @@ Wie ist das erforderliche Betriebskapital (EBK) aufgebaut? Nenne die Positionen,
 ]
 
 #aufgabe(titel: "EBK-Zunahme und NOCF", art: "verstehen", quelle: "1.14", herkunft: "eigen")[
-#if not web [*Aufgabe 118* #linebreak()]
+#if not web [*Aufgabe 117* #linebreak()]
 Die Glasspinnerei wächst stark. Wie wirkt eine Zunahme des EBK auf den Net Operating Cashflow, und warum?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2134,7 +2117,7 @@ Die Glasspinnerei wächst stark. Wie wirkt eine Zunahme des EBK auf den Net Oper
 ]
 
 #aufgabe(titel: "Wachstum bindet Geld", art: "verstehen", quelle: "1.14", herkunft: "eigen")[
-#if not web [*Aufgabe 119* #linebreak()]
+#if not web [*Aufgabe 118* #linebreak()]
 Warum braucht ein wachsendes, profitables Unternehmen trotzdem zusätzliches Geld?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2148,7 +2131,7 @@ Warum braucht ein wachsendes, profitables Unternehmen trotzdem zusätzliches Gel
 ]
 
 #aufgabe(titel: "Was ist der NOCF?", art: "verstehen", quelle: "1.14", herkunft: "eigen")[
-#if not web [*Aufgabe 120* #linebreak()]
+#if not web [*Aufgabe 119* #linebreak()]
 Was ist der Net Operating Cashflow (NOCF)?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2162,7 +2145,7 @@ Was ist der Net Operating Cashflow (NOCF)?
 ]
 
 #aufgabe(titel: "EBK-Änderung statt EBK-Bestand", art: "verstehen", quelle: "1.14", herkunft: "eigen")[
-#if not web [*Aufgabe 121* #linebreak()]
+#if not web [*Aufgabe 120* #linebreak()]
 Warum muss man beim NOCF die Änderung des EBK abziehen und nicht das ganze EBK?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2177,7 +2160,7 @@ Warum muss man beim NOCF die Änderung des EBK abziehen und nicht das ganze EBK?
 ]
 
 #aufgabe(titel: "Glasspinnerei: erweitertes EBK 2004", art: "rechnen", quelle: "1.14", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 11 (EBK, Tab. 3.6)")[
-#if not web [*Aufgabe 122* #linebreak()]
+#if not web [*Aufgabe 121* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei 2004, Werte in T€: Lager 23 529, Forderungen 31 564, Lieferverbindlichkeiten 18 884, Rückstellungen für Lizenzen/Löhne 7 744, Steuerrückstellungen 19 348. Erweitertes EBK 2003: −10 914 T€.
@@ -2198,7 +2181,7 @@ Glasspinnerei 2004, Werte in T€: Lager 23 529, Forderungen 31 564, Lieferverbi
 ]
 
 #aufgabe(titel: "Glasspinnerei: erweitertes EBK 2003 (Variante)", art: "rechnen", quelle: "1.14", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 11 (EBK, Tab. 3.6)", minuten: 6, ergebnis: [EBK 2003 = −10.914 T€; Änderung +780 T€])[
-#if not web [*Aufgabe 123* #linebreak()]
+#if not web [*Aufgabe 122* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei Straubing AG, Werte in T€, Jahr 2003: Lagerbestände 19.733, Forderungen aus Lieferungen und Leistungen 26.462, Verbindlichkeiten aus Lieferungen und Leistungen 30.591, Rückstellungen für Lizenzgebühren und Löhne 4.595, Rückstellungen für Steuerzahlungen 21.923. Andere Forderungen und erhaltene Anzahlungen: keine. Erweitertes EBK 2002: −11.694 T€.
@@ -2219,7 +2202,7 @@ Glasspinnerei Straubing AG, Werte in T€, Jahr 2003: Lagerbestände 19.733, For
 ]
 
 #aufgabe(titel: "Glasspinnerei: erweitertes EBK 2005", art: "rechnen", quelle: "1.14", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 8 und 11–12 (EBK 2005)")[
-#if not web [*Aufgabe 124* #linebreak()]
+#if not web [*Aufgabe 123* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei 2005: Nettoumsatz 270 000 T€, LB 9 %, FLei 13 %, VLei 10 %, Lizenzrückstellungen 8 775 T€, Steuerrückstellungen 17 000 T€, EBK 2004 9 117 T€.
@@ -2245,7 +2228,7 @@ Glasspinnerei 2005: Nettoumsatz 270 000 T€, LB 9 %, FLei 13 %, VLei 10 %, Lize
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: EBK aus Umsatzquoten (Variante)", art: "rechnen", quelle: "1.14", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 8 und 11–12 (EBK 2005)", minuten: 8, ergebnis: [EBK 6,5 Mio. €; Δ EBK +2,5 Mio. € (bindet Geld)])[
-#if not web [*Aufgabe 125* #linebreak()]
+#if not web [*Aufgabe 124* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Dämmstoffwerk plant für das nächste Jahr einen Nettoumsatz von 150 Mio. €. Lagerbestände 8 %, Forderungen aus L. u. L. 12 %, Verbindlichkeiten aus L. u. L. 9 % des Nettoumsatzes. Rückstellungen für Lizenzen/Löhne 4 Mio. €, Steuerrückstellungen 6 Mio. €. Erweitertes EBK des Vorjahres 4 Mio. €.
@@ -2268,7 +2251,7 @@ Ein Dämmstoffwerk plant für das nächste Jahr einen Nettoumsatz von 150 Mio. �
 ]
 
 #aufgabe(titel: "Glasspinnerei: NOCF vor Steuern 2005", art: "rechnen", quelle: "1.14", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 11–12 (NOCF 2005)")[
-#if not web [*Aufgabe 126* #linebreak()]
+#if not web [*Aufgabe 125* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei 2005, Werte in T€: Nettoumsatz 270 000, Material 72 000, Löhne 73 828, sonstige betriebliche Aufwendungen 83 359, $Delta "EBK"=-2492$.
@@ -2290,7 +2273,7 @@ Glasspinnerei 2005, Werte in T€: Nettoumsatz 270 000, Material 72 000, Löhne 
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: NOCF vor Steuern (Variante)", art: "rechnen", quelle: "1.14", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 11–12 (NOCF 2005)", minuten: 6, ergebnis: [NOCF vor Steuern 32,5 Mio. €])[
-#if not web [*Aufgabe 127* #linebreak()]
+#if not web [*Aufgabe 126* #linebreak()]
 *Gegeben und Annahmen*
 
 Planjahr eines Dämmstoffwerks, Werte in Mio. €: Nettoumsatz 150, Materialaufwand 45, Löhne und Gehälter 40, sonstige betriebliche Aufwendungen 30 (alles zahlungswirksam), Abschreibungen 12, Zunahme des erweiterten EBK 2,5.
@@ -2311,7 +2294,7 @@ Planjahr eines Dämmstoffwerks, Werte in Mio. €: Nettoumsatz 150, Materialaufw
 ]
 
 #aufgabe(titel: "Glasspinnerei: Sonderabschreibungen", art: "rechnen", quelle: "1.15", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 4 und 13 (Sonderabschreibung)")[
-#if not web [*Aufgabe 128* #linebreak()]
+#if not web [*Aufgabe 127* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei, historische Abschreibungsannahme: neue Gebäude 30 Mio. € bei zehn Jahren Nutzungsdauer; neue Anlagen 55 Mio. € bei vier Jahren. Im Fall werden 75 % sofort abgeschrieben, der Rest linear über die verbleibenden Jahre.
@@ -2332,7 +2315,7 @@ Glasspinnerei, historische Abschreibungsannahme: neue Gebäude 30 Mio. € bei z
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: Sonderabschreibung (Variante)", art: "rechnen", quelle: "1.15", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 4 und 13 (Sonderabschreibung)", minuten: 6, ergebnis: [Halle 9 Mio. € sofort, danach ca. 0,429 Mio. €/Jahr; Anlagen 6 Mio. € sofort, danach 0,5 Mio. €/Jahr])[
-#if not web [*Aufgabe 129* #linebreak()]
+#if not web [*Aufgabe 128* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Dämmstoffwerk investiert in eine Lagerhalle (12 Mio. €, Nutzungsdauer 8 Jahre) und in Anlagen (8 Mio. €, Nutzungsdauer 5 Jahre). Wie in der Fallstudie dürfen 75 % im Anschaffungsjahr abgeschrieben werden; der Rest wird linear über die restliche Nutzungsdauer verteilt.
@@ -2355,7 +2338,7 @@ Ein Dämmstoffwerk investiert in eine Lagerhalle (12 Mio. €, Nutzungsdauer 8 J
 ]
 
 #aufgabe(titel: "Glasspinnerei: Steuer mit Verlustverrechnung", art: "rechnen", quelle: "1.15", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 14 (Steuern)")[
-#if not web [*Aufgabe 130* #linebreak()]
+#if not web [*Aufgabe 129* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Plan-GuV nennt 2005 einen Verlust 39.410 T€ und 2006 einen Gewinn vor Verlustverrechnung 45.377 T€.
@@ -2381,7 +2364,7 @@ Die Plan-GuV nennt 2005 einen Verlust 39.410 T€ und 2006 einen Gewinn vor Verl
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: Steuer nach Verlustvortrag (Variante)", art: "rechnen", quelle: "1.15", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 14 (Steuern)", minuten: 6, ergebnis: [Steuer Jahr 2: 4 Mio. €; NOCF nach Steuern 26 Mio. €; Steuer Jahr 3: 9 Mio. €])[
-#if not web [*Aufgabe 131* #linebreak()]
+#if not web [*Aufgabe 130* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Dämmstoffwerk hat im Jahr 1 wegen Sonderabschreibungen einen steuerlichen Verlust von 12 Mio. €. Im Jahr 2 beträgt der Gewinn vor Verlustverrechnung 20 Mio. €, im Jahr 3 18 Mio. €. Steuersatz wie im Fall 50 %, unbeschränkter Verlustvortrag. NOCF vor Steuern im Jahr 2: 30 Mio. €.
@@ -2404,7 +2387,7 @@ Ein Dämmstoffwerk hat im Jahr 1 wegen Sonderabschreibungen einen steuerlichen V
 ]
 
 #aufgabe(titel: "Glasspinnerei: Finanzierungssaldo 2005", art: "rechnen", quelle: "1.15", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 15 (Finanzplan 2005)")[
-#if not web [*Aufgabe 132* #linebreak()]
+#if not web [*Aufgabe 131* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei 2005, Werte in T€: NOCF nach Steuern 43 305; bisherige Zinsen 3 214; neue Kredite 20 000 und 5 000; Investitionen 85 000; Dividende 3 120. In dieser Teilrechnung werden keine weiteren Tilgungs-/Rückzahlungen angesetzt. Zum Vergleich vorgegebene Finanzierungssalden 2006–2008: +50 594 / +48 108 / +59 915 T€.
@@ -2428,7 +2411,7 @@ Glasspinnerei 2005, Werte in T€: NOCF nach Steuern 43 305; bisherige Zinsen 3 
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: Finanzierungssaldo (Variante)", art: "rechnen", quelle: "1.15", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 15 (Finanzplan 2005)", minuten: 6, ergebnis: [Finanzierungslücke 11 Mio. €])[
-#if not web [*Aufgabe 133* #linebreak()]
+#if not web [*Aufgabe 132* #linebreak()]
 *Gegeben und Annahmen*
 
 Planjahr eines Dämmstoffwerks, Werte in Mio. €: NOCF nach Steuern 32,5; Zinsen auf Altkredite 1,5; Aufnahme eines neuen Bankkredits 10; Investitionsauszahlungen 50; gewünschte Ausschüttung 2. Keine Tilgungen und keine weiteren Zahlungen.
@@ -2449,7 +2432,7 @@ Planjahr eines Dämmstoffwerks, Werte in Mio. €: NOCF nach Steuern 32,5; Zinse
 ]
 
 #aufgabe(titel: "Negatives Buch-EK und rechtliche Überschuldung", art: "verstehen", quelle: "1.16", herkunft: "eigen")[
-#if not web [*Aufgabe 134* #linebreak()]
+#if not web [*Aufgabe 133* #linebreak()]
 Ist ein negatives Eigenkapital in der Bilanz automatisch eine rechtliche Überschuldung?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2462,7 +2445,7 @@ Ist ein negatives Eigenkapital in der Bilanz automatisch eine rechtliche Übersc
 ]
 
 #aufgabe(titel: "Glasspinnerei: Bilanzwerte und Gesellschafterdarlehen", art: "rechnen", quelle: "1.16", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 16–19 (Planbilanz)")[
-#if not web [*Aufgabe 135* #linebreak()]
+#if not web [*Aufgabe 134* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei 2005, Werte in Mio. €: Gebäude-Anfangsbuchwert 38,805; Abschreibung bisheriger Gebäude 3,259; Gebäudezugang 30 mit 75 % Sofortabschreibung. Maschinen-Anfangsbuchwert 16,302; Abschreibung bisheriger Maschinen 10; Maschinenzugang 55 mit 75 % Sofortabschreibung. Bestehende Gesellschafterdarlehen 11; der Plan erhöht sie auf rund 34. Laut Ausgangslage wollen die Eigentümer keine weiteren Mittel geben.
@@ -2486,7 +2469,7 @@ Glasspinnerei 2005, Werte in Mio. €: Gebäude-Anfangsbuchwert 38,805; Abschrei
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: Buchwerte nach Sonderabschreibung (Variante)", art: "rechnen", quelle: "1.16", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 16–19 (Planbilanz)", minuten: 6, ergebnis: [Gebäude 21,5 Mio. €; Maschinen 8 Mio. €])[
-#if not web [*Aufgabe 136* #linebreak()]
+#if not web [*Aufgabe 135* #linebreak()]
 *Gegeben und Annahmen*
 
 Dämmstoffwerk, Werte in Mio. €: Gebäude-Anfangsbuchwert 20, Abschreibung auf bisherige Gebäude 1,5, neuer Gebäudezugang 12 mit 75 % Sofortabschreibung. Maschinen-Anfangsbuchwert 9, Abschreibung auf bisherige Maschinen 3, neuer Maschinenzugang 8 mit 75 % Sofortabschreibung.
@@ -2507,7 +2490,7 @@ Dämmstoffwerk, Werte in Mio. €: Gebäude-Anfangsbuchwert 20, Abschreibung auf
 ]
 
 #aufgabe(titel: "Investition strecken: Wirkung 2005", art: "verstehen", quelle: "1.17", herkunft: "eigen")[
-#if not web [*Aufgabe 137* #linebreak()]
+#if not web [*Aufgabe 136* #linebreak()]
 Im Fall Glasspinnerei werden 2005 nur 80 % der 85 Mio. € Investition gezahlt, der Rest 2006. Um wie viel sinkt der Finanzierungsbedarf 2005, und was ist dabei zu beachten?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2520,7 +2503,7 @@ Im Fall Glasspinnerei werden 2005 nur 80 % der 85 Mio. € Investition gezahlt, 
 ]
 
 #aufgabe(titel: "Forderungsquote senken: welche Verbesserung zählt?", art: "verstehen", quelle: "1.17", herkunft: "eigen")[
-#if not web [*Aufgabe 138* #linebreak()]
+#if not web [*Aufgabe 137* #linebreak()]
 Die Forderungsquote sinkt von 13 % auf 9,5 % des Nettoumsatzes von 270 Mio. €. Gegenüber 2004 werden rund 11,9 Mio. € freigesetzt. Welchen Betrag darf man als zusätzliche Verbesserung gegenüber dem Basisplan ansetzen?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2533,7 +2516,7 @@ Die Forderungsquote sinkt von 13 % auf 9,5 % des Nettoumsatzes von 270 Mio. €.
 ]
 
 #aufgabe(titel: "Hebel gegen eine Finanzierungslücke", art: "verstehen", quelle: "1.17", herkunft: "eigen")[
-#if not web [*Aufgabe 139* #linebreak()]
+#if not web [*Aufgabe 138* #linebreak()]
 Mit welchen Hebeln kann man eine Finanzierungslücke verkleinern?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2548,7 +2531,7 @@ Mit welchen Hebeln kann man eine Finanzierungslücke verkleinern?
 ]
 
 #aufgabe(titel: "Glasspinnerei: zwei Liquiditätsmaßnahmen", art: "rechnen", quelle: "1.17", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 20–21 (Maßnahmen gegen das Defizit)")[
-#if not web [*Aufgabe 140* #linebreak()]
+#if not web [*Aufgabe 139* #linebreak()]
 *Gegeben und Annahmen*
 
 Glasspinnerei 2005: Investition 85 Mio. €, davon sollen 20 % auf 2006 verschoben werden. Bei 270 Mio. € Umsatz soll die Forderungsquote von 13 % auf 9,5 % sinken. Erweitertes EBK 2004: 9,117 Mio. €; Basisplan 2005: 6,625 Mio. €. Der bisherige Finanzierungssaldo 2005 beträgt −23,029 Mio. €. Unter den Maßnahmen wird eine EBK-Freisetzung von rund 11,9 Mio. € gegenüber 2004 genannt.
@@ -2572,7 +2555,7 @@ Glasspinnerei 2005: Investition 85 Mio. €, davon sollen 20 % auf 2006 verschob
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: zwei Liquiditätsmaßnahmen (Variante)", art: "rechnen", quelle: "1.17", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 20–21 (Maßnahmen gegen das Defizit)", minuten: 8, ergebnis: [Verbesserung 18 Mio. €; aus 11 Mio. € Lücke werden 7 Mio. € Überschuss])[
-#if not web [*Aufgabe 141* #linebreak()]
+#if not web [*Aufgabe 140* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Dämmstoffwerk hat im Planjahr eine Finanzierungslücke von 11 Mio. €. Investitionssumme 50 Mio. €; der Lieferant akzeptiert, dass 30 % erst im Folgejahr gezahlt werden. Außerdem soll der Forderungsbestand von 12 % auf 10 % des Nettoumsatzes von 150 Mio. € sinken (Zahlungsziele kürzen); alles andere bleibt gleich.
@@ -2595,7 +2578,7 @@ Ein Dämmstoffwerk hat im Planjahr eine Finanzierungslücke von 11 Mio. €. Inv
 ]
 
 #aufgabe(titel: "Glasspinnerei: Schlussfolgerung für den Kreditgeber", art: "verstehen", quelle: "1.18", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 18–24 (Fazit)")[
-#if not web [*Aufgabe 142* #linebreak()]
+#if not web [*Aufgabe 141* #linebreak()]
 #text("Formuliere die Schlussfolgerung der Glasspinnerei für einen Kreditgeber. Welche Rolle spielen Sonderabschreibungen, künftiger NOCF, die vorübergehende Finanzierungslücke und ein qualifizierter Rangrücktritt?")
 #src[G, PDF-S. 18–24. Verfahren: #stelle(<a-1-18>).]
 ][
@@ -2603,7 +2586,7 @@ Der Kreditgeber braucht eine Überleitung: Der hohe bilanzielle Verlust stammt i
 ]
 
 #aufgabe(titel: "Glasspinnerei: Verlust und hoher NOCF", art: "verstehen", quelle: "1.18", herkunft: "eigen", tipp: [Welche große Aufwandsposition ist zahlungslos?])[
-#if not web [*Aufgabe 143* #linebreak()]
+#if not web [*Aufgabe 142* #linebreak()]
 Wie kann die Glasspinnerei 2005 einen hohen bilanziellen Verlust ausweisen und trotzdem viel Geld aus dem Kerngeschäft (hohen NOCF) erwirtschaften?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2616,7 +2599,7 @@ Wie kann die Glasspinnerei 2005 einen hohen bilanziellen Verlust ausweisen und t
 ]
 
 #aufgabe(titel: "Zwei Probleme der Glasspinnerei", art: "verstehen", quelle: "1.18", herkunft: "eigen")[
-#if not web [*Aufgabe 144* #linebreak()]
+#if not web [*Aufgabe 143* #linebreak()]
 Die Glasspinnerei hat 2005 zwei getrennte Probleme. Welche sind das, und warum muss man sie getrennt lösen?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2632,7 +2615,7 @@ Die Glasspinnerei hat 2005 zwei getrennte Probleme. Welche sind das, und warum m
 ]
 
 #aufgabe(titel: "Glasspinnerei: lineare statt Sofortabschreibung", art: "rechnen", quelle: "1.18", herkunft: "original", vorlage: "Fallstudie Glasspinnerei, PDF-S. 21–22 (lineare Abschreibung)")[
-#if not web [*Aufgabe 145* #linebreak()]
+#if not web [*Aufgabe 144* #linebreak()]
 *Gegeben und Annahmen*
 
 Neue Gebäude der Glasspinnerei: Anschaffung 30 Mio. €, Nutzungsdauer zehn Jahre. Historischer Basisfall: 75 % Sofortabschreibung und Verlustvortrag 39,41 Mio. €. Alternative: vollständige lineare Abschreibung von Beginn an.
@@ -2654,7 +2637,7 @@ Neue Gebäude der Glasspinnerei: Anschaffung 30 Mio. €, Nutzungsdauer zehn Jah
 ]
 
 #aufgabe(titel: "Dämmstoffwerk: lineare statt Sofortabschreibung (Variante)", art: "rechnen", quelle: "1.18", herkunft: "variante", vorlage: "Fallstudie Glasspinnerei, PDF-S. 21–22 (lineare Abschreibung)", minuten: 6, ergebnis: [Aufwand 7,5 Mio. € geringer; Verlustvortrag 2,5 Mio. €])[
-#if not web [*Aufgabe 146* #linebreak()]
+#if not web [*Aufgabe 145* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Dämmstoffwerk hat eine Lagerhalle für 12 Mio. € gekauft (Nutzungsdauer 8 Jahre) und 75 % sofort abgeschrieben. Dadurch weist es einen Verlustvortrag von 10 Mio. € aus, der das bilanzielle Eigenkapital übersteigt. Alternative: Die Halle wird von Beginn an linear abgeschrieben.
@@ -2678,7 +2661,7 @@ Ein Dämmstoffwerk hat eine Lagerhalle für 12 Mio. € gekauft (Nutzungsdauer 8
 ]
 
 #aufgabe(titel: "Annahmen im Ertragswertkurs", art: "verstehen", quelle: "1.19", herkunft: "eigen", tipp: [Frage, welche Zukunftsannahme hinter Gewinn geteilt durch Zinssatz steht.])[
-#if not web [*Aufgabe 147* #linebreak()]
+#if not web [*Aufgabe 146* #linebreak()]
 Welche Annahmen stecken im Ertragswertkurs der behandelten Aktienaufgabe, und warum ist er damit ein vereinfachtes Modell?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2697,7 +2680,7 @@ Welche Annahmen stecken im Ertragswertkurs der behandelten Aktienaufgabe, und wa
 ]
 
 #aufgabe(titel: "Nenner der Gewinnrendite", art: "verstehen", quelle: "1.19", herkunft: "eigen", tipp: [Trenne Marktpreis, Nominalwert und Bilanzkapital.])[
-#if not web [*Aufgabe 148* #linebreak()]
+#if not web [*Aufgabe 147* #linebreak()]
 Welche Größe steckt im Nenner der Gewinnrendite zum Börsenkurs, und womit darf man sie nicht verwechseln?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2709,7 +2692,7 @@ Welche Größe steckt im Nenner der Gewinnrendite zum Börsenkurs, und womit dar
 ]
 
 #aufgabe(titel: "13,3 % sind keine EK-Rentabilität", art: "verstehen", quelle: "1.19", herkunft: "eigen", tipp: [Vergleiche zuerst die Nenner beider Formeln.])[
-#if not web [*Aufgabe 149* #linebreak()]
+#if not web [*Aufgabe 148* #linebreak()]
 Warum dürfen die 13,3 % aus Gewinn je Aktie geteilt durch Börsenkurs nicht ohne Weiteres als JÜ/EK-Rentabilität bezeichnet werden?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2717,7 +2700,7 @@ Warum dürfen die 13,3 % aus Gewinn je Aktie geteilt durch Börsenkurs nicht ohn
 ]
 
 #aufgabe(titel: "Nominalwert, Bilanzkurs und Börsenkurs", art: "verstehen", quelle: "1.19", herkunft: "eigen")[
-#if not web [*Aufgabe 150* #linebreak()]
+#if not web [*Aufgabe 149* #linebreak()]
 Warum sind Nominalwert, korrigierter Bilanzkurs und Börsenkurs einer Aktie verschiedene Größen?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2733,7 +2716,7 @@ Warum sind Nominalwert, korrigierter Bilanzkurs und Börsenkurs einer Aktie vers
 ]
 
 #aufgabe(titel: "KGV, Gewinnrendite und EK-Rentabilität", art: "verstehen", quelle: "1.19", herkunft: "eigen")[
-#if not web [*Aufgabe 151* #linebreak()]
+#if not web [*Aufgabe 150* #linebreak()]
 Was unterscheidet KGV, Gewinnrendite zum Kurs und Eigenkapitalrentabilität?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2745,7 +2728,7 @@ Was unterscheidet KGV, Gewinnrendite zum Kurs und Eigenkapitalrentabilität?
 ]
 
 #aufgabe(titel: "Dividendenrendite und Gewinnrendite", art: "verstehen", quelle: "1.19", herkunft: "eigen")[
-#if not web [*Aufgabe 152* #linebreak()]
+#if not web [*Aufgabe 151* #linebreak()]
 Warum sind Dividendenrendite und Gewinnrendite nicht dasselbe?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2759,7 +2742,7 @@ Warum sind Dividendenrendite und Gewinnrendite nicht dasselbe?
 ]
 
 #aufgabe(titel: "Vorlesung: fundamentale Aktienkennzahlen", art: "rechnen", quelle: "1.19", herkunft: "original", vorlage: "Vorlesung PDF-S. 28–30, Folien 56–59, Übung Aktienkennzahlen", ergebnis: [Bilanzkurs 2,98 €; Ertragswertkurs 2,90 €; KGV 7,5; Gewinnrendite 13,33 %; Dividendenrendite 2,5 %; Cashflow Ratio 6,62.], tipp: [Erst die Aktienzahl aus Grundkapital und Nominalwert bestimmen. Danach immer fragen: Welche Größe steht im Nenner?])[
-#if not web [*Aufgabe 153* #linebreak()]
+#if not web [*Aufgabe 152* #linebreak()]
 *Gegeben und Annahmen*
 
 Bilanz in T€: Grundstück 300, Maschinen 400, Umlaufvermögen 352; Grundkapital 400, gesetzliche Rücklagen 20, freie Rücklagen 42, Jahresüberschuss 30, FK 560. Zusätzlich: Cashflow 145 T€, stille Reserven 700 T€, erwarteter gleichbleibender Jahresgewinn 116 T€, Kalkulationszins 10 %, Nominalwert 1 €/Aktie, Börsenkurs 2,40 €, separat vorgegebener Gewinn je Aktie 0,32 €, Dividende je Aktie 0,06 €. Keine Wachstumsrate im Ertragswertmodell.
@@ -2783,7 +2766,7 @@ Bilanz in T€: Grundstück 300, Maschinen 400, Umlaufvermögen 352; Grundkapita
 ]
 
 #aufgabe(titel: "Aktienkennzahlen der Donau AG (Variante)", art: "rechnen", quelle: "1.19", herkunft: "variante", vorlage: "Vorlesung PDF-S. 28–30, Folien 56–59, Übung Aktienkennzahlen", minuten: 14, ergebnis: [100.000 Aktien; Bilanzkurs 9,50 €; Ertragswertkurs 7,50 €; KGV 18; Gewinnrendite 5,56 %; Dividendenrendite 2,22 %; Cashflow Ratio 7,5; JÜ/EK 7,69 %])[
-#if not web [*Aufgabe 154* #linebreak()]
+#if not web [*Aufgabe 153* #linebreak()]
 *Gegeben und Annahmen*
 
 Bilanz der Donau AG in T€: Aktiva: Grundstück 500, Maschinen 300, Umlaufvermögen 400 (Summe 1.200). Passiva: Grundkapital 500, gesetzliche Rücklagen 60, freie Rücklagen 40, Jahresüberschuss 50, Fremdkapital 550 (Summe 1.200). Zusatzangaben: Cashflow 120 T€, stille Reserven 300 T€, durchschnittlicher künftiger Gewinn 60 T€ pro Jahr (konstant, unbegrenzt), Kalkulationszinsfuß 8 %, Nominalwert der Aktie 5 €, Börsenkurs 9,00 €, Dividende je Aktie 0,20 €. Gewinn je Aktie = JÜ / Aktienzahl.
@@ -2812,7 +2795,7 @@ Bilanz der Donau AG in T€: Aktiva: Grundstück 500, Maschinen 300, Umlaufverm�
 ]
 
 #aufgabe(titel: "Klausur: Kapitalerhöhung der Metall AG", art: "rechnen", quelle: "1.19", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 2", minuten: 10, ergebnis: [GK 40 Mio. €; Kapitalrücklage 60 Mio. €; EK 122 Mio. €; Zufluss 26 Mio. €; Bezugsrecht 0,15 €; Mischkurs 3,05 €], tipp: [Erst die Zahl der jungen Aktien aus dem Bezugsverhältnis bestimmen. Nennwert geht ins Grundkapital, der Aufpreis (Agio) in die Kapitalrücklage.])[
-#if not web [*Aufgabe 155* #linebreak()]
+#if not web [*Aufgabe 154* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Metall AG hat zum 31.12.2015 folgendes Eigenkapital, das auf Aktien mit dem Nennwert von 1 € entfällt: Grundkapital (gezeichnetes Kapital) 30 Mio. €, Kapitalrücklagen 44 Mio. €, Gewinnrücklagen 22 Mio. €. Zur Finanzierung größerer Investitionen plant die Metall AG 2016 eine Kapitalerhöhung gegen Einlagen mit einem Bezugsverhältnis von 3 : 1 (3 alte Aktien berechtigen zum Bezug von 1 junger Aktie). Die Aktien werden vor der Kapitalerhöhung mit 3,20 € an der Börse gehandelt. Junge Aktien werden zu 2,60 € je Aktie ausgegeben. Kosten der Emission werden vernachlässigt.
@@ -2845,7 +2828,7 @@ Die Metall AG hat zum 31.12.2015 folgendes Eigenkapital, das auf Aktien mit dem 
 ]
 
 #aufgabe(titel: "Kapitalerhöhung der Holz AG (Variante)", art: "rechnen", quelle: "1.19", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 2", minuten: 10, ergebnis: [GK 25 Mio. €; Kapitalrücklage 25 Mio. €; EK 60 Mio. €; Zufluss 15 Mio. €; Bezugsrecht 0,30 €; Mischkurs 4,20 €])[
-#if not web [*Aufgabe 156* #linebreak()]
+#if not web [*Aufgabe 155* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Holz AG hat Aktien mit einem Nennwert von 1 €. Eigenkapital vor der Kapitalerhöhung: Grundkapital 20 Mio. €, Kapitalrücklagen 15 Mio. €, Gewinnrücklagen 10 Mio. €. Geplant ist eine Kapitalerhöhung gegen Einlagen im Bezugsverhältnis 4 : 1. Börsenkurs vor der Erhöhung 4,50 €, Ausgabekurs der jungen Aktien 3,00 €. Keine Emissionskosten.
@@ -2872,7 +2855,7 @@ Die Holz AG hat Aktien mit einem Nennwert von 1 €. Eigenkapital vor der Kapita
 ]
 
 #aufgabe(titel: "Kurzfristige statt langfristiger Schulden", art: "verstehen", quelle: "1.20", herkunft: "eigen", tipp: [Setze die Veränderung nur im kurzfristigen Fremdkapital ein.])[
-#if not web [*Aufgabe 157* #linebreak()]
+#if not web [*Aufgabe 156* #linebreak()]
 Wie wirkt der Ersatz langfristiger Schulden durch gleich hohe kurzfristige Schulden bei unverändertem Umlaufvermögen auf das Working Capital? Begründe.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2884,7 +2867,7 @@ Wie wirkt der Ersatz langfristiger Schulden durch gleich hohe kurzfristige Schul
 ]
 
 #aufgabe(titel: "Kapitalbindungsdauer definieren", art: "verstehen", quelle: "1.20", herkunft: "eigen", tipp: [Zeichne Auszahlung und Kundeneingang auf einer Zeitachse.])[
-#if not web [*Aufgabe 158* #linebreak()]
+#if not web [*Aufgabe 157* #linebreak()]
 Von wann bis wann reicht die Kapitalbindungsdauer einer Kostenart? Wie wirkt ein längeres Lieferantenziel auf die Materialbindung?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2896,7 +2879,7 @@ Von wann bis wann reicht die Kapitalbindungsdauer einer Kostenart? Wie wirkt ein
 ]
 
 #aufgabe(titel: "Hohes Working Capital, trotzdem Zahlungslücke", art: "verstehen", quelle: "1.20", herkunft: "eigen", tipp: [Frage, ob das Umlaufvermögen schon Geld ist.])[
-#if not web [*Aufgabe 159* #linebreak()]
+#if not web [*Aufgabe 158* #linebreak()]
 Warum kann ein hohes Working Capital trotzdem mit einer Zahlungslücke morgen zusammenfallen?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2904,7 +2887,7 @@ Warum kann ein hohes Working Capital trotzdem mit einer Zahlungslücke morgen zu
 ]
 
 #aufgabe(titel: "Was misst Working Capital?", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 160* #linebreak()]
+#if not web [*Aufgabe 159* #linebreak()]
 Was misst Working Capital in dieser Vorlesung?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2918,7 +2901,7 @@ Was misst Working Capital in dieser Vorlesung?
 ]
 
 #aufgabe(titel: "Working Capital und EBK unterscheiden", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 161* #linebreak()]
+#if not web [*Aufgabe 160* #linebreak()]
 Warum sind Working Capital und das EBK der Glasspinnerei nicht automatisch gleich?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2930,7 +2913,7 @@ Warum sind Working Capital und das EBK der Glasspinnerei nicht automatisch gleic
 ]
 
 #aufgabe(titel: "Zielkonflikt beim Working Capital", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 162* #linebreak()]
+#if not web [*Aufgabe 161* #linebreak()]
 Welchen Zielkonflikt zeigt die Finanzierung des Working Capitals?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2943,7 +2926,7 @@ Welchen Zielkonflikt zeigt die Finanzierung des Working Capitals?
 ]
 
 #aufgabe(titel: "Eigene Bindungsdauer je Kostenart", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 163* #linebreak()]
+#if not web [*Aufgabe 162* #linebreak()]
 Warum braucht jede Kostenart eine eigene Kapitalbindungsdauer?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2958,7 +2941,7 @@ Warum braucht jede Kostenart eine eigene Kapitalbindungsdauer?
 ]
 
 #aufgabe(titel: "Vorlesung: maximaler Kapitalbedarf des Umlaufvermögens", art: "rechnen", quelle: "1.20", herkunft: "original", vorlage: "Vorlesung PDF-S. 31–32, Folien 61–63, Aufgabe", ergebnis: [341.250 €], tipp: [Zeichne den Tag der Kundenzahlung und ziehe für jede Kostenart ihren Auszahlungstag ab.])[
-#if not web [*Aufgabe 164* #linebreak()]
+#if not web [*Aufgabe 163* #linebreak()]
 *Gegeben und Annahmen*
 
 Umsatz 1,8 Mio. €/Jahr; davon Material 40 %, Lohn 25 %, Herstellgemeinkosten (HGK) 10 %, Verwaltungs-/Vertriebsgemeinkosten (VVGK) 10 %. Beschaffungssynchrone Fertigung, gleichmäßige Tagesausgaben und 360-Tage-Rechenjahr wie in der Folienlösung. Fertigung 60 Tage, Fertiglager 15 Tage, Debitorenfrist 45 Tage. Materialzahlung nach 60 Tagen Kreditorenfrist; Lohnzahlung 15 Tage nach Produktionsbeginn, HGK sofort, VVGK am Tag 60. Kundenzahlung nach Fertigung, Lager und Debitorenfrist. Keine weiteren Auszahlungen im Modell.
@@ -2980,7 +2963,7 @@ Umsatz 1,8 Mio. €/Jahr; davon Material 40 %, Lohn 25 %, Herstellgemeinkosten (
 ]
 
 #aufgabe(titel: "Kapitalbedarf des Umlaufvermögens eines Möbelherstellers (Variante)", art: "rechnen", quelle: "1.20", herkunft: "variante", vorlage: "Vorlesung PDF-S. 31–32, Folien 61–63, Aufgabe", minuten: 15, ergebnis: [339.000 €])[
-#if not web [*Aufgabe 165* #linebreak()]
+#if not web [*Aufgabe 164* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Möbelhersteller mit beschaffungssynchroner Fertigung hat einen Umsatz von 2,16 Mio. €/Jahr. Anteil der Kosten am Umsatz: Material 35 %, Löhne 30 %, Herstellgemeinkosten (HGK) 10 %, Verwaltungs- und Vertriebsgemeinkosten (VVGK) 5 %. Das Material wird bei Produktionsbeginn geliefert und nach 30 Tagen bezahlt (Kreditorenfrist). Löhne fallen durchschnittlich 10 Tage nach Produktionsbeginn an, HGK unmittelbar bei Produktionsbeginn, VVGK 40 Tage nach Produktionsbeginn. Fertigungszeit 40 Tage, Lagerdauer der Enderzeugnisse 20 Tage, Debitorenfrist 30 Tage. Gleichmäßige Tagesausgaben, Rechenjahr 360 Tage.
@@ -3005,7 +2988,7 @@ Ein Möbelhersteller mit beschaffungssynchroner Fertigung hat einen Umsatz von 2
 ]
 
 #aufgabe(titel: "Vorlesung: Finanzplan als Primärplan", art: "verstehen", quelle: "1.21", herkunft: "original", vorlage: "Vorlesung PDF-S. 32, Folie 64, Übungsaufgabe 1")[
-#if not web [*Aufgabe 166* #linebreak()]
+#if not web [*Aufgabe 165* #linebreak()]
 Nenne die kurzfristigen und langfristigen Aufgaben der Finanzplanung. Erkläre, wann der Finanzplan zum Primärplan wird und welchen Beitrag Kennzahlen leisten.
 #src[V, PDF-S. 32–33, Folien 64–66; N28, PDF-S. 6–7, Übungsaufgabe 1.]
 ][
@@ -3019,7 +3002,7 @@ Nenne die kurzfristigen und langfristigen Aufgaben der Finanzplanung. Erkläre, 
 ]
 
 #aufgabe(titel: "Vorlesung: Funktionen finanzwirtschaftlicher Kennzahlen", art: "verstehen", quelle: "1.21", herkunft: "original", vorlage: "Vorlesung PDF-S. 36, Folie 72, Übungsaufgabe 4")[
-#if not web [*Aufgabe 167* #linebreak()]
+#if not web [*Aufgabe 166* #linebreak()]
 Wofür können Rentabilität, Liquidität, Verschuldungsgrad und Anlagendeckung verwendet werden? Nenne mindestens fünf Funktionen und erläutere eine Grenze ihrer Aussagekraft.
 #src[V, PDF-S. 36–37, Folien 72–73; N28, PDF-S. 10–11, Übungsaufgabe 4.]
 ][
@@ -3031,7 +3014,7 @@ Wofür können Rentabilität, Liquidität, Verschuldungsgrad und Anlagendeckung 
 ]
 
 #aufgabe(titel: "Vorlesung: Aussagekraft und Grenzen des Cashflows", art: "verstehen", quelle: "1.21", herkunft: "original", vorlage: "Vorlesung PDF-S. 39, Folie 77, Übungsaufgabe 6")[
-#if not web [*Aufgabe 168* #linebreak()]
+#if not web [*Aufgabe 167* #linebreak()]
 Erkläre, was der betriebliche Cashflow über Innenfinanzierung aussagt, warum er den Gewinn ergänzt und welche Grenzen seine Verwendung hat.
 #src[V, PDF-S. 39, Folien 77–78; N28, PDF-S. 13, Übungsaufgabe 6.]
 ][
@@ -3043,7 +3026,7 @@ Erkläre, was der betriebliche Cashflow über Innenfinanzierung aussagt, warum e
 ]
 
 #aufgabe(titel: "Wann wird der Finanzplan zum Primärplan?", art: "verstehen", quelle: "1.21", herkunft: "eigen", tipp: [Welcher Bereich begrenzt die anderen?])[
-#if not web [*Aufgabe 169* #linebreak()]
+#if not web [*Aufgabe 168* #linebreak()]
 Wann wird der Finanzplan zum Primärplan?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3062,7 +3045,7 @@ Wann wird der Finanzplan zum Primärplan?
 ]
 
 #aufgabe(titel: "Einkauf auf Kredit ist keine Auszahlung", art: "verstehen", quelle: "1.21.1", herkunft: "eigen", tipp: [Trenne Beschaffung und Bankbewegung.])[
-#if not web [*Aufgabe 170* #linebreak()]
+#if not web [*Aufgabe 169* #linebreak()]
 Warum ist ein Einkauf auf Kredit keine sofortige Auszahlung?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3080,7 +3063,7 @@ Warum ist ein Einkauf auf Kredit keine sofortige Auszahlung?
 ]
 
 #aufgabe(titel: "Nettomonetäres UV und Kassenbestand", art: "verstehen", quelle: "1.21.1", herkunft: "eigen")[
-#if not web [*Aufgabe 171* #linebreak()]
+#if not web [*Aufgabe 170* #linebreak()]
 Was unterscheidet nettomonetäres Umlaufvermögen vom Kassenbestand?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3091,7 +3074,7 @@ Was unterscheidet nettomonetäres Umlaufvermögen vom Kassenbestand?
 ]
 
 #aufgabe(titel: "Vorlesung: Quartalsplan und Zahlungsbegriffe", art: "rechnen", quelle: "1.21.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 35, Folie 69, Übungsaufgabe 3", ergebnis: [Folienrechnung: Ende 315 / 170 / −645 T€. Eigene reine Zahlungsvariante: 915 / 1.390 / 1.475 T€. Nettomonetäres UV aus den Angaben nicht eindeutig bestimmt.])[
-#if not web [*Aufgabe 172* #linebreak()]
+#if not web [*Aufgabe 171* #linebreak()]
 *Gegeben und Annahmen*
 
 Alle Werte in T€, Anfang 80. Die Originaltabelle nennt:
@@ -3118,7 +3101,7 @@ Alle Werte in T€, Anfang 80. Die Originaltabelle nennt:
 ]
 
 #aufgabe(titel: "Quartalsplan eines Händlers (Variante)", art: "rechnen", quelle: "1.21.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 35, Folie 69, Übungsaufgabe 3", minuten: 12, ergebnis: [Salden +160 / −40 / −100 T€; Bestände 210 / 170 / 70 T€])[
-#if not web [*Aufgabe 173* #linebreak()]
+#if not web [*Aufgabe 172* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Händler plant drei Quartale, alle Werte in T€, Anfangsbestand an liquiden Mitteln 50. Die Tabelle nennt:
@@ -3154,7 +3137,7 @@ Ein Händler plant drei Quartale, alle Werte in T€, Anfangsbestand an liquiden
 ]
 
 #aufgabe(titel: "Sanitärfall: Durchschnittskapital", art: "verstehen", quelle: "1.21.2", herkunft: "eigen", tipp: [Jahresstrom und Stichtagsbestand sind verschiedene Bezugsebenen.])[
-#if not web [*Aufgabe 174* #linebreak()]
+#if not web [*Aufgabe 173* #linebreak()]
 Warum nutzt die Sanitärgeschäft-Aufgabe für die Rentabilität durchschnittliches Kapital, für die EK-Quote aber den Stichtagswert?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3167,7 +3150,7 @@ Warum nutzt die Sanitärgeschäft-Aufgabe für die Rentabilität durchschnittlic
 ]
 
 #aufgabe(titel: "Netto-GK-Rentabilität ist keine Leverage-Gesamtrendite", art: "verstehen", quelle: "1.21.2", herkunft: "eigen")[
-#if not web [*Aufgabe 175* #linebreak()]
+#if not web [*Aufgabe 174* #linebreak()]
 Warum ist die Netto-Gesamtkapitalrentabilität der Sanitärlösung keine Leverage-Gesamtrendite?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3178,7 +3161,7 @@ Warum ist die Netto-Gesamtkapitalrentabilität der Sanitärlösung keine Leverag
 ]
 
 #aufgabe(titel: "Vorlesung: Darlehen für das Sanitärgeschäft beurteilen", art: "rechnen", quelle: "1.21.2", herkunft: "original", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5", ergebnis: [EK-Rentabilität 8,61 %, Netto-GK 5,65 %; L1/L2/L3 226,32 / 236,84 / 710,53 %; EK-Quote 66,56 %; AD I/II 83,85 / 122,31 %.])[
-#if not web [*Aufgabe 176* #linebreak()]
+#if not web [*Aufgabe 175* #linebreak()]
 *Gegeben und Annahmen*
 
 Darlehenswunsch mindestens 15.000 €. Bilanz in €: Lagerhalle 40.000; Fahrzeuge 12.000; Materiallager 9.000; Debitoren 200; Kasse 300; Bank 4.000. Passiva: gezeichnetes Kapital 30.000, Rücklagen 10.000, Gewinnvortrag 3.600, kurzfristiger Bankkredit 1.500, langfristiger Bankkredit 20.000, Lieferantenkredit 400. Summe 65.500. Wie in der Folienlösung: Gewinnvortrag sei Jahresgewinn, im Jahr gleichmäßig entstanden; alle anderen Kapitalpositionen seien unverändert. Flüssige Mittel seien verfügbar, Forderungen kurzfristig. Zinsaufwand nicht angegeben.
@@ -3202,7 +3185,7 @@ Darlehenswunsch mindestens 15.000 €. Bilanz in €: Lagerhalle 40.000; Fahrzeu
 ]
 
 #aufgabe(titel: "Liquiditätsgrade berechnen", art: "rechnen", quelle: "1.9", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 177* #linebreak()]
+#if not web [*Aufgabe 176* #linebreak()]
 *Gegeben und Annahmen*
 
 Liquiditätsgrade: Kasse und Bank 40, Forderungen 120, Vorräte 140, kurzfristiges Fremdkapital 150 (T€).
@@ -3225,7 +3208,7 @@ Liquiditätsgrade: Kasse und Bank 40, Forderungen 120, Vorräte 140, kurzfristig
 ]
 
 #aufgabe(titel: "Kennzahlen-Check", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 178* #linebreak()]
+#if not web [*Aufgabe 177* #linebreak()]
 *Gegeben und Annahmen*
 
 Kennzahlen-Check : Anlagevermögen 600, Umlaufvermögen 400; Eigenkapital 250, langfristiges FK 350, kurzfristiges FK 400 (T€). Jahresüberschuss 50, Umsatzerlöse 1.000, Cashflow 125.
@@ -3252,7 +3235,7 @@ Kennzahlen-Check : Anlagevermögen 600, Umlaufvermögen 400; Eigenkapital 250, l
 ]
 
 #aufgabe(titel: "EK-Quote und goldene Bilanzregel", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 179* #linebreak()]
+#if not web [*Aufgabe 178* #linebreak()]
 *Gegeben und Annahmen*
 
 EK-Quote und goldene Bilanzregel: EK 300, langfristiges FK 200, kurzfristiges FK 500, AV 450, Bilanzsumme 1.000 (T€).
@@ -3273,7 +3256,7 @@ EK-Quote und goldene Bilanzregel: EK 300, langfristiges FK 200, kurzfristiges FK
 ]
 
 #aufgabe(titel: "Liquiditätsgrade beurteilen", art: "rechnen", quelle: "1.9", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 180* #linebreak()]
+#if not web [*Aufgabe 179* #linebreak()]
 *Gegeben und Annahmen*
 
 Liquiditätsgrade (Teil A5): Kasse 30, Forderungen 90, Vorräte 120, kurzfristiges FK 200 (T€).
@@ -3296,7 +3279,7 @@ Liquiditätsgrade (Teil A5): Kasse 30, Forderungen 90, Vorräte 120, kurzfristig
 ]
 
 #aufgabe(titel: "Bilanzanalyse mit allen Kennzahlen", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 181* #linebreak()]
+#if not web [*Aufgabe 180* #linebreak()]
 *Gegeben und Annahmen*
 
 Bilanzanalyse (Teil A4/A5): AV 800; Vorräte 200, Forderungen 150, Kasse 50; EK 180, langfr. FK 520, kfr. FK 500 (T€). JÜ 27, Umsatz 1.500, Cashflow 100.
@@ -3323,7 +3306,7 @@ Bilanzanalyse (Teil A4/A5): AV 800; Vorräte 200, Forderungen 150, Kasse 50; EK 
 ]
 
 #aufgabe(titel: "Finanzielle Lage vollständig beurteilen", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 182* #linebreak()]
+#if not web [*Aufgabe 181* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Unternehmen meldet: JÜ 60, Abschreibungen 40, Zuführung zu Pensionsrückstellungen 20. Bilanz: AV 700, UV 300 (davon flüssige Mittel 30, Forderungen 120), EK 200, FK 800 (davon kurzfristig 300) (T€).
@@ -3348,7 +3331,7 @@ Ein Unternehmen meldet: JÜ 60, Abschreibungen 40, Zuführung zu Pensionsrückst
 ]
 
 #aufgabe(titel: "Darlehen für einen Malerbetrieb beurteilen (Variante)", art: "rechnen", quelle: "1.21.2", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5", minuten: 18, ergebnis: [EK-Rentabilität 10,91 %, Netto-GK 6,19 %; L1/L2/L3 91,67 / 133,33 / 183,33 %; EK-Quote 58 %; AD I/II 74,36 / 112,82 %])[
-#if not web [*Aufgabe 183* #linebreak()]
+#if not web [*Aufgabe 182* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Bekannte bittet dich um ein Darlehen von 20.000 € für ihren Malerbetrieb. Bilanz zum 31.12. in €: Aktiva: Werkstatt 60.000, Fahrzeuge 18.000, Materiallager 6.000, Forderungen (Debitoren) 5.000, Kasse 1.000, Bank 10.000 (Summe 100.000). Passiva: gezeichnetes Kapital 40.000, Rücklagen 12.000, Gewinnvortrag 6.000, kurzfristiger Bankkredit 4.000, langfristiger Bankkredit 30.000, Lieferantenkredit 8.000 (Summe 100.000). Annahmen wie in der Vorlesungslösung: Der Gewinnvortrag ist der Jahresgewinn, er ist gleichmäßig über das Jahr entstanden; alle anderen Positionen waren das ganze Jahr unverändert.
@@ -3379,7 +3362,7 @@ Eine Bekannte bittet dich um ein Darlehen von 20.000 € für ihren Malerbetrieb
 #kapitel("Kapitel 2 · Fremdfinanzierung")
 
 #aufgabe(titel: "Gläubigerrisiko trotz festem Zahlungsanspruch", art: "verstehen", quelle: "2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 184* #linebreak()]
+#if not web [*Aufgabe 183* #linebreak()]
 Eine Bank vereinbart feste Zins- und Tilgungszahlungen. Warum besteht trotzdem Risiko? Erkläre Informationsasymmetrie, spätere Entscheidungen des Schuldners und eine unerwartete Veränderung des Umfelds.
 #src[V, PDF-S. 40–41, Folien 80–82; eigene Erklärfrage.]
 ][
@@ -3407,7 +3390,7 @@ Eine Bank vereinbart feste Zins- und Tilgungszahlungen. Warum besteht trotzdem R
 ]
 
 #aufgabe(titel: "Drei Informationsbereiche des Gläubigers", art: "verstehen", quelle: "2.1", herkunft: "eigen", tipp: [Denke vom einzelnen Betrieb nach außen.])[
-#if not web [*Aufgabe 185* #linebreak()]
+#if not web [*Aufgabe 184* #linebreak()]
 Welche drei Informationsbereiche untersucht der Gläubiger laut Vorlesung?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3415,7 +3398,7 @@ Welche drei Informationsbereiche untersucht der Gläubiger laut Vorlesung?
 ]
 
 #aufgabe(titel: "Informationsasymmetrie im Kreditverhältnis", art: "verstehen", quelle: "2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 186* #linebreak()]
+#if not web [*Aufgabe 185* #linebreak()]
 Was bedeutet Informationsasymmetrie im Kreditverhältnis?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3426,22 +3409,8 @@ Was bedeutet Informationsasymmetrie im Kreditverhältnis?
 - ein Restrisiko bleibt.
 ]
 
-#aufgabe(titel: "Begriffslandkarte Kapitel 2", art: "verstehen", quelle: "2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 187* #linebreak()]
-Zeichne die Begriffslandkarte zu Kapitel 2 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-#src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
-][
-*Kurz erklärt:*
-- *Finanzierungsbedarf → Kreditverhältnis:* feste Ansprüche und Risiken der Gläubiger.
-- *Bonität, Sicherheiten, Rating:* Risiken einschätzen; Bankkapital beeinflusst die Kreditvergabe.
-- *Vertrag:* Betrag, Tilgung, Zins, Laufzeit, Sicherheiten und Covenants.
-- *Zinstage und Zinstermine:* Zahlungen vergleichbar machen.
-- *Rückführung:* Tilgung, Kündigung und mögliche Vorfälligkeitsentschädigung.
-- *Altklausur:* verbindet Tilgungsformen, Disagio und Sicherheitenbegriffe.
-]
-
 #aufgabe(titel: "Kreditfähigkeit und Kreditwürdigkeit prüfen", art: "verstehen", quelle: "2.2", herkunft: "eigen")[
-#if not web [*Aufgabe 188* #linebreak()]
+#if not web [*Aufgabe 186* #linebreak()]
 Ein Betrieb legt eine gute Bilanz und eine Halle als Sicherheit vor. Reicht das für eine Kreditentscheidung? Trenne Kreditfähigkeit, persönliche und wirtschaftliche Kreditwürdigkeit und Sicherheit; nenne passende Unterlagen.
 #src[V, PDF-S. 42–43, Folien 83–86; eigene Erklärfrage.]
 ][
@@ -3468,7 +3437,7 @@ Ein Betrieb legt eine gute Bilanz und eine Halle als Sicherheit vor. Reicht das 
 ]
 
 #aufgabe(titel: "Gute Bilanz reicht der Bank nicht", art: "verstehen", quelle: "2.2", herkunft: "eigen", tipp: [Wann müssen die vertraglichen Zahlungen geleistet werden?])[
-#if not web [*Aufgabe 189* #linebreak()]
+#if not web [*Aufgabe 187* #linebreak()]
 Warum prüft eine Bank trotz guter Bilanz auch Aufträge und künftige Finanzpläne?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3476,7 +3445,7 @@ Warum prüft eine Bank trotz guter Bilanz auch Aufträge und künftige Finanzpl�
 ]
 
 #aufgabe(titel: "Sicherheit ersetzt keine Bonitätsprüfung", art: "verstehen", quelle: "2.2", herkunft: "eigen")[
-#if not web [*Aufgabe 190* #linebreak()]
+#if not web [*Aufgabe 188* #linebreak()]
 Warum ersetzt eine werthaltige Sicherheit keine wirtschaftliche Bonitätsprüfung?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3489,7 +3458,7 @@ Warum ersetzt eine werthaltige Sicherheit keine wirtschaftliche Bonitätsprüfun
 ]
 
 #aufgabe(titel: "Rating und Basel-Quoten richtig vergleichen", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 191* #linebreak()]
+#if not web [*Aufgabe 189* #linebreak()]
 Unterscheide internes und externes Rating. Warum kann man 7 % hartes Kernkapital, 10,5 % Gesamtkapital und 3 % Leverage Ratio nicht als drei vergleichbare Unternehmens-EK-Quoten lesen?
 #src[V, PDF-S. 43–44 und 49, Folien 85–88 und 97; Präzisierungen nach den Primärquellen in Abschnitt 2.3.]
 ][
@@ -3501,7 +3470,7 @@ Unterscheide internes und externes Rating. Warum kann man 7 % hartes Kernkapital
 ]
 
 #aufgabe(titel: "Bank-Leverage-Ratio und Verschuldungsgrad", art: "verstehen", quelle: "2.3", herkunft: "eigen", tipp: [Vergleiche Zähler und Nenner, bevor Du Prozentwerte vergleichst.])[
-#if not web [*Aufgabe 192* #linebreak()]
+#if not web [*Aufgabe 190* #linebreak()]
 Was misst die Leverage Ratio einer Bank, und warum ist sie etwas anderes als der Verschuldungsgrad eines Unternehmens?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3518,7 +3487,7 @@ Was misst die Leverage Ratio einer Bank, und warum ist sie etwas anderes als der
 ]
 
 #aufgabe(titel: "8-%-Unterlegung bei 150 % Risikogewicht", art: "verstehen", quelle: "2.3", herkunft: "eigen", tipp: [150 Prozent als Faktor 1,5 einsetzen.])[
-#if not web [*Aufgabe 193* #linebreak()]
+#if not web [*Aufgabe 191* #linebreak()]
 Eine Bank vergibt im vereinfachten Folienmodell 100 Mio. € Kredit bei 150 % Risikogewicht. Wie hoch ist die 8-%-Unterlegung? Begründe den Rechenweg.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3530,7 +3499,7 @@ Eine Bank vergibt im vereinfachten Folienmodell 100 Mio. € Kredit bei 150 % Ri
 ]
 
 #aufgabe(titel: "Internes und externes Rating", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 194* #linebreak()]
+#if not web [*Aufgabe 192* #linebreak()]
 Was unterscheidet internes und externes Rating?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3544,7 +3513,7 @@ Was unterscheidet internes und externes Rating?
 ]
 
 #aufgabe(titel: "Kredit auf der Aktivseite der Bank", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 195* #linebreak()]
+#if not web [*Aufgabe 193* #linebreak()]
 Warum steht ein Unternehmenskredit auf der Aktivseite der Bank?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3557,7 +3526,7 @@ Warum steht ein Unternehmenskredit auf der Aktivseite der Bank?
 ]
 
 #aufgabe(titel: "Höheres Risikogewicht, mehr Bank-EK", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 196* #linebreak()]
+#if not web [*Aufgabe 194* #linebreak()]
 Wie verändert ein höheres Risikogewicht den Kapitalbedarf der Bank im Folienmodell?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3568,7 +3537,7 @@ Wie verändert ein höheres Risikogewicht den Kapitalbedarf der Bank im Folienmo
 ]
 
 #aufgabe(titel: "Vorlesung: Basel-II-Unterlegung und Kreditvolumen", art: "rechnen", quelle: "2.3", herkunft: "original", vorlage: "Vorlesung PDF-S. 44, Folie 87, Übung Basel II", ergebnis: [12 Mio. € Unterlegung; 31,25 Mrd. € rechnerisches Kreditvolumen.])[
-#if not web [*Aufgabe 197* #linebreak()]
+#if not web [*Aufgabe 195* #linebreak()]
 *Gegeben und Annahmen*
 
 Verfügbares Bank-EK 2,5 Mrd. €. Unternehmenskredit 100 Mio. €, Risikogewicht 150 %. Vereinfachtes Folienmodell: Unterlegung = Kreditbetrag × 8 % × Risikogewicht; keine weiteren Puffer, Risiken oder bindenden Grenzen. Für Teil b) sei das durchschnittliche Gewicht 100 %, das gesamte EK dafür verfügbar.
@@ -3588,7 +3557,7 @@ Verfügbares Bank-EK 2,5 Mrd. €. Unternehmenskredit 100 Mio. €, Risikogewich
 ]
 
 #aufgabe(titel: "Basel-Unterlegung für einen Mittelstandskredit (Variante)", art: "rechnen", quelle: "2.3", herkunft: "variante", vorlage: "Vorlesung PDF-S. 44, Folie 87, Übung Basel II", minuten: 6, ergebnis: [3 Mio. € Unterlegung; 25 Mrd. € Kreditvolumen])[
-#if not web [*Aufgabe 198* #linebreak()]
+#if not web [*Aufgabe 196* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Regionalbank hat Eigenkapital von 1,2 Mrd. €. Sie vergibt einem Mittelständler einen Kredit über 50 Mio. € mit einem Risikogewicht von 75 %. Vereinfachtes Folienmodell: Unterlegung = Kreditbetrag × 8 % × Risikogewicht; keine Puffer oder weiteren Grenzen.
@@ -3612,7 +3581,7 @@ Eine Regionalbank hat Eigenkapital von 1,2 Mrd. €. Sie vergibt einem Mittelst�
 ]
 
 #aufgabe(titel: "Länder-Ratings und Anleiherenditen", art: "verstehen", quelle: "2.4", herkunft: "eigen", tipp: [Eine Note und ein Marktpreis entstehen auf verschiedene Weise.])[
-#if not web [*Aufgabe 199* #linebreak()]
+#if not web [*Aufgabe 197* #linebreak()]
 Warum sind die historischen Länder-Ratings und die Anleiherenditen keine identischen Größen?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3620,7 +3589,7 @@ Warum sind die historischen Länder-Ratings und die Anleiherenditen keine identi
 ]
 
 #aufgabe(titel: "Kreditverluste und Finanzierung anderer Unternehmen", art: "verstehen", quelle: "2.4", herkunft: "eigen")[
-#if not web [*Aufgabe 200* #linebreak()]
+#if not web [*Aufgabe 198* #linebreak()]
 Wie können Kreditverluste die Finanzierung anderer Unternehmen erschweren?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3633,7 +3602,7 @@ Wie können Kreditverluste die Finanzierung anderer Unternehmen erschweren?
 ]
 
 #aufgabe(titel: "Staatsschuldenquote richtig lesen", art: "verstehen", quelle: "2.4", herkunft: "eigen")[
-#if not web [*Aufgabe 201* #linebreak()]
+#if not web [*Aufgabe 199* #linebreak()]
 Warum ist eine höhere Staatsschuldenquote nicht allein ein Beweis für neue Schulden?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3646,7 +3615,7 @@ Warum ist eine höhere Staatsschuldenquote nicht allein ein Beweis für neue Sch
 ]
 
 #aufgabe(titel: "Krisenmechanismus und Anleihekauf erklären", art: "verstehen", quelle: "2.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 202* #linebreak()]
+#if not web [*Aufgabe 200* #linebreak()]
 Erkläre den Weg von Kreditverlusten zu schwächerer Bankfinanzierung. Unterscheide danach die Ausgabe einer Staatsanleihe von einem späteren Ankauf durch die Notenbank: Wer erhält jeweils den Kaufpreis?
 #src[V, PDF-S. 45–52, Folien 89–104; N04, PDF-S. 9, eigene Skizze; EZB-Präzisierung in Abschnitt 2.4.]
 ][
@@ -3660,7 +3629,7 @@ Erkläre den Weg von Kreditverlusten zu schwächerer Bankfinanzierung. Untersche
 ]
 
 #aufgabe(titel: "Anleihekauf der Notenbank: Wer erhält das Geld?", art: "verstehen", quelle: "2.4.1", herkunft: "eigen", tipp: [Zeichne das erste und das zweite Geschäft getrennt.])[
-#if not web [*Aufgabe 203* #linebreak()]
+#if not web [*Aufgabe 201* #linebreak()]
 Wer erhält bei einem Staatsanleihekauf der Notenbank am Sekundärmarkt das Geld?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3680,7 +3649,7 @@ Wer erhält bei einem Staatsanleihekauf der Notenbank am Sekundärmarkt das Geld
 ]
 
 #aufgabe(titel: "Kreditvertrag mit Covenants gestalten", art: "verstehen", quelle: "2.5", herkunft: "eigen")[
-#if not web [*Aufgabe 204* #linebreak()]
+#if not web [*Aufgabe 202* #linebreak()]
 Nenne die sechs verhandlungsrelevanten Merkmalsgruppen des Kreditvertrags. Erkläre anschließend an einem selbst formulierten Covenant den Zweck, die Berichtspflicht, eine mögliche Folge eines Verstoßes und den Nachteil für den Schuldner.
 #src[V, PDF-S. 53–54, Folien 105–108; eigene Anwendung.]
 ][
@@ -3692,7 +3661,7 @@ Nenne die sechs verhandlungsrelevanten Merkmalsgruppen des Kreditvertrags. Erkl�
 ]
 
 #aufgabe(titel: "Covenants: Schutz und Preis", art: "verstehen", quelle: "2.5", herkunft: "eigen", tipp: [Denke an Risikobegrenzung während der Laufzeit.])[
-#if not web [*Aufgabe 205* #linebreak()]
+#if not web [*Aufgabe 203* #linebreak()]
 Wie schützen Covenants den Gläubiger, und welchen Preis zahlt der Schuldner dafür?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3710,7 +3679,7 @@ Wie schützen Covenants den Gläubiger, und welchen Preis zahlt der Schuldner da
 ]
 
 #aufgabe(titel: "Zinsbindungsfrist und Gesamtlaufzeit", art: "verstehen", quelle: "2.5", herkunft: "eigen", tipp: [Frage, ob das Darlehen am Ende der Zinsbindung schon vollständig getilgt ist.])[
-#if not web [*Aufgabe 206* #linebreak()]
+#if not web [*Aufgabe 204* #linebreak()]
 Warum sind Zinsbindungsfrist und Gesamtlaufzeit nicht automatisch gleich?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3718,7 +3687,7 @@ Warum sind Zinsbindungsfrist und Gesamtlaufzeit nicht automatisch gleich?
 ]
 
 #aufgabe(titel: "Sechs Merkmalsgruppen des Kreditvertrags", art: "verstehen", quelle: "2.5", herkunft: "eigen")[
-#if not web [*Aufgabe 207* #linebreak()]
+#if not web [*Aufgabe 205* #linebreak()]
 Welche sechs Merkmalsgruppen bestimmen einen Kreditvertrag?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3731,7 +3700,7 @@ Welche sechs Merkmalsgruppen bestimmen einen Kreditvertrag?
 ]
 
 #aufgabe(titel: "Zinstagemethode und Zinsbetrag", art: "verstehen", quelle: "2.6", herkunft: "eigen", tipp: [Vergleiche die beiden Brüche bei gleichem Zähler.])[
-#if not web [*Aufgabe 208* #linebreak()]
+#if not web [*Aufgabe 206* #linebreak()]
 Warum beeinflusst die Zinstagemethode den Zinsbetrag bei gleichen Kalenderdaten? Erkläre insbesondere, warum actual/360 bei denselben 352 Tagen mehr Zins ergibt als actual/365.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3751,7 +3720,7 @@ Warum beeinflusst die Zinstagemethode den Zinsbetrag bei gleichen Kalenderdaten?
 ]
 
 #aufgabe(titel: "30/360 und 30E/360 im Dezember-Endfall", art: "verstehen", quelle: "2.6", herkunft: "eigen", tipp: [Die Differenz entsteht an der Monatsendregel.])[
-#if not web [*Aufgabe 209* #linebreak()]
+#if not web [*Aufgabe 207* #linebreak()]
 Warum liefern 30/360 und 30E/360 im behandelten Dezember-Endfall verschiedene Zinstage?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3759,7 +3728,7 @@ Warum liefern 30/360 und 30E/360 im behandelten Dezember-Endfall verschiedene Zi
 ]
 
 #aufgabe(titel: "Vorlesung: Zinstage 14.01.–31.12.2016", art: "rechnen", quelle: "2.6", herkunft: "original", vorlage: "Vorlesung PDF-S. 55, Folie 109, Beispiel Zinstage", ergebnis: [Endkapital: 2.057,83 / 2.057,67 / 2.057,86 / 2.058,67 / 2.057,70 € in der Reihenfolge a).])[
-#if not web [*Aufgabe 210* #linebreak()]
+#if not web [*Aufgabe 208* #linebreak()]
 *Gegeben und Annahmen*
 
 Anlage 2.000 €, einfacher Jahreszins 3 %, 14.01.2016 bis 31.12.2016. Anfangstag nicht mitzählen, Endtag mitzählen. 2016 ist ein Schaltjahr mit 366 Tagen. Methoden wie in der Musterlösung: 30E/360 setzt den Endtag 31 auf 30; 30/360 belässt ihn in diesem konkreten Fall bei 31. Bei tatsächlichen Tagen Kalenderdifferenz verwenden. Kein unterjähriger Zinseszins, keine weiteren Zahlungen.
@@ -3788,7 +3757,7 @@ Die Bruchteile werden vor der Multiplikation nicht vorzeitig gerundet.
 ]
 
 #aufgabe(titel: "Zinstage 01.03.–31.08.2017 (Variante)", art: "rechnen", quelle: "2.6", herkunft: "variante", vorlage: "Vorlesung PDF-S. 55, Folie 109, Beispiel Zinstage", minuten: 12, ergebnis: [Endkapital 30/360: 5.050,00 €; 30E/360: 5.049,72 €; act/365: 5.050,14 €; act/360: 5.050,83 €; act/act: 5.050,14 €])[
-#if not web [*Aufgabe 211* #linebreak()]
+#if not web [*Aufgabe 209* #linebreak()]
 *Gegeben und Annahmen*
 
 Du legst 5.000 € vom 01.03.2017 bis zum 31.08.2017 zu einem einfachen Jahreszins von 2 % an. 2017 ist kein Schaltjahr. Anfangstag nicht mitzählen, Endtag mitzählen. Konventionen wie in der Vorlesungslösung: 30E/360 setzt einen 31. immer auf den 30.; die verwendete 30/360-Variante setzt den Endtag 31 nur dann auf 30, wenn der Anfangstag 30 oder 31 ist. Kein Zinseszins.
@@ -3819,7 +3788,7 @@ Du legst 5.000 € vom 01.03.2017 bis zum 31.08.2017 zu einem einfachen Jahreszi
 ]
 
 #aufgabe(titel: "Vom Monatszins zum effektiven Jahreszins", art: "verstehen", quelle: "2.7", herkunft: "eigen", tipp: [Zinsfaktor ist 1 plus Periodenzins.])[
-#if not web [*Aufgabe 212* #linebreak()]
+#if not web [*Aufgabe 210* #linebreak()]
 Warum darf man einen Monatszins nicht einfach mit zwölf multiplizieren? Wie wird bei Wiederanlage daraus der effektive Jahreszins?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3842,7 +3811,7 @@ Warum darf man einen Monatszins nicht einfach mit zwölf multiplizieren? Wie wir
 ]
 
 #aufgabe(titel: "Einjahresvergleich über drei Jahre", art: "verstehen", quelle: "2.7", herkunft: "eigen", tipp: [Was passiert, wenn der Zinssatz nur bis zur nächsten Gutschrift garantiert ist?])[
-#if not web [*Aufgabe 213* #linebreak()]
+#if not web [*Aufgabe 211* #linebreak()]
 Wann bleibt die bessere Einjahresanlage auch über drei Jahre besser?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3855,7 +3824,7 @@ Wann bleibt die bessere Einjahresanlage auch über drei Jahre besser?
 ]
 
 #aufgabe(titel: "Vorlesung: jährliche und monatliche Zinsgutschrift", art: "rechnen", quelle: "2.7", herkunft: "original", vorlage: "Vorlesung PDF-S. 56, Folie 111, Beispiel Zinstermine", ergebnis: [Angebot 2: etwa 3,0108 % effektiver Jahreszins; unter den Annahmen für ein und drei Jahre etwas besser.])[
-#if not web [*Aufgabe 214* #linebreak()]
+#if not web [*Aufgabe 212* #linebreak()]
 *Gegeben und Annahmen*
 
 Angebot 1: jährliche Verzinsung 3 %. Angebot 2: monatliche Verzinsung 0,2475 % pro Monat. Albert legt für ein Jahr an, Beatrice für drei Jahre. Dasselbe beliebige positive Anfangskapital, unveränderte Zinssätze, Wiederanlage sämtlicher Zinsen, keine Gebühren, Steuern oder weiteren Zahlungen.
@@ -3875,7 +3844,7 @@ Angebot 1: jährliche Verzinsung 3 %. Angebot 2: monatliche Verzinsung 0,2475 % 
 ]
 
 #aufgabe(titel: "Vierteljährliche gegen jährliche Zinsgutschrift (Variante)", art: "rechnen", quelle: "2.7", herkunft: "variante", vorlage: "Vorlesung PDF-S. 56, Folie 111, Beispiel Zinstermine", minuten: 8, ergebnis: [Angebot B effektiv ca. 2,381 % < 2,4 %; Angebot A ist für 1 und 3 Jahre besser])[
-#if not web [*Aufgabe 215* #linebreak()]
+#if not web [*Aufgabe 213* #linebreak()]
 *Gegeben und Annahmen*
 
 Clara kann Geld anlegen: Angebot A: 2,4 % Zinsen jährlich. Angebot B: 0,59 % Zinsen pro Quartal, die jeweils gutgeschrieben und mitverzinst werden. Zinssätze bleiben unverändert, keine Gebühren und Steuern.
@@ -3897,7 +3866,7 @@ Clara kann Geld anlegen: Angebot A: 2,4 % Zinsen jährlich. Angebot B: 0,59 % Zi
 ]
 
 #aufgabe(titel: "Darlehenspflichten und passende Kündigungsregel", art: "verstehen", quelle: "2.8", herkunft: "eigen")[
-#if not web [*Aufgabe 216* #linebreak()]
+#if not web [*Aufgabe 214* #linebreak()]
 Erkläre die Hauptpflichten nach § 488 BGB. Ordne danach zu: variabler Zins; Ende einer Zinsbindung ohne neue Zinsvereinbarung; mehr als zehn Jahre seit vollständigem Empfang bei Festzins; vorzeitiger Verkauf eines belasteten Grundstücks aus berechtigtem Interesse. Nenne jeweils die wesentlichen Bedingungen und Fristen.
 #src[V, PDF-S. 57–58, Folien 113–115; Rechtsabgleich in Abschnitt 2.8.]
 ][
@@ -3911,7 +3880,7 @@ Erkläre die Hauptpflichten nach § 488 BGB. Ordne danach zu: variabler Zins; En
 ]
 
 #aufgabe(titel: "Start des Zehnjahres-Kündigungsrechts", art: "verstehen", quelle: "2.8", herkunft: "eigen", tipp: [Suche das gesetzliche Ereignis für den Fristbeginn.])[
-#if not web [*Aufgabe 217* #linebreak()]
+#if not web [*Aufgabe 215* #linebreak()]
 Woran knüpft § 489 das Zehnjahres-Kündigungsrecht an, und warum ist der Unterschriftstag nicht automatisch der richtige Start?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3928,7 +3897,7 @@ Woran knüpft § 489 das Zehnjahres-Kündigungsrecht an, und warum ist der Unter
 ]
 
 #aufgabe(titel: "Außerordentliche Kündigung durch den Kreditgeber", art: "verstehen", quelle: "2.8", herkunft: "eigen", tipp: [Die Norm verbindet Verschlechterung und Rückzahlungsrisiko.])[
-#if not web [*Aufgabe 218* #linebreak()]
+#if not web [*Aufgabe 216* #linebreak()]
 Warum reicht für die außerordentliche Kündigung durch den Kreditgeber nicht jede kleine Wertschwankung einer Sicherheit?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3936,7 +3905,7 @@ Warum reicht für die außerordentliche Kündigung durch den Kreditgeber nicht j
 ]
 
 #aufgabe(titel: "Hauptpflichten beim Darlehensvertrag", art: "verstehen", quelle: "2.8", herkunft: "eigen")[
-#if not web [*Aufgabe 219* #linebreak()]
+#if not web [*Aufgabe 217* #linebreak()]
 Welche Hauptpflichten entstehen beim Darlehensvertrag?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3950,7 +3919,7 @@ Welche Hauptpflichten entstehen beim Darlehensvertrag?
 ]
 
 #aufgabe(titel: "Vorfälligkeitsentschädigung wirtschaftlich erklären", art: "verstehen", quelle: "2.9", herkunft: "eigen")[
-#if not web [*Aufgabe 220* #linebreak()]
+#if not web [*Aufgabe 218* #linebreak()]
 Warum kann eine vorzeitige Rückzahlung bei Festzins einen Schaden verursachen? Unterscheide Aktiv-Aktiv- und Aktiv-Passiv-Vergleich. Was bedeutet ein höherer Wiederanlagezins, und warum folgt aus der Folie kein pauschaler Gebührenanspruch?
 #src[V, PDF-S. 58, Folien 115–116; N04, PDF-S. 17; rechtliche Präzisierung in Abschnitt 2.9.]
 ][
@@ -3964,7 +3933,7 @@ Warum kann eine vorzeitige Rückzahlung bei Festzins einen Schaden verursachen? 
 ]
 
 #aufgabe(titel: "Wiederanlagezins und Vorfälligkeitsentschädigung", art: "verstehen", quelle: "2.9", herkunft: "eigen", tipp: [Vergleiche den alten Ertrag mit der möglichen neuen Anlage.])[
-#if not web [*Aufgabe 221* #linebreak()]
+#if not web [*Aufgabe 219* #linebreak()]
 Warum kann ein niedrigerer Wiederanlagezins eine Vorfälligkeitsentschädigung erhöhen?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3984,7 +3953,7 @@ Warum kann ein niedrigerer Wiederanlagezins eine Vorfälligkeitsentschädigung e
 ]
 
 #aufgabe(titel: "Aktiv-Aktiv und Aktiv-Passiv unterscheiden", art: "verstehen", quelle: "2.9", herkunft: "eigen", tipp: [Welche Wiederanlage bildet die jeweilige Vergleichsseite?])[
-#if not web [*Aufgabe 222* #linebreak()]
+#if not web [*Aufgabe 220* #linebreak()]
 Was unterscheidet Aktiv-Aktiv- und Aktiv-Passiv-Vergleich?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3997,7 +3966,7 @@ Was unterscheidet Aktiv-Aktiv- und Aktiv-Passiv-Vergleich?
 ]
 
 #aufgabe(titel: "Ratendarlehen und Annuität: was ist konstant?", art: "verstehen", quelle: "2.10.1", herkunft: "eigen", tipp: [Annuität ist die Summe der beiden Zahlungsanteile.])[
-#if not web [*Aufgabe 223* #linebreak()]
+#if not web [*Aufgabe 221* #linebreak()]
 Was bleibt beim Ratendarlehen konstant, was beim Annuitätendarlehen?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -4020,7 +3989,7 @@ Was bleibt beim Ratendarlehen konstant, was beim Annuitätendarlehen?
 ]
 
 #aufgabe(titel: "Klausur: Annuitätendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 a", minuten: 6, ergebnis: [Annuität ungerundet 21.522,16 €/Jahr, Tabelle 21.522 €; Zinsen gerundet insgesamt 6.088 €.])[
-#if not web [*Aufgabe 224* #linebreak()]
+#if not web [*Aufgabe 222* #linebreak()]
 *Gegeben und Annahmen*
 
 Inn GmbH: Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest für vier Jahre, jährliche Zahlung am Jahresende. Zinsen jeweils auf die Restschuld zu Jahresbeginn. Annuität so bestimmen, dass das Darlehen in vier Jahren vollständig getilgt ist. Wie in der Klausur jede Tabellenzahl auf volle Euro runden; Rundungsrest vernachlässigen.
@@ -4048,7 +4017,7 @@ Jede Zeile benutzt die gerundete Anfangsschuld und rundet den Zins auf volle Eur
 ]
 
 #aufgabe(titel: "Annuitätendarlehen der Isar GmbH (Variante)", art: "rechnen", quelle: "2.10.1", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 1 a", minuten: 8, ergebnis: [Annuität 21.621 €; Zinsen gesamt 4.863 €])[
-#if not web [*Aufgabe 225* #linebreak()]
+#if not web [*Aufgabe 223* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Isar GmbH nimmt am 01.01. ein Annuitätendarlehen über 60.000 € auf, Auszahlung 100 %, Zinssatz 4 % p. a. fest, Laufzeit 3 Jahre, Zahlung jeweils am Jahresende. Zinsen auf die Restschuld zu Jahresbeginn. Alle Tabellenwerte auf volle Euro runden; ein Rundungsrest im letzten Jahr ist zu vernachlässigen.
@@ -4075,7 +4044,7 @@ Tilgung = Annuität − Zins; Zins = 4 % der Anfangsschuld.
 ]
 
 #aufgabe(titel: "Klausur: Ratendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 b", minuten: 4, ergebnis: [Tilgung 20.000 €/Jahr; Zahlungen 22.400 / 21.800 / 21.200 / 20.600 €; Gesamtzinsen 6.000 €.])[
-#if not web [*Aufgabe 226* #linebreak()]
+#if not web [*Aufgabe 224* #linebreak()]
 *Gegeben und Annahmen*
 
 Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest, vier Jahre. Konstante jährliche Tilgung 25 % der Anfangsschuld; Zinsen auf die Restschuld zu Jahresbeginn, Zahlung am Jahresende. Keine weiteren Kosten.
@@ -4098,7 +4067,7 @@ Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest, vier Jahre.
 ]
 
 #aufgabe(titel: "Ratendarlehen der Isar GmbH (Variante)", art: "rechnen", quelle: "2.10.1", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 1 b", minuten: 6, ergebnis: [Tilgung 20.000 €/Jahr; Zahlungen 22.400 / 21.600 / 20.800 €; Zinsen 4.800 €])[
-#if not web [*Aufgabe 227* #linebreak()]
+#if not web [*Aufgabe 225* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Isar GmbH nimmt am 01.01. ein Tilgungsdarlehen (Ratendarlehen) über 60.000 € auf, Auszahlung 100 %, 4 % p. a. fest, Laufzeit 3 Jahre, gleiche jährliche Tilgung, Zinsen auf die Restschuld zu Jahresbeginn, Zahlung am Jahresende.
@@ -4123,7 +4092,7 @@ Die Isar GmbH nimmt am 01.01. ein Tilgungsdarlehen (Ratendarlehen) über 60.000 
 ]
 
 #aufgabe(titel: "Disagio und Effektivzins", art: "verstehen", quelle: "2.10.2", herkunft: "eigen", tipp: [Unterscheide erhaltenes Geld und Nominalschuld.])[
-#if not web [*Aufgabe 228* #linebreak()]
+#if not web [*Aufgabe 226* #linebreak()]
 Warum kann ein Disagio den Effektivzins über den Nominalzins heben, und warum steht in der Praktikerformel die Auszahlung im Nenner?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -4142,7 +4111,7 @@ Warum kann ein Disagio den Effektivzins über den Nominalzins heben, und warum s
 ]
 
 #aufgabe(titel: "Klausur: Effektivzins mit zwei Prozent Disagio", art: "rechnen", quelle: "2.10.2", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 c", minuten: 2, ergebnis: [Auszahlung 78.400 €; näherungsweise 3,57 % p. a.])[
-#if not web [*Aufgabe 229* #linebreak()]
+#if not web [*Aufgabe 227* #linebreak()]
 *Gegeben und Annahmen*
 
 Endfälliges Darlehen: Nominalbetrag 80.000 €, 3 % p. a., vier Jahre, Auszahlungsdisagio 2 % des Nominalbetrags. Jährliche Zinszahlung, vollständige Nominalrückzahlung am Ende, keine anderen Kosten. Gesucht ist ausdrücklich die approximative Praktikerformel, nicht die exakte interne Rendite.
@@ -4162,7 +4131,7 @@ Endfälliges Darlehen: Nominalbetrag 80.000 €, 3 % p. a., vier Jahre, Auszahlu
 ]
 
 #aufgabe(titel: "Effektivzins mit drei Prozent Disagio (Variante)", art: "rechnen", quelle: "2.10.2", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 1 c", minuten: 4, ergebnis: [Auszahlung 58.200 €; ca. 5,15 % p. a.])[
-#if not web [*Aufgabe 230* #linebreak()]
+#if not web [*Aufgabe 228* #linebreak()]
 *Gegeben und Annahmen*
 
 Endfälliges Darlehen über nominal 60.000 €, Nominalzins 4 % p. a., Laufzeit 3 Jahre, Auszahlungsdisagio 3 %. Jährliche Zinszahlung, Rückzahlung von 60.000 € am Ende, keine weiteren Kosten.
@@ -4184,7 +4153,7 @@ Endfälliges Darlehen über nominal 60.000 €, Nominalzins 4 % p. a., Laufzeit 
 ]
 
 #aufgabe(titel: "Klausur: Sicherheiten nach zwei Kriterien einordnen", art: "verstehen", quelle: "2.10.3", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 d", minuten: 2)[
-#if not web [*Aufgabe 231* #linebreak()]
+#if not web [*Aufgabe 229* #linebreak()]
 Nenne je eine Personal- und Realsicherheit sowie je ein akzessorisches und fiduziarisches Sicherungsmittel. Erkläre die beiden Einteilungen, statt nur vier Wörter aufzuzählen.
 #src[Altklausur 2017, Aufgabe 1 d, zweimal 1 Punkt; K, PDF-S. 2 (Klausurseite 6). Eigene Lösung mit Rechtsabgleich in Abschnitt 2.10.]
 ][
@@ -4196,7 +4165,7 @@ Nenne je eine Personal- und Realsicherheit sowie je ein akzessorisches und fiduz
 ]
 
 #aufgabe(titel: "Zwei Einteilungen von Sicherheiten", art: "verstehen", quelle: "2.10.3", herkunft: "eigen", tipp: [Prüfe zuerst Person oder Sache, danach die Bindung an die Forderung.])[
-#if not web [*Aufgabe 232* #linebreak()]
+#if not web [*Aufgabe 230* #linebreak()]
 Warum sind „personal oder real“ und „akzessorisch oder fiduziarisch“ zwei verschiedene Einteilungen? Ordne Bürgschaft, Grundschuld und Hypothek ein.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][

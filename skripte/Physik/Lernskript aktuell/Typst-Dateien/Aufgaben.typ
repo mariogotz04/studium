@@ -134,18 +134,10 @@ Wovon hängt die Eigenfrequenz eines Federpendels ab, und wovon nicht?
 #src[Karteikarte zu 5.0; V, PDF-S. 146–150.]
 ]
 
-#aufgabe(titel: "Begriffslandkarte Kapitel 5", art: "verstehen", quelle: "5.0", herkunft: "eigen")[
-#if not web [*Aufgabe 5* #linebreak()]
-Zeichne die Begriffslandkarte zu Kapitel 5 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-][
-*Begriffe und Verbindungen:* Das Federpendel verbindet Rückstellkraft und Trägheit zu einer Eigenfrequenz. Zwei nahe Frequenzen erzeugen durch wechselnde Phasendifferenz eine Schwebung. Eine Kopplungsfeder verbindet zwei Pendel; Gleich- und Gegentakt sind ihre Eigenmoden. Deren Überlagerung und Rücktransformation erklären den Energieaustausch und führen zur Idee vieler gekoppelter Schwinger.
-#src[Karteikarte zu Kapitel 5.]
-]
-
 #aufgabe(titel: "Federsitz: Masse aus der Periodendauer", art: "rechnen", quelle: "5.0", herkunft: "original", vorlage: "Altklausur WS 17/18, Aufg. 1", minuten: 15, platz: 14,
   ergebnis: [a) $D approx 780 thin "N/m"$, $T_2 approx "1,80" thin "s"$; b) $Delta T approx "12,7" thin "ms"$; c) keine Änderung der Periodendauer],
 )[
-#if not web [*Aufgabe 6* #linebreak()]
+#if not web [*Aufgabe 5* #linebreak()]
 *Body Mass Measurement Device*
 
 *Gegeben und Annahmen*
@@ -177,7 +169,7 @@ In der Schwerelosigkeit kann die Masse nicht über die Gewichtskraft bestimmt we
 #aufgabe(titel: "BMMD mit schwererem Sitz (Variante)", art: "rechnen", quelle: "5.0", herkunft: "variante", vorlage: "Altklausur WS 17/18, Aufg. 1", minuten: 12,
   ergebnis: [a) $D approx 710 thin "N/m"$, $T approx "2,015" thin "s"$; b) $Delta T approx "6,3" thin "ms"$],
 )[
-#if not web [*Aufgabe 7* #linebreak()]
+#if not web [*Aufgabe 6* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein BMMD in der Raumstation besteht aus einem horizontal an einer Feder befestigten, reibungsfrei gleitenden Sitz mit $m_S=5 thin "kg"$. Es wird als einfaches Federpendel mit Zusatzmasse $m$ (Astronaut) modelliert. Bei Astronautin Ana ($m_A=82 thin "kg"$) misst es $T_1="2,2" thin "s"$.
@@ -202,7 +194,7 @@ Ein BMMD in der Raumstation besteht aus einem horizontal an einer Feder befestig
 ]
 
 #aufgabe(titel: "Wie eine Schwebung entsteht", art: "verstehen", quelle: "5.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 8* #linebreak()]
+#if not web [*Aufgabe 7* #linebreak()]
 Wann entsteht eine Schwebung, und warum wird der Ton abwechselnd lauter und leiser?
 ][
 *Bedingung:* Eine Schwebung entsteht, wenn zwei Schwingungen mit *fast gleicher Frequenz* überlagert werden. Ihre Phasen verschieben sich langsam gegeneinander.
@@ -214,7 +206,7 @@ Wann entsteht eine Schwebung, und warum wird der Ton abwechselnd lauter und leis
 ]
 
 #aufgabe(titel: "Träger, Hülle und Schwebungsfrequenz", art: "verstehen", quelle: "5.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 9* #linebreak()]
+#if not web [*Aufgabe 8* #linebreak()]
 Unterscheide $omega_m$, $omega_d$, $f_s$ und $T_s$. Warum ist die hörbare Schwebungsfrequenz doppelt so groß wie die Frequenz der vorzeichenbehafteten Kosinushülle?
 ][
 *Größen trennen:* Der Träger hat $omega_m=(omega_1+omega_2)/2$. Die Kosinushülle hat $omega_d=abs(omega_1-omega_2)/2$. Hörbar ist $f_s=abs(f_1-f_2)$ mit $T_s=1/f_s$.
@@ -224,7 +216,7 @@ Unterscheide $omega_m$, $omega_d$, $f_s$ und $T_s$. Warum ist die hörbare Schwe
 ]
 
 #aufgabe(titel: "Saite mit der Stimmgabel stimmen", art: "verstehen", quelle: "5.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 10* #linebreak()]
+#if not web [*Aufgabe 9* #linebreak()]
 Beschreibe das Stimmen einer Saite mit einer Stimmgabel. Wie verändert sich die Schwebung, wenn sich die Saite dem Referenzton nähert, und was sagt eine langsamer werdende Schwebung aus?
 ][
 *Vorgehen:* Saite und Stimmgabel klingen gleichzeitig. Man hört die Schwebung mit $f_s=abs(f_1-f_2)$.
@@ -236,7 +228,7 @@ Beschreibe das Stimmen einer Saite mit einer Stimmgabel. Wie verändert sich die
 ]
 
 #aufgabe(titel: "Schwebung bei ungleichen Amplituden", art: "verstehen", quelle: "5.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 11* #linebreak()]
+#if not web [*Aufgabe 10* #linebreak()]
 Braucht eine Schwebung gleiche Amplituden? Wann löschen sich die beiden Schwingungen im Schwebungsminimum vollständig aus, und was passiert bei exakt gleichen Frequenzen?
 ][
 *Amplituden:* Gleiche Amplituden sind für das periodische An- und Abschwellen nicht nötig. Nur bei $A_1=A_2$ ist im Minimum $abs(A_1-A_2)=0$, also vollständige Auslöschung; sonst bleibt ein Restminimum und die Schwebung ist weniger ausgeprägt.
@@ -246,7 +238,7 @@ Braucht eine Schwebung gleiche Amplituden? Wann löschen sich die beiden Schwing
 ]
 
 #aufgabe(titel: "Was man bei 440 Hz und 442 Hz hört", art: "verstehen", quelle: "5.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 12* #linebreak()]
+#if not web [*Aufgabe 11* #linebreak()]
 Zwei Stimmgabeln mit 440 Hz und 442 Hz klingen gleichzeitig. Was hört man, und warum?
 ][
 *Höreindruck:* Einen Ton von etwa 441 Hz (Träger, $f_m=(f_1+f_2)/2$), der zweimal pro Sekunde lauter und leiser wird ($f_s=abs(f_1-f_2)=2 thin "Hz"$). Die 2 Hz sind kein eigener Ton, sondern der Rhythmus der Lautstärke.
@@ -256,7 +248,7 @@ Zwei Stimmgabeln mit 440 Hz und 442 Hz klingen gleichzeitig. Was hört man, und 
 ]
 
 #aufgabe(titel: "Schwebungsdauer bei 440 Hz und 442 Hz", art: "verstehen", quelle: "5.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 13* #linebreak()]
+#if not web [*Aufgabe 12* #linebreak()]
 Wie lang ist die Schwebungsdauer $T_s$ bei 440 Hz und 442 Hz? Begründe, warum nicht 1 s herauskommt.
 ][
 *Rechnen:* $f_s=abs(f_1-f_2)=2 thin "Hz"$, also $T_s=1\/f_s="0,5" thin "s"$.
@@ -268,7 +260,7 @@ Wie lang ist die Schwebungsdauer $T_s$ bei 440 Hz und 442 Hz? Begründe, warum n
 #aufgabe(titel: "Fledermausdetektor", art: "rechnen", quelle: "5.4.1", herkunft: "original", vorlage: "Aufgabensammlung 1.3, Teil 2", minuten: 4,
   ergebnis: [Man hört die Schwebung mit $f_s=1 thin "kHz"$.],
 )[
-#if not web [*Aufgabe 14* #linebreak()]
+#if not web [*Aufgabe 13* #linebreak()]
 *Doppler-Fledermäuse, Teil 2*
 
 *Gegeben und Annahmen*
@@ -292,7 +284,7 @@ Fledermäuse stoßen Ultraschallrufe aus. Ein Großer Abendsegler ruft mit der k
 #aufgabe(titel: "Zwergfledermaus im Detektor (Variante)", art: "rechnen", quelle: "5.4.1", herkunft: "variante", vorlage: "Aufgabensammlung 1.3, Teil 2", minuten: 5,
   ergebnis: [a) 2 kHz; b) 44,5 kHz oder 45,5 kHz],
 )[
-#if not web [*Aufgabe 15* #linebreak()]
+#if not web [*Aufgabe 14* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine ruhende Zwergfledermaus ruft mit konstant 45 kHz. Ein Fledermausdetektor überlagert die Rufe in Echtzeit mit dem Signal seines lokalen Oszillators; hörbar ist die Schwebung.
@@ -318,7 +310,7 @@ Eine ruhende Zwergfledermaus ruft mit konstant 45 kHz. Ein Fledermausdetektor ü
   ergebnis: [$f_m = "441,5" thin "Hz"$, $T_s approx "0,333" thin "s"$, $omega_d approx "9,42" thin "s"^(-1)$, 30 Schwebungen in 10 s],
   tipp: [Der Träger liegt in der Mitte der beiden Frequenzen, die hörbare Schwebung beim Abstand.],
 )[
-#if not web [*Aufgabe 16* #linebreak()]
+#if not web [*Aufgabe 15* #linebreak()]
 *Gegeben und Annahmen*
 
 Stimmgabeln mit 440 Hz und 443 Hz
@@ -345,7 +337,7 @@ Stimmgabeln mit 440 Hz und 443 Hz
   ergebnis: [438 Hz oder 442 Hz möglich; es war 438 Hz],
   tipp: [Die Schwebung verrät nur den Abstand, nicht die Richtung. Was macht Spannen mit der Frequenz?],
 )[
-#if not web [*Aufgabe 17* #linebreak()]
+#if not web [*Aufgabe 16* #linebreak()]
 *Gegeben und Annahmen*
 
 Beim Stimmen mit 440 Hz hörst du alle 0,5 s ein Anschwellen.
@@ -369,7 +361,7 @@ Beim Stimmen mit 440 Hz hörst du alle 0,5 s ein Anschwellen.
 #aufgabe(titel: "Schwebung bei 300 und 304 Hz", art: "rechnen", quelle: "5.4.1", herkunft: "eigen",
   ergebnis: [$f_m = 302 thin "Hz"$, $T_s = "0,25" thin "s"$, $omega_d = 4 pi thin "s"^(-1)$],
 )[
-#if not web [*Aufgabe 18* #linebreak()]
+#if not web [*Aufgabe 17* #linebreak()]
 *Gegeben und Annahmen*
 
 Zwei harmonische Schwingungen mit 300 Hz und 304 Hz.
@@ -393,7 +385,7 @@ Zwei harmonische Schwingungen mit 300 Hz und 304 Hz.
 #aufgabe(titel: "Schwebungen pro Minute", art: "rechnen", quelle: "5.4.1", herkunft: "eigen",
   ergebnis: [$f_m = 514 thin "Hz"$, $T_s = "0,25" thin "s"$, 240 Schwebungen pro Minute],
 )[
-#if not web [*Aufgabe 19* #linebreak()]
+#if not web [*Aufgabe 18* #linebreak()]
 *Gegeben und Annahmen*
 
 Zwei Stimmgabeln haben 512 Hz und 516 Hz.
@@ -415,7 +407,7 @@ Zwei Stimmgabeln haben 512 Hz und 516 Hz.
 #aufgabe(titel: "Zweite Orgelpfeife bestimmen", art: "rechnen", quelle: "5.4.1", herkunft: "eigen",
   ergebnis: [217 Hz oder 223 Hz],
 )[
-#if not web [*Aufgabe 20* #linebreak()]
+#if not web [*Aufgabe 19* #linebreak()]
 *Gegeben und Annahmen*
 
 In 2 s hörst du sechs Schwebungen zweier Orgelpfeifen. Eine Pfeife hat 220 Hz.
@@ -437,7 +429,7 @@ In 2 s hörst du sechs Schwebungen zweier Orgelpfeifen. Eine Pfeife hat 220 Hz.
 #aufgabe(titel: "Verstimmung beim Klavier", art: "rechnen", quelle: "5.4.1", herkunft: "eigen",
   ergebnis: [Verstimmung 1,25 Hz; 260,35 Hz oder 262,85 Hz; 75-mal pro Minute],
 )[
-#if not web [*Aufgabe 21* #linebreak()]
+#if not web [*Aufgabe 20* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Klavierstimmer hört bei einer Referenzsaite von 261,6 Hz eine Schwebungsdauer von 0,8 s.
@@ -461,7 +453,7 @@ Ein Klavierstimmer hört bei einer Referenzsaite von 261,6 Hz eine Schwebungsdau
 #aufgabe(titel: "Träger und Anschwellrhythmus", art: "rechnen", quelle: "5.4.1", herkunft: "eigen",
   ergebnis: [$f_m = 258 thin "Hz"$, $f_s = 4 thin "Hz"$, $T_s = "0,25" thin "s"$],
 )[
-#if not web [*Aufgabe 22* #linebreak()]
+#if not web [*Aufgabe 21* #linebreak()]
 *Gegeben und Annahmen*
 
 Stimmgabeln mit 256 Hz und 260 Hz
@@ -483,7 +475,7 @@ Stimmgabeln mit 256 Hz und 260 Hz
 #aufgabe(titel: "Frequenz- und Kreisfrequenzdifferenz", art: "rechnen", quelle: "5.4.1", herkunft: "eigen",
   ergebnis: [$abs(f_1 - f_2) = 2 thin "Hz"$, $abs(omega_1 - omega_2) = 4 pi thin "s"^(-1) approx "12,566" thin "s"^(-1)$],
 )[
-#if not web [*Aufgabe 23* #linebreak()]
+#if not web [*Aufgabe 22* #linebreak()]
 *Gegeben und Annahmen*
 
 Bei zwei Stimmgabeln hörst du alle 0,5 s ein Anschwellen.
@@ -503,7 +495,7 @@ Bei zwei Stimmgabeln hörst du alle 0,5 s ein Anschwellen.
 ]
 
 #aufgabe(titel: "Bewegungsgleichungen gekoppelter Pendel", art: "verstehen", quelle: "5.4.2", herkunft: "eigen")[
-#if not web [*Aufgabe 24* #linebreak()]
+#if not web [*Aufgabe 23* #linebreak()]
 Stelle beide Bewegungsgleichungen für zwei identische gekoppelte Federpendel auf. Warum hängt die Kraft der mittleren Feder vom Unterschied der Auslenkungen ab?
 ][
 *Gleichungen:* $m dot.double(x)_1=-D x_1-D_k(x_1-x_2)$ und $m dot.double(x)_2=-D x_2-D_k(x_2-x_1)$.
@@ -513,7 +505,7 @@ Stelle beide Bewegungsgleichungen für zwei identische gekoppelte Federpendel au
 ]
 
 #aufgabe(titel: "Summe und Differenz als neue Koordinaten", art: "verstehen", quelle: "5.4.2", herkunft: "eigen")[
-#if not web [*Aufgabe 25* #linebreak()]
+#if not web [*Aufgabe 24* #linebreak()]
 Mit welchen Hilfsgrößen entkoppelt man die Bewegungsgleichungen zweier gekoppelter Pendel, und warum funktionieren gerade diese? Beschreibe auch den Weg zurück zu $x_1$ und $x_2$.
 ][
 *Hilfsgrößen:* $psi_1=x_1+x_2$ und $psi_2=x_1-x_2$. Addieren und Subtrahieren der beiden Gleichungen liefert zwei unabhängige harmonische Gleichungen, jede wie ein einzelnes Federpendel.
@@ -525,7 +517,7 @@ Mit welchen Hilfsgrößen entkoppelt man die Bewegungsgleichungen zweier gekoppe
 ]
 
 #aufgabe(titel: "Gleichtakt und Gegentakt", art: "verstehen", quelle: "5.4.2", herkunft: "eigen")[
-#if not web [*Aufgabe 26* #linebreak()]
+#if not web [*Aufgabe 25* #linebreak()]
 Vergleiche Gleich- und Gegentakt zweier gleicher, über $D_k$ gekoppelter Federpendel: Wie bewegen sich die Massen, was macht die mittlere Feder, woher kommt $2D_k$, und welche Mode ist schneller?
 ][
 *Gleichtakt:* $x_1=x_2$, der Abstand bleibt gleich, die Kopplungsfeder ungedehnt: $omega_"gl"=sqrt(D/m)$ wie beim einzelnen Pendel.
@@ -537,7 +529,7 @@ Vergleiche Gleich- und Gegentakt zweier gleicher, über $D_k$ gekoppelter Federp
 ]
 
 #aufgabe(titel: "Überlagerung oder Kopplung?", art: "verstehen", quelle: "5.4.2", herkunft: "eigen")[
-#if not web [*Aufgabe 27* #linebreak()]
+#if not web [*Aufgabe 26* #linebreak()]
 Was ist der Unterschied zwischen der Überlagerung und der Kopplung zweier Schwingungen?
 ][
 *Unterschied:* Bei der Überlagerung addiert man zwei Bewegungen, die sich gegenseitig nicht beeinflussen (z. B. Schwebung). Bei der Kopplung wirkt ein Schwinger auf den anderen, etwa über eine Feder zwischen zwei Pendeln, die Kräfte und Energie überträgt. Merksatz: Überlagerung addiert; Kopplung beeinflusst sich gegenseitig.
@@ -545,7 +537,7 @@ Was ist der Unterschied zwischen der Überlagerung und der Kopplung zweier Schwi
 ]
 
 #aufgabe(titel: "Was ist eine Eigenmode?", art: "verstehen", quelle: "5.4.2", herkunft: "eigen")[
-#if not web [*Aufgabe 28* #linebreak()]
+#if not web [*Aufgabe 27* #linebreak()]
 Was ist eine Eigenmode? Nenne die beiden Eigenmoden zweier gekoppelter Pendel.
 ][
 *Begriff:* Eine feste gemeinsame Schwingungsform aller beteiligten Massen: Alle schwingen mit derselben Frequenz, und das Verhältnis ihrer Amplituden bleibt gleich. Bei zwei gekoppelten Pendeln sind das Gleichtakt und Gegentakt.
@@ -553,7 +545,7 @@ Was ist eine Eigenmode? Nenne die beiden Eigenmoden zweier gekoppelter Pendel.
 ]
 
 #aufgabe(titel: "Eigenfrequenzen gekoppelter Federpendel", art: "rechnen", quelle: "5.4.2", herkunft: "eigen")[
-#if not web [*Aufgabe 29* #linebreak()]
+#if not web [*Aufgabe 28* #linebreak()]
 *Gegeben und Annahmen*
 
 Zwei gekoppelte Federpendel haben $m="0,5" thin "kg"$, $D=50 thin "N/m"$ und $D_k=5 thin "N/m"$.
@@ -583,7 +575,7 @@ $T_s=2pi/(sqrt(120)-10) approx "6,583" thin "s"$.
   ergebnis: [$omega_"gl" = 10 thin "s"^(-1)$, $omega_"gg" approx "10,488" thin "s"^(-1)$, $T_s approx "12,87" thin "s"$],
   tipp: [Im Gleichtakt bleibt die Kopplungsfeder ungedehnt, im Gegentakt wirkt sie doppelt.],
 )[
-#if not web [*Aufgabe 30* #linebreak()]
+#if not web [*Aufgabe 29* #linebreak()]
 *Gegeben und Annahmen*
 
 Für $m="0,2" thin "kg"$, $D=20 thin "N/m"$ und $D_k=1 thin "N/m"$
@@ -607,7 +599,7 @@ Für $m="0,2" thin "kg"$, $D=20 thin "N/m"$ und $D_k=1 thin "N/m"$
 #aufgabe(titel: "Federkonstanten aus gemessenen Frequenzen", art: "rechnen", quelle: "5.4.2", herkunft: "eigen",
   ergebnis: [$D = 36 thin "N/m"$, $D_k = "3,125" thin "N/m"$, $T_s approx "12,57" thin "s"$],
 )[
-#if not web [*Aufgabe 31* #linebreak()]
+#if not web [*Aufgabe 30* #linebreak()]
 *Gegeben und Annahmen*
 
 Für zwei identische gekoppelte Pendel mit $m=1 thin "kg"$ werden $omega_"gl"=6 thin "s"^(-1)$ und $omega_"gg"="6,5" thin "s"^(-1)$ gemessen.
@@ -632,7 +624,7 @@ Für zwei identische gekoppelte Pendel mit $m=1 thin "kg"$ werden $omega_"gl"=6 
   ergebnis: [$D_k approx "5,342" thin "N/m"$],
   tipp: [Aus $T_s$ bekommst du die nötige Differenz der Eigenkreisfrequenzen.],
 )[
-#if not web [*Aufgabe 32* #linebreak()]
+#if not web [*Aufgabe 31* #linebreak()]
 *Gegeben und Annahmen*
 
 Bei $m="0,4" thin "kg"$ und $D=40 thin "N/m"$ soll ein vollständiger Austauschzyklus 5 s dauern.
@@ -654,7 +646,7 @@ Bei $m="0,4" thin "kg"$ und $D=40 thin "N/m"$ soll ein vollständiger Austauschz
 ]
 
 #aufgabe(titel: "Energieaustausch zwischen zwei Pendeln", art: "verstehen", quelle: "5.4.3", herkunft: "eigen")[
-#if not web [*Aufgabe 33* #linebreak()]
+#if not web [*Aufgabe 32* #linebreak()]
 Pendel 1 wird ausgelenkt und losgelassen, das gekoppelte Pendel 2 ist anfangs in Ruhe. Was beobachtest du? Erkläre den Wechsel der Hüllkurven und die Bedeutung von $T_s$.
 ][
 *Beobachtung:* Die Schwingung wandert langsam zu Pendel 2 hinüber, bis Pendel 1 fast ruht, und dann wieder zurück. Merksatz: Energie wandert hin und zurück, nicht nur von eins nach zwei.
@@ -666,7 +658,7 @@ Pendel 1 wird ausgelenkt und losgelassen, das gekoppelte Pendel 2 ist anfangs in
 ]
 
 #aufgabe(titel: "Härtere oder weichere Kopplungsfeder", art: "verstehen", quelle: "5.4.3", herkunft: "eigen")[
-#if not web [*Aufgabe 34* #linebreak()]
+#if not web [*Aufgabe 33* #linebreak()]
 Die Kopplungsfeder wird steifer (oder weicher). Was passiert mit beiden Eigenkreisfrequenzen und mit der Austauschdauer $T_s$?
 ][
 *Frequenzen:* Ein härteres $D_k$ lässt den Gleichtakt unverändert und erhöht den Gegentakt. Die Differenz $omega_"gg"-omega_"gl"$ wächst, $T_s$ wird *kürzer*: Der Energieaustausch läuft schneller.
@@ -678,7 +670,7 @@ Die Kopplungsfeder wird steifer (oder weicher). Was passiert mit beiden Eigenkre
 ]
 
 #aufgabe(titel: "Drei Pendel und die lange Kette", art: "verstehen", quelle: "5.4.3", herkunft: "eigen")[
-#if not web [*Aufgabe 35* #linebreak()]
+#if not web [*Aufgabe 34* #linebreak()]
 Wie viele Eigenmoden besitzen $N$ linear gekoppelte Schwinger mit je einem Freiheitsgrad, etwa drei Pendel? Was ist beim Übergang zu einer langen Kette der neue Gedanke?
 ][
 *Anzahl:* $N$ Schwinger mit je einem Freiheitsgrad haben $N$ Eigenmoden; drei Pendel also drei.
@@ -688,7 +680,7 @@ Wie viele Eigenmoden besitzen $N$ linear gekoppelte Schwinger mit je einem Freih
 ]
 
 #aufgabe(titel: "Kopplungsfeder für 10 s Austausch", art: "rechnen", quelle: "5.4.3", herkunft: "eigen")[
-#if not web [*Aufgabe 36* #linebreak()]
+#if not web [*Aufgabe 35* #linebreak()]
 *Gegeben und Annahmen*
 
 Für $m="0,5" thin "kg"$ und $D=50 thin "N/m"$ soll ein Austauschzyklus 10 s dauern.
@@ -716,7 +708,7 @@ Aus $m omega_"gg"^2=D+2D_k$ folgt $D_k=(m omega_"gg"^2-D)/2 approx "3,240" thin 
 #kapitel("Kapitel 6 · Wellen")
 
 #aufgabe(titel: "Von gekoppelten Pendeln zur Welle", art: "verstehen", quelle: "6.1", herkunft: "eigen")[
-#if not web [*Aufgabe 37* #linebreak()]
+#if not web [*Aufgabe 36* #linebreak()]
 Was ist eine Welle, und was wandert dabei eigentlich? Erkläre den Übergang von vielen gekoppelten Pendeln zur Welle und beschreibe, was die einzelnen Seilstücke tun, wenn ein Wellenberg über ein Seil läuft.
 ][
 *Weitergabe:* Eine Welle ist eine sich ausbreitende Störung. Die Kopplung überträgt Schwingungszustand und Energie an benachbarte Schwinger. Was wandert, ist das Muster, nicht das Material.
@@ -728,7 +720,7 @@ Was ist eine Welle, und was wandert dabei eigentlich? Erkläre den Übergang von
 ]
 
 #aufgabe(titel: "Longitudinal und transversal", art: "verstehen", quelle: "6.1", herkunft: "eigen")[
-#if not web [*Aufgabe 38* #linebreak()]
+#if not web [*Aufgabe 37* #linebreak()]
 Was unterscheidet longitudinale von transversalen Wellen? Welche Art ist Schall in Luft, welche eine Welle auf einem gespannten Seil? Warum trägt Luft im behandelten Modell keine mechanische Scherwelle?
 ][
 *Begriffe:* Longitudinal: Teilchen schwingen in Ausbreitungsrichtung, es entstehen Verdichtungen und Verdünnungen. Transversal: Teilchen schwingen quer zur Ausbreitung.
@@ -740,25 +732,17 @@ Was unterscheidet longitudinale von transversalen Wellen? Welche Art ist Schall 
 ]
 
 #aufgabe(titel: "Muss eine Welle periodisch sein?", art: "verstehen", quelle: "6.1", herkunft: "eigen")[
-#if not web [*Aufgabe 39* #linebreak()]
+#if not web [*Aufgabe 38* #linebreak()]
 Muss eine Welle periodisch sein? Nenne ein Beispiel.
 ][
 *Antwort:* Nein. Ein einzelner Knall oder ein einmaliges Zupfen erzeugt einen *Puls*, also eine einzelne wandernde Störung. Harmonische Wellen sind nur ein besonders nützlicher Spezialfall.
 #src[Karteikarte zu 6.1, Abbildung wellenarten-quelle.]
 ]
 
-#aufgabe(titel: "Begriffslandkarte Kapitel 6", art: "verstehen", quelle: "6.1", herkunft: "eigen")[
-#if not web [*Aufgabe 40* #linebreak()]
-Zeichne die Begriffslandkarte zu Kapitel 6 aus dem Kopf: Welche Begriffe gehören dazu und wie hängen sie zusammen?
-][
-*Begriffe und Verbindungen:* Die Quelle gibt Takt und Amplitude vor, das Medium die Geschwindigkeit; daraus folgt die Wellenlänge. Überlagerung und Ränder bestimmen stehende Eigenmoden; auf Flächen entstehen Knotenlinien. Die Frontgeometrie im Raum bestimmt, wie die Intensität abnimmt. Huygens verbindet Wellenfronten mit Interferenz, Beugung, Reflexion und Brechung. Eine bewegte Quelle verändert Frontabstände und ankommenden Takt: Doppler-Effekt.
-#src[Karteikarte zu Kapitel 6.]
-]
-
 #aufgabe(titel: "Welle in einer Pendelkette", art: "rechnen", quelle: "6.1", herkunft: "eigen",
   ergebnis: [$c = "2,5" thin "m/s"$, $lambda = "0,5" thin "m"$, longitudinal],
 )[
-#if not web [*Aufgabe 41* #linebreak()]
+#if not web [*Aufgabe 39* #linebreak()]
 *Gegeben und Annahmen*
 
 In einer Pendelkette beträgt der Abstand 5 cm, die Störung benötigt 0,02 s zum nächsten Pendel. Die Quelle schwingt mit 5 Hz; die Teilchen bewegen sich längs der Kette.
@@ -780,7 +764,7 @@ In einer Pendelkette beträgt der Abstand 5 cm, die Störung benötigt 0,02 s zu
 ]
 
 #aufgabe(titel: "Laufrichtung von u(x − ct) und u(x + ct)", art: "verstehen", quelle: "6.1.1", herkunft: "eigen")[
-#if not web [*Aufgabe 42* #linebreak()]
+#if not web [*Aufgabe 40* #linebreak()]
 In welche Richtung laufen $u(x-c t)$ und $u(x+c t)$? Begründe über einen Punkt gleicher Phase. Welche Modellvoraussetzung steckt in dieser Schreibweise?
 ][
 *Fester Wellenberg:* Ein bestimmter Berg hat ein festes Argument $a$. Bei $u(x-c t)$ folgt $x=a+c t$: Sein Ort wächst, Lauf nach $+x$. Bei $u(x+c t)$ folgt $x=a-c t$: Lauf nach $-x$. Merksatz: Minus im Argument läuft nach plus $x$.
@@ -790,7 +774,7 @@ In welche Richtung laufen $u(x-c t)$ und $u(x+c t)$? Begründe über einen Punkt
 ]
 
 #aufgabe(titel: "λ f = c herleiten", art: "verstehen", quelle: "6.2", herkunft: "eigen")[
-#if not web [*Aufgabe 43* #linebreak()]
+#if not web [*Aufgabe 41* #linebreak()]
 Warum gilt $c=lambda f$? Was legt die Quelle fest, was das Medium? Wie ändert sich $lambda$, wenn bei gleichem $f$ das Medium ein größeres $c$ erlaubt?
 ][
 *Herleitung:* In einer Periodendauer $T$ rückt ein Wellenberg genau um eine Wellenlänge vor: $c=lambda\/T=lambda f$.
@@ -800,7 +784,7 @@ Warum gilt $c=lambda f$? Was legt die Quelle fest, was das Medium? Wie ändert s
 ]
 
 #aufgabe(titel: "Warum harmonische Wellen?", art: "verstehen", quelle: "6.2", herkunft: "eigen")[
-#if not web [*Aufgabe 44* #linebreak()]
+#if not web [*Aufgabe 42* #linebreak()]
 Warum untersucht die Vorlesung harmonische Wellen, obwohl auch einzelne Pulse auftreten? Was sagt das Fourier-Theorem dabei aus?
 ][
 Harmonische Wellen sind Bausteine, aus deren Überlagerung nicht sinusförmige Signale dargestellt werden können. Ein Puls muss selbst keine Sinusform besitzen. Das Theorem macht die einzelnen Anteile nützlich, nicht jede Gesamtwelle harmonisch.
@@ -809,7 +793,7 @@ Harmonische Wellen sind Bausteine, aus deren Überlagerung nicht sinusförmige S
 ]
 
 #aufgabe(titel: "Wellenlänge und Periodendauer unterscheiden", art: "verstehen", quelle: "6.2", herkunft: "eigen")[
-#if not web [*Aufgabe 45* #linebreak()]
+#if not web [*Aufgabe 43* #linebreak()]
 Was ist der Unterschied zwischen Wellenlänge und Periodendauer?
 ][
 *Raum und Zeit:* Die Wellenlänge $lambda$ ist die räumliche Wiederholung: der Abstand zweier gleicher Punkte in einer Momentaufnahme. Die Periodendauer $T$ ist die zeitliche Wiederholung: wie lange ein fester Ort für eine Schwingung braucht. Merksatz: $lambda$ wiederholt im Raum, $T$ wiederholt in der Zeit.
@@ -817,7 +801,7 @@ Was ist der Unterschied zwischen Wellenlänge und Periodendauer?
 ]
 
 #aufgabe(titel: "Wellenlänge des Kammertons in Luft", art: "verstehen", quelle: "6.2", herkunft: "eigen")[
-#if not web [*Aufgabe 46* #linebreak()]
+#if not web [*Aufgabe 44* #linebreak()]
 Schall mit $c=343 thin "m/s"$ und $f=440 thin "Hz"$: Wie groß ist die Wellenlänge, und an welchen Fehlern erkennst du falsche Ergebnisse?
 ][
 *Rechnen:* $lambda=c\/f=343\/440 thin "m" approx "0,78" thin "m"$.
@@ -827,7 +811,7 @@ Schall mit $c=343 thin "m/s"$ und $f=440 thin "Hz"$: Wie groß ist die Wellenlä
 ]
 
 #aufgabe(titel: "Luft in Wasser: Was bleibt gleich?", art: "verstehen", quelle: "6.2", herkunft: "eigen")[
-#if not web [*Aufgabe 47* #linebreak()]
+#if not web [*Aufgabe 45* #linebreak()]
 Eine Schallwelle läuft von Luft in Wasser. Welche der Größen Frequenz, Wellenlänge und Ausbreitungsgeschwindigkeit bleibt gleich, und warum?
 ][
 *Antwort:* Die *Frequenz* bleibt gleich: Die Quelle gibt den Takt vor, und zwischen ruhenden Medien wird er unverändert weitergegeben.
@@ -840,7 +824,7 @@ Eine Schallwelle läuft von Luft in Wasser. Welche der Größen Frequenz, Wellen
   ergebnis: [$t approx "4,2" thin "s"$],
   tipp: [Die Amplitude ist eine Ablenkung; für die Laufzeit brauchst du nur die Geschwindigkeit.],
 )[
-#if not web [*Aufgabe 48* #linebreak()]
+#if not web [*Aufgabe 46* #linebreak()]
 *Wasserwellen*
 
 *Gegeben und Annahmen*
@@ -864,7 +848,7 @@ Kinder werfen ein Steinchen nach einer Ente im Teich, treffen aber nicht: Der St
 #aufgabe(titel: "Steinwurf am Steg (Variante)", art: "rechnen", quelle: "6.2", herkunft: "variante", vorlage: "Übung 10, Aufg. 2", minuten: 5,
   ergebnis: [a) $c="1,5" thin "m/s"$, $t=6 thin "s"$; b) 15 Wellenlängen],
 )[
-#if not web [*Aufgabe 49* #linebreak()]
+#if not web [*Aufgabe 47* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Stein fällt 9 m von einem Steg entfernt in einen ruhigen See. Er erzeugt eine ungedämpfte Sinuswelle mit Amplitude 3 cm, Frequenz 2,5 Hz und Wellenlänge 0,6 m.
@@ -889,7 +873,7 @@ Ein Stein fällt 9 m von einem Steg entfernt in einen ruhigen See. Er erzeugt ei
 #aufgabe(titel: "Wellenlängen des Hörbereichs", art: "rechnen", quelle: "6.2", herkunft: "eigen",
   ergebnis: [1,7 cm bis 17 m],
 )[
-#if not web [*Aufgabe 50* #linebreak()]
+#if not web [*Aufgabe 48* #linebreak()]
 *Gegeben und Annahmen*
 
 Für den in L angenommenen Hörbereich 20 Hz bis 20 kHz
@@ -913,7 +897,7 @@ Für den in L angenommenen Hörbereich 20 Hz bis 20 kHz
 #aufgabe(titel: "Geschwindigkeit eines Pulses", art: "rechnen", quelle: "6.2", herkunft: "eigen",
   ergebnis: [$c = 24 thin "m/s"$, $lambda = 3 thin "m"$],
 )[
-#if not web [*Aufgabe 51* #linebreak()]
+#if not web [*Aufgabe 49* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Puls legt 6 m in 0,25 s zurück.
@@ -935,7 +919,7 @@ Ein Puls legt 6 m in 0,25 s zurück.
 #aufgabe(titel: "Kenngrößen einer 50-Hz-Welle", art: "rechnen", quelle: "6.2", herkunft: "eigen",
   ergebnis: [$c = 200 thin "m/s"$, $T = 20 thin "ms"$, $k = pi\/2 thin "m"^(-1)$, $omega = 100 pi thin "s"^(-1)$],
 )[
-#if not web [*Aufgabe 52* #linebreak()]
+#if not web [*Aufgabe 50* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine harmonische Welle besitzt $f=50 thin "Hz"$ und $lambda=4 thin "m"$.
@@ -959,7 +943,7 @@ Eine harmonische Welle besitzt $f=50 thin "Hz"$ und $lambda=4 thin "m"$.
 #aufgabe(titel: "Wellenfunktion nach +x lesen", art: "rechnen", quelle: "6.2", herkunft: "eigen",
   ergebnis: [$lambda = 1 thin "m"$, $f = 50 thin "Hz"$, $c = 50 thin "m/s"$, Laufrichtung $+x$],
 )[
-#if not web [*Aufgabe 53* #linebreak()]
+#if not web [*Aufgabe 51* #linebreak()]
 *Gegeben und Annahmen*
 
 $psi=5 thin "mm" dot sin(2pi thin "m"^(-1)x-100pi thin "s"^(-1)t)$.
@@ -983,7 +967,7 @@ $psi=5 thin "mm" dot sin(2pi thin "m"^(-1)x-100pi thin "s"^(-1)t)$.
 #aufgabe(titel: "Wellenfunktion nach −x aufstellen", art: "rechnen", quelle: "6.2", herkunft: "eigen",
   ergebnis: [$psi(x,t) = 1 thin "cm" · sin((2pi\/3) thin "m"^(-1) x + 8 pi thin "s"^(-1) t)$],
 )[
-#if not web [*Aufgabe 54* #linebreak()]
+#if not web [*Aufgabe 52* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Seilwelle mit $c=12 thin "m/s"$, $f=4 thin "Hz"$ und $psi_0=1 thin "cm"$ läuft nach $-x$, Anfangsphase null.
@@ -1007,7 +991,7 @@ Eine Seilwelle mit $c=12 thin "m/s"$, $f=4 thin "Hz"$ und $psi_0=1 thin "cm"$ l�
 #aufgabe(titel: "Welle nach −x mit maximaler Schnelle", art: "rechnen", quelle: "6.2", herkunft: "eigen",
   ergebnis: [$lambda = 4 thin "m"$, $f = 10 thin "Hz"$, $c = 40 thin "m/s"$, Richtung $-x$, $s_"max" approx "0,314" thin "m/s"$],
 )[
-#if not web [*Aufgabe 55* #linebreak()]
+#if not web [*Aufgabe 53* #linebreak()]
 *Gegeben und Annahmen*
 
 Für $psi="0,5" thin "cm" · sin("0,5" pi thin "m"^(-1)x+20pi thin "s"^(-1)t)$
@@ -1031,7 +1015,7 @@ Für $psi="0,5" thin "cm" · sin("0,5" pi thin "m"^(-1)x+20pi thin "s"^(-1)t)$
 #aufgabe(titel: "Zwei Lautsprecher mit 680 und 684 Hz", art: "rechnen", quelle: "6.2", herkunft: "eigen",
   ergebnis: [$lambda_1 = "0,500" thin "m"$, $lambda_2 approx "0,49708" thin "m"$; $f_m = 682 thin "Hz"$, $T_s = "0,25" thin "s"$],
 )[
-#if not web [*Aufgabe 56* #linebreak()]
+#if not web [*Aufgabe 54* #linebreak()]
 *Gegeben und Annahmen*
 
 Zwei Lautsprecher schwingen mit 680 Hz und 684 Hz, $c=340 thin "m/s"$.
@@ -1051,7 +1035,7 @@ Zwei Lautsprecher schwingen mit 680 Hz und 684 Hz, $c=340 thin "m/s"$.
 ]
 
 #aufgabe(titel: "Schnelle und Ausbreitungsgeschwindigkeit", art: "verstehen", quelle: "6.2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 57* #linebreak()]
+#if not web [*Aufgabe 55* #linebreak()]
 Unterscheide Schnelle $s$ und Ausbreitungsgeschwindigkeit $c$. Wo ist die Schnelle eines Teilchens am größten, wo null, und wie kann ein Teilchen gerade stillstehen, obwohl die Welle weiterläuft?
 ][
 *Unterschied:* Die Schnelle $s=partial psi\/partial t$ ist die Geschwindigkeit eines Teilchens am Ort; $c$ ist die Geschwindigkeit, mit der das Muster wandert. Ein Luftteilchen fliegt nicht mit 343 m/s zum Zuhörer. Merksatz: Teilchentempo ist nicht Mustertempo.
@@ -1063,7 +1047,7 @@ Unterscheide Schnelle $s$ und Ausbreitungsgeschwindigkeit $c$. Wo ist die Schnel
 ]
 
 #aufgabe(titel: "Was sind Wellenfronten?", art: "verstehen", quelle: "6.2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 58* #linebreak()]
+#if not web [*Aufgabe 56* #linebreak()]
 Was sind Wellenfronten? Reicht gleiche Auslenkung als Kriterium?
 ][
 *Begriff:* Wellenfronten verbinden Punkte mit gleichem Schwingungszustand, also gleicher Phase. Gleiche Auslenkung allein reicht nicht; auch die Bewegungsrichtung muss passen.
@@ -1071,7 +1055,7 @@ Was sind Wellenfronten? Reicht gleiche Auslenkung als Kriterium?
 ]
 
 #aufgabe(titel: "Wellenfunktion ablesen", art: "rechnen", quelle: "6.2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 59* #linebreak()]
+#if not web [*Aufgabe 57* #linebreak()]
 *Gegeben und Annahmen*
 
 Gegeben ist $psi=2 thin "mm" · sin(4pi thin "m"^(-1)x-600pi thin "s"^(-1)t)$.
@@ -1098,7 +1082,7 @@ $s_"max"=psi_0 omega approx "3,770" thin "m/s"$.
 ]
 
 #aufgabe(titel: "Wellengeschwindigkeit auf der Saite verdoppeln", art: "verstehen", quelle: "6.3", herkunft: "eigen")[
-#if not web [*Aufgabe 60* #linebreak()]
+#if not web [*Aufgabe 58* #linebreak()]
 Die Zugkraft einer Saite wird vervierfacht. Wie ändert sich die Ausbreitungsgeschwindigkeit? Welche Änderung der Dichte würde dasselbe bewirken?
 ][
 *Formel:* $c=sqrt(F\/(rho A))$. Vierfache Zugkraft ergibt $sqrt(4)=2$, also doppelte Geschwindigkeit. Bei festem $F$ und $A$ müsste $rho$ auf ein Viertel sinken; vierfache Dichte würde $c$ halbieren. Merksatz: Vierfach unter der Wurzel ergibt doppelt davor.
@@ -1108,7 +1092,7 @@ Die Zugkraft einer Saite wird vervierfacht. Wie ändert sich die Ausbreitungsges
 ]
 
 #aufgabe(titel: "Steifigkeit und Dichte bestimmen das Tempo", art: "verstehen", quelle: "6.3", herkunft: "eigen")[
-#if not web [*Aufgabe 61* #linebreak()]
+#if not web [*Aufgabe 59* #linebreak()]
 Warum hängt die Wellengeschwindigkeit von Steifigkeit und Dichte des Mediums ab?
 ][
 *Weitergabe:* Die Nachbarteilchen müssen sich die Bewegung weitergeben. Starke Rückstellkräfte (Steifigkeit, Spannung) beschleunigen die Weitergabe, große Trägheit (Dichte) bremst sie. Deshalb steht in den Formeln meist $sqrt("Steifigkeit"\/"Dichte")$, etwa $c=sqrt(F\/(rho A))$ oder $c=sqrt(K\/rho)$.
@@ -1116,7 +1100,7 @@ Warum hängt die Wellengeschwindigkeit von Steifigkeit und Dichte des Mediums ab
 ]
 
 #aufgabe(titel: "Schallgeschwindigkeit im idealen Gas", art: "verstehen", quelle: "6.3", herkunft: "eigen")[
-#if not web [*Aufgabe 62* #linebreak()]
+#if not web [*Aufgabe 60* #linebreak()]
 Wovon hängt die Schallgeschwindigkeit in einem idealen Gas ab?
 ][
 *Formel:* $c=sqrt(kappa R T\/m_"mol")$. Bei demselben Gas hängt sie nur von der absoluten Temperatur ab: $c prop sqrt(T)$, $T$ in Kelvin. Wärmere Luft leitet Schall schneller (etwa 330 m/s bei 0 °C, 343 m/s bei 20 °C).
@@ -1124,7 +1108,7 @@ Wovon hängt die Schallgeschwindigkeit in einem idealen Gas ab?
 ]
 
 #aufgabe(titel: "Celsius statt Kelvin bei der Schallgeschwindigkeit", art: "verstehen", quelle: "6.3", herkunft: "eigen")[
-#if not web [*Aufgabe 63* #linebreak()]
+#if not web [*Aufgabe 61* #linebreak()]
 In Luft beträgt die Schallgeschwindigkeit bei 0 °C etwa 330 m/s. Warum darf man für 20 °C nicht einfach mit $sqrt(20\/0)$ rechnen?
 ][
 *Absolute Temperatur:* Im Verhältnis $c_2\/c_1=sqrt(T_2\/T_1)$ steht die Temperatur in Kelvin. Celsiuswerte sind verschoben: 0 °C sind 273,15 K. Also $sqrt("293,15"\/"273,15") approx "1,036"$ und $c approx 342 thin "m/s"$, passend zu 343 m/s aus dem Skript.
@@ -1134,7 +1118,7 @@ In Luft beträgt die Schallgeschwindigkeit bei 0 °C etwa 330 m/s. Warum darf ma
 #aufgabe(titel: "Ton von Wasser in Luft", art: "rechnen", quelle: "6.3", herkunft: "original", vorlage: "Übung 10, Aufg. 1", minuten: 4,
   ergebnis: [Frequenz bleibt 256 Hz, Wellenlänge wird kürzer: $lambda_"Wasser" approx "5,86" thin "m"$, $lambda_"Luft" approx "1,33" thin "m"$ (Antwort b)],
 )[
-#if not web [*Aufgabe 64* #linebreak()]
+#if not web [*Aufgabe 62* #linebreak()]
 *Wellenlänge, Frequenz und Ausbreitungsgeschwindigkeit*
 
 *Gegeben und Annahmen*
@@ -1159,7 +1143,7 @@ Schall breitet sich mit 340 m/s in Luft und 1500 m/s in Wasser aus. Unter Wasser
 #aufgabe(titel: "Echolot in Wasser und Luft", art: "rechnen", quelle: "6.3", herkunft: "variante", vorlage: "Übung 10, Aufg. 1",
   ergebnis: [Wasser 2,96 cm, Luft 6,8 mm],
 )[
-#if not web [*Aufgabe 65* #linebreak()]
+#if not web [*Aufgabe 63* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Echolot erzeugt 50 kHz.
@@ -1184,7 +1168,7 @@ Ein Echolot erzeugt 50 kHz.
 #aufgabe(titel: "Klavierstimmer: Zugkraft erhöhen", art: "rechnen", quelle: "6.3", herkunft: "original", vorlage: "Übung 10, Aufg. 4", minuten: 10,
   ergebnis: [Zugkraft um etwa 2,3 % erhöhen; $c_"nach"\/c_"vor"=440\/435 approx "1,0115"$],
 )[
-#if not web [*Aufgabe 66* #linebreak()]
+#if not web [*Aufgabe 64* #linebreak()]
 *Klavierstimmer*
 
 *Gegeben und Annahmen*
@@ -1211,7 +1195,7 @@ Ein Klavierstimmer stimmt die a-Saite eines Klaviers, indem er auf die Schwebung
 #aufgabe(titel: "Gitarrensaite zu hoch gestimmt (Variante)", art: "rechnen", quelle: "6.3", herkunft: "variante", vorlage: "Übung 10, Aufg. 4", minuten: 10,
   ergebnis: [Zugkraft um etwa 2,4 % senken; $c_"nach"\/c_"vor" approx "0,988"$],
 )[
-#if not web [*Aufgabe 67* #linebreak()]
+#if not web [*Aufgabe 65* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Gitarrensaite soll auf 330 Hz gestimmt werden. Mit einer 330-Hz-Stimmgabel hörst du eine Schwebung mit der Schwebungsdauer 0,25 s. Die Saite ist zu stark gespannt, ihre Frequenz liegt also über 330 Hz. Sie schwingt in der Grundmode; Länge und Masse je Länge bleiben gleich.
@@ -1236,7 +1220,7 @@ Eine Gitarrensaite soll auf 330 Hz gestimmt werden. Mit einer 330-Hz-Stimmgabel 
 #aufgabe(titel: "Abendsegler: Wellenlänge bei 30 °C", art: "rechnen", quelle: "6.3", herkunft: "original", vorlage: "Aufgabensammlung 1.3, Teil 1", minuten: 6,
   ergebnis: [$lambda_(30) approx "1,733" thin "cm"$],
 )[
-#if not web [*Aufgabe 68* #linebreak()]
+#if not web [*Aufgabe 66* #linebreak()]
 *Doppler-Fledermäuse, Teil 1*
 
 *Gegeben und Annahmen*
@@ -1264,7 +1248,7 @@ Fledermäuse stoßen kurze Ultraschallrufe aus, die sich mit Schallgeschwindigke
 #aufgabe(titel: "Ultraschall bei Frost (Variante)", art: "rechnen", quelle: "6.3", herkunft: "variante", vorlage: "Aufgabensammlung 1.3, Teil 1", minuten: 6,
   ergebnis: [$lambda_(20) approx "8,58" thin "mm"$, $c_(-10) approx 325 thin "m/s"$, $lambda_(-10) approx "8,12" thin "mm"$],
 )[
-#if not web [*Aufgabe 69* #linebreak()]
+#if not web [*Aufgabe 67* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Ultraschall-Abstandssensor sendet 40 kHz. Bei 20 °C beträgt die Schallgeschwindigkeit in Luft 343 m/s. Luft als ideales Gas gleicher Zusammensetzung.
@@ -1287,7 +1271,7 @@ Ein Ultraschall-Abstandssensor sendet 40 kHz. Bei 20 °C beträgt die Schallgesc
 ]
 
 #aufgabe(titel: "Intensität und Leistung", art: "verstehen", quelle: "6.4", herkunft: "eigen")[
-#if not web [*Aufgabe 70* #linebreak()]
+#if not web [*Aufgabe 68* #linebreak()]
 Was ist die Intensität einer Welle, und wie unterscheidet sie sich von der Leistung? Wie hängt sie von Amplitude und Frequenz ab, und was passiert bei doppelter Amplitude?
 ][
 *Begriff:* Intensität ist Leistung pro senkrechter Fläche, $I=P\/F$ in W/m². Eine größere Empfangsfläche fängt mehr Leistung ein, die Intensität selbst bleibt dabei gleich.
@@ -1302,7 +1286,7 @@ Was ist die Intensität einer Welle, und wie unterscheidet sie sich von der Leis
   ergebnis: [$I_2 = 18 thin "W/m²"$, $P = "0,9" thin "W"$],
   tipp: [Wie hängt die Intensität von der Amplitude ab?],
 )[
-#if not web [*Aufgabe 71* #linebreak()]
+#if not web [*Aufgabe 69* #linebreak()]
 *Eigene Rechenaufgabe:*
 
 *Gegeben und Annahmen*
@@ -1328,7 +1312,7 @@ Bei unverändertem Medium und gleicher Frequenz wird die Amplitude von 1 mm auf 
 #aufgabe(titel: "Bedingung für Auslöschung", art: "verstehen", quelle: "6.5", herkunft: "original", vorlage: "Altklausur WS 15/16, Frage 12", minuten: 2,
   ergebnis: [$Delta x=(2k+1) lambda\/2$ mit $k=0,1,2,dots$],
 )[
-#if not web [*Aufgabe 72* #linebreak()]
+#if not web [*Aufgabe 70* #linebreak()]
 *Kurzfrage (1 Punkt)*
 
 Gegeben sind zwei Punkte, von denen Elementarwellen gleicher Wellenlänge $lambda$ ausgehen. Wie muss der Gangunterschied $Delta x$ der Wellen an Stellen sein, an denen destruktive Interferenz, d. h. Auslöschung, stattfindet? Begründe deine Antwort (in der Klausur standen vier Formeln zur Auswahl: $k lambda\/2$, $(2k+1)lambda\/2$, $k lambda$, $(2k+1)lambda$).
@@ -1342,7 +1326,7 @@ Gegeben sind zwei Punkte, von denen Elementarwellen gleicher Wellenlänge $lambd
 ]
 
 #aufgabe(titel: "Vierfache Intensität durch Interferenz", art: "verstehen", quelle: "6.5", herkunft: "eigen")[
-#if not web [*Aufgabe 73* #linebreak()]
+#if not web [*Aufgabe 71* #linebreak()]
 Zwei gleich starke, gleichphasige Wellen treffen am selben Ort zusammen. Wie groß ist dort die Intensität im Vergleich zu einer einzelnen Welle? Ist das Energie aus dem Nichts?
 ][
 *Zuerst Auslenkungen addieren:* $A+A=2A$. Die Intensität hängt quadratisch von der Amplitude ab: $(2A)^2=4A^2$, also $I_"res"=4 I_"einzeln"$.
@@ -1352,7 +1336,7 @@ Zwei gleich starke, gleichphasige Wellen treffen am selben Ort zusammen. Wie gro
 ]
 
 #aufgabe(titel: "Wenn sich zwei Wellen treffen", art: "verstehen", quelle: "6.5", herkunft: "eigen")[
-#if not web [*Aufgabe 74* #linebreak()]
+#if not web [*Aufgabe 72* #linebreak()]
 Was passiert, wenn sich zwei Wellen treffen, und was danach?
 ][
 *Superposition:* An jedem Ort addieren sich die Auslenkungen; danach laufen beide ungestört weiter. Berg auf Berg gibt doppelte Höhe (konstruktiv), Berg auf Tal löscht sich aus (destruktiv), wenn die Amplituden gleich sind.
@@ -1360,7 +1344,7 @@ Was passiert, wenn sich zwei Wellen treffen, und was danach?
 ]
 
 #aufgabe(titel: "Knoten und Bäuche der stehenden Welle", art: "verstehen", quelle: "6.6", herkunft: "eigen")[
-#if not web [*Aufgabe 75* #linebreak()]
+#if not web [*Aufgabe 73* #linebreak()]
 Was sind Knoten und Bäuche? Leite aus $2A sin(k x)cos(omega t)$ die Abstände benachbarter Knoten und von Knoten zu Bauch her. Transportiert eine stehende Welle Energie?
 ][
 *Begriffe:* Knoten ruhen immer, Bäuche schwingen mit der größten Amplitude. Merksatz: Knoten ruht, Bauch schwingt maximal.
@@ -1372,7 +1356,7 @@ Was sind Knoten und Bäuche? Leite aus $2A sin(k x)cos(omega t)$ die Abstände b
 ]
 
 #aufgabe(titel: "Wie eine stehende Welle entsteht", art: "verstehen", quelle: "6.6", herkunft: "eigen")[
-#if not web [*Aufgabe 76* #linebreak()]
+#if not web [*Aufgabe 74* #linebreak()]
 Wie entsteht eine stehende Welle, und was bedeutet „stehend“?
 ][
 *Entstehung:* Zwei gleich starke Wellen mit gleicher Frequenz laufen gegeneinander, typisch eine Welle und ihre Reflexion. Ihre Summe ist $u=2A sin(k x)cos(omega t)$.
@@ -1382,7 +1366,7 @@ Wie entsteht eine stehende Welle, und was bedeutet „stehend“?
 ]
 
 #aufgabe(titel: "Reflexion am festen und losen Ende", art: "verstehen", quelle: "6.6.1", herkunft: "eigen")[
-#if not web [*Aufgabe 77* #linebreak()]
+#if not web [*Aufgabe 75* #linebreak()]
 Ein Wellenberg läuft auf ein festes Seilende zu. Wie kommt er zurück? Was ist am losen Ende anders? Begründe den Knoten am festen Ende.
 ][
 *Festes Ende:* Der Punkt kann sich nicht bewegen, dort liegt ein Knoten. Damit die Summe von hin- und rücklaufender Welle dort jederzeit null bleibt, kommt der Berg als *Tal* zurück (invertiert).
@@ -1394,7 +1378,7 @@ Ein Wellenberg läuft auf ein festes Seilende zu. Wie kommt er zurück? Was ist 
 ]
 
 #aufgabe(titel: "Grundfrequenz einer Saite mit zwei festen Enden", art: "verstehen", quelle: "6.7.1", herkunft: "eigen")[
-#if not web [*Aufgabe 78* #linebreak()]
+#if not web [*Aufgabe 76* #linebreak()]
 Eine Saite der Länge $L="0,5" thin "m"$ ist an beiden Enden fest, $c=200 thin "m/s"$. Wie hoch ist die Grundfrequenz, und welche Fehlerquellen gibt es?
 ][
 *Rechnen:* Fest–fest: In die Saite passt eine halbe Wellenlänge, $L=lambda_1\/2$. Also $f_1=c\/(2L)=200\/1 thin "Hz"=200 thin "Hz"$.
@@ -1404,7 +1388,7 @@ Eine Saite der Länge $L="0,5" thin "m"$ ist an beiden Enden fest, $c=200 thin "
 ]
 
 #aufgabe(titel: "Warum nur bestimmte Wellenlängen auf die Saite passen", art: "verstehen", quelle: "6.7.1", herkunft: "eigen")[
-#if not web [*Aufgabe 79* #linebreak()]
+#if not web [*Aufgabe 77* #linebreak()]
 Warum passen auf eine beidseitig eingespannte Saite nur bestimmte Wellenlängen?
 ][
 *Randbedingung:* Beide Enden müssen Knoten sein. Dazwischen passen nur ganze Vielfache einer halben Wellenlänge: $L=n lambda\/2$, also $f_n=n c\/(2L)$. Damit Grundton und Obertöne $2f_1$, $3f_1$, …
@@ -1412,7 +1396,7 @@ Warum passen auf eine beidseitig eingespannte Saite nur bestimmte Wellenlängen?
 ]
 
 #aufgabe(titel: "Was sich beim Stimmen einer Saite ändert", art: "verstehen", quelle: "6.7.1", herkunft: "eigen")[
-#if not web [*Aufgabe 80* #linebreak()]
+#if not web [*Aufgabe 78* #linebreak()]
 Was ändert sich beim Stimmen einer Saite, und was bleibt gleich?
 ][
 *Ändern:* Man ändert die Zugkraft, damit die Wellengeschwindigkeit $c$ und alle Eigenfrequenzen gleichzeitig.
@@ -1424,7 +1408,7 @@ Was ändert sich beim Stimmen einer Saite, und was bleibt gleich?
 #aufgabe(titel: "Kranführer: Seilschwingung und Last", art: "rechnen", quelle: "6.7.1", herkunft: "original", vorlage: "Aufgabensammlung 1.4", minuten: 20, platz: 16,
   ergebnis: [$lambda_1=30 thin "m"$, $c=600 thin "m/s"$, Obertöne 40/60/80 Hz, $m_1 approx "12,9" thin "t"$, danach $approx "16,7" thin "Hz"$ und $approx "25,1" thin "Hz"$],
 )[
-#if not web [*Aufgabe 81* #linebreak()]
+#if not web [*Aufgabe 79* #linebreak()]
 *Überqualifizierter Kranführer*
 
 *Gegeben und Annahmen*
@@ -1461,7 +1445,7 @@ Ein Kran hat eine Last am $L_1=15 thin "m"$ langen Seil hängen. Durch die sehr 
 #aufgabe(titel: "Kranseil mit neuer Last (Variante)", art: "rechnen", quelle: "6.7.1", herkunft: "variante", vorlage: "Aufgabensammlung 1.4", minuten: 18,
   ergebnis: [$c=480 thin "m/s"$, $m approx "14,4" thin "t"$, danach $approx "10,7" thin "Hz"$ und $approx "17,9" thin "Hz"$],
 )[
-#if not web [*Aufgabe 82* #linebreak()]
+#if not web [*Aufgabe 80* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Last hängt an einem 20 m langen Stahlseil (Durchmesser 10 mm, Dichte 7800 kg/m³). Beide Enden gelten als fest. Das Seil summt im Grundton mit 12 Hz. $g="9,81" thin "m/s²"$, Seileigengewicht vernachlässigt.
@@ -1487,7 +1471,7 @@ Eine Last hängt an einem 20 m langen Stahlseil (Durchmesser 10 mm, Dichte 7800 
 ]
 
 #aufgabe(titel: "Moden bei einem festen und einem losen Ende", art: "verstehen", quelle: "6.7.2", herkunft: "eigen")[
-#if not web [*Aufgabe 83* #linebreak()]
+#if not web [*Aufgabe 81* #linebreak()]
 Ein Rohr ist an einem Ende geschlossen und am anderen offen (oder eine Zunge einseitig eingespannt). Welche Moden und Frequenzen kommen vor, und warum?
 ][
 *Randbedingung:* Zwischen Knoten und Bauch passt in der Grundmode eine Viertelwellenlänge; jede weitere Mode fügt eine halbe Wellenlänge hinzu. Es passen nur ungerade Vielfache: $L=n lambda\/4$, $f_n=n c\/(4L)$ mit $n=1,3,5,dots$, also $f_1, 3f_1, 5f_1, dots$ Merksatz: Fest–lose: Viertelwelle plus halbe Wellen.
@@ -1497,7 +1481,7 @@ Ein Rohr ist an einem Ende geschlossen und am anderen offen (oder eine Zunge ein
 ]
 
 #aufgabe(titel: "Die zweite Mode bei fest–lose", art: "verstehen", quelle: "6.7.2", herkunft: "eigen")[
-#if not web [*Aufgabe 84* #linebreak()]
+#if not web [*Aufgabe 82* #linebreak()]
 Bei einem festen und einem losen Ende fragt eine Aufgabe nach der „zweiten Mode“. Welches $n$ setzt du in $f_n=n c\/(4L)$ ein?
 ][
 *Zählweise:* Erlaubt sind nur $n=1,3,5,dots$ Die zweite tatsächlich vorhandene Mode hat also $n=3$.
@@ -1509,7 +1493,7 @@ Bei einem festen und einem losen Ende fragt eine Aufgabe nach der „zweiten Mod
 #aufgabe(titel: "Klapperkiste: Resonanzdrehzahlen", art: "rechnen", quelle: "6.7.2", herkunft: "original", vorlage: "Übung 10, Aufg. 3 = Aufgabensammlung 1.1 (Klausur SS 19)", minuten: 18, platz: 16,
   ergebnis: [$c=24 thin "m/s"$; 2700, 4500, 6300 U/min; nach der Reparatur 1800, 3600, 5400 U/min],
 )[
-#if not web [*Aufgabe 85* #linebreak()]
+#if not web [*Aufgabe 83* #linebreak()]
 *Klapperkiste*
 
 *Gegeben und Annahmen*
@@ -1542,7 +1526,7 @@ An einem Auto klappert das Hitzeschild gegen den Katalysator. Es ist ein Blech d
 #aufgabe(titel: "Auspuffblech: Resonanzdrehzahlen (Variante)", art: "rechnen", quelle: "6.7.2", herkunft: "variante", vorlage: "Übung 10, Aufg. 3 = Aufgabensammlung 1.1 (Klausur SS 19)", minuten: 15,
   ergebnis: [$c=24 thin "m/s"$; 3600 und 6000 U/min; nach der Reparatur 2400 und 4800 U/min],
 )[
-#if not web [*Aufgabe 86* #linebreak()]
+#if not web [*Aufgabe 84* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein 30 cm langes Abdeckblech am Auspuff ist nur noch an einem Ende festgeschraubt, das andere Ende ist frei. Je Motorumdrehung wird es einmal angestoßen. Das erste Klappern tritt bei 1200 U/min auf. Die Ausbreitungsgeschwindigkeit der Biegewellen ändert sich durch eine zusätzliche Schraube nicht.
@@ -1569,7 +1553,7 @@ Ein 30 cm langes Abdeckblech am Auspuff ist nur noch an einem Ende festgeschraub
 #aufgabe(titel: "Lüftungsblech mit gebrochener Schraube (Variante)", art: "rechnen", quelle: "6.7.2", herkunft: "variante", vorlage: "Übung 10, Aufg. 3 = Aufgabensammlung 1.1 (Klausur SS 19)", minuten: 15,
   ergebnis: [$c=25 thin "m/s"$; danach 750, 2250, 3750, 5250 U/min],
 )[
-#if not web [*Aufgabe 87* #linebreak()]
+#if not web [*Aufgabe 85* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein 50 cm langes Blech in einer Lüftungsanlage ist an beiden Enden festgeschraubt. Der Antriebsmotor stößt es einmal je Umdrehung an. Das erste Klappern tritt bei 1500 U/min auf, das nächste bei 3000 U/min. Dann bricht eine Schraube, das Ende ist frei; $c$ bleibt gleich.
@@ -1594,7 +1578,7 @@ Ein 50 cm langes Blech in einer Lüftungsanlage ist an beiden Enden festgeschrau
 #aufgabe(titel: "Kalimba: Zungenlänge und Obertöne", art: "rechnen", quelle: "6.7.2", herkunft: "original", vorlage: "Aufgabensammlung 1.2", minuten: 15,
   ergebnis: [$lambda_0="0,4" thin "m"$, $c=176 thin "m/s"$, Obertöne 1320 Hz und 2200 Hz, $l_1 approx "8,9" thin "cm"$],
 )[
-#if not web [*Aufgabe 88* #linebreak()]
+#if not web [*Aufgabe 86* #linebreak()]
 *Kalimba*
 
 *Gegeben und Annahmen*
@@ -1628,7 +1612,7 @@ Eine Kalimba (Lamellophon) ist ein afrikanisches Musikinstrument, bei dem versch
 #aufgabe(titel: "Spieluhr-Zunge (Variante)", art: "rechnen", quelle: "6.7.2", herkunft: "variante", vorlage: "Aufgabensammlung 1.2", minuten: 12,
   ergebnis: [$lambda_1="0,32" thin "m"$, $c approx 167 thin "m/s"$, Obertöne 1569 Hz und 2615 Hz, $L approx "7,1" thin "cm"$],
 )[
-#if not web [*Aufgabe 89* #linebreak()]
+#if not web [*Aufgabe 87* #linebreak()]
 *Gegeben und Annahmen*
 
 Der Stahlkamm einer großen Spieluhr hat einseitig eingespannte Zungen (anderes Ende frei) aus gleichem Material. Eine Zunge ist 8 cm lang und klingt im Grundton mit 523 Hz.
@@ -1656,7 +1640,7 @@ Der Stahlkamm einer großen Spieluhr hat einseitig eingespannte Zungen (anderes 
 #aufgabe(titel: "Akusto-optische Anordnung", art: "rechnen", quelle: "6.7.2", herkunft: "original", vorlage: "Aufgabensammlung 1.6", minuten: 20, platz: 16,
   ergebnis: [$d approx 75 thin "µm"$, $lambda_S=150 thin "µm"$, $c=750 thin "m/s"$, $n=267$, 133 innere Knoten; nächste Mode 5,0375 MHz, $lambda approx "148,9" thin "µm"$; $alpha_1$ wird größer],
 )[
-#if not web [*Aufgabe 90* #linebreak()]
+#if not web [*Aufgabe 88* #linebreak()]
 *Akusto-optisches Spektrometer*
 
 *Gegeben und Annahmen*
@@ -1690,7 +1674,7 @@ Ein Ultraschall-Lautsprecher mit $f="5,00" thin "MHz"$ und ein Reflektor im Abst
 #aufgabe(titel: "Ultraschall in Wasser als Gitter (Variante)", art: "rechnen", quelle: "6.7.2", herkunft: "variante", vorlage: "Aufgabensammlung 1.6", minuten: 18,
   ergebnis: [$d approx 250 thin "µm"$, $c approx 1500 thin "m/s"$, $n=81$, 40 Knoten (41 mit Randknoten), nächste Mode $approx "3,074" thin "MHz"$, $lambda approx 488 thin "µm"$],
 )[
-#if not web [*Aufgabe 91* #linebreak()]
+#if not web [*Aufgabe 89* #linebreak()]
 *Gegeben und Annahmen*
 
 In einem Wasserbecken erzeugen ein Ultraschallgeber mit $f=3 thin "MHz"$ und ein Reflektor im Abstand $L="10,125" thin "mm"$ eine stehende Welle mit Knoten an einem und Bauch am anderen Ende. Das Wasser wirkt wie ein Gitter mit $d=lambda_S\/2$. Ein Laser mit $lambda_L=633 thin "nm"$ erzeugt auf einem Schirm in 2 m Entfernung die 1. Ordnung im Abstand $y_1="5,064" thin "mm"$ von der 0. Ordnung. Maxima wie beim Doppelspalt: $sin(alpha_1)=lambda_L\/d$.
@@ -1716,7 +1700,7 @@ In einem Wasserbecken erzeugen ein Ultraschallgeber mit $f=3 thin "MHz"$ und ein
 ]
 
 #aufgabe(titel: "Eigenmoden der drei Randfälle", art: "verstehen", quelle: "6.7.3", herkunft: "eigen")[
-#if not web [*Aufgabe 92* #linebreak()]
+#if not web [*Aufgabe 90* #linebreak()]
 Skizziere je drei Moden für fest–fest, fest–lose und lose–lose. Begründe die erlaubten Ordnungen und unterscheide Mode und Oberton.
 ][
 Fest–fest: $sin(n pi x/L)$ mit $n=1,2,3$. Lose–lose: $cos(n pi x/L)$ mit $n=1,2,3$. Fest–lose: $sin(n pi x/(2L))$ mit $n=1,3,5$. Die Enden liefern Knoten oder Bäuche. Die Grundmode ist die niedrigste schwingende Mode; Obertöne sind die darüberliegenden. Siehe die Modenskizze in Abschnitt 6.7.3.
@@ -1725,7 +1709,7 @@ Fest–fest: $sin(n pi x/L)$ mit $n=1,2,3$. Lose–lose: $cos(n pi x/L)$ mit $n=
 ]
 
 #aufgabe(titel: "Moden bei zwei losen Enden", art: "verstehen", quelle: "6.7.3", herkunft: "eigen")[
-#if not web [*Aufgabe 93* #linebreak()]
+#if not web [*Aufgabe 91* #linebreak()]
 Welche Moden passen bei zwei losen Enden? Was ist anders als bei zwei festen Enden?
 ][
 *Wellenlängen:* An beiden losen Enden liegt ein Bauch. Erlaubt sind wie bei fest–fest $L=n lambda\/2$ mit $n=1,2,3,dots$
@@ -1738,7 +1722,7 @@ Welche Moden passen bei zwei losen Enden? Was ist anders als bei zwei festen End
   tipp: [Übertrage den Begriff des ruhenden Knotens von einer Strecke auf eine Fläche.],
   ergebnis: [Knotenlinien bleiben immer unausgelenkt; der Sand macht das Muster sichtbar.],
 )[
-#if not web [*Aufgabe 94* #linebreak()]
+#if not web [*Aufgabe 92* #linebreak()]
 Was sind Knotenlinien einer zweidimensionalen Eigenmode? Warum sammelt sich feiner Sand bei einer schwingenden Platte auf bestimmten Linien? Was unterscheidet diese Linien von einer Linie, die nur in einer Momentaufnahme gerade Auslenkung null hat?
 #src[V26, PDF-S. 1–2, Abb. 6.10–6.11.]
 ][
@@ -1751,7 +1735,7 @@ Was sind Knotenlinien einer zweidimensionalen Eigenmode? Warum sammelt sich fein
 ]
 
 #aufgabe(titel: "Kugelwelle: Intensität und Amplitude im Abstand", art: "verstehen", quelle: "6.8.1", herkunft: "eigen")[
-#if not web [*Aufgabe 95* #linebreak()]
+#if not web [*Aufgabe 93* #linebreak()]
 Eine verlustfreie Kugelwelle wird im doppelten Abstand gemessen. Warum sinkt die Intensität auch ohne Absorption, wie ändern sich Intensität und Amplitude, und wurde Leistung vernichtet?
 ][
 *Fläche:* Dieselbe Leistung verteilt sich auf Kugelflächen $4pi r^2$: $I=P\/(4pi r^2)$, $I prop 1\/r^2$. Doppelter Abstand ergibt ein Viertel der Intensität. Merksatz: Gleiche Leistung auf größerer Kugelfläche wird dünner verteilt.
@@ -1763,7 +1747,7 @@ Eine verlustfreie Kugelwelle wird im doppelten Abstand gemessen. Warum sinkt die
 ]
 
 #aufgabe(titel: "Zylinderwelle nimmt langsamer ab", art: "verstehen", quelle: "6.8.1", herkunft: "eigen")[
-#if not web [*Aufgabe 96* #linebreak()]
+#if not web [*Aufgabe 94* #linebreak()]
 Bei welcher idealisierten Quelle fällt die Intensität ohne Absorption wie $1\/r$ statt wie $1\/r^2$, und warum?
 ][
 *Linienquelle:* Bei einer sehr langen Linienquelle wächst der Zylindermantel einer festen Quellenlänge nur proportional zu $r$; daher $I prop 1\/r$.
@@ -1773,7 +1757,7 @@ Bei welcher idealisierten Quelle fällt die Intensität ohne Absorption wie $1\/
 ]
 
 #aufgabe(titel: "Ebene, Kugel- und Zylinderwellen", art: "verstehen", quelle: "6.8.1", herkunft: "eigen")[
-#if not web [*Aufgabe 97* #linebreak()]
+#if not web [*Aufgabe 95* #linebreak()]
 Wie unterscheiden sich ebene, Kugel- und Zylinderwellen?
 ][
 *Fronten und Quellen:* Ihre Fronten sind parallele Ebenen, konzentrische Kugelflächen bzw. Zylindermäntel. Dazu passen eine idealisierte flächige, punktförmige bzw. lange linienförmige Quelle. Die Geometrie entscheidet, wie sich die Leistung beim Ausbreiten auf Flächen verteilt.
@@ -1784,7 +1768,7 @@ Wie unterscheiden sich ebene, Kugel- und Zylinderwellen?
   ergebnis: [$I_2/I_1=1/4$, $u_2/u_1=1/2$; gesamte Leistung unverändert],
   tipp: [Vergleiche zuerst die Kugelflächen, dann die Intensitäten.],
 )[
-#if not web [*Aufgabe 98* #linebreak()]
+#if not web [*Aufgabe 96* #linebreak()]
 *Gegeben und Annahmen*
 Eine kompakte Quelle strahlt im Kugelwellenmodell gleichmäßig in alle Richtungen. Es gibt keine Absorption oder Reflexion; Frequenz und Medium sind konstant. Zwei Messorte liegen bei $r_1=r>0$ und $r_2=2r$; die insgesamt abgestrahlte Leistung ist $P$.
 
@@ -1805,7 +1789,7 @@ Eine kompakte Quelle strahlt im Kugelwellenmodell gleichmäßig in alle Richtung
   ergebnis: [Zylinder: $I_2/I_1=1/2$; Kugel: $I_2/I_1=1/4$],
   tipp: [Bei derselben betrachteten Quellenlänge wächst der Zylindermantel linear mit dem Radius.],
 )[
-#if not web [*Aufgabe 99* #linebreak()]
+#if not web [*Aufgabe 97* #linebreak()]
 *Gegeben und Annahmen*
 Vergleiche zwei verlustfreie Idealmodelle im selben Medium: eine sehr lange Linienquelle und eine isotrope Punktquelle. Für beide wird der Abstand von $r$ auf $2r$ vergrößert. Beim Zylindermodell wird dieselbe Quellenlänge $ell$ und deren konstante Leistung betrachtet; Endeffekte bleiben unberücksichtigt.
 
@@ -1823,7 +1807,7 @@ Vergleiche zwei verlustfreie Idealmodelle im selben Medium: eine sehr lange Lini
 #aufgabe(titel: "Eine neue Wellenfront konstruieren", art: "verstehen", quelle: "6.8.2", herkunft: "eigen",
   ergebnis: [Elementarwellen mit Radius $c Delta t$; die neue Front ist die gemeinsame vordere Einhüllende.],
 )[
-#if not web [*Aufgabe 100* #linebreak()]
+#if not web [*Aufgabe 98* #linebreak()]
 Was sagt das Huygenssche Prinzip über eine Wellenfront? Erkläre die Konstruktion einer neuen Front aus einer alten Front in einem homogenen Medium. Warum ist ihr Abstand nicht automatisch eine Wellenlänge? Was ergänzt Fresnel?
 #src[V26, PDF-S. 7, Abb. 6.18; eigene Anwendung von $r=c Delta t$.]
 ][
@@ -1836,7 +1820,7 @@ Was sagt das Huygenssche Prinzip über eine Wellenfront? Erkläre die Konstrukti
 ]
 
 #aufgabe(titel: "Zeitstabiles Interferenzmuster", art: "verstehen", quelle: "6.8.2", herkunft: "eigen")[
-#if not web [*Aufgabe 101* #linebreak()]
+#if not web [*Aufgabe 99* #linebreak()]
 „Gleiche Frequenz bedeutet, dass die gemeinsame Auslenkung zeitlich stillsteht.“ Stimmt das? Was ist bei einem zeitstabilen Interferenzmuster eigentlich stabil?
 ][
 *Antwort:* Nein. Bei gleicher Frequenz und *fester relativer Phase* bleiben die Orte von Verstärkung und Auslöschung bzw. die gemittelte Intensitätsverteilung ortsfest. Die momentane Auslenkung schwingt weiterhin.
@@ -1849,7 +1833,7 @@ Was sagt das Huygenssche Prinzip über eine Wellenfront? Erkläre die Konstrukti
   tipp: [Vergleiche die Einheiten von Metern und Radiant.],
   ergebnis: [$Delta phi=2pi Delta s/lambda+Delta phi_0$; äquivalente Wegverschiebung $lambda Delta phi_0/(2pi)$],
 )[
-#if not web [*Aufgabe 102* #linebreak()]
+#if not web [*Aufgabe 100* #linebreak()]
 In Gl. 6.19 werden eine Phasenverschiebung und zwei Weglängen direkt addiert. Wie kombiniert man eine Anfangsphasendifferenz $Delta phi_0$ korrekt mit einer Wegdifferenz $Delta s$? Ist die Anfangsphase bei gleicher Frequenz unwichtig?
 #src[V26, PDF-S. 6–8, insbesondere Gl. 6.19; eigene Dimensionsprüfung.]
 ][
@@ -1864,7 +1848,7 @@ In Gl. 6.19 werden eine Phasenverschiebung und zwei Weglängen direkt addiert. W
 #aufgabe(titel: "Doppelspalt ohne Fernfeld rechnen?", art: "verstehen", quelle: "6.8.3", herkunft: "eigen",
   ergebnis: [Im Nahfeld beide Wege exakt berechnen; $d sin(alpha)$ ist eine Fernfeldnäherung.],
 )[
-#if not web [*Aufgabe 103* #linebreak()]
+#if not web [*Aufgabe 101* #linebreak()]
 Zwei gleichphasige Quellen liegen im Abstand $d$. Wann darfst du $Delta s approx d sin(alpha)$ benutzen? Wie gehst du sonst vor, und warum garantiert eine Gegenphase noch keine vollständige Stille?
 #src[V26, PDF-S. 8–10; ÜN, PDF-S. 3 zu Ü 10.5.]
 ][
@@ -1879,7 +1863,7 @@ Zwei gleichphasige Quellen liegen im Abstand $d$. Wann darfst du $Delta s approx
 #aufgabe(titel: "Interferenz zweier Lautsprecher", art: "rechnen", quelle: "6.8.3", herkunft: "original", vorlage: "Übung 10, Aufg. 5", minuten: 12,
   ergebnis: [$f approx 134 thin "Hz"$ (genau 133,6 Hz)],
 )[
-#if not web [*Aufgabe 104* #linebreak()]
+#if not web [*Aufgabe 102* #linebreak()]
 *Interferenz*
 
 *Gegeben und Annahmen*
@@ -1907,7 +1891,7 @@ Zwei Lautsprecher im Abstand $L="2,6" thin "m"$ strahlen phasengleich harmonisch
 #aufgabe(titel: "Interferenz zweier Lautsprecher (Variante)", art: "rechnen", quelle: "6.8.3", herkunft: "variante", vorlage: "Übung 10, Aufg. 5", minuten: 12,
   ergebnis: [$Delta l approx "0,560" thin "m"$, $lambda approx "1,120" thin "m"$, $f approx 304 thin "Hz"$],
 )[
-#if not web [*Aufgabe 105* #linebreak()]
+#if not web [*Aufgabe 103* #linebreak()]
 *Gegeben und Annahmen*
 
 Zwei gleichphasige Lautsprecher stehen 2,0 m auseinander. Ein Hörer geht auf einer dazu parallelen Linie im Abstand 4,0 m. Er startet in $P_0$ genau gegenüber der Mitte und hört das erste Minimum in $P_1$, 1,2 m von $P_0$ entfernt. $c=340 thin "m/s"$.
@@ -1933,7 +1917,7 @@ Zwei gleichphasige Lautsprecher stehen 2,0 m auseinander. Ein Hörer geht auf ei
 #aufgabe(titel: "Gegenphasige Lautsprecher (Variante)", art: "rechnen", quelle: "6.8.3", herkunft: "variante", vorlage: "Übung 10, Aufg. 5", minuten: 8,
   ergebnis: [In $P_0$ Minimum, in $P_1$ Maximum],
 )[
-#if not web [*Aufgabe 106* #linebreak()]
+#if not web [*Aufgabe 104* #linebreak()]
 *Gegeben und Annahmen*
 
 Gleiche Anordnung wie in Übung 10, Aufg. 5: Lautsprecher 2,6 m auseinander, Hörerlinie im Abstand 3 m, $P_0$ gegenüber der Mitte, $P_1$ 1,8 m daneben, $f approx "133,6" thin "Hz"$, $c=340 thin "m/s"$. Jetzt wird ein Lautsprecher umgepolt: Die Quellen schwingen *gegenphasig* ($Delta phi_0=pi$). Gleiche Amplituden am Hörerort angenommen.
@@ -1957,7 +1941,7 @@ Gleiche Anordnung wie in Übung 10, Aufg. 5: Lautsprecher 2,6 m auseinander, Hö
 #aufgabe(titel: "Schiffe versenken: Auslöschung", art: "rechnen", quelle: "6.8.3", herkunft: "original", vorlage: "Aufgabensammlung 1.5", minuten: 15,
   ergebnis: [$lambda="0,5" thin "m"$; Moritz 2 Hz und 0,5 m; gleichphasig $y approx "1,6" thin "m"$, gegenphasig $y approx "2,3" thin "m"$],
 )[
-#if not web [*Aufgabe 107* #linebreak()]
+#if not web [*Aufgabe 105* #linebreak()]
 *Schiffe versenken*
 
 *Gegeben und Annahmen*
@@ -1989,7 +1973,7 @@ Für c) und d) gibt es viele Lösungen; gesucht ist jeweils die, bei der Max und
 #aufgabe(titel: "Schiffe versenken (Variante)", art: "rechnen", quelle: "6.8.3", herkunft: "variante", vorlage: "Aufgabensammlung 1.5", minuten: 12,
   ergebnis: [$c="1,5" thin "m/s"$, $lambda=1 thin "m"$; gleichphasig $y="2,5" thin "m"$, gegenphasig $y approx "3,61" thin "m"$],
 )[
-#if not web [*Aufgabe 108* #linebreak()]
+#if not web [*Aufgabe 106* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Spielzeugboot liegt bei $x=6 thin "m"$, $y=0$. Anna patscht bei $(0,0)$ mit 1,5 Hz; ihre erste Welle erreicht das Boot nach 4 s. Ben will die Wellen am Boot auslöschen und patscht mit gleicher Frequenz auf der $y$-Achse. Gleiche Amplituden am Boot angenommen.
@@ -2014,7 +1998,7 @@ Ein Spielzeugboot liegt bei $x=6 thin "m"$, $y=0$. Anna patscht bei $(0,0)$ mit 
 #aufgabe(titel: "Warum hinter der Kante noch Wellen ankommen", art: "verstehen", quelle: "6.8.4", herkunft: "eigen",
   ergebnis: [Beugung und Interferenz der Elementarwellen erklären Wellen im geometrischen Schatten.],
 )[
-#if not web [*Aufgabe 109* #linebreak()]
+#if not web [*Aufgabe 107* #linebreak()]
 Wie heißt die Ausbreitung einer Welle in den geometrischen Schatten eines Hindernisses? Erkläre mit Huygens, warum dort trotzdem eine Welle auftreten kann. Liefert die Kante dafür neue Energie?
 #src[V26, PDF-S. 7 und 11, Abb. 6.22.]
 ][
@@ -2025,7 +2009,7 @@ Wie heißt die Ausbreitung einer Welle in den geometrischen Schatten eines Hinde
 ]
 
 #aufgabe(titel: "Beugung und Interferenz zusammen denken", art: "verstehen", quelle: "6.8.4", herkunft: "eigen")[
-#if not web [*Aufgabe 110* #linebreak()]
+#if not web [*Aufgabe 108* #linebreak()]
 Wie hängen Beugung und Interferenz zusammen?
 ][
 *Zwei Blickwinkel:* Beugung beschreibt, dass die Welle nicht auf gerade Strahlen beschränkt bleibt. Das Beugungsbild entsteht durch Interferenz der Elementarwellen mit ihren Phasen. Es sind zwei Blickwinkel auf dieselbe Ausbreitung.
@@ -2037,7 +2021,7 @@ Wie hängen Beugung und Interferenz zusammen?
 #aufgabe(titel: "Brechung ohne Änderung des Quelltakts", art: "verstehen", quelle: "6.8.5", herkunft: "eigen",
   ergebnis: [$f_2=f_1$; bei $c_2<c_1$ wird $lambda$ kleiner und die Normale zum Lot hin gebrochen.],
 )[
-#if not web [*Aufgabe 111* #linebreak()]
+#if not web [*Aufgabe 109* #linebreak()]
 Eine Welle trifft schräg auf eine ruhende Grenze zu einem langsameren Medium. Erkläre die Änderung von Frequenz, Wellenlänge und Richtung. Was gilt bei senkrechtem Einfall und bei der Reflexion?
 #src[V26, PDF-S. 12–13, Gl. 6.22–6.24.]
 ][
@@ -2050,7 +2034,7 @@ Eine Welle trifft schräg auf eine ruhende Grenze zu einem langsameren Medium. E
 ]
 
 #aufgabe(titel: "Winkel immer zum Lot", art: "verstehen", quelle: "6.8.5", herkunft: "eigen")[
-#if not web [*Aufgabe 112* #linebreak()]
+#if not web [*Aufgabe 110* #linebreak()]
 Von welcher Linie aus werden Einfalls-, Reflexions- und Brechungswinkel gemessen, und warum ist das wichtig?
 ][
 *Lot:* Gemessen wird zwischen Ausbreitungsrichtung (Wellennormale) und dem Lot auf die Grenzfläche. Bei Reflexion sind Ein- und Ausfallswinkel betragsgleich; auch das Brechungsgesetz nutzt Winkel zum Lot. Merksatz: Winkel immer zum Lot messen.
@@ -2062,7 +2046,7 @@ Von welcher Linie aus werden Einfalls-, Reflexions- und Brechungswinkel gemessen
 #aufgabe(titel: "Doppler bei einer heranfahrenden Schallquelle", art: "verstehen", quelle: "6.9.1", herkunft: "original", vorlage: "Altklausur WS 15/16, Frage 11", minuten: 2,
   ergebnis: [Die Person hört eine höhere Frequenz als $f_0$.],
 )[
-#if not web [*Aufgabe 113* #linebreak()]
+#if not web [*Aufgabe 111* #linebreak()]
 *Kurzfrage (1 Punkt)*
 
 Eine Schallquelle, die einen Ton mit der Frequenz $f_0$ aussendet, bewegt sich auf eine Person zu. Was trifft für die Frequenz $f$ der Schallwelle zu, die von der Person wahrgenommen wird: Sind $f$ und $f_0$ gleich, weil die Luft sich nicht bewegt, hört die Person eine höhere oder eine niedrigere Frequenz als $f_0$? Begründe.
@@ -2078,7 +2062,7 @@ Eine Schallquelle, die einen Ton mit der Frequenz $f_0$ aussendet, bewegt sich a
 #aufgabe(titel: "Doppler: Warum nicht die Schallgeschwindigkeit steigt", art: "verstehen", quelle: "6.9.1", herkunft: "eigen",
   ergebnis: [Die Quelle verändert die Frontabstände, nicht $c$ im ruhenden Medium.],
 )[
-#if not web [*Aufgabe 114* #linebreak()]
+#if not web [*Aufgabe 112* #linebreak()]
 Eine Quelle nähert sich einem ruhenden Empfänger mit konstantem eigenen Takt. Was verursacht den Doppler-Effekt, obwohl die Schallgeschwindigkeit gleich bleibt? Wie prüfst du das richtige Vorzeichen, und warum darf die Formel nicht auf Licht übertragen werden?
 #src[V26, PDF-S. 14–15 bis zur Endmarkierung.]
 ][
@@ -2091,7 +2075,7 @@ Eine Quelle nähert sich einem ruhenden Empfänger mit konstantem eigenen Takt. 
 ]
 
 #aufgabe(titel: "Voraussetzungen der Dopplerformel", art: "verstehen", quelle: "6.9.1", herkunft: "eigen")[
-#if not web [*Aufgabe 115* #linebreak()]
+#if not web [*Aufgabe 113* #linebreak()]
 Welche Voraussetzungen hat die behandelte Dopplerformel für die bewegte Quelle?
 ][
 *Voraussetzungen:* Empfänger und Medium ruhen. Der Sender bewegt sich mit $v_S<c$ auf den Empfänger zu oder von ihm weg; die Beträge gelten entlang der Verbindungslinie. Nicht auf Licht übertragen. Bei bewegtem Empfänger oder im seitlichen Moment der Vorbeifahrt die Formel nicht ungeprüft verwenden.
@@ -2102,7 +2086,7 @@ Welche Voraussetzungen hat die behandelte Dopplerformel für die bewegte Quelle?
   ergebnis: [$v_S=c/5="68,6" thin "m/s" approx 247 thin "km/h"$],
   tipp: [Bilde den Quotienten der beiden gehörten Frequenzen. Die unbekannte Senderfrequenz kürzt sich.],
 )[
-#if not web [*Aufgabe 116* #linebreak()]
+#if not web [*Aufgabe 114* #linebreak()]
 *Raserei*
 
 *Gegeben und Annahmen*
@@ -2131,7 +2115,7 @@ Du stehst an der Kreuzung, Porsche-Manfred fährt sportlich mit heulendem Motor 
 #aufgabe(titel: "Krankenwagen: Geschwindigkeit aus dem Tonsprung (Variante)", art: "rechnen", quelle: "6.9.1", herkunft: "variante", vorlage: "Übung 10, Aufg. 6", minuten: 10,
   ergebnis: [$v_S=c\/11 approx "30,9" thin "m/s" approx 111 thin "km/h"$; 770 Hz und 641,7 Hz],
 )[
-#if not web [*Aufgabe 117* #linebreak()]
+#if not web [*Aufgabe 115* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Krankenwagen fährt mit konstanter Geschwindigkeit an dir vorbei; du und die Luft ruhen, $c=340 thin "m/s"$. Das Verhältnis der gehörten Frequenzen bei Annäherung und Entfernung ist $f_"an"\/f_"ent"="1,2"$ (eine kleine Terz).
@@ -2156,7 +2140,7 @@ Ein Krankenwagen fährt mit konstanter Geschwindigkeit an dir vorbei; du und die
 #aufgabe(titel: "Vorbeifahrender Zug: gehörte Töne (Variante)", art: "rechnen", quelle: "6.9.1", herkunft: "variante", vorlage: "Übung 10, Aufg. 6", minuten: 8,
   ergebnis: [$f_"an" approx "566,7" thin "Hz"$, $f_"ent" approx "447,4" thin "Hz"$, Verhältnis $approx "1,27"$],
 )[
-#if not web [*Aufgabe 118* #linebreak()]
+#if not web [*Aufgabe 116* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Zug fährt mit 144 km/h geradlinig an einer ruhenden Person vorbei und hupt mit konstant 500 Hz. Die Luft ruht, $c=340 thin "m/s"$.
@@ -2181,7 +2165,7 @@ Ein Zug fährt mit 144 km/h geradlinig an einer ruhenden Person vorbei und hupt 
 #aufgabe(titel: "Fledermaus fliegt über den Detektor", art: "rechnen", quelle: "6.9.1", herkunft: "original", vorlage: "Aufgabensammlung 1.3, Teil 3", minuten: 8,
   ergebnis: [Annäherung: $f_E approx 21049 thin "Hz"$, man hört etwa 49 Hz; Entfernung: $f_E approx 19051 thin "Hz"$, man hört etwa 1949 Hz],
 )[
-#if not web [*Aufgabe 119* #linebreak()]
+#if not web [*Aufgabe 117* #linebreak()]
 *Doppler-Fledermäuse, Teil 3*
 
 *Gegeben und Annahmen*
@@ -2207,7 +2191,7 @@ Ein Großer Abendsegler ruft mit konstant $f_A=20 thin "kHz"$. Ein ruhender Fled
 #aufgabe(titel: "Fledermaus mit 36 km/h im Detektor (Variante)", art: "rechnen", quelle: "6.9.1", herkunft: "variante", vorlage: "Aufgabensammlung 1.3, Teil 3", minuten: 8,
   ergebnis: [Annäherung $approx 46364 thin "Hz"$, hörbar $approx 1364 thin "Hz"$; Entfernung $approx 43714 thin "Hz"$, hörbar $approx 1286 thin "Hz"$],
 )[
-#if not web [*Aufgabe 120* #linebreak()]
+#if not web [*Aufgabe 118* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Zwergfledermaus ruft mit konstant 45 kHz und fliegt mit 36 km/h geradlinig über einen ruhenden Detektor hinweg. Der Detektor ist genau auf 45 kHz eingestellt und macht die Schwebung hörbar. $c=340 thin "m/s"$, Luft ruht.
