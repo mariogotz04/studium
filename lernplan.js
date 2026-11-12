@@ -19,6 +19,9 @@ function duration(value){
  return hours?`${hours} Std.${rest?' '+rest+' Min.':''}`:`${rest} Min.`;
 }
 const PROBE_TAGE=14;
+// Verständnisfragen zählen im Plan pauschal 3 Minuten (Entscheidung 12.11.2026); Rechenaufgaben mit ihren minuten:.
+const VERSTEHEN_MIN=3;
+const planMin=x=>x.art==='verstehen'?VERSTEHEN_MIN:Math.max(3,Math.round(x.min||0));
 function config(c={}){
  const probe=Number.isFinite(+c.probe)&&c.probe!==null&&c.probe!==''?Math.max(0,Math.min(28,Math.round(+c.probe))):PROBE_TAGE;
  return {exams:Array.isArray(c.exams)?[...c.exams]:null,probe};
@@ -55,7 +58,7 @@ function spread(list,weeks){
 }
 function taskUnit(m,s,x,exam){
  return {id:hash([m.name,'aufgabe',x.id].join('|')),module:m.name,type:'aufgaben',section:s.key,label:s.label,title:x.title,targets:[x.id],
-  min:Math.max(3,Math.round(x.min)),source:x.source||s.source||null,herkunft:x.herkunft||'',exam:exam.id,deadline:exam.date,review:false,notBefore:null,week:null};
+  min:planMin(x),source:x.source||s.source||null,herkunft:x.herkunft||'',exam:exam.id,deadline:exam.date,review:false,notBefore:null,week:null};
 }
 /* Erstellt (oder aktualisiert) den Plan.
    catalog: [{name,pdf,sections:[{key,label,source,items:[{id,title,min,ok,source,herkunft}]}]}] in Lernreihenfolge.
@@ -71,6 +74,8 @@ function create(c,catalog,examination,{old=null,status=()=>({done:false}),today,
   if(done&&u.week)keep.set(u.id,{...u});
   else if(stable&&u.week===current&&(u.type!=='aufgaben'||catalog.some(m=>m.name===u.module&&m.sections.some(s=>s.items.some(x=>x.id===u.targets[0])))))keep.set(u.id,{...u});
  }
+ // Behaltene, noch offene Aufgaben bekommen die aktuelle Zeitschätzung.
+ for(const u of keep.values())if(u.type==='aufgaben'&&!status(u).done){const x=catalog.find(m=>m.name===u.module)?.sections.flatMap(s=>s.items).find(x=>x.id===u.targets[0]);if(x)u.min=planMin(x);}
  const units=[...keep.values()],warnings=[];
  for(const exam of chosen){
   const stoffEnde=add(exam.date,-c.probe),probeStart=stoffEnde<today?today:stoffEnde;
@@ -117,7 +122,7 @@ function create(c,catalog,examination,{old=null,status=()=>({done:false}),today,
   end:chosen.map(e=>e.date).sort().at(-1)||today,warnings,added,lastWeek:current,signature:signature(catalog,examination,c)};
 }
 // Ändert sich etwas, das die Verteilung betrifft? Dann wird automatisch neu geplant.
-function signature(catalog,examination,c){c=config(c);return hash(JSON.stringify({e:selected(c,examination).map(e=>[e.id,e.date,e.modules]),p:c.probe,
+function signature(catalog,examination,c){c=config(c);return hash(JSON.stringify({e:selected(c,examination).map(e=>[e.id,e.date,e.modules]),p:c.probe,r:2,
  k:catalog.map(m=>[m.name,m.sections.map(s=>s.items.map(x=>x.id))])}));}
 function needsUpdate(plan,catalog,examination,today){
  if(!plan||plan.mode!=='aufgaben')return 'neu';
@@ -140,6 +145,6 @@ function status(u,catalog,{manual=false,latch=false,activities=[]}={}){
  const n=targets.filter(x=>x.ok).length,success=targets.length>0&&n===targets.length;
  return {done:success||!!manual,success,manual:!!manual,n,total:Math.max(1,targets.length),worked:targets.some(x=>x.seen)};
 }
-root.Lernplan={add,days,weekday,week,kw,kwYear,hash,config,exams,cost,duration,create,signature,needsUpdate,status,weekWeights,spread,PROBE_TAGE};
+root.Lernplan={add,days,weekday,week,kw,kwYear,hash,config,exams,cost,duration,create,signature,needsUpdate,status,weekWeights,spread,PROBE_TAGE,VERSTEHEN_MIN,planMin};
 if(typeof module!=='undefined')module.exports=root.Lernplan;
 })(typeof globalThis!=='undefined'?globalThis:this);

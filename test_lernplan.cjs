@@ -82,4 +82,11 @@ assert.equal(L.kwYear('2027-01-11'), 2027);
 assert.equal(L.kwYear('2026-12-28'), 2026);
 assert.equal(L.duration(90), '1 Std. 30 Min.');
 
-console.log('OK: gleichmäßige Verteilung ohne Budget; Probephase; stabile Woche; neue Aufgaben automatisch; Wochenwechsel mit Historie; gemeinsame Klausur; Auswahl; nahe Klausur; Status; KW/Jahr.');
+// Verständnisfragen zählen im Plan pauschal 3 Minuten, Rechenaufgaben mit ihrer Schätzung
+const gemischt = [{ name: 'TM', pdf: 'x.pdf', sections: [{ key: 'lernpfad:TM:1:0', label: 'Abschnitt 1.1', items: [
+  { id: 'r', title: 'Rechnen', art: 'rechnen', min: 20, ok: false }, { id: 'v', title: 'Warum?', art: 'verstehen', min: 12, ok: false }] }] }];
+const pg = L.create({}, gemischt, [klausur], { today: heute, version: 'g' });
+const mins = Object.fromEntries(pg.units.filter(u => u.type === 'aufgaben').map(u => [u.targets[0], u.min]));
+assert.deepEqual(mins, { r: 20, v: 3 });
+
+console.log('OK: gleichmäßige Verteilung ohne Budget; Probephase; stabile Woche; neue Aufgaben automatisch; Wochenwechsel mit Historie; gemeinsame Klausur; Auswahl; nahe Klausur; Status; KW/Jahr; Verständnisfragen 3 Min.');
