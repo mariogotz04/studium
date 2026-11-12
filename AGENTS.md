@@ -6,34 +6,37 @@ Sie ist Marios Lernplattform mit vier Reitern:
 - **Start:** Uhr, heutiger und morgiger Vorlesungsplan, „Heute dran“ (täglich wechselnde Lernvorschläge aus Plan,
   Klausurterminen und Lernstand), Countdown zur nächsten Klausur, Fristen, To-dos.
 - **Lernskripte:** jedes Lernskript als PDF sowie eine Feynman-Hörzusammenfassung als EPUB; Leseansicht mit aufdeckbaren Denkpausen. Die PDF enthält weiterhin nur Zusammenfassung und Formelsammlung.
-- **Lernen:** Rechenaufgaben und Verständnisfragen mit Lösung Schritt für Schritt, ein Quiz je Modul, Pomodoro-Timer,
-  Karteikarten je Modul als Auswahl neben Aufgaben, Quiz und Probeklausur (Wiederholung wie bei Anki),
+- **Lernen:** Rechenaufgaben und Verständnisfragen mit Lösung Schritt für Schritt (vor allem Aufgaben der Professoren,
+  gekennzeichnet als „Original“ bzw. „Von Claude erstellt“), Pomodoro-Timer,
   je Modul eine Probeklausur (Aufgaben aus verschiedenen Kapiteln, gemischt, ohne Titel, mit Uhr, Standard 80 % der
   Klausurdauer) und eine Mix-Serie (5 Aufgaben aus 5 Kapiteln, ohne Uhr). Die Zeit je Aufgabe kommt aus dem optionalen
   Feld `minuten:` in `Aufgaben.typ`, sonst wird sie nach der Zahl der Lösungsschritte geschätzt.
 - **Klausurtyp je Modul** (Transfer / Gemischt / Abfrage, plus Dauer): einstellbar beim Eintragen einer Klausur und in der
   Probeklausur. Standard: Finanzierung und Investitionsrechnung gemischt, alle anderen Transfer. Er gewichtet „Heute dran“
-  (Transfer: mehr Rechnen und Probeklausuren, Abfrage: mehr Quiz und Karteikarten). „Heute dran“ enthält immer mindestens
-  zwei Module. Ab 17 Uhr erscheint auf der Startseite der Tagesabschluss (frei aufschreiben, dann 5 Quizfragen aus den
-  heutigen Modulen).
-- **Termine:** Fristen und Klausuren mit Countdown, To-dos, Wochenplan.
+  (Transfer: mehr Rechnen und Probeklausuren, Abfrage: mehr Verständnisfragen). „Heute dran“ enthält immer mindestens
+  zwei Module. Ab 17 Uhr erscheint auf der Startseite der Tagesabschluss (frei aufschreiben, dann 3 Verständnisfragen aus den
+  heutigen Modulen, bevorzugt schon bearbeitete).
+- **Termine:** Fristen und Klausuren mit Countdown, To-dos, Lernplan mit Wochen-PDF „Aufgaben KW N“.
+- **Quiz und Karteikarten gibt es seit 11.11.2026 nicht mehr** (Mario). Ihr Inhalt steht als Verständnisfragen in
+  `Aufgaben.typ`; `build.py` liest `Quiz.md`/`Karteikarten.md` nicht mehr (`QUIZ_UND_KARTEN = False`). Die alten Dateien liegen je Modul
+  unter `Zum Löschen/Quiz und Karteikarten (bis 11.11.2026)/`. Der Code für Quiz/Karten in vorlage.html ist nur noch abwärtskompatibel vorhanden.
 - **Lernreihe (Mario, 06.11.2026):** Jedes Modul wird Abschnitt für Abschnitt der Reihe nach gelernt (`lernreihe()` in
   vorlage.html). `Quelle:`/`quelle:` gliedert ein Kapitel in Abschnitte wie 1.1, 1.2 und 1.10; Unterabschnitte wie 1.1.2 gehören zu 1.1.
-  Ein Abschnitt ist abgeschlossen, wenn alle Aufgaben selbst gelöst (grün), alle Quizfragen richtig
-  und alle Karteikarten einmal gelernt sind. Die vollständig bearbeitete Folge ab Modulbeginn wird privat unter `lernpfad:<Modul>:<Kapitel>:<Abschnitt>` synchronisiert.
-  Wiederholungsfehler setzen einen erreichten Abschluss nicht zurück. „Heute dran“, alle Kartenstarts (auch fällige Wiederholungen und freies Üben),
-  Quiz einschließlich Tagesabschluss, Aufgaben, Mix-Serie und Probeklausur nehmen nur den aktuellen bzw. schon erreichten Abschnitt.
+  Ein Abschnitt ist abgeschlossen, wenn alle Aufgaben selbst gelöst (grün) sind. Die vollständig bearbeitete Folge ab Modulbeginn wird privat unter `lernpfad:<Modul>:<Kapitel>:<Abschnitt>` synchronisiert.
+  Wiederholungsfehler setzen einen erreichten Abschluss nicht zurück. „Heute dran“,
+  Tagesabschluss, Aufgaben, Mix-Serie und Probeklausur nehmen nur den aktuellen bzw. schon erreichten Abschnitt.
   Früher angeklickter späterer Stoff wartet unter Erhalt seiner Bewertungen und Termine. Gespeicherte IDs und Tagespläne werden erneut geprüft;
   gültige Ziele und bereits fertige Tageszeilen bleiben erhalten. Die Modulseite zeigt den aktuellen Abschnitt, offene Inhalte und einen Weiter-Button samt Skriptverweis.
   Eine nicht selbst gelöste Aufgabe bleibt dran. Das Kapitel kommt aus der Überschrift (`#kapitel`, `## `),
   bei Sammelüberschriften („Kapitel 7–12“, „TM1 · Statik“) aus `Quelle:`/`quelle:`. Darum Kapitelüberschriften immer
-  mit „Kapitel N“ benennen und jede Aufgabe, Quizfrage und Karte mit Quelle versehen.
+  mit „Kapitel N“ benennen und jede Aufgabe mit Quelle versehen. **Ausnahme Formelsammlung:** deren Unterabschnitte heißen
+  `=== Formeln zu Kapitel N · …` und dürfen nicht mit „Kapitel“ beginnen, sonst bricht der Hörkapitel-Abgleich in build.py ab.
 
 Die PDFs und die Aufgaben werden auf GitHub aus den `.typ`-Dateien gesetzt; hier liegt nur die Seite selbst.
 
 ## Nach jeder Änderung an einem Lernskript hochladen
 
-Wenn du eine `.typ`-Datei (auch `Aufgaben.typ`), ein Bild in `abbildungen/`, die `Karteikarten.md`, `Quiz.md` oder `Hoerskript.md` eines Moduls
+Wenn du eine `.typ`-Datei (auch `Aufgaben.typ`), ein Bild in `abbildungen/` oder die `Hoerskript.md` eines Moduls
 oder den Vorlesungsplan geändert hast, lade sie danach hoch:
 
 ```bash
@@ -56,16 +59,16 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
   Die Seite zeigt je Modul: Modulname (Ordnername) · Lernskript · Stand. Der Stand kommt aus der Zeile
   „Stand TT.MM.JJJJ“ im Kopf von `main.typ`; diese also bei jeder Änderung aktualisieren.
   Die PDF heißt beim Download z. B. `FET Lernskript Stand 24.10.2026.pdf`.
-- Pro Modul außerdem `Typst-Dateien/Aufgaben.typ` (Aufgaben, Format im Kopf der Datei), `Lernskript aktuell/Karteikarten.md`
-  und `Lernskript aktuell/Quiz.md`, falls vorhanden (Format jeweils als Kommentar oben in der Datei). Dazu `Lernskript aktuell/Hoerskript.md` als Quelle der EPUB-Hörfassung.
+- Pro Modul außerdem `Typst-Dateien/Aufgaben.typ` (Aufgaben, Format im Kopf der Datei; daraus entstehen die Web-Bausteine,
+  die Lösungs-PDF und `<Modul>_Blatt.pdf` mit einer Seite je Aufgabenstellung für das Wochen-PDF). Dazu `Lernskript aktuell/Hoerskript.md` als Quelle der EPUB-Hörfassung.
 - `Vorlesungsplan.pdf` aus diesem Ordner (siehe unten).
 - Nie hochgeladen werden: `Zum Löschen/`, `Unterlagen/`, `Sonstiges/`, `Physik Praktikum/` und dieser Ordner.
 - Ein neues Modul erscheint automatisch, sobald es `Lernskript aktuell/Typst-Dateien/main.typ` hat.
 
 ## Dateien hier
 
-- `vorlage.html` – Aussehen und Verhalten der Seite (eingesetzt werden die Skripte bei `/*DATA*/null`, die Karteikarten bei
-  `/*KARTEN*/null`, Aufgaben und Quiz bei `/*LERNEN*/null`, der Vorlesungsplan bei `/*PLAN*/null`).
+- `vorlage.html` – Aussehen und Verhalten der Seite (eingesetzt werden die Skripte bei `/*DATA*/null`, die Aufgaben bei
+  `/*LERNEN*/null` (`/*KARTEN*/null` bleibt leer), der Vorlesungsplan bei `/*PLAN*/null`).
 - `pruefungen.json` – Prüfungsanmeldung (Termine, Uhrzeit, Dauer, angemeldet ja/nein) und Notenblatt; eingesetzt bei `/*PRUEFUNGEN*/null`.
 - `Vorlesungsplan.pdf` – aktueller Stundenplan als PDF-Export aus thabella (Mario legt ihn hier ab).
 - `build.py` – kompiliert die Skripte und baut die Seite (läuft auf GitHub).
@@ -73,49 +76,18 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
 - `Webseite aktualisieren.command` – Upload (Doppelklick oder `bash`).
 
 Änderungen an diesen Dateien werden ebenfalls mit dem Upload-Skript veröffentlicht.
-## Karteikarten
+## Verständnisfragen (früher Karteikarten und Quiz)
 
-- **Kartenstil in allen Modulen (Mario, 06.11.2026):** Antworten grundsätzlich als kurze Stichpunkte (meist 2–5, ein Gedanke je Punkt), einfache Formulierungen und sparsame fette Schlüsselbegriffe. Vergleiche parallel und Abläufe als Schrittfolgen. Gilt auch für neue Vorlesungsinhalte und jede Erweiterung einer Rückseite.
-- **Entfernter Fragetyp (Mario, 06.11.2026):** Keine „Zeichne die Begriffslandkarte …“-Fragen mehr anbieten, auch nicht in neuen Modulen. `build.py` filtert diesen Typ zentral aus älteren und künftigen Kartenquellen, bevor IDs, Lernpfad und Tagesvorschläge auf der Seite verwendet werden. Die übrigen Karten-IDs und gespeicherten Bewertungen bleiben erhalten. Diese Vorgabe ersetzt frühere Regeln zur Aufnahme solcher Karten.
-- Bei typischen Verwechslungen gezielt eine eigene Zeile `**Merksatz:** …` ergänzen; `build.py` stellt sie als eigenen hervorgehobenen Absatz dar. Passende sprachliche Alltagsanalogien über `Bild: …` als separates Merkbild anzeigen, vorhandene Fachabbildungen nutzen. Keine beliebigen Bilder erzwingen. Eigene Lernhilfen im Dateikommentar kennzeichnen; Analogien ersetzen keine Fachquelle oder Gültigkeitsbedingung.
-- Bei der Kürzung Formeln, Vorzeichen, Einheiten, Annahmen und Einschränkungen erhalten. Fragen, Kapitel und Quellen möglichst unverändert lassen, damit IDs und Lernstand bestehen bleiben. Nach Pflege die Trennung von Liste, Merksatz und Merkbild, Quellenlinks und iPad-Darstellung prüfen. Die verbindliche redaktionelle Regel steht zusätzlich in Abschnitt 8.5 aller Modul-AGENTS.md.
-- Quelle: je Modul `Lernskript aktuell/Karteikarten.md`. `## …` beginnt ein Kapitel, `### Frage` eine Karte,
-  alles darunter ist die Rückseite. Eine Zeile `Bild: …` wird als Merkbild (Analogie) angezeigt.
-- Jede Karte bekommt eine Zeile `Quelle: 1.3` (Abschnittsnummer im Lernskript, bei TM2 z. B. `Quelle: TM2 1.6`).
-  `build.py` sucht den Abschnitt in den PDF-Lesezeichen und zeigt auf der Karte einen Link „Lernskript S. N“.
-  Die Seite stimmt so auch, wenn das Lernskript wächst. Wird der Abschnitt nicht gefunden, warnt der Build.
-- Alle Quellenlinks bei Karteikarten, Rechenaufgaben, Verständnisfragen und Quizantworten (auch in der
-  Auswertung von Quiz, Probeklausur und Mix-Serie) öffnen die integrierte PDF-Ansicht im Browser und in der
-  Home-Bildschirm-App. `build.py` ordnet anhand von Frage und Antwort bzw. Lösungsweg eine Textstelle innerhalb
-  des angegebenen Abschnitts zu und speichert relative Zeilenrechtecke im jeweiligen Quellenfeld `h`.
-  Die Seitenangabe zeigt auf die gefundene Stelle. Bei jedem Build werden die Positionen aus der aktuellen PDF
-  neu bestimmt. Nur die Markierungen des angeklickten Verweises werden gelb eingeblendet und beim Schließen
-  oder Navigieren entfernt; die herunterladbare PDF bleibt unverändert. Eine Zuordnung ohne Texttreffer öffnet
-  den Abschnitt ohne Markierung. Keine dauerhaft eingefärbten PDFs erzeugen und keine Markierungen im Lernstand speichern.
-- Gibt es im Lernskript eine passende Abbildung, `Abbildung: name` (oder `name1, name2`) ergänzen; `name` ist die
-  Datei `Typst-Dateien/abbildungen/<name>.svg`. Die Bildunterschrift wird aus `#bild("name", [...])` übernommen.
-- Formeln in den Antworten in Typst-Schreibweise zwischen `$…$` schreiben (z. B. `$c = sqrt(2 g h)$`), eine Zeile nur
-  mit `$ … $` wird abgesetzt. `build.py` setzt sie mit Typst als SVG (Ordner `f/`), sie sehen aus wie im Lernskript.
-  Den Fragetext dafür nicht ändern (Lernstand hängt daran), Formeln gehören in die Antwort.
-- Karteikarten liegen unter **Lernen → Modul → Karteikarten**, neben Aufgaben, Quiz und Probeklausur.
-  Jede Runde bleibt in einem Modul. Es gibt keinen separaten Karteikarten-Reiter und keine Kartenrunde über alle Module.
-  Auf der Modulseite gibt es „Nur fällige“ ohne neue Karten; „Heute dran“ verlinkt fällige Karten je Modul.
-  Modulwechsel im Lerntag übernimmt die bestehende Interleaving-Auswahl von „Heute dran“.
-  Alte Adressen `#karteikarten/<Modul>` werden zu `#lernen/<Modul>/karteikarten` weitergeleitet, `#karteikarten` zu `#lernen`.
-  Die Karteikarten sind für das iPad und Bedienung mit dem Finger gemacht (keine Tastatur).
-- `build.py` liest die Dateien ein; jede Karte bekommt eine ID aus Modul und Fragetext. Den Fragetext deshalb
-  nur ändern, wenn nötig, sonst beginnt die Karte wieder als neu.
-- Wiederholung wie bei Anki (SM-2): Bewertung Nochmal/Schwer/Gut/Leicht, Abstände wachsen mit der Leichtigkeit,
-  fällige Karten kommen zuerst, neue Karten in numerischer Abschnittsreihenfolge. Freies Üben mischt ausschließlich erreichten Stoff.
-  Der Lernstand wird synchronisiert (siehe unten) und lässt sich zusätzlich auf
-  der Seite eines Moduls als Datei sichern und laden.
-- Im Antwortfeld darf Scrollen oder Wischen keine Karte bewerten und keinen Kartenwechsel auslösen.
-  Bewertungen erfolgen bewusst über die Bewertungsbuttons oder die vorhandenen Tastaturkürzel 1–4.
-  Keine automatische Bewertung durch Touch- oder Wischgesten einbauen; das gilt auch beim freien Üben.
+- Alle Verständnis- und Theoriefragen stehen als `art: "verstehen"` in `Aufgaben.typ`, offen formuliert, Lösung in kurzen
+  Stichpunkten, dazu bei Bedarf Schritte `*Typische Verwechslung:*`, `*Merksatz:*` und `*Bild:*` (Alltagsanalogie).
+  Der Kartenstil vom 06.11.2026 (kurze Stichpunkte, parallele Vergleiche) gilt für diese Fragen weiter.
+- Keine „Zeichne die Begriffslandkarte …“-Fragen, auch nicht umformuliert (Mario, 06.11. und 11.11.2026).
+- Quellenlinks aller Aufgaben öffnen die integrierte PDF-Ansicht; `build.py` bestimmt die markierte Stelle bei jedem Build neu
+  (Feld `h`), nur der angeklickte Verweis wird gelb eingeblendet. Keine dauerhaft eingefärbten PDFs erzeugen.
 
 ## Flüchtiges Notizblatt und zuverlässige Quellen
 
-- Karteikarten, Verständnisfragen und Quiz bieten ein zunächst eingeklapptes weißes Notizblatt rechts neben der Frage. Unter 800 px steht es über dem Inhalt. Ausschließlich Stifteingaben (`pointerType === "pen"`, insbesondere Apple Pencil) erzeugen Striche; Finger und Handballen niemals. Radierer, Rückgängig und Leeren bleiben verfügbar. Rechenaufgaben erhalten kein Blatt.
+- Verständnisfragen bieten ein zunächst eingeklapptes weißes Notizblatt rechts neben der Frage. Unter 800 px steht es über dem Inhalt. Ausschließlich Stifteingaben (`pointerType === "pen"`, insbesondere Apple Pencil) erzeugen Striche; Finger und Handballen niemals. Radierer, Rückgängig und Leeren bleiben verfügbar. Rechenaufgaben erhalten kein Blatt.
 - Die Fläche ist in Weltkoordinaten unbegrenzt verschiebbar; zwei Finger verschieben und zoomen den Ausschnitt (20–500 %). Einzelne Finger bewegen das Blatt nicht. Während des Schreibens und bis zum Abheben aufliegender Kontakte sind Fingergesten gesperrt. Kontextmenü, Textauswahl und iOS-Touch-Callout im Notizblatt unterbinden. „Kleiner/Größer“ ändern die Ansichtsgröße ohne Striche zu verzerren; Zoomknöpfe und „Zum Anfang“ ergänzen die Gesten. Jede neue Frage startet wieder eingeklappt.
 - Striche liegen ausschließlich im Arbeitsspeicher. Beim Aufdecken einer Antwort, eines Tipps oder Lösungsschritts, bei Quizauswahl, Ein-/Ausklappen und Größenwechsel erhalten; beim Bewerten einer Karte/Aufgabe, Fragenwechsel, Rundenende oder Verlassen der Übung verwerfen. Niemals Browser-Speicher, Export oder Sync für Notizen verwenden.
 - Allgemeine Quellenmarkierungen erfordern mehrere passende Antwortbegriffe und ausreichende Textabdeckung. Bei unsicherem Treffer nur den Abschnitt öffnen und dies im Viewer anzeigen. Die Zuordnung alter Begriffslandkarten zur Kapitelübersicht bleibt intern abwärtskompatibel; dieser Fragetyp wird nicht mehr veröffentlicht.
@@ -127,7 +99,11 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 
 - Quelle: je Modul `Lernskript aktuell/Typst-Dateien/Aufgaben.typ`, direkt neben `main.typ` (sie importiert dessen
   Befehle wie `#bild`, `#tab`, `#note`). Aufbau und Regeln stehen im Kopf der Datei; den Kopf nicht ändern.
-- Jede Aufgabe ist `#aufgabe(titel: …, art: "rechnen" | "verstehen", quelle: "1.5", ergebnis: […], tipp: […])[Aufgabe][Schritt 1][Schritt 2]…`.
+- Jede Aufgabe ist `#aufgabe(titel: …, art: "rechnen" | "verstehen", quelle: "1.5", herkunft: "original" | "variante" | "eigen", vorlage: "Übung 3, Aufg. 2", ergebnis: […], tipp: […], minuten: 15, platz: 12)[Aufgabe][Schritt 1][Schritt 2]…`.
+- **Herkunft (Mario, 11.11.2026):** Aufgaben der Professoren (Übungen, Altklausuren) originalgetreu als `original` mit `vorlage`;
+  Varianten nach einer Vorlage als `variante` (gleiche `vorlage`); alles andere `eigen`. Die Seite zeigt „Original · …“ bzw.
+  ein Kästchen „Claude“, das Wochen-PDF die Herkunft in der Kopfzeile. `build.py` warnt, wenn `herkunft` fehlt.
+- `platz:` (cm, optional) steuert den Schreibraum im Wochen-PDF; sonst schätzt `lernplan-pdf.js` ihn aus Art, Schritten und Minuten.
   Auf der Webseite deckt Mario jeden Schritt einzeln auf; deshalb jeden Schritt für sich verständlich schreiben:
   fette Kurzüberschrift, dann *warum* man so vorgeht (Feynman-Stil, Alltagsbild wo es hilft), dann die Rechnung,
   am Ende eine Prüfung (Einheit, Größenordnung, Grenzfall).
@@ -136,20 +112,11 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
   sonst stimmt die Zuordnung nicht (der Build meldet dann „Aufgaben fehlerhaft“).
 - Ob eine Aufgabe gelöst ist, hängt am Titel. Titel deshalb nicht ohne Grund ändern.
 
-## Lernen: Quiz
-
-- Quelle: je Modul `Lernskript aktuell/Quiz.md`. Format steht oben in der Datei: Einfach- und Mehrfachauswahl mit
-  einer Erklärung zu *jeder* Antwort, Lückentext und Freitext (Musterantwort). Wie bei NotebookLM.
-- Gute Quizfragen prüfen Verständnis und typische Denkfehler; die falschen Antworten sollen plausibel sein
-  und ihre Erklärung sagt, wo genau der Denkfehler liegt.
-
 ## Alle Lernformate wachsen mit den Vorlesungsunterlagen
 
-- Nach jeder Einarbeitung neuer Vorlesungsunterlagen das Lernskript **und** `Aufgaben.typ` (Rechenaufgaben und
-  Verständnisfragen samt Ergebnis, Tipp und Lösungsschritten), `Quiz.md` (richtige Antworten, Musterantworten und
-  Erklärungen jeder Option) sowie `Karteikarten.md` (Rückseiten, Quellen, Abbildungen) und `Hoerskript.md` (hörgerechte Erklärungen und Denkpausen mit Auflösung) gemeinsam abgleichen.
-- Zu neu behandeltem Stoff passende Aufgaben, Quizfragen und Karten ergänzen; fehlende Dateien im vorgesehenen
-  Format anlegen. Vorhandene Antworten nur ändern, wenn sie falsch, unvollständig oder durch die Unterlagen überholt sind.
+- Nach jeder Einarbeitung neuer Vorlesungsunterlagen das Lernskript **und** `Aufgaben.typ` (neue Prof-Aufgaben als Original,
+  Varianten, Verständnisfragen samt Ergebnis, Tipp und Lösungsschritten) sowie `Hoerskript.md` (hörgerechte Erklärungen und Denkpausen mit Auflösung) gemeinsam abgleichen.
+- Zu neu behandeltem Stoff passende Aufgaben ergänzen. Sie landen automatisch im Lernplan (ab der folgenden Woche). Vorhandene Antworten nur ändern, wenn sie falsch, unvollständig oder durch die Unterlagen überholt sind.
   Eine reine Layout- oder Übersichtsänderung erfordert keine neuen fachlichen Antworten.
 - Titel und Fragetexte möglichst unverändert lassen, damit der Lernstand erhalten bleibt. Abschnittsverweise nach
   jeder Skriptänderung prüfen; Seitenzahlen werden beim Build aus der aktuellen PDF neu bestimmt.
@@ -191,20 +158,25 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
   Tabelle `zustand`, eine Zeile je Eintrag, neuere Änderung gewinnt) zwischen Marios Geräten abgeglichen.
   Anmeldung per E-Mail-Link unter „Sync“ oben rechts. Nichts davon steht im Repository.
 
-## Automatischer Wochenplan (freigegeben am 09.11.2026)
+## Lernplan: Aufgabenplan ohne Zeitbudget (seit 11.11.2026)
 
-- Unter **Termine → Lernplan** (`#termine/lernplan`) ein frei einteilbares Wochenbudget in Stunden, Startdatum, Klausuren, Einheitenlänge, Pausen und Reserve wählen. Keine sieben Tagesbudgets und keine verbindlichen Lerntage. Das Budget bezeichnet die verfügbare Zeit neben den Vorlesungen einschließlich Pausen und Reserve. Das neue Beispielbudget ist ausdrücklich veränderbar und wird erst nach Vorschau und bewusstem Übernehmen als persönlicher Plan gespeichert. Neue Beispiele nutzen 5 % Reserve; bestehende Einstellungen bleiben erhalten. Reserve zwischen 0 und 50 % wählbar.
-- `lernplan.js` enthält die reine Wochenplanung sowie die abwärtskompatible Tageslogik, `lernplan-ui.js` den Adapter, `lernplan-pdf.js` die lokale PDF-Erzeugung. Der Planer verteilt konkrete Ziele nach Lernstand, offenem Umfang und Klausurterminen auf Wochen und hält das Wochenbudget einschließlich Reserve ein. Fächer innerhalb der Wochen sinnvoll verteilen; offene Vorwochenziele erhalten beim Nachholen Vorrang. Keine stille Erhöhung des Budgets und kein Weglassen nicht einplanbarer Inhalte.
-- Wocheneinheiten besitzen `week` als Montag der Zielwoche und keinen vorgeschriebenen Lerntag. Kalendergrenzen, freie Tage und Wiederholungsbeginn dienen ausschließlich zur Machbarkeitsprüfung. Bei einer Klausur mitten in der Woche zeigen die Einheiten den letzten möglichen Termin; Wiederholungen bleiben bis `notBefore` gesperrt. Die bestehende Abschnittsfreigabe niemals umgehen. Planbare Wiederholungsphasen bevorzugen; Überschneidungen und Einheiten ohne passende Woche ausdrücklich anzeigen.
-- Die Wochenliste ist nach Fächern gegliedert: konkrete Aufgaben, Abschnitt, Art, Zeitansatz, Fortschritt und Startknopf. Vorlesungen und Tagesabschluss bleiben tagesbezogen; die Lernziele auf Start sind eine Wochenübersicht mit offenen Einheiten und Startmöglichkeiten je Fach. Aufgabenhaken erst nach „selbst gelöst“, Quiz/Karten gemäß Bewertungen; Wiederholungen erst nach tatsächlicher Bearbeitung in ihrer Phase. Manuelle Haken ändern keinen Lernpfadabschluss. Erledigungen aus allen Einstiegen zählen.
-- Auf-/Zuklappen der Wochenfachlisten privat unter `einst:lernplan:modul:<Name>` speichern, unabhängig von Woche und Planversion. Unveränderte alte DOM-Zustände dürfen keine frisch synchronisierte Einstellung überschreiben. Wochenposition und Übungsursprung ausschließlich pro Tab in `sessionStorage` merken. Aus Wochenzielen gestartete Aufgaben/Karten/Quiz/Proben erhalten „Zum Wochenplan“ zur ursprünglichen Woche und zum Fach; nach „selbst gelöst“ einer Einzelaufgabe direkt zurückkehren und die nächste offene freigegebene Einheit zeigen. Eingeklappte Fächer nicht automatisch öffnen. Andere Bewertungen behalten den Wiederholungsablauf, Runden ihre Auswertung und Probelösungen denselben Versuch. Normale Moduleinstiege behalten ihre Navigation; bewusster Wechsel außerhalb der Übung löscht den Rückkehrkontext.
-- Private Daten ausschließlich im bestehenden DB-/Sync-Zustand. `einst:lernplan` verweist auf `lernplan:version:<ID>`; zwei neueste Versionen erhalten. Ziel-IDs und erledigte Historie bei Neuplanung erhalten. Pro Einheit bleiben `lernplan:manuell:<ID>` und monotone `lernplan:abschluss:<ID>` bestehen. Keine privaten Pläne in Modulquellen, Build oder Repository speichern.
-- `lernplan:wochen:<Version>` speichert die vollständige Wochenzuordnung atomar als `{v:3, week, day, weeks, note}`. Explizites `null` bedeutet ohne passende Woche. Ältere `lernplan:automatik`- und `lernplan:datum`-Werte nur als Migrationsquelle lesen; sie dürfen die getrennte neue Wochenzuordnung nicht überschreiben. Bestehende Tagespläne anhand ihrer effektiven Termine nach Wochen anzeigen, das alte gespeicherte Planobjekt dabei unverändert lassen. Für eine bewusste Neuverteilung wird eine neue Wochenplanversion erzeugt.
-- Innerhalb einer Woche bleiben offene Ziele stabil, auch beim Tageswechsel und erneuten Öffnen. Zum Wochenwechsel offene Vorwochenziele zuerst verteilen und spätere offene Ziele bei Bedarf verschieben. Erledigte Einheiten bleiben erhalten. Nachholen darf die Reserve nutzen, aber nie das gesamte Wochenbudget überschreiten. Nicht einplanbare Ziele bleiben ausdrücklich ohne Woche. Nie eingeplante Ziele nicht fälschlich als versäumte Vorwochenziele zählen. Fällige freigegebene Karten höchstens einmal pro Wochenstart und nur bei nachgewiesen freiem Budget ergänzen.
-- Die Wochenprüfung läuft beim Öffnen von Start/Lernplan, beim Aktivieren und während geöffneter Ansichten innerhalb von 30 Sekunden. Laufende Übungen und Formulare erhalten. Tageswechsel aktualisieren Datum, Verfügbarkeit und Fortschritt, ohne die Wochenziele zu verschieben. Klausur-/Quellenänderungen und ein anderes Budget benötigen weiterhin Vorschau und Übernahme.
-- Gesamt- und Wochen-PDF als nach Fächern gegliederte Aufgabenliste ohne tägliche Vorgaben erzeugen: eingebettete Schrift, Checkboxen, Wochenbudget/Reserve, Kapitelstand, Version/Zeitstempel, echte Fristen sowie klickbare Ziel- und aktuelle Quellenlinks. Bereits heruntergeladene Dateien bleiben Momentaufnahmen. Änderungen an Plan, Budget, Zuordnung und Fortschritt invalidieren den PDF-Stand; im offenen Viewer Aktualisierung anbieten, das gelesene Dokument nicht automatisch ersetzen.
-- Dauern in der Oberfläche und im PDF mit `Lernplan.duration` darstellen: ab 60 Minuten Stunden und Restminuten, etwa „1 Std. 30 Min.“; kürzere Dauern als Minuten. Gilt auch für Restzeiten, Budgetvergleiche, Fachsummen und Zeitbedarfswarnungen.
-- Alle Plan-/PDF-Dateien und `vendor/` über Build und Upload mitnehmen; Dateiinhalte bestimmen die Version der Script-Adressen. `node test_lernplan.cjs` prüft auch Wochenbudget, Fristen, Reihenfolge, Wochenwechsel, Historie und Migration. Browserprüfungen mit isolierten Testdaten und gerenderte Wochen-PDFs ergänzen die automatischen Tests. Nur Webseitenänderungen mit `--nur-webseite` hochladen.
+- **Termine → Lernplan** (`#termine/lernplan`). Kein Wochenbudget mehr (Mario, 11.11.2026). `lernplan.js` verteilt **alle offenen
+  Aufgaben** jedes Moduls in Lernreihenfolge gleichmäßig nach Bearbeitungszeit auf die Wochen von heute bis 14 Tage vor der
+  Klausur (Stoffphase; angebrochene Wochen zählen anteilig). Die letzten 14 Tage (Probephase, einstellbar 0–28) enthalten je Klausur
+  zwei Probeklausuren und zwei Wiederholungseinheiten für nicht selbst gelöste Aufgaben. Gemeinsame Klausuren (Inv+Fin) planen beide Module.
+- **Automatisch:** Der Plan wird ohne Bestätigung neu berechnet, wenn sich die Woche, die Aufgaben (Signatur über alle Aufgaben-IDs)
+  oder die Klausurtermine/Einstellungen ändern. Die laufende Woche bleibt stabil; neue Aufgaben kommen ab der nächsten Woche dazu.
+  Erledigtes bleibt als Historie in seiner Woche; Offenes wandert zum Wochenwechsel in die restlichen Wochen.
+  Deutlich überdurchschnittliche Wochen werden als Hinweis genannt.
+- Privat im Sync-Zustand: Plan `lernplan:aufgabenplan` (mode `aufgaben`), Einstellungen `einst:aufgabenplan` `{probe, exams}`;
+  `lernplan:manuell:<ID>` und `lernplan:abschluss:<ID>` bleiben. Alte `lernplan:version:*`-Pläne werden beim ersten neuen Plan gelöscht.
+  Keine privaten Pläne in Modulquellen oder Git.
+- **Wochen-PDF** (`lernplan-pdf.js`, pdf-lib im Browser, auch in der iPad-App): „Aufgaben KW N.pdf“ (bei anderem ISO-Jahr mit Jahr),
+  A4, Deckblatt mit Kästchen je Modul, dann je Aufgabe Kopfzeile (Modul, Art, Abschnitt, Herkunft, Link „Lösung ansehen“),
+  die Aufgabenstellung als Vektorgrafik aus `pdf/<Modul>_Blatt.pdf` und ein karierter Schreibbereich (5 mm) zum handschriftlichen
+  Lösen in GoodNotes.
+- `node test_lernplan.cjs` prüft Verteilung, Probephase, stabile Woche, neue Aufgaben, Wochenwechsel, gemeinsame Klausur und KW/Jahr.
+  Dauern mit `Lernplan.duration` anzeigen. Alle Plan-/PDF-Dateien und `vendor/` gehören zum Upload.
 
 ## Motivation und persönliche Richtung
 
@@ -220,9 +192,9 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 
 ## Stabile Tagesliste und automatische Abschlüsse
 
-- `tagesplan:<Tag>` speichert die vorgeschlagene Liste und Karten-IDs beim ersten Aufruf; während des Tages weder fertige Zeilen austauschen noch neue Vorschläge nachschieben.
+- `tagesplan:<Tag>` speichert die vorgeschlagene Liste beim ersten Aufruf; während des Tages weder fertige Zeilen austauschen noch neue Vorschläge nachschieben.
   Ausnahme: offene Vorschläge außerhalb des aktuellen Lernpfads bei Migration oder Quelländerungen bereinigen; gesperrte IDs entfernen bzw. zum aktuellen Schritt desselben Moduls führen. Fertige Tageshistorie erhalten. Planversion 3.
-- `aktiv:<Tag>:<Art>:<Modul>:<ID>` hält wirkliche Bearbeitungen fest, auch beim Einstieg über die Modulnavigation. Aufgabe erst nach Selbsteinschätzung (auch „nicht geschafft“); Quiz nach Auswertung aller Fragen einschließlich Freitext; Karten nach abgeschlossenen Runden, die alle Zielkarten umfassen; Mix/Probe nach Abgabe und Bewertung sämtlicher Aufgaben.
+- `aktiv:<Tag>:<Art>:<Modul>:<ID>` hält wirkliche Bearbeitungen fest, auch beim Einstieg über die Modulnavigation. Aufgabe erst nach Selbsteinschätzung (auch „nicht geschafft“); Mix/Probe nach Abgabe und Bewertung sämtlicher Aufgaben.
 - Automatisches Abhaken bedeutet bearbeitet, nicht beherrscht. Unsichere Inhalte bleiben in den bestehenden Wiederholungsplänen. Manuelles Überschreiben mit Zeitstempel unter `erledigt:<Tag>` erhalten. Aktivitäten gehören zum Tag des Runden-/Aufgabenstarts.
 - In der Auswertung von Mix-Serie und Probeklausur bleibt die Schritt-für-Schritt-Lösung im selben Versuch. Zurück führt zur Übersicht derselben Aufgaben; Pfeile wechseln nur innerhalb dieser Auswahl. Bewertungen aus Übersicht und Lösung gemeinsam speichern, offene Bewertungen weiterzählen und den Versuch erst nach allen Bewertungen abschließen. `node test_mix.cjs` prüft diesen Ablauf.
 
@@ -230,9 +202,14 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 
 - Alle Rechenaufgaben direkt mit Gegeben/Annahmen, Gesucht und Teilfragen a), b), c) schreiben; Zahlen, Einheiten, Konstanten, Tabellenwerte und erforderliche Abbildungen stehen in derselben Aufgabe. Keine Suche nach Daten in anderen Aufgaben verlangen. Quellen- und Modellannahmen korrekt erhalten.
 - Fortlaufende Nummer je Modul liefert `build.py` als `nr`; im Druck enthält der erste Aufgabenblock die bedingte Nummer `#if not web [*Aufgabe N* #linebreak()]`. Mix/Probe zeigen ihre eigene neutrale Nummerierung.
-- Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Kartenbewertung gelten in allen sieben und künftigen Modulen.
+- Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Bewertung gelten in allen sieben und künftigen Modulen.
 
 ## Änderungsprotokoll
+
+### 12.11.2026 · Aufgaben der Professoren, Lernplan ohne Budget, Quiz/Karten entfallen
+- Alle sieben Module: Übungs- und Altklausuraufgaben als Originale mit gekennzeichneten Varianten, Quiz- und Kartenfragen als Verständnisfragen (1.746 Aufgaben). Formelsammlungen nach Kapiteln (`=== Formeln zu Kapitel N`).
+- Lernplan verteilt alle Aufgaben automatisch bis 14 Tage vor der Klausur, Wochen-PDF mit Schreibraum. Quiz/Karten aus Seite und Build entfernt, Tagesabschluss mit 3 Verständnisfragen.
+- Offen: GET-Wechselstrom (kein Skriptkapitel), FET-Stoff ab Kapitel 5 (Exergie, Kreisprozesse, Rohrnetze). Sicherung: `../Sonstiges/Lernplattform-Sicherungen/2026-11-11_vor_Aufgaben-Umbau/`.
 
 ### 09.11.2026 · Fachlisten und Rückkehr zum Wochenplan
 - Fachzustände dauerhaft speichern; Wochenposition und Übungsursprung pro Browser-Tab erhalten. Rücklinks und erfolgreiche Einzelaufgaben führen zur ursprünglichen Woche und zum passenden Fach. Karten, Quiz und Probeklausuren bieten den direkten Rückweg auch nach der Auswertung; die Probelösung bleibt im selben Versuch.
