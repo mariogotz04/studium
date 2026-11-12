@@ -1984,27 +1984,48 @@ Der äußere Radius r ist nicht der Mittellinienradius. Die Materialfläche aus 
 = Anhang
 == Formelsammlung mit Voraussetzungen
 Die Vorzeichen folgen dem jeweils gezeichneten Freikörperbild bzw. der lokalen Bezugsfaser. Diese Sammlung ersetzt nicht die Klärung der Voraussetzungen.
+=== Formeln zu TM1 Kapitel 1 · Das Werkzeug für Klausuraufgaben
 #tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Gleichgewicht], [$sum F_H=0$, $sum F_V=0$, $sum M_P=0$], [Je freiem starren Körper in der Ebene],
  [Kraftzerlegung], [$F_x=F cos alpha$, $F_y=F sin alpha$], [α gegen x gemessen; Pfeilvorzeichen beachten],
- [Moment], [$M_P=F d$], [d senkrecht zur Wirkungslinie; Nmm oder Nm],
+ [Moment], [$M_P=F d$], [d senkrecht zur Wirkungslinie; Nmm oder Nm],)
+=== Formeln zu TM1 Kapitel 4 · Streckenlasten und Schwerpunkt
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Streckenlast], [$F_R=integral q(x) dif x$, $x_R=frac(integral x q(x) dif x,F_R)$], [Nur der betrachtete Abschnitt; q Kraft/Länge],
- [Schwerpunkt], [$z'_S=sum A_i z'_(S i)/sum A_i$], [Aussparungen mit Minus; y analog],
- [Bestimmtheit], [$r+v=3n$; Fachwerk $s+r=2k$], [Nur notwendige Zählbedingungen; Geometrie prüfen],
- [Schnittgrößen], [$Q'=-q$, $M'=Q$], [Gerader Balken, Vorlesungskonvention],
- [Haftung], [$abs(H)<=mu_0N$], [N≥0; Gleichheit erst im Grenzfall],
+ [Schwerpunkt], [$z'_S=sum A_i z'_(S i)/sum A_i$], [Aussparungen mit Minus; y analog],)
+=== Formeln zu TM1 Kapitel 5 · Lagerreaktionen und statische Bestimmtheit
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
+ [Bestimmtheit], [$r+v=3n$], [Nur notwendige Zählbedingung; Geometrie prüfen],)
+=== Formeln zu TM1 Kapitel 6 · Fachwerke: Nullstäbe und Ritterschnitt
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
+ [Bestimmtheit Fachwerk], [$s+r=2k$], [Nur notwendige Zählbedingung; Geometrie prüfen],)
+=== Formeln zu TM1 Kapitel 7 · Schnittgrößen punktweise bestimmen
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
+ [Schnittgrößen], [$Q'=-q$, $M'=Q$], [Gerader Balken, Vorlesungskonvention],)
+=== Formeln zu TM1 Kapitel 9 · Haftreibung als kurzer Klausurbaustein
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
+ [Haftung], [$abs(H)<=mu_0N$], [N≥0; Gleichheit erst im Grenzfall],)
+=== Formeln zu TM2 Kapitel 1 · Zug, Druck und Wärmedehnung
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Stabspannung], [$sigma=N/A$], [Zentrisch, ausreichend fern von Lasteinleitung; N/mm²],
  [Stabdehnung], [$epsilon=N/(E A)+alpha_T Delta T$], [Linear elastisch; Zug positiv],
  [Längenänderung], [$Delta l=integral epsilon(x) dif x$], [Konstant: $N l/(E A)+alpha_T Delta T l$],
+ [Verträglichkeit], [$X l^3/(3E I)=alpha_T Delta T a-X a/(E A)$], [Erwärmter Druckstab unter Kragarmende; X als Druckbetrag],)
+=== Formeln zu TM2 Kapitel 2 · Spannungszustand und Mohrscher Kreis
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Hauptspannungen], [$sigma_(1,2)=(sigma_x+sigma_y)/2 plus.minus sqrt(((sigma_x-sigma_y)/2)^2+tau^2)$], [Ebener Zustand; dritte Hauptspannung 0],
  [Hauptrichtung], [$tan(2phi)=2tau/(sigma_x-sigma_y)$], [Zuordnung durch Einsetzen prüfen],
  [Kreis], [$C=((sigma_x+sigma_y)/2,0)$], [P=(σₓ,τ), P′=(σᵧ,−τ); gleicher Maßstab],
- [Schubmaximum], [$tau_("max")=(sigma_("größte")-sigma_("kleinste"))/2$], [Für räumliches Maximum alle drei Hauptwerte],
+ [Schubmaximum], [$tau_("max")=(sigma_("größte")-sigma_("kleinste"))/2$], [Für räumliches Maximum alle drei Hauptwerte],)
+=== Formeln zu TM2 Kapitel 3 · Dehnungen, Elastizitätsgesetz und DMS
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Hauptdehnungen], [$epsilon_(1,2)=(epsilon_x+epsilon_y)/2 plus.minus sqrt(((epsilon_x-epsilon_y)/2)^2+(gamma/2)^2)$], [Im Kreis γ/2 verwenden, nicht γ],
  [DMS], [$epsilon_phi=(epsilon_x+epsilon_y)/2+(epsilon_x-epsilon_y)/2 cos(2phi)+gamma/2 sin(2phi)$], [Drei unabhängige Messrichtungen],
  [Hooke eben], [$sigma_x=E(epsilon_x+nu epsilon_y)/(1-nu^2)$, $tau=G gamma$], [σz=0; isotrop, elastisch; Temperaturanteil abziehen],
  [Querdehnung], [$epsilon_z=-nu(sigma_x+sigma_y)/E$], [Ebener Spannungszustand, ohne Temperaturanteil],
- [Schubmodul], [$G=E/(2(1+nu))$], [Isotropes linear elastisches Material],
+ [Schubmodul], [$G=E/(2(1+nu))$], [Isotropes linear elastisches Material],)
+=== Formeln zu TM2 Kapitel 4 · Biegung, FTM und Biegelinie
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Biegespannung], [$sigma=M_y z/I_y$, $W_y=I_y/max(abs(z))$], [Gerade Biegung um Schwerpunkt-Hauptachse],
  [Rechteck / Kreis], [$I_y=b h^3/12$; Kreis $I=pi R^4/4$], [Eigene Schwerpunktachsen; mm⁴],
  [Steiner], [$I_y=sum s_i(I_(y i,S)+A_i d_(z i)^2)$], [sᵢ=−1 für Aussparungen; positive Teilflächen Aᵢ],
@@ -2014,8 +2035,9 @@ Die Vorzeichen folgen dem jeweils gezeichneten Freikörperbild bzw. der lokalen 
  [Biegelinie], [$w''=-M/(E I)$], [Kleine Verformung, Bernoulli-Balken],
  [Vierfach integrieren], [$E I w^(4)=q$], [Nur bei konstantem EI; je Bereich 4 Konstanten],
  [Kragarm, Endkraft], [$abs(w_L)=abs(F)L^3/(3E I)$], [Konstantes EI, Endkraft quer],
- [Kragarm, Endmoment], [$abs(w_L)=abs(M_0)L^2/(2E I)$], [Moment tatsächlich am Ende],
- [Verträglichkeit], [$X l^3/(3E I)=alpha_T Delta T a-X a/(E A)$], [Erwärmter Druckstab unter Kragarmende; X als Druckbetrag],
+ [Kragarm, Endmoment], [$abs(w_L)=abs(M_0)L^2/(2E I)$], [Moment tatsächlich am Ende],)
+=== Formeln zu TM2 Kapitel 5 · Torsion: Spannung und Verdrehung
+#tab(columns: (1fr, 1.8fr, 1.7fr), th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Torsion allgemein], [$tau_("max")=abs(M_T)/W_T$, $Delta theta=integral M_T/(G I_T) dif x$], [Winkel in rad; geeignetes Querschnittsmodell],
  [Vollwelle], [$I_T=pi d^4/32$, $W_T=pi d^3/16$], [Kreis; konzentrischer Ring durch Subtraktion],
  [Geschlossen dünn], [$W_T=2A_m t_("min")$, $I_T=4A_m^2/(integral.cont dif s/t)$], [Einzellig; Mittellinie; τmax an dünnster Wand],
