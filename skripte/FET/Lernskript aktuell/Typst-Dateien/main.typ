@@ -12,7 +12,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 06.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 12.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -91,6 +91,15 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "carnot-ts-rechteck": "abbildungen/carnot-ts-rechteck.svg",
+  "r134a-angabe": "abbildungen/r134a-angabe.svg",
+  "a420-angabe": "abbildungen/a420-angabe.svg",
+  "map-diagramme": "abbildungen/map-diagramme.svg",
+  "carnot-vorlesung": "abbildungen/carnot-vorlesung.svg",
+  "plank-vorlesung": "abbildungen/plank-vorlesung.svg",
+  "rankine-vorlesung": "abbildungen/rankine-vorlesung.svg",
+  "ts-zustandsflaechen": "abbildungen/ts-zustandsflaechen.svg",
+  "ts-prozessflaechen": "abbildungen/ts-prozessflaechen.svg",
   "kochtopf-phasen": "abbildungen/kochtopf-phasen.svg",
   "kochtopf-energie": "abbildungen/kochtopf-energie.svg",
   "turbine-hs-vergleich": "abbildungen/turbine-hs-vergleich.svg",
@@ -178,6 +187,15 @@
 )
 
 #let bilddeutungen = (
+  "carnot-ts-rechteck": (titel: "Bild lesen", body: [Die Temperatur steht senkrecht, die spezifische Entropie waagerecht. Der Weg 1→2→3→4→1 läuft rechtsherum; oben wird Wärme zugeführt, unten abgeführt. Weil beide Isothermen dieselbe Entropiebreite haben, bleibt ihre Flächendifferenz als Nettoarbeit.]),
+  "r134a-angabe": (titel: "Bild lesen", body: [Der blaue Kreis markiert den gesuchten R134a-Zustand; die farbigen Beispiel-Isolinien laufen nicht sämtlich durch diesen Punkt. Die Abbildung gehört ausschließlich zu Aufgaben.typ.]),
+  "a420-angabe": (titel: "Bild lesen", body: [Die Originalaufgabe enthält Zustandsvorgaben, Zielpunkte und Isolinien für die selbstständige Diagrammauswertung. Die Abbildung gehört ausschließlich zu Aufgaben.typ.]),
+  "map-diagramme": (titel: "Bild lesen", body: [Vom Zentrum führen vier Äste zu Flächen, Gibbs, realen Bauteilkreisläufen und dem Carnot-Vergleich. Zuerst die Achsen lesen, dann den Weg und seine Voraussetzungen einordnen.]),
+  "carnot-vorlesung": (titel: "Bild lesen", body: [Im T-s-Diagramm liegen die beiden Isothermen waagerecht und die beiden Isentropen senkrecht. Die rechteckige Umlauffläche ist die abgegebene Nettoarbeit; Wärmezufuhr und Wärmeabfuhr haben dieselbe Entropiebreite.]),
+  "plank-vorlesung": (titel: "Bild lesen", body: [Drossel, Verdampfer, Verdichter und Verflüssiger bilden einen linksläufigen Prozess. Im lg(p)-h-Bild ist die Drossel senkrecht, weil h konstant bleibt. Der reale Verdichter endet bei größerer Enthalpie als der isentrope Vergleich.]),
+  "rankine-vorlesung": (titel: "Bild lesen", body: [Links stehen Pumpe, Dampferzeuger, Turbine und Kondensator. Im T-s-Bild läuft der Weg rechtsherum. Die reale Expansion endet rechts vom isentropen Vergleich und liefert weniger Arbeit.]),
+  "ts-zustandsflaechen": (titel: "Bild lesen", body: [Unter einer Isochore liefert die Fläche Δu, unter einer Isobare Δh. Die rote Sättigungsstrecke zeigt h″−h′. Für Energieflächen ist die Temperatur ab dem absoluten Nullpunkt in Kelvin zu zählen.]),
+  "ts-prozessflaechen": (titel: "Bild lesen", body: [Waagerecht steht s, senkrecht T. Die Flächen zeigen Wärme plus Dissipation. Kühlung kann die Erzeugung übertreffen; die Entropie des Fluids sinkt dann trotz Reibung.]),
   "kochtopf-phasen": (titel: "Bild lesen", body: [Links sinkt der Flüssigkeitsspiegel im starren Gefäß. Der frei werdende Raum wird zum Dampfraum; ein kleiner Teil des gebildeten Dampfes bleibt deshalb im Topf. Rechts stehen Druck nach oben und spezifisches Volumen nach rechts. Bei gleichem Druck und gleicher Sättigungstemperatur wandert der Gemischzustand nach rechts: Die Masse sinkt bei festem Gesamtvolumen. Die Phasengrenzen sind schematisch.]),
   "kochtopf-energie": (titel: "Bild lesen", body: [Die linke Säule zeigt die zugeführte Wärmeleistung und darüber den Beitrag aus der abnehmenden Speicherenergie. Zusammen ergeben sie die rechte Säule des ausströmenden Energiestroms. Grau ist keine zusätzliche äußere Zufuhr: Die gesamte innere Energie im Topf nimmt ab. Alle Höhen zeigen Leistungen; Werte aus Ü 3.6, ungerundet nachgerechnet.]),
   "turbine-hs-vergleich": (titel: "Bild lesen", body: [Waagerecht steht die spezifische Entropie, senkrecht die Enthalpie. Von ① führt der isentrope Vergleich senkrecht zum niedrigsten verglichenen Enthalpiewert am Enddruck. Der reale Austritt liegt rechts und höher. Bei Blockade bleibt die Enthalpie gleich, die Entropie steigt stärker. Die graue Isobare verbindet Tabellenstützstellen bei 10 bar; die gestrichelten Verbindungen zeigen nur den Vergleich der Endzustände.]),
@@ -277,7 +295,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand: *06.11.2026*. Eingearbeitet sind die belegten Vorlesungen bis „Ende VL 4.11.“, Tutorium 29.10. und Übungsrechnungen 30.10. Die neuen Musterlösungen zu Ü 2.11 und Ü 3.6 ergänzen das Tripelgefäß und den instationären Dampfkochtopf. Aufgaben, Quiz, Karten und Hörfassung sind abgeglichen; die ältere Altklausurzuordnung bleibt erhalten.
+Stand: *12.11.2026*. Ergänzt sind die Vorlesungsseiten vom 10.11. (Zustandsdiagramme, Flächendeutung, Rankine- und Plank-Prozess) und die überlieferten Carnot-Seiten vom 11.11. Aufgaben und Formelsammlung sind abgeglichen. Nicht dokumentierte Zwischenfolien zur Exergie werden nicht als behandelt vorausgesetzt.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -287,7 +305,7 @@ Stand: *06.11.2026*. Eingearbeitet sind die belegten Vorlesungen bis „Ende VL 
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; N28 = „Skript FET.pdf“, VL 28.10.; N03 = VL 3.11.; N04 = VL 4.11.; T29 = Tutorium 29.10.; R30 = Übungsrechnungen 30.10.; M13 = Musterlösung Ü 2.13 (5 Seiten); M32 = Musterlösung Ü 3.2 (1 Seite); M211 = Musterlösung Ü 2.11 (1 Seite); M36 = Musterlösung Ü 3.6 (3 Seiten); V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* N10 = „Skript FET VL 10.11.pdf“ (13 PDF-Seiten); N11 = „Skript FET VL11.11.pdf“ (2 PDF-Seiten); I12 = Import vom 12.11.2026 (Zuordnung in Unterlagen/Bestandsaufnahme/Import_2026-11-12.json); L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; N28 = „Skript FET.pdf“, VL 28.10.; N03 = VL 3.11.; N04 = VL 4.11.; T29 = Tutorium 29.10.; R30 = Übungsrechnungen 30.10.; M13 = Musterlösung Ü 2.13 (5 Seiten); M32 = Musterlösung Ü 3.2 (1 Seite); M211 = Musterlösung Ü 2.11 (1 Seite); M36 = Musterlösung Ü 3.6 (3 Seiten); V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -322,7 +340,7 @@ Die Gesamtübersicht *Big Picture* verbindet Thermodynamik und Strömungsmechani
 
 #heading(level: 2, outlined: false)[Ältere Altklausurübersicht · Thermodynamik]
 Die Unterlage K ordnet Aufgaben aus alten Prüfungen zu. Ihr Stand ist *26.11.2010 (WS 10/11)*. Sie empfiehlt, bei den jüngeren Prüfungen dieser damaligen Auswahl zu beginnen. Die folgende Zuordnung übernimmt die Angaben vollständig; *PF* bedeutet Prüfung, *LN* Leistungsnachweis.
-#note("Zeitlich einordnen", [Diese Liste dokumentiert die damalige Auswahl. Die Prüfungsform und der verbindliche Umfang für WS 2026/27 bleiben offen. Die hier genannten Originalprüfungen von 1999 bis 2006 liegen im aktuellen FET-Bestand nicht vor; die vorhandenen späteren Klausuren bleiben zusätzliche Quellen.], fill: sand)
+#note("Zeitlich einordnen", [Diese Liste dokumentiert die damalige Auswahl. Die Prüfungsform und der verbindliche Umfang für WS 2026/27 bleiben offen. Die hier genannten Originalprüfungen von 1999 bis 2006 liegen seit dem Import vom 12.11.2026 unter Altklausuren vor. Die historische Auswahl ersetzt keine aktuelle Prüfungsfreigabe.], fill: sand)
 #tab(columns: (1.5fr, 1.5fr, 0.8fr),
  th([Prüfung laut K], [Kurzfragen laut K], [Rechnen]),
  [WS 05/06 PF], [1–12; 21], [A1],
@@ -335,7 +353,7 @@ Die Unterlage K ordnet Aufgaben aus alten Prüfungen zu. Ihr Stand ist *26.11.20
  [WS 99/00 LN], [1–9; 14], [A1],
  [WS 99/00 Übungsklausur], [1–11; 14], [A1],
 )
-#src[K, PDF-S. 1, Abschnitt a; Abgleich der vorhandenen Prüfungsdateien am 24.10.2026.]
+#src[K, PDF-S. 1, Abschnitt a; Abgleich der vorhandenen Prüfungsdateien am 12.11.2026.]
 
 #pagebreak()
 #heading(level: 2, outlined: false)[Ältere Altklausurübersicht · Strömungsmechanik]
@@ -1450,6 +1468,8 @@ Für die elektrische Kochplatte gilt $P_"el"=dot(Q)/eta_"ges"$. Der Gesamtwirkun
  idee(<a-4-2>, [Entropie wird transportiert und erzeugt.], [Wärme und Stoff tragen sie über Grenzen; innere Erzeugung ist niemals negativ.]),
  idee(<a-4-3>, [Eine Entropiedifferenz gehört zu zwei Zuständen.], [Stoffmodell, Kelvin und konsistente Tabellen bestimmen den Rechenweg.]),
  idee(<a-4-4>, [Ein Diagramm zeigt Bedingungen als Linien.], [Erst Achsen und konstant gehaltene Größe nennen, dann den Zustandsweg lesen.]),
+ idee(<a-4-5>, [Eine Fläche braucht eine Bedingung.], [Wärme, Dissipation und Zustandsdifferenzen unterscheiden.]),
+ idee(<a-4-7>, [Kreisprozesse verbinden Wärme und Arbeit.], [Rankine, Plank und Carnot anhand der Richtung und der Bauteile erklären.]),
 )
 #karte((1fr, auto, 1fr),
  chunk([Richtung prüfen], [reversibel · irreversibel · unmöglich], ziel: <a-4-1>), pfeil(), chunk([Entropie bilanzieren], [Transport + Erzeugung], ziel: <a-4-2>),
@@ -1499,7 +1519,8 @@ Für einen einfachen kompressiblen Stoff bei fester Zusammensetzung verbindet di
 #form[$ T dif s=dif u+p dif v=dif h-v dif p $]
 Mit J/kg, Pa und m³/kg ergibt der Zähler J/kg und nach Division durch K die Einheit J/(kg K). Die Zustandsbeziehung liefert Entropieunterschiede zwischen passenden Gleichgewichtszuständen. Sie behauptet nicht, dass der tatsächliche Prozess zwischen ihnen reversibel gewesen sein muss.
 #bild("map-entropie", [Mindmap: Entropie als Zustand, Transport und Erzeugung. Eigene Darstellung.], height: 45mm)
-#src[N04, PDF-S. 5–7; BT 5.2, Gl. (5.11), S. 133 / PDF-S. 153. Voraussetzungen der Stoffbeziehung ausdrücklich ergänzt.]
+#note("Mitschrift vom 10.11. präzisiert", [*Starr* bedeutet konstantes Volumen; daraus folgt nicht allgemein Reibungsfreiheit oder $j=0$. Auch ein Rührer im starren Gefäß kann Entropie erzeugen. Nur wenn zusätzlich keine innere Dissipation vorliegt, fällt dieser Beitrag weg. Eine Entropieabnahme durch Kühlung ist dennoch möglich, wenn mehr Entropie abgeführt als erzeugt wird.], fill: sand)
+#src[N04, PDF-S. 5–7; N10, PDF-S. 1 (präzisierte Mitschrift); BT 5.2, Gl. (5.11), S. 133 / PDF-S. 153. Voraussetzungen der Stoffbeziehung ausdrücklich ergänzt.]
 #hoch(<a-4>, [Kapitelübersicht])
 
 #pagebreak()
@@ -1550,8 +1571,61 @@ Eine Fläche im T-s-Diagramm ist nur bei einem *reversiblen* Weg unmittelbar die
 #src[N03, PDF-S. 1–2; N04, PDF-S. 11 und Ende VL 4.11.; N28, PDF-S. 4; ergänzend BT 5.3, S. 138–140 / PDF-S. 158–160.]
 #hoch(<a-4>, [Kapitelübersicht])
 
-*Der Zusammenhang in Kapitel 4.* Reversibilität verlangt die gemeinsame Rückkehr von System und Umgebung. Die Entropiebilanz trennt dafür Transport und nichtnegative Erzeugung. Stoffmodelle und Tabellen liefern die Zustandsdifferenzen; die Diagramme machen ihren Zusammenhang mit Druck, Temperatur und Enthalpie sichtbar. Zusammen mit dem ersten Hauptsatz entsteht so eine doppelte Prüfung: Der Energieausgleich muss stimmen und die Entropieerzeugung darf nicht negativ sein.
 
+#pagebreak()
+== 4.5 Ergänzung 10.11. · Flächen im T-s-Diagramm <a-4-5>
+Eine Fläche ist erst dann eine Energieaussage, wenn du den Prozessweg und seine Voraussetzungen kennst. Wie bei einer Landkarte genügt die Form einer Linie allein nicht: Auch die Achsen und ihre Einheiten gehören zur Bedeutung.
+#bild("ts-prozessflaechen", [Wärme und Dissipation im T-s-Diagramm. N10, PDF-S. 7 / Folie 04-12.], height: 73mm)
+Im Folienmodell des einfach kompressiblen Fluids gilt mit der spezifischen Dissipationsarbeit $j_12>=0$:
+#form[$ integral_1^2 T dif s=q_12+j_12 $]
+$T$ in K und $s$ in kJ/(kg K) ergeben kJ/kg. Bei reibungsfreiem, intern reversiblem Verlauf ist $j=0$ und die Fläche entspricht $q$. Adiabat mit Reibung ist $q=0$ und die Fläche entspricht $j$. Bei Kühlung können sich $q<0$ und $j>0$ gerade aufheben: Dann ist der Verlauf isentrop, aber nicht reversibel.
+#note("Gültigkeit", [Die allgemeine Entropiebilanz verwendet die tatsächlichen Grenztemperaturen der Wärmekontakte. Die Foliengleichung $T dif s=delta q+delta j$ setzt die dort modellierte lokale Fluidtemperatur und eine passende Aufteilung voraus; $j$ ist nicht pauschal jede Differenz zweier Turbinenleistungen.], fill: sand)
+#src[N10, PDF-S. 1–3 und 7 / Folie 04-12; Unterscheidung von lokaler Folienbeziehung und allgemeiner Bilanz aus 4.2 ergänzt.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#pagebreak()
+== 4.6 Ergänzung 10.11. · Isochore, Isobare und Phasengrenze <a-4-6>
+Gibbs verbindet dieselbe Fläche mit Zustandsgrößen. Deshalb kann eine Flächenaussage auch gelten, wenn der Wärmeaustausch nicht allein aus der Fläche ablesbar ist.
+#bild("ts-zustandsflaechen", [Zustandsgrößen aus Flächen. N10, PDF-S. 8 / Folie 04-13.], height: 75mm)
+#form[$ v="konstant": integral_1^2 T dif s=u_2-u_1 quad p="konstant": integral_1^2 T dif s=h_2-h_1 $]
+Die erste Beziehung folgt aus $T dif s=dif u+p dif v$ mit $dif v=0$, die zweite aus $T dif s=dif h-v dif p$ mit $dif p=0$. Beide beschreiben einen Weg auf der jeweiligen Gleichgewichtslinie. Im Zweiphasengebiet eines reinen Stoffes sind Isobare und Isotherme dieselbe Sättigungsstrecke:
+#form[$ h''-h'=T_s(s''-s') quad frac(dif p_s,dif T)=frac(h''-h',T(v''-v'))=frac(s''-s',v''-v') $]
+Dies ist die *Clausius-Clapeyron-Gleichung* entlang der Phasengrenze. Bei Verdampfung sind Zähler und Volumendifferenz positiv: Mit steigender Sättigungstemperatur steigt der Sättigungsdruck. Für die Schmelzkurve von Wasser ist die Volumenänderung andersherum; die Steigung kann negativ sein.
+#note("Fehler vermeiden", [Die Folien zeichnen oft °C an die T-Achse. Eine Energiefläche muss trotzdem von *0 K* aus gemessen werden. Rechne deshalb die Achsenwerte zuerst um: $T/"K"=vartheta/"°C"+"273,15"$, dann integrieren.], fill: sand)
+#src[N10, PDF-S. 8 und 11 / Folien 04-13 und 04-16; eigene Ableitung aus Gibbs.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#pagebreak()
+== 4.7 Ergänzung 10.–11.11. · Rankine, Plank und Carnot <a-4-7>
+Kreisprozesse setzen die einzelnen Bauteilbilanzen zu einem Umlauf zusammen. Eine Wärmekraftmaschine gibt Arbeit ab; eine Kältemaschine oder Wärmepumpe braucht Arbeit, um Wärme vom kalten zum warmen Niveau zu bringen.
+=== 4.7.1 Rankine: Dampf verrichtet Arbeit <a-4-7-1>
+#bild("rankine-vorlesung", [Clausius-Rankine-Prozess. N10, PDF-S. 12 / Folie 04-17.], height: 61mm)
+Die Pumpe hebt den Druck der Flüssigkeit an. Der Dampferzeuger erwärmt, verdampft und überhitzt bei näherungsweise konstantem Druck. Die Turbine expandiert im Idealvergleich isentrop; im realen adiabaten Fall steigt $s$. Der Kondensator führt Wärme ab und verflüssigt das Wasser. Die Arbeit der Pumpe wird von der Turbinenabgabe abgezogen.
+#form[$ eta_"th"=frac(abs(w_"T")-w_"P",q_"zu")=1-frac(abs(q_"ab"),q_"zu") $]
+Stationärer Umlauf; äußere Energieänderungen vernachlässigt. Alle spezifischen Energiebeiträge in kJ/kg; $w_"P">0$, $w_"T"<0$ in der Zufuhrkonvention.
+
+#pagebreak()
+=== 4.7.2 Plank: Mit Arbeit Wärme anheben <a-4-7-2>
+#bild("plank-vorlesung", [Plank-Prozess der Vorlesung. N10, PDF-S. 13 / Folie 04-18.], height: 63mm)
+Im *Verdampfer* nimmt das Kältemittel bei niedrigem Druck Wärme auf. Der *Verdichter* braucht Arbeit und hebt den Druck an. Im *Verflüssiger* gibt das Kältemittel Wärme bei höherem Druck ab. Die *Drossel* senkt den Druck ohne technische Arbeitsabgabe; im Modell bleibt die Enthalpie konstant. Eine Drossel ist auch im sonst idealisierten Kreislauf irreversibel.
+#form[$ epsilon_"K"=frac(q_"kalt",w_"zu") quad epsilon_"WP"=frac(abs(q_"warm"),w_"zu")=epsilon_"K"+1 $]
+Diese *Leistungszahlen* vergleichen den jeweils gewünschten Wärmestrom mit dem Arbeitsaufwand; sie dürfen größer als eins sein. Die letzte Beziehung verlangt dieselben Systemgrenzen und vollständige Bilanzierung.
+
+#pagebreak()
+=== 4.7.3 Carnot: reversibler Vergleich zwischen zwei Temperaturen <a-4-7-3>
+#bild("carnot-ts-rechteck", [Carnot im T-s-Diagramm. Eigene schematische Darstellung nach N11, PDF-S. 1–2; nicht maßstäblich.], height: 52mm)
+Die überlieferten Seiten zeigen vier Schritte: 1→2 reversibel adiabate Verdichtung, 2→3 isotherme Wärmezufuhr bei $T_H$, 3→4 reversibel adiabate Expansion, 4→1 isotherme Wärmeabfuhr bei $T_K$. Auf den Isentropen wird keine Wärme übertragen. Die beiden Isothermen haben dieselbe Entropiebreite $Delta s$.
+#form[$ q_"zu"=T_H Delta s quad abs(q_"ab")=T_K Delta s quad eta_C=1-frac(T_K,T_H) $]
+$T_H>T_K>0$ in *Kelvin*. Die letzte Gleichung folgt direkt aus der Kreisprozessbilanz und der Rechteckfläche. Sie ist der reversible Vergleich für genau zwei konstante Temperaturniveaus; reale Irreversibilität senkt die erreichbare Arbeitsausbeute.
+#note("★ Klausur · von dir markiert", [N10, PDF-S. 3, nennt ausdrücklich „Aufgabe 1 Prüfung = Entwicklung Zustandsdiagramm (eher Ts-Diagramm)“. Benenne Achsen, Zustände, Laufrichtung, konstante Größen und die Bedeutung der Flächen. N11 zeigt den Carnot-Weg; die im annotierten Auszug fehlenden Zwischenfolien 04-19 bis 04-24 belegen keinen weiteren Stoffumfang.])
+#bild("map-diagramme", [Mindmap: Zustandsdiagramme und Kreisprozesse. Eigene Darstellung.], height: 46mm)
+#src[N10, PDF-S. 12–13 / Folien 04-17–18; N11, PDF-S. 1–2 / Folie 04-25 und Mitschrift. Leistungszahlen und Carnot-Formel aus den gezeigten Energiebilanzen bzw. Flächen hergeleitet (eigene Ergänzung).]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#block(breakable: false)[
+*Der Zusammenhang in Kapitel 4.* Reversibilität verlangt die gemeinsame Rückkehr von System und Umgebung. Die Entropiebilanz trennt dafür Transport und nichtnegative Erzeugung. Stoffmodelle und Tabellen liefern die Zustandsdifferenzen; die Diagramme machen ihren Zusammenhang mit Druck, Temperatur und Enthalpie sichtbar. Die neuen Flächenbeziehungen erklären Wärme, Dissipation und Zustandsdifferenzen. Rankine und Plank ordnen die Bauteile zu Kreisprozessen; Carnot liefert den reversiblen Temperaturvergleich. Zusammen mit dem ersten Hauptsatz entsteht so eine doppelte Prüfung: Der Energieausgleich muss stimmen und die Entropieerzeugung darf nicht negativ sein.
+#src[N04, PDF-S. 4–11; N10, PDF-S. 7–13; N11, PDF-S. 1–2. Eigene Zusammenführung.]
+]
 
 #pagebreak(weak: true)
 = Anhang
@@ -1666,6 +1740,10 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Entropie, Phasenwechsel], [$s''-s'=(h''-h')/T_s$], [Sättigungsgleichgewicht desselben Druck-/Temperaturpunkts.],
  [Turbinen-Gütegrad], [$eta_("is,T")=(h_1-h_2)/(h_1-h_(2s))$], [Adiabat, gleiche Einlassdaten und gleicher Enddruck; $s_(2s)=s_1$.],
  [T-s-Fläche], [$q_"rev"=integral T dif s$], [Reversibler Weg; bei Irreversibilität keine ungeprüfte Wärmedeutung.],
+ [T-s-Prozessfläche], [$integral T dif s=q+j$], [Lokales Folienmodell mit passender Wärme-/Dissipationsaufteilung; T in K.],
+ [T-s-Zustandsfläche], [$integral T dif s=Delta u$ bei $dif v=0$; $=Delta h$ bei $dif p=0$], [Gibbs, Gleichgewichtsweg auf Isochore bzw. Isobare.],
+ [Carnot], [$eta_C=1-T_K/T_H$], [Reversibler Kreisprozess zwischen zwei konstanten Kelvin-Temperaturen.],
+ [Leistungszahlen], [$epsilon_"K"=q_"kalt"/w_"zu"$; $epsilon_"WP"=epsilon_"K"+1$], [Stationärer Kreisprozess, gleiche Systemgrenze und vollständige Bilanz.],
  [Fester Stoff], [$u_2-u_1=c Delta T$], [Inkompressibel; $c$ in J/(kg K).],
 )
 

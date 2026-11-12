@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 12.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -231,7 +231,7 @@
 
 #note("Dein Feynman-Schritt", [Erkläre ohne Vorlage: *Woher kommt das Geld? Wann wird es gebraucht? Warum genügt Gewinn allein nicht?* Zeichne die Zahlungsströme und prüfe Deine Erklärung anschließend an den Beispielen und Aufgaben.])
 
-*Stand 05.11.2026:* Teil A ist bis Folie 78 einschließlich Aktienkennzahlen, Working Capital und Finanzplanungsübungen eingearbeitet. Kapitel 2 enthält Fremdfinanzierung bis Folie 116 aus den Vorlesungen vom 28.10. und 04.11.; die Glasspinnerei bleibt erhalten. Aufgabe 1 der Altklausur 2017 ergänzt Tilgung, Effektivzins und Sicherheitenbegriffe; Aufgabe 2 folgt mit Kapitel C. Aufgaben, Quiz, Karteikarten und Hörfassung sind gemeinsam abgeglichen. Folienwidersprüche und historische Annahmen bleiben sichtbar gekennzeichnet.
+*Stand 12.11.2026:* Teil A ist bis Folie 78 einschließlich Aktienkennzahlen, Working Capital und Finanzplanungsübungen eingearbeitet. Kapitel 2 enthält Fremdfinanzierung bis Folie 116 aus den Vorlesungen vom 28.10. und 04.11.; die Glasspinnerei bleibt erhalten. Aufgabe 1 der Altklausur 2017 ergänzt Tilgung, Effektivzins und Sicherheitenbegriffe; Aufgabe 2 folgt mit Kapitel C. Aufgaben und Formelsammlung sind abgeglichen. Der vollständige annotierte Export vom 12.11. bestätigt weiterhin die Grenze „Ende VL 4.11.“ auf Folie 116; späterer Stoff wird durch diesen Export nicht als behandelt belegt. Folienwidersprüche und historische Annahmen bleiben sichtbar gekennzeichnet.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -241,7 +241,7 @@
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = „Skript Finanzierung.pdf“; N1 = „1VL Finanzierung.pdf“; N2 = „VL 14.10.pdf“; N28 = „Skript Finanzierung.pdf“ im Notizenordner (VL 28.10., 17 PDF-Seiten, Folien 53–86); N04 = „Skript Finanzierung VL 4.11.pdf“ (17 PDF-Seiten, Folien 85–116 mit handschriftlicher Zusatzseite auf PDF-S. 9); M = „eigenes Skript Finanzierung.pdf“; BAF = „01VL_BAF Finanzierung.pdf“; G = „Fallstudie Glasspinnerei Straubing AG.pdf“; L15 = altes Claude-Lernskript, Stand 15.10.2026; K = „Klausur 2017.pdf“ (Fotos von Teil II, Klausurseiten 5–10; Hochschule und Prüfer sind auf den Seiten nicht erkennbar; die handschriftlichen Antworten und Korrekturen im Scan werden nicht übernommen). „PDF-S.“ zählt ab der ersten Dateiseite. V hat zwei Folien pro PDF-Seite. Buchangaben auf Folien sind Sekundärnachweise; Bücher wurden nicht verwendet. Gesetzeslinks, BGH, BIS, Ratingagenturen und EZB sind nur zur ausdrücklich markierten Begriffs-/Fehlerklärung ergänzt (Abrufdatum jeweils am Abschnitt). „Nachschlagen“ führt mit automatisch berechneter Seite in dieses Lernskript.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* N12 = „Skript Finanzierung komplett.pdf“ im Notizenordner (165 PDF-Seiten; enthält eine zusätzliche Handschriftseite; Folien 117–328 entsprechen N12 PDF-S. 60–165 bzw. V PDF-S. 59–164); V = „Skript Finanzierung.pdf“; N1 = „1VL Finanzierung.pdf“; N2 = „VL 14.10.pdf“; N28 = „Skript Finanzierung.pdf“ im Notizenordner (VL 28.10., 17 PDF-Seiten, Folien 53–86); N04 = „Skript Finanzierung VL 4.11.pdf“ (17 PDF-Seiten, Folien 85–116 mit handschriftlicher Zusatzseite auf PDF-S. 9); M = „eigenes Skript Finanzierung.pdf“; BAF = „01VL_BAF Finanzierung.pdf“; G = „Fallstudie Glasspinnerei Straubing AG.pdf“; L15 = altes Claude-Lernskript, Stand 15.10.2026; K = „Klausur 2017.pdf“ (Fotos von Teil II, Klausurseiten 5–10; Hochschule und Prüfer sind auf den Seiten nicht erkennbar; die handschriftlichen Antworten und Korrekturen im Scan werden nicht übernommen). „PDF-S.“ zählt ab der ersten Dateiseite. V hat zwei Folien pro PDF-Seite. Buchangaben auf Folien sind Sekundärnachweise; Bücher wurden nicht verwendet. Gesetzeslinks, BGH, BIS, Ratingagenturen und EZB sind nur zur ausdrücklich markierten Begriffs-/Fehlerklärung ergänzt (Abrufdatum jeweils am Abschnitt). „Nachschlagen“ führt mit automatisch berechneter Seite in dieses Lernskript.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>

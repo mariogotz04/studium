@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 05.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 12.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,8 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "db-stufentreppe": "abbildungen/db-stufentreppe.svg",
+  "map-db-stufen": "abbildungen/map-db-stufen.svg",
   "kritisch-erweiterung": "abbildungen/kritisch-erweiterung.svg",
   "map-investitionskosten": "abbildungen/map-investitionskosten.svg",
   "map-kvr": "abbildungen/map-kvr.svg",
@@ -120,6 +122,8 @@
 )
 
 #let bilddeutungen = (
+  "db-stufentreppe": (titel: "Bild lesen", body: [Von links nach rechts werden die fixen Kosten der jeweils passenden Ebene abgezogen. Beiträge mehrerer Produkte werden vor dem Abzug ihrer gemeinsamen Gruppenkosten addiert. Die Stufen sind eine Ordnung von Beträgen, keine Zeitachse.]),
+  "map-db-stufen": (titel: "Bild lesen", body: [Die Äste verbinden den Beitrag jedes Produkts mit den verursachungsnahen Fixkostenstufen. Entscheidungen prüfen die Veränderung; bei einer knappen Ressource zählt zusätzlich ihr Verbrauch.]),
   "kritisch-erweiterung": (titel: "Bild lesen", body: [Waagerecht steht die gemeinsame Jahresmenge, senkrecht die Jahreskosten. Blau ist Angebot a mit höherem Fixkostenstart, aber geringerer Steigung. Orange ist b. Unterhalb von 7 344,8276 Stück ist b günstiger, oberhalb a. Der Punkt liegt innerhalb der Kapazität von 12 000 Stück; der hier gleiche Stückerlös ist nicht als Linie gezeichnet.]),
   "map-investitionskosten": (titel: "Bild lesen", body: [Beginne im dunkelgrünen Zentrum und folge den vier hellblauen Ästen. Der Kaufbetrag wird nicht als voller Jahresaufwand angesetzt. Abschreibung und Zinsen bilden den Kapitaldienst; dazu kommen die Betriebskosten.]),
   "map-kvr": (titel: "Bild lesen", body: [Beginne im dunkelgrünen Zentrum und folge den vier hellblauen Ästen. Ein Kostenurteil braucht gleichwertige Leistung und eine klare Mengenbasis. Kapazität und Absatz begrenzen den Vergleich.]),
@@ -176,7 +180,7 @@
 ]
 #note("Dein Feynman-Schritt", [Erkläre ohne Vorlage: *Was kostet ein weiteres Stück? Was trägt es bei? Wann wird daraus Gewinn?* Zeichne dazu zwei Linien oder einen Geldfluss. Prüfe anschließend Erklärung, Einheiten und Annahmen.])
 
-*Stand 05.11.2026.* Enthalten sind KLR und Deckungsbeitragsrechnung aus VL 1–2 sowie die neuen Unterlagen zu statischen Investitionsverfahren und kritischer Auslastung (unter anderem mit „VL 3.11“ markiert). Kapitel 2 erklärt Kosten-, Gewinn-, Rentabilitäts- und Amortisationsvergleich einschließlich der Rechenkonventionen und geprüften Quellenabweichungen. Aufgaben mit vollständigen Lösungen, Quiz und Karteikarten stehen im Reiter „Lernen“; die Hörfassung deckt beide Kapitel ab. Dynamische Verfahren und technische Controllingkennzahlen sind weiterhin nicht belegt.
+*Stand 12.11.2026.* Enthalten sind KLR und Deckungsbeitragsrechnung aus VL 1–2 sowie die neuen Unterlagen zu statischen Investitionsverfahren und kritischer Auslastung (unter anderem mit „VL 3.11“ markiert). Kapitel 2 erklärt Kosten-, Gewinn-, Rentabilitäts- und Amortisationsvergleich einschließlich der Rechenkonventionen und geprüften Quellenabweichungen. Der Quellenabgleich vom 12.11. ergänzt mehrstufige Deckungsbeiträge, Produktstreichung, Eigenfertigung/Fremdbezug und die Grenzen statischer Verfahren. Aufgaben mit vollständigen Lösungen stehen im Reiter „Lernen“. Dynamische Verfahren und technische Controllingkennzahlen sind weiterhin nicht belegt.
 #src[K und Ü, PDF-S. 1–2; B31, PDF-S. 1–5; S32, PDF-S. 1–3; KR, PDF-S. 1–3; KD, PDF-S. 1–3; C09, PDF-S. 1–5.]
 
 #pagebreak()
@@ -187,7 +191,7 @@
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* B27 = „031 Investitionsrechnung Beispiele Backofen.pdf“, 2 S.; B31 = gleichnamige Fassung mit Suffix „202611030745_48266“, 5 S.; S32 = „032 Aufgabe Investitionsrechnung_202611030745_19484.pdf“, 3 S.; KR = „Datei 04 .pdf“, 4 S., kritische Auslastung; KD = „Datei 05.pdf“, 3 S., Kapitaldienst und Aufgaben 20–21; C09 = „07  Controlling  Aufgaben_202611040747_40352.pdf“, 5 S., Blattüberschrift „09: Aufgaben: KVR, kritische Menge, Gewinnvergleichsrechnung“. Diese sechs Originale liegen unter „Unterlagen/Vorlesungsseiten mit Notizen/“. M = „KLR Skript eigenes Skript.pdf“, 2 S., vom 06.10.2026; K = „KLR.pdf“, 2 S., handschriftliche Grundlagen und VL-1-Übung; Ü = „VL2 Investition und Controlling.pdf“, 2 S., Blatt „08 Übungsaufgaben: KLR“ mit Notizen; Fotos Ü 2–4 = gleichnamige Originalfotos; F = „Formelsammlung.pdf“, 7 S.; A13 = „Controlling SS 13.pdf“; A14 = „Controlling WS 14-15.pdf“; A18 = „Controlling WS18-19.pdf“; L15 = „Stand 15.10.26_Lernskript_Investition.pdf“, 22 S.; L13 = Stand 13.10., 18 S.; L02 = „VL02_KLR_Grundlagen_Lernskript.pdf“, 15 S.; H = zugehörige frühere HTML-Skripte. Die alten Skripte liegen in „Zum Löschen/Alte Lernskript-Stände/“. „PDF-S.“ zählt ab der ersten Dateiseite. Alle „Nachschlagen“-Verweise führen mit automatisch berechneter Seite in dieses Lernskript. Eigene Erklärhilfen und Präzisierungen sind gekennzeichnet.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* W20 = „20 Aufgaben Deckungsbeitragsrechnung_202611110749_03307.pdf“ (3 PDF-Seiten, Originaldateiname mit zwei Leerzeichen nach „Aufgaben“); S11 = „Datei 11.pdf“ (3 PDF-Seiten); S12 = „Datei 12.pdf“ (7 PDF-Seiten); B27 = „031 Investitionsrechnung Beispiele Backofen.pdf“, 2 S.; B31 = gleichnamige Fassung mit Suffix „202611030745_48266“, 5 S.; S32 = „032 Aufgabe Investitionsrechnung_202611030745_19484.pdf“, 3 S.; KR = „Datei 04 .pdf“, 4 S., kritische Auslastung; KD = „Datei 05.pdf“, 3 S., Kapitaldienst und Aufgaben 20–21; C09 = „07  Controlling  Aufgaben_202611040747_40352.pdf“, 5 S., Blattüberschrift „09: Aufgaben: KVR, kritische Menge, Gewinnvergleichsrechnung“. Diese sechs Originale liegen unter „Unterlagen/Vorlesungsseiten mit Notizen/“. M = „KLR Skript eigenes Skript.pdf“, 2 S., vom 06.10.2026; K = „KLR.pdf“, 2 S., handschriftliche Grundlagen und VL-1-Übung; Ü = „VL2 Investition und Controlling.pdf“, 2 S., Blatt „08 Übungsaufgaben: KLR“ mit Notizen; Fotos Ü 2–4 = gleichnamige Originalfotos; F = „Formelsammlung.pdf“, 7 S.; A13 = „Controlling SS 13.pdf“; A14 = „Controlling WS 14-15.pdf“; A18 = „Controlling WS18-19.pdf“; L15 = „Stand 15.10.26_Lernskript_Investition.pdf“, 22 S.; L13 = Stand 13.10., 18 S.; L02 = „VL02_KLR_Grundlagen_Lernskript.pdf“, 15 S.; H = zugehörige frühere HTML-Skripte. Die alten Skripte liegen in „Zum Löschen/Alte Lernskript-Stände/“. „PDF-S.“ zählt ab der ersten Dateiseite. Alle „Nachschlagen“-Verweise führen mit automatisch berechneter Seite in dieses Lernskript. Eigene Erklärhilfen und Präzisierungen sind gekennzeichnet.]
 
 #bild("map-ueberblick", [Die Denkkette des bisher behandelten Stoffs. Eigene Darstellung nach K und Ü, jeweils PDF-S. 1–2.], height: 47mm)
 
@@ -222,6 +226,7 @@ Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu
 #karte((1fr, 1fr),
   chunk([1.7 Kosten aus zwei Perioden], [zwei Beobachtungen → $k_v$ und $K_f$], ziel: <a-1-7>),
   chunk([1.8 Rückwärts rechnen und prüfen], [Zielgewinn · unerreichbare Schwelle · Ansatz für jede Textaufgabe], ziel: <a-1-8>),
+  chunk([1.9 Mehrere Produkte], [Fixkostenstufen · Produktstreichung · Eigenfertigung], ziel: <a-1-9>),
 )
 
 Das Modul fragt im Kern: *Lohnt sich das?* Kapitel 1 legt dafür das Werkzeug. Kapitel 2 nutzt es zum Vergleich von Investitionsalternativen und ergänzt Kapitalbindung und Rückflusszeit. Du trennst Kosten, die mit jedem Stück entstehen, von Kosten, die ohnehin anfallen. Der Deckungsbeitrag zeigt, was jedes Stück zur Deckung der Fixkosten beiträgt, und daraus folgen Gewinnschwelle und Entscheidungen. Die statischen Verfahren bauen auf dieser Trennung auf; ihre verschiedenen Maßstäbe werden in Kapitel 2 verbunden.
@@ -236,6 +241,7 @@ Das Modul fragt im Kern: *Lohnt sich das?* Kapitel 1 legt dafür das Werkzeug. K
   idee(<a-1-4>, [Der Deckungsbeitrag verbindet Stück und Gewinn.], [Jedes Stück bringt $d = p - k_v$; erst wenn die Summe die Fixkosten deckt, entsteht Gewinn.]),
   idee(<a-1-5>, [Die Gewinnschwelle zeigt die nötige Menge.], [$x_"BEP" = K_f / d$, aber nur sinnvoll, wenn Kapazität und Nachfrage sie erlauben.]),
   idee(<a-1-6>, [Entscheiden heißt Änderungen vergleichen.], [Bei Preissenkung oder Zusatzauftrag zählt, wie sich Erlös und Kosten wirklich ändern.]),
+  idee(<a-1-9>, [Fixkosten haben unterschiedliche Ebenen.], [Produkt, Gruppe und Gesamtbetrieb trennen; vermeidbare Kosten statt zugerechneter Verluste prüfen.]),
 )
 
 *So gehst Du jede Textaufgabe an* (Abschnitt 1.8.2)
@@ -495,8 +501,33 @@ Mögliche Stellschrauben sind Preis erhöhen, variable Stückkosten senken, Fixk
 #note("Anschluss an das Modul", [Die Gliederung baut nach dieser Basis statische und dynamische Investitionsverfahren sowie Controlling auf. Schon jetzt kannst Du verstehen, warum eine neue Maschine fixe und variable Kosten verändern kann. Die statischen Verfahren folgen jetzt in Kapitel 2; dynamische Verfahren und weitere Controllingthemen bleiben bis zu belegten Vorlesungsunterlagen offen.])
 #src[Ü 2–4, PDF-S. 2; K, PDF-S. 2, Rückwärtsaufgaben; Gliederung, PDF-S. 1–2; L15, PDF-S. 8–10 und 21–22; L02, PDF-S. 9–10 und 15. Geordneter Lösungsablauf: eigene Zusammenführung.]
 
+#pagebreak()
+== 1.9 Ergänzung 12.11. · Mehrere Produkte und entscheidungsrelevante Kosten <a-1-9>
+Ein Produkt kann in der Vollkostenrechnung einen Verlust zeigen und trotzdem Geld zur Deckung gemeinsamer Kosten beitragen. Wie bei einer gemeinsam gemieteten Werkstatt verschwindet die Miete nicht automatisch, sobald ein Nutzer auszieht. Entscheidend ist, welche Erlöse und Kosten sich durch die Entscheidung tatsächlich ändern; die Analogie gilt nur für die dabei unveränderten gemeinsamen Kosten.
+
+=== 1.9.1 Deckungsbeiträge nach Fixkostenstufen ordnen <a-1-9-1>
+Bei der *mehrstufigen Deckungsbeitragsrechnung* werden Fixkosten nach ihrer Zugehörigkeit abgezogen. *Produktfixkosten* sind einem bestimmten Erzeugnis direkt zugeordnet; *Produktgruppenfixkosten* fallen gemeinsam für eine Gruppe an; *Unternehmensfixkosten* gehören zum gesamten Betrieb.
+#bild("db-stufentreppe", [Fixkosten vom Produkt bis zum Betrieb zuordnen. Eigene Darstellung nach W20, PDF-S. 3, Aufgabe 5.], height: 51mm)
+#form[$ D B_("I",j)=E_j-K_(v,j) quad D B_("II",j)=D B_("I",j)-K_(f,"Produkt",j) $]
+#form[$ D B_("III",g)=sum_(j "in" g) D B_("II",j)-K_(f,"Gruppe",g) quad G=sum_g D B_("III",g)-K_(f,"Unternehmen") $]
+Alle DB und Fixkosten in €/Periode; j bezeichnet das Produkt, g die Gruppe. Jede Kostenposition wird einmal auf der passenden Ebene abgezogen. Die Zählung ist eine *Konvention des Schemas*: Das einstufige Blatt nennt bereits den Betrag nach sämtlichen Fixkosten „DB II“; im mehrstufigen Schema bleiben danach noch Gruppen- und Unternehmensfixkosten abzuziehen.
+
+=== 1.9.2 Ein Produkt streichen: Was fällt wirklich weg? <a-1-9-2>
+Ein negativer Vollkostengewinn ist noch kein Beweis, dass ein Produkt gestrichen werden sollte. Sind ihm gemeinsame Fixkosten zugerechnet, bleiben diese bei der Streichung bestehen. Ohne Absatzverschiebungen zu anderen Produkten und ohne Kapazitätsalternative gilt:
+#form[$ Delta G_"Streichung"=K_(f,"vermeidbar")-D B_("I","entfallend") $]
+Ein positiver DB, der verloren geht, verschlechtert das Ergebnis, solange dadurch keine ausreichend großen Kosten vermieden werden. *Zurechenbar* bedeutet nicht automatisch *sofort abbaubar*: Kündigungsfristen, Restbindungen und der betrachtete Zeitraum bestimmen die Vermeidbarkeit. Im Blatt W20, Aufgabe 2 bleiben die gemeinsamen Fixkosten als Modellannahme bestehen.
+
+=== 1.9.3 Eigenfertigung, Fremdbezug und Prioritäten <a-1-9-3>
+Bei *Eigenfertigung oder Fremdbezug* wird dieselbe Bedarfsmenge entweder selbst hergestellt oder gekauft. Bei freier Kapazität und unveränderten Fixkosten vergleichst du den Einstandspreis mit den zusätzlich entstehenden Fertigungskosten. Ein bereits verrechneter Fixkostenanteil pro Stück ist dann kein zusätzlicher Geldabfluss.
+#form[$ "Vorteil Eigenfertigung"=(e_"Bezug"-k_v)x-K_(f,"zusätzlich") $]
+Beträge in €/Periode; Einstandspreis und variable Kosten in €/Stück. Voraussetzung: gleiche Qualität, Lieferbedingungen, geeignete Kapazität und keine verdrängte bessere Alternative. Bei knapper Kapazität gehören entgehende Deckungsbeiträge als *Opportunitätskosten* in den Vergleich.
+#note("Reihenfolge braucht einen Maßstab", [Eine Rangliste nach Stück-DB ist nur eine Rangliste in €/Stück. Ohne Engpass und ohne Angaben über den Ressourcenverbrauch ist daraus kein notwendiger Produktionsablauf ableitbar. Bei einem einzigen Engpass lautet der passende Maßstab $d b_I$ je benötigter Engpasseinheit, etwa €/Maschinenstunde. W20, Aufgabe 5 verlangt eine Reihenfolge, gibt aber keinen Engpass an; die ausgewiesene Stück-DB-Reihenfolge ist deshalb ausdrücklich eine konventionelle Rechenrangliste.], fill: sand)
+#bild("map-db-stufen", [Mindmap: Kostenebenen und Entscheidungen. Eigene Darstellung nach W20, PDF-S. 1–3.], height: 46mm)
+#src[W20, Aufgaben 1–5 auf PDF-S. 1 und 3; Mitschrift zur Produktstreichung auf PDF-S. 2. Stufenbezeichnungen und Entscheidungsdifferenzen hergeleitet; Voraussetzungen zur Vermeidbarkeit und Engpassrangfolge ergänzend präzisiert.]
+#hoch(<a-1>, [Kapitelübersicht])
+
 #block(breakable: false)[
-*Der Zusammenhang in Kapitel 1.* Erst klärst Du Periode und Bezugsgröße. Dann zerlegst Du Kosten und bildest Kosten- und Erlösfunktion. Der Stückdeckungsbeitrag verbindet jede einzelne Einheit mit dem gesamten Gewinn. Die Gewinnschwelle zeigt die nötige Menge; Kapazität und Nachfrage zeigen, ob sie erreichbar ist. Bei Entscheidungen prüfst Du schließlich die tatsächliche Änderung und ihre Bedingungen.
+*Der Zusammenhang in Kapitel 1.* Erst klärst Du Periode und Bezugsgröße. Dann zerlegst Du Kosten und bildest Kosten- und Erlösfunktion. Der Stückdeckungsbeitrag verbindet jede einzelne Einheit mit dem gesamten Gewinn. Die Gewinnschwelle zeigt die nötige Menge; Kapazität und Nachfrage zeigen, ob sie erreichbar ist. Bei Entscheidungen prüfst Du schließlich die tatsächliche Änderung und ihre Bedingungen. Mehrere Produkte teilen sich gemeinsame Fixkosten; die Stufenrechnung trennt die Ebenen, während der Veränderungsvergleich entscheidet, welche Beiträge oder Kosten wirklich entfallen.
 #src[Zusammenführung aus M und K, jeweils PDF-S. 1–2, sowie Ü 1–4, PDF-S. 1–2. Eigene Darstellung.]
 
 ]
@@ -510,7 +541,7 @@ Mögliche Stellschrauben sind Preis erhöhen, variable Stückkosten senken, Fixk
   idee(<a-2-2>, [Kosten vergleichen.], [Gleiche Leistung und passende Mengenbasis herstellen.]),
   idee(<a-2-3>, [Gewinn vergleichen.], [Unterschiedliche Erlöse und Absatzmengen berücksichtigen.]),
   idee(<a-2-4>, [Rentabilität vergleichen.], [Erfolg auf das durchschnittlich gebundene Kapital beziehen.]),
-  idee(<a-2-5>, [Amortisation prüfen.], [Die Zeit bis zum rechnerischen Kapitalrückfluss bestimmen.]),
+  idee(<a-2-5>, [Amortisation und Aussagegrenzen prüfen.], [Die Rückflusszeit und die Grenzen des Jahresmodells unterscheiden; Ergänzung 2.7.]),
   idee(<a-2-6>, [Kritische Auslastung.], [Den Mengenbereich finden, in dem eine Alternative günstiger ist.]),
 )
 #ablauf(
@@ -541,6 +572,7 @@ $x$: Stück/Jahr; $k_v$: €/Stück. In diesen Blättern bedeutet *Kapitaldienst
 
 #note("★ Klausur · von Dir markiert", [In KD, PDF-S. 2 steht: „Abschreibungen u. Zinsen fehlen hier noch! Muss man in der Klausur wissen!“ Gemeint sind die dortigen Betriebskosten. Prüfe stets, ob „fixe Kosten“ nur die *sonstigen* Fixkosten oder bereits den gesamten Fixkostenblock bezeichnen.])
 #bild("map-investitionskosten", [Mindmap: vom Kaufbetrag zu den Jahreskosten. Eigene Darstellung nach B31, PDF-S. 2, und KD, PDF-S. 2–3.], height: 46mm)
+#note("Restwert wirkt auf zwei Größen", [Ein höherer Restwert senkt den abschreibbaren Betrag, erhöht aber die durchschnittliche Kapitalbindung. Abschreibung und kalkulatorische Zinsen verändern sich deshalb gegenläufig. S11, PDF-S. 1, variiert genau diese beiden Größen.])
 #src[B31, PDF-S. 1–2; S32, PDF-S. 1–2; KD, PDF-S. 1–3, besonders markierte Abgrenzung auf S. 2. Symbolwahl und Abgrenzung zur Bankzahlung: eigene Erklärung.]
 #hoch(<a-2>, [Kapitelübersicht])
 
@@ -644,6 +676,24 @@ Bei gleichem Stückerlös und gleicher Menge fällt der Erlös im Gewinnvergleic
 #src[KR, PDF-S. 1–3; S. 4 enthält nur die Überschrift „Aufgaben“, keinen weiteren Aufgabentext. C09, PDF-S. 1–2 und 5. Exakte Rundungsgrenze, Randfälle und Unterscheidung der Schnittpunkte: eigene algebraische Prüfung.]
 #hoch(<a-2>, [Kapitelübersicht])
 
+
+#pagebreak()
+== 2.7 Ergänzung 12.11. · Statische Verfahren richtig vergleichen <a-2-7>
+Statische Verfahren sind schnell, weil sie den Zeitverlauf stark vereinfachen. Ein typisches Jahr oder ein Jahresdurchschnitt kann eine erste Auswahl ermöglichen, zeigt aber nicht automatisch, wie groß der Vorteil über alle Jahre und zu welchem Zeitpunkt er verfügbar ist.
+#tab(columns: (1.2fr,2.3fr,2.2fr), th([Prüfung],[Was du festlegen musst],[Was sonst schiefgeht]),
+[Leistung],[Gleiche Menge und Qualität oder bewusst Stückkosten/Gewinne vergleichen.],[Eine größere Kapazität wird ungeprüft als verkaufte Menge gewertet.],
+[Zeitraum],[Repräsentatives Jahr, konstante bzw. passend gemittelte Daten.],[Frühe und späte Zahlung werden gleich behandelt.],
+[Kostenbasis],[Abschreibung, kalkulatorische Zinsen und sonstige Kosten vollständig und einmal zählen.],[Kapitalkosten fehlen oder werden doppelt addiert.],
+[Entscheidungsfrage],[Geringste Kosten, höchster Gewinn, passende Rendite oder Rückflusszeit.],[Ein Verfahren beantwortet eine andere Frage als die gestellte.])
+#note("S11 sprachlich präzisieren", [S11, PDF-S. 1, schreibt pauschal, statische Verfahren berücksichtigten „keine Verzinsung des eingesetzten Kapitals“. Das passt nicht zur unmittelbar folgenden Berechnung kalkulatorischer Zinsen. Präzise ist: Die Verfahren erfassen hier *keine periodengenaue Auf- und Abzinsung der einzelnen Zahlungen*. Kalkulatorische Zinsen werden im Jahreskostenmodell sehr wohl berücksichtigt.], fill: sand)
+
+Beim *Ersatzvergleich* wird der Gewinn mit neuem Objekt dem Gewinn mit altem Objekt gegenübergestellt. Für die gleiche verkaufte Menge gilt:
+#form[$ Delta G=[(e_"neu"-k_(v,"neu"))-(e_"alt"-k_(v,"alt"))]x-(K_(f,"neu")-K_(f,"alt")) $]
+Die Formel fasst zwei bekannte Gewinnfunktionen zusammen. Sie beantwortet den statischen Jahresvergleich bei der jeweils vorgegebenen vollständigen Kostenbasis, keine zusätzliche dynamische Kapitalwertfrage.
+#note("Quelle S12: zwei verschiedene Schnittpunkte", [Der Kostenvergleich auf S12, PDF-S. 3, nennt zunächst die Anlagen A/C, fragt im nächsten Satz aber nach A/B. Beide Fälle sind in der Aufgabenlösung getrennt: A/C kostengleich bei 6 250 Stück; A/B bei 5 833,33… Stück. Im Gewinnvergleich A/C auf PDF-S. 5 sind es dagegen 5 000 Stück, weil dort unterschiedliche Erlöse gelten. Die kritische Menge ist außerdem keine Gewinnschwelle.], fill: sand)
+#src[S11, PDF-S. 1–3; S12, PDF-S. 1–7, besonders unterschiedliche Auslastungen S. 3, Gewinnvergleich S. 4–5 und Ersatzvergleich S. 6. Präzisierungen und algebraische Zusammenführung: eigene Darstellung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 *Der Zusammenhang in Kapitel 2.* Die Jahreskosten aus Abschreibung, Zinsen und Betriebskosten sind die gemeinsame Basis. Die KVR vergleicht Kosten, die GVR ergänzt Erlöse. Die RVR setzt den passend abgegrenzten Erfolg zur Kapitalbindung ins Verhältnis; eine Differenzinvestition stellt die Budgetverwendung vergleichbar her. Die AVR betrachtet die Rückgewinnungszeit. Kritische Mengen zeigen schließlich, ob ein Urteil auch bei einer anderen Auslastung Bestand hat. Die Verfahren beantworten unterschiedliche Fragen und können deshalb zu unterschiedlichen Empfehlungen führen.
 #src[B31, PDF-S. 1–5; S32, PDF-S. 1–3; KD, PDF-S. 1–3; KR, PDF-S. 1–3; C09, PDF-S. 1–5. Eigene Zusammenführung.]
 
@@ -663,6 +713,9 @@ Alle Beträge und Mengen beziehen sich innerhalb einer Rechnung auf dieselbe Per
  [Erlös], [$E(x)=e x$], [$e$ netto; vollständiger Absatz der Menge $x$],
  [Gewinn], [$G(x)=E(x)-K(x)$], [Vorzeichen; €/Periode],
  [Deckungsbeitrag I], [$d b_"I"=e-k_v$; $D B_"I"=d b_"I" x=E-K_v$], [Stück-DB €/Stück; Gesamt-DB €/Periode],
+ [DB mehrstufig], [$D B_("II",j)=D B_("I",j)-K_(f,"Produkt",j)$; $D B_("III",g)=sum_(j "in" g)D B_("II",j)-K_(f,"Gruppe",g)$], [€/Periode; danach Unternehmensfixkosten einmal abziehen; W20 PDF-S. 3.],
+ [Produkt streichen], [$Delta G=K_(f,"vermeidbar")-D B_("I","entfallend")$], [Keine Verlagerungen oder alternativen Kapazitätsbeiträge; Zeitraum nennen.],
+ [Eigenfertigungsvorteil], [$(e_"Bezug"-k_v)x-K_(f,"zusätzlich")$], [Gleiche Bedarfsdeckung, freie Kapazität; positive Differenz spricht für Eigenfertigung.],
  [Ergebnis einstufig], [$D B_"II"=D B_"I"-K_f=G$; $d b_"II"=G/x=d b_"I"-k_f$], [Fixkosten einmal abziehen; Stückwert nur $x>0$],
  [Gewinn-Schnellweg], [$G=d b_"I" x-K_f$], [lineares Modell; €/Periode],
  [Exakter BEP], [$x_"BEP"=K_f/(d b_"I")$], [positiver Stück-DB; theoretische Menge],
@@ -678,7 +731,7 @@ Alle Beträge und Mengen beziehen sich innerhalb einer Rechnung auf dieselbe Per
  [Variable Stückkosten], [$k_v=(K-K_f)/x$], [$x>0$; €/Stück],
  [Erlös aus Ergebnis], [$E=G+K quad e=E/x$], [Verlust negativ; für Preis $x>0$],
 )
-#src[M und K, jeweils PDF-S. 1–2; Ü 1–4, PDF-S. 1–2; F, PDF-S. 5; L15, PDF-S. 19 und L02, PDF-S. 15. Zusammenstellung, Zielgewinn-Umstellung und Gültigkeitspräzisierungen: eigene Darstellung.]
+#src[W20, PDF-S. 1–3; M und K, jeweils PDF-S. 1–2; Ü 1–4, PDF-S. 1–2; F, PDF-S. 5; L15, PDF-S. 19 und L02, PDF-S. 15. Zusammenstellung, Zielgewinn-Umstellung und Gültigkeitspräzisierungen: eigene Darstellung.]
 
 #note("Wichtige Zahlen", [*Ü 1:* $K_f=20 000$ €/Monat, $k_v=30$ €/Packung, $e=70$ €/Packung → Stück-DB 40 €, BEP 500 Packungen, $G(800)=+12 000$ €. *Ü 4:* 214,20 € brutto / 1,19 = 180 € netto; Stück-DB 70 €; exakte Schwelle 914,2857… Regale, kleinste ganze Menge 915. *Prozent:* 85 % = 0,85. Zahlen sind Aufgabenwerte, keine allgemeinen Betriebskennzahlen.])
 #src[Ü 1 und 4, PDF-S. 1–2; Foto Ü 4; Werte nachgerechnet.]
@@ -695,6 +748,7 @@ Alle Beträge und Mengen beziehen sich innerhalb einer Rechnung auf dieselbe Per
  [Betriebskosten], [$B K=K_(f,"sonst")+k_v x$], [hier ohne Abschreibung/Zinsen; €/Jahr],
  [Gesamtkosten], [$K=K D+B K$], [Kapitaldienst genau einmal; €/Jahr],
  [Gewinn], [$G=e x-K$], [verkaufbare Menge; hier nach kalkulatorischen Zinsen],
+ [Ersatz-Gewinndifferenz], [$(d b_"neu"-d b_"alt")x-(K_(f,"neu")-K_(f,"alt"))$], [Gleiche Menge und vollständige jeweilige Kostenbasis; S12 PDF-S. 6.],
  [Rentabilität], [$R=(G+Z)/overline(K)_"geb" dot 100 %$], [Zähler vor kalkulatorischen Zinsen; % pro Jahr],
  [Umsatzrendite], [$R_"Umsatz"=G/E dot 100 %$], [gleiche Periode, $E>0$; Gewinnabgrenzung benennen],
  [Amortisation], [$t_"A"=(A K-R W)/(G+A)$], [Konvention B31, konstanter positiver Jahresrückfluss; Jahre],

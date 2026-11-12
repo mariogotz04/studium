@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 06.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 12.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,8 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+ "led-netzwerk-variante": "abbildungen/led-netzwerk-variante.svg",
+  "led-rot-messwerte": "abbildungen/led-rot-messwerte.svg",
   "gesamt-basis-arbeitspunkt": "abbildungen/gesamt-basis-arbeitspunkt.svg",
   "gesamt-basis-netz": "abbildungen/gesamt-basis-netz.svg",
   "gesamt-drei-zweige": "abbildungen/gesamt-drei-zweige.svg",
@@ -190,6 +192,8 @@
 )
 
 #let bilddeutungen = (
+ "led-netzwerk-variante": (titel: "Bild lesen", body: [Die geänderten Widerstände und die Quelle gehören zur KI-Variante der grünen LED; die LED bleibt parallel zu R3.]),
+  "led-rot-messwerte": (titel: "Bild lesen", body: [Waagerecht steht die LED-Spannung, senkrecht der Strom. Rot sind die vorgegebenen Messpunkte verbunden, grün die Quellenkennlinie. Der blaue Schnitt liegt knapp über 2,8 V; die Notiz 2,6 V und 36 mA passt nicht zur Tabelle.]),
   "gesamt-basis-arbeitspunkt": (titel: "Bild lesen", body: [Die steile Kurve ist die Diodenkennlinie, die fallenden Geraden sind das Speisenetz bei zwei Quellspannungen. Die Schnittpunkte ändern sich bei paralleler Verschiebung der Geraden.]),
   "gesamt-basis-netz": (titel: "Bild lesen", body: [Der Spannungsteiler R1 und R2 speist die Basis-Emitter-Strecke. Die Ausgangsklemmen A und B trennen das lineare Speisenetz von der nichtlinearen Eingangsdiode.]),
   "gesamt-drei-zweige": (titel: "Bild lesen", body: [Die beiden äußeren Quellen speisen über R1 und R2 denselben Knoten A. Der mittlere Widerstand R3 verbindet A mit dem unteren Bezugsknoten. Der Pfeil I2 ist zunächst zum Knoten A hin gewählt.]),
@@ -313,7 +317,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand 06.11.2026: Vollständige Feynman-Zusammenfassung zum GET-Vorlesungsskript bis S. 108 als Grundlage für dein Selbststudium. Die bisherigen Markierungen und Mitschriften bleiben einbezogen; die weiteren Kapitel ergänzen Messschaltungen, Netzwerkmethoden und Zweipoltheorie. Aufgaben mit vollständigen Lösungen, Quiz, Verständnis-Karten und Hörfassung werden zusammen auf der Lernplattform gepflegt.
+Stand 12.11.2026: Vollständige Feynman-Zusammenfassung zum GET-Vorlesungsskript bis S. 108 als Grundlage für dein Selbststudium. Die bisherigen Markierungen und Mitschriften bleiben einbezogen; die weiteren Kapitel ergänzen Messschaltungen, Netzwerkmethoden und Zweipoltheorie. Die vier Aufgaben-/Notizen-PDFs vom 12.11. sind mit den vorhandenen Originalaufgaben abgeglichen. Ergänzt sind die Messwertprüfung bei der roten LED und die Messgeräte-Eigenverbräuche; Aufgaben mit Lösungen stehen auf der Lernplattform.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -323,7 +327,7 @@ Stand 06.11.2026: Vollständige Feynman-Zusammenfassung zum GET-Vorlesungsskript
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V = Vorlesungsskript Kölbl, „Grundlagen der Elektrotechnik“ (aufgedruckte Seite = PDF-Seite); M = Mitschrift „eigenes Skript Elektrotechnik“; B = BAF-Mitschrift VL 1–3 (S. 1 = VL 1, S. 2 = VL 2, S. 3 = VL 3); Z = handschriftliche Zusammenfassung VL 3; FK = Fragenkatalog „Einstieg GET auf Schulniveau“ (Fragennummer); Ü = Übung GET (Aufgabe); A, B = Übungsblatt A bzw. B (Aufgabe); R = handschriftliche Lösungen zu Blatt A und B („Prüfungsvorbereitungsfragen.pdf“). N30 = „Skript GET vl 30.10.pdf“ (PDF-S. 1–22 entsprechen V S. 20–41); LED = „Aufgabe GET_grüne_LED_202610291323_57076.pdf“ (PDF-S. 1 Aufgabe, S. 2–3 Mitschrift); N = „neue VL GET.pdf“ mit Notizen vom 15./22.10. (PDF-S. 1–6 entsprechen V S. 14–19); FK-N = Fragenkatalog mit Lösungen bis 22.10.; Ü-N = „ÜBUNG GET (mit Mitschrift zu Aufgabe 1)“; DC = „ÜBUNGEN_GET_DC_URI_Basics_202610161827_42497“ mit Rechenwegen zu Ü 1–3. „S.“ bei Mitschriften zählt ab der ersten PDF-Seite. Externe Fachprüfungen sind mit Anbieter und Link direkt am Abschnitt genannt. „Eigene Ergänzung“ bezeichnet zusätzliche Erklärhilfen und Beispiele.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* G12 = „GET Gleichstrom und Fragenkatalog mit Lösungen (Import 2026-11-12).pdf“ (12 S.); Q12 = „Aufgabe GET Netz mit zwei Quellen (Import 2026-11-12).pdf“ (1 S.); L12 = „GET LED rot Messreihe mit Notizen (Import 2026-11-12).pdf“ (1 S.); V = Vorlesungsskript Kölbl, „Grundlagen der Elektrotechnik“ (aufgedruckte Seite = PDF-Seite); M = Mitschrift „eigenes Skript Elektrotechnik“; B = BAF-Mitschrift VL 1–3 (S. 1 = VL 1, S. 2 = VL 2, S. 3 = VL 3); Z = handschriftliche Zusammenfassung VL 3; FK = Fragenkatalog „Einstieg GET auf Schulniveau“ (Fragennummer); Ü = Übung GET (Aufgabe); A, B = Übungsblatt A bzw. B (Aufgabe); R = handschriftliche Lösungen zu Blatt A und B („Prüfungsvorbereitungsfragen.pdf“). N30 = „Skript GET vl 30.10.pdf“ (PDF-S. 1–22 entsprechen V S. 20–41); LED = „Aufgabe GET_grüne_LED_202610291323_57076.pdf“ (PDF-S. 1 Aufgabe, S. 2–3 Mitschrift); N = „neue VL GET.pdf“ mit Notizen vom 15./22.10. (PDF-S. 1–6 entsprechen V S. 14–19); FK-N = Fragenkatalog mit Lösungen bis 22.10.; Ü-N = „ÜBUNG GET (mit Mitschrift zu Aufgabe 1)“; DC = „ÜBUNGEN_GET_DC_URI_Basics_202610161827_42497“ mit Rechenwegen zu Ü 1–3. „S.“ bei Mitschriften zählt ab der ersten PDF-Seite. Externe Fachprüfungen sind mit Anbieter und Link direkt am Abschnitt genannt. „Eigene Ergänzung“ bezeichnet zusätzliche Erklärhilfen und Beispiele.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -857,7 +861,9 @@ $h$ in Js, $c$ in m/s, $lambda$ in m; $eta_"LED"$ ist der optische Wirkungsgrad 
 #bild("led-kennlinie-aufgabe", [Elektrische LED-Kennlinie ohne Lösungseintragungen. Nachgezeichnet aus LED, PDF-S. 1; Ablesediagramm.], height: 54mm)
 Ein Netzwerk vor der LED kann bezüglich ihrer Klemmen durch Leerlaufspannung und Kurzschlussstrom beschrieben werden. Die Gerade durch diese beiden Achsenschnittpunkte trifft die LED-Kennlinie im Arbeitspunkt. *Leerlauf* heißt hier: nur die LED abklemmen; ein im Netzwerk vorhandener Parallelwiderstand bleibt angeschlossen.
 #note("Fehler vermeiden", [Photonenenergie, statische Durchlassspannung und Tangentensteigung sind verschiedene Angaben. Für die optische Leistung zählt $U_D I_D$, nicht die gesamte Quellleistung einschließlich der anderen Widerstände. Die vollständige LED-Aufgabe mit Schaltung und allen Teilfragen steht in Aufgaben.typ.], fill: sand)
-#src[LED, PDF-S. 1–3; Energiebeziehung und Wirkungsgrad aus der Aufgabenstellung, elektrische Einordnung ergänzt.]
+#bild("led-rot-messwerte", [Messdaten gegen die handschriftliche Zeichnung prüfen. Eigene Darstellung nach L12, PDF-S. 1; Geraden zwischen Messpunkten sind eine Näherung.], height: 58mm)
+#note("Quellenfehler sichtbar machen", [Die Notiz in L12 nennt 2,6 V / 36 mA. Zur gleichen Spannung nennt die gedruckte Messreihe jedoch 26,3 mA. Das ist keine passende Messwertpaarung. Verwende für den Arbeitspunkt die Tabelle und eine ausdrücklich benannte Interpolation; zeichne keinen beliebigen Widerstandsquotienten als konstante LED-Kennlinie.], fill: sand)
+#src[L12, PDF-S. 1; LED, PDF-S. 1–3; Energiebeziehung und Wirkungsgrad aus der Aufgabenstellung, elektrische Einordnung ergänzt.]
 
 === 1.4.3.2.5 Transistor: Steuern und Lastgerade <a-1-4-3-2-5>
 Ein *Bipolartransistor* hat Basis B, Kollektor C und Emitter E. Im aktiven Bereich steuert ein kleiner Basisstrom $I_B$ den größeren Kollektorstrom $I_C$. Das Skript beschreibt ihn anschaulich als elektronisch regelbaren Widerstand; die Ausgangskennlinien zeigen genauer eine annähernd stromgesteuerte Stromquelle.
@@ -1102,7 +1108,10 @@ Ein reales Amperemeter besitzt einen kleinen Innenwiderstand $R_"AM"$ und verbra
 Instrumentenwerte aus Angaben auf dem Messgerät:
 #form[$ R_"AM" = (Delta U_"Endwert")/I_"Endwert" quad R_"VM" = K U_"Bereichsendwert" $]
 $K$ ist hier die Empfindlichkeit in Ω/V, kein Temperaturkoeffizient. *Gültigkeit:* die gezeigte Gleichstrommessung mit ohmschem Prüfling und Instrumentenwiderständen im gewählten Messbereich. Die Korrektur des Eigenverbrauchs beseitigt nicht automatisch alle Messunsicherheiten. Die Geräteklasse im Relaisbeispiel bezieht sich auf den Bereichsendwert.
-#src[V S. 54–57, Abschnitte 2.4.7–2.4.7.3; Vorzeichen der Messabweichung und Grenzen erläutert.]
+Die Notizen L12 zeigen dieselben Messschaltungen an einer LED. Auch bei einer nichtlinearen Kennlinie gelten die Strom- und Spannungskorrekturen am jeweiligen Arbeitspunkt:
+#form[$ "spannungsrichtig:" quad I_D=I_"AM"-U_D/R_"VM" quad "stromrichtig:" quad U_D=U_"VM"-I_D R_"AM" $]
+Dafür muss kein konstanter LED-Widerstand angenommen werden. Erst die korrigierten Paare $(U_D,I_D)$ ergeben die Kennlinie; jedes Paar gehört zur gleichen Messsituation und Temperatur.
+#src[L12, PDF-S. 1 (Messschaltungsnotizen); V S. 54–57, Abschnitte 2.4.7–2.4.7.3; Vorzeichen der Messabweichung und Grenzen erläutert.]
 #hoch(<a-2>, [Kapitelübersicht])
 
 == 2.4.8 Pt100: Widerstandsänderung wird zur Anzeige <a-2-4-8>
@@ -1452,6 +1461,7 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Brückenabgleich], [$R_x=R_N R_1/R_2$], [Querzweigstrom null; Schleifdraht zusätzlich homogen.],
  [Dreieck zu Stern], [$r_A=R_(A B) R_(C A)/(R_(A B)+R_(B C)+R_(C A))$], [Zyklisch für B und C; quellenfreies Widerstands-Teilnetz.],
  [Stern zu Dreieck], [$R_(A B)=(r_A r_B+r_B r_C+r_C r_A)/r_C$], [Gegenüberliegender Arm im Nenner.],
+ [LED-Messung], [$I_D=I_"AM"-U_D/R_"VM"$ bzw. $U_D=U_"VM"-I_D R_"AM"$], [Spannungs- bzw. stromrichtige Gleichstrommessung je Messpunkt; L12 PDF-S. 1.],
 )
 
 === Formeln zu Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen
