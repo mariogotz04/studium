@@ -596,6 +596,8 @@ def aufgaben(typ, modul, abschnitte, stellen=None):
             "items": liste}
 
 
+QUIZ_UND_KARTEN = False   # 11.11.2026: Quiz und Karteikarten entfallen (Inhalt jetzt als Verständnisfragen)
+
 # ───────────── Quiz ─────────────
 # Quelle: skripte/<Modul>/Lernskript aktuell/Quiz.md (Aufbau steht am Kopf jeder Datei).
 SCHLÜSSEL = re.compile(r"^(Tipp|Quelle|Antwort|Erklärung):\s*(.*)$")
@@ -1003,8 +1005,10 @@ def main():
             "hoeren": hoerfassung(typ.parent.parent / "Hoerskript.md", module, datum, abschnitte[module]),
         })
 
+    # Seit 11.11.2026 gibt es keine Karteikarten und kein Quiz mehr auf der Seite: Ihr Inhalt steht als
+    # Verständnisfragen in Aufgaben.typ. Karteikarten.md/Quiz.md werden nicht mehr gelesen.
     decks = []
-    for md in sorted(SRC.glob("*/Lernskript aktuell/Karteikarten.md")):
+    for md in sorted(SRC.glob("*/Lernskript aktuell/Karteikarten.md")) if QUIZ_UND_KARTEN else []:
         modul = md.relative_to(SRC).parts[0]
         karten = karteikarten(md, modul, abschnitte.get(modul, []), stellen=stellen.get(modul))
         print(f"→ {modul}: {len(karten)} Karteikarten, {sum(1 for k in karten if 'i' in k)} mit Abbildung, "
@@ -1021,7 +1025,7 @@ def main():
             eintrag["aufgaben"], eintrag["apdf"], eintrag["ablatt"] = a["items"], a["pdf"], a["blatt"]
             print(f"→ {modul}: {len(a['items'])} Aufgaben ({sum(x['art'] == 'rechnen' for x in a['items'])} Rechenaufgaben)")
         md = SRC / modul / "Lernskript aktuell" / "Quiz.md"
-        if md.exists():
+        if QUIZ_UND_KARTEN and md.exists():
             eintrag["quiz"] = quiz(md, modul, abschnitte.get(modul, []), stellen=stellen.get(modul))
             print(f"→ {modul}: {len(eintrag['quiz'])} Quizfragen")
         if "aufgaben" in eintrag or "quiz" in eintrag or any(d["name"] == modul for d in decks):

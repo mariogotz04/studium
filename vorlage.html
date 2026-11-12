@@ -1370,13 +1370,14 @@ function lernImpuls() {
     <p class="muted" style="margin-top:8px">Aktives Abrufen darf sich anspruchsvoll anfühlen. Vergleiche mit der Erklärung und prüfe, was du beim nächsten Versuch schon selbst kannst.</p></div>`;
 }
 function tagesErfolgeHtml(tag) {
-  const a = tagesAktivitäten(tag), aufgaben = a.filter(x => x.art === "aufgabe"), karten = a.filter(x => x.art === "karte");
-  const quizzes = a.filter(x => x.art === "quiz" && x.fertig);
-  if (!aufgaben.length && !karten.length && !quizzes.length) return "";
+  const a = tagesAktivitäten(tag), aufgaben = a.filter(x => x.art === "aufgabe");
+  const serien = a.filter(x => (x.art === "mix" || x.art === "probe") && x.fertig);
+  if (!aufgaben.length && !serien.length) return "";
   const besser = aufgaben.filter(x => x.status === "ok" && ["hilfe", "nein"].includes(x.vorher));
+  const selbst = aufgaben.filter(x => x.status === "ok").length;
   return `<div class="panel"><h2>Heute selbst bewegt</h2><div class="richtung-erfolge">
-    <span><b>${aufgaben.length}</b>Aufgaben bewertet</span><span><b>${karten.length}</b>verschiedene Karten bewertet</span>
-    <span><b>${quizzes.length}</b>Quizrunden abgeschlossen</span></div>
+    <span><b>${aufgaben.length}</b>Aufgaben bewertet</span><span><b>${selbst}</b>davon selbst gelöst</span>
+    <span><b>${serien.length}</b>Mix-Serien und Probeklausuren</span></div>
     ${besser.length ? `<p>${besser.length === 1 ? "Eine Aufgabe hast" : besser.length + " Aufgaben hast"} du beim vorherigen Versuch mit Hilfe bearbeitet oder noch nicht geschafft und diesmal selbst gelöst.</p>` : ""}
     <p class="muted" style="margin-bottom:0">Das sind deine gespeicherten Bearbeitungen. Was schon sicher sitzt, zeigen die Bewertungen in deinen Modulen.</p></div>`;
 }
@@ -1442,7 +1443,7 @@ function startSeite() {
           <button class="haken${stände[i].fertig ? " an" : ""}" data-haken="${i}" aria-label="${stände[i].fertig ? "Wieder öffnen" : "Als erledigt markieren"}: ${esc(v.titel)}" aria-pressed="${stände[i].fertig}">✓</button>
           <div class="was"><b>${esc(v.titel)}</b><span>${esc(v.text)}${stände[i].ziel > 1 ? ` · ${stände[i].n}/${stände[i].ziel} bewertet` : ""}</span>${v.art === "lernplan" ? `<a href="${esc(v.link)}">Im Lernplan ansehen</a>` : ""}</div>
           <button class="btn" data-los="${i}">${stände[i].fertig ? "Noch einmal" : "Los"}</button></div>`).join("")
-          : `<p class="muted">Sobald Aufgaben, Quizfragen oder Karteikarten da sind, schlage ich dir hier jeden Tag passende Übungen vor.</p>`}
+          : `<p class="muted">Sobald Aufgaben da sind, schlage ich dir hier jeden Tag passende Übungen vor.</p>`}
         ${typeof lpPlan === "function" && lpPlan() ? `<p class="feynman">Deine heutigen Einheiten kommen aus dem <a href="#termine/lernplan">Lernplan</a>. Aufgaben werden nach dem selbstständigen Lösen abgehakt; manuelle Haken ändern keinen Kapitelabschluss.</p>${stände.every(s => s.fertig) ? `<button class="btn" id="lp-naechster">Freiwillig mit dem nächsten Abschnitt weiter</button>` : ""}` : `<p class="feynman" style="margin-top:12px">Deine Auswahl bleibt heute erhalten. Abgeschlossene Bearbeitungen werden automatisch abgehakt. Erledigt heißt bearbeitet; unsichere Inhalte bleiben zur Wiederholung vorgemerkt.</p>`}
       </div>`}
       ${tagesErfolgeHtml(tag)}
@@ -1478,26 +1479,32 @@ function startSeite() {
     if (t) { db.set("todo:" + neueId(), { text: t, erstellt: Date.now() }); startSeite(); }
   };
 }
-/* Tagesabschluss (ab 17 Uhr): erst frei aus dem Kopf aufschreiben, was hängen geblieben ist, dann 5 Quizfragen aus den
-   Modulen, an denen du heute gearbeitet hast. Abrufen am Ende des Tages festigt das Gelernte (abschluss:<Tag>). */
+/* Tagesabschluss (ab 17 Uhr): erst frei aus dem Kopf aufschreiben, was hängen geblieben ist, dann 3 Verständnisfragen
+   aus den Modulen, an denen du heute gearbeitet hast (seit 11.11.2026 statt Quiz). Abrufen am Ende des Tages festigt
+   das Gelernte (abschluss:<Tag>, die gezogenen Fragen stehen unter fragen). */
+const verständnis = l => (l.aufgaben || []).filter(a => a.art === "verstehen" && lernreihe(l.name).erreicht(a));
 function heutigeModule(tag) {
   const start = new Date(tag + "T04:00:00").getTime(), m = new Set();
-  for (const anfang of ["aufgabe:", "quiz:"])
-    for (const [k, v] of Object.entries(db.objekt(anfang))) if (v.t >= start) m.add(k.split(":")[0]);
+  for (const [k, v] of Object.entries(db.objekt("aufgabe:"))) if (v.t >= start) m.add(k.split(":")[0]);
   for (const k of Object.keys(db.objekt("probe:"))) if (+k.split(":").pop() >= start) m.add(k.split(":")[0]);
   for (const [k, v] of Object.entries(db.get("erledigt:" + tag, {}))) if (v === true || v?.wert) m.add(k.split(":")[1]);
   for (const a of tagesAktivitäten(tag)) m.add(a.modul);
   for (const k of Object.keys(db.get("pomo:" + tag, null)?.module || {})) m.add(k);
-  return LERNEN.filter(l => m.has(l.name) && l.quiz?.length);
+  return LERNEN.filter(l => m.has(l.name) && verständnis(l).length);
+}
+function abschlussFragen(a) {
+  return (a?.fragen || []).map(f => { const l = LERNEN.find(l => l.name === f.modul); return l && (l.aufgaben || []).find(x => x.id === f.id); }).filter(Boolean);
 }
 function abschlussHtml(tag) {
   const a = db.get("abschluss:" + tag, null), entwurf = store.get("abschluss:entwurf", {});
-  const module = heutigeModule(tag);
-  return `<div class="panel abschluss"><div class="kasten-titel"><h2>Tagesabschluss</h2><span class="muted" style="font-size:14px">etwa 5 Minuten</span></div>
-    ${a?.quiz ? `<p style="margin:0">Erledigt: <b>${String(a.quiz.r).replace(".", ",")} von ${a.quiz.n}</b> Fragen richtig.</p>
+  const module = heutigeModule(tag), fragen = abschlussFragen(a);
+  return `<div class="panel abschluss"><div class="kasten-titel"><h2>Tagesabschluss</h2><span class="muted" style="font-size:14px">etwa 10 Minuten</span></div>
+    ${fragen.length ? `<p style="margin-top:0">Beantworte diese ${fragen.length} Fragen erst aus dem Kopf, dann deck die Lösung auf und bewerte dich ehrlich.</p>
+        <div class="aliste">${fragen.map(x => { const st = aufgabeStand(x);
+          return `<a class="azeile" href="#lernen/${encodeURIComponent(x.m.name)}/aufgabe/${x.id}"><span class="punkt ${st?.s || ""}"></span><b>${esc(x.t)}</b><span class="muted">${esc(x.m.name)}</span></a>`; }).join("")}</div>
         ${a.text ? `<p class="feynman" style="margin-top:10px">${esc(a.text)}</p>` : ""}
-        <div class="row" style="margin-top:12px"><button class="btn" id="abneu">Noch eine Runde</button></div>`
-      : `<p style="margin-top:0">Schreib aus dem Kopf auf, was du heute gelernt hast, ohne nachzuschauen. Danach kommen 5 Fragen aus
+        <div class="row" style="margin-top:12px"><button class="btn" id="abneu">Andere Fragen</button></div>`
+      : `<p style="margin-top:0">Schreib aus dem Kopf auf, was du heute gelernt hast, ohne nachzuschauen. Danach kommen 3 Verständnisfragen aus
         ${module.length ? module.map(l => esc(l.name)).join(", ") : "deinen Modulen"}.</p>
       <textarea id="abtext" placeholder="Heute habe ich verstanden, dass …">${esc(a?.text || (entwurf.tag === tag ? entwurf.text : ""))}</textarea>
       <label for="abstrategie">Welche Entscheidung oder Strategie hat dir heute geholfen? <span class="muted">(freiwillig)</span></label>
@@ -1506,11 +1513,18 @@ function abschlussHtml(tag) {
 }
 function abschlussStarten(tag, text, strategie = "") {
   let module = heutigeModule(tag);
-  if (!module.length) module = LERNEN.filter(l => tagesliste.some(v => v.modul === l.name) && l.quiz?.length);
-  if (!module.length) module = LERNEN.filter(l => l.quiz?.length);
-  db.set("abschluss:" + tag, { ...db.get("abschluss:" + tag, {}), text, strategie });
+  if (!module.length) module = LERNEN.filter(l => tagesliste.some(v => v.modul === l.name) && verständnis(l).length);
+  if (!module.length) module = LERNEN.filter(l => verständnis(l).length);
+  // Bevorzugt Fragen, die du schon einmal bearbeitet hast (Abrufen), sonst neue aus erreichten Abschnitten; reihum über die Module.
+  const alt = new Set((db.get("abschluss:" + tag, {})?.fragen || []).map(f => f.id)), töpfe = module.map(l => {
+    const pool = verständnis(l).filter(a => !alt.has(a.id)), bekannt = mischen(pool.filter(a => aufgabeStand(a))), neu = mischen(pool.filter(a => !aufgabeStand(a)));
+    return [...bekannt, ...neu];
+  });
+  const wahl = [];
+  for (let i = 0; wahl.length < 3 && töpfe.some(t => t.length); i++) { const t = töpfe[i % töpfe.length]; if (t.length) wahl.push(t.shift()); }
+  db.set("abschluss:" + tag, { ...db.get("abschluss:" + tag, {}), text, strategie, fragen: wahl.map(a => ({ modul: a.m.name, id: a.id })) });
   store.set("abschluss:entwurf", null);
-  quizStarten({ name: "abschluss", titel: "Tagesabschluss", abschluss: true, tag, quiz: module.flatMap(l => l.quiz) }, { anzahl: 5, modus: "mix" });
+  startSeite();
 }
 function begrüßung() {
   const h = new Date().getHours();
@@ -2349,7 +2363,7 @@ const baustein = (b, alt = "") => `<img class="baustein" src="${b.src}" alt="${e
 function lernenÜbersicht() {
   const tag = heuteIso(), pomo = db.get("pomo:" + tag, null);
   const summe = (f) => LERNEN.reduce((n, m) => n + f(m), 0);
-  kopf("Lernen", `${summe(m => (m.aufgaben || []).length)} Aufgaben · ${summe(m => (m.quiz || []).length)} Quizfragen · ${DECKS.reduce((n, d) => n + d.cards.length, 0)} Karteikarten`);
+  kopf("Lernen", `${summe(m => (m.aufgaben || []).filter(a => a.art === "rechnen").length)} Rechenaufgaben · ${summe(m => (m.aufgaben || []).filter(a => a.art === "verstehen").length)} Verständnisfragen`);
   lernView.innerHTML = `<div class="panel pomokarte" style="margin-top:22px"><div class="zahl">🍅</div>
       <div><b style="font-family:var(--serif);font-size:20px">Pomodoro-Timer</b>
         <p class="muted" style="margin:2px 0 0">${pomodoro.läuft() ? `Läuft gerade: ${pomodoro.phaseName()} · ${pomodoro.anzeige()}` :
@@ -2363,7 +2377,7 @@ function lernenÜbersicht() {
       return `<a class="modkarte" href="#lernen/${encodeURIComponent(m.name)}"><div class="title">${esc(m.name)}</div>
         <div class="zeilen"><span><b>${auf.filter(a => a.art === "rechnen").length}</b> Rechenaufgaben · <b>${auf.filter(a => a.art === "verstehen").length}</b> Verständnisfragen</span>
           <span><b>${gelöst}</b> von ${auf.length} sicher gelöst</span>
-          <span><b>${quiz.length}</b> Quizfragen${qs.length ? ` · zuletzt <b>${richtig}</b> von ${qs.length} richtig` : ""}</span>
+          ${quiz.length ? `<span><b>${quiz.length}</b> Quizfragen${qs.length ? ` · zuletzt <b>${richtig}</b> von ${qs.length} richtig` : ""}</span>` : ""}
           ${z ? `<span><b>${z.gesamt}</b> Karteikarten · <b>${z.due}</b> fällig · <b>${z.neu}</b> neu</span>` : ""}</div>
         <div class="bar"><i style="width:${auf.length ? Math.round(100 * gelöst / auf.length) : 0}%"></i></div></a>`;
     }).join("") || `<p class="empty">Noch keine Aufgaben vorhanden.</p>`}</div>`;
@@ -2377,7 +2391,7 @@ function modulSeite(m, teil) {
   const teile = [auf.length && "aufgaben", quiz.length && "quiz", probe && "probe", deck?.cards.length && "karteikarten"].filter(Boolean);
   if (!teile.includes(teil)) teil = teile[0] || "aufgaben";
   const kl = klausurVon(m.name);
-  kopf(m.name, `Lernen · ${auf.length} Aufgaben · ${quiz.length} Quizfragen${deck ? ` · ${deck.cards.length} Karteikarten` : ""}${kl ? ` · Klausur am ${fmtDate(kl.datum)}${kl.zeit ? ", " + kl.zeit + " Uhr" : ""}` : ""}`);
+  kopf(m.name, `Lernen · ${auf.length} Aufgaben${quiz.length ? ` · ${quiz.length} Quizfragen` : ""}${deck ? ` · ${deck.cards.length} Karteikarten` : ""}${kl ? ` · Klausur am ${fmtDate(kl.datum)}${kl.zeit ? ", " + kl.zeit + " Uhr" : ""}` : ""}`);
   const filter = store.get("lernen:filter", "alle");
   const passt = a => filter === "alle" || (filter === "offen" ? aufgabeStand(a)?.s !== "ok" : a.art === filter);
   const reihe = lernreihe(m.name), front = reihe.schritt;
@@ -2999,7 +3013,7 @@ function kontoSeite() {
           <button class="btn primary">Anmelden</button></form></details>`}
       ${kontoHinweis ? `<p style="color:var(--accent);font-weight:600">${esc(kontoHinweis)}</p>` : ""}</div>
     <div class="panel"><h2>Was wird abgeglichen?</h2>
-      <p style="margin-top:0">Karteikarten-Fortschritt, gelöste Aufgaben, Quiz-Ergebnisse, Fristen, To-dos, abgehakte Tagesvorschläge und die Einstellungen von Karteikarten und Pomodoro-Timer.</p>
+      <p style="margin-top:0">Gelöste Aufgaben, Lernplan, Probeklausuren, Fristen, To-dos, abgehakte Tagesvorschläge und die Einstellungen des Pomodoro-Timers.</p>
       <p class="muted">Alles bleibt zusätzlich auf jedem Gerät gespeichert, die Seite funktioniert also auch offline. Sobald wieder Netz da ist, gleicht sie sich ab. Wurde derselbe Eintrag auf zwei Geräten geändert, gilt die neuere Änderung.</p>
       <p class="muted" style="margin-bottom:0">Gespeichert wird bei Supabase (Server in Frankfurt). Nur du siehst deine Einträge.</p></div></div>`;
   $("#pwanmelden")?.addEventListener("submit", async e => {
