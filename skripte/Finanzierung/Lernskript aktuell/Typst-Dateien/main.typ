@@ -1148,7 +1148,7 @@ Eine Sicherungsgrundschuld setzt dagegen nicht kraft ihres dinglichen Bestands e
 
 Geldgrößen immer in derselben Währung und Periode einsetzen. Prozentgrößen einheitlich als Dezimalzahl oder Prozentwert verwenden; Bestandsgrößen und jährliche Zahlungsströme unterscheiden.
 
-=== Kapitel 1 · Grundlagen der Finanzplanung
+=== Formeln zu Kapitel 1 · Grundlagen der Finanzplanung
 
 #tab(columns: (1.2fr, 1.9fr, 1.8fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
@@ -1200,7 +1200,7 @@ Geldgrößen immer in derselben Währung und Periode einsetzen. Prozentgrößen 
  [Durchschnittskapital], [$("Anfang"+"Ende")/2$], [Gleichmäßige Veränderung im Modell; V PDF-S. 38.],
 )
 
-=== Kapitel 2 · Fremdfinanzierung
+=== Formeln zu Kapitel 2 · Fremdfinanzierung
 
 #tab(columns: (1.2fr, 1.9fr, 1.8fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),

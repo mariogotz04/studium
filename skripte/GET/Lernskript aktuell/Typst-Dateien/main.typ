@@ -1387,7 +1387,7 @@ Bei festem Basisstrom wählst du die passende Ausgangskennlinie. Die Quellenlini
 == Formelsammlung mit Voraussetzungen
 Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ → −). Bei Drahtwiderständen $l$ in m und $A$ in mm².
 
-=== Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung
+=== Formeln zu Kapitel 0 · Vorwissen: Strom, Spannung, Widerstand, Leistung
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Ladung und Strom], [$Q = I dot.c t$; $I = Q\/t$; $i(t) = dif Q\/dif t$], [$1 thin "C" = 1 thin "As"$; konstanter Strom für $Q = I t$.],
@@ -1401,7 +1401,7 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Belasteter Spannungsteiler], [$R_p = R_2 R_L/(R_2 + R_L)$; $U_a = U R_p/(R_1 + R_p)$], [Ohmsche Last $R_L$ parallel zu $R_2$; ideale Quelle.],
 )
 
-=== Kapitel 1 · Grundbegriffe: Strom, Spannung, Widerstand, Leistung
+=== Formeln zu Kapitel 1 · Grundbegriffe: Strom, Spannung, Widerstand, Leistung
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Ladung im Leiter], [$Q = n e A l$], [$n_"Cu" approx "8,44" dot.c 10^22 thin "cm"^(-3)$.],
@@ -1431,7 +1431,7 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Zeitabhängige Leistung], [$p(t) = u(t)i(t)$; $W = integral_0^(t_1) p(t) dif t$; $P_"mittel" = W/t_1$], [Integration über denselben Zeitraum; W in J, mittlere Leistung in W.],
 )
 
-=== Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis
+=== Formeln zu Kapitel 2 · Kirchhoffsche Gesetze und Grundstromkreis
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Knoten und Maschen], [$sum I_nu = 0$; $sum U_nu = 0$], [Vorzeichen gemäß Zählpfeilen; konzentriertes Netzwerkmodell.],
@@ -1454,14 +1454,14 @@ Zählpfeile im Verbraucherzählpfeilsystem; Strom in technischer Richtung (+ →
  [Stern zu Dreieck], [$R_(A B)=(r_A r_B+r_B r_C+r_C r_A)/r_C$], [Gegenüberliegender Arm im Nenner.],
 )
 
-=== Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen
+=== Formeln zu Kapitel 3 · Netzwerke mit Kirchhoff systematisch berechnen
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Lineares Netz], [$A bold(I)=bold(b)$; $I_j=D_j/det(A)$], [Unabhängige Gleichungen; $det(A)!=0$.],
  [Knotenpotenziale], [$I_(A B)=G_(A B)(phi_A-phi_B)$], [Gleicher Bezug; Vorzeichen gemäß gewählter Richtung.],
 )
 
-=== Kapitel 4 · Zweipoltheorie und nichtlineare Arbeitspunkte
+=== Formeln zu Kapitel 4 · Zweipoltheorie und nichtlineare Arbeitspunkte
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Zweipol], [$U_l=I_k R_i$; $U=U_l-I R_i$], [Linearer aktiver Quellenteil; gleiche Klemmen.],

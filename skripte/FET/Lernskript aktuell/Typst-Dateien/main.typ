@@ -1559,7 +1559,7 @@ Eine Fläche im T-s-Diagramm ist nur bei einem *reversiblen* Weg unmittelbar die
 == Formelsammlung mit Voraussetzungen
 Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind positiv bei Zufuhr zum System. In den Gasgleichungen ist $p$ der Absolutdruck, $T$ die Kelvin-Temperatur.
 
-=== Kapitel 1 · Grundbegriffe
+=== Formeln zu Kapitel 1 · Grundbegriffe
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Massenbilanz], [$dif m_"Sys"/dif t=sum dot(m)_"ein"-sum dot(m)_"aus"$], [Keine Erzeugung der Gesamtmasse. Stationär: linke Seite null.],
@@ -1591,7 +1591,7 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Torricelli, ergänzend], [$c_0=sqrt(2 g h)$], [Großer offener Behälter, kleine Öffnung, Verluste vernachlässigt.],
 )
 
-=== Kapitel 2 · Stoffeigenschaften
+=== Formeln zu Kapitel 2 · Stoffeigenschaften
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Lineare Interpolation], [$y=y_1+f(y_2-y_1)$; $f=(a-a_1)/(a_2-a_1)$], [Zwischen nahen Tabellenpunkten desselben Zustandsgebiets.],
@@ -1621,7 +1621,7 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Starre geschlossene Erwärmung], [$Q=m[(h_2-h_1)-v(p_2-p_1)]$], [Keine weitere Arbeit, äußere Energien unverändert; konstantes $m,V,v$.],
 )
 
-=== Kapitel 3 · Energiebilanzen: Erster Hauptsatz
+=== Formeln zu Kapitel 3 · Energiebilanzen: Erster Hauptsatz
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [1. HS offen, stationär], [$h_2-h_1+(c_2^2-c_1^2)/2+g(z_2-z_1)=q_12+w_(t,12)$], [Ein Ein-/Austritt, $dot(m)_1=dot(m)_2$. Alle Terme in J/kg oder einheitlich in kJ/kg.],
@@ -1654,7 +1654,7 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Drossel], [$h_2 approx h_1$], [Adiabat, keine technische Arbeit, äußere Energieänderungen vernachlässigt; irreversibel.],
 )
 
-=== Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme
+=== Formeln zu Kapitel 4 · Zweiter Hauptsatz und Zustandsdiagramme
 #tab(columns: (1.15fr, 1.8fr, 1.7fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Entropie, geschlossen], [$dif S=delta Q/T_b+dif S_"erz"$], [$dif S_"erz">=0$; Grenztemperatur $T_b$ in K. Adiabat geschlossen: $Delta S>=0$.],

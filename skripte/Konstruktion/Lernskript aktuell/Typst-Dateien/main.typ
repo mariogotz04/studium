@@ -2930,20 +2930,20 @@ Buchkapitel 15 wiederholt das ganze Buch an einem Teil. Gehe die Schritte in die
 == Formelsammlung mit Voraussetzungen
 Die Beziehungen beziehen sich auf die beschriebenen Zeichen- und Rechenmodelle. Vor jedem Einsetzen Normfassung, Bezugsstrecke und Einheiten prüfen.
 
-=== Kapitel 1 · Grundlagen und Zeichnungserstellung
+=== Formeln zu Kapitel 1 · Grundlagen und Zeichnungserstellung
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Blattformat A0], [$ x   dot  y  = 1 thin "m" ^(2) , quad  y  = sqrt(2)  thin x $], [x ≈ 841 mm, y ≈ 1189 mm; jedes nächste Format = Hälfte],
  [Fläche An], [$ A _("An")  = 1 thin "m" ^(2)  / 2^(n) $], [A4 = 1/16 m²],
 )
 
-=== Kapitel 3 · Werkstücke darstellen
+=== Formeln zu Kapitel 3 · Werkstücke darstellen
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Maßstab], [$ M  = l _(Z)  / l _(W) $], [1 : 2 = Verkleinerung, 2 : 1 = Vergrößerung; Maßzahl immer wirkliche Länge],
 )
 
-=== Kapitel 5 · Oberflächen und Kanten
+=== Formeln zu Kapitel 5 · Oberflächen und Kanten
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Rautiefe], [$ R _(z)  = R _(p)  + R _(v) $], [höchste Spitze + tiefstes Tal in einer Einzelmessstrecke],
@@ -2951,7 +2951,7 @@ Die Beziehungen beziehen sich auf die beschriebenen Zeichen- und Rechenmodelle. 
  [Rillenbreite], [$ R _("Sm")  = frac(1, m)  sum  X _(s ,i) $], [mittlere Breite der Profilelemente],
 )
 
-=== Kapitel 6 · Toleranzen und Passungen
+=== Formeln zu Kapitel 6 · Toleranzen und Passungen
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Abmaße], [$ "ES"  = G _(o)  - N , quad  "EI"  = G _(u)  - N $], [Bohrung groß (ES, EI), Welle klein (es, ei)],
@@ -2962,7 +2962,7 @@ Die Beziehungen beziehen sich auf die beschriebenen Zeichen- und Rechenmodelle. 
  [Maßkette (Restmaß)], [min = Gesamt#sub[min] − Σ Teilmaße#sub[max]], [Toleranzen addieren sich (Kapitel 13, S. 281)],
 )
 
-=== Kapitel 7 · Gewinde und Schraubenverbindungen
+=== Formeln zu Kapitel 7 · Gewinde und Schraubenverbindungen
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Flankendurchmesser], [$ d _(2)  = d  - 0","64953 thin P $], [M16: P = 2 mm],
@@ -2972,21 +2972,21 @@ Die Beziehungen beziehen sich auf die beschriebenen Zeichen- und Rechenmodelle. 
  [Gewindeauslauf], [x ≈ 2,5 · P], [M16: x = 5 mm (Tabellenwert)],
 )
 
-=== Kapitel 9 · Sicherungselemente
+=== Formeln zu Kapitel 9 · Sicherungselemente
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Nuttiefe Sicherungsring], [$ t  = (d _(1)  - d _(2) )/2 $], [d#sub[2] = Nutgrund],
  [Axialspiel Sicherungsring], [Spiel#sub[max] = m#sub[max] − s#sub[min]], [Spiel#sub[min] = m#sub[min] − s#sub[max]],
 )
 
-=== Kapitel 10 · Wälzlager und Lageranordnungen
+=== Formeln zu Kapitel 10 · Wälzlager und Lageranordnungen
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Lagerquerschnitt], [$ H  = (D  - d )/2 $], [D#sub[W] ≈ H/2, H#sub[R] ≈ H/3, R ≈ H/9 (S. 235)],
  [Lagerbohrung], [d = Bohrungskennzahl · 5], [ab Kennzahl 04; 00/01/02/03 = 10/12/15/17 mm (Ergänzung)],
 )
 
-=== Kapitel 12 · Zahnräder
+=== Formeln zu Kapitel 12 · Zahnräder
 #tab(columns: (1fr, 1fr, 1fr),
  th([Thema], [Formel], [Voraussetzung / Einheit]),
  [Modul], [$ m  = d  / z $], [beide Räder gleicher Modul; DIN 780 Reihe I bevorzugt],
@@ -2996,7 +2996,7 @@ Die Beziehungen beziehen sich auf die beschriebenen Zeichen- und Rechenmodelle. 
  [Achsabstand, Übersetzung], [$ a  = (d _(1)  + d _(2) )/2, quad  i  = z _(2) /z _(1) $], [Ergänzung],
 )
 
-=== Kapitel 13 · Zeichnungen lesen und erstellen
+=== Formeln zu Kapitel 13 · Zeichnungen lesen und erstellen
 Maßkette (Restmaß) beim Lesen einer Gesamtzeichnung: siehe Kapitel 6.
 
 #note("Wichtige Zahlen", [1 mm = 1000 µm. A4: 210 × 297 mm; A3: 297 × 420 mm. Bei Projektionsmethode 1 liegt die Draufsicht unten, die Seitenansicht von links rechts. H: EI = 0; h: es = 0. Zahlen aus Normtabellen immer mit Nennmaßbereich und Tabelle lesen; nicht außerhalb ihres Bereichs übertragen.])
