@@ -1,5 +1,5 @@
 #!/bin/bash
-# Lädt die aktuellen Typst-Lernskripte, Aufgaben, Hörtexte, den Vorlesungsplan und die Webseite aus dem Uni-Ordner auf GitHub hoch.
+# Lädt die aktuellen Typst-Lernskripte, Aufgaben, den Vorlesungsplan und die Webseite aus dem Uni-Ordner auf GitHub hoch.
 # Doppelklick genügt, oder im Terminal / von Codex: bash "Uni/Webseite/Webseite aktualisieren.command"
 # Die PDFs werden danach auf GitHub automatisch erzeugt (dauert 1–3 Minuten).
 
@@ -76,9 +76,9 @@ find "$UNI" -mindepth 4 -maxdepth 4 -path "*/Lernskript aktuell/Typst-Dateien/ma
         mkdir -p "$ARBEITSKOPIE/$ziel/$(dirname "$datei")"
         cp -p "$datei" "$ARBEITSKOPIE/$ziel/$datei"
       done)
-    # Der Hörtext des Moduls liegt daneben in Lernskript aktuell/. Quiz und Karteikarten gibt es seit 11.11.2026 nicht mehr
-    # (ihr Inhalt steht als Verständnisfragen in Aufgaben.typ); alte Dateien werden nur noch mitgenommen, falls vorhanden.
-    # (die Aufgaben stehen in Typst-Dateien/Aufgaben.typ und sind oben schon dabei)
+    # Quiz und Karteikarten gibt es seit 11.11.2026 nicht mehr (ihr Inhalt steht als Verständnisfragen in Aufgaben.typ),
+    # die Hörzusammenfassung (Hoerskript.md, EPUB) seit 12.11.2026 nicht mehr. Alte Dateien werden nur noch mitgenommen,
+    # falls sie noch in Lernskript aktuell/ liegen; die Webseite liest sie nicht. Die Aufgaben sind oben schon dabei.
     for md in Karteikarten.md Quiz.md Hoerskript.md; do
       if [ -f "$(dirname "$ordner")/$md" ]; then
         cp -p "$(dirname "$ordner")/$md" "$ARBEITSKOPIE/$(dirname "$ziel")/$md"

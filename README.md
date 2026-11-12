@@ -7,6 +7,7 @@ von einer GitHub Action zu PDFs kompiliert und auf GitHub Pages veröffentlicht.
 - **Lokal bauen:** `python3 build.py` (braucht `typst`), Ergebnis in `_site/`.
 - **Aufbau:** `skripte/<Modul>/Lernskript aktuell/Typst-Dateien/main.typ`, genau ein aktuelles Skript je Modul; der Titel kommt aus `#set document(title: …)`.
 - **Aufgaben:** `skripte/<Modul>/Lernskript aktuell/Typst-Dateien/Aufgaben.typ`, im Reiter „Lernen“. Jede Aufgabe trägt eine Herkunft: **Original** (Übungsblatt oder Altklausur des Professors, mit Fundstelle), **Von Claude erstellt · nach …** (Variante einer Original-Aufgabe) oder **Von Claude erstellt** (eigene Aufgabe, darunter alle Verständnisfragen). Details: `AGENTS.md` und Abschnitt 8.6 der Modul-AGENTS.md.
+- **Hörzusammenfassung (EPUB):** seit 12.11.2026 entfernt; `Hoerskript.md` wird nicht mehr gepflegt.
 - **Quiz und Karteikarten gibt es seit 11.11.2026 nicht mehr.** Ihre Fragen stehen als Verständnisfragen (`art: "verstehen"`) in `Aufgaben.typ`; „Zeichne die Begriffslandkarte …“-Fragen wurden nicht übernommen. `build.py` liest `Quiz.md` und `Karteikarten.md` nicht mehr (`QUIZ_UND_KARTEN = False`).
 - **Im Skript nachlesen:** Quellenlinks der Lernformate öffnen die passende Seite in der integrierten PDF-Ansicht und markieren die zur jeweiligen Antwort passende Textstelle gelb. Die Positionen werden beim Build neu ermittelt; beim nächsten Verweis wird die vorherige Markierung ersetzt.
 - **Notizblatt:** Bei Verständnisfragen bei Bedarf ausklappen. Nur mit dem Apple Pencil beziehungsweise Stift schreiben; Finger und Handballen erzeugen keine Striche. Zwei Finger verschieben und zoomen die unendliche weiße Fläche. „Kleiner/Größer“ ändern die Blattansicht; Zoomknöpfe und „Zum Anfang“ helfen bei der Navigation. Radierer, Rückgängig und Leeren stehen darüber. Die Notizen bleiben beim Aufdecken und Größenwechsel erhalten und verschwinden beim Fragenwechsel. Sie werden nicht gespeichert. Auf kleinen Displays steht das Blatt oberhalb der Frage. Rechenaufgaben bleiben ohne Notizblatt.
@@ -17,14 +18,7 @@ von einer GitHub Action zu PDFs kompiliert und auf GitHub Pages veröffentlicht.
 - **Im Wochenplan weiterlernen:** Geöffnete und geschlossene Fachlisten bleiben gespeichert, auch nach Neuladen und Wochenwechsel. Aus einer dort gestarteten Übung führt „Zum Wochenplan“ zurück zur gewählten Woche und zum passenden Fach. Nach „Selbst gelöst“ kehren einzelne Aufgaben direkt dorthin zurück; bei Mix-Serien und Probeklausuren bleibt die Auswertung mit Rücklink sichtbar. Geschlossene Fächer bleiben geschlossen. Die Scrollposition wird je Woche im aktuellen Browser-Tab gemerkt.
 - **Vorlesungsplan:** `Vorlesungsplan.pdf` (thabella-Export), wird von `build.py` eingelesen. Lokal braucht der Build dafür `pip install pypdf pdfplumber`.
 
-Nach neuen Vorlesungsunterlagen werden Lernskript, Formelsammlung (nach Kapiteln, Überschriften „=== Formeln zu Kapitel N · …“), Aufgaben mit Lösungen und Hörskript gemeinsam geprüft und passend erweitert. Neue Übungsblätter und Altklausuren kommen als Original-Aufgaben dazu, gekennzeichnete Varianten ergänzen sie. Bestehende Antworten werden bei fachlichem Bedarf korrigiert; der Build veröffentlicht die gepflegten Quellen und aktualisiert ihre Seitenverweise.
-
-## Hörzusammenfassungen
-
-Unter Lernskripte gibt es je Modul eine Feynman-Hörzusammenfassung als EPUB und eine Leseansicht mit aufdeckbaren Denkfragen. Lade die EPUB herunter und importiere sie in ElevenReader. Halte bei Denkpausen selbst kurz an und höre die Auflösung erst nach Deiner eigenen Erklärung. Bei einem neuen Stand die neue Datei erneut importieren.
-
-Die redaktionelle Quelle ist `Lernskript aktuell/Hoerskript.md` je Modul. Sie wird bei neuen Vorlesungsunterlagen mitgepflegt. Der Build erzeugt daraus EPUB-Dateien mit Kapitelnavigation und prüft Kapitel, Quellen sowie den abgeglichenen Skriptstand.
-
+Nach neuen Vorlesungsunterlagen werden Lernskript, Formelsammlung (nach Kapiteln, Überschriften „=== Formeln zu Kapitel N · …“), Aufgaben mit Lösungen gemeinsam geprüft und passend erweitert. Neue Übungsblätter und Altklausuren kommen als Original-Aufgaben dazu, gekennzeichnete Varianten ergänzen sie. Bestehende Antworten werden bei fachlichem Bedarf korrigiert; der Build veröffentlicht die gepflegten Quellen und aktualisiert ihre Seitenverweise.
 
 ## Mein Lerntag
 

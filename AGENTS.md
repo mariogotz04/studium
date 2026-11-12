@@ -5,7 +5,7 @@ Sie ist Marios Lernplattform mit vier Reitern:
 
 - **Start:** Uhr, heutiger und morgiger Vorlesungsplan, „Heute dran“ (täglich wechselnde Lernvorschläge aus Plan,
   Klausurterminen und Lernstand), Countdown zur nächsten Klausur, Fristen, To-dos.
-- **Lernskripte:** jedes Lernskript als PDF sowie eine Feynman-Hörzusammenfassung als EPUB; Leseansicht mit aufdeckbaren Denkpausen. Die PDF enthält weiterhin nur Zusammenfassung und Formelsammlung.
+- **Lernskripte:** jedes Lernskript als PDF. Die PDF enthält nur Zusammenfassung und Formelsammlung. Die frühere Hörzusammenfassung (EPUB, Leseansicht) gibt es seit 12.11.2026 nicht mehr.
 - **Lernen:** Rechenaufgaben und Verständnisfragen mit Lösung Schritt für Schritt (vor allem Aufgaben der Professoren,
   gekennzeichnet als „Original“ bzw. „Von Claude erstellt“), Pomodoro-Timer,
   je Modul eine Probeklausur (Aufgaben aus verschiedenen Kapiteln, gemischt, ohne Titel, mit Uhr, Standard 80 % der
@@ -30,13 +30,13 @@ Sie ist Marios Lernplattform mit vier Reitern:
   Eine nicht selbst gelöste Aufgabe bleibt dran. Das Kapitel kommt aus der Überschrift (`#kapitel`, `## `),
   bei Sammelüberschriften („Kapitel 7–12“, „TM1 · Statik“) aus `Quelle:`/`quelle:`. Darum Kapitelüberschriften immer
   mit „Kapitel N“ benennen und jede Aufgabe mit Quelle versehen. **Ausnahme Formelsammlung:** deren Unterabschnitte heißen
-  `=== Formeln zu Kapitel N · …` und dürfen nicht mit „Kapitel“ beginnen, sonst bricht der Hörkapitel-Abgleich in build.py ab.
+  `=== Formeln zu Kapitel N · …` und beginnen nicht mit „Kapitel“, damit sie nicht als Skriptkapitel zählen.
 
 Die PDFs und die Aufgaben werden auf GitHub aus den `.typ`-Dateien gesetzt; hier liegt nur die Seite selbst.
 
 ## Nach jeder Änderung an einem Lernskript hochladen
 
-Wenn du eine `.typ`-Datei (auch `Aufgaben.typ`), ein Bild in `abbildungen/` oder die `Hoerskript.md` eines Moduls
+Wenn du eine `.typ`-Datei (auch `Aufgaben.typ`), ein Bild in `abbildungen/` eines Moduls
 oder den Vorlesungsplan geändert hast, lade sie danach hoch:
 
 ```bash
@@ -60,7 +60,7 @@ Vorher prüfen, dass Skript und Aufgaben fehlerfrei kompilieren, falls `typst` i
   „Stand TT.MM.JJJJ“ im Kopf von `main.typ`; diese also bei jeder Änderung aktualisieren.
   Die PDF heißt beim Download z. B. `FET Lernskript Stand 24.10.2026.pdf`.
 - Pro Modul außerdem `Typst-Dateien/Aufgaben.typ` (Aufgaben, Format im Kopf der Datei; daraus entstehen die Web-Bausteine,
-  die Lösungs-PDF und `<Modul>_Blatt.pdf` mit einer Seite je Aufgabenstellung für das Wochen-PDF). Dazu `Lernskript aktuell/Hoerskript.md` als Quelle der EPUB-Hörfassung.
+  die Lösungs-PDF und `<Modul>_Blatt.pdf` mit einer Seite je Aufgabenstellung für das Wochen-PDF).
 - `Vorlesungsplan.pdf` aus diesem Ordner (siehe unten).
 - Nie hochgeladen werden: `Zum Löschen/`, `Unterlagen/`, `Sonstiges/`, `Physik Praktikum/` und dieser Ordner.
 - Ein neues Modul erscheint automatisch, sobald es `Lernskript aktuell/Typst-Dateien/main.typ` hat.
@@ -115,7 +115,7 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 ## Alle Lernformate wachsen mit den Vorlesungsunterlagen
 
 - Nach jeder Einarbeitung neuer Vorlesungsunterlagen das Lernskript **und** `Aufgaben.typ` (neue Prof-Aufgaben als Original,
-  Varianten, Verständnisfragen samt Ergebnis, Tipp und Lösungsschritten) sowie `Hoerskript.md` (hörgerechte Erklärungen und Denkpausen mit Auflösung) gemeinsam abgleichen.
+  Varianten, Verständnisfragen samt Ergebnis, Tipp und Lösungsschritten) gemeinsam abgleichen.
 - Zu neu behandeltem Stoff passende Aufgaben ergänzen. Sie landen automatisch im Lernplan (ab der folgenden Woche). Vorhandene Antworten nur ändern, wenn sie falsch, unvollständig oder durch die Unterlagen überholt sind.
   Eine reine Layout- oder Übersichtsänderung erfordert keine neuen fachlichen Antworten.
 - Titel und Fragetexte möglichst unverändert lassen, damit der Lernstand erhalten bleibt. Abschnittsverweise nach
@@ -123,13 +123,10 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Alle Formate zusammen prüfen und mit dem Upload-Skript veröffentlichen. Das ist redaktionelle Pflege durch die KI
   bei der Bearbeitung der Unterlagen; der Webseiten-Build selbst erzeugt keine neuen Fragen.
 
-## Hörzusammenfassungen als EPUB
+## Hörzusammenfassung (entfallen seit 12.11.2026)
 
-- Je Modul `Lernskript aktuell/Hoerskript.md` redaktionell pflegen; Format und Regeln in Modul-AGENTS.md, Abschnitt 8.9. Bei neuen Unterlagen zusammen mit den übrigen Lernformaten erweitern, keine bloße PDF-Textextraktion.
-- `build.py` erzeugt daraus genau **ein Downloadformat: EPUB 3**, unter `_site/epub/`. Dazu dieselben Inhalte als Leseansicht unter Lernskripte, in der Denkpausen eine aufdeckbare Auflösung haben. Keine TXT-Alternative.
-- Kopf mit `Stand:` und `Skriptstand:`; ein Modulüberblick und alle vorhandenen Skriptkapitel in gleicher Reihenfolge. Je Kapitel gültige `Quelle:`-Abschnitte und mindestens ein `### Denkpause`/`### Auflösung`-Paar. Der Build weist fehlende Kapitel, ungültige Quellen, unvollständige Paare und einen nicht abgeglichenen Skriptstand zurück.
-- Hörtext in einfachen gesprochenen Sätzen, Formeln in Worten, Abkürzungen erklären. EPUB ohne JavaScript, fremde Medien oder festes Seitenlayout, mit deutscher Sprachkennung und Kapitelnavigation. ElevenReader kann die Denkpausen nicht automatisch als echte Wartezeit ausführen: Mario hält selbst an; danach folgt die Auflösung. Bei einem neuen Stand erneut importieren.
-- EPUB-Downloads haben ihren eigenen MIME-Typ `application/epub+zip`; die Home-Bildschirm-App kann Dateien über das Teilen-Menü sichern/übergeben. EPUBs nicht mit dem PDF-Viewer öffnen.
+- Mario nutzt sie nicht. `build.py` erzeugt keine EPUB mehr, die Leseansicht `#hoeren/…` ist entfernt (alte Links führen zu den Lernskripten).
+- `Hoerskript.md` liegt je Modul unter `Zum Löschen/Hoerskript (bis 12.11.2026)/` und wird nicht mehr gepflegt oder angelegt.
 
 ## Vorlesungsplan
 
@@ -205,6 +202,10 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 - Aufgabentitel unverändert lassen; sie bestimmen die Lernstand-ID. Layoutänderungen brauchen keine neuen fachlichen Antworten. Quellenmarkierung und bewusste Bewertung gelten in allen sieben und künftigen Modulen.
 
 ## Änderungsprotokoll
+
+### 12.11.2026 · Hörzusammenfassung entfernt, Verständnisfragen 3 Minuten im Lernplan
+- EPUB-Hörzusammenfassung und Leseansicht entfernt (Marios Wunsch); build.py ohne Hörskript-Abgleich, Hoerskript.md aus allen Modulen nach „Zum Löschen“.
+- Lernplan: Verständnisfragen zählen pauschal 3 Minuten (`VERSTEHEN_MIN` in lernplan.js), Rechenaufgaben mit ihren `minuten:`.
 
 ### 12.11.2026 · Aufgaben der Professoren, Lernplan ohne Budget, Quiz/Karten entfallen
 - Alle sieben Module: Übungs- und Altklausuraufgaben als Originale mit gekennzeichneten Varianten, Quiz- und Kartenfragen als Verständnisfragen (1.746 Aufgaben). Formelsammlungen nach Kapiteln (`=== Formeln zu Kapitel N`).
