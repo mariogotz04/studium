@@ -2794,68 +2794,8 @@ Bilanz der Donau AG in T€: Aktiva: Grundstück 500, Maschinen 300, Umlaufverm�
 *EK-Rentabilität vergleichen:* $50/650 approx "7,69"%$. Sie bezieht den Gewinn auf das bilanzielle EK, die Gewinnrendite (5,56 %) auf den Börsenkurs. Verschiedene Nenner, verschiedene Aussagen.
 ]
 
-#aufgabe(titel: "Klausur: Kapitalerhöhung der Metall AG", art: "rechnen", quelle: "1.19", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 2", minuten: 10, ergebnis: [GK 40 Mio. €; Kapitalrücklage 60 Mio. €; EK 122 Mio. €; Zufluss 26 Mio. €; Bezugsrecht 0,15 €; Mischkurs 3,05 €], tipp: [Erst die Zahl der jungen Aktien aus dem Bezugsverhältnis bestimmen. Nennwert geht ins Grundkapital, der Aufpreis (Agio) in die Kapitalrücklage.])[
-#if not web [*Aufgabe 154* #linebreak()]
-*Gegeben und Annahmen*
-
-Die Metall AG hat zum 31.12.2015 folgendes Eigenkapital, das auf Aktien mit dem Nennwert von 1 € entfällt: Grundkapital (gezeichnetes Kapital) 30 Mio. €, Kapitalrücklagen 44 Mio. €, Gewinnrücklagen 22 Mio. €. Zur Finanzierung größerer Investitionen plant die Metall AG 2016 eine Kapitalerhöhung gegen Einlagen mit einem Bezugsverhältnis von 3 : 1 (3 alte Aktien berechtigen zum Bezug von 1 junger Aktie). Die Aktien werden vor der Kapitalerhöhung mit 3,20 € an der Börse gehandelt. Junge Aktien werden zu 2,60 € je Aktie ausgegeben. Kosten der Emission werden vernachlässigt.
-
-*Gesucht* (Werte nach der Kapitalerhöhung, 10 Punkte)
-
-#enum(numbering: "a)",
-[Grundkapital (gezeichnetes Kapital)],
-[Kapitalrücklagen],
-[Eigenkapital],
-[Mittelzufluss aus der Kapitalerhöhung],
-[Rechnerischer Wert des Bezugsrechts],
-[Rechnerischer Kurs der Aktien nach der Kapitalerhöhung (Mischkurs)],
-)
-#src[K, PDF-S. 3 (Klausurseite 7). Das Thema Kapitalerhöhung und Bezugsrecht gehört zu Kapitel C der Vorlesung (Eigenfinanzierung), das im Lernskript noch nicht ausgearbeitet ist; Abschnitt 1.19 liefert Grundkapital, Nennwert und Aktienzahl. Eigene Lösung; die handschriftlichen Antworten im Scan sind falsch und werden nicht übernommen.]
-][
-*Aktienzahlen bestimmen:* Alte Aktien $N_"alt"=30 thin "Mio. €" / 1 thin "€"=30$ Mio. Stück. Bei 3 : 1 kommen $30/3=10$ Mio. junge Aktien hinzu.
-][
-*a) Grundkapital:* Jede junge Aktie erhöht das Grundkapital um ihren Nennwert: $30+10 times 1=40$ Mio. €.
-][
-*b) Kapitalrücklagen:* Der Betrag über dem Nennwert (Agio) geht in die Kapitalrücklage: $("2,60"-"1,00") times 10$ Mio. $=16$ Mio. €; neu $44+16=60$ Mio. €.
-][
-*c) Eigenkapital:* $40+60+22=122$ Mio. €. Kontrolle: altes EK $30+44+22=96$ Mio. € plus Zufluss 26 Mio. € = 122 Mio. €. Die Gewinnrücklagen bleiben unverändert.
-][
-*d) Mittelzufluss:* $10$ Mio. Aktien $times "2,60"$ € $=26$ Mio. € (= Erhöhung GK 10 + Agio 16).
-][
-*e) Bezugsrecht:* $B=(K_"alt"-K_"neu")/(m/n+1)=("3,20"-"2,60")/(3/1+1)="0,60"/4="0,15"$ €. Nicht einfach 3,20 − 2,60 = 0,60 €: Der Kursvorteil der jungen Aktie verteilt sich auf die drei alten Aktien, die man für eine junge braucht, und die junge selbst.
-][
-*f) Mischkurs:* $(3 times "3,20"+1 times "2,60")/4="12,20"/4="3,05"$ €. Kontrolle: $"3,20"-"0,15"="3,05"$ €. Nicht der einfache Durchschnitt (2,90 €), denn es gibt dreimal so viele alte wie junge Aktien.
-]
-
-#aufgabe(titel: "Kapitalerhöhung der Holz AG (Variante)", art: "rechnen", quelle: "1.19", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 2", minuten: 10, ergebnis: [GK 25 Mio. €; Kapitalrücklage 25 Mio. €; EK 60 Mio. €; Zufluss 15 Mio. €; Bezugsrecht 0,30 €; Mischkurs 4,20 €])[
-#if not web [*Aufgabe 155* #linebreak()]
-*Gegeben und Annahmen*
-
-Die Holz AG hat Aktien mit einem Nennwert von 1 €. Eigenkapital vor der Kapitalerhöhung: Grundkapital 20 Mio. €, Kapitalrücklagen 15 Mio. €, Gewinnrücklagen 10 Mio. €. Geplant ist eine Kapitalerhöhung gegen Einlagen im Bezugsverhältnis 4 : 1. Börsenkurs vor der Erhöhung 4,50 €, Ausgabekurs der jungen Aktien 3,00 €. Keine Emissionskosten.
-
-*Gesucht*
-
-#enum(numbering: "a)",
-[Grundkapital, Kapitalrücklagen und Eigenkapital nach der Kapitalerhöhung.],
-[Mittelzufluss.],
-[Rechnerischer Wert des Bezugsrechts und Mischkurs.],
-[Zeige, dass ein Altaktionär mit 4 Aktien durch die Kapitalerhöhung nichts verliert, wenn er sein Bezugsrecht verkauft.],
-)
-#src[Eigene Variante zu Altklausur 2017, Aufgabe 2 (K, PDF-S. 3).]
-][
-*Junge Aktien:* $20 "Mio. alte Aktien" \/ 4 = 5$ Mio. junge Aktien.
-][
-*Bilanzpositionen:* GK $20+5=25$ Mio. €. Agio $("3,00"-"1,00") times 5=10$ Mio. €, Kapitalrücklagen $15+10=25$ Mio. €. EK $25+25+10=60$ Mio. € (vorher 45 Mio. € plus 15 Mio. € Zufluss).
-][
-*Zufluss:* $5$ Mio. $times "3,00"$ € $=15$ Mio. €.
-][
-*Bezugsrecht und Mischkurs:* $B=("4,50"-"3,00")/(4+1)="0,30"$ €. Mischkurs $(4 times "4,50"+"3,00")/5="4,20"$ € $="4,50"-"0,30"$.
-][
-*Vermögen des Altaktionärs prüfen:* Vorher $4 times "4,50"=18$ €. Nachher 4 Aktien zu 4,20 € $="16,80"$ € plus Verkauf von 4 Bezugsrechten zu 0,30 € $="1,20"$ €, zusammen 18 €. Das Bezugsrecht gleicht den Kursverlust genau aus (Verwässerungsschutz).
-]
-
 #aufgabe(titel: "Kurzfristige statt langfristiger Schulden", art: "verstehen", quelle: "1.20", herkunft: "eigen", tipp: [Setze die Veränderung nur im kurzfristigen Fremdkapital ein.])[
-#if not web [*Aufgabe 156* #linebreak()]
+#if not web [*Aufgabe 154* #linebreak()]
 Wie wirkt der Ersatz langfristiger Schulden durch gleich hohe kurzfristige Schulden bei unverändertem Umlaufvermögen auf das Working Capital? Begründe.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2867,7 +2807,7 @@ Wie wirkt der Ersatz langfristiger Schulden durch gleich hohe kurzfristige Schul
 ]
 
 #aufgabe(titel: "Kapitalbindungsdauer definieren", art: "verstehen", quelle: "1.20", herkunft: "eigen", tipp: [Zeichne Auszahlung und Kundeneingang auf einer Zeitachse.])[
-#if not web [*Aufgabe 157* #linebreak()]
+#if not web [*Aufgabe 155* #linebreak()]
 Von wann bis wann reicht die Kapitalbindungsdauer einer Kostenart? Wie wirkt ein längeres Lieferantenziel auf die Materialbindung?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2879,7 +2819,7 @@ Von wann bis wann reicht die Kapitalbindungsdauer einer Kostenart? Wie wirkt ein
 ]
 
 #aufgabe(titel: "Hohes Working Capital, trotzdem Zahlungslücke", art: "verstehen", quelle: "1.20", herkunft: "eigen", tipp: [Frage, ob das Umlaufvermögen schon Geld ist.])[
-#if not web [*Aufgabe 158* #linebreak()]
+#if not web [*Aufgabe 156* #linebreak()]
 Warum kann ein hohes Working Capital trotzdem mit einer Zahlungslücke morgen zusammenfallen?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2887,7 +2827,7 @@ Warum kann ein hohes Working Capital trotzdem mit einer Zahlungslücke morgen zu
 ]
 
 #aufgabe(titel: "Was misst Working Capital?", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 159* #linebreak()]
+#if not web [*Aufgabe 157* #linebreak()]
 Was misst Working Capital in dieser Vorlesung?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2901,7 +2841,7 @@ Was misst Working Capital in dieser Vorlesung?
 ]
 
 #aufgabe(titel: "Working Capital und EBK unterscheiden", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 160* #linebreak()]
+#if not web [*Aufgabe 158* #linebreak()]
 Warum sind Working Capital und das EBK der Glasspinnerei nicht automatisch gleich?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2913,7 +2853,7 @@ Warum sind Working Capital und das EBK der Glasspinnerei nicht automatisch gleic
 ]
 
 #aufgabe(titel: "Zielkonflikt beim Working Capital", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 161* #linebreak()]
+#if not web [*Aufgabe 159* #linebreak()]
 Welchen Zielkonflikt zeigt die Finanzierung des Working Capitals?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2926,7 +2866,7 @@ Welchen Zielkonflikt zeigt die Finanzierung des Working Capitals?
 ]
 
 #aufgabe(titel: "Eigene Bindungsdauer je Kostenart", art: "verstehen", quelle: "1.20", herkunft: "eigen")[
-#if not web [*Aufgabe 162* #linebreak()]
+#if not web [*Aufgabe 160* #linebreak()]
 Warum braucht jede Kostenart eine eigene Kapitalbindungsdauer?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -2941,7 +2881,7 @@ Warum braucht jede Kostenart eine eigene Kapitalbindungsdauer?
 ]
 
 #aufgabe(titel: "Vorlesung: maximaler Kapitalbedarf des Umlaufvermögens", art: "rechnen", quelle: "1.20", herkunft: "original", vorlage: "Vorlesung PDF-S. 31–32, Folien 61–63, Aufgabe", ergebnis: [341.250 €], tipp: [Zeichne den Tag der Kundenzahlung und ziehe für jede Kostenart ihren Auszahlungstag ab.])[
-#if not web [*Aufgabe 163* #linebreak()]
+#if not web [*Aufgabe 161* #linebreak()]
 *Gegeben und Annahmen*
 
 Umsatz 1,8 Mio. €/Jahr; davon Material 40 %, Lohn 25 %, Herstellgemeinkosten (HGK) 10 %, Verwaltungs-/Vertriebsgemeinkosten (VVGK) 10 %. Beschaffungssynchrone Fertigung, gleichmäßige Tagesausgaben und 360-Tage-Rechenjahr wie in der Folienlösung. Fertigung 60 Tage, Fertiglager 15 Tage, Debitorenfrist 45 Tage. Materialzahlung nach 60 Tagen Kreditorenfrist; Lohnzahlung 15 Tage nach Produktionsbeginn, HGK sofort, VVGK am Tag 60. Kundenzahlung nach Fertigung, Lager und Debitorenfrist. Keine weiteren Auszahlungen im Modell.
@@ -2963,7 +2903,7 @@ Umsatz 1,8 Mio. €/Jahr; davon Material 40 %, Lohn 25 %, Herstellgemeinkosten (
 ]
 
 #aufgabe(titel: "Kapitalbedarf des Umlaufvermögens eines Möbelherstellers (Variante)", art: "rechnen", quelle: "1.20", herkunft: "variante", vorlage: "Vorlesung PDF-S. 31–32, Folien 61–63, Aufgabe", minuten: 15, ergebnis: [339.000 €])[
-#if not web [*Aufgabe 164* #linebreak()]
+#if not web [*Aufgabe 162* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Möbelhersteller mit beschaffungssynchroner Fertigung hat einen Umsatz von 2,16 Mio. €/Jahr. Anteil der Kosten am Umsatz: Material 35 %, Löhne 30 %, Herstellgemeinkosten (HGK) 10 %, Verwaltungs- und Vertriebsgemeinkosten (VVGK) 5 %. Das Material wird bei Produktionsbeginn geliefert und nach 30 Tagen bezahlt (Kreditorenfrist). Löhne fallen durchschnittlich 10 Tage nach Produktionsbeginn an, HGK unmittelbar bei Produktionsbeginn, VVGK 40 Tage nach Produktionsbeginn. Fertigungszeit 40 Tage, Lagerdauer der Enderzeugnisse 20 Tage, Debitorenfrist 30 Tage. Gleichmäßige Tagesausgaben, Rechenjahr 360 Tage.
@@ -2988,7 +2928,7 @@ Ein Möbelhersteller mit beschaffungssynchroner Fertigung hat einen Umsatz von 2
 ]
 
 #aufgabe(titel: "Vorlesung: Finanzplan als Primärplan", art: "verstehen", quelle: "1.21", herkunft: "original", vorlage: "Vorlesung PDF-S. 32, Folie 64, Übungsaufgabe 1")[
-#if not web [*Aufgabe 165* #linebreak()]
+#if not web [*Aufgabe 163* #linebreak()]
 Nenne die kurzfristigen und langfristigen Aufgaben der Finanzplanung. Erkläre, wann der Finanzplan zum Primärplan wird und welchen Beitrag Kennzahlen leisten.
 #src[V, PDF-S. 32–33, Folien 64–66; N28, PDF-S. 6–7, Übungsaufgabe 1.]
 ][
@@ -3002,7 +2942,7 @@ Nenne die kurzfristigen und langfristigen Aufgaben der Finanzplanung. Erkläre, 
 ]
 
 #aufgabe(titel: "Vorlesung: Funktionen finanzwirtschaftlicher Kennzahlen", art: "verstehen", quelle: "1.21", herkunft: "original", vorlage: "Vorlesung PDF-S. 36, Folie 72, Übungsaufgabe 4")[
-#if not web [*Aufgabe 166* #linebreak()]
+#if not web [*Aufgabe 164* #linebreak()]
 Wofür können Rentabilität, Liquidität, Verschuldungsgrad und Anlagendeckung verwendet werden? Nenne mindestens fünf Funktionen und erläutere eine Grenze ihrer Aussagekraft.
 #src[V, PDF-S. 36–37, Folien 72–73; N28, PDF-S. 10–11, Übungsaufgabe 4.]
 ][
@@ -3014,7 +2954,7 @@ Wofür können Rentabilität, Liquidität, Verschuldungsgrad und Anlagendeckung 
 ]
 
 #aufgabe(titel: "Vorlesung: Aussagekraft und Grenzen des Cashflows", art: "verstehen", quelle: "1.21", herkunft: "original", vorlage: "Vorlesung PDF-S. 39, Folie 77, Übungsaufgabe 6")[
-#if not web [*Aufgabe 167* #linebreak()]
+#if not web [*Aufgabe 165* #linebreak()]
 Erkläre, was der betriebliche Cashflow über Innenfinanzierung aussagt, warum er den Gewinn ergänzt und welche Grenzen seine Verwendung hat.
 #src[V, PDF-S. 39, Folien 77–78; N28, PDF-S. 13, Übungsaufgabe 6.]
 ][
@@ -3026,7 +2966,7 @@ Erkläre, was der betriebliche Cashflow über Innenfinanzierung aussagt, warum e
 ]
 
 #aufgabe(titel: "Wann wird der Finanzplan zum Primärplan?", art: "verstehen", quelle: "1.21", herkunft: "eigen", tipp: [Welcher Bereich begrenzt die anderen?])[
-#if not web [*Aufgabe 168* #linebreak()]
+#if not web [*Aufgabe 166* #linebreak()]
 Wann wird der Finanzplan zum Primärplan?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3045,7 +2985,7 @@ Wann wird der Finanzplan zum Primärplan?
 ]
 
 #aufgabe(titel: "Einkauf auf Kredit ist keine Auszahlung", art: "verstehen", quelle: "1.21.1", herkunft: "eigen", tipp: [Trenne Beschaffung und Bankbewegung.])[
-#if not web [*Aufgabe 169* #linebreak()]
+#if not web [*Aufgabe 167* #linebreak()]
 Warum ist ein Einkauf auf Kredit keine sofortige Auszahlung?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3063,7 +3003,7 @@ Warum ist ein Einkauf auf Kredit keine sofortige Auszahlung?
 ]
 
 #aufgabe(titel: "Nettomonetäres UV und Kassenbestand", art: "verstehen", quelle: "1.21.1", herkunft: "eigen")[
-#if not web [*Aufgabe 170* #linebreak()]
+#if not web [*Aufgabe 168* #linebreak()]
 Was unterscheidet nettomonetäres Umlaufvermögen vom Kassenbestand?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3074,7 +3014,7 @@ Was unterscheidet nettomonetäres Umlaufvermögen vom Kassenbestand?
 ]
 
 #aufgabe(titel: "Vorlesung: Quartalsplan und Zahlungsbegriffe", art: "rechnen", quelle: "1.21.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 35, Folie 69, Übungsaufgabe 3", ergebnis: [Folienrechnung: Ende 315 / 170 / −645 T€. Eigene reine Zahlungsvariante: 915 / 1.390 / 1.475 T€. Nettomonetäres UV aus den Angaben nicht eindeutig bestimmt.])[
-#if not web [*Aufgabe 171* #linebreak()]
+#if not web [*Aufgabe 169* #linebreak()]
 *Gegeben und Annahmen*
 
 Alle Werte in T€, Anfang 80. Die Originaltabelle nennt:
@@ -3101,7 +3041,7 @@ Alle Werte in T€, Anfang 80. Die Originaltabelle nennt:
 ]
 
 #aufgabe(titel: "Quartalsplan eines Händlers (Variante)", art: "rechnen", quelle: "1.21.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 35, Folie 69, Übungsaufgabe 3", minuten: 12, ergebnis: [Salden +160 / −40 / −100 T€; Bestände 210 / 170 / 70 T€])[
-#if not web [*Aufgabe 172* #linebreak()]
+#if not web [*Aufgabe 170* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Händler plant drei Quartale, alle Werte in T€, Anfangsbestand an liquiden Mitteln 50. Die Tabelle nennt:
@@ -3137,7 +3077,7 @@ Ein Händler plant drei Quartale, alle Werte in T€, Anfangsbestand an liquiden
 ]
 
 #aufgabe(titel: "Sanitärfall: Durchschnittskapital", art: "verstehen", quelle: "1.21.2", herkunft: "eigen", tipp: [Jahresstrom und Stichtagsbestand sind verschiedene Bezugsebenen.])[
-#if not web [*Aufgabe 173* #linebreak()]
+#if not web [*Aufgabe 171* #linebreak()]
 Warum nutzt die Sanitärgeschäft-Aufgabe für die Rentabilität durchschnittliches Kapital, für die EK-Quote aber den Stichtagswert?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3150,7 +3090,7 @@ Warum nutzt die Sanitärgeschäft-Aufgabe für die Rentabilität durchschnittlic
 ]
 
 #aufgabe(titel: "Netto-GK-Rentabilität ist keine Leverage-Gesamtrendite", art: "verstehen", quelle: "1.21.2", herkunft: "eigen")[
-#if not web [*Aufgabe 174* #linebreak()]
+#if not web [*Aufgabe 172* #linebreak()]
 Warum ist die Netto-Gesamtkapitalrentabilität der Sanitärlösung keine Leverage-Gesamtrendite?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3161,7 +3101,7 @@ Warum ist die Netto-Gesamtkapitalrentabilität der Sanitärlösung keine Leverag
 ]
 
 #aufgabe(titel: "Vorlesung: Darlehen für das Sanitärgeschäft beurteilen", art: "rechnen", quelle: "1.21.2", herkunft: "original", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5", ergebnis: [EK-Rentabilität 8,61 %, Netto-GK 5,65 %; L1/L2/L3 226,32 / 236,84 / 710,53 %; EK-Quote 66,56 %; AD I/II 83,85 / 122,31 %.])[
-#if not web [*Aufgabe 175* #linebreak()]
+#if not web [*Aufgabe 173* #linebreak()]
 *Gegeben und Annahmen*
 
 Darlehenswunsch mindestens 15.000 €. Bilanz in €: Lagerhalle 40.000; Fahrzeuge 12.000; Materiallager 9.000; Debitoren 200; Kasse 300; Bank 4.000. Passiva: gezeichnetes Kapital 30.000, Rücklagen 10.000, Gewinnvortrag 3.600, kurzfristiger Bankkredit 1.500, langfristiger Bankkredit 20.000, Lieferantenkredit 400. Summe 65.500. Wie in der Folienlösung: Gewinnvortrag sei Jahresgewinn, im Jahr gleichmäßig entstanden; alle anderen Kapitalpositionen seien unverändert. Flüssige Mittel seien verfügbar, Forderungen kurzfristig. Zinsaufwand nicht angegeben.
@@ -3185,7 +3125,7 @@ Darlehenswunsch mindestens 15.000 €. Bilanz in €: Lagerhalle 40.000; Fahrzeu
 ]
 
 #aufgabe(titel: "Liquiditätsgrade berechnen", art: "rechnen", quelle: "1.9", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 176* #linebreak()]
+#if not web [*Aufgabe 174* #linebreak()]
 *Gegeben und Annahmen*
 
 Liquiditätsgrade: Kasse und Bank 40, Forderungen 120, Vorräte 140, kurzfristiges Fremdkapital 150 (T€).
@@ -3208,7 +3148,7 @@ Liquiditätsgrade: Kasse und Bank 40, Forderungen 120, Vorräte 140, kurzfristig
 ]
 
 #aufgabe(titel: "Kennzahlen-Check", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 177* #linebreak()]
+#if not web [*Aufgabe 175* #linebreak()]
 *Gegeben und Annahmen*
 
 Kennzahlen-Check : Anlagevermögen 600, Umlaufvermögen 400; Eigenkapital 250, langfristiges FK 350, kurzfristiges FK 400 (T€). Jahresüberschuss 50, Umsatzerlöse 1.000, Cashflow 125.
@@ -3235,7 +3175,7 @@ Kennzahlen-Check : Anlagevermögen 600, Umlaufvermögen 400; Eigenkapital 250, l
 ]
 
 #aufgabe(titel: "EK-Quote und goldene Bilanzregel", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 178* #linebreak()]
+#if not web [*Aufgabe 176* #linebreak()]
 *Gegeben und Annahmen*
 
 EK-Quote und goldene Bilanzregel: EK 300, langfristiges FK 200, kurzfristiges FK 500, AV 450, Bilanzsumme 1.000 (T€).
@@ -3256,7 +3196,7 @@ EK-Quote und goldene Bilanzregel: EK 300, langfristiges FK 200, kurzfristiges FK
 ]
 
 #aufgabe(titel: "Liquiditätsgrade beurteilen", art: "rechnen", quelle: "1.9", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 179* #linebreak()]
+#if not web [*Aufgabe 177* #linebreak()]
 *Gegeben und Annahmen*
 
 Liquiditätsgrade (Teil A5): Kasse 30, Forderungen 90, Vorräte 120, kurzfristiges FK 200 (T€).
@@ -3279,7 +3219,7 @@ Liquiditätsgrade (Teil A5): Kasse 30, Forderungen 90, Vorräte 120, kurzfristig
 ]
 
 #aufgabe(titel: "Bilanzanalyse mit allen Kennzahlen", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 180* #linebreak()]
+#if not web [*Aufgabe 178* #linebreak()]
 *Gegeben und Annahmen*
 
 Bilanzanalyse (Teil A4/A5): AV 800; Vorräte 200, Forderungen 150, Kasse 50; EK 180, langfr. FK 520, kfr. FK 500 (T€). JÜ 27, Umsatz 1.500, Cashflow 100.
@@ -3306,7 +3246,7 @@ Bilanzanalyse (Teil A4/A5): AV 800; Vorräte 200, Forderungen 150, Kasse 50; EK 
 ]
 
 #aufgabe(titel: "Finanzielle Lage vollständig beurteilen", art: "rechnen", quelle: "1.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5")[
-#if not web [*Aufgabe 181* #linebreak()]
+#if not web [*Aufgabe 179* #linebreak()]
 *Gegeben und Annahmen*
 
 Ein Unternehmen meldet: JÜ 60, Abschreibungen 40, Zuführung zu Pensionsrückstellungen 20. Bilanz: AV 700, UV 300 (davon flüssige Mittel 30, Forderungen 120), EK 200, FK 800 (davon kurzfristig 300) (T€).
@@ -3331,7 +3271,7 @@ Ein Unternehmen meldet: JÜ 60, Abschreibungen 40, Zuführung zu Pensionsrückst
 ]
 
 #aufgabe(titel: "Darlehen für einen Malerbetrieb beurteilen (Variante)", art: "rechnen", quelle: "1.21.2", herkunft: "variante", vorlage: "Vorlesung PDF-S. 37, Folie 74, Übungsaufgabe 5", minuten: 18, ergebnis: [EK-Rentabilität 10,91 %, Netto-GK 6,19 %; L1/L2/L3 91,67 / 133,33 / 183,33 %; EK-Quote 58 %; AD I/II 74,36 / 112,82 %])[
-#if not web [*Aufgabe 182* #linebreak()]
+#if not web [*Aufgabe 180* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Bekannte bittet dich um ein Darlehen von 20.000 € für ihren Malerbetrieb. Bilanz zum 31.12. in €: Aktiva: Werkstatt 60.000, Fahrzeuge 18.000, Materiallager 6.000, Forderungen (Debitoren) 5.000, Kasse 1.000, Bank 10.000 (Summe 100.000). Passiva: gezeichnetes Kapital 40.000, Rücklagen 12.000, Gewinnvortrag 6.000, kurzfristiger Bankkredit 4.000, langfristiger Bankkredit 30.000, Lieferantenkredit 8.000 (Summe 100.000). Annahmen wie in der Vorlesungslösung: Der Gewinnvortrag ist der Jahresgewinn, er ist gleichmäßig über das Jahr entstanden; alle anderen Positionen waren das ganze Jahr unverändert.
@@ -3362,7 +3302,7 @@ Eine Bekannte bittet dich um ein Darlehen von 20.000 € für ihren Malerbetrieb
 #kapitel("Kapitel 2 · Fremdfinanzierung")
 
 #aufgabe(titel: "Gläubigerrisiko trotz festem Zahlungsanspruch", art: "verstehen", quelle: "2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 183* #linebreak()]
+#if not web [*Aufgabe 181* #linebreak()]
 Eine Bank vereinbart feste Zins- und Tilgungszahlungen. Warum besteht trotzdem Risiko? Erkläre Informationsasymmetrie, spätere Entscheidungen des Schuldners und eine unerwartete Veränderung des Umfelds.
 #src[V, PDF-S. 40–41, Folien 80–82; eigene Erklärfrage.]
 ][
@@ -3390,7 +3330,7 @@ Eine Bank vereinbart feste Zins- und Tilgungszahlungen. Warum besteht trotzdem R
 ]
 
 #aufgabe(titel: "Drei Informationsbereiche des Gläubigers", art: "verstehen", quelle: "2.1", herkunft: "eigen", tipp: [Denke vom einzelnen Betrieb nach außen.])[
-#if not web [*Aufgabe 184* #linebreak()]
+#if not web [*Aufgabe 182* #linebreak()]
 Welche drei Informationsbereiche untersucht der Gläubiger laut Vorlesung?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3398,7 +3338,7 @@ Welche drei Informationsbereiche untersucht der Gläubiger laut Vorlesung?
 ]
 
 #aufgabe(titel: "Informationsasymmetrie im Kreditverhältnis", art: "verstehen", quelle: "2.1", herkunft: "eigen")[
-#if not web [*Aufgabe 185* #linebreak()]
+#if not web [*Aufgabe 183* #linebreak()]
 Was bedeutet Informationsasymmetrie im Kreditverhältnis?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3410,7 +3350,7 @@ Was bedeutet Informationsasymmetrie im Kreditverhältnis?
 ]
 
 #aufgabe(titel: "Kreditfähigkeit und Kreditwürdigkeit prüfen", art: "verstehen", quelle: "2.2", herkunft: "eigen")[
-#if not web [*Aufgabe 186* #linebreak()]
+#if not web [*Aufgabe 184* #linebreak()]
 Ein Betrieb legt eine gute Bilanz und eine Halle als Sicherheit vor. Reicht das für eine Kreditentscheidung? Trenne Kreditfähigkeit, persönliche und wirtschaftliche Kreditwürdigkeit und Sicherheit; nenne passende Unterlagen.
 #src[V, PDF-S. 42–43, Folien 83–86; eigene Erklärfrage.]
 ][
@@ -3437,7 +3377,7 @@ Ein Betrieb legt eine gute Bilanz und eine Halle als Sicherheit vor. Reicht das 
 ]
 
 #aufgabe(titel: "Gute Bilanz reicht der Bank nicht", art: "verstehen", quelle: "2.2", herkunft: "eigen", tipp: [Wann müssen die vertraglichen Zahlungen geleistet werden?])[
-#if not web [*Aufgabe 187* #linebreak()]
+#if not web [*Aufgabe 185* #linebreak()]
 Warum prüft eine Bank trotz guter Bilanz auch Aufträge und künftige Finanzpläne?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3445,7 +3385,7 @@ Warum prüft eine Bank trotz guter Bilanz auch Aufträge und künftige Finanzpl�
 ]
 
 #aufgabe(titel: "Sicherheit ersetzt keine Bonitätsprüfung", art: "verstehen", quelle: "2.2", herkunft: "eigen")[
-#if not web [*Aufgabe 188* #linebreak()]
+#if not web [*Aufgabe 186* #linebreak()]
 Warum ersetzt eine werthaltige Sicherheit keine wirtschaftliche Bonitätsprüfung?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3458,7 +3398,7 @@ Warum ersetzt eine werthaltige Sicherheit keine wirtschaftliche Bonitätsprüfun
 ]
 
 #aufgabe(titel: "Rating und Basel-Quoten richtig vergleichen", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 189* #linebreak()]
+#if not web [*Aufgabe 187* #linebreak()]
 Unterscheide internes und externes Rating. Warum kann man 7 % hartes Kernkapital, 10,5 % Gesamtkapital und 3 % Leverage Ratio nicht als drei vergleichbare Unternehmens-EK-Quoten lesen?
 #src[V, PDF-S. 43–44 und 49, Folien 85–88 und 97; Präzisierungen nach den Primärquellen in Abschnitt 2.3.]
 ][
@@ -3470,7 +3410,7 @@ Unterscheide internes und externes Rating. Warum kann man 7 % hartes Kernkapital
 ]
 
 #aufgabe(titel: "Bank-Leverage-Ratio und Verschuldungsgrad", art: "verstehen", quelle: "2.3", herkunft: "eigen", tipp: [Vergleiche Zähler und Nenner, bevor Du Prozentwerte vergleichst.])[
-#if not web [*Aufgabe 190* #linebreak()]
+#if not web [*Aufgabe 188* #linebreak()]
 Was misst die Leverage Ratio einer Bank, und warum ist sie etwas anderes als der Verschuldungsgrad eines Unternehmens?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3487,7 +3427,7 @@ Was misst die Leverage Ratio einer Bank, und warum ist sie etwas anderes als der
 ]
 
 #aufgabe(titel: "8-%-Unterlegung bei 150 % Risikogewicht", art: "verstehen", quelle: "2.3", herkunft: "eigen", tipp: [150 Prozent als Faktor 1,5 einsetzen.])[
-#if not web [*Aufgabe 191* #linebreak()]
+#if not web [*Aufgabe 189* #linebreak()]
 Eine Bank vergibt im vereinfachten Folienmodell 100 Mio. € Kredit bei 150 % Risikogewicht. Wie hoch ist die 8-%-Unterlegung? Begründe den Rechenweg.
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3499,7 +3439,7 @@ Eine Bank vergibt im vereinfachten Folienmodell 100 Mio. € Kredit bei 150 % Ri
 ]
 
 #aufgabe(titel: "Internes und externes Rating", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 192* #linebreak()]
+#if not web [*Aufgabe 190* #linebreak()]
 Was unterscheidet internes und externes Rating?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3513,7 +3453,7 @@ Was unterscheidet internes und externes Rating?
 ]
 
 #aufgabe(titel: "Kredit auf der Aktivseite der Bank", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 193* #linebreak()]
+#if not web [*Aufgabe 191* #linebreak()]
 Warum steht ein Unternehmenskredit auf der Aktivseite der Bank?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3526,7 +3466,7 @@ Warum steht ein Unternehmenskredit auf der Aktivseite der Bank?
 ]
 
 #aufgabe(titel: "Höheres Risikogewicht, mehr Bank-EK", art: "verstehen", quelle: "2.3", herkunft: "eigen")[
-#if not web [*Aufgabe 194* #linebreak()]
+#if not web [*Aufgabe 192* #linebreak()]
 Wie verändert ein höheres Risikogewicht den Kapitalbedarf der Bank im Folienmodell?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3537,7 +3477,7 @@ Wie verändert ein höheres Risikogewicht den Kapitalbedarf der Bank im Folienmo
 ]
 
 #aufgabe(titel: "Vorlesung: Basel-II-Unterlegung und Kreditvolumen", art: "rechnen", quelle: "2.3", herkunft: "original", vorlage: "Vorlesung PDF-S. 44, Folie 87, Übung Basel II", ergebnis: [12 Mio. € Unterlegung; 31,25 Mrd. € rechnerisches Kreditvolumen.])[
-#if not web [*Aufgabe 195* #linebreak()]
+#if not web [*Aufgabe 193* #linebreak()]
 *Gegeben und Annahmen*
 
 Verfügbares Bank-EK 2,5 Mrd. €. Unternehmenskredit 100 Mio. €, Risikogewicht 150 %. Vereinfachtes Folienmodell: Unterlegung = Kreditbetrag × 8 % × Risikogewicht; keine weiteren Puffer, Risiken oder bindenden Grenzen. Für Teil b) sei das durchschnittliche Gewicht 100 %, das gesamte EK dafür verfügbar.
@@ -3557,7 +3497,7 @@ Verfügbares Bank-EK 2,5 Mrd. €. Unternehmenskredit 100 Mio. €, Risikogewich
 ]
 
 #aufgabe(titel: "Basel-Unterlegung für einen Mittelstandskredit (Variante)", art: "rechnen", quelle: "2.3", herkunft: "variante", vorlage: "Vorlesung PDF-S. 44, Folie 87, Übung Basel II", minuten: 6, ergebnis: [3 Mio. € Unterlegung; 25 Mrd. € Kreditvolumen])[
-#if not web [*Aufgabe 196* #linebreak()]
+#if not web [*Aufgabe 194* #linebreak()]
 *Gegeben und Annahmen*
 
 Eine Regionalbank hat Eigenkapital von 1,2 Mrd. €. Sie vergibt einem Mittelständler einen Kredit über 50 Mio. € mit einem Risikogewicht von 75 %. Vereinfachtes Folienmodell: Unterlegung = Kreditbetrag × 8 % × Risikogewicht; keine Puffer oder weiteren Grenzen.
@@ -3581,7 +3521,7 @@ Eine Regionalbank hat Eigenkapital von 1,2 Mrd. €. Sie vergibt einem Mittelst�
 ]
 
 #aufgabe(titel: "Länder-Ratings und Anleiherenditen", art: "verstehen", quelle: "2.4", herkunft: "eigen", tipp: [Eine Note und ein Marktpreis entstehen auf verschiedene Weise.])[
-#if not web [*Aufgabe 197* #linebreak()]
+#if not web [*Aufgabe 195* #linebreak()]
 Warum sind die historischen Länder-Ratings und die Anleiherenditen keine identischen Größen?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3589,7 +3529,7 @@ Warum sind die historischen Länder-Ratings und die Anleiherenditen keine identi
 ]
 
 #aufgabe(titel: "Kreditverluste und Finanzierung anderer Unternehmen", art: "verstehen", quelle: "2.4", herkunft: "eigen")[
-#if not web [*Aufgabe 198* #linebreak()]
+#if not web [*Aufgabe 196* #linebreak()]
 Wie können Kreditverluste die Finanzierung anderer Unternehmen erschweren?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3602,7 +3542,7 @@ Wie können Kreditverluste die Finanzierung anderer Unternehmen erschweren?
 ]
 
 #aufgabe(titel: "Staatsschuldenquote richtig lesen", art: "verstehen", quelle: "2.4", herkunft: "eigen")[
-#if not web [*Aufgabe 199* #linebreak()]
+#if not web [*Aufgabe 197* #linebreak()]
 Warum ist eine höhere Staatsschuldenquote nicht allein ein Beweis für neue Schulden?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3615,7 +3555,7 @@ Warum ist eine höhere Staatsschuldenquote nicht allein ein Beweis für neue Sch
 ]
 
 #aufgabe(titel: "Krisenmechanismus und Anleihekauf erklären", art: "verstehen", quelle: "2.4.1", herkunft: "eigen")[
-#if not web [*Aufgabe 200* #linebreak()]
+#if not web [*Aufgabe 198* #linebreak()]
 Erkläre den Weg von Kreditverlusten zu schwächerer Bankfinanzierung. Unterscheide danach die Ausgabe einer Staatsanleihe von einem späteren Ankauf durch die Notenbank: Wer erhält jeweils den Kaufpreis?
 #src[V, PDF-S. 45–52, Folien 89–104; N04, PDF-S. 9, eigene Skizze; EZB-Präzisierung in Abschnitt 2.4.]
 ][
@@ -3629,7 +3569,7 @@ Erkläre den Weg von Kreditverlusten zu schwächerer Bankfinanzierung. Untersche
 ]
 
 #aufgabe(titel: "Anleihekauf der Notenbank: Wer erhält das Geld?", art: "verstehen", quelle: "2.4.1", herkunft: "eigen", tipp: [Zeichne das erste und das zweite Geschäft getrennt.])[
-#if not web [*Aufgabe 201* #linebreak()]
+#if not web [*Aufgabe 199* #linebreak()]
 Wer erhält bei einem Staatsanleihekauf der Notenbank am Sekundärmarkt das Geld?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3649,7 +3589,7 @@ Wer erhält bei einem Staatsanleihekauf der Notenbank am Sekundärmarkt das Geld
 ]
 
 #aufgabe(titel: "Kreditvertrag mit Covenants gestalten", art: "verstehen", quelle: "2.5", herkunft: "eigen")[
-#if not web [*Aufgabe 202* #linebreak()]
+#if not web [*Aufgabe 200* #linebreak()]
 Nenne die sechs verhandlungsrelevanten Merkmalsgruppen des Kreditvertrags. Erkläre anschließend an einem selbst formulierten Covenant den Zweck, die Berichtspflicht, eine mögliche Folge eines Verstoßes und den Nachteil für den Schuldner.
 #src[V, PDF-S. 53–54, Folien 105–108; eigene Anwendung.]
 ][
@@ -3661,7 +3601,7 @@ Nenne die sechs verhandlungsrelevanten Merkmalsgruppen des Kreditvertrags. Erkl�
 ]
 
 #aufgabe(titel: "Covenants: Schutz und Preis", art: "verstehen", quelle: "2.5", herkunft: "eigen", tipp: [Denke an Risikobegrenzung während der Laufzeit.])[
-#if not web [*Aufgabe 203* #linebreak()]
+#if not web [*Aufgabe 201* #linebreak()]
 Wie schützen Covenants den Gläubiger, und welchen Preis zahlt der Schuldner dafür?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3679,7 +3619,7 @@ Wie schützen Covenants den Gläubiger, und welchen Preis zahlt der Schuldner da
 ]
 
 #aufgabe(titel: "Zinsbindungsfrist und Gesamtlaufzeit", art: "verstehen", quelle: "2.5", herkunft: "eigen", tipp: [Frage, ob das Darlehen am Ende der Zinsbindung schon vollständig getilgt ist.])[
-#if not web [*Aufgabe 204* #linebreak()]
+#if not web [*Aufgabe 202* #linebreak()]
 Warum sind Zinsbindungsfrist und Gesamtlaufzeit nicht automatisch gleich?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3687,7 +3627,7 @@ Warum sind Zinsbindungsfrist und Gesamtlaufzeit nicht automatisch gleich?
 ]
 
 #aufgabe(titel: "Sechs Merkmalsgruppen des Kreditvertrags", art: "verstehen", quelle: "2.5", herkunft: "eigen")[
-#if not web [*Aufgabe 205* #linebreak()]
+#if not web [*Aufgabe 203* #linebreak()]
 Welche sechs Merkmalsgruppen bestimmen einen Kreditvertrag?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3700,7 +3640,7 @@ Welche sechs Merkmalsgruppen bestimmen einen Kreditvertrag?
 ]
 
 #aufgabe(titel: "Zinstagemethode und Zinsbetrag", art: "verstehen", quelle: "2.6", herkunft: "eigen", tipp: [Vergleiche die beiden Brüche bei gleichem Zähler.])[
-#if not web [*Aufgabe 206* #linebreak()]
+#if not web [*Aufgabe 204* #linebreak()]
 Warum beeinflusst die Zinstagemethode den Zinsbetrag bei gleichen Kalenderdaten? Erkläre insbesondere, warum actual/360 bei denselben 352 Tagen mehr Zins ergibt als actual/365.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3720,7 +3660,7 @@ Warum beeinflusst die Zinstagemethode den Zinsbetrag bei gleichen Kalenderdaten?
 ]
 
 #aufgabe(titel: "30/360 und 30E/360 im Dezember-Endfall", art: "verstehen", quelle: "2.6", herkunft: "eigen", tipp: [Die Differenz entsteht an der Monatsendregel.])[
-#if not web [*Aufgabe 207* #linebreak()]
+#if not web [*Aufgabe 205* #linebreak()]
 Warum liefern 30/360 und 30E/360 im behandelten Dezember-Endfall verschiedene Zinstage?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3728,7 +3668,7 @@ Warum liefern 30/360 und 30E/360 im behandelten Dezember-Endfall verschiedene Zi
 ]
 
 #aufgabe(titel: "Vorlesung: Zinstage 14.01.–31.12.2016", art: "rechnen", quelle: "2.6", herkunft: "original", vorlage: "Vorlesung PDF-S. 55, Folie 109, Beispiel Zinstage", ergebnis: [Endkapital: 2.057,83 / 2.057,67 / 2.057,86 / 2.058,67 / 2.057,70 € in der Reihenfolge a).])[
-#if not web [*Aufgabe 208* #linebreak()]
+#if not web [*Aufgabe 206* #linebreak()]
 *Gegeben und Annahmen*
 
 Anlage 2.000 €, einfacher Jahreszins 3 %, 14.01.2016 bis 31.12.2016. Anfangstag nicht mitzählen, Endtag mitzählen. 2016 ist ein Schaltjahr mit 366 Tagen. Methoden wie in der Musterlösung: 30E/360 setzt den Endtag 31 auf 30; 30/360 belässt ihn in diesem konkreten Fall bei 31. Bei tatsächlichen Tagen Kalenderdifferenz verwenden. Kein unterjähriger Zinseszins, keine weiteren Zahlungen.
@@ -3757,7 +3697,7 @@ Die Bruchteile werden vor der Multiplikation nicht vorzeitig gerundet.
 ]
 
 #aufgabe(titel: "Zinstage 01.03.–31.08.2017 (Variante)", art: "rechnen", quelle: "2.6", herkunft: "variante", vorlage: "Vorlesung PDF-S. 55, Folie 109, Beispiel Zinstage", minuten: 12, ergebnis: [Endkapital 30/360: 5.050,00 €; 30E/360: 5.049,72 €; act/365: 5.050,14 €; act/360: 5.050,83 €; act/act: 5.050,14 €])[
-#if not web [*Aufgabe 209* #linebreak()]
+#if not web [*Aufgabe 207* #linebreak()]
 *Gegeben und Annahmen*
 
 Du legst 5.000 € vom 01.03.2017 bis zum 31.08.2017 zu einem einfachen Jahreszins von 2 % an. 2017 ist kein Schaltjahr. Anfangstag nicht mitzählen, Endtag mitzählen. Konventionen wie in der Vorlesungslösung: 30E/360 setzt einen 31. immer auf den 30.; die verwendete 30/360-Variante setzt den Endtag 31 nur dann auf 30, wenn der Anfangstag 30 oder 31 ist. Kein Zinseszins.
@@ -3788,7 +3728,7 @@ Du legst 5.000 € vom 01.03.2017 bis zum 31.08.2017 zu einem einfachen Jahreszi
 ]
 
 #aufgabe(titel: "Vom Monatszins zum effektiven Jahreszins", art: "verstehen", quelle: "2.7", herkunft: "eigen", tipp: [Zinsfaktor ist 1 plus Periodenzins.])[
-#if not web [*Aufgabe 210* #linebreak()]
+#if not web [*Aufgabe 208* #linebreak()]
 Warum darf man einen Monatszins nicht einfach mit zwölf multiplizieren? Wie wird bei Wiederanlage daraus der effektive Jahreszins?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3811,7 +3751,7 @@ Warum darf man einen Monatszins nicht einfach mit zwölf multiplizieren? Wie wir
 ]
 
 #aufgabe(titel: "Einjahresvergleich über drei Jahre", art: "verstehen", quelle: "2.7", herkunft: "eigen", tipp: [Was passiert, wenn der Zinssatz nur bis zur nächsten Gutschrift garantiert ist?])[
-#if not web [*Aufgabe 211* #linebreak()]
+#if not web [*Aufgabe 209* #linebreak()]
 Wann bleibt die bessere Einjahresanlage auch über drei Jahre besser?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3824,7 +3764,7 @@ Wann bleibt die bessere Einjahresanlage auch über drei Jahre besser?
 ]
 
 #aufgabe(titel: "Vorlesung: jährliche und monatliche Zinsgutschrift", art: "rechnen", quelle: "2.7", herkunft: "original", vorlage: "Vorlesung PDF-S. 56, Folie 111, Beispiel Zinstermine", ergebnis: [Angebot 2: etwa 3,0108 % effektiver Jahreszins; unter den Annahmen für ein und drei Jahre etwas besser.])[
-#if not web [*Aufgabe 212* #linebreak()]
+#if not web [*Aufgabe 210* #linebreak()]
 *Gegeben und Annahmen*
 
 Angebot 1: jährliche Verzinsung 3 %. Angebot 2: monatliche Verzinsung 0,2475 % pro Monat. Albert legt für ein Jahr an, Beatrice für drei Jahre. Dasselbe beliebige positive Anfangskapital, unveränderte Zinssätze, Wiederanlage sämtlicher Zinsen, keine Gebühren, Steuern oder weiteren Zahlungen.
@@ -3844,7 +3784,7 @@ Angebot 1: jährliche Verzinsung 3 %. Angebot 2: monatliche Verzinsung 0,2475 % 
 ]
 
 #aufgabe(titel: "Vierteljährliche gegen jährliche Zinsgutschrift (Variante)", art: "rechnen", quelle: "2.7", herkunft: "variante", vorlage: "Vorlesung PDF-S. 56, Folie 111, Beispiel Zinstermine", minuten: 8, ergebnis: [Angebot B effektiv ca. 2,381 % < 2,4 %; Angebot A ist für 1 und 3 Jahre besser])[
-#if not web [*Aufgabe 213* #linebreak()]
+#if not web [*Aufgabe 211* #linebreak()]
 *Gegeben und Annahmen*
 
 Clara kann Geld anlegen: Angebot A: 2,4 % Zinsen jährlich. Angebot B: 0,59 % Zinsen pro Quartal, die jeweils gutgeschrieben und mitverzinst werden. Zinssätze bleiben unverändert, keine Gebühren und Steuern.
@@ -3866,7 +3806,7 @@ Clara kann Geld anlegen: Angebot A: 2,4 % Zinsen jährlich. Angebot B: 0,59 % Zi
 ]
 
 #aufgabe(titel: "Darlehenspflichten und passende Kündigungsregel", art: "verstehen", quelle: "2.8", herkunft: "eigen")[
-#if not web [*Aufgabe 214* #linebreak()]
+#if not web [*Aufgabe 212* #linebreak()]
 Erkläre die Hauptpflichten nach § 488 BGB. Ordne danach zu: variabler Zins; Ende einer Zinsbindung ohne neue Zinsvereinbarung; mehr als zehn Jahre seit vollständigem Empfang bei Festzins; vorzeitiger Verkauf eines belasteten Grundstücks aus berechtigtem Interesse. Nenne jeweils die wesentlichen Bedingungen und Fristen.
 #src[V, PDF-S. 57–58, Folien 113–115; Rechtsabgleich in Abschnitt 2.8.]
 ][
@@ -3880,7 +3820,7 @@ Erkläre die Hauptpflichten nach § 488 BGB. Ordne danach zu: variabler Zins; En
 ]
 
 #aufgabe(titel: "Start des Zehnjahres-Kündigungsrechts", art: "verstehen", quelle: "2.8", herkunft: "eigen", tipp: [Suche das gesetzliche Ereignis für den Fristbeginn.])[
-#if not web [*Aufgabe 215* #linebreak()]
+#if not web [*Aufgabe 213* #linebreak()]
 Woran knüpft § 489 das Zehnjahres-Kündigungsrecht an, und warum ist der Unterschriftstag nicht automatisch der richtige Start?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3897,7 +3837,7 @@ Woran knüpft § 489 das Zehnjahres-Kündigungsrecht an, und warum ist der Unter
 ]
 
 #aufgabe(titel: "Außerordentliche Kündigung durch den Kreditgeber", art: "verstehen", quelle: "2.8", herkunft: "eigen", tipp: [Die Norm verbindet Verschlechterung und Rückzahlungsrisiko.])[
-#if not web [*Aufgabe 216* #linebreak()]
+#if not web [*Aufgabe 214* #linebreak()]
 Warum reicht für die außerordentliche Kündigung durch den Kreditgeber nicht jede kleine Wertschwankung einer Sicherheit?
 #src[Umgewandelt aus Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3905,7 +3845,7 @@ Warum reicht für die außerordentliche Kündigung durch den Kreditgeber nicht j
 ]
 
 #aufgabe(titel: "Hauptpflichten beim Darlehensvertrag", art: "verstehen", quelle: "2.8", herkunft: "eigen")[
-#if not web [*Aufgabe 217* #linebreak()]
+#if not web [*Aufgabe 215* #linebreak()]
 Welche Hauptpflichten entstehen beim Darlehensvertrag?
 #src[Umgewandelt aus Karteikarte (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3919,7 +3859,7 @@ Welche Hauptpflichten entstehen beim Darlehensvertrag?
 ]
 
 #aufgabe(titel: "Vorfälligkeitsentschädigung wirtschaftlich erklären", art: "verstehen", quelle: "2.9", herkunft: "eigen")[
-#if not web [*Aufgabe 218* #linebreak()]
+#if not web [*Aufgabe 216* #linebreak()]
 Warum kann eine vorzeitige Rückzahlung bei Festzins einen Schaden verursachen? Unterscheide Aktiv-Aktiv- und Aktiv-Passiv-Vergleich. Was bedeutet ein höherer Wiederanlagezins, und warum folgt aus der Folie kein pauschaler Gebührenanspruch?
 #src[V, PDF-S. 58, Folien 115–116; N04, PDF-S. 17; rechtliche Präzisierung in Abschnitt 2.9.]
 ][
@@ -3933,7 +3873,7 @@ Warum kann eine vorzeitige Rückzahlung bei Festzins einen Schaden verursachen? 
 ]
 
 #aufgabe(titel: "Wiederanlagezins und Vorfälligkeitsentschädigung", art: "verstehen", quelle: "2.9", herkunft: "eigen", tipp: [Vergleiche den alten Ertrag mit der möglichen neuen Anlage.])[
-#if not web [*Aufgabe 219* #linebreak()]
+#if not web [*Aufgabe 217* #linebreak()]
 Warum kann ein niedrigerer Wiederanlagezins eine Vorfälligkeitsentschädigung erhöhen?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3953,7 +3893,7 @@ Warum kann ein niedrigerer Wiederanlagezins eine Vorfälligkeitsentschädigung e
 ]
 
 #aufgabe(titel: "Aktiv-Aktiv und Aktiv-Passiv unterscheiden", art: "verstehen", quelle: "2.9", herkunft: "eigen", tipp: [Welche Wiederanlage bildet die jeweilige Vergleichsseite?])[
-#if not web [*Aufgabe 220* #linebreak()]
+#if not web [*Aufgabe 218* #linebreak()]
 Was unterscheidet Aktiv-Aktiv- und Aktiv-Passiv-Vergleich?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3966,7 +3906,7 @@ Was unterscheidet Aktiv-Aktiv- und Aktiv-Passiv-Vergleich?
 ]
 
 #aufgabe(titel: "Ratendarlehen und Annuität: was ist konstant?", art: "verstehen", quelle: "2.10.1", herkunft: "eigen", tipp: [Annuität ist die Summe der beiden Zahlungsanteile.])[
-#if not web [*Aufgabe 221* #linebreak()]
+#if not web [*Aufgabe 219* #linebreak()]
 Was bleibt beim Ratendarlehen konstant, was beim Annuitätendarlehen?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -3989,7 +3929,7 @@ Was bleibt beim Ratendarlehen konstant, was beim Annuitätendarlehen?
 ]
 
 #aufgabe(titel: "Klausur: Annuitätendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 a", minuten: 6, ergebnis: [Annuität ungerundet 21.522,16 €/Jahr, Tabelle 21.522 €; Zinsen gerundet insgesamt 6.088 €.])[
-#if not web [*Aufgabe 222* #linebreak()]
+#if not web [*Aufgabe 220* #linebreak()]
 *Gegeben und Annahmen*
 
 Inn GmbH: Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest für vier Jahre, jährliche Zahlung am Jahresende. Zinsen jeweils auf die Restschuld zu Jahresbeginn. Annuität so bestimmen, dass das Darlehen in vier Jahren vollständig getilgt ist. Wie in der Klausur jede Tabellenzahl auf volle Euro runden; Rundungsrest vernachlässigen.
@@ -4017,7 +3957,7 @@ Jede Zeile benutzt die gerundete Anfangsschuld und rundet den Zins auf volle Eur
 ]
 
 #aufgabe(titel: "Annuitätendarlehen der Isar GmbH (Variante)", art: "rechnen", quelle: "2.10.1", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 1 a", minuten: 8, ergebnis: [Annuität 21.621 €; Zinsen gesamt 4.863 €])[
-#if not web [*Aufgabe 223* #linebreak()]
+#if not web [*Aufgabe 221* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Isar GmbH nimmt am 01.01. ein Annuitätendarlehen über 60.000 € auf, Auszahlung 100 %, Zinssatz 4 % p. a. fest, Laufzeit 3 Jahre, Zahlung jeweils am Jahresende. Zinsen auf die Restschuld zu Jahresbeginn. Alle Tabellenwerte auf volle Euro runden; ein Rundungsrest im letzten Jahr ist zu vernachlässigen.
@@ -4044,7 +3984,7 @@ Tilgung = Annuität − Zins; Zins = 4 % der Anfangsschuld.
 ]
 
 #aufgabe(titel: "Klausur: Ratendarlehen der Inn GmbH", art: "rechnen", quelle: "2.10.1", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 b", minuten: 4, ergebnis: [Tilgung 20.000 €/Jahr; Zahlungen 22.400 / 21.800 / 21.200 / 20.600 €; Gesamtzinsen 6.000 €.])[
-#if not web [*Aufgabe 224* #linebreak()]
+#if not web [*Aufgabe 222* #linebreak()]
 *Gegeben und Annahmen*
 
 Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest, vier Jahre. Konstante jährliche Tilgung 25 % der Anfangsschuld; Zinsen auf die Restschuld zu Jahresbeginn, Zahlung am Jahresende. Keine weiteren Kosten.
@@ -4067,7 +4007,7 @@ Darlehen 80.000 € am 01.01.2017, Auszahlung 100 %, 3 % p. a. fest, vier Jahre.
 ]
 
 #aufgabe(titel: "Ratendarlehen der Isar GmbH (Variante)", art: "rechnen", quelle: "2.10.1", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 1 b", minuten: 6, ergebnis: [Tilgung 20.000 €/Jahr; Zahlungen 22.400 / 21.600 / 20.800 €; Zinsen 4.800 €])[
-#if not web [*Aufgabe 225* #linebreak()]
+#if not web [*Aufgabe 223* #linebreak()]
 *Gegeben und Annahmen*
 
 Die Isar GmbH nimmt am 01.01. ein Tilgungsdarlehen (Ratendarlehen) über 60.000 € auf, Auszahlung 100 %, 4 % p. a. fest, Laufzeit 3 Jahre, gleiche jährliche Tilgung, Zinsen auf die Restschuld zu Jahresbeginn, Zahlung am Jahresende.
@@ -4092,7 +4032,7 @@ Die Isar GmbH nimmt am 01.01. ein Tilgungsdarlehen (Ratendarlehen) über 60.000 
 ]
 
 #aufgabe(titel: "Disagio und Effektivzins", art: "verstehen", quelle: "2.10.2", herkunft: "eigen", tipp: [Unterscheide erhaltenes Geld und Nominalschuld.])[
-#if not web [*Aufgabe 226* #linebreak()]
+#if not web [*Aufgabe 224* #linebreak()]
 Warum kann ein Disagio den Effektivzins über den Nominalzins heben, und warum steht in der Praktikerformel die Auszahlung im Nenner?
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -4111,7 +4051,7 @@ Warum kann ein Disagio den Effektivzins über den Nominalzins heben, und warum s
 ]
 
 #aufgabe(titel: "Klausur: Effektivzins mit zwei Prozent Disagio", art: "rechnen", quelle: "2.10.2", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 c", minuten: 2, ergebnis: [Auszahlung 78.400 €; näherungsweise 3,57 % p. a.])[
-#if not web [*Aufgabe 227* #linebreak()]
+#if not web [*Aufgabe 225* #linebreak()]
 *Gegeben und Annahmen*
 
 Endfälliges Darlehen: Nominalbetrag 80.000 €, 3 % p. a., vier Jahre, Auszahlungsdisagio 2 % des Nominalbetrags. Jährliche Zinszahlung, vollständige Nominalrückzahlung am Ende, keine anderen Kosten. Gesucht ist ausdrücklich die approximative Praktikerformel, nicht die exakte interne Rendite.
@@ -4131,7 +4071,7 @@ Endfälliges Darlehen: Nominalbetrag 80.000 €, 3 % p. a., vier Jahre, Auszahlu
 ]
 
 #aufgabe(titel: "Effektivzins mit drei Prozent Disagio (Variante)", art: "rechnen", quelle: "2.10.2", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 1 c", minuten: 4, ergebnis: [Auszahlung 58.200 €; ca. 5,15 % p. a.])[
-#if not web [*Aufgabe 228* #linebreak()]
+#if not web [*Aufgabe 226* #linebreak()]
 *Gegeben und Annahmen*
 
 Endfälliges Darlehen über nominal 60.000 €, Nominalzins 4 % p. a., Laufzeit 3 Jahre, Auszahlungsdisagio 3 %. Jährliche Zinszahlung, Rückzahlung von 60.000 € am Ende, keine weiteren Kosten.
@@ -4153,7 +4093,7 @@ Endfälliges Darlehen über nominal 60.000 €, Nominalzins 4 % p. a., Laufzeit 
 ]
 
 #aufgabe(titel: "Klausur: Sicherheiten nach zwei Kriterien einordnen", art: "verstehen", quelle: "2.10.3", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 1 d", minuten: 2)[
-#if not web [*Aufgabe 229* #linebreak()]
+#if not web [*Aufgabe 227* #linebreak()]
 Nenne je eine Personal- und Realsicherheit sowie je ein akzessorisches und fiduziarisches Sicherungsmittel. Erkläre die beiden Einteilungen, statt nur vier Wörter aufzuzählen.
 #src[Altklausur 2017, Aufgabe 1 d, zweimal 1 Punkt; K, PDF-S. 2 (Klausurseite 6). Eigene Lösung mit Rechtsabgleich in Abschnitt 2.10.]
 ][
@@ -4165,7 +4105,7 @@ Nenne je eine Personal- und Realsicherheit sowie je ein akzessorisches und fiduz
 ]
 
 #aufgabe(titel: "Zwei Einteilungen von Sicherheiten", art: "verstehen", quelle: "2.10.3", herkunft: "eigen", tipp: [Prüfe zuerst Person oder Sache, danach die Bindung an die Forderung.])[
-#if not web [*Aufgabe 230* #linebreak()]
+#if not web [*Aufgabe 228* #linebreak()]
 Warum sind „personal oder real“ und „akzessorisch oder fiduziarisch“ zwei verschiedene Einteilungen? Ordne Bürgschaft, Grundschuld und Hypothek ein.
 #src[Umgewandelt aus Karteikarte und Quizfrage (Lernplattform); Grundlage: Lernskript-Abschnitt.]
 ][
@@ -4181,4 +4121,937 @@ Warum sind „personal oder real“ und „akzessorisch oder fiduziarisch“ zwe
 ][
 *Typische Verwechslungen:*
 - „Jede Realsicherheit ist allein deshalb akzessorisch“: Die Art des Rückgriffs und die Forderungsbindung sind getrennte Kriterien.
+]
+
+#aufgabe(titel: "Vorlesung: Tilgung von Anton A.", art: "rechnen", quelle: "2.11", herkunft: "original", vorlage: "Vorlesung PDF-S. 60, Folien 119–120, Beispiel Tilgung", minuten: 8, ergebnis: [Gesamtzinsen I: 23.466,40 €; II: 22.000 €], tipp: [Bei I werden die Zinsen nicht gezahlt, sondern der Schuld zugeschlagen.])[
+#if not web [*Aufgabe 229* #linebreak()]
+*Gegeben*
+
+Anton A. muss ein Darlehen über 50.000 € zum Sollzins 8 % zurückzahlen. Alternative I: Rückzahlung nach 5 Jahren in einem Betrag. Alternative II: jährlich die anfallenden Zinsen plus 5.000 € Tilgung.
+
+*Gesucht*
+
+#enum(numbering: "a)")[Die ersten zwei Zeilen des Tilgungsplans für beide Alternativen (Restschuld Jahresanfang, Zinsen, Tilgung, Jahresleistung, Restschuld Jahresende).][Die insgesamt zu zahlenden Zinsen in beiden Fällen.]
+#src[V, PDF-S. 60 (Folien 119–120), Quelle der Folie: Pfeifer, Aufgabe 6.1.4.]
+][
+*Alternative I verstehen:* Es wird nichts gezahlt, die Zinsen erhöhen die Schuld (Zinseszins). Jahr 1: Zinsen $50000 times "0,08" = 4000$, Tilgung $-4000$, Jahresleistung 0, Restschuld 54.000 €. Jahr 2: Zinsen $54000 times "0,08" = 4320$, Tilgung $-4320$, Restschuld 58.320 €.
+][
+*Alternative II verstehen:* Tilgung jedes Jahr 5.000 €, Zinsen auf die Restschuld zu Jahresbeginn. Jahr 1: Zinsen 4.000, Tilgung 5.000, Leistung 9.000, Rest 45.000 €. Jahr 2: Zinsen 3.600, Tilgung 5.000, Leistung 8.600, Rest 40.000 €.
+][
+*Gesamtzinsen:* I: $50000 times ("1,08"^5 - 1) = "23.466,40"$ €. II: 10 Jahre lang sinkende Zinsen $4000 + 3600 + dots + 400 = "22.000"$ €.
+][
+*Einordnen:* II ist trotz doppelter Laufzeit billiger, weil früh getilgt wird und die Zinsen nicht mitverzinst werden. Gesamtzinsen allein sagen aber nichts über den Barwert; dazu bräuchte man einen Kalkulationszins.
+]
+
+#aufgabe(titel: "Tilgung von Berta B. (Variante)", art: "rechnen", quelle: "2.11", herkunft: "variante", vorlage: "Vorlesung PDF-S. 60, Folien 119–120, Beispiel Tilgung", minuten: 8, ergebnis: [Gesamtzinsen I: 10.499,08 €; II: 13.200 €])[
+#if not web [*Aufgabe 230* #linebreak()]
+Berta B. leiht sich 40.000 € zu 6 %. I: Rückzahlung von Kapital und aufgelaufenen Zinsen nach 4 Jahren in einem Betrag. II: jährlich Zinsen plus 4.000 € Tilgung, bis die Schuld getilgt ist. Gib die ersten zwei Zeilen beider Tilgungspläne an und berechne die Gesamtzinsen.
+#src[Eigene Variante zu V, PDF-S. 60 (Folien 119–120); Lernskript 2.11.]
+][
+*Alternative I:* Jahr 1: Zinsen 2.400, Rest 42.400 €. Jahr 2: Zinsen 2.544, Rest 44.944 €. Gesamtzinsen $40000 times ("1,06"^4 - 1) = "10.499,08"$ €.
+][
+*Alternative II:* Jahr 1: Zinsen 2.400, Tilgung 4.000, Leistung 6.400, Rest 36.000 €. Jahr 2: Zinsen 2.160, Leistung 6.160, Rest 32.000 €. 10 Jahre; Zinsen $2400 + 2160 + dots + 240 = "13.200"$ €.
+][
+*Vergleich:* Hier zahlt II mehr Zinsen, weil es 10 statt 4 Jahre läuft. Die Laufzeiten müssen gleich sein, bevor man Gesamtzinsen vergleicht.
+]
+
+#aufgabe(titel: "Normale und inverse Zinsstrukturkurve", art: "verstehen", quelle: "2.12", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 231* #linebreak()]
+Was zeigt eine Zinsstrukturkurve, und was bedeutet eine normale bzw. inverse Kurve für ein Unternehmen, das zwischen kurzer und langer Zinsbindung wählt?
+#src[Lernskript 2.12 nach V, PDF-S. 61–62.]
+][
+*Kurve lesen:* Sie zeigt den Zins in Abhängigkeit von der Laufzeit zu einem Zeitpunkt. *Normal:* lange Laufzeiten haben höhere Zinsen (Laufzeitprämie). *Invers:* kurze Zinsen liegen über langen, oft wenn Zinssenkungen erwartet werden.
+][
+*Folgerung:* Bei normaler Kurve ist kurze Bindung billiger, trägt aber Zinsänderungsrisiko bei der Anschlussfinanzierung. Bei inverser Kurve kann eine lange Bindung sogar billiger sein und gleichzeitig Sicherheit geben.
+]
+
+#aufgabe(titel: "Leitzins und Kreditpreis", art: "verstehen", quelle: "2.13", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 232* #linebreak()]
+Erkläre in drei Schritten, wie eine Leitzinserhöhung der EZB beim Kreditzins eines Unternehmens ankommt. Welche Rolle spielen Mindestreserve und Einlagen?
+#src[Lernskript 2.13 nach V, PDF-S. 62–65.]
+][
+*Refinanzierung:* Banken leihen sich Zentralbankgeld zum Leitzins und müssen einen Teil der Einlagen als Mindestreserve halten. Steigt der Leitzins, wird diese Refinanzierung teurer.
+][
+*Weitergabe:* Die Bank gibt höhere Refinanzierungskosten im Kreditzins weiter (Zins = Refinanzierung + Risiko- und Kostenaufschlag). Auch Einlagen werden teurer, weil die Bank um Spargeld konkurriert.
+][
+*Achtung Folienwerte:* Leitzins 0 % und Mindestreserve 2 % sind historische Stände der Folien, keine aktuellen Werte.
+]
+
+#aufgabe(titel: "Bürgschaft und Garantie unterscheiden", art: "verstehen", quelle: "2.14.1", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 233* #linebreak()]
+Worin unterscheiden sich Bürgschaft und Garantie, und warum verlangen Banken oft eine selbstschuldnerische Bürgschaft?
+#src[Lernskript 2.14 nach V, PDF-S. 65–70.]
+][
+*Bindung an die Forderung:* Die Bürgschaft ist akzessorisch: Sie besteht nur, soweit die Hauptschuld besteht. Die Garantie ist abstrakt: Der Garant verspricht einen Erfolg unabhängig vom Bestand der Forderung.
+][
+*Selbstschuldnerisch:* Der Bürge verzichtet auf die Einrede der Vorausklage. Die Bank muss nicht erst erfolglos beim Schuldner vollstrecken, sondern kann sofort den Bürgen in Anspruch nehmen.
+]
+
+#aufgabe(titel: "Vorlesung: Skonto oder 30 Tage netto", art: "rechnen", quelle: "2.15.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 71, Folie 141, Beispiel Skonto", minuten: 4, ergebnis: [ca. 36,7 % p. a.])[
+#if not web [*Aufgabe 234* #linebreak()]
+Ein Lieferant schreibt: „10 Tage mit 2 % Skonto oder 30 Tage netto.“ Ein Kunde hat Waren für 100.000 € erhalten. Wie hoch ist der Zinssatz dieses Lieferantenkredits (deutsche Zinsrechnung, 360 Tage)?
+#src[V, PDF-S. 71 (Folie 141).]
+][
+*Kredit erkennen:* Zahlt der Kunde nach 10 Tagen, kostet es 98.000 €; nach 30 Tagen 100.000 €. Er „leiht“ sich also 98.000 € für 20 Tage und zahlt dafür 2.000 €.
+][
+*Zins ausrechnen:* $2000 = 98000 times i times 20/360$ ergibt $i = "36,7" %$. Mit der Formel: $"0,02"/"0,98" times 360/20 = "36,7" %$.
+][
+*Bewerten:* Ein Kontokorrentkredit ist fast immer billiger. Wer Skonto verfallen lässt, finanziert sehr teuer.
+]
+
+#aufgabe(titel: "Übung: Zahlungsziel der Stadelmann AG", art: "rechnen", quelle: "2.15.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 98, Folien 195–196, Übung 1", minuten: 3, ergebnis: [18,4 % p. a.])[
+#if not web [*Aufgabe 235* #linebreak()]
+Die Stadelmann AG verlangt: Rechnungsbetrag zahlbar innerhalb von 60 Tagen, bei Zahlung innerhalb von 20 Tagen 2 % Skonto. Wie viel kostet die Nutzung des 60-tägigen Zahlungsziels als jährlicher Kreditzins?
+#src[V, PDF-S. 98 (Folien 195–196).]
+][
+*Zusätzliche Kredittage:* $60 - 20 = 40$ Tage.
+][
+*Formel:* $i = "0,02"/(1 - "0,02") times 360/40 = "0,0204" times 9 = "18,4" %$.
+][
+*Vergleich mit dem Vorlesungsbeispiel:* Gleicher Skontosatz, aber doppelt so viele Kredittage, daher nur etwa der halbe Jahreszins.
+]
+
+#aufgabe(titel: "Skonto bei 14 Tagen und 45 Tagen Ziel (Variante)", art: "rechnen", quelle: "2.15.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 98, Folien 195–196, Übung 1", minuten: 3, ergebnis: [ca. 35,9 % p. a.])[
+#if not web [*Aufgabe 236* #linebreak()]
+Zahlungsbedingung: „Innerhalb von 14 Tagen 3 % Skonto, Zahlungsziel 45 Tage.“ Berechne den Jahreszins des Lieferantenkredits. Lohnt sich ein Kontokorrentkredit zu 11 %, um Skonto zu ziehen?
+#src[Eigene Variante zu V, PDF-S. 98; Lernskript 2.15.1.]
+][
+*Formel:* $i = "0,03"/"0,97" times 360/31 approx "35,9" %$.
+][
+*Entscheidung:* 11 % sind viel weniger als 35,9 %. Mit dem Kontokorrentkredit am 14. Tag zahlen und Skonto ziehen.
+]
+
+#aufgabe(titel: "Übung: Preisaufschlag der Kobit AG", art: "rechnen", quelle: "2.15.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 99, Folien 197–198, Übung 2", minuten: 5, ergebnis: [15.000 €])[
+#if not web [*Aufgabe 237* #linebreak()]
+Die Kobit AG baut für die Blanzak AG eine Fabrikhalle: Bauzeit 6 Monate, Festpreis 550.000 €, Zahlung 230.000 € sofort, 140.000 € nach drei Monaten, 180.000 € nach sechs Monaten. Die Blanzak AG möchte erst nach Fertigstellung zahlen. Die Bank der Kobit AG verlangt 2,5 % pro Vierteljahr. Um wie viel muss die Kobit AG den Preis erhöhen, damit sich der Verzicht auf die Vorauszahlungen lohnt?
+#src[V, PDF-S. 99 (Folien 197–198).]
+][
+*Kundenkredit erkennen:* Die Anzahlungen sind ein Kredit des Kunden. Fallen sie weg, muss Kobit das Geld bis zur Fertigstellung selbst finanzieren.
+][
+*Zinsen je Betrag:* 230.000 € für 6 Monate zu $2 times "2,5" % = 5 %$: 11.500 €. 140.000 € für 3 Monate zu 2,5 %: 3.500 €. Die letzte Rate kommt ohnehin am Ende.
+][
+*Ergebnis:* Preisaufschlag $11500 + 3500 = "15.000"$ €. Die Folie rechnet mit einfacher Verzinsung; mit Zinseszins wären es geringfügig mehr (15.143,75 €).
+]
+
+#aufgabe(titel: "Preisaufschlag bei verschobener Anzahlung (Variante)", art: "rechnen", quelle: "2.15.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 99, Folien 197–198, Übung 2", minuten: 5, ergebnis: [11.200 €])[
+#if not web [*Aufgabe 238* #linebreak()]
+Ein Maschinenbauer liefert in 9 Monaten eine Anlage für 400.000 €. Vereinbart sind 120.000 € sofort, 100.000 € nach 3 Monaten und 180.000 € bei Lieferung. Der Kunde will alles bei Lieferung zahlen. Der Kontokorrentzins beträgt 2 % pro Vierteljahr (einfache Verzinsung). Welcher Preisaufschlag gleicht das aus?
+#src[Eigene Variante zu V, PDF-S. 99; Lernskript 2.15.1.]
+][
+*Zeiträume:* 120.000 € fehlen 9 Monate (3 Quartale, 6 %), 100.000 € fehlen 6 Monate (2 Quartale, 4 %).
+][
+*Aufschlag:* $120000 times "0,06" + 100000 times "0,04" = 7200 + 4000 = "11.200"$ €.
+]
+
+#aufgabe(titel: "Übung: Warum Skonto oft nicht genutzt wird", art: "verstehen", quelle: "2.15.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 100, Folien 199–200, Übung 3", minuten: 2)[
+#if not web [*Aufgabe 239* #linebreak()]
+Welches könnten die Gründe dafür sein, dass viele Abnehmer den ihnen gewährten Skonto nicht ausnutzen, obwohl die effektive Zinsbelastung sehr hoch ist?
+#src[V, PDF-S. 100 (Folien 199–200).]
+][
+*Gründe der Folie:* keine alternativen Kreditmöglichkeiten; die effektiven Kosten werden nicht erkannt; schlechtes Cash Management (Termine verpasst); die liquiden Mittel bringen anderswo mehr Zins.
+][
+*Einordnen:* Nur der letzte Grund ist wirtschaftlich vernünftig, und er gilt selten, weil kaum eine Anlage 18–37 % bringt.
+]
+
+#aufgabe(titel: "Kontokorrent, Aval, Factoring und Lombard", art: "verstehen", quelle: "2.15", herkunft: "eigen", minuten: 4)[
+#if not web [*Aufgabe 240* #linebreak()]
+Ordne zu, welches Problem jeder der vier kurzfristigen Kredite löst: Kontokorrentkredit, Avalkredit, Factoring, Lombardkredit.
+#src[Lernskript 2.15.2–2.15.3 nach V, PDF-S. 70–74.]
+][
+*Kontokorrent:* schwankender Zahlungsbedarf im Tagesgeschäft, Kreditlinie auf dem Girokonto; teuer bei Überziehung.
+][
+*Aval:* Die Bank leiht keine Liquidität, sondern ihre Kreditwürdigkeit (Bürgschaft gegenüber Dritten, z. B. Anzahlungsbürgschaft).
+][
+*Factoring und Lombard:* Factoring macht Forderungen sofort zu Geld und kann das Ausfallrisiko übertragen. Lombard beleiht bewegliche Pfänder wie Wertpapiere zu einem Teil ihres Werts.
+]
+
+#aufgabe(titel: "Vorlesung: Stahlhersteller in der Krise", art: "verstehen", quelle: "2.17", herkunft: "original", vorlage: "Vorlesung PDF-S. 78, Folie 155, Beispiel", minuten: 3)[
+#if not web [*Aufgabe 241* #linebreak()]
+Ein Stahlhersteller ist in der Krise: Das laufende Geschäft bringt nicht genug Geld für die Löhne, alle Kreditlinien sind ausgeschöpft, der Aktienkurs ist stark gefallen, eine Kapitalerhöhung ist nicht möglich, kurzfristig kann nicht gekündigt werden. Was kann das Unternehmen tun?
+#src[V, PDF-S. 78 (Folie 155), Quelle der Folie: Rollwage (2006).]
+][
+*Außenfinanzierung ausschließen:* Kreditgeber und Anleger kennen die gefährdete Lage; neues Fremd- oder Eigenkapital ist nicht zu bekommen.
+][
+*Vermögen umschichten:* Betriebsgrundstücke verkaufen und zurückmieten (*Sale-and-lease-back*), wie Klöckner in den Stahlkrisen der 1980er/1990er Jahre. Das bringt sofort Liquidität, die Nutzung bleibt, dafür fallen künftig Leasingraten an.
+]
+
+#aufgabe(titel: "Leasing: Vor- und Nachteile abwägen", art: "verstehen", quelle: "2.17", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 242* #linebreak()]
+Nenne je zwei Argumente für und gegen Leasing im Vergleich zum Barkauf. Warum reicht der Vergleich der Summe aller Leasingraten mit dem Kaufpreis nicht aus?
+#src[Lernskript 2.17 nach V, PDF-S. 76–83.]
+][
+*Pro und Kontra:* Pro: Liquidität wird geschont, Raten und Laufzeit sind planbar, je nach Vertrag steuerliche Vorteile. Kontra: kein Eigentum (kein Verkauf bei Geldbedarf), meist teurer insgesamt, lange Bindung.
+][
+*Barwert statt Summe:* Raten fallen später an als der Kaufpreis. Man muss sie auf heute abzinsen (Barwertvergleich in 2.17.1), sonst wird Leasing systematisch zu teuer gerechnet.
+]
+
+#aufgabe(titel: "Vorlesung: Present Value zweier Anleihen", art: "rechnen", quelle: "2.18.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 85, Folie 169, Beispiel Present Value", minuten: 5, ergebnis: [PV 103,47 € bzw. 104,13 €; NPV 3,47 € bzw. 4,13 €; Anleihe 2])[
+#if not web [*Aufgabe 243* #linebreak()]
+Zwei zweijährige Anleihen, Kalkulationszins 10 %. Anleihe 1 zahlt +12 in $t_1$ und +112 in $t_2$; Anleihe 2 zahlt je +60 in $t_1$ und $t_2$. Beide kosten 100 €. Berechne PV und NPV. Welche Anleihe ist vorzuziehen?
+#src[V, PDF-S. 85 (Folie 169), Quelle der Folie: Steiner/Bruns (1996).]
+][
+*Abzinsen:* $"PV"_1 = 12/"1,1" + 112/"1,1"^2 = "10,91" + "92,56" = "103,47"$ €. $"PV"_2 = 60/"1,1" + 60/"1,1"^2 = "54,55" + "49,59" = "104,13"$ €.
+][
+*NPV:* PV minus Kurs: 3,47 € bzw. 4,13 €.
+][
+*Entscheidung:* Anleihe 2, weil sie bei gleichem Kurs den höheren Barwert hat: Sie zahlt mehr Geld früher zurück.
+]
+
+#aufgabe(titel: "Present Value bei acht Prozent (Variante)", art: "rechnen", quelle: "2.18.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 85, Folie 169, Beispiel Present Value", minuten: 5, ergebnis: [PV 103,57 € bzw. 98,08 €; Anleihe A])[
+#if not web [*Aufgabe 244* #linebreak()]
+Kalkulationszins 8 %. Anleihe A zahlt 10 in $t_1$ und 110 in $t_2$, Anleihe B je 55 in $t_1$ und $t_2$. Kurs jeweils 100 €. Berechne PV und NPV und entscheide.
+#src[Eigene Variante zu V, PDF-S. 85; Lernskript 2.18.1.]
+][
+*Abzinsen:* $"PV"_A = 10/"1,08" + 110/"1,08"^2 = "9,26" + "94,31" = "103,57"$ €. $"PV"_B = 55/"1,08" + 55/"1,08"^2 = "50,93" + "47,15" = "98,08"$ €.
+][
+*Entscheidung:* NPV A $= +"3,57"$ €, NPV B $= -"1,92"$ €. A kaufen. B zahlt zwar früher, insgesamt aber nur 110 statt 120.
+]
+
+#aufgabe(titel: "Vorlesung: Stückzinsen beim Anleihekauf", art: "rechnen", quelle: "2.18.2", herkunft: "original", vorlage: "Vorlesung PDF-S. 85–86, Folien 170–171, Beispiel Stückzinsen", minuten: 6, ergebnis: [Kaufpreis 572,70 €; Verkaufspreis 573,30 €])[
+#if not web [*Aufgabe 245* #linebreak()]
+Sie kaufen am 21.5. (Valuta) eine Anleihe im Nennwert von 600 € zum Kurs 95. Nominalzins 4 %, jährliche Zinszahlung am 10.4. Kein Schaltjahr, Methode actual/actual.
+
+#enum(numbering: "a)")[Berechnen Sie den Kaufpreis.][Am 1. Juni (Valuta) verkaufen Sie zum Kurs 94,98. Welchen Verkaufspreis erzielen Sie?]
+#src[V, PDF-S. 85–86 (Folien 170–171), Quelle der Folie: Pfeifer, Aufgabe 2.2.13.]
+][
+*Warum Stückzinsen:* Der Käufer erhält am nächsten 10.4. den vollen Jahreszins, obwohl ihm nur ein Teil zusteht. Er zahlt dem Verkäufer deshalb die seit dem letzten Zinstermin aufgelaufenen Zinsen.
+][
+*a) Kauf:* 10.4. bis 21.5. = 41 Tage. $"0,95" times 600 + 600 times "0,04" times 41/365 = 570 + "2,70" = "572,70"$ €.
+][
+*b) Verkauf:* 10.4. bis 1.6. = 52 Tage. $"0,9498" times 600 + 600 times "0,04" times 52/365 = "569,88" + "3,42" = "573,30"$ €.
+]
+
+#aufgabe(titel: "Stückzinsen bei Kupon am 1. März (Variante)", art: "rechnen", quelle: "2.18.2", herkunft: "variante", vorlage: "Vorlesung PDF-S. 85–86, Folien 170–171, Beispiel Stückzinsen", minuten: 6, ergebnis: [Kaufpreis 990,27 €; Verkaufspreis 1.001,58 €])[
+#if not web [*Aufgabe 246* #linebreak()]
+Anleihe Nennwert 1.000 €, Kupon 5 % jährlich am 1.3., actual/365. Kauf am 15.5. zum Kurs 98, Verkauf am 30.6. zum Kurs 98,5. Berechne Kauf- und Verkaufspreis.
+#src[Eigene Variante zu V, PDF-S. 85–86; Lernskript 2.18.2.]
+][
+*Tage zählen:* 1.3. bis 15.5.: $30 + 30 + 15 = 75$ Tage. 1.3. bis 30.6.: $30 + 30 + 31 + 30 = 121$ Tage.
+][
+*Preise:* Kauf $980 + 1000 times "0,05" times 75/365 = 980 + "10,27" = "990,27"$ €. Verkauf $985 + 1000 times "0,05" times 121/365 = 985 + "16,58" = "1001,58"$ €.
+]
+
+#aufgabe(titel: "Übung: Darlehen der Aktionäre beurteilen", art: "verstehen", quelle: "2.19", herkunft: "original", vorlage: "Vorlesung PDF-S. 101, Folien 201–202, Übung 4", minuten: 4)[
+#if not web [*Aufgabe 247* #linebreak()]
+Beurteilen Sie Darlehen der Aktionäre aus betriebswirtschaftlicher Sicht.
+#src[V, PDF-S. 101 (Folien 201–202).]
+][
+*Rechtlich und wirtschaftlich:* Rechtlich Fremdkapital (kündbar, Zinsanspruch), wirtschaftlich mit Eigenkapitalzügen, weil der Geber dem Unternehmen nahesteht; im Ernstfall „verdecktes Eigenkapital“.
+][
+*Vorteile:* leichter zu bekommen, flexibel bei Laufzeit, Höhe und Kündbarkeit; geringes Risiko für den gut informierten Geber; Alternative, wenn Kredit oder Kapitalerhöhung nicht möglich oder nicht gewünscht sind (Sanierung, Kapitalmarktlage, nicht alle Aktionäre ziehen mit).
+][
+*Nachteile:* Ein überhöhter Zins ist eine verdeckte Gewinnausschüttung zulasten der übrigen Aktionäre; das Darlehen kann gekündigt werden.
+]
+
+#aufgabe(titel: "Übung: Aktie, Anleihe und Wandelanleihe vergleichen", art: "verstehen", quelle: "2.20.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 102, Folien 203–204, Übung 5", minuten: 4)[
+#if not web [*Aufgabe 248* #linebreak()]
+Vergleichen und beurteilen Sie die Aktie mit der „gewöhnlichen“ Anleihe und der Wandelanleihe nach Art der Beteiligung, Art des Kapitals, Verzinsung, Rückzahlung und Mitwirkungsrechten.
+#src[V, PDF-S. 102 (Folien 203–204).]
+][
+*Tabelle:*
+#tab(columns: (1fr, 1fr, 1fr, 1.2fr), th([], [Aktie], [Anleihe], [Wandelanleihe]),
+ [Beteiligung], [Teilhaberpapier], [Gläubigerpapier], [Gläubigerpapier],
+ [Kapital], [EK], [FK], [vor Wandlung FK, danach EK],
+ [Verzinsung], [schwankend (Dividende)], [fest], [fest, niedriger als Anleihe],
+ [Rückzahlung], [nur Anteil am Liquidationserlös], [Anspruch auf Rückzahlung], [Rückzahlung oder Umtausch in Aktien],
+ [Mitwirkung], [ja], [keine], [keine],)
+][
+*Beurteilen:* Die Wandelanleihe senkt die Zinskosten des Unternehmens; der Preis ist die mögliche Verwässerung der Altaktionäre.
+]
+
+#aufgabe(titel: "Vorlesung: Hebel des Optionsscheins", art: "rechnen", quelle: "2.20.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 87, Folie 174, Beispiel Optionsanleihe", minuten: 3, ergebnis: [Wert 20 € → 62 €, +210 %])[
+#if not web [*Aufgabe 249* #linebreak()]
+Ein Optionsschein berechtigt, eine Aktie innerhalb von 10 Jahren zu 400 € zu beziehen. Die Aktie notiert bei 420 €. Berechne den rechnerischen Wert des Scheins und die prozentuale Änderung, wenn die Aktie um 10 % steigt.
+#src[V, PDF-S. 87 (Folie 174).]
+][
+*Wert vorher:* $420 - 400 = 20$ €.
+][
+*Wert nachher:* Aktie $420 times "1,1" = 462$ €; Schein $462 - 400 = 62$ €.
+][
+*Hebel:* $(62 - 20)/20 = 210 %$, also 21-mal so stark wie die Aktie (+10 %). Der Hebel wirkt auch nach unten.
+]
+
+#aufgabe(titel: "Hebel bei Bezugskurs 50 € (Variante)", art: "rechnen", quelle: "2.20.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 87, Folie 174, Beispiel Optionsanleihe", minuten: 3, ergebnis: [+220 % bzw. Wert 0 €])[
+#if not web [*Aufgabe 250* #linebreak()]
+Bezugskurs 50 €, Aktienkurs 55 €. Wie verändert sich der rechnerische Wert des Optionsscheins, wenn die Aktie um 20 % steigt bzw. um 10 % fällt?
+#src[Eigene Variante zu V, PDF-S. 87; Lernskript 2.20.1.]
+][
+*Steigt:* Aktie 66 €, Schein 16 € statt 5 €: $+220 %$.
+][
+*Fällt:* Aktie 49,50 € liegt unter dem Bezugskurs; rechnerischer Wert 0 € (niemand bezieht teurer als an der Börse): $-100 %$.
+]
+
+#aufgabe(titel: "Vorlesung: Wandelanleihe und kritischer Aktienkurs", art: "rechnen", quelle: "2.20.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 88–89, Folien 176–178, Beispiel Wandelanleihe", minuten: 5, ergebnis: [Wandlungsverhältnis 100; Zuzahlung 200 €; kritischer Kurs 12 €])[
+#if not web [*Aufgabe 251* #linebreak()]
+Wandelanleihe über 100 Mio. €, Kupon 2 %, gestückelt in 100.000 Teilschuldverschreibungen zu 1.000 €, Ausgabe zum Nennwert. Wandelbar in 10 Mio. Aktien bei 2 € Zuzahlung je Aktie. Berechne das Wandlungsverhältnis und den kritischen Aktienkurs, ab dem sich die Wandlung lohnt.
+#src[V, PDF-S. 88–89 (Folien 176–178), Quelle der Folie: Bösch.]
+][
+*Wandlungsverhältnis:* $10000000/100000 = 100$ Aktien je Anleihe; Zuzahlung $100 times 2 = 200$ €.
+][
+*Kritischer Kurs:* Wandeln kostet $1000 + 200 = 1200$ € für 100 Aktien. Das lohnt sich, wenn 100 Aktien an der Börse mehr kosten: $1200/100 = 12$ €.
+][
+*Einordnen:* Unter 12 € behält der Anleger die Anleihe (Wert etwa 1.000 €); darüber steigt ihr Preis mit dem Aktienkurs (bei 14 €: 1.400 − 200 = 1.200 €). Die Folie datiert den Vergleich einmal auf den 15.03.2010, einmal auf den 15.03.2013.
+]
+
+#aufgabe(titel: "Kritischer Kurs einer kleineren Wandelanleihe (Variante)", art: "rechnen", quelle: "2.20.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 88–89, Folien 176–178, Beispiel Wandelanleihe", minuten: 4, ergebnis: [50 Aktien; kritischer Kurs 24 €])[
+#if not web [*Aufgabe 252* #linebreak()]
+Eine Wandelanleihe über 50 Mio. € besteht aus 50.000 Stück zu 1.000 € und ist in 2,5 Mio. Aktien wandelbar, Zuzahlung 4 € je Aktie. Berechne Wandlungsverhältnis und kritischen Aktienkurs. Lohnt die Wandlung bei 27 €?
+#src[Eigene Variante zu V, PDF-S. 88–89; Lernskript 2.20.1.]
+][
+*Verhältnis:* $2500000/50000 = 50$ Aktien; Zuzahlung $50 times 4 = 200$ €.
+][
+*Kritischer Kurs:* $(1000 + 200)/50 = 24$ €. Bei 27 € sind 50 Aktien 1.350 € wert, Wandlung kostet 1.200 €: Sie lohnt sich.
+]
+
+#aufgabe(titel: "Vorlesung: Rendite eines Zerobonds", art: "rechnen", quelle: "2.20.3", herkunft: "original", vorlage: "Vorlesung PDF-S. 91, Folie 182, Beispiel Zerobond", minuten: 3, ergebnis: [6,35 % p. a.])[
+#if not web [*Aufgabe 253* #linebreak()]
+Anleger Spekulatius kauft einen siebenjährigen Zerobond zum Kurs von 65 %. Rückzahlung zu 100 %. Wie hoch ist die Rendite? Warum passt ein Zerobond zu seinem Plan, in fünf Jahren mit niedrigerem Steuersatz in Pension zu gehen?
+#src[V, PDF-S. 91 (Folie 182).]
+][
+*Rendite:* $65 (1 + r)^7 = 100$, also $r = root(7, 100/65) - 1 = "6,35" %$.
+][
+*Steuer:* Ein Zerobond zahlt keine laufenden Zinsen; der ganze Ertrag fällt erst bei Fälligkeit an und wird dann (im Ruhestand) versteuert.
+]
+
+#aufgabe(titel: "Zerobond zu 72 Prozent (Variante)", art: "rechnen", quelle: "2.20.3", herkunft: "variante", vorlage: "Vorlesung PDF-S. 91, Folie 182, Beispiel Zerobond", minuten: 3, ergebnis: [5,63 % p. a.])[
+#if not web [*Aufgabe 254* #linebreak()]
+Ein sechsjähriger Zerobond wird zu 72 % angeboten und zu 100 % getilgt. Berechne die Rendite.
+#src[Eigene Variante zu V, PDF-S. 91; Lernskript 2.20.3.]
+][
+*Rendite:* $r = root(6, 100/72) - 1 = "5,63" %$. Probe: $72 times "1,0563"^6 approx 100$.
+]
+
+#aufgabe(titel: "Übung: Ertragsarten bei Geldanlagen", art: "verstehen", quelle: "2.22", herkunft: "original", vorlage: "Vorlesung PDF-S. 103, Folie 205, Übung 6", minuten: 2)[
+#if not web [*Aufgabe 255* #linebreak()]
+Welche Arten von Gewinnen bzw. Erträgen gibt es bei Geldanlagen?
+#src[V, PDF-S. 103 (Folien 205–206), Quelle der Folie: Pfeifer, Aufgabe 1.3.4.]
+][
+*Vier Arten:* Zinsen (Sparkonto, Anleihe), Dividenden (nur Aktien), Kursgewinne (Wertsteigerung), Währungsgewinne (Anlagen in Fremdwährung).
+]
+
+#aufgabe(titel: "Übung: Geld- und Briefkurs", art: "verstehen", quelle: "2.22", herkunft: "original", vorlage: "Vorlesung PDF-S. 104, Folien 207–208, Übung 7", minuten: 2)[
+#if not web [*Aufgabe 256* #linebreak()]
+#enum(numbering: "a)")[Zu welchem Kurs kaufen Sie ein Wertpapier, Geld- oder Briefkurs?][Wie heißt die Differenz?][Englische Bezeichnungen?][Was bedeutet eine niedrige Spanne?]
+#src[V, PDF-S. 104 (Folien 207–208), Quelle der Folie: Pfeifer, Aufgabe 1.3.5.]
+][
+*Antworten:* a) Briefkurs (verkauft wird zum Geldkurs). b) Geld-Brief-Spanne, Spread. c) Bid (Geld), Ask (Brief). d) Die Marktteilnehmer schätzen den Wert einheitlich ein; wer sofort kauft und verkauft, verliert wenig.
+]
+
+#aufgabe(titel: "Übung: Prozent, Prozentpunkte und Basispunkte", art: "verstehen", quelle: "2.22", herkunft: "original", vorlage: "Vorlesung PDF-S. 107, Folien 213–214, Übung 9", minuten: 2)[
+#if not web [*Aufgabe 257* #linebreak()]
+#enum(numbering: "a)")[Unterschied: „Der Anteil hat sich um 10 Prozent erhöht“ und „um 10 Prozentpunkte“?][Wie viel Prozent sind 8 Basispunkte?][Eine Anlage wird mit 3 % plus 200 Basispunkten verzinst. Wie hoch ist der Zins?]
+#src[V, PDF-S. 107 (Folien 213–214), Quelle der Folie: Pfeifer, Aufgabe 2.1.1.]
+][
+*Antworten:* a) 30 % → 33 % (+10 Prozent) gegenüber 30 % → 40 % (+10 Prozentpunkte). b) 0,08 Prozentpunkte. c) $3 % + 2 % = 5 %$.
+]
+
+#aufgabe(titel: "Übung: Lottogewinn von Herrn Müller", art: "rechnen", quelle: "2.22", herkunft: "original", vorlage: "Vorlesung PDF-S. 105–106, Folien 209–212, Übung 8", minuten: 10, ergebnis: [Aktien 145.000 €; Optionsanleihe mit Schein 42.000 €; ohne Schein 41.000 €; Optionsscheine 80.000 €])[
+#if not web [*Aufgabe 258* #linebreak()]
+Herr Müller kann am 01.01.2007 800.000 € für ein Jahr anlegen. 5 % Optionsanleihe Flama AG: Kurs mit Optionsschein 100 %, ohne 97,5 % (am 01.01. und 31.12. gleich). Je 2.000 € nominal ein Optionsschein, der bis 31.12.2007 zum Bezug einer Aktie zu 850 € berechtigt. Aktie Flama AG: 800 € am 01.01., 905 € am 31.12., Dividende 40 €.
+
+#enum(numbering: "a)")[Nennen Sie die möglichen Anlagevarianten.][Welche Variante maximiert den Jahresgewinn?][Welche Faktoren sind noch zu berücksichtigen?]
+#src[V, PDF-S. 105–106 (Folien 209–212).]
+][
+*a) Varianten:* Aktien; Optionsanleihe mit Schein; Optionsanleihe ohne Schein; nur Optionsscheine; Kombinationen.
+][
+*Preis des Scheins:* Anfang $(100 % - "97,5" %) times 2000 = 50$ €; Ende $905 - 850 = 55$ €: Gewinn 5 € je Schein.
+][
+*b) Rechnen:* Aktien $1000 times (105 + 40) = "145.000"$ €. Anleihe mit Schein: Zins 40.000 € plus $400 times 5 = 2000$ €: 42.000 €. Ohne Schein (ca. 820.000 € nominal): 41.000 €. 16.000 Scheine: $16000 times 5 = "80.000"$ €. Er wählt die Aktien.
+][
+*c) Weitere Faktoren:* Wie sicher sind die Daten? Welches Risiko will er tragen? Wie schnell kommt er wieder an sein Geld?
+]
+
+#aufgabe(titel: "Anlageentscheidung mit Optionsanleihe (Variante)", art: "rechnen", quelle: "2.22", herkunft: "variante", vorlage: "Vorlesung PDF-S. 105–106, Folien 209–212, Übung 8", minuten: 10, ergebnis: [Aktien 82.500 €; mit Schein 22.500 €; ohne Schein 20.513 €; Scheine 100.000 €])[
+#if not web [*Aufgabe 259* #linebreak()]
+500.000 € für ein Jahr. 4 % Optionsanleihe: Kurs mit Schein 100 %, ohne 97,5 % (unverändert). Je 1.000 € nominal ein Schein auf eine Aktie zu 420 €. Aktie: 400 € → 450 €, Dividende 16 €. Berechne den Gewinn der vier Varianten. Welche ist am besten, welche am riskantesten?
+#src[Eigene Variante zu V, PDF-S. 105–106; Lernskript 2.22.]
+][
+*Schein:* Anfang $"2,5" % times 1000 = 25$ €, Ende $450 - 420 = 30$ €: +5 € je Schein.
+][
+*Varianten:* Aktien $1250 times (50 + 16) = "82.500"$ €. Mit Schein: $20000 + 500 times 5 = "22.500"$ €. Ohne Schein: $500000/"0,975" times "0,04" approx "20.513"$ €. Scheine: $500000/25 = 20000$ Stück, $times 5 = "100.000"$ €.
+][
+*Bewerten:* Die Scheine bringen am meisten, sind aber am riskantesten: Bei einem Aktienkurs unter 420 € wären sie wertlos und das ganze Geld verloren.
+]
+
+#aufgabe(titel: "Wechselkurs: Abwertung erkennen", art: "verstehen", quelle: "2.21", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 260* #linebreak()]
+Der Kurs steigt in Preisnotierung von 1,00 € auf 1,10 € je US-Dollar. Hat der Euro auf- oder abgewertet? Welche Wirkung hat das auf einen deutschen Exporteur, der in Dollar fakturiert?
+#src[Lernskript 2.21 nach V, PDF-S. 93–97.]
+][
+*Notierung lesen:* Preisnotierung = Euro je Dollar. Man braucht mehr Euro für einen Dollar: Der Euro hat *abgewertet*.
+][
+*Wirkung:* Jeder eingenommene Dollar bringt mehr Euro; der Exporteur gewinnt (und seine Waren werden im Ausland relativ billiger).
+]
+
+#kapitel("Kapitel 3 · Eigen- und Selbstfinanzierung")
+
+#aufgabe(titel: "Stille Reserven als Steuerstundung", art: "verstehen", quelle: "3.1", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 261* #linebreak()]
+Warum spricht man bei der Bildung stiller Reserven von einer Steuerstundung und nicht von einer Steuerersparnis? Erkläre am Beispiel der Folie: Abschreibung 20.000 €, tatsächlicher Wertverlust 16.000 €.
+#src[Lernskript 3.1 nach V, PDF-S. 108–110.]
+][
+*Bildung:* 4.000 € zu viel Aufwand senken den ausgewiesenen Gewinn: weniger Ertragsteuern, weniger Ausschüttung. Das Geld bleibt im Unternehmen.
+][
+*Auflösung:* Wird die Maschine später über Buchwert verkauft oder weniger abgeschrieben, steigt der Gewinn um denselben Betrag und wird dann versteuert. Die Steuer wird also nur verschoben; der Vorteil ist ein zinsloser Kredit des Finanzamts.
+]
+
+#aufgabe(titel: "Übung: Maschinen der Expans AG aus Abschreibungen", art: "rechnen", quelle: "3.2.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 113–114, Folien 225–227, Übung 1", minuten: 12, ergebnis: [Bestand Jahr 7: 15 Maschinen, nötig 17 → nicht möglich], tipp: [Abschreibung je Maschine 1.000 € pro Jahr; nur ganze Maschinen kaufen, den Rest vortragen.])[
+#if not web [*Aufgabe 262* #linebreak()]
+Die Expans AG kauft 10 Maschinen: Preis je 5.000 €, Nutzungsdauer 5 Jahre, Kapazität je 10.000 Einheiten pro Jahr; volle Auslastung, lineare Abschreibung. Die Abschreibungsgegenwerte werden jeweils sofort in neue Maschinen investiert. Kann die AG im 7. Jahr eine Umsatzerhöhung von insgesamt 65 % aus Abschreibungen finanzieren?
+#src[V, PDF-S. 113–114 (Folien 225–227).]
+][
+*Prinzip:* Kapazitätserweiterungseffekt: Die verdienten Abschreibungen kaufen neue Maschinen, bevor die alten ersetzt werden müssen.
+][
+*Tabelle:*
+#tab(columns: (0.6fr,1fr,1fr,1fr,1fr), th([Jahr],[Bestand],[AfA €],[Kauf],[Rest €]),
+[1],[10],[10.000],[2],[0],[2],[12],[12.000],[2],[2.000],[3],[14],[14.000],[3],[1.000],[4],[17],[17.000],[3],[3.000],[5],[20],[20.000],[4],[3.000],[6],[14],[14.000],[3],[2.000],[7],[15],[15.000],[3],[2.000],)
+Nach Jahr 5 scheiden die ersten 10 Maschinen aus.
+][
+*Antwort:* +65 % erfordern 16,5, also 17 Maschinen. Im 7. Jahr sind nur 15 vorhanden. Die Erweiterung lässt sich nicht vollständig aus Abschreibungen finanzieren.
+]
+
+#aufgabe(titel: "Kapazitätserweiterung mit acht Maschinen (Variante)", art: "rechnen", quelle: "3.2.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 113–114, Folien 225–227, Übung 1", minuten: 12, ergebnis: [Bestand Jahr 6: 12 Maschinen, nötig 13 → nicht möglich])[
+#if not web [*Aufgabe 263* #linebreak()]
+8 Maschinen zu je 6.000 €, Nutzungsdauer 4 Jahre, lineare AfA, sofortige Reinvestition in ganze Maschinen. Reicht das für eine Kapazitätssteigerung um 60 % im 6. Jahr?
+#src[Eigene Variante zu V, PDF-S. 113–114; Lernskript 3.2.1.]
+][
+*Tabelle:* AfA je Maschine 1.500 €.
+#tab(columns: (0.6fr,1fr,1fr,1fr,1fr), th([Jahr],[Bestand],[AfA €],[Kauf],[Rest €]),
+[1],[8],[12.000],[2],[0],[2],[10],[15.000],[2],[3.000],[3],[12],[18.000],[3],[3.000],[4],[15],[22.500],[4],[1.500],[5],[11],[16.500],[3],[0],[6],[12],[18.000],[3],[0],)
+][
+*Antwort:* Nötig $8 times "1,6" = "12,8"$, also 13 Maschinen; vorhanden 12. Nicht möglich. Der Bestand pendelt sich nach dem Ausscheiden der ersten Generation unter dem Höchststand ein.
+]
+
+#aufgabe(titel: "Rückstellungen als Finanzierungsquelle", art: "verstehen", quelle: "3.2.2", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 264* #linebreak()]
+Warum finanzieren vor allem Pensionsrückstellungen ein Unternehmen, Rückstellungen für die nächste Steuerzahlung dagegen kaum?
+#src[Lernskript 3.2.2 nach V, PDF-S. 111–112.]
+][
+*Mechanismus:* Die Zuführung ist Aufwand ohne Auszahlung. Das Geld bleibt bis zur späteren Zahlung im Unternehmen.
+][
+*Fristigkeit:* Pensionen werden oft erst Jahrzehnte später gezahlt; die Mittel stehen lange zur Verfügung. Eine Steuerrückstellung wird nach wenigen Monaten fällig; der Effekt ist kurz.
+]
+
+#aufgabe(titel: "Übung: Selbst-, Beteiligungs- und Kreditfinanzierung", art: "verstehen", quelle: "3.3", herkunft: "original", vorlage: "Vorlesung PDF-S. 114–115, Folien 228–230, Übung 2", minuten: 5)[
+#if not web [*Aufgabe 265* #linebreak()]
+Welche Vor- und Nachteile der Selbstfinanzierung ergeben sich gegenüber der Beteiligungsfinanzierung und der Kreditfinanzierung?
+#src[V, PDF-S. 114–115 (Folien 228–230).]
+][
+*Begriffe:* Selbstfinanzierung = einbehaltene Gewinne (innen); Beteiligungsfinanzierung = Eigentümer geben Kapital (außen, EK); Kreditfinanzierung = geliehenes Kapital (außen, FK).
+][
+*Vorteile der Selbstfinanzierung:* unabhängig von Kapitalgebern, Beteiligungsverhältnisse bleiben, auch in Rezession möglich, keine Zinsen, keine Rückzahlung, starke Selbstfinanzierung erleichtert spätere Kreditaufnahme, steuerliche Vorteile (stille Reserven).
+][
+*Nachteile:* kurzfristig geringere Ausschüttung für die Eigner; mehr Eigenkapital senkt die EK-Rendite (kein Leverage-Effekt).
+]
+
+#aufgabe(titel: "Übung: Bedeutung und Gefahren der Selbstfinanzierung", art: "verstehen", quelle: "3.3", herkunft: "original", vorlage: "Vorlesung PDF-S. 116–117, Folien 231–233, Übung 3", minuten: 5)[
+#if not web [*Aufgabe 266* #linebreak()]
+#enum(numbering: "a.")[Was ist gemeint, wenn von der „großen Bedeutung der Selbstfinanzierung“ gesprochen wird?][Welche Probleme bringt eine starke Selbstfinanzierung?][Welches sind die Gefahren einer verdeckten Selbstfinanzierung?]
+#src[V, PDF-S. 116–117 (Folien 231–233).]
+][
+*a)* Wachsender Kapitalbedarf ist nicht allein von außen zu decken (Börse unsicher, zu viel FK riskant); Beteiligungsverhältnisse bleiben; liquiditätsschonend; Steuern sparen bzw. stunden, Doppelbesteuerung vermeiden; Substanzerhaltung bei Inflation.
+][
+*b)* Aktionäre ärgern sich über geringe Dividende; Gewinne sind oft nur Buchgewinne, kein Geld; mehr EK kann die EK-Rendite senken.
+][
+*c)* Verluste werden durch Auflösen stiller Reserven verdeckt, Dividenden greifen die Substanz an; die Risikobereitschaft steigt; die wahre Lage wird verschleiert.
+]
+
+#aufgabe(titel: "Vorlesung: Break-even-Kurs einer Aktie", art: "rechnen", quelle: "3.4.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 119–120, Folien 238–239, Aufgabe Aktien aus Anlegersicht", minuten: 6, ergebnis: [a) 42,00 €; b) ca. 40,32 €])[
+#if not web [*Aufgabe 267* #linebreak()]
+Online-Broker: Orderprovision 5 € plus 0,25 % vom Orderwert, mindestens 9 €, höchstens 55 €; Handelsplatzentgelt Inland 1 €. Börsenkurs 40 €. Berechne den Break-even-Kurs bei einem Anlagebetrag von a) 400 € und b) 4.000 € (jeweils plus Kosten). Verkaufskosten wie Kaufkosten.
+#src[V, PDF-S. 119–120 (Folien 238–239).]
+][
+*a) 10 Aktien:* Provision $5 + "0,25" % times 400 = 6$ €, also Minimum 9 €; plus 1 € = 10 € je Kauf und Verkauf, zusammen 20 €. Je Aktie 2 €: Break-even 42 €.
+][
+*b) 100 Aktien:* Provision $5 + 10 = 15$ € plus 1 € = 16 €; Verkauf ähnlich, zusammen etwa 32 €. Je Aktie 0,32 €: Break-even ca. 40,32 €.
+][
+*Erkenntnis:* Mindestgebühren treffen kleine Orders überproportional.
+]
+
+#aufgabe(titel: "Break-even-Kurs bei 25 € Aktienkurs (Variante)", art: "rechnen", quelle: "3.4.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 119–120, Folien 238–239, Aufgabe Aktien aus Anlegersicht", minuten: 5, ergebnis: [a) 26,00 €; b) ca. 25,16 €])[
+#if not web [*Aufgabe 268* #linebreak()]
+Gleiche Gebühren wie in der Vorlesung (5 € + 0,25 %, min. 9 €, max. 55 €, plus 1 €). Aktienkurs 25 €. Break-even-Kurs bei a) 20 Aktien, b) 400 Aktien? Verkaufskosten wie Kaufkosten.
+#src[Eigene Variante zu V, PDF-S. 119–120; Lernskript 3.4.1.]
+][
+*a)* Orderwert 500 €: $5 + "1,25" = "6,25"$ → 9 € + 1 € = 10 €; hin und zurück 20 €; je Aktie 1 €: 26,00 €.
+][
+*b)* Orderwert 10.000 €: $5 + 25 = 30$ € + 1 € = 31 €; zusammen 62 €; je Aktie etwa 0,155 €: Break-even ca. 25,16 € (beim Verkauf zu 25,16 € steigt die Provision um wenige Cent, das ändert das Ergebnis kaum).
+]
+
+#aufgabe(titel: "Aufgabe: Inhaber- und Namensaktien", art: "verstehen", quelle: "3.4.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 138–139, Folien 276–278, Aufgabe 2", minuten: 4)[
+#if not web [*Aufgabe 269* #linebreak()]
+#enum(numbering: "a)")[Welches sind die Unterschiede zwischen Inhaber- und Namensaktien?][Welche betriebswirtschaftliche Bedeutung hat die Unterteilung?]
+#src[V, PDF-S. 138–139 (Folien 276–278).]
+][
+*a)* Inhaberaktie: Inhaberpapier, Übertragung durch Übergabe, Eigentümer der Gesellschaft unbekannt. Namensaktie: Orderpapier, Eintrag ins Aktienregister, Eigentümer bekannt. Vinkulierte Namensaktien sind nur mit Zustimmung der Gesellschaft übertragbar.
+][
+*b)* Unabhängigkeit (Einfluss steuern, unerwünschte Aktionäre fernhalten), Aktionärsbindung, Handelbarkeit (Inhaberaktien leicht übertragbar, breiteres Publikum).
+]
+
+#aufgabe(titel: "Aufgabe: Festpreis oder Bookbuilding beim Going Public", art: "verstehen", quelle: "3.4.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 140–141, Folien 279–281, Aufgabe 3", minuten: 4)[
+#if not web [*Aufgabe 270* #linebreak()]
+Welche Argumente sprechen bei einem Going Public für ein Festpreisverfahren und welche für ein Bookbuilding-Verfahren?
+#src[V, PDF-S. 140–141 (Folien 279–281).]
+][
+*Festpreis:* geringes Risiko, „Geschenke“ an künftige Aktionäre durch niedrigen Kurs, mehr Einfluss, einfacher, Mitarbeiterbeteiligung planbar. Nachteil: Marktstimmung schwer zu schätzen; zu hoch → nicht alles platzierbar; zu niedrig → Agio verloren, Zeichner verärgert.
+][
+*Bookbuilding:* Zeichner nennen Menge und Preis, der Preis wird nach der Zeichnungsfrist festgelegt. Kapitalmarktlage berücksichtigt, Fehlpreise vermieden. Nachteil: höheres Risiko, eher höhere Kurse, kaum Zeichnungsgewinne, kein Einfluss des Unternehmens auf die Kursbildung.
+]
+
+#aufgabe(titel: "Übung: Stabile oder gewinnabhängige Dividende", art: "verstehen", quelle: "3.5", herkunft: "original", vorlage: "Vorlesung PDF-S. 121–122, Folien 242–243, Übung 1", minuten: 3)[
+#if not web [*Aufgabe 271* #linebreak()]
+Vielen deutschen Unternehmen wird vorgeworfen, eine gewinnunabhängige Ausschüttung zu verfolgen. Nennen Sie Argumente für und gegen diese Haltung.
+#src[V, PDF-S. 121–122 (Folien 242–243).]
+][
+*Für stabile Dividende:* verhindert spekulative Börsengeschäfte; passt zu langfristigen Anlegern mit stabiler Erwartung.
+][
+*Für gewinnabhängige Dividende:* Die Aktie ist ein Risikopapier; der Aktionär soll am guten Geschäftsgang teilhaben; andere Faktoren können trotzdem einfließen.
+]
+
+#aufgabe(titel: "Übung: Ausschüttung und Finanzplan der Value AG", art: "rechnen", quelle: "3.5.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 122–126, Folien 244–251, Übung 2", minuten: 8, ergebnis: [Entziehbar 888,3 / 900 T€; Defizit bei Vollausschüttung 707,4 / 750,2 T€])[
+#if not web [*Aufgabe 272* #linebreak()]
+Aus dem Finanzplan der Value AG (Folien 249–250) ergibt sich vor Ausschüttung ein Zahlungsüberschuss von 1.420,2 T€ (Jahr 1) und 1.450,1 T€ (Jahr 2). Die Jahresüberschüsse betragen 2.127,6 bzw. 2.200,3 T€. Wie in der Folie wird die Abgeltungsteuer (25 %) auf den vollen Jahresüberschuss gerechnet.
+
+#enum(numbering: "a)")[Wie hoch ist der entziehbare Überschuss (Ausschüttung ohne neuen Kredit)?][Welches Finanzierungsdefizit entsteht bei Vollausschüttung des Jahresüberschusses, und wie wird es gedeckt?]
+#src[V, PDF-S. 122–126 (Folien 244–251); Zwischenwerte aus dem Finanzplan der Folien.]
+][
+*Abgeltungsteuer:* $"0,25" times "2127,6" = "531,9"$ T€; Jahr 2: $"0,25" times "2200,3" = "550,1"$ T€.
+][
+*a) Entziehbar:* $"1420,2" - "531,9" = "888,3"$ T€; Jahr 2: $"1450,1" - "550,1" = 900$ T€.
+][
+*b) Vollausschüttung:* $"1420,2" - "2127,6" = -"707,4"$ T€; Jahr 2: $-"750,2"$ T€. Plausible Annahme: Deckung durch Kreditaufnahme. Hinweis: Folie 248 nennt als „Thesaurierung“ 647,4/551,0 T€; aus den eigenen Zahlen folgen 707,4/750,2 T€.
+]
+
+#aufgabe(titel: "Ausschüttungsfähigkeit einer kleineren AG (Variante)", art: "rechnen", quelle: "3.5.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 122–126, Folien 244–251, Übung 2", minuten: 5, ergebnis: [Entziehbar 1.350 T€; Defizit 600 T€])[
+#if not web [*Aufgabe 273* #linebreak()]
+Eine AG erwartet einen Zahlungsüberschuss vor Ausschüttung von 2.000 T€ und einen Jahresüberschuss von 2.600 T€. Die Abgeltungsteuer (25 %) wird wie im Vorlesungsbeispiel auf den vollen Jahresüberschuss gerechnet. Berechne den entziehbaren Überschuss und das Defizit bei Vollausschüttung.
+#src[Eigene Variante zu V, PDF-S. 122–126; Lernskript 3.5.1.]
+][
+*Entziehbar:* $2000 - "0,25" times 2600 = 2000 - 650 = 1350$ T€.
+][
+*Vollausschüttung:* $2000 - 2600 = -600$ T€ müssen über Kredit finanziert werden. Gewinn ist eben nicht gleich Geld.
+]
+
+#aufgabe(titel: "Kapitalerhaltung der GmbH prüfen", art: "verstehen", quelle: "3.6", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 274* #linebreak()]
+Eine GmbH hat Stammkapital 25.000 €, Aktiva 140.000 € und Verbindlichkeiten 110.000 €. Darf sie 8.000 € an die Gesellschafter ausschütten? Warum ist das Stammkapital keine „Sicherungseinlage“?
+#src[Lernskript 3.6 nach V, PDF-S. 126–128.]
+][
+*Prüfen:* Nach Ausschüttung: $132000 - 110000 = 22000$ € liegt unter 25.000 €. Das Stammkapital wäre angegriffen (§ 30 GmbHG); höchstens 5.000 € sind zulässig.
+][
+*Keine Einlage auf dem Sparbuch:* Das Stammkapital darf für Ausgaben im Unternehmenszweck verwendet werden; verboten ist nur die Rückzahlung an die Gesellschafter.
+]
+
+#aufgabe(titel: "Vier Formen der Kapitalerhöhung", art: "verstehen", quelle: "3.7", herkunft: "eigen", minuten: 4)[
+#if not web [*Aufgabe 275* #linebreak()]
+Nenne die vier Formen der Kapitalerhöhung einer AG. Bei welcher fließt kein neues Geld zu?
+#src[Lernskript 3.7 nach V, PDF-S. 129–131.]
+][
+*Formen:* gegen Einlagen (neue Aktien gegen Geld oder Sachen), bedingte (z. B. für Wandelanleihen, Mitarbeiteroptionen), genehmigte (Vorstand darf bis zu 5 Jahre lang selbst erhöhen), aus Gesellschaftsmitteln.
+][
+*Ohne Geld:* Die Erhöhung aus Gesellschaftsmitteln wandelt Rücklagen in Grundkapital um (Gratis- oder Berichtigungsaktien). Das Eigenkapital bleibt gleich, nur seine Zusammensetzung ändert sich.
+]
+
+#aufgabe(titel: "Klausur: Kapitalerhöhung der Metall AG", art: "rechnen", quelle: "3.7.1", herkunft: "original", vorlage: "Altklausur 2017, Aufg. 2", minuten: 10, ergebnis: [GK 40 Mio. €; Kapitalrücklage 60 Mio. €; EK 122 Mio. €; Zufluss 26 Mio. €; Bezugsrecht 0,15 €; Mischkurs 3,05 €], tipp: [Erst die Zahl der jungen Aktien aus dem Bezugsverhältnis bestimmen. Nennwert geht ins Grundkapital, der Aufpreis (Agio) in die Kapitalrücklage.])[
+#if not web [*Aufgabe 276* #linebreak()]
+*Gegeben und Annahmen*
+
+Die Metall AG hat zum 31.12.2015 folgendes Eigenkapital, das auf Aktien mit dem Nennwert von 1 € entfällt: Grundkapital (gezeichnetes Kapital) 30 Mio. €, Kapitalrücklagen 44 Mio. €, Gewinnrücklagen 22 Mio. €. Zur Finanzierung größerer Investitionen plant die Metall AG 2016 eine Kapitalerhöhung gegen Einlagen mit einem Bezugsverhältnis von 3 : 1 (3 alte Aktien berechtigen zum Bezug von 1 junger Aktie). Die Aktien werden vor der Kapitalerhöhung mit 3,20 € an der Börse gehandelt. Junge Aktien werden zu 2,60 € je Aktie ausgegeben. Kosten der Emission werden vernachlässigt.
+
+*Gesucht* (Werte nach der Kapitalerhöhung, 10 Punkte)
+
+#enum(numbering: "a)",
+[Grundkapital (gezeichnetes Kapital)],
+[Kapitalrücklagen],
+[Eigenkapital],
+[Mittelzufluss aus der Kapitalerhöhung],
+[Rechnerischer Wert des Bezugsrechts],
+[Rechnerischer Kurs der Aktien nach der Kapitalerhöhung (Mischkurs)],
+)
+#src[K, PDF-S. 3 (Klausurseite 7). Kapitalerhöhung und Bezugsrecht: Lernskript 3.7–3.7.1 (Vorlesung Kapitel C, Folien 257–265). Eigene Lösung; die handschriftlichen Antworten im Scan sind falsch und werden nicht übernommen.]
+][
+*Aktienzahlen bestimmen:* Alte Aktien $N_"alt"=30 thin "Mio. €" / 1 thin "€"=30$ Mio. Stück. Bei 3 : 1 kommen $30/3=10$ Mio. junge Aktien hinzu.
+][
+*a) Grundkapital:* Jede junge Aktie erhöht das Grundkapital um ihren Nennwert: $30+10 times 1=40$ Mio. €.
+][
+*b) Kapitalrücklagen:* Der Betrag über dem Nennwert (Agio) geht in die Kapitalrücklage: $("2,60"-"1,00") times 10$ Mio. $=16$ Mio. €; neu $44+16=60$ Mio. €.
+][
+*c) Eigenkapital:* $40+60+22=122$ Mio. €. Kontrolle: altes EK $30+44+22=96$ Mio. € plus Zufluss 26 Mio. € = 122 Mio. €. Die Gewinnrücklagen bleiben unverändert.
+][
+*d) Mittelzufluss:* $10$ Mio. Aktien $times "2,60"$ € $=26$ Mio. € (= Erhöhung GK 10 + Agio 16).
+][
+*e) Bezugsrecht:* $B=(K_"alt"-K_"neu")/(m/n+1)=("3,20"-"2,60")/(3/1+1)="0,60"/4="0,15"$ €. Nicht einfach 3,20 − 2,60 = 0,60 €: Der Kursvorteil der jungen Aktie verteilt sich auf die drei alten Aktien, die man für eine junge braucht, und die junge selbst.
+][
+*f) Mischkurs:* $(3 times "3,20"+1 times "2,60")/4="12,20"/4="3,05"$ €. Kontrolle: $"3,20"-"0,15"="3,05"$ €. Nicht der einfache Durchschnitt (2,90 €), denn es gibt dreimal so viele alte wie junge Aktien.
+]
+
+#aufgabe(titel: "Kapitalerhöhung der Holz AG (Variante)", art: "rechnen", quelle: "3.7.1", herkunft: "variante", vorlage: "Altklausur 2017, Aufg. 2", minuten: 10, ergebnis: [GK 25 Mio. €; Kapitalrücklage 25 Mio. €; EK 60 Mio. €; Zufluss 15 Mio. €; Bezugsrecht 0,30 €; Mischkurs 4,20 €])[
+#if not web [*Aufgabe 277* #linebreak()]
+*Gegeben und Annahmen*
+
+Die Holz AG hat Aktien mit einem Nennwert von 1 €. Eigenkapital vor der Kapitalerhöhung: Grundkapital 20 Mio. €, Kapitalrücklagen 15 Mio. €, Gewinnrücklagen 10 Mio. €. Geplant ist eine Kapitalerhöhung gegen Einlagen im Bezugsverhältnis 4 : 1. Börsenkurs vor der Erhöhung 4,50 €, Ausgabekurs der jungen Aktien 3,00 €. Keine Emissionskosten.
+
+*Gesucht*
+
+#enum(numbering: "a)",
+[Grundkapital, Kapitalrücklagen und Eigenkapital nach der Kapitalerhöhung.],
+[Mittelzufluss.],
+[Rechnerischer Wert des Bezugsrechts und Mischkurs.],
+[Zeige, dass ein Altaktionär mit 4 Aktien durch die Kapitalerhöhung nichts verliert, wenn er sein Bezugsrecht verkauft.],
+)
+#src[Eigene Variante zu Altklausur 2017, Aufgabe 2 (K, PDF-S. 3); Lernskript 3.7.1.]
+][
+*Junge Aktien:* $20 "Mio. alte Aktien" \/ 4 = 5$ Mio. junge Aktien.
+][
+*Bilanzpositionen:* GK $20+5=25$ Mio. €. Agio $("3,00"-"1,00") times 5=10$ Mio. €, Kapitalrücklagen $15+10=25$ Mio. €. EK $25+25+10=60$ Mio. € (vorher 45 Mio. € plus 15 Mio. € Zufluss).
+][
+*Zufluss:* $5$ Mio. $times "3,00"$ € $=15$ Mio. €.
+][
+*Bezugsrecht und Mischkurs:* $B=("4,50"-"3,00")/(4+1)="0,30"$ €. Mischkurs $(4 times "4,50"+"3,00")/5="4,20"$ € $="4,50"-"0,30"$.
+][
+*Vermögen des Altaktionärs prüfen:* Vorher $4 times "4,50"=18$ €. Nachher 4 Aktien zu 4,20 € $="16,80"$ € plus Verkauf von 4 Bezugsrechten zu 0,30 € $="1,20"$ €, zusammen 18 €. Das Bezugsrecht gleicht den Kursverlust genau aus (Verwässerungsschutz).
+]
+
+#aufgabe(titel: "Vorlesung: Kapitalherabsetzung der Y-AG", art: "rechnen", quelle: "3.8", herkunft: "original", vorlage: "Vorlesung PDF-S. 134, Folien 267–268, Beispiel", minuten: 8, ergebnis: [GK 2.000 T€; Kapitalrücklage 200 T€; Bilanzsumme 5.200 T€])[
+#if not web [*Aufgabe 278* #linebreak()]
+Bilanz der Y-AG in T€: AV 3.200, UV 3.000, Jahresfehlbetrag 800 (Aktivseite, Summe 7.000); gezeichnetes Kapital 4.000, Fremdkapital 3.000. Nennwert 50 € je Aktie, Kurs 25 €. Die Y-AG verkauft ein Grundstück aus dem AV für 1.000 T€ (zum Buchwert) und kauft damit 40.000 eigene Aktien zu je 25 €, die eingezogen werden. Stelle die Bilanz nach der Einziehung auf.
+#src[V, PDF-S. 134 (Folien 267–268).]
+][
+*Grundkapital sinkt um den Nennwert:* $40000 times 50 = 2000$ T€ (§ 238 Satz 1 AktG). Gezahlt wurden nur $40000 times 25 = 1000$ T€.
+][
+*Buchgewinn verwenden:* Der Unterschied von 1.000 T€ deckt den Fehlbetrag von 800 T€; 200 T€ gehen in die Kapitalrücklage.
+][
+*Bilanz danach:* AV 2.200, UV 3.000 = 5.200 T€; gezeichnetes Kapital 2.000, Kapitalrücklage 200, FK 3.000 = 5.200 T€. Eine Sanierung: Der Verlust ist bilanziell beseitigt, die Aktionäre halten weniger Aktien.
+]
+
+#aufgabe(titel: "Kapitalherabsetzung durch Aktienrückkauf (Variante)", art: "rechnen", quelle: "3.8", herkunft: "variante", vorlage: "Vorlesung PDF-S. 134, Folien 267–268, Beispiel", minuten: 8, ergebnis: [GK 3.000 T€; Kapitalrücklage 300 T€; Bilanzsumme 5.300 T€])[
+#if not web [*Aufgabe 279* #linebreak()]
+Bilanz in T€: AV 4.000, UV 2.500, Jahresfehlbetrag 1.500 (Summe 8.000); gezeichnetes Kapital 6.000 (Nennwert 100 €), FK 2.000. Kurs 40 €. Ein Grundstück wird für 1.200 T€ zum Buchwert verkauft; mit dem Erlös werden eigene Aktien gekauft und eingezogen. Bilanz danach?
+#src[Eigene Variante zu V, PDF-S. 134; Lernskript 3.8.]
+][
+*Stückzahl:* $1200000/40 = 30000$ Aktien; Nennwert $30000 times 100 = 3000$ T€.
+][
+*Buchgewinn:* $3000 - 1200 = 1800$ T€: 1.500 decken den Fehlbetrag, 300 in die Kapitalrücklage.
+][
+*Bilanz:* AV 2.800, UV 2.500 = 5.300; GK 3.000, Kapitalrücklage 300, FK 2.000 = 5.300 T€.
+]
+
+#aufgabe(titel: "Cash Pooling im Konzern", art: "verstehen", quelle: "3.9", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 280* #linebreak()]
+Was passiert beim physischen Cash Pooling, und welchen Vorteil und welches Risiko hat es für eine Tochtergesellschaft?
+#src[Lernskript 3.9 nach V, PDF-S. 135–137.]
+][
+*Ablauf:* Die Salden der Töchter werden täglich auf ein Zielkonto der Mutter übertragen (Überschüsse hin, Defizite zurück). Konzernintern gleicht man aus, statt teure Kredite und schlecht verzinste Guthaben nebeneinander zu haben.
+][
+*Vorteil und Risiko:* Bessere Zinsen und Liquidität für alle. Risiko für die Tochter: Ihr Geld steckt in einer Forderung gegen die Mutter; gerät die Mutter in Not, ist es weg (Kapitalerhaltung beachten).
+]
+
+#aufgabe(titel: "Aufgabe: Rentabilität der Schlux AG", art: "rechnen", quelle: "3.10", herkunft: "original", vorlage: "Vorlesung PDF-S. 137–138, Folien 274–275, Aufgabe 1", minuten: 6, ergebnis: [a) GK 11,7 %, EK 13,3 %; b) GK 12,3 %, EK 14,3 %])[
+#if not web [*Aufgabe 281* #linebreak()]
+Schlux AG, Plan 2007: Aktienkapital 1.500.000 €, Rücklagen 600.000 €, Fremdkapital 1.000.000 €. Gewinn 300.000 €, Fremdkapitalzins 8 %. Berechne Eigen- und Gesamtkapitalrentabilität, wenn a) der Gewinn linear über das Jahr anfällt, b) erst am Ende.
+#src[V, PDF-S. 137–138 (Folien 274–275).]
+][
+*Ausgangswerte:* EK 2.100 T€, GK 3.100 T€, Zinsen 80 T€.
+][
+*a) linear:* Durchschnittlich ist der halbe Gewinn (150) zusätzliches EK. $r_"GK" = (300 + 80)/(3100 + 150) = "11,7" %$; $r_"EK" = 300/2250 = "13,3" %$.
+][
+*b) am Ende:* $r_"GK" = 380/3100 = "12,3" %$; $r_"EK" = 300/2100 = "14,3" %$. Hinweis: Die Folie nennt in a) 11,5 %; richtig sind 11,7 %.
+]
+
+#aufgabe(titel: "Rentabilität bei linearem Gewinn (Variante)", art: "rechnen", quelle: "3.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 137–138, Folien 274–275, Aufgabe 1", minuten: 6, ergebnis: [a) GK 10,4 %, EK 14,0 %; b) GK 10,8 %, EK 15,0 %])[
+#if not web [*Aufgabe 282* #linebreak()]
+Aktienkapital 1.200 T€, Rücklagen 400 T€, FK 1.400 T€ zu 6 %, Gewinn 240 T€. Eigen- und Gesamtkapitalrentabilität bei a) linear anfallendem und b) erst am Jahresende anfallendem Gewinn?
+#src[Eigene Variante zu V, PDF-S. 137–138; Lernskript 3.10.]
+][
+*Werte:* EK 1.600, GK 3.000, Zinsen 84 T€.
+][
+*a)* $(240 + 84)/(3000 + 120) = "10,4" %$; $240/1720 = "14,0" %$. *b)* $324/3000 = "10,8" %$; $240/1600 = "15,0" %$.
+]
+
+#aufgabe(titel: "Aufgabe: Leverage-Effekt bei der Wamms AG", art: "rechnen", quelle: "3.10", herkunft: "original", vorlage: "Vorlesung PDF-S. 141–143, Folien 282–286, Aufgabe 4", minuten: 12, ergebnis: [rg 12 %, rf 5 %; nach Steuern 8 %; Break-even G = 8,6 Mio. €])[
+#if not web [*Aufgabe 283* #linebreak()]
+Wamms AG, Bilanz in Mio. €: AV 62, UV 38; EK 60, FK 40. Bruttogewinn (vor Zinsen) 12, Fremdkapitalzinsen 2.
+
+#enum(numbering: "a)")[Kann der Leverage-Effekt genutzt werden?][Was ändert sich bei 40 % Steuern auf den Nettogewinn?][Mit einer 11 %-Anleihe über 40 Mio. € soll Eigenkapital ersetzt werden. Wie hoch muss der Bruttogewinn mindestens sein, damit sich das lohnt?][Beurteilen Sie die Emission.]
+#src[V, PDF-S. 141–143 (Folien 282–286).]
+][
+*a)* $r_g = 12/100 = 12 %$, $r_f = 2/40 = 5 %$. Weil $r_g > r_f$, erhöht zusätzliches FK die EK-Rendite.
+][
+*b)* Steuern $"0,4" times (12 - 2) = 4$. $r_g = (12 - 4)/100 = 8 % > 5 %$: weiterhin nutzbar.
+][
+*c) Break-even:* Danach FK 80 zu Durchschnitt 8 % (Zinsen 6,4), EK 20. $(G - 2)/60 = (G - "6,4")/20$, also $20 G - 40 = 60 G - 384$, $G = "8,6"$ Mio. €. Der Steuersatz kürzt sich heraus.
+][
+*d) Beurteilung:* Bei 12 Mio. € lohnt es sich rechnerisch, aber hohe Verschuldung: Kreditwürdigkeit sinkt, Fremdbestimmung droht, Zinsen und Rückzahlung belasten die Liquidität.
+]
+
+#aufgabe(titel: "Break-even des Leverage-Effekts (Variante)", art: "rechnen", quelle: "3.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 141–143, Folien 282–286, Aufgabe 4", minuten: 8, ergebnis: [rg 10 %, rf 6 %; Break-even G = 7,5 Mio. €])[
+#if not web [*Aufgabe 284* #linebreak()]
+EK 50, FK 50 Mio. € (Zinsen 3 Mio. €), Bruttogewinn 10 Mio. €. Eine 9 %-Anleihe über 30 Mio. € soll Eigenkapital ersetzen. Prüfe den Leverage-Effekt und berechne den Break-even-Bruttogewinn.
+#src[Eigene Variante zu V, PDF-S. 141–143; Lernskript 3.10.]
+][
+*Renditen:* $r_g = 10 %$, $r_f = 6 %$: Leverage nutzbar.
+][
+*Break-even:* Danach FK 80 (Zinsen $3 + "2,7" = "5,7"$), EK 20. $(G - 3)/50 = (G - "5,7")/20$, also $20 G - 60 = 50 G - 285$, $G = "7,5"$ Mio. €. Bei 10 Mio. € lohnt die Umschichtung.
+]
+
+#aufgabe(titel: "Aufgabe: Projektfinanzierung der Koslin AG", art: "rechnen", quelle: "3.10", herkunft: "original", vorlage: "Vorlesung PDF-S. 144–146, Folien 287–292, Aufgabe 5", minuten: 15, ergebnis: [Anleihe: Gewinn 21, EK-Rendite 17,5 %; Kapitalerhöhung: 26, 15,3 %; GK-Rendite je 12 %; Höchstzins 20 %])[
+#if not web [*Aufgabe 285* #linebreak()]
+Koslin AG braucht 50 Mio. € für ein Projekt (Gewinn 10 Mio. € pro Jahr). Möglichkeit 1: Anleihe zu 10 %, 10 Jahre, Ausgabe 100 %. Möglichkeit 2: Kapitalerhöhung, Nennwert 100 €, Ausgabe 100 %. Bilanz in Mio. €: AV 150, UV 50; Grundkapital 100, Rücklagen 20, FK 80. Gesamtkapitalrendite 10 %, durchschnittlicher FK-Zins 5 %.
+
+#enum(numbering: "a)")[Beurteilen Sie beide Varianten (Rentabilität, Liquidität, Risiko, Verfügungsmacht).][Wie hoch darf der Anleihezins höchstens sein, damit der Leverage-Effekt genutzt wird?]
+#src[V, PDF-S. 144–146 (Folien 287–292), Quelle der Folie: Achleitner (2007).]
+][
+*Gewinn heute:* $"0,1" times 200 - "0,05" times 80 = 16$ Mio. €.
+][
+*Gewinne:* Anleihe $16 + 10 - "0,1" times 50 = 21$; Kapitalerhöhung $16 + 10 = 26$. Die Folie rechnet wie das Buch mit 5 % statt 10 % (23,5) und markiert das selbst als Fehler.
+][
+*Renditen:* Anleihe: EK 120, $21/120 = "17,5" %$; GK $(21 + 4 + 5)/250 = 12 %$. Kapitalerhöhung: EK 170, $26/170 = "15,3" %$; GK $(26 + 4)/250 = 12 %$.
+][
+*Beurteilen:* Rentabilität spricht für die Anleihe; Liquidität (Zinsen, Rückzahlung nach 10 Jahren), Risiko des renditestarken Projekts und Verfügungsmacht sprechen für die Kapitalerhöhung. EK:FK liegt mit 12:13 bzw. 17:8 in beiden Fällen zwischen 1:1 und 2:1.
+][
+*b) Höchstzins:* Projektgewinn = Zinsen: $10 = x times 50$, $x = 20 %$.
+]
+
+#aufgabe(titel: "Anleihe oder Kapitalerhöhung für ein Projekt (Variante)", art: "rechnen", quelle: "3.10", herkunft: "variante", vorlage: "Vorlesung PDF-S. 144–146, Folien 287–292, Aufgabe 5", minuten: 12, ergebnis: [Anleihe 20,8 %; Kapitalerhöhung 17,1 % EK-Rendite; GK je 13,7 %; Höchstzins 20 %])[
+#if not web [*Aufgabe 286* #linebreak()]
+Bilanz in Mio. €: Gesamtkapital 150 (Grundkapital 80, Rücklagen 20, FK 50). GK-Rendite 12 %, FK-Zins 4 %. Ein Projekt braucht 40 Mio. € und bringt 8 Mio. € Gewinn pro Jahr. Anleihe zu 8 % oder Kapitalerhöhung zu pari? Vergleiche EK- und GK-Rendite und gib den Höchstzins an.
+#src[Eigene Variante zu V, PDF-S. 144–146; Lernskript 3.10.]
+][
+*Gewinn heute:* $"0,12" times 150 - "0,04" times 50 = 16$.
+][
+*Varianten:* Anleihe: $16 + 8 - "3,2" = "20,8"$; EK 100: 20,8 %; GK $("20,8" + 2 + "3,2")/190 = "13,7" %$. Kapitalerhöhung: 24; EK 140: 17,1 %; GK $(24 + 2)/190 = "13,7" %$.
+][
+*Höchstzins:* $8/40 = 20 %$.
+]
+
+#aufgabe(titel: "Aufgabe: Kriterien für die Familien-AG", art: "verstehen", quelle: "3.10", herkunft: "original", vorlage: "Vorlesung PDF-S. 146–147, Folien 292–293, Aufgabe 6", minuten: 4)[
+#if not web [*Aufgabe 287* #linebreak()]
+Eine Familien-AG braucht für eine Diversifikation zusätzliches Kapital: Eigenkapital der Familienmitglieder oder eine Obligationsanleihe. Erläutern Sie Kriterien zur Beurteilung.
+#src[V, PDF-S. 146–147 (Folien 292–293).]
+][
+*Kriterien:* Rentabilität (Leverage mit Anleihe möglich); Liquidität (EK schont, Anleihe belastet mit Zins und Rückzahlung); Risiko (EK fängt Verluste auf); Unabhängigkeit (Beteiligung der Familie wahrt sie besser); Finanzimage (nur für die Anleihe wichtig); Kapitalmarkt und Zinsniveau.
+]
+
+#aufgabe(titel: "Aufgabe: Problematik der Finanzierungsregeln", art: "verstehen", quelle: "3.10", herkunft: "original", vorlage: "Vorlesung PDF-S. 147–148, Folien 294–295, Aufgabe 7", minuten: 3)[
+#if not web [*Aufgabe 288* #linebreak()]
+Wo liegt die Problematik bei der Aufstellung von Finanzierungsregeln?
+#src[V, PDF-S. 147–148 (Folien 294–295), Quelle der Folie: Achleitner (2007).]
+][
+*Gründe:* nur allgemeine Hinweise; branchenabhängig; gesetzliche, kulturelle und situative Grenzen (z. B. Banken); oft einseitig (nur Fristenkongruenz); Kosten und Rentabilität kommen zu kurz; keine eindeutigen Schlüsse auf die Liquidität; statisch, weil stichtagsbezogen.
+]
+
+#kapitel("Kapitel 4 · Unternehmensbewertung")
+
+#aufgabe(titel: "Anlässe der Unternehmensbewertung ordnen", art: "verstehen", quelle: "4.1", herkunft: "eigen", minuten: 3)[
+#if not web [*Aufgabe 289* #linebreak()]
+Ordne zu, ob der Anlass gesetzlich, vertraglich oder unternehmerisch begründet ist: Börsengang, Abfindung von Minderheitsaktionären bei einem Beherrschungsvertrag, Austritt eines OHG-Gesellschafters, Erbauseinandersetzung, Kauf eines Unternehmens.
+#src[Lernskript 4.1 nach V, PDF-S. 149 (Folie 297).]
+][
+*Gesetzlich:* Abfindung bei Beherrschungsvertrag (§ 305 AktG).
+][
+*Vertraglich:* Austritt aus der Personengesellschaft (§ 738 BGB), Erbauseinandersetzung (§ 2311 BGB).
+][
+*Unternehmerisch:* Börsengang, Kauf eines Unternehmens.
+]
+
+#aufgabe(titel: "Bewertungsmethoden vergleichen", art: "verstehen", quelle: "4.2", herkunft: "eigen", minuten: 4)[
+#if not web [*Aufgabe 290* #linebreak()]
+Warum ist der Substanzwert für den Kauf eines erfolgreichen Unternehmens meist zu niedrig, und wann ist er trotzdem sinnvoll? Nenne je einen Nachteil des Ertragswert-/DCF-Verfahrens und der Multiplikatoren.
+#src[Lernskript 4.2 nach V, PDF-S. 149 (Folie 298).]
+][
+*Substanzwert:* Er bewertet nur einzelnes, bilanzierbares Vermögen und schaut zurück. Kundenstamm, Personal und Know-how (Goodwill) fehlen. Sinnvoll bei Liquidation oder als Untergrenze.
+][
+*Nachteile der anderen:* DCF ist statisch und hängt stark an Prognosen und Zins; Multiplikatoren brauchen wirklich vergleichbare Unternehmen und übernehmen Übertreibungen des Marktes.
+]
+
+#aufgabe(titel: "Vorlesung: Wert der Roboelec", art: "rechnen", quelle: "4.2.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 150–151, Folien 300–302, Beispiel", minuten: 6, ergebnis: [Substanzwert 1,2 Mio. €; Ertragswert 1,6 Mio. €; Goodwill 0,4 Mio. €])[
+#if not web [*Aufgabe 291* #linebreak()]
+Die Bank bewertet die Roboelec mit 1.000.000 €. Seit Gründung beträgt der Gewinn jährlich 176.000 €, das wird auch künftig erwartet. Zu Wiederbeschaffungskosten wäre das Vermögen 20 % mehr wert. Kalkulationszins 11 %.
+
+#enum(numbering: "a)")[Eignet sich der Wert von 1.000.000 € als Richtwert für eine Preisforderung beim Verkauf? Begründen Sie.][Berechnen Sie den originären Goodwill und erläutern Sie seine Bedeutung.]
+#src[V, PDF-S. 150–151 (Folien 300–302), Quelle der Folie: Achleitner (2007).]
+][
+*Bandbreite:* Substanzwert zu Wiederbeschaffung $"1,0" times "1,2" = "1,2"$ Mio. €; Ertragswert $"0,176"/"0,11" = "1,6"$ Mio. €.
+][
+*a)* Nein. Der Bankwert ist zu niedrig und berücksichtigt die künftigen Gewinne nicht. Die Preisforderung liegt zwischen 1,2 und 1,6 Mio. €.
+][
+*b) Goodwill:* $"1,6" - "1,2" = "0,4"$ Mio. €. Er steht für nicht bilanzierbare Erfolgsfaktoren wie Personal, Stammkunden, Vertrieb (personen- oder sachbezogen; originär = selbst geschaffen, derivativ = gekauft).
+]
+
+#aufgabe(titel: "Wert eines Handwerksbetriebs (Variante)", art: "rechnen", quelle: "4.2.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 150–151, Folien 300–302, Beispiel", minuten: 5, ergebnis: [Substanzwert 1,0 Mio. €; Ertragswert 1,2 Mio. €; Goodwill 0,2 Mio. €])[
+#if not web [*Aufgabe 292* #linebreak()]
+Buchwert des Eigenkapitals 800.000 €; zu Wiederbeschaffungskosten wäre das Vermögen 25 % mehr wert. Dauerhafter Gewinn 120.000 €, Kalkulationszins 10 %. Berechne Substanzwert, Ertragswert und originären Goodwill.
+#src[Eigene Variante zu V, PDF-S. 150–151; Lernskript 4.2.1.]
+][
+*Werte:* Substanz $"0,8" times "1,25" = "1,0"$ Mio. €; Ertrag $"0,12"/"0,1" = "1,2"$ Mio. €; Goodwill $"0,2"$ Mio. €.
+]
+
+#aufgabe(titel: "Übung: Unternehmenswert der Rocca AG", art: "rechnen", quelle: "4.2.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 161–162, Folien 321–323, Übung 1", minuten: 6, ergebnis: [Substanzwert 2 Mio. €; Ertragswert 1,125 Mio. €; Mittelwert ca. 1,563 Mio. €])[
+#if not web [*Aufgabe 293* #linebreak()]
+Rocca AG: Vermögen in der Bilanz 1,5 Mio. €, zu Wiederbeschaffungspreisen 2 Mio. €. Durchschnittlicher Jahresgewinn 90.000 €, auch künftig erwartet.
+
+#enum(numbering: "a)")[Nennen Sie Anlässe für eine Unternehmensbewertung.][Unternehmenswert nach Substanz-, Ertrags- und Mittelwertmethode (Kapitalisierungszins 8 %)?][Worauf lässt sich die Differenz zwischen Ertrags- und Substanzwert zurückführen?]
+#src[V, PDF-S. 161–162 (Folien 321–323).]
+][
+*a)* Kauf, Verkauf, Auflösung, Sanierung, Umwandlung, Erbgang, Fusion, Aufnahme oder Ausscheiden von Gesellschaftern.
+][
+*b)* Substanzwert 2 Mio. €; Ertragswert $90000/"0,08" = "1,125"$ Mio. €; Mittelwert $(2 + "1,125")/2 = "1,5625"$ Mio. €.
+][
+*c)* Auf den Goodwill: Management, Fachkräfte, Standort, Image, Kundenbeziehungen, Patente, Verträge u. a. Hier ist der Ertragswert *kleiner*: ein negativer Goodwill, das Vermögen verdient zu wenig.
+]
+
+#aufgabe(titel: "Substanz-, Ertrags- und Mittelwert (Variante)", art: "rechnen", quelle: "4.2.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 161–162, Folien 321–323, Übung 1", minuten: 5, ergebnis: [2,8 Mio. €; Mittelwert 2,9 Mio. €])[
+#if not web [*Aufgabe 294* #linebreak()]
+Bilanzvermögen 2,4 Mio. €, zu Wiederbeschaffungspreisen 3 Mio. € (keine Schulden). Dauerhafter Gewinn 210.000 €, Zins 7,5 %. Substanz-, Ertrags- und Mittelwert?
+#src[Eigene Variante zu V, PDF-S. 161–162; Lernskript 4.2.1.]
+][
+*Werte:* Substanz 3 Mio. €; Ertrag $"0,21"/"0,075" = "2,8"$ Mio. €; Mittelwert $"2,9"$ Mio. €.
+]
+
+#aufgabe(titel: "Übung: Bewertung der Schmid AG", art: "rechnen", quelle: "4.2.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 162–163, Folien 324–326, Übung 2", minuten: 10, ergebnis: [Buch-Substanzwert 1 Mio. €; bereinigt 1,52 Mio. €; Ertragswert 2 Mio. €; Mittelwert 1,76 Mio. €; Goodwill 0,48 Mio. €])[
+#if not web [*Aufgabe 295* #linebreak()]
+Bilanz der Schmid AG per 31.12.2006 in T€: Anlagevermögen 1.000, Vorräte 300, Debitoren 150, liquide Mittel 50 (Summe 1.500); gezeichnetes Kapital 800, Rücklagen 200, Rückstellungen 100, Fremdkapital 400. Jahresgewinn seit Jahren 240.000 €.
+
+#enum(numbering: "a)")[Substanzwert aus der Bilanz? Eignet er sich als Basis für den Kaufpreis?][Das Sachvermögen ist zu Tageswerten 40 % mehr wert. Wert nach der Mittelwertmethode bei 12 %?][Originärer Goodwill und Bedeutung?]
+#src[V, PDF-S. 162–163 (Folien 324–326).]
+][
+*a)* $1500 - (100 + 400) = 1000$ T€. Nicht geeignet: stille Reserven und nicht bilanzierbare Faktoren (Personal, Organisation, Marktanteile) fehlen.
+][
+*b)* Sachvermögen aufwerten: AV 1.400, Vorräte 420, Debitoren und liquide Mittel 200 = 2.020; minus 500 = 1.520 T€. Ertragswert $240/"0,12" = 2000$ T€. Mittelwert $(1520 + 2000)/2 = 1760$ T€.
+][
+*c)* Goodwill $2000 - 1520 = 480$ T€; selbst geschaffen, darf nicht bilanziert werden (sonst unrealisierter Gewinn).
+]
+
+#aufgabe(titel: "Bereinigter Substanzwert und Goodwill (Variante)", art: "rechnen", quelle: "4.2.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 162–163, Folien 324–326, Übung 2", minuten: 8, ergebnis: [bereinigt 1,7 Mio. €; Ertragswert 1,8 Mio. €; Mittelwert 1,75 Mio. €; Goodwill 0,1 Mio. €])[
+#if not web [*Aufgabe 296* #linebreak()]
+Bilanz in T€: AV 1.200, Vorräte 400, Debitoren 200, liquide Mittel 100; gezeichnetes Kapital 1.000, Rücklagen 300, Rückstellungen 200, FK 400. Sachvermögen zu Tageswerten +25 %. Gewinn 270 T€, Zins 15 %. Buch-Substanzwert, bereinigter Substanzwert, Ertragswert, Mittelwert und Goodwill?
+#src[Eigene Variante zu V, PDF-S. 162–163; Lernskript 4.2.1.]
+][
+*Substanz:* Buch $1900 - 600 = 1300$ T€. Bereinigt: AV 1.500, Vorräte 500, übrige 300 = 2.300; minus 600 = 1.700 T€.
+][
+*Ertrag und Rest:* $270/"0,15" = 1800$ T€; Mittelwert 1.750 T€; Goodwill 100 T€.
+]
+
+#aufgabe(titel: "Vorlesung: Kapitalwert mit Netto- und Bruttomethode", art: "rechnen", quelle: "4.3.1", herkunft: "original", vorlage: "Vorlesung PDF-S. 156–157, Folien 312–314, Beispiele 3–5", minuten: 12, ergebnis: [Eigenfinanzierung 21.112 GE; Nettomethode 23.678 GE; Bruttomethode 23.106 GE])[
+#if not web [*Aufgabe 297* #linebreak()]
+Investitionsprojekt: Anschaffung 100.000 GE, Überschüsse 60.000, 46.000 und 38.000 GE am Ende der Perioden 1–3, kein Liquidationserlös, Kalkulationszins 10 %.
+
+#enum(numbering: "a)")[Kapitalwert bei Eigenfinanzierung (Beispiel 3).][Kredit 75.000 GE zu 8 %, Tilgung 25.000 GE pro Jahr: Kapitalwert nach der Nettomethode (Beispiel 4).][50 % Fremdkapital zu 8 % über die ganze Laufzeit: Kapitalwert nach der Bruttomethode (Beispiel 5).]
+#src[V, PDF-S. 156–157 (Folien 312–314), Quelle der Folie: Mandl/Rabel (1997).]
+][
+*a)* $-100000 + 60000/"1,1" + 46000/"1,1"^2 + 38000/"1,1"^3 = "21.112"$ GE.
+][
+*b) Zahlungen an die Eigentümer:* $t_0$: $-100000 + 75000 = -25000$. $t_1$: $60000 - 25000 - 6000 = 29000$; $t_2$: $46000 - 25000 - 4000 = 17000$; $t_3$: $38000 - 25000 - 2000 = 11000$. Abgezinst mit 10 %: 23.678 GE, also 2.566 GE mehr (die Folie schreibt 2.556).
+][
+*c) Mischzins:* $c = "0,5" times "0,08" + "0,5" times "0,10" = 9 %$. $-100000 + 60000/"1,09" + 46000/"1,09"^2 + 38000/"1,09"^3 = "23.106"$ GE.
+][
+*Warum besser:* Fremdkapital zu 8 % ist billiger als die Renditeforderung der Eigentümer (10 %). Vereinfachung: Die Renditeforderung steigt trotz Verschuldung nicht.
+]
+
+#aufgabe(titel: "Kapitalwert mit Kreditanteil (Variante)", art: "rechnen", quelle: "4.3.1", herkunft: "variante", vorlage: "Vorlesung PDF-S. 156–157, Folien 312–314, Beispiele 3–5", minuten: 12, ergebnis: [9.538 GE; Netto 11.652 GE; Brutto 11.260 GE])[
+#if not web [*Aufgabe 298* #linebreak()]
+Anschaffung 80.000 GE; Überschüsse 30.000, 35.000, 40.000 GE; Zins der Eigentümer 8 %. a) Kapitalwert bei Eigenfinanzierung. b) Kredit 60.000 GE zu 6 %, Tilgung 20.000 GE pro Jahr (Nettomethode). c) 50 % FK zu 6 % (Bruttomethode).
+#src[Eigene Variante zu V, PDF-S. 156–157; Lernskript 4.3.1.]
+][
+*a)* $-80000 + 30000/"1,08" + 35000/"1,08"^2 + 40000/"1,08"^3 approx "9.538"$ GE.
+][
+*b)* $D_t$: $-20000$; $30000 - 20000 - 3600 = 6400$; $35000 - 20000 - 2400 = 12600$; $40000 - 20000 - 1200 = 18800$. Barwert mit 8 %: ca. 11.652 GE.
+][
+*c)* $c = 7 %$: $-80000 + 30000/"1,07" + 35000/"1,07"^2 + 40000/"1,07"^3 approx "11.260"$ GE.
+]
+
+#aufgabe(titel: "Vorlesung: Entscheidungswert durch Alternativenvergleich", art: "rechnen", quelle: "4.6", herkunft: "original", vorlage: "Vorlesung PDF-S. 155–156, Folien 310–311, Beispiele 1–2", minuten: 6, ergebnis: [Beispiel 1: Pmax 1.000 GE; Beispiel 2: Pmax 50.000 GE])[
+#if not web [*Aufgabe 299* #linebreak()]
+#enum(numbering: "a)")[Käufer K erwartet 100 GE Ertrag pro Jahr (unendlich), Alternative 10 %. Der Verkäufer verlangt 600 GE. Lohnt der Kauf? Und bei 1.200 GE?][Käufer erwartet 4.000 GE pro Jahr; beste Alternative: Wertpapiere zu 7 %; ohne Kauf könnte er eine Tätigkeit ausüben, die 500 GE pro Jahr bringt. Höchstpreis?]
+#src[V, PDF-S. 155–156 (Folien 310–311), Quelle der Folie: Mandl/Rabel (1997).]
+][
+*a)* $P_max = 100/"0,1" = 1000$ GE. Für 600 GE: 100 GE statt 60 GE aus der Alternative, lohnt. Für 1.200 GE: Alternative brächte 120 GE, Kauf nicht attraktiv.
+][
+*b)* $P_max = (4000 - 500)/"0,07" = "50.000"$ GE. Probe: 50.000 zu 7 % = 3.500 plus 500 aus der Tätigkeit = 4.000 GE.
+]
+
+#aufgabe(titel: "Höchstpreis mit entgangenem Gehalt (Variante)", art: "rechnen", quelle: "4.6", herkunft: "variante", vorlage: "Vorlesung PDF-S. 155–156, Folien 310–311, Beispiele 1–2", minuten: 4, ergebnis: [60.000 GE])[
+#if not web [*Aufgabe 300* #linebreak()]
+Ertrag des Unternehmens 6.000 GE pro Jahr (unendlich), Alternative 8 %, bei Nichtkauf entgangener Nebenverdienst 1.200 GE pro Jahr. Höchstpreis? Probe!
+#src[Eigene Variante zu V, PDF-S. 155–156; Lernskript 4.6.]
+][
+*Rechnung:* $(6000 - 1200)/"0,08" = "60.000"$ GE. Probe: $60000 times "0,08" + 1200 = 6000$ GE.
+]
+
+#aufgabe(titel: "Vorlesung: Entscheidungswert mit persönlichen Steuern", art: "rechnen", quelle: "4.3.2", herkunft: "original", vorlage: "Vorlesung PDF-S. 158, Folie 315, Beispiel 6", minuten: 4, ergebnis: [15.385 GE ohne, 10.256 GE mit Steuern])[
+#if not web [*Aufgabe 301* #linebreak()]
+Käufer K, Grenzsteuersatz ESt 50 %, erwartet uniform 1.000 GE pro Jahr (steuerpflichtig). Basiszins einer KESt-pflichtigen Finanzanlage 6,5 % vor Steuern, KESt 25 %. Entscheidungswert ohne und mit Ertragsteuern?
+#src[V, PDF-S. 158 (Folie 315), Quelle der Folie: Mandl/Rabel (1997).]
+][
+*Ohne Steuern:* $1000/"0,065" = "15.385"$ GE.
+][
+*Mit Steuern:* $(1000 times "0,5")/("0,065" times "0,75") = 500/"0,04875" = "10.256"$ GE.
+][
+*Warum ein Drittel weniger:* Die Unternehmenserträge werden doppelt so hoch besteuert wie die Alternative. Steuern wegzulassen wäre ein grober Bewertungsfehler.
+]
+
+#aufgabe(titel: "Entscheidungswert nach Steuern (Variante)", art: "rechnen", quelle: "4.3.2", herkunft: "variante", vorlage: "Vorlesung PDF-S. 158, Folie 315, Beispiel 6", minuten: 4, ergebnis: [40.000 GE ohne, 32.000 GE mit Steuern])[
+#if not web [*Aufgabe 302* #linebreak()]
+Erträge 2.000 GE pro Jahr, ESt 40 %; Alternative 5 % vor Steuern, KESt 25 %. Entscheidungswert ohne und mit Steuern?
+#src[Eigene Variante zu V, PDF-S. 158; Lernskript 4.3.2.]
+][
+*Rechnung:* Ohne: $2000/"0,05" = "40.000"$ GE. Mit: $1200/"0,0375" = "32.000"$ GE.
+]
+
+#aufgabe(titel: "Vorlesung: Nominal- und Realrechnung", art: "rechnen", quelle: "4.3.3", herkunft: "original", vorlage: "Vorlesung PDF-S. 158–160, Folien 316–320, Beispiele 7–8", minuten: 10, ergebnis: [Nominal: Umsatz 1.030/1.220/1.366, Personal 260/303/337; real: Umsatz 1.005/1.161/1.268, Personal 254/288/313, Zinsen 527/438/381])[
+#if not web [*Aufgabe 303* #linebreak()]
+Planung zu heutigen Preisen (GE) für $t_1$–$t_3$: Umsatz 1.000/1.150/1.250, Personal 250/280/300, Zinsen 540/460/410. Preissteigerung Umsatz 3 %, Personal 4 %, Zinsen fest. Inflation 2,5 %.
+
+#enum(numbering: "a)")[Rechne in Nominalbeträge um.][Rechne die Nominalbeträge in reale Beträge zum Kaufkraftniveau des Stichtags um.]
+#src[V, PDF-S. 158–160 (Folien 316–320), Quelle der Folie: Mandl/Rabel (1997).]
+][
+*a) Nominal:* Umsatz $1000 times "1,03" = 1030$, $1150 times "1,03"^2 = 1220$, $1250 times "1,03"^3 = 1366$. Personal $250 times "1,04" = 260$, $280 times "1,04"^2 = 303$, $300 times "1,04"^3 = 337$. Zinsen bleiben 540/460/410.
+][
+*b) Real:* durch $"1,025"^t$ teilen: Umsatz 1.005/1.161/1.268, Personal 254/288/313, Zinsen 527/438/381.
+][
+*Folienfehler:* Folie 317 nennt 1.020 und 305, Folie 320 nennt 253; richtig sind 1.030, 303 und 254. Nominal- und Realwerte nie mit demselben Zins abzinsen.
+]
+
+#aufgabe(titel: "Nominal- und Realwerte über zwei Jahre (Variante)", art: "rechnen", quelle: "4.3.3", herkunft: "variante", vorlage: "Vorlesung PDF-S. 158–160, Folien 316–320, Beispiele 7–8", minuten: 8, ergebnis: [Nominal Umsatz 2.040/2.185, Personal 630/717; real Umsatz 1.981/2.060, Personal 612/676, Zinsen 291/236])[
+#if not web [*Aufgabe 304* #linebreak()]
+Plan zu heutigen Preisen: Umsatz 2.000/2.100, Personal 600/650, Zinsen 300/250. Umsatz +2 % p. a., Personal +5 % p. a., Zinsen fest, Inflation 3 %. Nominal- und Realwerte?
+#src[Eigene Variante zu V, PDF-S. 158–160; Lernskript 4.3.3.]
+][
+*Nominal:* Umsatz $2000 times "1,02" = 2040$, $2100 times "1,02"^2 = 2185$; Personal $600 times "1,05" = 630$, $650 times "1,05"^2 = 717$; Zinsen 300/250.
+][
+*Real ($div "1,03"^t$):* Umsatz 1.981/2.060; Personal 612/676; Zinsen 291/236. Real wächst das Personal schneller als der Umsatz: Die Marge schrumpft.
+]
+
+#aufgabe(titel: "WACC und Equity Value", art: "rechnen", quelle: "4.4", herkunft: "eigen", minuten: 6, ergebnis: [kE 10 %; WACC 8 %; Equity Value 9,5 Mio. €])[
+#if not web [*Aufgabe 305* #linebreak()]
+Risikoloser Zins und FK-Zins $i = 4 %$, Marktrendite 9 %, Beta 1,2. Marktwerte: EK 60 %, FK 40 %. Ewiger Free Cashflow 1,2 Mio. € pro Jahr. Marktwert FK 6 Mio. €, nicht betriebsnotwendiges Vermögen 0,5 Mio. €. Berechne $k_E$, WACC und Equity Value (ohne Steuern).
+#src[Eigene Aufgabe zu Lernskript 4.4 (V, PDF-S. 154, Folie 308).]
+][
+*Eigenkapitalkosten:* $k_E = 4 % + "1,2" times (9 % - 4 %) = 10 %$.
+][
+*WACC:* $"0,6" times 10 % + "0,4" times 4 % = 8 %$.
+][
+*Werte:* Enterprise Value $"1,2"/"0,08" = 15$ Mio. €; Equity Value $15 - 6 + "0,5" = "9,5"$ Mio. €.
+]
+
+#aufgabe(titel: "Bewertung mit Multiplikatoren", art: "rechnen", quelle: "4.5", herkunft: "eigen", minuten: 4, ergebnis: [Peer: EBIT-Multiple 8; Wert X 24 Mio. €])[
+#if not web [*Aufgabe 306* #linebreak()]
+Ein börsennotiertes Vergleichsunternehmen hat einen Marktwert von 120 Mio. € bei 15 Mio. € EBIT. Das zu bewertende Unternehmen X hat 3 Mio. € EBIT. Welchen Wert liefert die Multiplikatoren-Methode? Nenne eine Schwäche.
+#src[Eigene Aufgabe zu Lernskript 4.5 (V, PDF-S. 155, Folie 309).]
+][
+*Multiplikator:* $120/15 = 8$. Wert X: $8 times 3 = 24$ Mio. €.
+][
+*Schwäche:* Größe, Wachstum, Risiko und Börsennotierung müssen vergleichbar sein; kleine, nicht notierte Firmen werden meist mit niedrigeren Multiples bewertet (Folie 299).
+]
+
+#kapitel("Kapitel 5 · Ausblick: Digitale Finanzierung")
+
+#aufgabe(titel: "Digitale Finanzierung und Rechtsrahmen", art: "verstehen", quelle: "5.1", herkunft: "eigen", minuten: 4)[
+#if not web [*Aufgabe 307* #linebreak()]
+Die letzte Folie nennt Kryptowährungen, digitalen Euro, elektronische Wertpapiere, DAOs und Smart Contracts und fordert dringend einen Rechtsrahmen. Erkläre zwei der Begriffe und begründe, warum Haftung und Zwangsvollstreckung hier offene Fragen sind.
+#src[Lernskript Kapitel 5 nach V, PDF-S. 164 (Folie 327).]
+][
+*Begriffe:* Digitaler Euro = digitales Zentralbankgeld der EZB. Smart Contract = Programm, das eine vereinbarte Leistung automatisch ausführt. DAO = Organisation, deren Regeln als Code laufen, Abstimmung per Token.
+][
+*Offene Fragen:* Wer haftet bei einer DAO ohne klare Rechtsform? Wie pfändet ein Gläubiger einen Krypto-Wert, wenn nur der Inhaber den privaten Schlüssel hat? Sicherheiten und Haftung (Kapitel 2 und 3) setzen klares Eigentum voraus.
 ]

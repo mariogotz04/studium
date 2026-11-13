@@ -11,7 +11,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 12.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 13.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -90,6 +90,19 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "zinsstruktur-folie": "abbildungen/zinsstruktur-folie.svg",
+  "buergschaft-folie": "abbildungen/buergschaft-folie.svg",
+  "annuitaet-folie": "abbildungen/annuitaet-folie.svg",
+  "bewertungsmethoden-folie": "abbildungen/bewertungsmethoden-folie.svg",
+  "wacc-folie": "abbildungen/wacc-folie.svg",
+  "map-refinanzierung": "abbildungen/map-refinanzierung.svg",
+  "map-sicherheiten": "abbildungen/map-sicherheiten.svg",
+  "map-kurzfristig": "abbildungen/map-kurzfristig.svg",
+  "map-leasing": "abbildungen/map-leasing.svg",
+  "map-anleihen": "abbildungen/map-anleihen.svg",
+  "map-selbstfinanzierung": "abbildungen/map-selbstfinanzierung.svg",
+  "map-kapitalerhoehung": "abbildungen/map-kapitalerhoehung.svg",
+  "map-bewertung": "abbildungen/map-bewertung.svg",
   "map-aktien": "abbildungen/map-aktien.svg",
   "map-working-capital": "abbildungen/map-working-capital.svg",
   "map-finanzkontrolle": "abbildungen/map-finanzkontrolle.svg",
@@ -147,6 +160,19 @@
 )
 
 #let bilddeutungen = (
+  "zinsstruktur-folie": (titel: "Bild lesen", body: [Links die drei Idealformen: Die obere Kurve (invers) fällt mit der Laufzeit, die untere (normal) steigt, die waagerechte Linie wäre horizontal. Rechts stehen echte Kurven der Bundesbank, waagerecht 1–10 Jahre Laufzeit, senkrecht der Zins in % p. a. Die Farben sind Stichtage: 1973 (rot) und 1990/91 (gelb, grün) waren hoch und flach bzw. invers, 2005 (violett) niedrig und normal. Das Niveau und die Form ändern sich also über die Zeit.]),
+  "buergschaft-folie": (titel: "Bild lesen", body: [Drei Beteiligte: Kreditgeber oben, Bürge links unten, Schuldner rechts unten. Die Pfeile tragen die Nummern der Liste rechts. Lies sie in Reihenfolge: Verträge (1, 2), Kredit (3), Ausfall (4), Zahlung des Bürgen (5), Forderungsübergang (6) und zuletzt der Rückgriff des Bürgen auf den Schuldner (7). Der Bürge trägt also das Risiko, dass der Schuldner auch ihm nicht zahlen kann.]),
+  "annuitaet-folie": (titel: "Bild lesen", body: [Waagerecht die Zeit, senkrecht Zahlungen in €. Die Säule D über der Achse ist die Auszahlung des Darlehens, die gleich langen Säulen darunter die Raten. In jeder Rate wird der obere Teil Z (Zins) kleiner und der untere Teil T (Tilgung) größer, weil die Restschuld sinkt.]),
+  "bewertungsmethoden-folie": (titel: "Bild lesen", body: [Die vier Spalten sind Verfahrensfamilien, die Zeilen beantworten Wesen, Prinzip (Einzel- oder Gesamtbewertung), Varianten, Vorteile und Nachteile. Lies spaltenweise: Der Substanzwert schaut auf das vorhandene Vermögen (Vergangenheit), Ertragswert/DCF auf künftige Zahlungen, Multiplikatoren auf Vergleichsunternehmen, Realoptionen auf Handlungsspielräume.]),
+  "wacc-folie": (titel: "Bild lesen", body: [Von rechts nach links lesen: Die Free Cashflows (Rechenschema rechts oben) werden mit dem WACC abgezinst (Schrägstrich = geteilt); das ergibt den Barwert, den Enterprise Value. Davon wird der Marktwert des Fremdkapitals abgezogen und der Wert des nicht betriebsnotwendigen Vermögens addiert. Ergebnis links ist der Wert des Eigenkapitals.]),
+  "map-refinanzierung": (titel: "Bild lesen", body: [Oben: Zinsen je Laufzeit und das Ziel der Notenbank. Unten: zwei Instrumente, mit denen die Notenbank Liquidität und Zinsen der Banken steuert. Die Prozentangaben sind Folienwerte.]),
+  "map-sicherheiten": (titel: "Bild lesen", body: [Die oberen Äste fragen, ob eine Person oder eine Sache haftet. Unten links steht die zweite, unabhängige Frage nach der Bindung an die Forderung, unten rechts die typische Verteilung auf Kreditgeber.]),
+  "map-kurzfristig": (titel: "Bild lesen", body: [Jeder Ast ist eine Finanzierungsform mit ihrem Kernmerkmal. Lieferantenkredit und Kontokorrent liefern Zeit bzw. Geld, der Avalkredit nur Haftung, Factoring und Lombard machen Vermögen zu Geld.]),
+  "map-leasing": (titel: "Bild lesen", body: [Drei Äste unterscheiden die Vertragsformen nach Laufzeit, Risiko und Eigentum. Der vierte Ast erinnert daran, dass die Entscheidung über Barwerte nach Steuern fällt, nicht über die Höhe der Raten.]),
+  "map-anleihen": (titel: "Bild lesen", body: [Die Äste ordnen Anleihen nach ihrer Ausstattung: klassisch mit festem Zins, mit Recht auf Aktien, mit Gewinnbeteiligung oder mit besonderer Zins- bzw. Währungsregel.]),
+  "map-selbstfinanzierung": (titel: "Bild lesen", body: [Oben die beiden Formen der Selbstfinanzierung aus einbehaltenem Gewinn, unten Finanzierung aus Aufwand ohne gleichzeitige Auszahlung und aus Verkauf von Vermögen. Alle vier kommen ohne neue Kapitalgeber aus.]),
+  "map-kapitalerhoehung": (titel: "Bild lesen", body: [Drei Äste zeigen Formen der Kapitalerhöhung, nur die oberen beiden bringen neues Geld. Der Ast unten rechts ist die Gegenrichtung, die Herabsetzung des Kapitals.]),
+  "map-bewertung": (titel: "Bild lesen", body: [Der linke obere Ast bewertet einzeln das vorhandene Vermögen, die anderen bewerten das Unternehmen als Ganzes: über abgezinste künftige Zahlungen oder über Marktpreise vergleichbarer Firmen.]),
   "map-aktien": (titel: "Bild lesen", body: [Die vier Äste ordnen Vermögen, künftigen Gewinn, Kursrelationen und Ausschüttung. Jede Rechnung braucht ihren eigenen Nenner; Nominalwert, Buchwert und Börsenkurs sind verschiedene Größen.]),
   "map-working-capital": (titel: "Bild lesen", body: [Der linke obere Ast definiert den Bilanzpuffer, die anderen zeigen Zielkonflikt und operative Zahlungsdauer. Die Höhe des Puffers ist keine unmittelbare Aussage über den Kontostand.]),
   "map-finanzkontrolle": (titel: "Bild lesen", body: [Die Äste verbinden Zahlungsplanung und Engpass mit Zielen und Datenabgrenzung. Ein Soll-Ist-Vergleich ist nur sinnvoll, wenn dieselbe Größe nach derselben Definition gemessen wird.]),
@@ -231,7 +257,7 @@
 
 #note("Dein Feynman-Schritt", [Erkläre ohne Vorlage: *Woher kommt das Geld? Wann wird es gebraucht? Warum genügt Gewinn allein nicht?* Zeichne die Zahlungsströme und prüfe Deine Erklärung anschließend an den Beispielen und Aufgaben.])
 
-*Stand 12.11.2026:* Teil A ist bis Folie 78 einschließlich Aktienkennzahlen, Working Capital und Finanzplanungsübungen eingearbeitet. Kapitel 2 enthält Fremdfinanzierung bis Folie 116 aus den Vorlesungen vom 28.10. und 04.11.; die Glasspinnerei bleibt erhalten. Aufgabe 1 der Altklausur 2017 ergänzt Tilgung, Effektivzins und Sicherheitenbegriffe; Aufgabe 2 folgt mit Kapitel C. Aufgaben und Formelsammlung sind abgeglichen. Der vollständige annotierte Export vom 12.11. bestätigt weiterhin die Grenze „Ende VL 4.11.“ auf Folie 116; späterer Stoff wird durch diesen Export nicht als behandelt belegt. Folienwidersprüche und historische Annahmen bleiben sichtbar gekennzeichnet.
+*Stand 13.11.2026:* Das komplette Vorlesungsskript (Folien 1–328) ist eingearbeitet. Kapitel 1 und Kapitel 2 bis Folie 116 sind in der Vorlesung behandelt (28.10. und 04.11.). Ab Abschnitt 2.11 folgen als *Vorgriff zum Selbststudium* der Rest der Fremdfinanzierung (Sondertilgung bis Hybridanleihen und Wechselkurs), Kapitel 3 Eigen- und Selbstfinanzierung, Kapitel 4 Unternehmensbewertung und Kapitel 5 Ausblick; diese Teile sind am Anfang jeweils markiert. Aufgabe 2 der Altklausur 2017 steht jetzt bei 3.7.1 (Bezugsrecht). Alle Musterlösungen der Folien sind nachgerechnet; Fehler in den Folien sind als „Fehler in der Folie“ gekennzeichnet. Folienwidersprüche und historische Annahmen (z. B. Leitzins 0 %, Mindestreserve 2 %) bleiben sichtbar markiert.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -241,7 +267,7 @@
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* N12 = „Skript Finanzierung komplett.pdf“ im Notizenordner (165 PDF-Seiten; enthält eine zusätzliche Handschriftseite; Folien 117–328 entsprechen N12 PDF-S. 60–165 bzw. V PDF-S. 59–164); V = „Skript Finanzierung.pdf“; N1 = „1VL Finanzierung.pdf“; N2 = „VL 14.10.pdf“; N28 = „Skript Finanzierung.pdf“ im Notizenordner (VL 28.10., 17 PDF-Seiten, Folien 53–86); N04 = „Skript Finanzierung VL 4.11.pdf“ (17 PDF-Seiten, Folien 85–116 mit handschriftlicher Zusatzseite auf PDF-S. 9); M = „eigenes Skript Finanzierung.pdf“; BAF = „01VL_BAF Finanzierung.pdf“; G = „Fallstudie Glasspinnerei Straubing AG.pdf“; L15 = altes Claude-Lernskript, Stand 15.10.2026; K = „Klausur 2017.pdf“ (Fotos von Teil II, Klausurseiten 5–10; Hochschule und Prüfer sind auf den Seiten nicht erkennbar; die handschriftlichen Antworten und Korrekturen im Scan werden nicht übernommen). „PDF-S.“ zählt ab der ersten Dateiseite. V hat zwei Folien pro PDF-Seite. Buchangaben auf Folien sind Sekundärnachweise; Bücher wurden nicht verwendet. Gesetzeslinks, BGH, BIS, Ratingagenturen und EZB sind nur zur ausdrücklich markierten Begriffs-/Fehlerklärung ergänzt (Abrufdatum jeweils am Abschnitt). „Nachschlagen“ führt mit automatisch berechneter Seite in dieses Lernskript.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* N13 = „Skript Finanzierung komplett.pdf“ vom 13.11.2026 (165 PDF-Seiten, inhaltlich gleich N12 bis auf eine Markierung auf PDF-S. 67; Folien 117–328 entsprechen N13 PDF-S. 60–165 bzw. V PDF-S. 59–164); N12 = ältere Fassung derselben Datei vom 12.11. (liegt jetzt in „Zum Löschen“); V = „Skript Finanzierung.pdf“; N1 = „1VL Finanzierung.pdf“; N2 = „VL 14.10.pdf“; N28 = „Skript Finanzierung.pdf“ im Notizenordner (VL 28.10., 17 PDF-Seiten, Folien 53–86); N04 = „Skript Finanzierung VL 4.11.pdf“ (17 PDF-Seiten, Folien 85–116 mit handschriftlicher Zusatzseite auf PDF-S. 9); M = „eigenes Skript Finanzierung.pdf“; BAF = „01VL_BAF Finanzierung.pdf“; G = „Fallstudie Glasspinnerei Straubing AG.pdf“; L15 = altes Claude-Lernskript, Stand 15.10.2026; K = „Klausur 2017.pdf“ (Fotos von Teil II, Klausurseiten 5–10; Hochschule und Prüfer sind auf den Seiten nicht erkennbar; die handschriftlichen Antworten und Korrekturen im Scan werden nicht übernommen). „PDF-S.“ zählt ab der ersten Dateiseite. V hat zwei Folien pro PDF-Seite. Buchangaben auf Folien sind Sekundärnachweise; Bücher wurden nicht verwendet. Gesetzeslinks, BGH, BIS, Ratingagenturen und EZB sind nur zur ausdrücklich markierten Begriffs-/Fehlerklärung ergänzt (Abrufdatum jeweils am Abschnitt). „Nachschlagen“ führt mit automatisch berechneter Seite in dieses Lernskript.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -250,7 +276,10 @@ Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu
 
 #karte((1fr,),
   chunk([Kapitel 1 · Grundlagen der Finanzplanung], [Finanzierungsformen · Liquidität · Erfolg und Zahlung · Cashflow · Finanzplan · Kennzahlen · Leverage · Fallstudie Glasspinnerei · Aktienkennzahlen · Working Capital], ziel: <a-1>),
-  chunk([Kapitel 2 · Fremdfinanzierung], [Gläubigerrisiko · Bonität und Rating · Basel · Kreditvertrag · Zinsrechnung · Kündigung · Vorfälligkeit · Altklausur], ziel: <a-2>),
+  chunk([Kapitel 2 · Fremdfinanzierung], [Gläubigerrisiko · Bonität und Rating · Basel · Kreditvertrag · Zinsrechnung · Kündigung · Vorfälligkeit · Altklausur · Sondertilgung · Zinsstruktur · EZB · Sicherheiten · kurz- und langfristige Kredite · Leasing · Anleihen · Wechselkurs], ziel: <a-2>),
+  chunk([Kapitel 3 · Eigen- und Selbstfinanzierung (Vorgriff)], [Selbstfinanzierung · Abschreibungen und Rückstellungen · Rechtsform · Aktien und Börsengang · Ausschüttung · Kapitalerhaltung · Kapitalerhöhung und Bezugsrecht · Herabsetzung · Cash Pooling · Leverage und Finanzierungsregeln], ziel: <a-3>),
+  chunk([Kapitel 4 · Unternehmensbewertung (Vorgriff)], [Anlässe · Methoden · Substanz- und Ertragswert · Goodwill · Kapitalwert · Steuern und Inflation · WACC · Multiplikatoren · Entscheidungswert], ziel: <a-4>),
+  chunk([Kapitel 5 · Ausblick (Vorgriff)], [Kryptowährungen · digitaler Euro · elektronische Wertpapiere · DAOs · Smart Contracts], ziel: <a-5>),
 )
 
 *Der rote Faden von der Planung zum Kreditvertrag*
@@ -273,8 +302,8 @@ Jeder Kasten ist ein Link: Tippe ihn an, um ins Kapitel oder in den Abschnitt zu
   chunk([1.21 Finanzkontrolle], [Engpass · Vergleich · Bezugsgrößen], ziel: <a-1-21>),
 )
 
-Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher kommt es?* Dafür trennst Du zuerst Erfolg von Zahlungen, denn Gewinn allein bezahlt keine Rechnung. Cashflow und Finanzplan zeigen, wann Geld fehlt; Kennzahlen und Leverage zeigen, wie riskant die Finanzierung ist. Die Fallstudie Glasspinnerei setzt alles zu einer Kapitalbedarfsrechnung zusammen; Working Capital und Aktienkennzahlen ergänzen die Beurteilung. Kapitel 2 verfolgt anschließend den Weg vom Kreditrisiko über Bonität und Vertrag zur Zinsrechnung und Rückführung.
-#src[V, PDF-S. 1–3; G, PDF-S. 1 und 24; V, PDF-S. 28–58; Zusammenführung aus Kapiteln 1–2. Eigene Darstellung.]
+Das Modul fragt im Kern: *Ist genug Geld zum richtigen Zeitpunkt da, und woher kommt es?* Dafür trennst Du zuerst Erfolg von Zahlungen, denn Gewinn allein bezahlt keine Rechnung. Cashflow und Finanzplan zeigen, wann Geld fehlt; Kennzahlen und Leverage zeigen, wie riskant die Finanzierung ist. Die Fallstudie Glasspinnerei setzt alles zu einer Kapitalbedarfsrechnung zusammen; Working Capital und Aktienkennzahlen ergänzen die Beurteilung. Kapitel 2 verfolgt anschließend den Weg vom Kreditrisiko über Bonität und Vertrag zur Zinsrechnung und Rückführung und stellt dann die einzelnen Kreditformen vom Lieferantenkredit bis zur Wandelanleihe vor. Kapitel 3 zeigt die Alternative ohne Rückzahlungspflicht: einbehaltene Gewinne und Eigenkapital. Kapitel 4 fragt schließlich, was ein ganzes Unternehmen wert ist, und nutzt dafür wieder Zahlungsströme und Kapitalkosten.
+#src[V, PDF-S. 1–3; G, PDF-S. 1 und 24; V, PDF-S. 28–58; V, PDF-S. 59–164; Zusammenführung aus Kapiteln 1–5. Eigene Darstellung.]
 
 #pagebreak()
 = Kapitel 1 · Grundlagen der Finanzplanung <a-1>
@@ -894,16 +923,20 @@ Cashflow ergänzt den Gewinn um den Blick auf Zahlungen und nicht zahlungswirksa
  idee(<a-2-5>, [Verträge gestalten.], [Betrag, Tilgung, Zins, Laufzeit, Sicherheiten und Covenants bestimmen den Zahlungsfahrplan.]),
  idee(<a-2-6>, [Zinsen vergleichbar machen.], [Tagekonvention und Zinstermine beeinflussen die tatsächlichen Zahlungen.]),
  idee(<a-2-8>, [Rückzahlung und Ausstieg prüfen.], [Vertragspflichten, Kündigungsrecht und Vorfälligkeitsentschädigung gehören zusammen.]),
+ idee(<a-2-12>, [Kreditpreis verstehen (Vorgriff).], [Zinsstruktur, Bankrefinanzierung und EZB-Leitzins bestimmen, was Kredit kostet.]),
+ idee(<a-2-14>, [Sicherheiten und Kreditformen (Vorgriff).], [Bürgschaft und Grundschuld sichern; kurzfristig Lieferanten- und Kontokorrentkredit, langfristig Darlehen, Leasing und Anleihen.]),
+ idee(<a-2-20>, [Anleihen mit Aktienbezug (Vorgriff).], [Options- und Wandelanleihen verbinden Fremdkapital mit Eigenkapital.]),
 )
 #ablauf(
  chunk([Finanzierungsbedarf und Gläubigerrisiko], [Welcher Betrag wird wann gebraucht, wodurch könnte Rückzahlung ausfallen?], ziel: <a-2-1>),
  chunk([Bonität und Rating], [Unterlagen prüfen, Risiken einschätzen, Bankkapital berücksichtigen], ziel: <a-2-2>),
  chunk([Vertrag und Zinsrechnung], [Zahlungsströme und Handlungsgrenzen vereinbaren], ziel: <a-2-5>),
  chunk([Rückführung oder vorzeitiger Ausstieg], [Tilgung, Kündigungsrecht und möglichen Schaden prüfen], ziel: <a-2-9>),
+ chunk([Kreditformen im Überblick (Vorgriff)], [Sicherheiten, kurz- und langfristige Fremdfinanzierung, Leasing, Anleihen], ziel: <a-2-14>),
 )
 #hoch(<ueberblick>, [Modul auf einen Blick])
 
-Kapitel 1 hat den Kapitalbedarf bestimmt. Jetzt wird daraus ein Kreditverhältnis: Der Gläubiger muss die Rückzahlung einschätzen, der Schuldner muss Bedingungen und Zahlungen verstehen. Das Kapitel folgt den Vorlesungen vom 28.10. und 04.11. bis Folie 116. Abschnitt 2.10 ergänzt ausdrücklich Aufgabe 1 der bereits vorhandenen Altklausur; spätere Vorlesungsfolien werden dadurch nicht als behandelt ausgewiesen.
+Kapitel 1 hat den Kapitalbedarf bestimmt. Jetzt wird daraus ein Kreditverhältnis: Der Gläubiger muss die Rückzahlung einschätzen, der Schuldner muss Bedingungen und Zahlungen verstehen. Die Abschnitte 2.1–2.9 folgen den Vorlesungen vom 28.10. und 04.11. bis Folie 116; Abschnitt 2.10 ergänzt Aufgabe 1 der Altklausur. Ab 2.11 folgt der Rest des Kapitels (Folien 117–194) als Vorgriff zum Selbststudium: Sondertilgung, Zinsstruktur, Bankrefinanzierung, Sicherheiten, kurz- und langfristige Kreditformen, Leasing, Anleihen und Wechselkurs.
 #src[V, PDF-S. 40–58 (Folien 79–116); N28, PDF-S. 14–17; N04, PDF-S. 1–17; K, PDF-S. 1–2.]
 
 == 2.1 Fremdkapital und Risiken der Gläubiger <a-2-1>
@@ -1134,12 +1167,829 @@ Eine *Personalsicherheit* gibt einen zusätzlichen Anspruch gegen eine Person, e
 Eine Sicherungsgrundschuld setzt dagegen nicht kraft ihres dinglichen Bestands eine Forderung voraus; ihre Verbindung zum Kredit wird durch die Sicherungsvereinbarung hergestellt. Das ist das hier gesuchte Beispiel eines *fiduziarischen* Sicherungsmittels. „Personal/real“ und „akzessorisch/fiduziarisch“ sind also zwei verschiedene Fragen. Die spätere ausführliche Vorlesung zu Kreditsicherheiten wird hier nicht vorweggenommen.
 #src[K, PDF-S. 1–2 (Klausurseiten 5–6), Aufgabe 1 a–d, insgesamt 13 Punkte; V, PDF-S. 53, Folie 105. Formeln und Herleitung: eigene Lösung zur Klausur. Rechtsabgleich der Beispiele: #link("https://www.gesetze-im-internet.de/bgb/__767.html")[§ 767] und #link("https://www.gesetze-im-internet.de/bgb/__1192.html")[§ 1192 BGB], Abruf 05.11.2026.]
 
+#pagebreak()
+#note("Ab hier Selbststudium (Vorgriff)", [Die Abschnitte 2.11 bis 2.21 und die Kapitel 3 bis 5 stammen aus den Folien 117–328 des vollständigen Vorlesungsskripts. Sie waren am 13.11.2026 laut Deinen Notizen noch nicht in der Vorlesung behandelt; Du hast Dir gewünscht, das komplette Skript schon jetzt selbst zu lernen. Wenn die Vorlesung später etwas anders gewichtet oder ergänzt, wird das an der passenden Stelle nachgetragen.], fill: sand)
+
+== 2.11 Sondertilgung und Tilgungsplan <a-2-11>
+
+Eine *Sondertilgung* ist eine Zahlung über die vereinbarte Tilgung hinaus. Sie ist nur erlaubt, wenn der Kreditvertrag ein *Sondertilgungsrecht* vorsieht. Dieses Recht ist eine Option: Bei sinkenden Zinsen ist es wertvoll, weil man teures Geld früher zurückgeben kann; bei steigenden Zinsen ist es eventuell wertlos. Sein Wert hängt von der Zinsentwicklung (Volatilität), der Laufzeit und der möglichen Höhe der Sondertilgung ab.
+
+#tab(columns: (2fr, 1.2fr, 1.2fr),
+ th([Darlehen 100.000 €, 4,5 %, Monatsrate 1.000 €], [Zinsen gesamt], [Laufzeit]),
+ [ohne Sondertilgung], [25.569 €], [10 J. 6 Mon.],
+ [Sondertilgung 1.000 € im 1. Jahr], [25.041 €], [10 J. 5 Mon.],
+ [Sondertilgung 2.000 € im 1. Jahr], [24.521 €], [10 J. 3 Mon.],
+ [Sondertilgung 5.000 € im 1. Jahr], [23.014 €], [9 J. 11 Mon.],
+)
+Die Folie folgert: Sondertilgungsrecht vereinbaren und *so früh und so oft wie möglich* ausüben. Der Grund: Jeder früh zurückgezahlte Euro wird für die gesamte Restlaufzeit nicht mehr verzinst. 5.000 € Sondertilgung sparen hier gut 2.500 € Zinsen. *Nachgerechnet* (eigene Prüfung, monatliche Verzinsung mit 4,5 %/12, Sondertilgung am Ende des ersten Jahres): Die Folienwerte stimmen bis auf Rundung (24.522 statt 24.521 €).
+
+#note("Negative Tilgung", [Im Beispiel von Anton A. (Aufgaben) wird bei Alternative I fünf Jahre lang gar nichts gezahlt. Die Zinsen werden der Schuld zugeschlagen, die Restschuld wächst von 50.000 € auf 54.000 € und 58.320 €. Die Folie nennt das *negative Tilgung*: Ist die Annuität kleiner als die Zinsen, wird $T_t = A_t - Z_t$ negativ. Es gilt immer $Z_t + T_t = A_t$.])
+#src[V, PDF-S. 59–61 (Folien 117–121); Tilgungsformeln siehe 2.10.1. Nachrechnung: eigene Prüfung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.12 Zinsstrukturkurve <a-2-12>
+
+Die *Zinsstrukturkurve* zeigt, welcher Zinssatz für welche Laufzeit (Anlage- bzw. Ausleihdauer) gilt. Waagerecht steht die Laufzeit, senkrecht der Zins.
+
+#bild("zinsstruktur-folie", [Folie 123: idealtypische Kurven (links) und Zinsstrukturkurven der Bundesbank zu sechs Zeitpunkten 1973–2005 (rechts). Ausschnitt aus V, PDF-S. 62.], height: 62mm)
+
+#tab(columns: (1fr, 2.6fr),
+ th([Form], [Bedeutung]),
+ [*Horizontal*], [Für alle Laufzeiten gilt derselbe Zins.],
+ [*Normal*], [Kurze Laufzeiten haben niedrigere Zinsen als lange. Der Anleger verlangt für lange Bindung einen Aufschlag.],
+ [*Invers*], [Kurze Laufzeiten haben höhere Zinsen als lange. Die Folie nennt sie einen *Vorboten einer Rezession*: Der Markt erwartet künftig sinkende Zinsen.],
+)
+#text("Für die Finanzierung heißt das: Ein langfristiger Festzins ist bei normaler Kurve teurer als ein kurzfristiger Kredit, dafür ist das Zinsänderungsrisiko für die Laufzeit ausgeschaltet. Das verbindet die Kurve mit Fristigkeit (2.5) und Sondertilgungsrecht (2.11).")
+#src[V, PDF-S. 61–62 (Folien 122–123). Verbindung zu Fristigkeit und Sondertilgung: eigene Erläuterung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.13 Refinanzierung der Banken und Geldpolitik der EZB <a-2-13>
+
+Auch Banken müssen sich finanzieren, um Kredite vergeben zu können. Diese Mittelbeschaffung heißt *Refinanzierung*. Besonderheit: Banken refinanzieren sich überwiegend mit Fremdkapital (Einlagen, Schuldverschreibungen); Eigenkapital spielt dabei laut Folie nur eine untergeordnete Rolle.
+
+#bild("map-refinanzierung", [Mindmap: Zinsen je Laufzeit und Refinanzierung über die Zentralbank. Eigene Darstellung nach V, PDF-S. 61–65.], height: 44mm)
+
+Seit 1.1.1999 verantwortet die *Europäische Zentralbank (EZB)* die Geldpolitik im Euroraum. *Hauptziel ist Preisstabilität*: laut Folie ein Anstieg des Verbraucherpreisindex mittelfristig unter 2 % gegenüber dem Vorjahr. Weitere Aufgaben sind Devisengeschäfte, Verwaltung der Währungsreserven, funktionierende Zahlungssysteme, Banknotenausgabe, Statistik, Bankenaufsicht und internationale Zusammenarbeit.
+
+#tab(columns: (1.1fr, 2.7fr),
+ th([Geldpolitisches Instrument], [So wirkt es laut Folie]),
+ [*Mindestreserve*], [Pflichteinlage der Geschäftsbanken bei der Zentralbank. Basis: Einlagen, Schuldverschreibungen, Geldmarktpapiere; Satz 2 % für die meisten Positionen; verzinst zum Hauptrefinanzierungssatz. Ein höherer Satz entzieht den Banken Liquidität, ein niedrigerer führt ihnen Liquidität zu.],
+ [*Offenmarktgeschäfte: Hauptrefinanzierung*], [Jede Woche vergibt die Zentralbank gegen Sicherheiten im Ausschreibungsweg Kredite mit einer Woche Laufzeit. Wichtigstes Instrument zur Steuerung von Zinsen und Geldmarktliquidität. Ihr Satz ist der *Leitzins*.],
+ [*Ständige Fazilitäten*], [Auf Initiative der Banken über Nacht; die Spitzenrefinanzierungsfazilität hat den früheren Lombardkredit der Bundesbank abgelöst (Folie 148).],
+)
+
+#note("Historische Folienwerte", [Die Folie nennt einen Leitzins von 0,00 % „seit März 2016“ und einen Mindestreservesatz von 2 %. Das sind *Stände aus der Quelle der Folie*, keine aktuellen Werte: Die EZB hat den Mindestreservesatz bereits 2012 auf 1 % gesenkt und die Leitzinsen ab 2022 deutlich erhöht und später wieder gesenkt. Für die Klausur lernst Du Wirkungsweise und Folienlogik; aktuelle Sätze nur, wenn sie in der Vorlesung genannt werden. Eigene Einordnung.], fill: sand)
+Folie 129 zeigt einen Zeitungsausschnitt (bondguide.de, 28.09.2026) zur Refinanzierung; er enthält keinen zusätzlichen Lernstoff.
+#src[V, PDF-S. 62–65 (Folien 124–129). Einordnung der Folienwerte: #link("https://www.ecb.europa.eu/mopo/implement/mr/html/index.de.html")[EZB, Mindestreserve], Abruf 13.11.2026.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.14 Kreditsicherheiten <a-2-14>
+
+Ein Kreditgeber senkt sein Ausfallrisiko durch *Risikostreuung*, *Risikoteilung* und *Kreditbesicherung*. Sicherheiten stellt der Kreditnehmer selbst oder ein Dritter. Die Folie unterscheidet *Personensicherheiten* (schuldrechtlicher Anspruch gegen eine weitere Person, z. B. Bürgschaft) und *Sachsicherheiten* (dingliches Recht an einer Sache, z. B. Eigentumsvorbehalt).
+
+#bild("map-sicherheiten", [Mindmap: Kreditsicherheiten nach Art, Forderungsbindung und Kreditgeber. Eigene Darstellung nach V, PDF-S. 65–70.], height: 44mm)
+
+#tab(columns: (1fr, 1.4fr, 1.4fr),
+ th([Entstehung], [Gesetzlich geregelt], [Gesetzlich nicht geregelt]),
+ [gesetzlich (z. B. Vermieterpfandrecht)], [–], [–],
+ [rechtsgeschäftlich], [Bürgschaft, Eigentumsvorbehalt, Grundpfandrechte (Grundschuld, Hypothek), Pfandrecht an beweglichen Sachen, Pfandrecht an Rechten/Forderungen], [Garantie, Sicherungsübereignung, Forderungszession, Patronatserklärung],
+)
+
+=== 2.14.1 Bürgschaft <a-2-14-1>
+
+Bei der *Bürgschaft* verpflichtet sich der Bürge gegenüber dem Kreditgeber, für die Verbindlichkeit des Kreditnehmers einzustehen (§ 765 BGB). Hinter den Schuldner tritt eine zweite Person, von der der Gläubiger Zahlung verlangen kann, wenn der Schuldner nicht leistet.
+
+#note("Von dir markiert: Akzessorietät", [Die Bürgschaft hängt vom *Bestehen einer Forderung* ab. Erlischt oder verringert sich die Hauptschuld, gilt das auch für die Bürgschaft. (Gelb markiert im Vollskript, N13, PDF-S. 67.)])
+
+#tab(columns: (1.3fr, 2.6fr),
+ th([Ausgestaltung], [Wann muss der Bürge zahlen?]),
+ [*Ausfallbürgschaft*], [Nur für den Teil, den der Gläubiger trotz aller außergerichtlichen und gerichtlichen Mittel beim Hauptschuldner nicht eintreiben konnte.],
+ [*Einfache (subsidiäre) Bürgschaft*], [Der Gläubiger muss zuerst den Schuldner in Anspruch nehmen; zahlt dieser nicht, kann er sich an den Bürgen wenden.],
+ [*Selbstschuldnerische Bürgschaft*], [Der Bürge haftet „als Bürge und Zahler“, verzichtet auf die *Einrede der Vorausklage*. Der Gläubiger kann wählen, wen er zuerst in Anspruch nimmt; in der Praxis wird zuerst der Schuldner gemahnt.],
+)
+
+#bild("buergschaft-folie", [Folie 133: Ablauf einer Bürgschaft (Quelle der Folie: Bösch, Finanzwirtschaft, S. 206). Ausschnitt aus V, PDF-S. 67.], height: 60mm)
+
+*Lesart der Nummern:* (1) Kreditvertrag zwischen Kreditgeber und Schuldner, (2) Bürgschaftsvertrag zwischen Kreditgeber und Bürge, (3) Auszahlung des Kredits, (4) keine Rückzahlung, (5) Zahlung des Bürgen, (6) Forderung geht auf den Bürgen über, (7) Rückgriff des Bürgen beim Schuldner. Im Beispiel der Folie bürgt die Hausbank für den Kaufpreis einer Maschine. Zahlt die Bank, geht die Kaufpreisforderung auf sie über; das Eigentum des Käufers an der Maschine bleibt davon unberührt.
+
+=== 2.14.2 Grundpfandrechte, Eigentumsvorbehalt und Garantie <a-2-14-2>
+
+*Grundpfandrechte* (Hypothek, Grundschuld) belasten ein Grundstück. Der Gläubiger kann letztlich Zwangsversteigerung bzw. Zwangsverwaltung verlangen, die der Schuldner dulden muss. Sie entstehen durch Einigung und Eintragung ins Grundbuch beim Amtsgericht.
+
+#tab(columns: (1fr, 1.5fr, 1.5fr),
+ th([], [Grundschuld], [Hypothek]),
+ [Bindung an Forderung], [*nicht akzessorisch* (§ 1191 BGB): „bestimmte Geldsumme aus dem Grundstück“], [*akzessorisch*: besteht nur mit der Forderung],
+ [Folge], [Forderung kann formlos ausgetauscht werden; die Grundschuld bleibt für neue Kredite nutzbar], [Mit Tilgung der Forderung erlischt die Sicherung insoweit],
+)
+Beispiel der Folie: Herr K. leiht sich 30.000 € für ein Auto; die Bank verlangt eine Grundschuld auf sein Grundstück. Zahlt er nicht, darf die Bank das Grundstück im Wege der Zwangsverwaltung bzw. -versteigerung verwerten.
+
+Beim *Eigentumsvorbehalt (EV)* behält der Verkäufer das Eigentum an einer beweglichen Sache bis zur vollständigen Zahlung. Er ist bis dahin Kreditgeber und sichert sich durch das Recht, „seine Ware“ zurückzufordern, wenn der Käufer in Verzug gerät. Er ist das *klassische Sicherungsmittel des Lieferantenkredits*.
+- *Verlängerter EV:* Wird die Ware weiterverarbeitet, erstreckt sich der EV auf das neue Produkt; wird dieses verkauft, gehen die Kaufpreisforderungen im Voraus an den Lieferanten über.
+- *Anwartschaftsrecht:* Der Käufer erhält bei Lieferung noch nicht das Eigentum, aber ein Anwartschaftsrecht, das der Verkäufer nicht mehr einseitig zerstören kann; es gibt unter anderem ein Recht zum Besitz. Beispiel der Folie: Herr A kauft ein Auto für 10.000 € in Monatsraten zu 1.000 €; mit jeder Rate wächst sein Anwartschaftsrecht, im Oktober geht das Eigentum über. Das Anwartschaftsrecht entsteht schon durch die bedingte Übereignung, unabhängig von einer ersten Teilzahlung.
+
+Beim *Garantievertrag* (gesetzlich nicht geregelt, aber anerkannt) verpflichtet sich ein Garant, für einen bestimmten Erfolg einzustehen oder einen künftigen Schaden zu übernehmen. *Unterschied zur Bürgschaft: Die Garantie ist nicht akzessorisch.* Der Garant zahlt auch, wenn die Forderung gar nicht besteht oder der Schuldner ein Leistungsverweigerungsrecht hätte. Im internationalen Handel ist die *Garantie auf erste Anforderung* üblich: „erst zahlen, dann prozessieren“, laut Folie besonders gefährlich für den Garanten.
+
+#note("Fehler vermeiden", [Personal/real und akzessorisch/nicht akzessorisch sind zwei getrennte Fragen (siehe 2.10.3). Bürgschaft: personal und akzessorisch. Garantie: personal, aber nicht akzessorisch. Hypothek: real und akzessorisch. Grundschuld: real und nicht akzessorisch.], fill: sand)
+
+=== 2.14.3 Welche Kreditgeber halten welche Sicherheiten? <a-2-14-3>
+
+Die Folie 139 (Quelle: Gessner u. a., Konkursabwicklung) verteilt die gesicherten Forderungen in Konkursen auf Kreditgeber. Lesart der Gesamtsummen: *Kreditinstitute 62,7 %, Lieferanten 22,8 %, andere 14,4 %*. Banken stützen sich vor allem auf *Grundschulden* (32,9) und Sicherungsübereignung (12,2); Lieferanten auf den *Eigentumsvorbehalt* (12,5) und Forderungsabtretungen wie den verlängerten EV. Die Zahlen sind ein historisches Bild; die Zuordnung einzelner Zellen ist im Folien-Export nicht eindeutig lesbar, deshalb werden nur diese Kernaussagen gelernt.
+#src[V, PDF-S. 65–70 (Folien 130–139); N13, PDF-S. 67 (Markierung). Gesetzesstellen nach Folie: §§ 765, 1191 BGB.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.15 Kurzfristige Fremdfinanzierung <a-2-15>
+
+Die Folie nennt fünf kurzfristige Formen: Kunden- und Lieferantenkredit, Kontokorrentkredit, Avalkredit, Factoring und Lombardkredit.
+
+#bild("map-kurzfristig", [Mindmap: fünf kurzfristige Finanzierungsformen. Eigene Darstellung nach V, PDF-S. 70–74.], height: 44mm)
+
+=== 2.15.1 Kunden- und Lieferantenkredit <a-2-15-1>
+
+Beim *Kundenkredit* (Anzahlung, Vorkasse) zahlt der Kunde einen Teil des Preises schon vor der Leistung, z. B. im Anlagen- oder Schiffbau. Bei schlechter Kreditwürdigkeit des Kunden verlangen Lieferanten oft Vorkasse. Beim *Lieferantenkredit* (Kauf auf Ziel) erhält der Kunde die Ware und zahlt später. Wer schnell zahlt (10–14 Tage), erhält *Skonto*. *Die Kosten des Lieferantenkredits sind der entgangene Skonto.* Vorteil: hohe Flexibilität. Nachteil: verglichen mit anderen Formen oft sehr teuer.
+
+#form[$ i_"Skonto" = frac("Skontosatz", 1 - "Skontosatz") times frac(360, "Zahlungsziel" - "Skontofrist") $]
+Ergebnis als Jahreszins (einfache Verzinsung, 360 Zinstage, deutsche Zinsrechnung). Bezugsgröße ist der *Betrag nach Skonto*, denn diesen Betrag „leiht“ man sich für die zusätzlichen Tage. Beispiel der Folie: „10 Tage 2 % Skonto oder 30 Tage netto“, 100.000 €: Für 20 Tage Kredit über 98.000 € zahlt man 2.000 € „Zinsen“, also $2000 = 98000 times i times 20/360$, $i approx "36,7" %$.
+
+#note("Selbst erklären", [Warum ist ein Kontokorrentkredit zu 12 % immer noch günstiger als der Verzicht auf 2 % Skonto bei 20 Tagen Differenz? *Antwort:* Die 2 % fallen für nur 20 Tage an, aufs Jahr hochgerechnet etwa 36,7 %. Mit dem billigeren Kontokorrentkredit pünktlich zum Skontotermin zahlen lohnt sich.])
+
+*Übungen 1–3 der Folien:* Bei der Stadelmann AG (2 % Skonto bei 20 Tagen, Ziel 60 Tage) kostet das Zahlungsziel $"0,02"/"0,98" times 360/40 approx "18,4" %$ pro Jahr: Je länger der zusätzliche Zeitraum, desto billiger der Lieferantenkredit. Die Kobit AG zeigt die Gegenrichtung, den *Kundenkredit*: Verzichtet sie auf Anzahlungen von 230.000 € (6 Monate früher) und 140.000 € (3 Monate früher), muss sie diese Beträge bei 2,5 % pro Vierteljahr selbst finanzieren: $230000 times "5" % + 140000 times "2,5" % = 11500 + 3500 = "15.000"$ € Preisaufschlag (einfache Verzinsung wie in der Folie). Warum nutzen viele Abnehmer Skonto trotzdem nicht? Keine anderen Kreditmöglichkeiten, die hohen Kosten werden nicht erkannt, schlechtes Cash Management (Termine verpasst) oder die liquiden Mittel bringen anderswo mehr Zins.
+#src[V, PDF-S. 98–100 (Folien 195–200).]
+
+=== 2.15.2 Kontokorrentkredit und Avalkredit <a-2-15-2>
+
+Der *Kontokorrentkredit* ist der klassische kurzfristige Kredit auf dem laufenden Geschäftskonto. Jede Zahlung verändert den Saldo; ein negativer Saldo ist Kreditinanspruchnahme bis zum vereinbarten Limit. Vorteile: sehr flexibel, sichert die Zahlungsfähigkeit in angespannten Phasen und erleichtert das Ausnutzen von Skonto. Nachteil: hohe Kosten.
+
+Beim *Avalkredit* übernimmt eine Bank eine Bürgschaft oder Garantie für ihren Kunden gegenüber einem Dritten. *Kein Kredit im Sinne von Geld:* Die Bank stellt ihre Kreditwürdigkeit zur Verfügung und zahlt nur, wenn der Kunde seine Verpflichtung nicht erfüllt. Wichtige Form: *Zollaval* (Finanzverwaltung stundet gegen Sicherheit). Vorteile: höhere Bonität gegenüber Dritten, keine Geldhinterlegung, nur *Avalprovision* statt Zinsen. Nachteil: Die Provision kostet auch dann, wenn der Kunde alles erfüllt.
+
+=== 2.15.3 Factoring und Lombardkredit <a-2-15-3>
+
+*Factoring* ist der laufende Verkauf kurzfristiger Forderungen (Höchstlaufzeit 90–120 Tage) an eine Factoringgesellschaft im Rahmen eines längerfristigen Vertrags. Es bündelt drei Funktionen:
+
+#tab(columns: (1.2fr, 2.6fr),
+ th([Funktion], [Inhalt und Kosten laut Folie]),
+ [*Servicefunktion*], [Debitorenbuchhaltung, Mahnwesen, Inkasso; Gebühr 0,5–2,5 % der Rechnungsbeträge.],
+ [*Finanzierungsfunktion*], [Der Factor bevorschusst die Forderungen und führt Liquidität zu; bankübliche Zinsen.],
+ [*Delkrederefunktion*], [Beim *echten Factoring* trägt der Factor das Ausfallrisiko (Gebühr 0,2–0,5 %); beim *unechten Factoring* bleibt es beim Verkäufer.],
+)
+*Finanzierungseffekt:* In Forderungen gebundenes Kapital wird freigesetzt. Gegenüber dem Kontokorrentkredit: Verwaltungskosten sinken, der Zinsaufwand ist grundsätzlich niedriger, das Volumen potenziell höher. Nachteile: kein Leverage-Effekt, relativ hohe Gebühren, weniger Dispositionsfreiheit und eine mögliche Belastung der Kundenbeziehung, wenn der Factor mahnt. Beispiel der Folie: Bevorschussung bis 80 %, Rest nach Zahlung des Kunden, spätestens nach 90 Tagen; 1,5 % Gebühr plus Zinsen.
+
+Der *Lombardkredit* ist ein kurzfristiger Kredit über einen festen Betrag, gesichert durch *Verpfändung* marktgängiger Sachen oder Rechte (Wertpapiere, Waren, Wechsel, Forderungen, Edelmetalle). Beliehen wird nur ein Prozentsatz des Zeitwerts. Kosten früher Lombardsatz (ca. 1–1,5 % über Diskontsatz, vor der EZB) plus Bewertung und Verwahrung, insgesamt etwa wie Kontokorrent; weniger flexibel als dieser. Bei der EZB durch die Spitzenrefinanzierungsfazilität abgelöst.
+
+#note("Fehler vermeiden", [Factoring = Forderung *verkaufen* (sie verlässt die Bilanz). Lombard = Vermögen *verpfänden* (es bleibt Eigentum, der Kredit ist Fremdkapital). Aval = Bank *haftet*, zahlt aber zunächst kein Geld aus.], fill: sand)
+#src[V, PDF-S. 70–74 (Folien 140–148). Skontoformel: V, PDF-S. 71 und 98 (Folien 142, 196). Vergleichskasten: eigene Erläuterung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.16 Langfristige Fremdfinanzierung: Überblick und Darlehen <a-2-16>
+
+#tab(columns: (1fr, 1fr),
+ th([Traditionelle Instrumente], [Innovative Instrumente]),
+ [1 Darlehen (Bankkredit) · 2 Schuldscheindarlehen · 3 Industrieobligation · 4 Gesellschafterdarlehen], [9 Null-Kupon-Anleihe · 10 Floating Rate Notes · 11 Indexanleihen · 12 Doppelwährungsanleihen],
+ table.cell(colspan: 2)[*Hybridformen:* 5 Optionsanleihe · 6 Wandelanleihe · 7 Gewinnobligation · 8 Genussschein],
+)
+Das *Darlehen* mit Rückzahlung in festen Beträgen ist das typische Finanzierungsinstrument des Mittelstands. Geber sind Kreditinstitute, öffentliche Stellen (z. B. KfW, Landesbanken), Kapitalsammelstellen oder Privatpersonen; Merkmale wie in 2.5. Wichtig: Oft ist nur der Nominalzins angegeben; zum Vergleich braucht man den *Effektivzins*. Er hängt ab von Nominalzins, Auszahlungskurs, Provisionen und sonstigen Kosten (Praktikerformel in 2.10.2).
+
+#bild("annuitaet-folie", [Folie 151: Tilgungsformen mit Abbildung Annuitätendarlehen (Quelle der Folie: Wöltje 2009). Ausschnitt aus V, PDF-S. 76.], height: 60mm)
+Die drei Tilgungsformen sind in 2.10.1 mit Formeln erklärt: *endfällig* (Zinsdarlehen), *Tilgungsdarlehen* (Abzahlungs-/Ratendarlehen), *Annuitätendarlehen*.
+#src[V, PDF-S. 75–76 (Folien 149–151); Formeln 2.10.1.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.17 Leasing <a-2-17>
+
+*Leasing* ist laut Folie eine Sonderform der langfristigen Kreditfinanzierung: die zeitweise Überlassung eines beweglichen oder unbeweglichen Gegenstands gegen Entgelt. Rechtsgrundlage ist das Mietrecht im BGB. Anders als bei der Miete trägt beim (Finanzierungs-)Leasing oft der Leasingnehmer Wartung und Instandhaltung; Objekt und feste Nutzungsdauer werden auf ihn zugeschnitten.
+
+#bild("map-leasing", [Mindmap: drei Leasingformen und der Vergleich mit dem Kreditkauf. Eigene Darstellung nach V, PDF-S. 76–83.], height: 44mm)
+
+#tab(columns: (1.15fr, 1.5fr, 1.5fr),
+ th([], [Finanzierungsleasing], [Operating-Leasing]),
+ [Laufzeit], [unkündbare Grundmietzeit], [vergleichsweise kurz, i. d. R. von beiden kündbar],
+ [Risiko, Wartung], [wirtschaftliches Risiko, Wartung und Instandhaltung beim Leasingnehmer (LN)], [Wartung und Instandhaltung beim Leasinggeber (LG)],
+ [Eigentum], [bleibt beim LG (kann es steuerlich abschreiben); LN zahlt Raten je Periode], [beim LG],
+ [Varianten], [ohne Option, mit Kauf- oder Verlängerungsoption, Mobilien/Immobilien, Voll-/Teilamortisation], [entspricht kurzfristigem Mietvertrag (§§ 535 ff. BGB)],
+)
+Beim *Sale-and-lease-back* verkauft der LN ein ihm gehörendes Objekt an den LG und least es sofort zurück (meist als Finanzierungsleasing). Er erhält den Kaufpreis und zahlt Leasingraten. Beispiel der Folie: Stahlunternehmen wie Klöckner verkauften in den Stahlkrisen der 1980er/90er Betriebsgrundstücke und mieteten sie zurück, als Kredite und Kapitalerhöhung nicht mehr möglich waren. Das ist eine *Vermögensumschichtung* (siehe 3.2).
+
+#tab(columns: (1fr, 1fr),
+ th([Pro Leasing], [Kontra Leasing]),
+ [*Liquidität:* Raten verteilt statt Kaufpreis auf einmal. *Planungssicherheit:* Rate und Laufzeit fest. *Steuer:* Raten je nach Vertrag sofort als Betriebsausgabe abzugsfähig. *Flexibilität und Innovation.* *Investition ohne Kapital* (oft geringere Sicherheitsanforderungen). *Bilanz und Rating:* bessere Kennzahlen, z. B. EK zu AV. *Service und Marktübersicht des LG.*],
+ [*Kein Eigentum:* kein Verkauf bei Geldbedarf. *Hohe Gesamtkosten:* LG kalkuliert Ausfallrisiko und Gewinn ein. *Vertragslaufzeit:* Raten auch bei Nichtnutzung. *Zahlung trotz Streit:* Gewährleistungsansprüche gegen den Hersteller muss der LN selbst geltend machen, Zahlung nicht einfach einstellen. *Kündigungsgefahr* bei Zahlungsverzug, ggf. plus Schadenersatz.],
+)
+
+=== 2.17.1 Leasing oder Kreditkauf: Barwertvergleich <a-2-17-1>
+
+Leasing und Kreditkauf vergleicht man über den *Barwert der Nettoauszahlungen nach Steuern*. Beim Kreditkauf mindern Abschreibung und Zinsen die Steuer; beim Leasing mindern die Leasingraten die Steuer. Das Zahlenbeispiel der Folien (Perridon/Steiner/Rathgeber, Objekt 100.000 €, 5 Jahre, 8 % Kreditzins, GewSt 10,5 %, KSt 15 %, Diskontierung mit 5,96 %) kommt auf fast denselben Wert:
+
+#tab(columns: (1.6fr, 1fr),
+ th([Variante], [Barwert der Nettoauszahlungen]),
+ [Kreditkauf: Tilgung 20.000 €/Jahr + Zinsen − Steuerentlastung aus AfA und (75 % der) Zinsen bei der GewSt bzw. AfA und Zinsen bei der KSt], [79.045 €],
+ [Leasing: 3 Raten zu 36.505 € und 2 zu 5.000 €, abzüglich Steuerentlastung], [79.047 €],
+)
+Leasing ist damit hier praktisch gleich teuer. Nachgerechnet: Die Zeilen der Folie stimmen (z. B. Jahr 1 Kreditkauf: $20000 + 8000 - 2730 - 4200 = 21070$ €, abgezinst $21070 / "1,0596" approx 19885$ €). Der Satz 5,96 % entspricht $8 % times (1 - "0,255")$; die Folie nennt ihn ohne Herleitung (eigene Deutung).
+
+Das englische Lehrbuchbeispiel *Greymare Bus Lines* (Brealey/Myers/Allen) zeigt dieselbe Logik: Ein Bus für 100.000 \$ kann gekauft oder für 8 Raten zu 16.900 \$ (erste sofort) geleast werden. Die Leasingrate ist steuerlich abzugsfähig (35 %: 5.920 \$ Ersparnis), dafür entfällt die Abschreibung. Abgezinst wird mit dem Kreditzins nach Steuern, $10 % times (1 - "0,35") = "6,5" %$. Die Bilanz zeigt: Die Leasingverpflichtung wirkt wie ein Kredit über den Bus.
+
+*Kernaussagen der Folien 164–166:* Zahlen LG und LN denselben Steuersatz, ist jeder Vorteil des einen ein Nachteil des anderen: Im Beispiel verliert der LN 700 \$, der LG gewinnt 700 \$. Zahlt der LN keine Steuern, gewinnen beide (LN 820 \$), *auf Kosten des Staates*. Der gemeinsame Vorteil ist umso größer, je höher der Steuersatz des LG gegenüber dem des LN, je früher die Abschreibungen anfallen, je länger der Vertrag mit späten Raten und je höher der Zins.
+
+#note("Nachgerechnet", [Mit den Tabellenwerten ergibt sich für Greymare ein Leasingwert von etwa −0,72 Tsd. \$ (abgezinst mit 6,5 %) und im Fall ohne Steuern $100 - sum_(t=0)^7 "16,9"/"1,1"^t approx +"0,82"$ Tsd. \$. Beide Folienaussagen (−700 \$ bzw. +820 \$) stimmen. Eigene Nachrechnung.])
+#src[V, PDF-S. 76–83 (Folien 152–166). Nachrechnung Perridon-Beispiel und Greymare: eigene Prüfung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.18 Schuldschein, Industrieobligation, Barwert und Stückzinsen <a-2-18>
+
+Das *Schuldscheindarlehen* ist ein langfristiges Großdarlehen (1–50 Mio. €). Der Schuldschein ist *kein Wertpapier, sondern eine Beweisurkunde*: Ein Wertpapier (Aktie, Scheck, Anleihe) verkörpert ein Recht, eine Beweisurkunde (Quittung, Schuldschein) beweist nur eine Tatsache. Geber sind neben Banken vor allem Kapitalsammelstellen (Lebensversicherungen, Pensionskassen, Bausparkassen). Der Kreditnehmer braucht sehr gute Bonität und erstklassige Sicherheiten; der Geber kann das Darlehen leicht abtreten (Zession). Vorteile: geringe Kosten, schnelle Beschaffung. Nachteil: Die hohen Anforderungen schränken weitere Verschuldung ein.
+
+*Industrieobligationen* sind Anleihen der gewerblichen Wirtschaft. Viele Anleger stellen kleine Beträge bereit (Teilschuldverschreibungen zu 100, 500, 1.000, 5.000 oder 10.000 €), sodass ein hoher Kapitalbedarf langfristig gedeckt wird. Sie verbriefen *Gläubigerrechte*: fester Zins zu festen Terminen, Tilgung zu einem bestimmten Zeitpunkt, Ansprüche *vor* denen der Aktionäre. Nachteil: hohe Ausgabekosten.
+
+=== 2.18.1 Barwert und Kapitalwert einer Anleihe <a-2-18-1>
+
+Den Wert künftiger Zahlungen heute misst der *Barwert (Present Value, PV)*: jede Zahlung mit dem Kalkulationszins abzinsen und addieren. Den Nettovorteil zeigt der *Kapitalwert (NPV)*: PV minus heutiger Kurs.
+#form[$ "PV" = sum_(t=1)^n frac(Z_t, (1+i)^t) quad quad "NPV" = "PV" - "Kurs" $]
+$Z_t$ = Zahlung im Jahr $t$ (Zins und ggf. Rückzahlung), $i$ = Kalkulationszins je Jahr. Beispiel der Folie bei 10 %: Anleihe 1 (12; 112) hat PV 103,47, Anleihe 2 (60; 60) PV 104,13. Bei einem Kurs von je 100 € ist Anleihe 2 vorzuziehen (NPV 4,13 statt 3,47 €).
+
+=== 2.18.2 Stückzinsen beim Anleihekauf <a-2-18-2>
+
+Wer eine Anleihe zwischen zwei Zinsterminen kauft, bekommt am nächsten Termin den vollen Jahreszins. Deshalb zahlt er dem Verkäufer die seit dem letzten Zinstermin aufgelaufenen *Stückzinsen*.
+#form[$ "Kaufpreis" = "Kurs"/100 times "Nennwert" + "Nennwert" times i_"nom" times "Tage"/"Basis" $]
+Tage seit dem letzten Zinstermin bis zum Valutatag nach der vereinbarten Zinsmethode (2.6), hier actual/actual ohne Schaltjahr, Basis 365. Beispiel der Folie: Nennwert 600 €, Kurs 95, Kupon 4 % am 10.4., Kauf am 21.5.: 41 Tage, Kaufpreis $570 + "2,70" = "572,70"$ €.
+#src[V, PDF-S. 84–86 (Folien 167–171); Zinsmethoden 2.6.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.19 Gesellschafterdarlehen <a-2-19>
+
+Gesellschafter geben ihrer Gesellschaft häufig Darlehen statt Eigenkapital, besonders in kleinen und mittleren Unternehmen und in Krisen, weil sie oft die einzige Geldquelle sind.
+
+#tab(columns: (1fr, 1fr),
+ th([Vorteile laut Folie], [Achtung]),
+ [1 keine Kapitalbeschaffungskosten · 2 flexible Vertragsbedingungen · 3 geringeres Kündigungsrisiko · 4 Finanzierungsquelle, wenn Dritte nichts mehr geben · 5 bessere Position in der Insolvenz als Eigenkapitalgeber · 6 kurzfristige Beseitigung von Insolvenztatbeständen],
+ [Früher konnten Gesellschafterdarlehen nach §§ 32a, 32b GmbHG in *funktionales Eigenkapital umqualifiziert* werden, wenn sie in der Krise gegeben oder stehen gelassen wurden (wenn ein ordentlicher Kaufmann Eigenkapital zugeführt hätte). Folge: keine Geltendmachung in der Insolvenz. *Seit 01.11.2008 (MoMiG):* keine Umqualifizierung mehr, sondern eine *Jahresfrist*.],
+)
+#note("Präzisierung", [Heute sind Forderungen aus Gesellschafterdarlehen in der Insolvenz *nachrangig* (§ 39 Abs. 1 Nr. 5 InsO), und Rückzahlungen im letzten Jahr vor dem Insolvenzantrag sind anfechtbar (§ 135 InsO), das meint die „Jahresfrist“. Punkt 5 der Folie („bessere Position als EK-Geber“) gilt also nur gegenüber Eigenkapital, nicht gegenüber anderen Gläubigern. Eigene Präzisierung.], fill: sand)
+Aus der Übung 4 (Folie 202): Rechtlich ist das Aktionärsdarlehen Fremdkapital, betriebswirtschaftlich hat es Eigenkapitalzüge (*verdecktes Eigenkapital*), weil der Geber dem Unternehmen nahe steht. Ein überhöhter Zins kann eine *verdeckte Gewinnausschüttung* sein, die die übrigen Aktionäre benachteiligt.
+#src[V, PDF-S. 86 und 101 (Folien 172, 201–202). Präzisierung: #link("https://www.gesetze-im-internet.de/inso/__39.html")[§ 39 InsO], #link("https://www.gesetze-im-internet.de/inso/__135.html")[§ 135 InsO], Abruf 13.11.2026.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.20 Hybride und innovative Anleihen <a-2-20>
+
+#bild("map-anleihen", [Mindmap: Anleiheformen nach Ausstattung. Eigene Darstellung nach V, PDF-S. 87–93.], height: 44mm)
+
+=== 2.20.1 Optionsanleihe und Wandelanleihe <a-2-20-1>
+
+Die *Optionsanleihe* ist eine Anleihe plus *Optionsschein*: das Recht, innerhalb einer Frist Aktien zu einem festen *Bezugskurs* zu kaufen. Das Forderungsrecht der Anleihe bleibt bei Ausübung bestehen; Anleihe und Optionsschein können getrennt gehandelt werden. Weil spekulative Anleger über den Optionsschein überproportional von Kurssteigerungen profitieren (*Hebel*), akzeptieren sie einen niedrigeren Zins; das senkt die Finanzierungskosten.
+#form[$ "rechnerischer Wert des Optionsscheins" = "Aktienkurs" - "Bezugskurs" quad ("je Aktie, wenn positiv") $]
+Beispiel der Folie: Bezugskurs 400 €, Aktie 420 € → Wert 20 €. Steigt die Aktie um 10 % auf 462 €, steigt der Optionsschein auf 62 €, also um 210 %, 21-mal so stark.
+
+Die *Wandelanleihe* verbrieft ein *Umtauschrecht* in Aktien (nach einer Sperrfrist). Bei Wandlung wird aus dem Gläubiger ein Eigenkapitalgeber; *die Anleihe erlischt*. Vorteil: Der Anleger profitiert von steigenden Kursen und akzeptiert dafür einen geringeren Zins. Problem: Für die Wandlung werden neue Aktien unter Ausschluss des Bezugsrechts ausgegeben (bedingte Kapitalerhöhung, 3.7), der Anteil der Altaktionäre wird *verwässert*.
+#form[$ "Wandlungsverhältnis" = frac("Erhöhung der Aktienzahl", "Zahl der Wandelschuldverschreibungen") $]
+Beispiel der Folie (Bösch): 100 Mio. € in 100.000 Stücken zu 1.000 €, Kupon 2 %, wandelbar in 10 Mio. Aktien mit 2 € Zuzahlung je Aktie. Wandlungsverhältnis 100: eine Anleihe + 200 € → 100 Aktien. Die Wandlung lohnt sich, sobald 100 Aktien mehr wert sind als 1.000 € + 200 €, also ab dem *kritischen Aktienkurs 12 €*. Darüber steigt der Preis der Wandelanleihe mit dem Aktienkurs (bei 14 €: 1.400 − 200 = 1.200 €).
+
+#tab(columns: (1fr, 1fr, 1fr, 1.4fr),
+ th([], [Aktie], [Anleihe], [Wandelanleihe]),
+ [Beteiligung], [Teilhaberpapier], [Gläubigerpapier], [Gläubigerpapier],
+ [Kapital], [EK], [FK], [vor Wandlung FK, danach EK],
+ [Verzinsung], [schwankend], [fest], [fest, niedriger als Anleihe],
+ [Rückzahlung], [nur Anteil am Liquidationserlös], [Anspruch auf Rückzahlung], [Rückzahlung oder Wandlung zu festem Preis in fester Frist],
+ [Mitwirkung], [ja], [keine], [keine],
+)
+
+=== 2.20.2 Gewinnobligation und Genussschein <a-2-20-2>
+
+Die *Gewinnobligation* zahlt zusätzlich zum festen Zins einen von der Dividende abhängigen Zusatzzins: Fremdkapital mit Erfolgsbeteiligung. Der *Genussschein* verbrieft Genussrechte, also Ansprüche am Reingewinn oder Liquidationserlös, aber als *Gläubigerrecht ohne Mitgliedschaftsrechte* (kein Stimmrecht), meist befristet. Beispiel der Folie: Genussscheine der Bertelsmann AG sind börsennotiert, während die Aktien in Privatbesitz sind. Vorteile: Haftungskapital wird beschafft (passiviert als Genussscheinkapital, keine Einlage); „Aktiensurrogat“ für nicht emissionsfähige Unternehmen. Besonderheit: gesetzlich nicht geregelt, jeder Genussschein ist anders, Risiken sind für Anleger schwer vergleichbar.
+
+=== 2.20.3 Zerobond, Floater, Index- und Doppelwährungsanleihe <a-2-20-3>
+
+Die *Null-Kupon-Anleihe (Zerobond)* zahlt keine laufenden Zinsen; sie wird weit unter dem Rückzahlungskurs ausgegeben, die Differenz ist der Zinsertrag. Für den Emittenten: keine laufende Liquiditätsbelastung, aber eine sehr hohe am Ende. Privatanleger versteuern erst bei Verkauf oder Einlösung (Zuflussprinzip), das stundet die Steuer.
+#form[$ K_0 (1+r)^n = K_n quad arrow.r.double quad r = root(n, K_n/K_0) - 1 $]
+$K_0$ = Kaufkurs, $K_n$ = Rückzahlung nach $n$ Jahren, $r$ = Rendite pro Jahr (Zinseszins). Beispiel der Folie: 7 Jahre, Kurs 65 %: $r = root(7, 100/65) - 1 approx "6,35" %$.
+
+#tab(columns: (1.2fr, 2.6fr),
+ th([Form], [Merkmal]),
+ [*Floating Rate Notes*], [variabler Zins, alle 3 oder 6 Monate an einen Referenzzins angepasst (laut Folie LIBOR, EURIBOR) plus bonitätsabhängiger Auf- oder Abschlag. Der LIBOR wurde inzwischen eingestellt; heute dienen z. B. EURIBOR oder €STR (eigene Ergänzung).],
+ [*Indexanleihen*], [Zins und/oder Tilgung hängen an einem benannten Index: Ölpreis, Inflationsrate, Aktienindex.],
+ [*Doppelwährungsanleihen*], [an zwei Währungen gebunden: Zinsen meist in Euro, Rückzahlung in einer anderen, vertraglich festgelegten Währung. Währungsrisiko für den Anleger, dafür Zinsen über dem üblichen Kapitalmarktzins.],
+)
+#src[V, PDF-S. 87–93 (Folien 173–185); Vergleichstabelle nach Übung 5, V, PDF-S. 102 (Folie 204). LIBOR-Hinweis: eigene Ergänzung.]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.21 Exkurs: Bestimmungsfaktoren des Wechselkurses <a-2-21>
+
+Die Doppelwährungsanleihe führt zur Frage, wovon Wechselkurse abhängen. Die Folien (nach Rübel, Monetäre Außenwirtschaft) nennen mehrere Erklärungsansätze:
+
+#tab(columns: (1.3fr, 2.6fr),
+ th([Ansatz], [Kernaussage]),
+ [*Kaufkraftparität*], [Absolut: Wechselkurs = Verhältnis von In- zu Auslandspreisniveau. Relativ: Die prozentuale Wechselkursänderung entspricht der Differenz der Inflationsraten (solange Marktunvollkommenheiten konstant sind).],
+ [*Produktivität*], [Das Land mit dem größeren Produktivitätsfortschritt bei handelbaren Gütern wertet real auf, das andere real ab.],
+ [*Monetäre Theorie*], [Ungleichgewichte am Geldmarkt wirken auf den Devisenmarkt: Geldangebotsüberschuss → Abwertung, Geldnachfrageüberschuss → Aufwertung der Inlandswährung.],
+ [*Finanzmarkttheorie*], [In- und ausländische Anlagen sind nicht vollkommen austauschbar. Wollen Anleger weniger Auslandsanlagen halten → Aufwertung; mehr → Abwertung der Inlandswährung.],
+ [*Zinsparität*], [Bei vollkommener Austauschbarkeit bestimmen Zinsen und erwarteter Kurs den Kassakurs. Erwartete Abwertung oder höherer Auslandszins → Abwertung der Inlandswährung heute.],
+ [*Überschießen*], [Zinsparität gilt sofort, Kaufkraftparität erst langfristig (träge Güterpreise). Nach einer Geldmengenerhöhung steigt der Kassakurs zunächst über seinen langfristigen Wert.],
+ [*Weitere*], [Bei effizienten Märkten enthält der Terminkurs ggf. Risikoprämien; *spekulative Blasen* (immer größere Abweichung vom Fundamentalwert); technische Analyse, Herdenverhalten, Noise Trading.],
+)
+#note("Fehler vermeiden", [Bei Wechselkursen in Preisnotierung (Inlandswährung je Einheit Auslandswährung) bedeutet ein *steigender* Kurs eine *Abwertung* der Inlandswährung. Lies immer zuerst, welche Notierung gemeint ist. Eigene Erläuterung.], fill: sand)
+#src[V, PDF-S. 93–97 (Folien 186–194).]
+#hoch(<a-2>, [Kapitelübersicht])
+
+== 2.22 Geldanlage aus Anlegersicht: Erträge, Kurse und Basispunkte <a-2-22>
+
+Die Übungen 6–9 am Ende von Teil B wechseln die Perspektive: Was hat der *Anleger* von Anleihe, Aktie und Optionsschein?
+
+#tab(columns: (1fr, 2fr),
+ th([Begriff], [Bedeutung (Übungen 6, 7, 9)]),
+ [Ertragsarten], [*Zinsen* (Sparkonto, Anleihe), *Dividenden* (nur Aktien), *Kursgewinne* (Wertsteigerung), *Währungsgewinne* (Fremdwährungsanlagen)],
+ [Geld- und Briefkurs], [Gekauft wird zum *Briefkurs* (Ask), verkauft zum *Geldkurs* (Bid). Die Differenz heißt *Geld-Brief-Spanne* (Spread); wer sofort kauft und verkauft, verliert sie. Kleine Spanne = Markt schätzt den Wert einheitlich ein.],
+ [Prozent und Prozentpunkte], [30 % → 33 % ist ein Anstieg um 10 *Prozent*, 30 % → 40 % um 10 *Prozentpunkte*.],
+ [Basispunkte], [1 Basispunkt = 0,01 Prozentpunkte. 8 Basispunkte = 0,08 Prozentpunkte; 3 % plus 200 Basispunkte = 5 %.],
+)
+
+*Übung 8 (Herr Müller):* 800.000 € für ein Jahr; 5 % Optionsanleihe der Flama AG (Kurs mit Optionsschein 100 %, ohne 97,5 %, beides unverändert), je 2.000 € nominal ein Optionsschein auf eine Aktie zu 850 €; Aktie von 800 € auf 905 €, Dividende 40 €.
+
+#tab(columns: (1.6fr, 1.6fr, 1fr),
+ th([Variante], [Rechnung], [Gewinn]),
+ [1.000 Aktien], [$1000 times (105 + 40)$], [145.000 €],
+ [Optionsanleihe mit 400 Optionsscheinen], [Zins $5 % times 800000$ plus $400 times 5$ € Wertzuwachs der Scheine], [42.000 €],
+ [Optionsanleihe ohne Schein (ca. 820.000 € nominal)], [$5 % times 820000$], [41.000 €],
+ [16.000 Optionsscheine zu 50 €], [$16000 times 5$ €], [80.000 €],
+)
+Der Optionsschein kostet anfangs $(100 % - "97,5" %) times 2000 = 50$ € und ist am Jahresende $905 - 850 = 55$ € wert; daher 5 € Gewinn je Schein. Die Aktie bringt bei sicheren Daten den höchsten Gewinn. Weitere Kriterien: Wie sicher sind die Annahmen, welches Risiko will der Anleger tragen und wie schnell kommt er wieder an sein Geld?
+#note("Nachgerechnet", [Für 800.000 € bekommt man bei 97,5 % genau $800000 / "0,975" approx "820.513"$ € nominal; die Folie rundet auf 820.000 €. Ein Kursrückgang des Optionsscheins hätte die Variante 4 (Hebel, vgl. 2.20.1) zur schlechtesten gemacht. Eigene Nachrechnung.], fill: sand)
+#src[V, PDF-S. 103–107 (Folien 205–214).]
+#hoch(<a-2>, [Kapitelübersicht])
+
 #block(breakable: false)[
-*Der Zusammenhang in Kapitel 2.* Feste Zahlungsansprüche erklären, warum der Gläubiger Bonität und Sicherheiten prüft. Rating und Bankkapital übersetzen Risiko in Bedingungen der Kreditvergabe. Der Vertrag legt Zahlungsfahrplan und Verhaltensgrenzen fest; Zinstage, Zinstermine und Auszahlung bestimmen die Vergleichbarkeit. Tilgung führt die Schuld zurück, während Kündigung und möglicher Zinsschaden den vorzeitigen Ausstieg regeln. Die Altklausur verknüpft diese Bausteine in vollständigen Rechen- und Erklärfällen.
-#src[V, PDF-S. 40–58; K, PDF-S. 1–2. Eigene Zusammenfassung des Kapitels.]
+*Der Zusammenhang in Kapitel 2.* Feste Zahlungsansprüche erklären, warum der Gläubiger Bonität und Sicherheiten prüft. Rating und Bankkapital übersetzen Risiko in Bedingungen der Kreditvergabe; die Bank selbst refinanziert sich über Einlagen und die Zentralbank, deren Leitzins und die Zinsstruktur den Kreditpreis prägen. Der Vertrag legt Zahlungsfahrplan, Sicherheiten und Verhaltensgrenzen fest; Zinstage, Zinstermine, Auszahlung und Sondertilgungsrechte bestimmen die tatsächliche Belastung. Kurzfristig finanzieren Lieferantenkredit, Kontokorrent, Aval, Factoring und Lombard das Umlaufvermögen, langfristig Darlehen, Leasing, Schuldschein und Anleihen das Anlagevermögen. Hybride Anleihen verbinden Fremdkapital mit Aktienbezug und leiten zum Eigenkapital in Kapitel 3 über.
+#src[V, PDF-S. 40–107; K, PDF-S. 1–2. Eigene Zusammenfassung des Kapitels.]
 #hoch(<a-2>, [Kapitelübersicht])
 ]
 
+
+#pagebreak()
+#pagebreak()
+= Kapitel 3 · Eigen- und Selbstfinanzierung <a-3>
+
+#überblick([Kapitel 3 auf einen Blick],
+ idee(<a-3-1>, [Gewinn behalten.], [Selbstfinanzierung ist einbehaltener Gewinn, offen als Rücklage oder still über stille Reserven.]),
+ idee(<a-3-2>, [Aufwand ohne Auszahlung nutzen.], [Abschreibungen, Rückstellungen und Vermögensverkäufe setzen Geld frei, ohne neue Kapitalgeber.]),
+ idee(<a-3-4>, [Rechtsform bestimmt die Regeln.], [Haftung, Mindestkapital und Kapitalerhaltung schützen die Gläubiger.]),
+ idee(<a-3-5>, [Ausschüttung planen.], [Was ausgeschüttet wird, muss erst finanziert sein.]),
+ idee(<a-3-7>, [Eigenkapital von außen.], [Kapitalerhöhung, Bezugsrecht, Kapitalherabsetzung und Cash Pooling im Konzern.]),
+)
+#karte((1fr, auto, 1fr, auto, 1fr),
+ chunk([Innenfinanzierung], [offene und stille Selbstfinanzierung · Abschreibungen · Rückstellungen · Vermögensumschichtung], ziel: <a-3-1>),
+ pfeil(beschriftung: [reicht nicht]),
+ chunk([Außen: Eigenkapital], [Rechtsform · Mindestkapital · Kapitalerhöhung · Bezugsrecht], ziel: <a-3-4>),
+ pfeil(beschriftung: [Gläubigerschutz]),
+ chunk([Grenzen und Konzern], [Kapitalerhaltung · Ausschüttungsplan · Herabsetzung · Cash Pooling], ziel: <a-3-6>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
+Kapitel 2 hat gezeigt, wie ein Unternehmen Geld leiht. Jetzt geht es um Geld, das nicht zurückgezahlt werden muss: einbehaltene Gewinne und Eigenkapital der Eigentümer. Die Lösungsstrategie: Erst fragen, ob der Zufluss von *innen* (Umsatzprozess) oder von *außen* (Eigentümer) kommt, dann, welche gesetzlichen Regeln für Ausschüttung und Kapital gelten. *Selbststudium:* Das Kapitel stammt aus den Folien 215–295 und war am 13.11.2026 noch nicht in der Vorlesung behandelt.
+#src[V, PDF-S. 108–148 (Folien 215–295).]
+
+== 3.1 Selbstfinanzierung: offen und still <a-3-1>
+
+*Selbstfinanzierung* entsteht durch *Einbehaltung von Gewinnen (Thesaurierung)*. Gewinne, die weder als Ausschüttung an die Gesellschafter noch als Steuern abfließen, stehen dem Unternehmen zur Verfügung. Selbstfinanzierung ist zugleich *Eigen- und Innenfinanzierung* (vgl. 1.2).
+
+#bild("map-selbstfinanzierung", [Mindmap: vier Wege der Innenfinanzierung. Eigene Darstellung nach V, PDF-S. 108–113.], height: 44mm)
+
+#tab(columns: (1fr, 1.5fr, 1.5fr),
+ th([], [Offene Selbstfinanzierung], [Stille Selbstfinanzierung]),
+ [Erkennbar?], [im Jahresabschluss sichtbar, aus *versteuertem* Gewinn], [nicht sichtbar, beruht auf *stillen Reserven*],
+ [Wo?], [Einzelfirma, OHG, KG: Kapitalkonten (ohne Entnahmen); GmbH, AG, KGaA, SE: Gewinnrücklagen, ggf. Gewinnvortrag], [Aktiv: Nichtaktivierung oder zu niedrige Bewertung; Passiv: zu hohe Wertansätze (Rückstellungen)],
+ [Beispiel der Folie], [Ein zur Ausschüttung vorgesehener Bilanzgewinn wirkt bis zur Zahlung als *temporäre* Selbstfinanzierung: Bei Ausschüttung zum Jahresende arbeitet man im Schnitt mit etwa der Hälfte des Gewinns.], [AfA 20.000 € bei Wertverlust 16.000 € → Potenzial 4.000 €. Prozessrückstellung 20.000 €, nötig nur 14.000 € → Potenzial 6.000 €.],
+)
+Stille Reserven *mindern im Jahr der Bildung den ausgewiesenen Gewinn*. Das schont die Liquidität doppelt: Es muss weniger ausgeschüttet werden, und die Ertragsteuern sinken. Das ist eine *Steuerstundung*, denn die spätere Auflösung erhöht Gewinn und Steuer wieder.
+
+#tab(columns: (1fr, 1.6fr, 1.6fr),
+ th([Kriterium], [Vorteile], [Nachteile]),
+ [Rentabilität], [keine Beschaffungs- und Zinskosten; Steuerstundung bringt zinslose Mittel], [keine externe Kontrolle → Gefahr weniger rentabler Projekte; Ertragsteuern schmälern den einbehaltenen Gewinn, kein Leverage-Effekt],
+ [Liquidität], [keine Liquiditätsabflüsse], [Zufluss eng begrenzt (nur so viel, wie verdient wird)],
+ [Sicherheit], [stärkt die Eigenkapitalbasis], [Gefahr riskanter Investitionen ohne Kontrolle],
+ [Unabhängigkeit], [keine externen Kapitalgeber, keine Vorgaben, keine Sicherheiten, flexiblere Konditionen], [–],
+)
+#note("Fehler vermeiden", [Gewinn ist nicht gleich Geld (1.4). Einbehaltener Gewinn finanziert nur, wenn er als Zahlungsüberschuss tatsächlich im Unternehmen ist. Die Übung 3 nennt genau das als Problem: „Gewinne sind in der Regel nur als Buchgewinne vorhanden, nicht als liquide Mittel.“], fill: sand)
+#src[V, PDF-S. 108–110 (Folien 216–220); V, PDF-S. 117 (Folie 233).]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.2 Finanzierung aus Abschreibungen, Rückstellungen und Vermögensumschichtung <a-3-2>
+
+=== 3.2.1 Abschreibungen <a-3-2-1>
+
+Abschreibungen erfassen den Wertverlust des Anlagevermögens als Aufwand, ohne dass in dieser Periode Geld abfließt. Ein *Finanzierungseffekt* entsteht, wenn die Abschreibungen in die Verkaufspreise einkalkuliert sind und die Umsatzerlöse mindestens die Selbstkosten decken. Dann fließen die Abschreibungen als Einzahlungen zurück:
+
+#karte((1fr, auto, 1fr, auto, 1fr, auto, 1fr),
+ chunk([Abschreibung buchen], none), pfeil(),
+ chunk([als Produktkosten erfassen], none), pfeil(),
+ chunk([Umsatzerlöse aus dem Verkauf], none), pfeil(),
+ chunk([Rückfluss als Einzahlung], none),
+)
+Die Folie nennt zwei Effekte: den *Kapitalfreisetzungseffekt* (zurückgeflossene Abschreibungen sind bis zur Ersatzinvestition frei verfügbar) und den *Kapazitätserweiterungseffekt*: Werden die zurückgeflossenen Beträge sofort in gleichartige Anlagen investiert, wächst der Maschinenbestand ohne neues Kapital. In der Übung 1 (Expans AG, Aufgaben) wächst der Bestand von 10 auf bis zu 20 Maschinen, pendelt aber nach dem Ausscheiden der ersten Maschinen bei 14–15. Eine Umsatzsteigerung um 65 % (17 Maschinen) im 7. Jahr lässt sich deshalb nicht allein aus Abschreibungen finanzieren.
+#note("Gültigkeit", [Der Kapazitätserweiterungseffekt setzt voraus: Abschreibungen werden über die Preise verdient, sofort reinvestiert, die Anlagen sind beliebig teilbar bzw. in ganzen Stück kaufbar, Preise bleiben gleich, und das Umlaufvermögen wächst nicht mit. Eigene Präzisierung.], fill: sand)
+
+=== 3.2.2 Rückstellungen <a-3-2-2>
+
+*Rückstellungen* sind ungewisse Verbindlichkeiten, unsicher nach Grund, Höhe und/oder Fälligkeit (statische Sicht). Dynamisch gesehen sind es Aufwendungen der jetzigen Periode, die erst später wahrscheinlich zu Auszahlungen führen; sie dienen der periodengerechten Aufwandszuordnung. Nach § 249 HGB zulässig sind u. a. Rückstellungen für ungewisse Verbindlichkeiten, drohende Verluste aus schwebenden Geschäften, unterlassene Instandhaltung und Abraumbeseitigung sowie Gewährleistungen. In der Bilanz (§ 266 Abs. 3 HGB) stehen drei Posten: *Pensionsrückstellungen*, *Steuerrückstellungen*, *sonstige Rückstellungen*. Fällt der Grund weg, werden sie gewinnerhöhend aufgelöst.
+
+*Finanzierungswirkung:* Der Rückstellungsaufwand fließt über die Umsatzerlöse zurück, die Auszahlung kommt aber erst später. Der Effekt ist umso stärker, je höher das Volumen und je länger der Zeitraum zwischen Bildung und Inanspruchnahme. Er wirkt unabhängig von der Gewinnverwendung. Besonders wichtig sind *Pensionsrückstellungen* (langfristig, hohes Volumen).
+
+=== 3.2.3 Vermögensumschichtung <a-3-2-3>
+
+Bei der *Vermögensumschichtung* verkauft das Unternehmen Vermögen außerhalb des normalen Umsatzprozesses: Sachgüter (Grundstücke, Maschinen, Vorräte), immaterielle Güter (Patente, Lizenzen) oder Finanzwerte (Beteiligungen, Aktien). Zum Buchwert verkauft ist das ein *Aktivtausch*: Vermögen wird zu Bankguthaben, die Passivseite bleibt gleich. Werden mit dem Geld Schulden getilgt, entsteht eine *Bilanzverkürzung*, und die *Eigenkapitalquote steigt*.
+
+#tab(columns: (1.4fr, 1fr, 1fr),
+ th([Beispiel der Folie (Tsd. €)], [vor Verkauf], [nach Verkauf]),
+ [Übrige Aktiva / Fuhrpark / Liquide Mittel], [430 / 130 / 140], [430 / 120 / 150],
+ [Eigenkapital / Fremdkapital], [220 / 480], [220 / 480],
+ [Bilanzsumme], [700], [700],
+)
+#src[V, PDF-S. 111–114 (Folien 221–227). Gültigkeitskasten: eigene Präzisierung.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.3 Selbst-, Beteiligungs- oder Kreditfinanzierung? <a-3-3>
+
+Die Übung 2 der Folien vergleicht die drei Grundformen. *Selbstfinanzierung* = einbehaltene Gewinne (innen); *Beteiligungsfinanzierung* = Eigentümer geben Kapital von außen (Eigenkapital); *Kreditfinanzierung* = Kapital wird geliehen (Fremdkapital).
+
+#tab(columns: (1.8fr, 1fr, 1fr, 1fr),
+ th([Merkmal laut Folie], [Selbst], [Beteiligung], [Kredit]),
+ [Unabhängig von Kapitalgebern], [ja], [nein], [nein],
+ [Beteiligungsverhältnisse unberührt], [ja], [nein], [ja],
+ [auch in „schlechten Zeiten“ möglich], [bedingt], [nein], [bedingt],
+ [keine Zinszahlungen], [ja], [ja], [nein],
+ [keine Dividenden], [nein], [nein], [ja],
+ [keine Rückzahlung], [ja], [ja], [nein],
+ [begünstigt FK-Aufnahme], [ja], [ja], [nein],
+ [steuerliche Vorteile], [bedingt], [nein], [ja],
+ [Nachteil: kurzfristig geringere Rendite für Kapitalgeber], [ja], [ja], [nein],
+ [Nachteil: geringere EK-Rendite (Leverage)], [ja], [ja], [nein],
+)
+*Bedeutung der Selbstfinanzierung (Übung 3):* Der wachsende Kapitalbedarf lässt sich nicht nur von außen decken (Börse unsicher, zu viel FK wird riskant und teuer). Beteiligungsverhältnisse bleiben gleich, die Liquidität wird geschont, stille Reserven stunden Steuern und vermeiden auf den einbehaltenen Teil die Doppelbesteuerung (Gesellschaft und Aktionär), und in Inflationszeiten erhält sie die Substanz. *Probleme:* verärgerte Aktionäre bei zu geringer Dividende, Gewinne oft nur als Buchgewinn vorhanden, sinkende EK-Rendite (negativer Leverage-Effekt). *Gefahren der verdeckten (stillen) Selbstfinanzierung:* Bei Verlusten werden stille Reserven aufgelöst, und Dividenden greifen die Substanz an; Verluste lassen sich verschleiern, die Risikobereitschaft steigt, die wahre Lage bleibt Anlegern verborgen.
+#note("Typische Tabellenlücke", [Die Zellen der Folie 230 sind im Export teils verschoben; die Tabelle oben ist die eigene, inhaltlich geprüfte Zuordnung nach der Logik der drei Formen (z. B. Kredit: Zinsen ja, Dividenden nein, Rückzahlung ja). Lerne die Begründung, nicht die Tabelle auswendig.], fill: sand)
+#src[V, PDF-S. 114–117 (Folien 228–233). Zellzuordnung Folie 230: eigene Rekonstruktion.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.4 Rechtsform, Eigenkapital und Eigenkapitalbeschaffung <a-3-4>
+
+Die Rechtsform legt die Finanzierungsregeln fest. Die Folie nennt neun Aspekte: Mindesteigenkapital, Haftung, Nachschusspflichten, Trennung von Eigentum und Geschäftsführung, Kapitalzuführung und Finanzierungsalternativen, Eigentumsrechte, Bilanzierungs- und Publizitätspflichten, Regeln für Gewinnentnahmen sowie Ein- und Austritt von Gesellschaftern.
+
+#tab(columns: (1fr, 1.5fr, 1.5fr, 1.5fr),
+ th([], [Einzelunternehmen], [GmbH], [AG]),
+ [Haftung], [persönlich, unbeschränkt], [nur in Höhe der Stammeinlage], [nur in Höhe der Einlage (Aktie)],
+ [Mindestkapital], [keines], [Stammkapital 25.000 €], [Grundkapital 50.000 €],
+ [Gewinnentnahme], [unbeschränkt], [Ausschüttungssperren, Erhaltungsgebot § 30 GmbHG], [Ausschüttungssperren (z. B. § 150 AktG), Erhaltungsgebot § 57 AktG],
+ [Leitung], [Eigentümer allein], [Geschäftsführer (können Gesellschafter sein)], [Trennung Eigentum / Kontrolle (Vorstand)],
+ [Kapital, Wechsel], [Privatvermögen und nicht entnommene Überschüsse], [Nachschusspflicht vereinbar; Anteile nicht verbrieft, Übertragung notariell], [keine Nachschusspflicht; Aktien formlos übertragbar, Zugang zum Kapitalmarkt],
+ [Organe, Publizität], [–], [Gesellschafterversammlung], [Hauptversammlung; umfangreiche Publizität],
+)
+
+*Eigenfinanzierung im engen Sinn:* Bisherige Eigentümer führen Eigenkapital von außen zu. Kommen neue Gesellschafter hinzu, spricht man von *Beteiligungsfinanzierung*. Eigenkapital sind die zeitlich unbegrenzt überlassenen Mittel der Eigentümer, von außen (Einlage) oder von innen (Gewinnverzicht).
+
+#tab(columns: (1fr, 2.5fr),
+ th([Begriff], [Zusammensetzung]),
+ [Nominalkapital], [Grund- oder Stammkapital],
+ [Rechnerisches EK], [Grund-/Stammkapital + Rücklagen ± Gewinn bzw. Verlust],
+ [Effektives EK], [rechnerisches EK + *stille Reserven*],
+)
+Bei Kapitalgesellschaften sind die *Rücklagen das variable Eigenkapital*: Sie fangen Verluste auf, ohne das konstante Nominalkapital anzugreifen.
+
+*Eigenkapitalbeschaffung* unterscheidet sich nach der Emissionsfähigkeit. *Nicht emissionsfähige* Unternehmen (Einzelunternehmen, OHG, KG, GmbH, „kleine AG“) müssen den Eintrittspreis eines neuen Gesellschafters aushandeln, ihn auf gewinnberechtigten Kapitalanteil und Aufgeld (*Agio*) aufteilen und Kontroll- und Gewinnrechte im Gesellschaftsvertrag regeln. *Emissionsfähige* Unternehmen (AG, KGaA) beschaffen Eigenkapital über die Börse.
+
+=== 3.4.1 Aktien: Kauf, Aktienart und Börsengang <a-3-4-1>
+
+*Aus Anlegersicht* verteuern Transaktionskosten den Aktienkauf. Der *Break-even-Kurs* ist der Kurs, ab dem Kauf- und Verkaufskosten verdient sind:
+#form[$ "Break-even-Kurs" = "Kaufkurs" + frac("Kosten Kauf" + "Kosten Verkauf", "Stückzahl") $]
+Kosten als Ordergebühr plus Handelsplatzentgelt; Mindest- und Höchstgebühren beachten; die Verkaufskosten hängen eigentlich vom Verkaufskurs ab (Folie: näherungsweise gleich). Beispiel der Folie: Kauf zu 40 €, bei 400 € Anlage Break-even 42 €, bei 4.000 € nur 40,32 €, weil die Mindestgebühr kleine Orders stark belastet.
+
+#tab(columns: (1fr, 1.5fr, 1.5fr),
+ th([], [Inhaberaktie], [Namensaktie]),
+ [Rechtsstatus], [Inhaberpapier], [Orderpapier],
+ [Übertragung], [durch bloße Übergabe], [mit Eintrag ins Aktienregister],
+ [Eigentümer], [der Gesellschaft nicht bekannt], [der Gesellschaft bekannt],
+)
+*Vinkulierte Namensaktien* dürfen nur mit Zustimmung der Gesellschaft übertragen werden; so hält man unerwünschte Aktionäre fern. Betriebswirtschaftlich steuert die Aktienart *Unabhängigkeit* (Einfluss), *Aktionärsbindung* und *Handelbarkeit* (Inhaberaktien erreichen ein breiteres Publikum).
+
+Beim *Going Public* wird eine private AG zur Publikumsgesellschaft. Der Ausgabepreis entsteht entweder als *fester Ausgabekurs* oder im *Bookbuilding-Verfahren* (Auktionsprinzip: Zeichner nennen Menge und Preis, der endgültige Preis wird nach der Zeichnungsfrist festgelegt).
+
+#tab(columns: (0.8fr, 1.6fr, 1.6fr),
+ th([], [Fester Ausgabekurs], [Bookbuilding]),
+ [Vorteile], [geringes Risiko; „Geschenke“ an künftige Aktionäre über niedrigen Kurs; mehr Einfluss; einfacher; Mitarbeiterbeteiligung planbar], [berücksichtigt Kapitalmarktlage; vermeidet zu hohen oder zu niedrigen Kurs; Preisvorstellungen der Anleger fließen ein],
+ [Nachteile], [Marktstimmung schwer zu schätzen; zu hoch → nicht alles platzierbar; zu niedrig → Agio verschenkt, Zeichner verärgert], [höheres Risiko; tendenziell höhere Kurse; kaum kurzfristige Börsengewinne; kein Einfluss des Unternehmens auf den Preis],
+)
+#src[V, PDF-S. 117–120 (Folien 234–239); V, PDF-S. 139–141 (Folien 277–281).]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.5 Ausschüttungspolitik <a-3-5>
+
+*Ausschüttung* ist der Teil des Gewinns, der an die Anteilseigner verteilt wird (AG: Dividende, GmbH: Gewinnausschüttung). *Dividendenpolitik* umfasst alle Ziele und Maßnahmen dazu: ob und wie viel ausgeschüttet wird. Grundsatzentscheidung: *kontinuierliche (stabile)* oder *variable (gewinnorientierte)* Dividende.
+
+#tab(columns: (1fr, 1fr),
+ th([Interne Bestimmungsgrößen], [Externe Bestimmungsgrößen]),
+ [Gesetz und Satzung · künftiger Kapitalbedarf · Liquidität · bisherige Dividendenpolitik], [Wünsche der Aktionäre · Dividendenpolitik der Konkurrenz · Erträge der Anlagealternativen · Wirkung auf Gewerkschaften],
+)
+*Stabile Dividende:* verhindert spekulative Börsengeschäfte, passt zu langfristigen Anlegern. *Gewinnabhängige Dividende:* Die Aktie ist ein Risikopapier, der Aktionär soll am guten Geschäftsgang teilhaben; andere Faktoren können trotzdem berücksichtigt werden.
+
+=== 3.5.1 Ausschüttung und Finanzplan: das Beispiel Value AG <a-3-5-1>
+
+Eine Ausschüttung ist eine Auszahlung. Sie ist nur möglich, wenn der Finanzplan sie trägt. Die Folien rechnen mit der Value AG (Drukarczyk/Schüler): Umsatz und betriebliche Aufwendungen sind zahlungsgleich, Abschreibungen und Pensionszuführungen nicht. Die Steuern sind vereinfacht: Gewerbeertragsteuer 14 % auf Ergebnis vor Steuern plus 25 % der Zinsen, Körperschaftsteuer 15 % auf das Ergebnis vor Steuern, Abgeltungsteuer 25 % beim Aktionär.
+
+#form[$ "entziehbarer Überschuss" &= "Umsatz" - "zahlungswirksame Aufwendungen" - "Zinsen" - "Steuern" \ &quad - "Investitionen" - Delta "NWC" - "Tilgung" - "Rentenzahlungen" $]
+Alles in derselben Periode und Währung; nur Zahlungen, keine Abschreibungen oder Rückstellungszuführungen. Für Jahr 1 ergeben sich 1.420,2 T€ verfügbarer Zahlungsüberschuss. Die Folie teilt ihn in Abgeltungsteuer (531,9) und Ausschüttung (888,3) auf; das ist der entziehbare Überschuss, ohne neues Fremdkapital aufzunehmen.
+
+Soll dagegen der *ganze Jahresüberschuss* (2.127,6 T€) ausgeschüttet werden (Vollausschüttung), reicht das Geld nicht: Es entsteht ein Finanzierungsdefizit von $"1420,2" - "2127,6" = -"707,4"$ T€, das durch Kredit gedeckt werden muss. Im Jahr 2 sind es 900 bzw. 750,2 T€.
+
+#note("Fehler in der Folie", [Folie 248 nennt als „Thesaurierung“ 647,4 bzw. 551,0 T€. Aus den eigenen Zahlen der Folie folgt aber $"2127,6" - "531,9" - "888,3" = "707,4"$ T€ bzw. $"2200,3" - "550,1" - 900 = "750,2"$ T€, genau die „Rücklagenzuführung“ der großen Tabelle (Folie 245). Die Folienwerte sind um die NWC-Erhöhung (60 bzw. 199,2) zu klein. Außerdem wird die Abgeltungsteuer im Plan auf den vollen Jahresüberschuss gerechnet, obwohl nicht alles ausgeschüttet wird; das ist eine Vereinfachung der Quelle. Eigene Nachrechnung.], fill: sand)
+#src[V, PDF-S. 120–126 (Folien 240–251). Nachrechnung: eigene Prüfung.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.6 Mindestkapital und Kapitalerhaltung <a-3-6>
+
+*GmbH:* Stammkapital mindestens 25.000 € (§ 5 Abs. 1 GmbHG); bei Gründung muss nur die Hälfte eingezahlt sein. Die bei der GmbH-Reform (MoMiG) geplante Senkung auf 10.000 € kam nicht. Alternativ die *UG (haftungsbeschränkt)* nach § 5a GmbHG mit theoretisch 1 € Mindestkapital („Mini-GmbH“). *AG:* Grundkapital mindestens 50.000 € (§ 7 AktG).
+
+#note("Landläufiger Irrtum", [Das Stammkapital ist *keine Sicherungseinlage*, die auf dem Konto liegen bleibt. Das eingezahlte Kapital darf für Ausgaben im Rahmen des Unternehmenszwecks verwendet werden. Unzulässig ist nur die Rückzahlung an die Gesellschafter. Es kann auch durch Sacheinlagen erbracht werden. Tritt ein Gesellschafter vor voller Einzahlung aus, haften die übrigen.], fill: sand)
+
+Die *Kapitalerhaltung* (§ 30 GmbHG) ist das Kernstück des Gläubigerschutzes: Das zur Erhaltung des Stammkapitals erforderliche Vermögen darf nicht an die Gesellschafter ausgezahlt werden. Gewinne werden nur ausgezahlt, wenn dabei das Stammkapital nicht angegriffen wird. Eingezahlte Nachschüsse dürfen zurückgezahlt werden.
+#form[$ "Stammkapital angegriffen, wenn:" quad "Aktiva" - "Verbindlichkeiten" < "Nennbetrag des Stammkapitals" $]
+Das Zitat der Folie (Hemmer/Wüst/Seuffert) betont: Die Regeln verhindern nicht, dass das Kapital durch Verluste verloren geht; sie verhindern nur, dass es durch offene oder verdeckte Ausschüttungen aufgebraucht wird.
+
+#tab(columns: (1fr, 1fr),
+ th([AG: sehr streng], [GmbH: flexibler]),
+ [jede Einlagenrückgewähr verboten (§ 57 Abs. 1, 2 AktG); vor Auflösung nur Ausschüttung des Bilanzgewinns (§ 57 Abs. 3 AktG); Erwerb eigener Aktien grundsätzlich verboten (§§ 71–71e AktG)], [Stammkapital wird passiviert; ausschüttbar ist nur das Reinvermögen über dem Stammkapital (§ 29 GmbHG); eigene Anteile nur aus Vermögen über dem Stammkapital (§ 33 GmbHG)],
+)
+#src[V, PDF-S. 126–128 (Folien 252–256).]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.7 Kapitalerhöhung und Bezugsrecht <a-3-7>
+
+Die *Kapitalerhöhung* (Eigenkapitalerhöhung) führt Eigenkapital von außen zu und ist damit *Eigen- und Außenfinanzierung*. Bisherige Gesellschafter stocken auf oder neue treten ein; die Motive sind finanziell und/oder strategisch.
+
+#bild("map-kapitalerhoehung", [Mindmap: vier Formen der Kapitalerhöhung und die Kapitalherabsetzung. Eigene Darstellung nach V, PDF-S. 129–134.], height: 44mm)
+
+#tab(columns: (1.3fr, 2.6fr),
+ th([Form (AG)], [Merkmal]),
+ [*1 Gegen Einlagen* (ordentliche, §§ 182–191 AktG)], [Neue Mittel als Geld- oder Sacheinlage durch neue Aktien. Satzungsänderung, Tagesordnung der HV, bei Ausgabe über Nennwert Mindest-Bezugskurs im Beschluss, Eintragung ins Handelsregister. *Sacheinlagen:* Wert muss geprüft werden (ökonomischer Wert, nicht Nominalwert); bei Gründung detaillierte Gründungsprüfung (§§ 23–53 AktG).],
+ [*2 Bedingte* (§§ 192–201 AktG)], [Neue Aktien bis zur Hälfte des Grundkapitals, nur für drei Zwecke: Umtausch-/Bezugsrechte aus *Wandelanleihen*, Vorbereitung einer *Fusion*, Bezugsrechte für *Arbeitnehmer und Geschäftsführung*. Die jungen Aktien gehen an Nichtaktionäre; Altaktionäre haben kein Bezugsrecht.],
+ [*3 Genehmigtes Kapital* (§§ 202–206 AktG)], [Ermächtigung des Vorstands für höchstens 5 Jahre („Blankovollmacht“) durch Satzung oder HV-Beschluss mit ¾-Mehrheit; höchstens 50 % des Grundkapitals; Ausgabe nur mit Zustimmung des Aufsichtsrats.],
+ [*4 Aus Gesellschaftsmitteln* (§§ 207–220 AktG)], [*Kein neues Geld:* Kapital- oder Gewinnrücklagen werden in Grundkapital umgewandelt (Passivtausch). ¾-Mehrheit der HV, Eintragung, Bilanz festgestellt und geprüft, Stichtag höchstens 8 Monate vor Anmeldung (sonst Zwischenbilanz). Gesetzliche Rücklage + Kapitalrücklage müssen danach noch mindestens 10 % des Grundkapitals sein. Die Altaktionäre erhalten *Gratisaktien*; der Marktwert bleibt gleich, verteilt sich auf mehr Aktien, der Kurs sinkt.],
+)
+Bei der GmbH gibt es die Kapitalerhöhung gegen Einlagen (§§ 55–57b GmbHG: Übernahme neuer Stammeinlagen mit notarieller Beurkundung, vor Anmeldung mindestens ein Viertel eingezahlt) und aus Gesellschaftsmitteln (Umwandlung von Rücklagen).
+
+=== 3.7.1 Bezugsrecht <a-3-7-1>
+
+Das *Bezugsrecht* (§ 186 Abs. 1 AktG) gibt jedem Aktionär Anspruch auf den Anteil an den neuen Aktien, der seiner bisherigen Quote am Grundkapital entspricht. Zweck: ungewollte *Stimmrechtsverschiebungen* verhindern und *Vermögensnachteile* der Altaktionäre ausgleichen, die entstehen, wenn junge Aktien unter dem Börsenkurs ausgegeben werden. Ein *Bezugsrechtsausschluss* ist möglich, wenn er ordnungsgemäß in der Tagesordnung angekündigt ist, ¾ des vertretenen Grundkapitals zustimmen und der Vorstand einen schriftlichen Bericht über den Grund vorlegt.
+
+Die Altklausur 2017 (Aufgabe 2) verlangt den *rechnerischen Wert des Bezugsrechts* und den *Mischkurs*. Die Folien nennen diese Formeln nicht; sie stehen hier als Klausurergänzung:
+#form[$ B = frac(K_"alt" - K_"neu", m/n + 1) quad quad K_"misch" = frac(m K_"alt" + n K_"neu", m + n) = K_"alt" - B $]
+$K_"alt"$ = Börsenkurs vor der Erhöhung, $K_"neu"$ = Ausgabekurs der jungen Aktien, $m : n$ = Bezugsverhältnis (m alte berechtigen zu n jungen Aktien), ohne Dividendennachteil und Kosten. Bilanziell geht der Nennwert der jungen Aktien ins Grundkapital, das Agio (Ausgabekurs − Nennwert) in die Kapitalrücklage.
+#note("Selbst erklären", [Warum verliert ein Altaktionär nichts, obwohl der Kurs nach der Erhöhung sinkt? *Antwort:* Er kann sein Bezugsrecht verkaufen. Der Erlös gleicht den Kursrückgang genau aus, denn $K_"misch" = K_"alt" - B$.])
+#src[V, PDF-S. 129–133 (Folien 257–265); Formeln Bezugsrecht/Mischkurs: Lösung zur Altklausur K, PDF-S. 3 (Aufgabe 2), nicht auf den Folien.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.8 Kapitalherabsetzung <a-3-8>
+
+*Kapitalherabsetzung* ist im weiteren Sinn jede Verringerung des Eigenkapitals, im engeren Sinn die Verringerung des gezeichneten Kapitals einer Kapitalgesellschaft, meist zur *Sanierung* in der Krise.
+
+*Beispiel der Folie (Y-AG, Tsd. €):* AV 3.200, UV 3.000; gezeichnetes Kapital 4.000, FK 3.000, Jahresfehlbetrag 800. Nennwert 50 € je Aktie, Kurs 25 €. Die AG verkauft ein Grundstück (Buchwert 1.000) und kauft damit 40.000 eigene Aktien zu 25 € zurück, die eingezogen werden.
+
+#tab(columns: (2fr, 1fr),
+ th([Schritt], [Betrag]),
+ [Grundkapital sinkt um den Nennbetrag (§ 238 AktG): $40000 times 50$ €], [2.000.000 €],
+ [bezahlt wurden nur $40000 times 25$ €], [1.000.000 €],
+ [Buchgewinn = (Nennwert − Kurs) × Stück → Kapitalrücklage (§§ 229, 232 AktG)], [1.000.000 €],
+ [davon Ausgleich des Jahresfehlbetrags], [−800.000 €],
+ [verbleibende Kapitalrücklage], [200.000 €],
+)
+Bilanz danach: AV 2.200, UV 3.000 = 5.200; gezeichnetes Kapital 2.000, Kapitalrücklage 200, FK 3.000 = 5.200. Der Verlust ist beseitigt, das Grundkapital passt wieder zum Vermögen.
+#src[V, PDF-S. 133–134 (Folien 266–268).]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.9 Konzern und Cash Pooling <a-3-9>
+
+Ein *Konzern* (§ 18 AktG) liegt vor, wenn ein herrschendes und ein oder mehrere abhängige Unternehmen unter *einheitlicher Leitung* stehen (Unterordnungskonzern), oder wenn rechtlich selbstständige, nicht abhängige Unternehmen einheitlich geleitet werden (Gleichordnungskonzern). Bei Beherrschungsvertrag oder Eingliederung wird einheitliche Leitung angenommen; bei Abhängigkeit wird ein Konzern vermutet.
+
+*Rechtsfolgen:* umfassendes *Weisungsrecht* des herrschenden Unternehmens (§ 308 AktG), aber keine existenzgefährdenden Weisungen und keine Pflicht zur Befolgung bei offensichtlich fehlendem Konzerninteresse. Im Gegenzug übernimmt es die wirtschaftliche Verantwortung: *Ausgleich des Jahresfehlbetrags* der abhängigen AG (§ 302 AktG). Das Mutterunternehmen muss einen *Konzernabschluss* (konsolidiert) aufstellen (§ 290 HGB).
+
+*Cash Pooling* ist die *Liquiditätsbündelung* im Konzern über das Cash Management der Mutter. Technisch verwaltet ein zentraler „Master Account“ Geldanlagen und Kredite der Töchter: Überschüssige Liquidität wird per Darlehen in die Mutter „gepumpt“, Unterdeckungen gleicht die Mutter durch Kredite aus.
+#tab(columns: (1.3fr, 2.5fr),
+ th([Vorgang bei der Tochter], [Bilanzwirkung]),
+ [Geldanlage im Pool], [*Aktivtausch*: Konzernforderung statt Bankguthaben],
+ [Kreditaufnahme zur Umfinanzierung], [*Passivtausch*: Konzernverbindlichkeit statt Bankverbindlichkeit],
+ [Kreditaufnahme für Investitionen], [*Aktiv-Passiv-Mehrung*],
+)
+Vorteil: Die Mutter verwaltet die Liquidität zentral und damit kostensparend für alle Töchter (weniger teure Kontokorrentkredite bei gleichzeitigen Guthaben).
+#src[V, PDF-S. 135–137 (Folien 269–273). Klammerzusatz zum Vorteil: eigene Erläuterung.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+== 3.10 Kapitalstruktur: Rentabilität, Leverage und Finanzierungsregeln <a-3-10>
+
+Die Übungen am Ende von Kapitel C wenden Kennzahlen aus 1.10–1.12 auf Finanzierungsentscheidungen an.
+
+*Rentabilität mit Durchschnittskapital:* Fällt der Jahresgewinn gleichmäßig über das Jahr an, steigt auch das Eigenkapital gleichmäßig. Dann rechnet man mit dem *durchschnittlichen* Kapital (Anfang + halber Jahresgewinn). Fällt der Gewinn erst am Jahresende an, gilt das Anfangskapital.
+#form[$ r_"GK" = frac("Gewinn" + "FK-Zinsen", "Ø Gesamtkapital") quad quad r_"EK" = frac("Gewinn", "Ø Eigenkapital") $]
+
+*Break-even beim Leverage:* Ersetzt ein Unternehmen Eigenkapital durch Fremdkapital, lohnt sich das nur, wenn der Bruttogewinn (vor Zinsen) hoch genug ist. Gleichsetzen der EK-Renditen beider Varianten:
+#form[$ frac(G - r_(f 1) "FK"_1, "EK"_1) = frac(G - r_(f 2) "FK"_2, "EK"_2) $]
+$G$ = Bruttogewinn vor Zinsen und Steuern, $r_f$ = durchschnittlicher FK-Zins der Variante. Ein proportionaler Steuersatz $s$ kürzt sich heraus (Faktor $1-s$ auf beiden Seiten): Der Break-even hängt nicht vom Steuersatz ab. Darüber ist die stärker verschuldete Variante besser.
+
+*Anleihe oder Kapitalerhöhung?* Die Folien beurteilen nach *Rentabilität* (Leverage spricht für FK, solange der Projektgewinn die Zinsen übersteigt), *Liquidität* (Anleihe belastet mit Zins und Rückzahlung, Dividenden sind anpassbar), *Risiko* (riskantes Projekt → eher EK), *Flexibilität* (starke EK-Basis erleichtert spätere Kredite), *Verfügungsmacht* (bei der Familien-AG bleibt sie mit EK der Familie gewahrt, bei breiter Kapitalerhöhung eher mit der Anleihe), *Finanzimage* und *Kapitalmarktlage*. Eine hohe Verschuldung kann Kreditwürdigkeit kosten, Fremdbestimmung und Liquiditätsbelastung bringen.
+
+*Grenzen von Finanzierungsregeln* (z. B. goldene Bilanzregel, EK : FK zwischen 1 : 1 und 2 : 1): Sie sind nur allgemeine Hinweise, branchenabhängig, durch Gesetz und Kultur eingeschränkt, oft einseitig (nur Fristenkongruenz), vernachlässigen Kosten und Rentabilität, sagen wenig über die tatsächliche Liquidität und sind *statisch* (stichtagsbezogen).
+#note("Fehler in der Quelle", [Bei der Koslin AG (Aufgabe 5) rechnet das Lehrbuch die neue 10-%-Anleihe mit nur 5 % Zins; der Professor hat das auf der Folie vermerkt („Fehler im Buch … Aber: Kontinuität“). Mit 10 % beträgt der Reingewinn 21 statt 23,5 Mio. €, die EK-Rendite 17,5 % statt 19,6 %; das Ergebnis (Anleihe hat die höhere EK-Rendite) bleibt. Bei der Schlux AG (Aufgabe 1 a) ergibt $(300 + 80)/3250$ 11,7 % statt der gedruckten 11,5 %. Eigene Nachrechnung.], fill: sand)
+#src[V, PDF-S. 137–148 (Folien 274–295). Nachrechnung: eigene Prüfung.]
+#hoch(<a-3>, [Kapitelübersicht])
+
+#block(breakable: false)[
+*Der Zusammenhang in Kapitel 3.* Zuerst finanziert sich ein Unternehmen aus eigener Kraft: über einbehaltene Gewinne, über Abschreibungen und Rückstellungen, deren Aufwand vor der Auszahlung über die Preise zurückfließt, und über den Verkauf von Vermögen. Reicht das nicht, kommt Eigenkapital von außen. Die Rechtsform legt fest, wie: Mindestkapital, Haftung und Kapitalerhaltung schützen die Gläubiger und begrenzen Ausschüttungen, die außerdem durch den Finanzplan gedeckt sein müssen. Bei der AG führen Kapitalerhöhung und Bezugsrecht neues Kapital zu, ohne die Altaktionäre zu benachteiligen; die Kapitalherabsetzung saniert in der Krise. Ob Eigen- oder Fremdkapital besser ist, entscheiden Leverage, Liquidität, Risiko und Kontrolle gemeinsam.
+#src[V, PDF-S. 108–148. Eigene Zusammenfassung des Kapitels.]
+#hoch(<a-3>, [Kapitelübersicht])
+]
+
+
+#pagebreak()
+= Kapitel 4 · Unternehmensbewertung <a-4>
+
+#überblick([Kapitel 4 auf einen Blick],
+ idee(<a-4-1>, [Warum bewerten?], [Gesetz, Vertrag oder eigene Initiative (Kauf, Börsengang) verlangen einen Unternehmenswert.]),
+ idee(<a-4-2>, [Vier Verfahrensfamilien.], [Substanzwert, Ertragswert/DCF, Multiplikatoren und Realoptionen.]),
+ idee(<a-4-3>, [Unternehmen = Investition.], [Der Wert ist der Barwert künftiger Zahlungen, abgezinst mit den Kapitalkosten.]),
+ idee(<a-4-4>, [WACC und Multiplikatoren.], [Free Cashflows mit dem Mischzins abzinsen oder mit Vergleichsunternehmen hochrechnen.]),
+ idee(<a-4-6>, [Entscheidungswert.], [Höchstpreis des Käufers aus dem Vergleich mit seiner besten Alternative, nach Steuern und Inflation.]),
+)
+#karte((1fr, auto, 1fr, auto, 1fr),
+ chunk([Anlass und Methode], [gesetzlich · vertraglich · unternehmerisch · Substanz oder Gesamtbewertung], ziel: <a-4-1>),
+ pfeil(beschriftung: [Gesamtbewertung]),
+ chunk([Kapitalwertkalkül], [Ertragswert · Goodwill · Steuern · Nominal- und Realrechnung], ziel: <a-4-3>),
+ pfeil(beschriftung: [Praxis]),
+ chunk([WACC und Vergleich], [Free Cashflow · Mischzins · Peer Group · Entscheidungswert], ziel: <a-4-4>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+
+Kapitel 3 hat gezeigt, wie Eigenkapital ins Unternehmen kommt. Wer Eigenkapital gibt oder ein ganzes Unternehmen kauft, muss wissen, was es wert ist. Die Lösungsstrategie: Ein Unternehmen ist für den Käufer eine *Investition*. Sein Wert ist das, was die künftigen Zahlungen heute wert sind, verglichen mit der besten Alternative. *Selbststudium:* Das Kapitel stammt aus den Folien 296–326 und war am 13.11.2026 noch nicht in der Vorlesung behandelt.
+#src[V, PDF-S. 148–163 (Folien 296–326).]
+
+== 4.1 Anlässe der Unternehmensbewertung <a-4-1>
+
+Die Folie ordnet die Anlässe nach dem Auslöser:
+
+#tab(columns: (1fr, 1fr, 1fr),
+ th([Aufgrund gesetzlicher Regelungen], [Aufgrund vertraglicher Vereinbarungen], [Aufgrund unternehmerischer Initiativen]),
+ [Abfindung von Minderheitsgesellschaftern bei Gewinnabführungs- und Beherrschungsvertrag (§ 305 AktG), bei Eingliederung durch Mehrheitsbeschluss (§ 320 AktG), bei Umwandlung (§§ 174, 190, 207 UmwG) und bei Verschmelzung (§§ 19, 29 UmwG)],
+ [Austritt von Gesellschaftern aus einer Personengesellschaft (§ 738 BGB); Erbauseinandersetzungen (§ 2311 BGB); Abfindungsfälle im Familienrecht (§§ 1363–1390 BGB)],
+ [Kauf oder Verkauf von Unternehmen(-steilen); Fusionen (§§ 2 ff. UmwG); Eintritt neuer Gesellschafter ohne Austritt anderer (Börsengang, Venture Capital); Gründung mit Einbringung von Anteilen; Mitarbeiterbeteiligungen; Investorenpflege],
+)
+Die Übung 1 (Rocca AG) fragt die Anlässe in Kurzform ab: *Kauf, Verkauf, Auflösung, Sanierung, Umwandlung, Erbgang, Fusion, Aufnahme neuer Gesellschafter, Ausscheiden von Gesellschaftern*. Die letzten beiden betreffen vor allem Personengesellschaften und die GmbH, weil dort kein Börsenkurs den Anteil bewertet.
+#src[V, PDF-S. 149 (Folie 297, Quelle Drukarczyk 1998); V, PDF-S. 161 (Folie 322).]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.2 Moderne Methoden der Unternehmensbewertung <a-4-2>
+
+#bild("map-bewertung", [Mindmap: die vier Verfahrensfamilien. Eigene Darstellung nach V, PDF-S. 149.], height: 44mm)
+
+#bild("bewertungsmethoden-folie", [Folie 298: Methodenvergleich (Quellen auf der Folie: KPMG Corporate Finance 2000, Hayn 1998). Ausschnitt aus V, PDF-S. 149.])
+
+#tab(columns: (1fr, 1.3fr, 1.3fr, 1.3fr),
+ th([Methode], [Wesen und Prinzip], [Vorteile], [Nachteile]),
+ [*Substanzwert*], [Vermögen einzeln bewerten, Schulden abziehen (*Einzelbewertung*); Varianten: Reproduktions- und Liquidationswert], [einfach, nachprüfbar, passt bei Liquidation], [vergangenheitsorientiert, immaterielles Vermögen fehlt],
+ [*Ertragswert / DCF*], [künftige Erträge bzw. Free Cashflows mit risikoadäquatem Zins abzinsen (*Gesamtbewertung*); Ertragswertverfahren, WACC-, APV-, Equity-Ansatz], [zukunftsorientiert, theoretisch fundiert, breit akzeptiert, Risiko im Zins], [statisch: Handlungsspielräume (Realoptionen) fehlen],
+ [*Multiplikatoren*], [Vergleich mit einer Peer Group (*Gesamtbewertung*); KGV-, EBIT-, Umsatz-Multiple], [einfach, marktnah], [Vergleichbarkeit begrenzt, Überbewertung möglich],
+ [*Realoptionen*], [Unternehmen(-steile) als Optionen bewerten (Optionspreismethode); Invest-, Divest-, Flexibility-Options], [flexibel, dynamisch, bewertet Wachstumschancen], [sehr komplex, in der Praxis kaum durchführbar],
+)
+
+=== 4.2.1 Substanzwert, Ertragswert, Mittelwert und Goodwill <a-4-2-1>
+
+Die Übungen der Folien rechnen mit drei einfachen Werten. Der *Substanzwert* ist das Vermögen zu *Wiederbeschaffungskosten (Tageswerten)* minus Fremdkapital, nicht der Buchwert der Bilanz. Der *Ertragswert* kapitalisiert einen gleichbleibenden Gewinn als ewige Rente:
+
+#form[$ "Ertragswert" = "Gewinn pro Jahr" / i quad quad "Mittelwert" = ("Substanzwert" + "Ertragswert") / 2 $]
+#form[$ "originärer Goodwill" = "Ertragswert" - "Substanzwert" $]
+
+Der *Goodwill* fasst alles zusammen, was Gewinne bringt, aber nicht bilanziert werden darf: gutes Management und Fachkräfte, Standort, Ruf (Corporate Image), Kundenbeziehungen, Organisation, selbst geschaffene Patente, Kreditwürdigkeit, laufende Absatzverträge, moderne Verfahren, günstige Konkurrenzsituation, wirksame Werbung. Man unterscheidet nach den Einflussfaktoren *personen-* und *sachbezogenen*, nach der Entstehung *originären* (selbst geschaffenen, nicht bilanzierbar, sonst würde ein nicht realisierter Gewinn ausgewiesen) und *derivativen* (beim Kauf bezahlten) Goodwill.
+
+*Beispiel Roboelec (Folie 300):* Die Bank bewertet mit 1.000.000 €, zu Wiederbeschaffungskosten wären es 20 % mehr. Der Gewinn beträgt dauerhaft 176.000 €, der Kalkulationszins 11 %.
+
+#tab(columns: (1.4fr, 1fr),
+ th([Größe], [Wert]),
+ [Substanzwert (Wiederbeschaffung)], [$"1,0" dot "1,2" = "1,2"$ Mio. €],
+ [Ertragswert], [$"0,176" / "0,11" = "1,6"$ Mio. €],
+ [originärer Goodwill], [$"1,6" - "1,2" = "0,4"$ Mio. €],
+)
+Die 1 Mio. € der Bank taugt nicht als Preisforderung: Sie ist ein Substanzwert zu Buchwerten und damit zu tief. Der Preis bewegt sich zwischen 1,2 und 1,6 Mio. €, weil der Käufer die künftigen Gewinne bezahlt.
+#note("Fehler vermeiden", [Für den Substanzwert immer die *Tageswerte* (Wiederbeschaffungskosten) nehmen und das *Fremdkapital abziehen* (Netto-Substanzwert). Bei der Schmid AG (Übung 2, Aufgaben) zählen Rückstellungen zum Fremdkapital, und nur das *Sachvermögen* (Anlagevermögen, Vorräte) wird um 40 % aufgewertet, nicht Debitoren und liquide Mittel.], fill: sand)
+#src[V, PDF-S. 149 (Folie 298); V, PDF-S. 150–151 (Folien 300–302); V, PDF-S. 161–163 (Folien 321–326).]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.3 Kapitalwertkalkül <a-4-3>
+
+Ertragswert- und DCF-Verfahren sind „Spezialfälle“ der Investitionsrechnung: Das Unternehmen ist das Investitionsobjekt, der Unternehmenswert der Kapitalwert. Die künftigen Zahlungen werden mit den Kapitalkosten $k$ abgezinst und zum Nettokapitalwert im Entscheidungszeitpunkt verdichtet.
+
+#form[$ "NKW"_0 = -A_0 + sum_(t=1)^n "CF"_t / (1+k)^t + "RVE"_n / (1+k)^n $]
+Dabei ist $A_0$ die Anfangsauszahlung und $"RVE"_n$ der Restverkaufserlös. Die Folie zeigt $A_0 = 1000$, Einzahlungen von 100, 120, 130, 120, 100 … und einen Restverkaufserlös von 50 in $t_n$.
+
+*Beispiel 3 (Folie 312):* Anschaffung 100.000 GE, Überschüsse 60.000, 46.000 und 38.000 GE, Zins 10 %:
+$ K_0 = -100000 + 60000 / "1,1" + 46000 / "1,1"^2 + 38000 / "1,1"^3 = "21.112 GE" $
+Der Kapitalwert ist der Vermögenszuwachs in $t_0$ gegenüber der Anlage zum Kalkulationszins.
+
+=== 4.3.1 Fremdfinanzierung: Netto- und Bruttomethode <a-4-3-1>
+
+#tab(columns: (1fr, 1.5fr, 1.5fr),
+ th([], [Nettomethode (Beispiel 4)], [Bruttomethode (Beispiel 5)]),
+ [Idee], [Zahlungen *an die Eigentümer* (nach Zins und Tilgung) mit der Eigenkapitalrendite abzinsen], [Zahlungen *an alle Kapitalgeber* mit dem Mischzins abzinsen],
+ [Daten], [Kredit 75.000 GE zu 8 %, Tilgung 25.000 GE pro Jahr; $D_t$: −25.000, +29.000, +17.000, +11.000], [50 % Fremdkapital zu 8 %, 50 % EK zu 10 %: $c = "0,5" dot "0,08" + "0,5" dot "0,10" = "0,09"$],
+ [Ergebnis], [$K_0 = "23.678"$ GE (mit 10 %)], [$M_0 = "23.106"$ GE (mit 9 %)],
+)
+Die Fremdfinanzierung lohnt sich, weil der Kreditzins (8 %) unter der Renditeforderung der Eigentümer (10 %) liegt. Vereinfachend steigt die Renditeforderung trotz höherer Verschuldung nicht (vgl. Leverage-Risiko, 3.10).
+#note("Fehler in der Folie", [Folie 313 nennt den Vorteil gegenüber Beispiel 3 mit 2.556 GE. Richtig ist $"23.678" - "21.112" = "2.566"$ GE. Eigene Nachrechnung.], fill: sand)
+
+=== 4.3.2 Steuern <a-4-3-2>
+
+Steuern mindern oder erhöhen die Zahlungen beim Eigner und damit seinen Entscheidungswert; Steuerzahlungen sind negative, Steuergutschriften positive Zielbeiträge wie Umsatzerlöse. Bei Kapitalgesellschaften beeinflussen sie vor allem Ausschüttungs- und Finanzierungspolitik (Mandl/Rabel 1997). Wichtig ist, *beide* Seiten des Vergleichs zu besteuern: die Unternehmenserträge und die Alternativrendite.
+
+*Beispiel 6 (Folie 315):* Erträge 1.000 GE pro Jahr, Einkommensteuer 50 %; Alternative: Finanzanlage zu 6,5 % mit 25 % Kapitalertragsteuer.
+$ P_max^"ohne Steuern" = 1000 / "0,065" = "15.385" quad quad P_max^"mit Steuern" = (1000 dot (1 - "0,5")) / ("0,065" dot (1 - "0,25")) = 500 / "0,04875" = "10.256" $
+Weil die Alternativerträge nur halb so hoch besteuert werden, sinkt der Entscheidungswert um ein Drittel. Steuern wegzulassen wäre ein drastischer Bewertungsfehler.
+
+=== 4.3.3 Inflation: Nominal- und Realrechnung <a-4-3-3>
+
+Geldwertänderungen verändern die Kaufkraft der Erträge. Verlieren die Erträge an Kaufkraft, sinkt der Entscheidungswert; wachsen sie durch überdurchschnittliche Preiserhöhungen stärker als die Inflation, steigt er. Es gibt zwei gleichwertige Wege, die man *nicht mischen* darf:
+
+#tab(columns: (1fr, 1.5fr, 1.5fr),
+ th([], [Nominalrechnung], [Realrechnung]),
+ [Beträge], [tatsächliche künftige Ein- und Auszahlungen, im Preisniveau der *jeweiligen* Periode], [kaufkraftkonstant, im Preisniveau des *Bewertungsstichtags*],
+ [Zins], [nominelle Alternativrendite], [realer Zins],
+ [Umrechnung], [Planwert $dot (1 + "Preissteigerung")^t$], [Nominalwert $div (1 + "Inflationsrate")^t$],
+)
+
+*Beispiel 7 und 8 (Folien 316–320):* Mengenplanung zum heutigen Preisniveau; Umsatz +3 % pro Jahr, Personalkosten +4 % pro Jahr, Zinsen unverändert, Inflation 2,5 %.
+
+#tab(columns: (1.4fr, 1fr, 1fr, 1fr),
+ th([GE], [$t_1$], [$t_2$], [$t_3$]),
+ [Umsatz (Plan, heutige Preise)], [1.000], [1.150], [1.250],
+ [Personalkosten (Plan)], [250], [280], [300],
+ [Zinsen (Plan)], [540], [460], [410],
+ [Umsatz nominal ($dot "1,03"^t$)], [1.030], [1.220], [1.366],
+ [Personal nominal ($dot "1,04"^t$)], [260], [303], [337],
+ [Zinsen nominal (kein Wachstum)], [540], [460], [410],
+ [Umsatz real ($div "1,025"^t$)], [1.005], [1.161], [1.268],
+ [Personal real], [254], [288], [313],
+ [Zinsen real], [527], [438], [381],
+)
+Die Rechenwege der Folie: $1150 dot "1,03"^2 = 1220$; $300 dot "1,04"^3 = 337$; $1030 / "1,025" = 1005$; $460 / "1,025"^2 = 438$. Die Zinsen sind vertraglich fest, also nominal gleich dem Plan, real aber *sinkend*.
+#note("Fehler in der Folie", [Die Tabelle auf Folie 317 nennt den nominalen Umsatz $t_1$ mit 1.020 und die nominalen Personalkosten $t_2$ mit 305. Richtig sind $1000 dot "1,03" = 1030$ (Folie 319 rechnet selbst mit 1.030) und $280 dot "1,04"^2 = "302,8" approx 303$. Auf Folie 320 steht für das reale Personal $t_1$ 253 statt $260 / "1,025" = "253,7" approx 254$. Außerdem heißt es dort „Fortführung des Beispiels 26“, gemeint ist Beispiel 7. Die Tabelle oben enthält die korrigierten Werte. Eigene Nachrechnung.], fill: sand)
+#src[V, PDF-S. 152–160 (Folien 303–320, Quelle Mandl/Rabel 1997).]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.4 WACC-Ansatz <a-4-4>
+
+Der *WACC* (Weighted Average Cost of Capital) ist das mit der Kapitalstruktur gewichtete Mittel aus Eigen- und Fremdkapitalkosten. Abgezinst werden die *entziehbaren Free Cashflows* der Planperioden.
+
+#bild("wacc-folie", [Folie 308: Vom Free Cashflow zum Wert des Eigenkapitals (Quellen auf der Folie: KPMG 2000, Drukarczyk 1998). Ausschnitt aus V, PDF-S. 154.])
+
+#form[$ "FCF" &= "EBIT" - "Steuern" plus.minus "nicht zahlungswirksame Aufwendungen/Erträge" \ &quad - "Investitionen AV" - "Investitionen Working Capital" $]
+#form[$ k_"WACC" = k_E dot E / V + i dot F / V quad "mit" quad k_E = i + beta dot (r_M - i) quad "(Grundmodell ohne Steuern)" $]
+#form[$ "Equity Value" = underbrace(sum "FCF"_t / (1 + k_"WACC")^t, "Enterprise Value") - "Marktwert FK" + "nicht betriebsnotwendiges Vermögen" $]
+Dabei ist $E$ der Marktwert des Eigenkapitals, $F$ der des Fremdkapitals, $V = E + F$, $i$ der risikolose Zins bzw. Fremdkapitalzins, $r_M$ die Marktrendite und $beta$ das Risiko der Aktie relativ zum Markt (CAPM). Die Bruttomethode in Beispiel 5 ist ein WACC-Ansatz im Kleinen: $c = 9 %$ ist der gewichtete Mischzins.
+#src[V, PDF-S. 154 (Folie 308).]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.5 Multiplikatoren-Methode <a-4-5>
+
+#karte((1fr, auto, 1fr, auto, 1fr),
+ chunk([1 · Peer Group], [geeignete Vergleichsunternehmen suchen]), pfeil(),
+ chunk([2 · Multiplikator], [z. B. Umsatz, EBITDA, EBIT des Vergleichsunternehmens]), pfeil(),
+ chunk([3 · Wert berechnen], [Multiplikator mal Kennzahl des eigenen Unternehmens]),
+)
+#form[$ "Multiplikator"_"VU" = "Marktwert"_"VU" / "Kennzahl"_"VU" quad quad "Equity Value"_X = "Multiplikator"_"VU" dot "Kennzahl"_X $]
+VU ist das Vergleichsunternehmen, X das zu bewertende. Beispiel Umsatz-Multiple: $"Equity Value"_X = "Umsatzmultiple"_"VU" dot "Umsatz"_X$.
+
+Die Folie 299 zeigt Branchen-Multiples (finance-magazin.de, Januar 2011). Ein Auszug:
+
+#tab(columns: (1.6fr, 1fr, 1fr, 1fr, 1fr),
+ th([Branche], [EBIT-Multiple Börse], [Umsatz-Multiple Börse], [EBIT-Multiple Small Cap], [Umsatz-Multiple Small Cap]),
+ [Software], [16,5], [3,86], [6,2–8,2], [0,63–1,10],
+ [Maschinen- und Anlagenbau], [13,1], [1,14], [5,2–7,1], [0,52–0,76],
+ [Fahrzeugbau und -zubehör], [13,1], [0,60], [4,4–6,1], [0,36–0,64],
+ [Bau und Handwerk], [9,9], [0,39], [4,1–5,5], [0,31–0,52],
+)
+Lies die Tabelle so: Ein kleiner Maschinenbauer mit 2 Mio. € EBIT wäre nach Experten-Multiples etwa $2 dot "5,2" = "10,4"$ bis $2 dot "7,1" = "14,2"$ Mio. € wert (eigenes Rechenbeispiel). Börsen-Multiples liegen deutlich höher als die für kleine, nicht börsennotierte Firmen; Software wird über Wachstumserwartungen viel höher bewertet als Bau.
+#note("Merke", [Die Zahlen sind von 2011 und nur eine Momentaufnahme. Multiplikatoren ersetzen keine Planung, sondern prüfen, ob ein DCF-Wert marktüblich ist. Eigene Einordnung.], fill: sand)
+#src[V, PDF-S. 150 (Folie 299); V, PDF-S. 155 (Folie 309).]
+#hoch(<a-4>, [Kapitelübersicht])
+
+== 4.6 Entscheidungswert als Alternativenvergleich <a-4-6>
+
+Der *Entscheidungswert* $P_max$ ist der Höchstpreis, den ein Käufer gerade noch zahlen kann, ohne sich gegenüber seiner besten Alternative schlechter zu stellen. Bei unendlichem Horizont und gleichbleibenden Erträgen:
+
+#form[$ P_max = ("Unternehmensertrag" - "entgangener Ertrag der Alternative") / "Alternativrendite" $]
+
+#tab(columns: (1fr, 1.6fr, 1.2fr),
+ th([Beispiel], [Daten], [Ergebnis]),
+ [1 (Folie 310)], [Preis 600 GE, Ertrag 100 GE, Alternative 10 %], [$P_max = 100 / "0,1" = 1000$; 600 lohnt (100 statt 60 GE), 1.200 nicht (100 statt 120 GE)],
+ [2 (Folie 311)], [Ertrag 4.000 GE, Wertpapiere 7 %, entgangene Tätigkeit 500 GE], [$P_max = (4000 - 500) / "0,07" = "50.000"$ GE],
+ [6 (Folie 315)], [mit Steuern, siehe 4.3.2], [10.256 statt 15.385 GE],
+)
+Probe zu Beispiel 2: 50.000 GE zu 7 % bringen 3.500 GE Zinsen plus 500 GE aus der Tätigkeit, zusammen ebenso 4.000 GE. Der Käufer ist also bei 50.000 GE gerade indifferent.
+#note("Fehler vermeiden", [Beim Entscheidungswert immer *Äquivalenz* prüfen: gleiche Sicherheit, gleiche Laufzeit, gleiche Besteuerung und gleiches Preisniveau der verglichenen Ströme (Mandl/Rabel). Wer nach Steuern rechnet, muss auch die Alternative nach Steuern rechnen.], fill: sand)
+#src[V, PDF-S. 155–156 (Folien 310–311); V, PDF-S. 158 (Folie 315).]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#block(breakable: false)[
+*Der Zusammenhang in Kapitel 4.* Ein Unternehmen wird bewertet, wenn Gesetz, Vertrag oder eine Transaktion einen Preis verlangen. Der Substanzwert zählt nur das vorhandene Vermögen; Käufer zahlen aber für künftige Erträge, deshalb dominiert das Kapitalwertkalkül der Investitionsrechnung. Der Unterschied zwischen Ertrags- und Substanzwert ist der Goodwill. Wie in Kapitel 2 und 3 entscheiden Kapitalkosten und Kapitalstruktur: Netto- und Bruttomethode bzw. WACC verarbeiten den Fremdkapitalanteil, Steuern und Inflation müssen auf beiden Seiten des Alternativenvergleichs gleich behandelt werden. Multiplikatoren liefern die Marktprobe.
+#src[V, PDF-S. 148–163. Eigene Zusammenfassung des Kapitels.]
+#hoch(<a-4>, [Kapitelübersicht])
+]
+
+#pagebreak()
+= Kapitel 5 · Ausblick: Digitale Finanzierung <a-5>
+
+Die letzte Inhaltsfolie nennt fünf Entwicklungen, die die Finanzierung verändern, und eine offene Frage: Wie funktionieren *Haftung* und *Zwangsvollstreckung*, wenn Vermögen und Verträge nur noch digital existieren? Die Folie schließt: „Schaffung eines Rechtsrahmens dringend erforderlich!“ *Selbststudium:* Die Folie war am 13.11.2026 noch nicht behandelt; die Erläuterungen sind eigene Kurzdefinitionen, weil die Folie nur Stichworte enthält.
+
+== 5.1 Fünf Entwicklungen und die Rechtsfrage <a-5-1>
+
+#tab(columns: (1fr, 2fr),
+ th([Stichwort der Folie], [Kurz erklärt (eigene Erläuterung)]),
+ [*Kryptowährungen*], [privat ausgegebene digitale Werteinheiten auf einer Blockchain, ohne Zentralbank; stark schwankende Kurse],
+ [*Digitaler Euro*], [geplantes digitales Zentralbankgeld der EZB, also eine Forderung gegen die Zentralbank wie Bargeld (vgl. 2.13)],
+ [*Elektronische Wertpapiere*], [Wertpapiere ohne Papierurkunde, eingetragen in ein elektronisches Register (in Deutschland seit dem eWpG 2021)],
+ [*DAOs*], [Decentralised Autonomous Organizations: Organisationen, deren Regeln als Code laufen und deren Mitglieder per Token abstimmen; Rechtsform und Haftung oft unklar],
+ [*Smart Contracts*], [Programme, die vereinbarte Leistungen automatisch ausführen, z. B. Zahlung bei Eintritt einer Bedingung],
+)
+#note("Merke", [Verbindung zum Modul: Sicherheiten (2.14), Haftung nach Rechtsform (3.4) und Zwangsvollstreckung setzen voraus, dass klar ist, wem ein Vermögenswert gehört und wer haftet. Genau das ist bei Krypto-Werten und DAOs noch nicht überall geregelt. Eigene Einordnung.], fill: sand)
+#src[V, PDF-S. 164 (Folie 327).]
+#hoch(<a-5>, [Kapitelanfang])
 
 
 #pagebreak()
@@ -1213,7 +2063,46 @@ Geldgrößen immer in derselben Währung und Periode einsetzen. Prozentgrößen 
  [Ratendarlehen], [$T=D/n$], [Konstante Tilgung, keine Sonderzahlung; K PDF-S. 1.],
  [Annuität], [$A=D frac(i(1+i)^n,(1+i)^n-1)$], [Konstanter Zins $i>0$, nachschüssig, vollständige Tilgung; K PDF-S. 1.],
  [Effektivzins, Praktikerformel], [$(i_"nom" D+(D-"Aus")/n)/"Aus"$], [Näherung für endfälligen Kredit mit Disagio; K PDF-S. 2.],
+ [Skonto als Jahreszins], [$frac(s, 1-s) times frac(360, "Ziel" - "Skontofrist")$], [$s$ Skontosatz als Dezimalzahl, Tage; Vorgriff 2.15.1; V PDF-S. 70.],
+ [Barwert einer Anleihe], [$"PV"=sum_(t=1)^n Z_t/(1+i)^t$; $"NPV"="PV"-"Kurs"$], [Marktzins $i$ je Periode, Rückzahlung im letzten $Z_t$; Vorgriff 2.18.1.],
+ [Kaufpreis mit Stückzinsen], [$"Kurs"/100 times N + N i_"nom" "Tage"/"Basis"$], [Tage seit letztem Kupon, Zählweise beachten; Vorgriff 2.18.2.],
+ [Optionsschein, rechnerisch], [$"Aktienkurs" - "Bezugskurs"$], [je Aktie, nur wenn positiv; Vorgriff 2.20.1.],
+ [Wandlungsverhältnis], [$frac("neue Aktien", "Wandelanleihen")$], [Stückzahlen; Vorgriff 2.20.1.],
+ [Rendite Zerobond], [$r=root(n, K_n/K_0)-1$], [Kauf $K_0$, Rückzahlung $K_n$ nach $n$ Jahren; Vorgriff 2.20.3.],
 )
 
 #note("Wichtige Zahlen", [*Folienorientierungen:* L1 10–30 %, L2 ≥ 100 %, L3 ≥ 200 %, AD II ≥ 100 %, EK-Quote mindestens 15–20 %. *Glasspinnerei:* Investition 85 Mio. € = 30 + 55; NOCF 2005 vor/nach laufender Modellsteuer 43,305 Mio. €; Finanzierungslücke 2005 23,029 Mio. €. *Basel-Folienmodell:* 8 % × Risikogewicht; Basel III mit Kapitalerhaltungspuffer 7 % CET1 und 10,5 % Gesamtkapital/RWA; Leverage Ratio mindestens 3 % mit anderer Bezugsgröße. Diese Werte gelten nur mit den genannten Voraussetzungen.])
 #src[V, PDF-S. 9–56; G, PDF-S. 10–15; K, PDF-S. 1–2; Voraussetzungen/Einheiten: eigene Erläuterung. Rechtsabgleich der Zahlungsquote und Überschuldung in Abschnitt 1.8.]
+
+=== Formeln zu Kapitel 3 · Eigen- und Selbstfinanzierung
+
+#tab(columns: (1.2fr, 1.9fr, 1.8fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
+ [Break-even-Kurs einer Aktie], [$"Kaufkurs" + frac("Kosten Kauf" + "Kosten Verkauf", "Stückzahl")$], [€ je Aktie, ohne Steuern; 3.4.1.],
+ [Entziehbarer Überschuss], [$"Umsatz" - "zahlungsw. Aufwand" - "Zinsen" - "Steuern" - "Invest." - Delta"NWC" - "Tilgung"$], [Obergrenze der Ausschüttung aus dem Finanzplan; 3.5.1.],
+ [Kapitalerhaltung GmbH], [$"Aktiva" - "Verbindlichkeiten" < "Stammkapital"$ → angegriffen], [Buchwerte der Bilanz; 3.6.],
+ [Bezugsrecht], [$B = frac(K_"alt" - K_"neu", m/n + 1)$], [Bezugsverhältnis $m:n$ (alt : neu), Dividendennachteil vernachlässigt; 3.7.1.],
+ [Mischkurs], [$frac(m K_"alt" + n K_"neu", m+n) = K_"alt" - B$], [Kurs nach der Erhöhung; 3.7.1.],
+ [Gesamtkapitalrendite], [$frac("Gewinn" + "FK-Zinsen", "Ø GK")$], [Durchschnitt aus Anfangs- und Endbestand; 3.10.],
+ [Eigenkapitalrendite], [$frac("Gewinn", "Ø EK")$], [3.10.],
+ [Break-even der Finanzierung], [$frac(G - r_(f 1) "FK"_1, "EK"_1) = frac(G - r_(f 2) "FK"_2, "EK"_2)$], [nach $G$ (Gewinn vor Zinsen) auflösen; 3.10.],
+)
+
+=== Formeln zu Kapitel 4 · Unternehmensbewertung
+
+#tab(columns: (1.2fr, 1.9fr, 1.8fr),
+ th([Thema], [Formel], [Voraussetzung / Einheit]),
+ [Substanzwert], [$"Vermögen zu Tageswerten" - "Fremdkapital"$], [Rückstellungen zählen zum FK; 4.2.1.],
+ [Ertragswert], [$"Gewinn"/i$], [gleichbleibender Gewinn, ewige Rente; 4.2.1.],
+ [Mittelwert], [$("Substanzwert" + "Ertragswert")/2$], [4.2.1.],
+ [Originärer Goodwill], [$"Ertragswert" - "Substanzwert"$], [nicht bilanzierbar; 4.2.1.],
+ [Kapitalwert], [$-A_0 + sum "CF"_t/(1+k)^t + "RVE"_n/(1+k)^n$], [nachschüssig; 4.3.],
+ [Mischzins (Bruttomethode)], [$c = "FK-Anteil" dot i_"FK" + "EK-Anteil" dot i_"EK"$], [konstante Kapitalstruktur; 4.3.1.],
+ [Entscheidungswert mit Steuern], [$P_max = frac(E (1-s_"ESt"), i (1-s_"KESt"))$], [ewige Rente, beide Seiten besteuern; 4.3.2.],
+ [Nominal / real], [$"Plan" dot (1+p)^t$ bzw. $"nominal" div (1+pi)^t$], [$p$ Preissteigerung, $pi$ Inflation; nicht mischen; 4.3.3.],
+ [WACC], [$k_E E/V + i F/V$ mit $k_E = i + beta(r_M - i)$], [Grundmodell ohne Steuern, Marktwerte; 4.4.],
+ [Equity Value (DCF)], [$sum "FCF"_t/(1+k_"WACC")^t - "FK" + "n.b. Vermögen"$], [4.4.],
+ [Multiplikator], [$"Equity"_X = frac("Marktwert"_"VU", "Kennzahl"_"VU") dot "Kennzahl"_X$], [vergleichbare Peer Group; 4.5.],
+ [Entscheidungswert], [$P_max = ("Ertrag" - "entgangener Alternativertrag")/i$], [ewige Rente, Äquivalenz; 4.6.],
+)
+#src[V, PDF-S. 108–163; Zusammenstellung der Formeln aus Kapitel 3 und 4 (Vorgriff). Voraussetzungen: eigene Erläuterung.]
