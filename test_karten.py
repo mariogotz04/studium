@@ -44,7 +44,9 @@ class KartenstilTest(unittest.TestCase):
         root = Path(__file__).resolve().parent
         src = root / 'skripte' if (root / 'skripte').is_dir() else root.parent
         dateien = sorted(src.glob('*/Lernskript aktuell/Karteikarten.md'))
-        self.assertGreaterEqual(len(dateien), 7)
+        if not dateien:
+            # Seit 11.11.2026 gibt es keine Karteikarten mehr (Inhalt steht als Verständnisfragen in Aufgaben.typ).
+            self.skipTest('keine Karteikarten.md mehr vorhanden')
         for datei in dateien:
             for frage, antwort in re.findall(r'(?ms)^### ([^\n]+)\n(.*?)(?=^#{1,3} |\Z)', datei.read_text()):
                 with self.subTest(modul=datei.parts[-3], frage=frage):
