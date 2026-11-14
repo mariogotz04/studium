@@ -12,7 +12,7 @@
 #let seitenfuss = context [
   #line(length: 100%, stroke: 0.45pt + rgb("d7e1e8"))
   #v(1.5mm)
-  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 12.11.2026]
+  #text(size: 8pt, fill: muted)[Feynman-Lernskript · Stand 14.11.2026]
   #h(1fr)
   #text(size: 9pt, fill: navy)[Seite #counter(page).display("1") von #counter(page).final().first()]
 ]
@@ -91,6 +91,595 @@
 #let hoch(ziel, wort) = block(above: 0.4em, below: 0.4em, align(right, text(size: 8.5pt, fill: teal, link(ziel)[#sym.arrow.t #wort])))
 
 #let abbildungen = (
+  "uebung-2-2-waermeverlauf-variante": "abbildungen/uebung-2-2-waermeverlauf-variante.svg",
+  "uebung-2-2-waermeverlauf": "abbildungen/uebung-2-2-waermeverlauf.svg",
+  "uebung-7-9-hx-variante": "abbildungen/uebung-7-9-hx-variante.svg",
+  "uebung-7-9-hx-original": "abbildungen/uebung-7-9-hx-original.svg",
+  "uebung-7-8-hx-variante": "abbildungen/uebung-7-8-hx-variante.svg",
+  "uebung-7-8-hx-original": "abbildungen/uebung-7-8-hx-original.svg",
+  "uebung-7-7-hx-variante": "abbildungen/uebung-7-7-hx-variante.svg",
+  "uebung-7-7-hx-original": "abbildungen/uebung-7-7-hx-original.svg",
+  "uebung-7-6-hx-variante": "abbildungen/uebung-7-6-hx-variante.svg",
+  "uebung-7-6-hx-original": "abbildungen/uebung-7-6-hx-original.svg",
+  "uebung-7-5-hx-variante": "abbildungen/uebung-7-5-hx-variante.svg",
+  "uebung-7-5-hx-original": "abbildungen/uebung-7-5-hx-original.svg",
+  "uebung-7-4-hx-variante": "abbildungen/uebung-7-4-hx-variante.svg",
+  "uebung-7-4-hx-original": "abbildungen/uebung-7-4-hx-original.svg",
+  "uebung-7-3-hx-variante": "abbildungen/uebung-7-3-hx-variante.svg",
+  "uebung-7-3-hx-original": "abbildungen/uebung-7-3-hx-original.svg",
+  "td-kf-164-12-loesung": "abbildungen/td-kf-164-12-loesung.svg",
+  "td-kf-164-07-loesung": "abbildungen/td-kf-164-07-loesung.svg",
+  "td-kf-163-14-loesung": "abbildungen/td-kf-163-14-loesung.svg",
+  "td-kf-162-14-loesung": "abbildungen/td-kf-162-14-loesung.svg",
+  "td-kf-162-11-loesung": "abbildungen/td-kf-162-11-loesung.svg",
+  "td-kf-161-15-loesung": "abbildungen/td-kf-161-15-loesung.svg",
+  "td-kf-161-15-frage": "abbildungen/td-kf-161-15-frage.svg",
+  "td-kf-161-14-frage": "abbildungen/td-kf-161-14-frage.svg",
+  "td-kf-161-13-frage": "abbildungen/td-kf-161-13-frage.svg",
+  "td-kf-161-12-frage": "abbildungen/td-kf-161-12-frage.svg",
+  "td-kf-161-11-frage": "abbildungen/td-kf-161-11-frage.svg",
+  "td-kf-161-10-loesung": "abbildungen/td-kf-161-10-loesung.svg",
+  "td-kf-161-10-frage": "abbildungen/td-kf-161-10-frage.svg",
+  "td-kf-161-03-loesung": "abbildungen/td-kf-161-03-loesung.svg",
+  "td-kf-161-03-frage": "abbildungen/td-kf-161-03-frage.svg",
+  "td-kf-161-01-frage": "abbildungen/td-kf-161-01-frage.svg",
+  "td-kf-160-17-loesung": "abbildungen/td-kf-160-17-loesung.svg",
+  "td-kf-160-17-frage": "abbildungen/td-kf-160-17-frage.svg",
+  "td-kf-160-16-frage": "abbildungen/td-kf-160-16-frage.svg",
+  "td-kf-160-15-frage": "abbildungen/td-kf-160-15-frage.svg",
+  "td-kf-160-14-frage": "abbildungen/td-kf-160-14-frage.svg",
+  "td-kf-160-13-loesung": "abbildungen/td-kf-160-13-loesung.svg",
+  "td-kf-160-13-frage": "abbildungen/td-kf-160-13-frage.svg",
+  "td-kf-160-08-frage": "abbildungen/td-kf-160-08-frage.svg",
+  "td-kf-160-01-loesung": "abbildungen/td-kf-160-01-loesung.svg",
+  "td-kf-160-01-frage": "abbildungen/td-kf-160-01-frage.svg",
+  "td-kf-159-21-loesung": "abbildungen/td-kf-159-21-loesung.svg",
+  "td-kf-159-21-frage": "abbildungen/td-kf-159-21-frage.svg",
+  "td-kf-159-20-loesung": "abbildungen/td-kf-159-20-loesung.svg",
+  "td-kf-159-20-frage": "abbildungen/td-kf-159-20-frage.svg",
+  "td-kf-159-19-frage": "abbildungen/td-kf-159-19-frage.svg",
+  "td-kf-159-18-frage": "abbildungen/td-kf-159-18-frage.svg",
+  "td-kf-159-17-frage": "abbildungen/td-kf-159-17-frage.svg",
+  "td-kf-159-16-frage": "abbildungen/td-kf-159-16-frage.svg",
+  "td-kf-159-15-frage": "abbildungen/td-kf-159-15-frage.svg",
+  "td-kf-159-14-loesung": "abbildungen/td-kf-159-14-loesung.svg",
+  "td-kf-159-14-frage": "abbildungen/td-kf-159-14-frage.svg",
+  "td-kf-159-09-frage": "abbildungen/td-kf-159-09-frage.svg",
+  "td-kf-159-03-loesung": "abbildungen/td-kf-159-03-loesung.svg",
+  "td-kf-159-03-frage": "abbildungen/td-kf-159-03-frage.svg",
+  "td-kf-159-02-loesung": "abbildungen/td-kf-159-02-loesung.svg",
+  "td-kf-159-02-frage": "abbildungen/td-kf-159-02-frage.svg",
+  "td-kf-158-22-loesung": "abbildungen/td-kf-158-22-loesung.svg",
+  "td-kf-158-22-frage": "abbildungen/td-kf-158-22-frage.svg",
+  "td-kf-158-21-frage": "abbildungen/td-kf-158-21-frage.svg",
+  "td-kf-158-20-frage": "abbildungen/td-kf-158-20-frage.svg",
+  "td-kf-158-19-frage": "abbildungen/td-kf-158-19-frage.svg",
+  "td-kf-158-18-loesung": "abbildungen/td-kf-158-18-loesung.svg",
+  "td-kf-158-18-frage": "abbildungen/td-kf-158-18-frage.svg",
+  "td-kf-158-17-frage": "abbildungen/td-kf-158-17-frage.svg",
+  "td-kf-158-16-frage": "abbildungen/td-kf-158-16-frage.svg",
+  "td-kf-158-15-frage": "abbildungen/td-kf-158-15-frage.svg",
+  "td-kf-158-14-frage": "abbildungen/td-kf-158-14-frage.svg",
+  "td-kf-158-13-loesung": "abbildungen/td-kf-158-13-loesung.svg",
+  "td-kf-158-13-frage": "abbildungen/td-kf-158-13-frage.svg",
+  "td-kf-158-12-frage": "abbildungen/td-kf-158-12-frage.svg",
+  "td-kf-158-11-frage": "abbildungen/td-kf-158-11-frage.svg",
+  "td-kf-158-08-frage": "abbildungen/td-kf-158-08-frage.svg",
+  "td-kf-158-07-frage": "abbildungen/td-kf-158-07-frage.svg",
+  "td-kf-158-03-loesung": "abbildungen/td-kf-158-03-loesung.svg",
+  "td-kf-158-03-frage": "abbildungen/td-kf-158-03-frage.svg",
+  "td-kf-157-22-loesung": "abbildungen/td-kf-157-22-loesung.svg",
+  "td-kf-157-22-frage": "abbildungen/td-kf-157-22-frage.svg",
+  "td-kf-157-21-frage": "abbildungen/td-kf-157-21-frage.svg",
+  "td-kf-157-20-frage": "abbildungen/td-kf-157-20-frage.svg",
+  "td-kf-157-19-frage": "abbildungen/td-kf-157-19-frage.svg",
+  "td-kf-157-18-frage": "abbildungen/td-kf-157-18-frage.svg",
+  "td-kf-157-17-frage": "abbildungen/td-kf-157-17-frage.svg",
+  "td-kf-157-16-frage": "abbildungen/td-kf-157-16-frage.svg",
+  "td-kf-157-15-frage": "abbildungen/td-kf-157-15-frage.svg",
+  "td-kf-157-14-frage": "abbildungen/td-kf-157-14-frage.svg",
+  "td-kf-157-13-frage": "abbildungen/td-kf-157-13-frage.svg",
+  "td-kf-157-12-loesung": "abbildungen/td-kf-157-12-loesung.svg",
+  "td-kf-157-12-frage": "abbildungen/td-kf-157-12-frage.svg",
+  "td-kf-157-09-frage": "abbildungen/td-kf-157-09-frage.svg",
+  "td-kf-157-06-frage": "abbildungen/td-kf-157-06-frage.svg",
+  "td-kf-157-03-loesung": "abbildungen/td-kf-157-03-loesung.svg",
+  "td-kf-157-03-frage": "abbildungen/td-kf-157-03-frage.svg",
+  "td-kf-156-21-loesung": "abbildungen/td-kf-156-21-loesung.svg",
+  "td-kf-156-21-frage": "abbildungen/td-kf-156-21-frage.svg",
+  "td-kf-156-20-frage": "abbildungen/td-kf-156-20-frage.svg",
+  "td-kf-156-19-frage": "abbildungen/td-kf-156-19-frage.svg",
+  "td-kf-156-18-loesung": "abbildungen/td-kf-156-18-loesung.svg",
+  "td-kf-156-18-frage": "abbildungen/td-kf-156-18-frage.svg",
+  "td-kf-156-17-frage": "abbildungen/td-kf-156-17-frage.svg",
+  "td-kf-156-16-frage": "abbildungen/td-kf-156-16-frage.svg",
+  "td-kf-156-15-frage": "abbildungen/td-kf-156-15-frage.svg",
+  "td-kf-156-14-frage": "abbildungen/td-kf-156-14-frage.svg",
+  "td-kf-156-13-loesung": "abbildungen/td-kf-156-13-loesung.svg",
+  "td-kf-156-13-frage": "abbildungen/td-kf-156-13-frage.svg",
+  "td-kf-156-12-frage": "abbildungen/td-kf-156-12-frage.svg",
+  "td-kf-156-09-frage": "abbildungen/td-kf-156-09-frage.svg",
+  "td-kf-156-07-frage": "abbildungen/td-kf-156-07-frage.svg",
+  "td-kf-156-03-loesung": "abbildungen/td-kf-156-03-loesung.svg",
+  "td-kf-156-03-frage": "abbildungen/td-kf-156-03-frage.svg",
+  "sm-kf-155-21-loesung": "abbildungen/sm-kf-155-21-loesung.svg",
+  "sm-kf-155-21-frage": "abbildungen/sm-kf-155-21-frage.svg",
+  "sm-kf-155-20-frage": "abbildungen/sm-kf-155-20-frage.svg",
+  "sm-kf-155-19-frage": "abbildungen/sm-kf-155-19-frage.svg",
+  "sm-kf-155-18-frage": "abbildungen/sm-kf-155-18-frage.svg",
+  "sm-kf-155-17-frage": "abbildungen/sm-kf-155-17-frage.svg",
+  "sm-kf-155-16-frage": "abbildungen/sm-kf-155-16-frage.svg",
+  "sm-kf-155-15-frage": "abbildungen/sm-kf-155-15-frage.svg",
+  "sm-kf-155-14-frage": "abbildungen/sm-kf-155-14-frage.svg",
+  "sm-kf-155-13-loesung": "abbildungen/sm-kf-155-13-loesung.svg",
+  "sm-kf-155-13-frage": "abbildungen/sm-kf-155-13-frage.svg",
+  "sm-kf-155-12-frage": "abbildungen/sm-kf-155-12-frage.svg",
+  "sm-kf-155-11-frage": "abbildungen/sm-kf-155-11-frage.svg",
+  "sm-kf-155-10-frage": "abbildungen/sm-kf-155-10-frage.svg",
+  "sm-kf-155-09-loesung": "abbildungen/sm-kf-155-09-loesung.svg",
+  "sm-kf-155-09-frage": "abbildungen/sm-kf-155-09-frage.svg",
+  "sm-kf-155-08-loesung": "abbildungen/sm-kf-155-08-loesung.svg",
+  "sm-kf-155-08-frage": "abbildungen/sm-kf-155-08-frage.svg",
+  "sm-kf-155-07-loesung": "abbildungen/sm-kf-155-07-loesung.svg",
+  "sm-kf-155-07-frage": "abbildungen/sm-kf-155-07-frage.svg",
+  "sm-kf-155-06-frage": "abbildungen/sm-kf-155-06-frage.svg",
+  "sm-kf-155-05-frage": "abbildungen/sm-kf-155-05-frage.svg",
+  "sm-kf-155-04-frage": "abbildungen/sm-kf-155-04-frage.svg",
+  "sm-kf-155-03-loesung": "abbildungen/sm-kf-155-03-loesung.svg",
+  "sm-kf-155-03-frage": "abbildungen/sm-kf-155-03-frage.svg",
+  "sm-kf-155-02-frage": "abbildungen/sm-kf-155-02-frage.svg",
+  "sm-kf-155-01-frage": "abbildungen/sm-kf-155-01-frage.svg",
+  "sm-kf-154-21-loesung": "abbildungen/sm-kf-154-21-loesung.svg",
+  "sm-kf-154-21-frage": "abbildungen/sm-kf-154-21-frage.svg",
+  "sm-kf-154-20-frage": "abbildungen/sm-kf-154-20-frage.svg",
+  "sm-kf-154-19-loesung": "abbildungen/sm-kf-154-19-loesung.svg",
+  "sm-kf-154-19-frage": "abbildungen/sm-kf-154-19-frage.svg",
+  "sm-kf-154-18-frage": "abbildungen/sm-kf-154-18-frage.svg",
+  "sm-kf-154-17-frage": "abbildungen/sm-kf-154-17-frage.svg",
+  "sm-kf-154-16-frage": "abbildungen/sm-kf-154-16-frage.svg",
+  "sm-kf-154-15-frage": "abbildungen/sm-kf-154-15-frage.svg",
+  "sm-kf-154-14-frage": "abbildungen/sm-kf-154-14-frage.svg",
+  "sm-kf-154-13-loesung": "abbildungen/sm-kf-154-13-loesung.svg",
+  "sm-kf-154-13-frage": "abbildungen/sm-kf-154-13-frage.svg",
+  "sm-kf-154-12-frage": "abbildungen/sm-kf-154-12-frage.svg",
+  "sm-kf-154-11-frage": "abbildungen/sm-kf-154-11-frage.svg",
+  "sm-kf-154-10-frage": "abbildungen/sm-kf-154-10-frage.svg",
+  "sm-kf-154-09-loesung": "abbildungen/sm-kf-154-09-loesung.svg",
+  "sm-kf-154-09-frage": "abbildungen/sm-kf-154-09-frage.svg",
+  "sm-kf-154-08-frage": "abbildungen/sm-kf-154-08-frage.svg",
+  "sm-kf-154-07-loesung": "abbildungen/sm-kf-154-07-loesung.svg",
+  "sm-kf-154-07-frage": "abbildungen/sm-kf-154-07-frage.svg",
+  "sm-kf-154-06-frage": "abbildungen/sm-kf-154-06-frage.svg",
+  "sm-kf-154-05-frage": "abbildungen/sm-kf-154-05-frage.svg",
+  "sm-kf-154-04-frage": "abbildungen/sm-kf-154-04-frage.svg",
+  "sm-kf-154-03-loesung": "abbildungen/sm-kf-154-03-loesung.svg",
+  "sm-kf-154-03-frage": "abbildungen/sm-kf-154-03-frage.svg",
+  "sm-kf-154-02-frage": "abbildungen/sm-kf-154-02-frage.svg",
+  "sm-kf-154-01-frage": "abbildungen/sm-kf-154-01-frage.svg",
+  "sm-kf-153-21-loesung": "abbildungen/sm-kf-153-21-loesung.svg",
+  "sm-kf-153-21-frage": "abbildungen/sm-kf-153-21-frage.svg",
+  "sm-kf-153-20-frage": "abbildungen/sm-kf-153-20-frage.svg",
+  "sm-kf-153-19-frage": "abbildungen/sm-kf-153-19-frage.svg",
+  "sm-kf-153-18-frage": "abbildungen/sm-kf-153-18-frage.svg",
+  "sm-kf-153-17-frage": "abbildungen/sm-kf-153-17-frage.svg",
+  "sm-kf-153-16-frage": "abbildungen/sm-kf-153-16-frage.svg",
+  "sm-kf-153-15-frage": "abbildungen/sm-kf-153-15-frage.svg",
+  "sm-kf-153-14-frage": "abbildungen/sm-kf-153-14-frage.svg",
+  "sm-kf-153-13-loesung": "abbildungen/sm-kf-153-13-loesung.svg",
+  "sm-kf-153-13-frage": "abbildungen/sm-kf-153-13-frage.svg",
+  "sm-kf-153-12-frage": "abbildungen/sm-kf-153-12-frage.svg",
+  "sm-kf-153-11-frage": "abbildungen/sm-kf-153-11-frage.svg",
+  "sm-kf-153-10-frage": "abbildungen/sm-kf-153-10-frage.svg",
+  "sm-kf-153-09-loesung": "abbildungen/sm-kf-153-09-loesung.svg",
+  "sm-kf-153-09-frage": "abbildungen/sm-kf-153-09-frage.svg",
+  "sm-kf-153-08-loesung": "abbildungen/sm-kf-153-08-loesung.svg",
+  "sm-kf-153-08-frage": "abbildungen/sm-kf-153-08-frage.svg",
+  "sm-kf-153-07-loesung": "abbildungen/sm-kf-153-07-loesung.svg",
+  "sm-kf-153-07-frage": "abbildungen/sm-kf-153-07-frage.svg",
+  "sm-kf-153-06-frage": "abbildungen/sm-kf-153-06-frage.svg",
+  "sm-kf-153-05-frage": "abbildungen/sm-kf-153-05-frage.svg",
+  "sm-kf-153-04-frage": "abbildungen/sm-kf-153-04-frage.svg",
+  "sm-kf-153-03-loesung": "abbildungen/sm-kf-153-03-loesung.svg",
+  "sm-kf-153-03-frage": "abbildungen/sm-kf-153-03-frage.svg",
+  "sm-kf-153-02-frage": "abbildungen/sm-kf-153-02-frage.svg",
+  "sm-kf-153-01-frage": "abbildungen/sm-kf-153-01-frage.svg",
+  "sm-kf-152-24-loesung": "abbildungen/sm-kf-152-24-loesung.svg",
+  "sm-kf-152-24-frage": "abbildungen/sm-kf-152-24-frage.svg",
+  "sm-kf-152-23-frage": "abbildungen/sm-kf-152-23-frage.svg",
+  "sm-kf-152-22-loesung": "abbildungen/sm-kf-152-22-loesung.svg",
+  "sm-kf-152-22-frage": "abbildungen/sm-kf-152-22-frage.svg",
+  "sm-kf-152-21-frage": "abbildungen/sm-kf-152-21-frage.svg",
+  "sm-kf-152-20-frage": "abbildungen/sm-kf-152-20-frage.svg",
+  "sm-kf-152-19-frage": "abbildungen/sm-kf-152-19-frage.svg",
+  "sm-kf-152-18-frage": "abbildungen/sm-kf-152-18-frage.svg",
+  "sm-kf-152-17-frage": "abbildungen/sm-kf-152-17-frage.svg",
+  "sm-kf-152-16-loesung": "abbildungen/sm-kf-152-16-loesung.svg",
+  "sm-kf-152-16-frage": "abbildungen/sm-kf-152-16-frage.svg",
+  "sm-kf-152-15-frage": "abbildungen/sm-kf-152-15-frage.svg",
+  "sm-kf-152-14-loesung": "abbildungen/sm-kf-152-14-loesung.svg",
+  "sm-kf-152-14-frage": "abbildungen/sm-kf-152-14-frage.svg",
+  "sm-kf-152-13-frage": "abbildungen/sm-kf-152-13-frage.svg",
+  "sm-kf-152-12-frage": "abbildungen/sm-kf-152-12-frage.svg",
+  "sm-kf-152-11-frage": "abbildungen/sm-kf-152-11-frage.svg",
+  "sm-kf-152-10-frage": "abbildungen/sm-kf-152-10-frage.svg",
+  "sm-kf-152-09-loesung": "abbildungen/sm-kf-152-09-loesung.svg",
+  "sm-kf-152-09-frage": "abbildungen/sm-kf-152-09-frage.svg",
+  "sm-kf-152-08-frage": "abbildungen/sm-kf-152-08-frage.svg",
+  "sm-kf-152-07-frage": "abbildungen/sm-kf-152-07-frage.svg",
+  "sm-kf-152-06-loesung": "abbildungen/sm-kf-152-06-loesung.svg",
+  "sm-kf-152-06-frage": "abbildungen/sm-kf-152-06-frage.svg",
+  "sm-kf-152-05-frage": "abbildungen/sm-kf-152-05-frage.svg",
+  "sm-kf-152-04-frage": "abbildungen/sm-kf-152-04-frage.svg",
+  "sm-kf-152-03-loesung": "abbildungen/sm-kf-152-03-loesung.svg",
+  "sm-kf-152-03-frage": "abbildungen/sm-kf-152-03-frage.svg",
+  "sm-kf-152-02-frage": "abbildungen/sm-kf-152-02-frage.svg",
+  "sm-kf-152-01-frage": "abbildungen/sm-kf-152-01-frage.svg",
+  "sm-kf-151-22-loesung": "abbildungen/sm-kf-151-22-loesung.svg",
+  "sm-kf-151-22-frage": "abbildungen/sm-kf-151-22-frage.svg",
+  "sm-kf-151-21-loesung": "abbildungen/sm-kf-151-21-loesung.svg",
+  "sm-kf-151-21-frage": "abbildungen/sm-kf-151-21-frage.svg",
+  "sm-kf-151-20-loesung": "abbildungen/sm-kf-151-20-loesung.svg",
+  "sm-kf-151-20-frage": "abbildungen/sm-kf-151-20-frage.svg",
+  "sm-kf-151-19-loesung": "abbildungen/sm-kf-151-19-loesung.svg",
+  "sm-kf-151-19-frage": "abbildungen/sm-kf-151-19-frage.svg",
+  "sm-kf-151-18-frage": "abbildungen/sm-kf-151-18-frage.svg",
+  "sm-kf-151-17-frage": "abbildungen/sm-kf-151-17-frage.svg",
+  "sm-kf-151-16-frage": "abbildungen/sm-kf-151-16-frage.svg",
+  "sm-kf-151-15-frage": "abbildungen/sm-kf-151-15-frage.svg",
+  "sm-kf-151-14-frage": "abbildungen/sm-kf-151-14-frage.svg",
+  "sm-kf-151-13-frage": "abbildungen/sm-kf-151-13-frage.svg",
+  "sm-kf-151-12-frage": "abbildungen/sm-kf-151-12-frage.svg",
+  "sm-kf-151-11-frage": "abbildungen/sm-kf-151-11-frage.svg",
+  "sm-kf-151-10-loesung": "abbildungen/sm-kf-151-10-loesung.svg",
+  "sm-kf-151-10-frage": "abbildungen/sm-kf-151-10-frage.svg",
+  "sm-kf-151-09-loesung": "abbildungen/sm-kf-151-09-loesung.svg",
+  "sm-kf-151-09-frage": "abbildungen/sm-kf-151-09-frage.svg",
+  "sm-kf-151-08-frage": "abbildungen/sm-kf-151-08-frage.svg",
+  "sm-kf-151-07-frage": "abbildungen/sm-kf-151-07-frage.svg",
+  "sm-kf-151-06-loesung": "abbildungen/sm-kf-151-06-loesung.svg",
+  "sm-kf-151-06-frage": "abbildungen/sm-kf-151-06-frage.svg",
+  "sm-kf-151-05-frage": "abbildungen/sm-kf-151-05-frage.svg",
+  "sm-kf-151-04-frage": "abbildungen/sm-kf-151-04-frage.svg",
+  "sm-kf-151-03-frage": "abbildungen/sm-kf-151-03-frage.svg",
+  "sm-kf-151-02-frage": "abbildungen/sm-kf-151-02-frage.svg",
+  "sm-kf-151-01-frage": "abbildungen/sm-kf-151-01-frage.svg",
+  "sm-kf-150-21-frage": "abbildungen/sm-kf-150-21-frage.svg",
+  "sm-kf-150-20-frage": "abbildungen/sm-kf-150-20-frage.svg",
+  "sm-kf-150-19-frage": "abbildungen/sm-kf-150-19-frage.svg",
+  "sm-kf-150-18-loesung": "abbildungen/sm-kf-150-18-loesung.svg",
+  "sm-kf-150-18-frage": "abbildungen/sm-kf-150-18-frage.svg",
+  "sm-kf-150-17-loesung": "abbildungen/sm-kf-150-17-loesung.svg",
+  "sm-kf-150-17-frage": "abbildungen/sm-kf-150-17-frage.svg",
+  "sm-kf-150-16-loesung": "abbildungen/sm-kf-150-16-loesung.svg",
+  "sm-kf-150-16-frage": "abbildungen/sm-kf-150-16-frage.svg",
+  "sm-kf-150-15-frage": "abbildungen/sm-kf-150-15-frage.svg",
+  "sm-kf-150-14-frage": "abbildungen/sm-kf-150-14-frage.svg",
+  "sm-kf-150-13-loesung": "abbildungen/sm-kf-150-13-loesung.svg",
+  "sm-kf-150-13-frage": "abbildungen/sm-kf-150-13-frage.svg",
+  "sm-kf-150-12-frage": "abbildungen/sm-kf-150-12-frage.svg",
+  "sm-kf-150-11-frage": "abbildungen/sm-kf-150-11-frage.svg",
+  "sm-kf-150-10-loesung": "abbildungen/sm-kf-150-10-loesung.svg",
+  "sm-kf-150-10-frage": "abbildungen/sm-kf-150-10-frage.svg",
+  "sm-kf-150-09-loesung": "abbildungen/sm-kf-150-09-loesung.svg",
+  "sm-kf-150-09-frage": "abbildungen/sm-kf-150-09-frage.svg",
+  "sm-kf-150-08-frage": "abbildungen/sm-kf-150-08-frage.svg",
+  "sm-kf-150-07-frage": "abbildungen/sm-kf-150-07-frage.svg",
+  "sm-kf-150-06-loesung": "abbildungen/sm-kf-150-06-loesung.svg",
+  "sm-kf-150-06-frage": "abbildungen/sm-kf-150-06-frage.svg",
+  "sm-kf-150-05-frage": "abbildungen/sm-kf-150-05-frage.svg",
+  "sm-kf-150-04-frage": "abbildungen/sm-kf-150-04-frage.svg",
+  "sm-kf-150-03-frage": "abbildungen/sm-kf-150-03-frage.svg",
+  "sm-kf-150-02-frage": "abbildungen/sm-kf-150-02-frage.svg",
+  "sm-kf-150-01-frage": "abbildungen/sm-kf-150-01-frage.svg",
+  "sm-kf-148-16-loesung": "abbildungen/sm-kf-148-16-loesung.svg",
+  "sm-kf-148-16-frage": "abbildungen/sm-kf-148-16-frage.svg",
+  "sm-kf-148-15-loesung": "abbildungen/sm-kf-148-15-loesung.svg",
+  "sm-kf-148-15-frage": "abbildungen/sm-kf-148-15-frage.svg",
+  "sm-kf-148-14-loesung": "abbildungen/sm-kf-148-14-loesung.svg",
+  "sm-kf-148-14-frage": "abbildungen/sm-kf-148-14-frage.svg",
+  "sm-kf-148-13-frage": "abbildungen/sm-kf-148-13-frage.svg",
+  "sm-kf-148-12-frage": "abbildungen/sm-kf-148-12-frage.svg",
+  "sm-kf-148-11-frage": "abbildungen/sm-kf-148-11-frage.svg",
+  "sm-kf-148-10-frage": "abbildungen/sm-kf-148-10-frage.svg",
+  "sm-kf-148-09-loesung": "abbildungen/sm-kf-148-09-loesung.svg",
+  "sm-kf-148-09-frage": "abbildungen/sm-kf-148-09-frage.svg",
+  "sm-kf-148-08-frage": "abbildungen/sm-kf-148-08-frage.svg",
+  "sm-kf-148-07-loesung": "abbildungen/sm-kf-148-07-loesung.svg",
+  "sm-kf-148-07-frage": "abbildungen/sm-kf-148-07-frage.svg",
+  "sm-kf-148-06-loesung": "abbildungen/sm-kf-148-06-loesung.svg",
+  "sm-kf-148-06-frage": "abbildungen/sm-kf-148-06-frage.svg",
+  "sm-kf-148-05-frage": "abbildungen/sm-kf-148-05-frage.svg",
+  "sm-kf-148-04-frage": "abbildungen/sm-kf-148-04-frage.svg",
+  "sm-kf-148-03-frage": "abbildungen/sm-kf-148-03-frage.svg",
+  "sm-kf-148-02-frage": "abbildungen/sm-kf-148-02-frage.svg",
+  "sm-kf-148-01-frage": "abbildungen/sm-kf-148-01-frage.svg",
+  "sm-kf-146-20-loesung": "abbildungen/sm-kf-146-20-loesung.svg",
+  "sm-kf-146-20-frage": "abbildungen/sm-kf-146-20-frage.svg",
+  "sm-kf-146-19-frage": "abbildungen/sm-kf-146-19-frage.svg",
+  "sm-kf-146-18-loesung": "abbildungen/sm-kf-146-18-loesung.svg",
+  "sm-kf-146-18-frage": "abbildungen/sm-kf-146-18-frage.svg",
+  "sm-kf-146-17-loesung": "abbildungen/sm-kf-146-17-loesung.svg",
+  "sm-kf-146-17-frage": "abbildungen/sm-kf-146-17-frage.svg",
+  "sm-kf-146-16-frage": "abbildungen/sm-kf-146-16-frage.svg",
+  "sm-kf-146-15-frage": "abbildungen/sm-kf-146-15-frage.svg",
+  "sm-kf-146-14-frage": "abbildungen/sm-kf-146-14-frage.svg",
+  "sm-kf-146-13-frage": "abbildungen/sm-kf-146-13-frage.svg",
+  "sm-kf-146-12-loesung": "abbildungen/sm-kf-146-12-loesung.svg",
+  "sm-kf-146-12-frage": "abbildungen/sm-kf-146-12-frage.svg",
+  "sm-kf-146-11-frage": "abbildungen/sm-kf-146-11-frage.svg",
+  "sm-kf-146-10-frage": "abbildungen/sm-kf-146-10-frage.svg",
+  "sm-kf-146-09-frage": "abbildungen/sm-kf-146-09-frage.svg",
+  "sm-kf-146-08-frage": "abbildungen/sm-kf-146-08-frage.svg",
+  "sm-kf-146-07-frage": "abbildungen/sm-kf-146-07-frage.svg",
+  "sm-kf-146-06-frage": "abbildungen/sm-kf-146-06-frage.svg",
+  "sm-kf-146-05-loesung": "abbildungen/sm-kf-146-05-loesung.svg",
+  "sm-kf-146-05-frage": "abbildungen/sm-kf-146-05-frage.svg",
+  "sm-kf-146-04-frage": "abbildungen/sm-kf-146-04-frage.svg",
+  "sm-kf-146-03-loesung": "abbildungen/sm-kf-146-03-loesung.svg",
+  "sm-kf-146-03-frage": "abbildungen/sm-kf-146-03-frage.svg",
+  "sm-kf-146-02-frage": "abbildungen/sm-kf-146-02-frage.svg",
+  "sm-kf-146-01-frage": "abbildungen/sm-kf-146-01-frage.svg",
+  "sm-kf-145-22-loesung": "abbildungen/sm-kf-145-22-loesung.svg",
+  "sm-kf-145-22-frage": "abbildungen/sm-kf-145-22-frage.svg",
+  "sm-kf-145-21-frage": "abbildungen/sm-kf-145-21-frage.svg",
+  "sm-kf-145-20-frage": "abbildungen/sm-kf-145-20-frage.svg",
+  "sm-kf-145-19-loesung": "abbildungen/sm-kf-145-19-loesung.svg",
+  "sm-kf-145-19-frage": "abbildungen/sm-kf-145-19-frage.svg",
+  "sm-kf-145-18-loesung": "abbildungen/sm-kf-145-18-loesung.svg",
+  "sm-kf-145-18-frage": "abbildungen/sm-kf-145-18-frage.svg",
+  "sm-kf-145-17-frage": "abbildungen/sm-kf-145-17-frage.svg",
+  "sm-kf-145-16-frage": "abbildungen/sm-kf-145-16-frage.svg",
+  "sm-kf-145-15-loesung": "abbildungen/sm-kf-145-15-loesung.svg",
+  "sm-kf-145-15-frage": "abbildungen/sm-kf-145-15-frage.svg",
+  "sm-kf-145-14-loesung": "abbildungen/sm-kf-145-14-loesung.svg",
+  "sm-kf-145-14-frage": "abbildungen/sm-kf-145-14-frage.svg",
+  "sm-kf-145-13-frage": "abbildungen/sm-kf-145-13-frage.svg",
+  "sm-kf-145-12-frage": "abbildungen/sm-kf-145-12-frage.svg",
+  "sm-kf-145-11-frage": "abbildungen/sm-kf-145-11-frage.svg",
+  "sm-kf-145-10-frage": "abbildungen/sm-kf-145-10-frage.svg",
+  "sm-kf-145-09-frage": "abbildungen/sm-kf-145-09-frage.svg",
+  "sm-kf-145-08-frage": "abbildungen/sm-kf-145-08-frage.svg",
+  "sm-kf-145-07-frage": "abbildungen/sm-kf-145-07-frage.svg",
+  "sm-kf-145-06-frage": "abbildungen/sm-kf-145-06-frage.svg",
+  "sm-kf-145-05-frage": "abbildungen/sm-kf-145-05-frage.svg",
+  "sm-kf-145-04-frage": "abbildungen/sm-kf-145-04-frage.svg",
+  "sm-kf-145-03-loesung": "abbildungen/sm-kf-145-03-loesung.svg",
+  "sm-kf-145-03-frage": "abbildungen/sm-kf-145-03-frage.svg",
+  "sm-kf-145-02-frage": "abbildungen/sm-kf-145-02-frage.svg",
+  "sm-kf-145-01-frage": "abbildungen/sm-kf-145-01-frage.svg",
+  "sm-kf-144-23-loesung": "abbildungen/sm-kf-144-23-loesung.svg",
+  "sm-kf-144-23-frage": "abbildungen/sm-kf-144-23-frage.svg",
+  "sm-kf-144-22-frage": "abbildungen/sm-kf-144-22-frage.svg",
+  "sm-kf-144-21-loesung": "abbildungen/sm-kf-144-21-loesung.svg",
+  "sm-kf-144-21-frage": "abbildungen/sm-kf-144-21-frage.svg",
+  "sm-kf-144-20-frage": "abbildungen/sm-kf-144-20-frage.svg",
+  "sm-kf-144-19-loesung": "abbildungen/sm-kf-144-19-loesung.svg",
+  "sm-kf-144-19-frage": "abbildungen/sm-kf-144-19-frage.svg",
+  "sm-kf-144-18-frage": "abbildungen/sm-kf-144-18-frage.svg",
+  "sm-kf-144-17-frage": "abbildungen/sm-kf-144-17-frage.svg",
+  "sm-kf-144-16-frage": "abbildungen/sm-kf-144-16-frage.svg",
+  "sm-kf-144-15-frage": "abbildungen/sm-kf-144-15-frage.svg",
+  "sm-kf-144-14-frage": "abbildungen/sm-kf-144-14-frage.svg",
+  "sm-kf-144-13-frage": "abbildungen/sm-kf-144-13-frage.svg",
+  "sm-kf-144-12-loesung": "abbildungen/sm-kf-144-12-loesung.svg",
+  "sm-kf-144-12-frage": "abbildungen/sm-kf-144-12-frage.svg",
+  "sm-kf-144-11-frage": "abbildungen/sm-kf-144-11-frage.svg",
+  "sm-kf-144-10-frage": "abbildungen/sm-kf-144-10-frage.svg",
+  "sm-kf-144-09-loesung": "abbildungen/sm-kf-144-09-loesung.svg",
+  "sm-kf-144-09-frage": "abbildungen/sm-kf-144-09-frage.svg",
+  "sm-kf-144-08-frage": "abbildungen/sm-kf-144-08-frage.svg",
+  "sm-kf-144-07-frage": "abbildungen/sm-kf-144-07-frage.svg",
+  "sm-kf-144-06-frage": "abbildungen/sm-kf-144-06-frage.svg",
+  "sm-kf-144-05-loesung": "abbildungen/sm-kf-144-05-loesung.svg",
+  "sm-kf-144-05-frage": "abbildungen/sm-kf-144-05-frage.svg",
+  "sm-kf-144-04-loesung": "abbildungen/sm-kf-144-04-loesung.svg",
+  "sm-kf-144-04-frage": "abbildungen/sm-kf-144-04-frage.svg",
+  "sm-kf-144-03-loesung": "abbildungen/sm-kf-144-03-loesung.svg",
+  "sm-kf-144-03-frage": "abbildungen/sm-kf-144-03-frage.svg",
+  "sm-kf-144-02-frage": "abbildungen/sm-kf-144-02-frage.svg",
+  "sm-kf-144-01-frage": "abbildungen/sm-kf-144-01-frage.svg",
+  "sm-kf-143-23-loesung": "abbildungen/sm-kf-143-23-loesung.svg",
+  "sm-kf-143-23-frage": "abbildungen/sm-kf-143-23-frage.svg",
+  "sm-kf-143-22-loesung": "abbildungen/sm-kf-143-22-loesung.svg",
+  "sm-kf-143-22-frage": "abbildungen/sm-kf-143-22-frage.svg",
+  "sm-kf-143-21-frage": "abbildungen/sm-kf-143-21-frage.svg",
+  "sm-kf-143-20-frage": "abbildungen/sm-kf-143-20-frage.svg",
+  "sm-kf-143-19-frage": "abbildungen/sm-kf-143-19-frage.svg",
+  "sm-kf-143-18-frage": "abbildungen/sm-kf-143-18-frage.svg",
+  "sm-kf-143-17-frage": "abbildungen/sm-kf-143-17-frage.svg",
+  "sm-kf-143-16-frage": "abbildungen/sm-kf-143-16-frage.svg",
+  "sm-kf-143-15-frage": "abbildungen/sm-kf-143-15-frage.svg",
+  "sm-kf-143-14-frage": "abbildungen/sm-kf-143-14-frage.svg",
+  "sm-kf-143-13-frage": "abbildungen/sm-kf-143-13-frage.svg",
+  "sm-kf-143-12-frage": "abbildungen/sm-kf-143-12-frage.svg",
+  "sm-kf-143-11-frage": "abbildungen/sm-kf-143-11-frage.svg",
+  "sm-kf-143-10-frage": "abbildungen/sm-kf-143-10-frage.svg",
+  "sm-kf-143-09-loesung": "abbildungen/sm-kf-143-09-loesung.svg",
+  "sm-kf-143-09-frage": "abbildungen/sm-kf-143-09-frage.svg",
+  "sm-kf-143-08-frage": "abbildungen/sm-kf-143-08-frage.svg",
+  "sm-kf-143-07-frage": "abbildungen/sm-kf-143-07-frage.svg",
+  "sm-kf-143-06-frage": "abbildungen/sm-kf-143-06-frage.svg",
+  "sm-kf-143-05-frage": "abbildungen/sm-kf-143-05-frage.svg",
+  "sm-kf-143-04-frage": "abbildungen/sm-kf-143-04-frage.svg",
+  "sm-kf-143-03-frage": "abbildungen/sm-kf-143-03-frage.svg",
+  "sm-kf-143-02-frage": "abbildungen/sm-kf-143-02-frage.svg",
+  "sm-kf-143-01-frage": "abbildungen/sm-kf-143-01-frage.svg",
+  "sm-kf-142-29-frage": "abbildungen/sm-kf-142-29-frage.svg",
+  "sm-kf-142-28-frage": "abbildungen/sm-kf-142-28-frage.svg",
+  "sm-kf-142-27-loesung": "abbildungen/sm-kf-142-27-loesung.svg",
+  "sm-kf-142-27-frage": "abbildungen/sm-kf-142-27-frage.svg",
+  "sm-kf-142-26-frage": "abbildungen/sm-kf-142-26-frage.svg",
+  "sm-kf-142-25-frage": "abbildungen/sm-kf-142-25-frage.svg",
+  "sm-kf-142-24-frage": "abbildungen/sm-kf-142-24-frage.svg",
+  "sm-kf-142-23-frage": "abbildungen/sm-kf-142-23-frage.svg",
+  "sm-kf-142-22-frage": "abbildungen/sm-kf-142-22-frage.svg",
+  "sm-kf-142-21-loesung": "abbildungen/sm-kf-142-21-loesung.svg",
+  "sm-kf-142-21-frage": "abbildungen/sm-kf-142-21-frage.svg",
+  "sm-kf-142-20-frage": "abbildungen/sm-kf-142-20-frage.svg",
+  "sm-kf-142-19-frage": "abbildungen/sm-kf-142-19-frage.svg",
+  "sm-kf-142-18-loesung": "abbildungen/sm-kf-142-18-loesung.svg",
+  "sm-kf-142-18-frage": "abbildungen/sm-kf-142-18-frage.svg",
+  "sm-kf-142-17-frage": "abbildungen/sm-kf-142-17-frage.svg",
+  "sm-kf-142-16-frage": "abbildungen/sm-kf-142-16-frage.svg",
+  "sm-kf-142-15-frage": "abbildungen/sm-kf-142-15-frage.svg",
+  "sm-kf-142-14-frage": "abbildungen/sm-kf-142-14-frage.svg",
+  "sm-kf-142-13-frage": "abbildungen/sm-kf-142-13-frage.svg",
+  "sm-kf-142-12-frage": "abbildungen/sm-kf-142-12-frage.svg",
+  "sm-kf-142-11-frage": "abbildungen/sm-kf-142-11-frage.svg",
+  "sm-kf-142-10-loesung": "abbildungen/sm-kf-142-10-loesung.svg",
+  "sm-kf-142-10-frage": "abbildungen/sm-kf-142-10-frage.svg",
+  "sm-kf-142-09-frage": "abbildungen/sm-kf-142-09-frage.svg",
+  "sm-kf-142-08-frage": "abbildungen/sm-kf-142-08-frage.svg",
+  "sm-kf-142-07-frage": "abbildungen/sm-kf-142-07-frage.svg",
+  "sm-kf-142-06-frage": "abbildungen/sm-kf-142-06-frage.svg",
+  "sm-kf-142-05-loesung": "abbildungen/sm-kf-142-05-loesung.svg",
+  "sm-kf-142-05-frage": "abbildungen/sm-kf-142-05-frage.svg",
+  "sm-kf-142-04-frage": "abbildungen/sm-kf-142-04-frage.svg",
+  "sm-kf-142-03-frage": "abbildungen/sm-kf-142-03-frage.svg",
+  "sm-kf-142-02-frage": "abbildungen/sm-kf-142-02-frage.svg",
+  "sm-kf-142-01-frage": "abbildungen/sm-kf-142-01-frage.svg",
+  "rinne-differentialkraft": "abbildungen/rinne-differentialkraft.svg",
+  "pfws0506-steigkurve": "abbildungen/pfws0506-steigkurve.svg",
+  "pfws0506-steigkurve-var": "abbildungen/pfws0506-steigkurve-var.svg",
+  "pfws0506-staupunktkruemmer-original": "abbildungen/pfws0506-staupunktkruemmer-original.svg",
+  "pfws0506-radialspalt-original": "abbildungen/pfws0506-radialspalt-original.svg",
+  "pfws0506-flugpolare": "abbildungen/pfws0506-flugpolare.svg",
+  "pfws0506-flugpolare-var": "abbildungen/pfws0506-flugpolare-var.svg",
+  "pfws0506-duesenrohr-original": "abbildungen/pfws0506-duesenrohr-original.svg",
+  "pfws0102-verteilduese-original": "abbildungen/pfws0102-verteilduese-original.svg",
+  "pfws0102-rinne-original": "abbildungen/pfws0102-rinne-original.svg",
+  "pfws0102-heizkoerper-original": "abbildungen/pfws0102-heizkoerper-original.svg",
+  "pfss06-zweikreisnetz-original": "abbildungen/pfss06-zweikreisnetz-original.svg",
+  "pfss06-wellendach-stromlinien-original": "abbildungen/pfss06-wellendach-stromlinien-original.svg",
+  "pfss06-wellendach-original": "abbildungen/pfss06-wellendach-original.svg",
+  "pfss06-schwimmstab-original": "abbildungen/pfss06-schwimmstab-original.svg",
+  "pfss06-keilstrahl-original": "abbildungen/pfss06-keilstrahl-original.svg",
+  "pfss06-flugzeug-original": "abbildungen/pfss06-flugzeug-original.svg",
+  "pfss05-oelkuehler-original": "abbildungen/pfss05-oelkuehler-original.svg",
+  "pfss05-heiznetz-original": "abbildungen/pfss05-heiznetz-original.svg",
+  "pfss05-flussbiegung-original": "abbildungen/pfss05-flussbiegung-original.svg",
+  "pfss05-aquarium-original": "abbildungen/pfss05-aquarium-original.svg",
+  "pfss04-staudamm-original": "abbildungen/pfss04-staudamm-original.svg",
+  "pfss04-startverlauf": "abbildungen/pfss04-startverlauf.svg",
+  "pfss04-startverlauf-var": "abbildungen/pfss04-startverlauf-var.svg",
+  "pfss04-ringduese-original": "abbildungen/pfss04-ringduese-original.svg",
+  "pfss04-huegel-original": "abbildungen/pfss04-huegel-original.svg",
+  "pfss03-verzweigung-original": "abbildungen/pfss03-verzweigung-original.svg",
+  "pfss03-quellenprofil-original": "abbildungen/pfss03-quellenprofil-original.svg",
+  "pfss03-do27-polare-original": "abbildungen/pfss03-do27-polare-original.svg",
+  "pfss03-aquariumfenster-original": "abbildungen/pfss03-aquariumfenster-original.svg",
+  "lnss05-rohrsystem-original": "abbildungen/lnss05-rohrsystem-original.svg",
+  "lnss05-rohreinlauf-original": "abbildungen/lnss05-rohreinlauf-original.svg",
+  "lnss05-quellenprofil-stromlinien": "abbildungen/lnss05-quellenprofil-stromlinien.svg",
+  "lnss05-profilnase-original": "abbildungen/lnss05-profilnase-original.svg",
+  "aquarium-luftstrom-hoehe": "abbildungen/aquarium-luftstrom-hoehe.svg",
+  "kompressibler-gasausfluss": "abbildungen/kompressibler-gasausfluss.svg",
+  "wasserbad-var-temperatur-leistung": "abbildungen/wasserbad-var-temperatur-leistung.svg",
+  "wasserbad-temperatur-leistung": "abbildungen/wasserbad-temperatur-leistung.svg",
+  "senkenduese-komponenten": "abbildungen/senkenduese-komponenten.svg",
+  "pfws0304-senkenduese-original": "abbildungen/pfws0304-senkenduese-original.svg",
+  "pfws0304-schleusentor-original": "abbildungen/pfws0304-schleusentor-original.svg",
+  "pfws0304-luftbehaelter-original": "abbildungen/pfws0304-luftbehaelter-original.svg",
+  "pfws0304-kuehlernetz-original": "abbildungen/pfws0304-kuehlernetz-original.svg",
+  "pfws0203-spoiler-polare-original": "abbildungen/pfws0203-spoiler-polare-original.svg",
+  "pfws0203-spoiler-kraefte": "abbildungen/pfws0203-spoiler-kraefte.svg",
+  "pfws0203-spoiler-kraefte-var": "abbildungen/pfws0203-spoiler-kraefte-var.svg",
+  "pfws0203-pumpe-duese-original": "abbildungen/pfws0203-pumpe-duese-original.svg",
+  "pfws0203-pumpe-druck": "abbildungen/pfws0203-pumpe-druck.svg",
+  "pfws0203-pumpe-druck-var": "abbildungen/pfws0203-pumpe-druck-var.svg",
+  "pfws0203-prallschild-original": "abbildungen/pfws0203-prallschild-original.svg",
+  "pfws0203-brause-original": "abbildungen/pfws0203-brause-original.svg",
+  "pfss02-pumpenscheitel-original": "abbildungen/pfss02-pumpenscheitel-original.svg",
+  "pfss02-abzweig-original": "abbildungen/pfss02-abzweig-original.svg",
+  "pfss01-zweistrahl-original": "abbildungen/pfss01-zweistrahl-original.svg",
+  "pfss01-wirbelduese-original": "abbildungen/pfss01-wirbelduese-original.svg",
+  "glas-druck-kurven": "abbildungen/glas-druck-kurven.svg",
+  "boiler-entnahme-mittelwert": "abbildungen/boiler-entnahme-mittelwert.svg",
+  "bilanz-behaelter-schema": "abbildungen/bilanz-behaelter-schema.svg",
+  "badewanne-systemskizze": "abbildungen/badewanne-systemskizze.svg",
+  "vdw-kritische-isotherme": "abbildungen/vdw-kritische-isotherme.svg",
+  "torricelli-heber-folie": "abbildungen/torricelli-heber-folie.svg",
+  "druck-richtungsunabhaengigkeit": "abbildungen/druck-richtungsunabhaengigkeit.svg",
+  "brennstoffzelle-elektroden-memory": "abbildungen/brennstoffzelle-elektroden-memory.svg",
+  "klimazentrale-memory": "abbildungen/klimazentrale-memory.svg",
+  "linde-claude-memory": "abbildungen/linde-claude-memory.svg",
+  "philips-stirling-kaelte-memory": "abbildungen/philips-stirling-kaelte-memory.svg",
+  "joule-kaeltemaschine-memory": "abbildungen/joule-kaeltemaschine-memory.svg",
+  "lnss01-segelflug-polare": "abbildungen/lnss01-segelflug-polare.svg",
+  "lnss01-fussboden-original": "abbildungen/lnss01-fussboden-original.svg",
+  "lnss01-kruemmer-original": "abbildungen/lnss01-kruemmer-original.svg",
+  "pf0102-sauna-0": "abbildungen/pf0102-sauna-0.svg",
+  "pf0102-sauna-1": "abbildungen/pf0102-sauna-1.svg",
+  "lnss01-wirbelkanal-original": "abbildungen/lnss01-wirbelkanal-original.svg",
+  "vorlesung-rohrnetz-original": "abbildungen/vorlesung-rohrnetz-original.svg",
+  "v05-isobaren-0": "abbildungen/v05-isobaren-0.svg",
+  "v05-isobaren-1": "abbildungen/v05-isobaren-1.svg",
+  "turbofan-folien-original": "abbildungen/turbofan-folien-original.svg",
+  "hydrodynamisches-paradoxon": "abbildungen/hydrodynamisches-paradoxon.svg",
+  "hydrostatisches-paradoxon": "abbildungen/hydrostatisches-paradoxon.svg",
+  "luft-wasser-memory": "abbildungen/luft-wasser-memory.svg",
+  "taupunktregler-memory": "abbildungen/taupunktregler-memory.svg",
+  "mollier-memory-original": "abbildungen/mollier-memory-original.svg",
+  "pf0304-tunnel-1": "abbildungen/pf0304-tunnel-1.svg",
+  "pf0304-tunnel-0": "abbildungen/pf0304-tunnel-0.svg",
+  "ln9900-kammer-1": "abbildungen/ln9900-kammer-1.svg",
+  "ln9900-kammer-0": "abbildungen/ln9900-kammer-0.svg",
+  "pf9900-dampfbad-1": "abbildungen/pf9900-dampfbad-1.svg",
+  "pf9900-dampfbad-0": "abbildungen/pf9900-dampfbad-0.svg",
+  "pf0506-schule-schema": "abbildungen/pf0506-schule-schema.svg",
+  "pf0001-klima-0": "abbildungen/pf0001-klima-0.svg",
+  "pf0001-klima-1": "abbildungen/pf0001-klima-1.svg",
+  "ueb9900-buero-0": "abbildungen/ueb9900-buero-0.svg",
+  "ueb9900-buero-1": "abbildungen/ueb9900-buero-1.svg",
+  "pf0506-schwimmhalle-schema": "abbildungen/pf0506-schwimmhalle-schema.svg",
+  "pf0405-winter-0": "abbildungen/pf0405-winter-0.svg",
+  "pf0405-winter-1": "abbildungen/pf0405-winter-1.svg",
+  "pf0203-optionen-1": "abbildungen/pf0203-optionen-1.svg",
+  "pf0203-optionen-0": "abbildungen/pf0203-optionen-0.svg",
+  "gleitflug-kraefte": "abbildungen/gleitflug-kraefte.svg",
+  "koerperkraefte": "abbildungen/koerperkraefte.svg",
+  "modell-aehnlichkeit": "abbildungen/modell-aehnlichkeit.svg",
+  "potential-stromlinien": "abbildungen/potential-stromlinien.svg",
+  "ws13-schiff-original": "abbildungen/ws13-schiff-original.svg",
+  "ss13-rohrnetz-original": "abbildungen/ss13-rohrnetz-original.svg",
+  "ss24-fontane-original": "abbildungen/ss24-fontane-original.svg",
+  "ss24-presse-original": "abbildungen/ss24-presse-original.svg",
+  "kugel-stratifikation-original": "abbildungen/kugel-stratifikation-original.svg",
+  "rohrnetz-original": "abbildungen/rohrnetz-original.svg",
+  "waermeleitung-fourier": "abbildungen/waermeleitung-fourier.svg",
+  "brennstoffzelle-kennlinie": "abbildungen/brennstoffzelle-kennlinie.svg",
+  "brennstoffzelle-schema": "abbildungen/brennstoffzelle-schema.svg",
+  "uebung-1-11-realgasdiagramm": "abbildungen/uebung-1-11-realgasdiagramm.svg",
+  "r134a-vollstaendiges-ph": "abbildungen/r134a-vollstaendiges-ph.svg",
+  "map-stroemung": "abbildungen/map-stroemung.svg",
+  "map-verbrennung": "abbildungen/map-verbrennung.svg",
+  "map-feuchte": "abbildungen/map-feuchte.svg",
+  "map-maschinen": "abbildungen/map-maschinen.svg",
+  "map-idealesgas": "abbildungen/map-idealesgas.svg",
+  "impuls-kontrollvolumen": "abbildungen/impuls-kontrollvolumen.svg",
+  "moody-original": "abbildungen/moody-original.svg",
+  "plank-unterkuehlung": "abbildungen/plank-unterkuehlung.svg",
+  "rankine-zwischenueberhitzung": "abbildungen/rankine-zwischenueberhitzung.svg",
+  "stirling-regeneration": "abbildungen/stirling-regeneration.svg",
+  "joule-ideal-real": "abbildungen/joule-ideal-real.svg",
+  "otto-diesel-seiliger": "abbildungen/otto-diesel-seiliger.svg",
+  "gas-isolinien": "abbildungen/gas-isolinien.svg",
+  "exergie-gasturbinevar": "abbildungen/exergie-gasturbinevar.svg",
+  "exergie-gasturbine": "abbildungen/exergie-gasturbine.svg",
+  "exergie-gasstromvar": "abbildungen/exergie-gasstromvar.svg",
+  "exergie-gasstrom": "abbildungen/exergie-gasstrom.svg",
+  "exergie-co2var": "abbildungen/exergie-co2var.svg",
+  "exergie-co2": "abbildungen/exergie-co2.svg",
+  "exergie-abgasvar": "abbildungen/exergie-abgasvar.svg",
+  "exergie-abgas": "abbildungen/exergie-abgas.svg",
+  "a415-pfade": "abbildungen/a415-pfade.svg",
+  "a414-pfade": "abbildungen/a414-pfade.svg",
+  "a414-original": "abbildungen/a414-original.svg",
+  "map-exergie": "abbildungen/map-exergie.svg",
+  "faulgas-angabe": "abbildungen/faulgas-angabe.svg",
+  "exergie-weg": "abbildungen/exergie-weg.svg",
+  "kreisprozess-flaechen": "abbildungen/kreisprozess-flaechen.svg",
+  "hs-ts-vergleich": "abbildungen/hs-ts-vergleich.svg",
   "carnot-ts-rechteck": "abbildungen/carnot-ts-rechteck.svg",
   "r134a-angabe": "abbildungen/r134a-angabe.svg",
   "a420-angabe": "abbildungen/a420-angabe.svg",
@@ -187,6 +776,595 @@
 )
 
 #let bilddeutungen = (
+  "uebung-2-2-waermeverlauf-variante": (titel: "Bild lesen", body: [Waagerecht wächst die zugeführte Wärme, senkrecht die Temperatur. Beim Schmelzen und Verdampfen bleibt die Temperatur konstant; die unterschiedlichen Plateaulängen zeigen den dominierenden Verdampfungsbedarf.]),
+  "uebung-2-2-waermeverlauf": (titel: "Bild lesen", body: [Waagerecht wächst die zugeführte Wärme, senkrecht die Temperatur. Beim Schmelzen und Verdampfen bleibt die Temperatur konstant; die unterschiedlichen Plateaulängen zeigen den dominierenden Verdampfungsbedarf.]),
+  "uebung-7-9-hx-variante": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-9-hx-original": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-8-hx-variante": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-8-hx-original": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-7-hx-variante": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-7-hx-original": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-6-hx-variante": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-6-hx-original": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-5-hx-variante": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-5-hx-original": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-4-hx-variante": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-4-hx-original": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-3-hx-variante": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "uebung-7-3-hx-original": (titel: "Bild lesen", body: [Waagerecht steht die gesamte Wasserbeladung in Gramm je Kilogramm trockene Luft, senkrecht die Enthalpie je Kilogramm trockene Luft. Blaue Kurven sind Isothermen, grüne Kurven Linien gleicher relativer Feuchte; die kräftige grüne Kurve ist φ = 1. Orange Pfeile zeigen die berechneten Prozessschritte, gestrichelte Linien die Mischverbindung. Die beschrifteten Punkte verwenden die bereits nachgerechneten Zahlen dieser Aufgabe.]),
+  "td-kf-164-12-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-164-07-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-163-14-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-162-14-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-162-11-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-15-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-10-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-161-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-17-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-13-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-01-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-160-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-20-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-14-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-02-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-159-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-22-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-18-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-13-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-158-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-22-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-12-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-157-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-18-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-13-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "td-kf-156-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-13-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-08-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-07-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-155-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-19-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-13-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-07-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-154-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-13-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-08-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-07-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-153-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-24-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-24-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-23-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-22-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-16-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-14-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-06-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-152-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-22-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-20-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-19-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-10-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-06-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-151-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-18-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-17-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-16-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-13-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-10-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-06-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-150-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-16-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-15-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-14-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-07-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-06-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-148-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-20-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-18-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-17-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-12-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-05-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-146-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-22-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-19-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-18-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-15-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-14-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-145-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-23-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-23-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-19-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-12-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-05-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-04-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-03-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-144-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-23-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-23-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-22-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-09-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-143-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-29-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-28-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-27-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-27-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-26-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-25-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-24-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-23-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-22-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-21-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-21-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-20-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-19-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-18-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-18-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-17-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-16-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-15-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-14-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-13-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-12-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-11-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-10-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-10-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-09-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-08-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-07-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-06-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-05-loesung": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalmusterlösung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-05-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-04-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-03-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-02-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "sm-kf-142-01-frage": (titel: "Bild lesen", body: [Diese Abbildung dokumentiert die Originalaufgabenstellung der einzeln angegebenen historischen Kurzfrage. Vorgegebene Zahlen, Achsen, Winkel und Skizzen gehören zur Quelle. Die zugehörigen Textschritte erläutern das Prinzip und markieren gegebenenfalls Abweichungen oder Fehler des Originals.]),
+  "rinne-differentialkraft": (titel: "Bild lesen", body: [Ein differentielles Element der umströmten Rinne lenkt den Impuls um. Richtung und Hebelarm der örtlichen Druckkraft folgen aus der Kontur; die Gesamtwirkung entsteht erst durch Integration.]),
+  "pfws0506-steigkurve": (titel: "Bild lesen", body: [Waagerecht läuft die Zeit, senkrecht die Höhe im angegebenen vereinfachten Beschleunigungsmodell. Die Kurve beginnt mit waagerechter Tangente und wird steiler. Der Endwert und die Endsteigung stammen aus derselben konstanten vertikalen Beschleunigung.]),
+  "pfws0506-steigkurve-var": (titel: "Bild lesen", body: [Waagerecht läuft die Zeit, senkrecht die Höhe im angegebenen vereinfachten Beschleunigungsmodell. Die Kurve beginnt mit waagerechter Tangente und wird steiler. Der Endwert und die Endsteigung stammen aus derselben konstanten vertikalen Beschleunigung.]),
+  "pfws0506-staupunktkruemmer-original": (titel: "Bild lesen", body: [Der rechtwinklige Kanal wird durch eine äußere Stromlinie des Staupunktsfeldes begrenzt. Wand I und II liegen auf den Koordinatenachsen; der äußere Luftdruck wird von den inneren Wanddrücken abgezogen.]),
+  "pfws0506-radialspalt-original": (titel: "Bild lesen", body: [Wasser strömt durch einen dünnen radialen Spalt. Nach innen verkleinert sich die Ringfläche, die Geschwindigkeit steigt und der statische Druck sinkt; am inneren Rand wird die Kavitationsgrenze geprüft.]),
+  "pfws0506-flugpolare": (titel: "Bild lesen", body: [Die waagerechte Achse zeigt cW, die senkrechte cA. Die gekrümmte Polare verbindet die Betriebspunkte, eine Ursprungstangente markiert bestes Gleiten. Die unterschiedlichen Achsenmaßstäbe erlauben kein direktes Abmessen des physikalischen Gleitwinkels.]),
+  "pfws0506-flugpolare-var": (titel: "Bild lesen", body: [Die waagerechte Achse zeigt cW, die senkrechte cA. Die gekrümmte Polare verbindet die Betriebspunkte, eine Ursprungstangente markiert bestes Gleiten. Die unterschiedlichen Achsenmaßstäbe erlauben kein direktes Abmessen des physikalischen Gleitwinkels.]),
+  "pfws0506-duesenrohr-original": (titel: "Bild lesen", body: [Das Düsenrohr besitzt einen waagerechten und einen geneigten Auslauf. Die Einspannung trägt Kräfte und Moment. Die Lösung benennt ausdrücklich die geometrische Näherung für die Mündungshöhen und Hebelarme.]),
+  "pfws0102-verteilduese-original": (titel: "Bild lesen", body: [Der Zulauf teilt sich auf verschieden gerichtete freie Strahlen auf. Die eingezeichneten Winkel bestimmen die Vorzeichen des Impulsstroms; eine zusätzliche Blinddeckelkraft darf nicht doppelt zur Gesamtlast addiert werden.]),
+  "pfws0102-rinne-original": (titel: "Bild lesen", body: [Die Flüssigkeit wird von der bewegten Rinne aufgenommen und umgelenkt. Absolute und relative Geschwindigkeit müssen entsprechend der gewählten bewegten Systemgrenze getrennt bilanziert werden.]),
+  "pfws0102-heizkoerper-original": (titel: "Bild lesen", body: [Ein gemeinsamer Heizkreis teilt sich in Rohrwege mit unterschiedlichen Widerständen. Der gewünschte Teilstrom legt die nötige Drosselung fest, gemeinsame Verluste gehören zum Gesamtstrom.]),
+  "pfss06-zweikreisnetz-original": (titel: "Bild lesen", body: [Die Pumpe fördert durch den gemeinsamen Strang III von B nach A; von A nach B führen zwei parallele Wege mit verschiedenen Durchmessern und Höhen. Die eingezeichneten Bögen gehören zum jeweiligen Verlustweg.]),
+  "pfss06-wellendach-stromlinien-original": (titel: "Bild lesen", body: [Durchgezogene Stromlinien und dazu orthogonale Potentiallinien zeigen die Beschleunigung über den Wellenbergen. Die tatsächliche Konturlinie des gegebenen Potentials stimmt nur näherungsweise mit der Sinuswand überein.]),
+  "pfss06-wellendach-original": (titel: "Bild lesen", body: [Die sinusförmige Dachwand besitzt Berg 1 und Senke 2. A und C liegen auf gleicher Höhe H, C direkt über dem ersten Berg; die volle Wellenlänge 2πL ist eine andere Strecke als AC.]),
+  "pfss06-schwimmstab-original": (titel: "Bild lesen", body: [Der untere schwere und der obere leichte Werkstoff besitzen denselben Querschnitt. LA und LB bestimmen das Gewicht, LC die verdrängte Flüssigkeitsmenge. Kleine Neigungen verlangen zusätzlich eine Momentenprüfung.]),
+  "pfss06-keilstrahl-original": (titel: "Bild lesen", body: [Der in der Zeichnung nach unten laufende Strahl teilt sich am Keil. Die Winkel α und β sind zur Eintrittsrichtung gemessen: Sinusanteile wirken horizontal, Kosinusanteile vertikal. Die Haltekraft gleicht die Fluidlast aus.]),
+  "pfss06-flugzeug-original": (titel: "Bild lesen", body: [Die Zeichnung trennt Rumpf, Flügel, Höhen- und Seitenleitwerk. Bei der benetzten Flügel- und Höhenleitwerksfläche wird der im Rumpf liegende Anteil abgezogen; die freien Platten zählen auf beiden Seiten.]),
+  "pfss05-oelkuehler-original": (titel: "Bild lesen", body: [Zwei getrennte Stoffströme durchqueren den Kühler mit unterschiedlichen Anschlussrichtungen. Der Impulssatz wird für jede Richtung und jeden Strom bilanziert, bevor ihre Kräfte auf das Gehäuse addiert werden.]),
+  "pfss05-heiznetz-original": (titel: "Bild lesen", body: [Das Heiznetz enthält parallele Wege und gemeinsame Leitungsabschnitte. Die Teilstromgeschwindigkeiten werden über gleiche Knotenverluste verbunden; der Druck an einer inneren Stelle verlangt den passenden Teilweg.]),
+  "pfss05-flussbiegung-original": (titel: "Bild lesen", body: [Das äußere Potentialfeld eines Zylinders modelliert die Biegung. Die markierten Ufer liegen auf verschiedenen Stromlinien; ihre Stromfunktionsdifferenz ergibt den Durchfluss je Tiefe.]),
+  "pfss05-aquarium-original": (titel: "Bild lesen", body: [Die eingeschlossene Luft liegt über einer Wassersäule, deren Höhe h über dem äußeren Teichspiegel gemessen wird. Die zusätzlich eingetauchte Geometrie darf nicht als weitere freie Säulenhöhe addiert werden.]),
+  "pfss04-staudamm-original": (titel: "Bild lesen", body: [Der Wasserweg führt vom Stausee durch eine Leitung zu tieferem Auslauf. Höhengewinn, Auslaufgeschwindigkeit, Rohrreibung und Einzelverluste bestimmen gemeinsam den benötigten Durchmesser.]),
+  "pfss04-startverlauf": (titel: "Bild lesen", body: [Waagerecht läuft die Zeit, senkrecht die Höhe im angegebenen vereinfachten Beschleunigungsmodell. Die Kurve beginnt mit waagerechter Tangente und wird steiler. Der Endwert und die Endsteigung stammen aus derselben konstanten vertikalen Beschleunigung.]),
+  "pfss04-startverlauf-var": (titel: "Bild lesen", body: [Waagerecht läuft die Zeit, senkrecht die Höhe im angegebenen vereinfachten Beschleunigungsmodell. Die Kurve beginnt mit waagerechter Tangente und wird steiler. Der Endwert und die Endsteigung stammen aus derselben konstanten vertikalen Beschleunigung.]),
+  "pfss04-ringduese-original": (titel: "Bild lesen", body: [Der Zulauf wird in einen umlaufenden radialen Ringstrahl umgelenkt. Die radialen Impulsanteile heben sich bei Rotationssymmetrie auf; für die axiale Last bleiben Zulaufimpuls und Druckkräfte.]),
+  "pfss04-huegel-original": (titel: "Bild lesen", body: [Das Potentialfeld überlagert Parallelströmung und Dipol zur Hügelkontur. Geschwindigkeiten werden aus dem Feld abgeleitet und anschließend über Bernoulli in Druck umgerechnet; unphysikalische innere Feldpunkte sind gesondert zu prüfen.]),
+  "pfss03-verzweigung-original": (titel: "Bild lesen", body: [Die Leitung verzweigt sich in mehrere Ausläufe. Die Knotenbilanz verbindet die Teilströme; Rohrdurchmesser und die Höhenlage jedes Auslaufs gehören in seine eigene Energiegleichung.]),
+  "pfss03-quellenprofil-original": (titel: "Bild lesen", body: [Eine Quelle überlagert die horizontale Parallelströmung. Der obere und untere Ast der Trennstromlinie bilden das offene Profil; Staupunkt und asymptotische Breite folgen aus dem Quellenfeld.]),
+  "pfss03-do27-polare-original": (titel: "Bild lesen", body: [Die Polaren zeigen Auftrieb und Widerstand für unterschiedliche Klappenstellungen und Betriebsfälle. Die gemessene Kraft wird zunächst in einen Beiwert übersetzt, bevor der passende Punkt oder Winkel abgelesen wird.]),
+  "pfss03-aquariumfenster-original": (titel: "Bild lesen", body: [Das runde Bullauge und das Ersatzrechteck liegen unter dem freien Wasserspiegel. Gleiche resultierende Wandkraft verlangt das gleiche erste Flächenmoment bezüglich des Spiegels, nicht zwingend gleiche Fläche.]),
+  "lnss05-rohrsystem-original": (titel: "Bild lesen", body: [Zwei Rohre mit unterschiedlichen Durchmessern liegen in Reihe. Die Querschnittsänderung legt das Geschwindigkeitsverhältnis fest; Krümmer, Eintritt und Rohrreibung erzeugen zusätzliche Verluste.]),
+  "lnss05-rohreinlauf-original": (titel: "Bild lesen", body: [Vom großen Raum tritt Luft in das Rohr ein. Zwischen Eintritt und Messstelle wachsen die wandnahen Grenzschichten; der Unterdruck an der Messstelle wird mit dem ausgewiesenen Bernoulli-Modell in Geschwindigkeit übersetzt.]),
+  "lnss05-quellenprofil-stromlinien": (titel: "Bild lesen", body: [Die Linien folgen der Überlagerung von Quelle und Parallelströmung. Die Trennstromlinie durch den Staupunkt bildet die idealisierte Vorderkante; innere Quellströmung und äußere Umströmung werden getrennt sichtbar.]),
+  "lnss05-profilnase-original": (titel: "Bild lesen", body: [Die Parallelströmung und eine Quelle erzeugen eine Trennstromlinie als Profilkontur. Der markierte Punkt Q dient zum Einzeichnen des Geschwindigkeitsvektors. Winkel und Koordinaten legen die Zerlegung in kartesische und radiale Komponenten fest.]),
+  "aquarium-luftstrom-hoehe": (titel: "Bild lesen", body: [Die waagerechte Größe ist die Wasserhöhe über dem äußeren Teichspiegel, mit ρg/p∞ normiert. Eine höhere Säule erzeugt niedrigeren Innendruck. Der Luftmassenstrom steigt zunächst mit der Höhe und bleibt oberhalb der kritischen Höhe konstant; beim tatsächlichen Absinken der Säule läuft der Prozess in Gegenrichtung.]),
+  "kompressibler-gasausfluss": (titel: "Bild lesen", body: [Waagerecht steht der Nachdruck geteilt durch den Staudruck vor dem Ventil, senkrecht der normierte Massenstrom. Rechts bei gleichem Druck ist der Strom null. Mit wachsendem Druckgefälle nimmt er zu, bis das kritische Verhältnis erreicht ist; links davon bleibt er auf dem Maximum.]),
+  "wasserbad-var-temperatur-leistung": (titel: "Bild lesen", body: [Oben ist die Temperatur über der Zeit gezeichnet: linearer Anstieg, knickfreier parabolischer Übergang und Halten. Unten steht die zugehörige Leistung pro Masse: zunächst konstant, dann linear auf null fallend. Der adiabate Modellfall benötigt beim Halten keine weitere Leistung.]),
+  "wasserbad-temperatur-leistung": (titel: "Bild lesen", body: [Oben ist die Temperatur über der Zeit gezeichnet: linearer Anstieg, knickfreier parabolischer Übergang und Halten. Unten steht die zugehörige Leistung pro Masse: zunächst konstant, dann linear auf null fallend. Der adiabate Modellfall benötigt beim Halten keine weitere Leistung.]),
+  "senkenduese-komponenten": (titel: "Bild lesen", body: [Am Punkt auf der oberen radialen Wand zeigt der Geschwindigkeitsvektor zur Senke. Die horizontalen und vertikalen Pfeile zerlegen denselben Vektor in u und v. Eine tangentiale Komponente tritt bei diesem reinen Senkenmodell nicht auf.]),
+  "pfws0304-senkenduese-original": (titel: "Bild lesen", body: [Der Düsensektor liegt zwischen zwei Radien und zwei geraden Wänden mit vollem Öffnungswinkel α. Die Geschwindigkeit zeigt radial zur außerhalb liegenden Senke. Der äußere Radius ist der Druckbezug; nach innen steigt der Geschwindigkeitsbetrag und sinkt der statische Druck.]),
+  "pfws0304-schleusentor-original": (titel: "Bild lesen", body: [Die beiden Torflügel stemmen sich symmetrisch gegen einander. Die Wassertiefen H und h liefern entgegengesetzte Dreiecksdrucklasten, der Winkel α legt die Breite eines einzelnen Flügels und die Richtung der Stemmkraft fest.]),
+  "pfws0304-luftbehaelter-original": (titel: "Bild lesen", body: [Zwei geneigte bzw. waagerechte Einlässe speisen den stehenden Behälter, ein größerer Auslass führt nach unten. Die Lager nehmen getrennte horizontale und vertikale Anteile auf. Einlassimpulse und Einlassdruckkräfte haben dieselben geometrischen Richtungen.]),
+  "pfws0304-kuehlernetz-original": (titel: "Bild lesen", body: [Der gemeinsame Gesamtstrom teilt sich in einen schmaleren Kühlerstrang und einen breiteren Bypass mit Ventil. Die Verzweigungs-/Vereinigungsbeiwerte beziehen sich auf den Gesamtstrom; Kühler und Ventil auf ihren jeweiligen Teilstrom.]),
+  "pfws0203-spoiler-polare-original": (titel: "Bild lesen", body: [Die waagerechte Achse zeigt den Anstellwinkel α, die senkrechte den Auftriebsbeiwert cA. Ein negativer cA liefert Abtrieb. Der aus dem Modellversuch bestimmte Wert wird auf die Gerade übertragen; der Winkel bleibt ein Ablesewert der Originalpolare.]),
+  "pfws0203-spoiler-kraefte": (titel: "Bild lesen", body: [Die Anströmung und der Widerstand zeigen nach hinten, die Fahrzeugbewegung in Gegenrichtung. Der negative Auftrieb zeigt nach unten. Widerstand und Abtrieb ergeben die fast senkrechte Gesamtkraft; der kleine Winkel zu deren Abtriebsrichtung ist vom Winkel gegen die horizontale Achse zu unterscheiden.]),
+  "pfws0203-spoiler-kraefte-var": (titel: "Bild lesen", body: [Die Anströmung und der Widerstand zeigen nach hinten, die Fahrzeugbewegung in Gegenrichtung. Der negative Auftrieb zeigt nach unten. Widerstand und Abtrieb ergeben die fast senkrechte Gesamtkraft; der kleine Winkel zu deren Abtriebsrichtung ist vom Winkel gegen die horizontale Achse zu unterscheiden.]),
+  "pfws0203-pumpe-duese-original": (titel: "Bild lesen", body: [Vom Tank durchläuft der Kraftstoff Eintritt, Ventil, Sieb, Saugleitung, Pumpe, Druckleitung und Einspritzdüse. Die Stationsnummern trennen die Verlustabschnitte. Unterschiedliche Durchmesser erzeugen unterschiedliche Geschwindigkeitsanteile an den Pumpenstutzen.]),
+  "pfws0203-pumpe-druck": (titel: "Bild lesen", body: [Die waagerechte Richtung folgt den Stationen vom Tank zum Motor, senkrecht steht der statische Absolutdruck. Auf der Saugseite fällt er geringfügig, an der Pumpe steigt er stark und an der Düse fällt er bis zum Motorwert. Der Gesamtmaßstab macht die kleinen Saugverluste kaum sichtbar.]),
+  "pfws0203-pumpe-druck-var": (titel: "Bild lesen", body: [Die waagerechte Richtung folgt den Stationen vom Tank zum Motor, senkrecht steht der statische Absolutdruck. Auf der Saugseite fällt er geringfügig, an der Pumpe steigt er stark und an der Düse fällt er bis zum Motorwert. Der Gesamtmaßstab macht die kleinen Saugverluste kaum sichtbar.]),
+  "pfws0203-prallschild-original": (titel: "Bild lesen", body: [Der Prallschild wird vorn durch das Potentialfeld angeströmt und hinten über Schlitze mit dem dortigen Druck beaufschlagt. Die Nettokraft verwendet deshalb die Differenz zwischen der örtlichen Vorderseitenlast und dem konstanten Rückseitendruck.]),
+  "pfws0203-brause-original": (titel: "Bild lesen", body: [Die Eintrittsrichtung des Brausekopfs ist gegen die waagerechte Achse geneigt, die Düsenströme zeigen nach unten. Der Winkel der Originalskizze legt die Vorzeichen der x-/y-Komponenten fest. Die gesuchte Haltekraft gleicht die Fluidkraft auf den Körper aus.]),
+  "pfss02-pumpenscheitel-original": (titel: "Bild lesen", body: [Der Wasserweg führt vom ersten Becken über einen hoch liegenden Scheitel zum zweiten. Für den Scheiteldruck wird nur der Teilweg bis zum Scheitel bilanziert; Ventil- und Rohrverluste hinter diesem Punkt gehören erst in die Gesamtbilanz.]),
+  "pfss02-abzweig-original": (titel: "Bild lesen", body: [Die Originalskizze zeigt einen Doppelkrümmer mit verschließbarem Abzweig. Offener und geschlossener Hahn verändern Durchsatzaufteilung und Druckkräfte. Ein angegebener Umgebungsdruck an der geschlossenen Außenseite ersetzt nicht automatisch den Innendruck des offenen Abzweigs.]),
+  "pfss01-zweistrahl-original": (titel: "Bild lesen", body: [Ein Zulauf teilt sich in zwei freie Strahlen. Die eingezeichneten Richtungen gehören als Vektoren in die Impulsbilanz; bei einem Auslauf nach links ist die x-Komponente negativ. Die Fluidkraft auf das Rohr ist die Gegenkraft zur Wandkraft auf das Fluid.]),
+  "pfss01-wirbelduese-original": (titel: "Bild lesen", body: [Die Originalskizze legt die Lage von Potentialwirbel, Düsenwänden und Austrittsöffnung fest. Die geometrischen Abstände bestimmen die Integrationsgrenzen des Stroms; die Geschwindigkeitsrichtung folgt dem angegebenen Vorzeichen der Zirkulation.]),
+  "glas-druck-kurven": (titel: "Bild lesen", body: [Die senkrechte Koordinate ist die Tiefe ζ ab dem Glasrand, waagerecht steht Außen- minus Innendruck. Die leere Seitenwand erhält erst unter dem äußeren Wasserspiegel eine wachsende Druckdifferenz. Beim gefüllten Glas wächst sie zunächst und bleibt unter dem inneren Wasserspiegel konstant; die Höhen sind nur qualitativ angeordnet.]),
+  "boiler-entnahme-mittelwert": (titel: "Bild lesen", body: [Waagerecht läuft die Zeit, senkrecht steht der entnommene Volumenstrom. Sechs Minuten mit zehn Litern je Minute und sonst keine Entnahme ergeben über sechzig Minuten einen Mittelwert von einem Liter je Minute. Die gestrichelte Linie ist der Zeitmittelwert, keine tatsächlich konstante Entnahme.]),
+  "bilanz-behaelter-schema": (titel: "Bild lesen", body: [Die Grenze umfasst den gespeicherten Behälterinhalt. Zulauf und Ablauf überqueren sie an verschiedenen Stellen; ihre Differenz verändert die Masse. Bei konstantem Querschnitt übersetzt die Dichte die Masse in den Füllstand.]),
+  "badewanne-systemskizze": (titel: "Bild lesen", body: [Hahn und Dusche führen Wasser zu, Bodenabfluss und Rostlöcher führen es ab. Der Überlauf wird erst bei voller Wanne wirksam. Aus den im Bild angegebenen Volumenströmen entsteht bei konstanter Dichte die Speicherbilanz.]),
+  "vdw-kritische-isotherme": (titel: "Bild lesen", body: [Die Achsen zeigen Druck und spezifisches Volumen relativ zu den kritischen Modellwerten. Die grüne kritische Isotherme hat beim markierten Punkt eine waagerechte Wendestelle; die blaue wärmere Isotherme fällt dort weiter ab. Beide Kurven sind Modellverläufe und keine neuen Messdaten für einen realen Stoff.]),
+  "torricelli-heber-folie": (titel: "Bild lesen", body: [Punkt 1 liegt an der freien Behälteroberfläche, Punkt 2 am tieferen freien Austritt. Die Höhe zwischen beiden liefert den Geschwindigkeitshöhenanteil. Der Scheitel liegt auf dem Weg dazwischen: Dort ist der Absolutdruck separat zu prüfen, obwohl die Austrittsgeschwindigkeit von den Endpunkten bestimmt wird.]),
+  "druck-richtungsunabhaengigkeit": (titel: "Bild lesen", body: [Die drei unterschiedlich orientierten Flächen des kleinen Prismas tragen jeweils normal gerichtete Druckkräfte. Ihre Komponenten müssen im ruhenden Fluid im Gleichgewicht sein. Im Grenzfall eines sehr kleinen Prismas verschwindet der Einfluss des Eigengewichts gegenüber den Flächenkräften; alle Richtungsdrücke stimmen überein.]),
+  "brennstoffzelle-elektroden-memory": (titel: "Bild lesen", body: [Die drei Spalten nennen Anodenreaktion, Kathodenreaktion und transportiertes Ion. Der Elektrolyt bestimmt, ob Protonen, Hydroxid-, Carbonat- oder Oxidionen wandern. Der Elektronenstrom nimmt den äußeren Weg; die Gesamtreaktion entsteht durch Addition beider Halbgleichungen.]),
+  "klimazentrale-memory": (titel: "Bild lesen", body: [Außenluft ODA und Umluft RCA ergeben die Mischluft MIA. Aufbereitung und Ventilator erzeugen die Zuluft SUP. Erst nach Wärme-, Arbeits- und Wassereinträgen im Raum entsteht die Raumluft IDA; Abluft und Umluft sind entsprechend der gezeichneten Verzweigung zu trennen.]),
+  "linde-claude-memory": (titel: "Bild lesen", body: [Links wird der gesamte Hochdruckstrom nach Vorkühlung gedrosselt und im Abscheider aufgeteilt. Rechts zweigt im Claude-Verfahren ein Teilstrom zur Expansionsmaschine ab. Die Pfeile der Rückströme zeigen, welcher Anteil den jeweiligen Gegenstrom-Wärmeübertrager tatsächlich durchläuft. Unten ordnet das T-s-Diagramm die dazugehörigen Stoffzustände und Entspannungswege ein.]),
+  "philips-stirling-kaelte-memory": (titel: "Bild lesen", body: [Der linksläufige Stirling-Prozess tauscht Nutzkälte auf der unteren und Abwärme auf der oberen Isotherme. Die verbindenden Isochoren geben Wärme an den Regenerator ab und nehmen sie zurück. Rechts trennt die Konstruktion Arbeitskolben, Verdränger und Wärmeaustauscher.]),
+  "joule-kaeltemaschine-memory": (titel: "Bild lesen", body: [Links stehen Druck und spezifisches Volumen, rechts Temperatur und Entropie. Der ideale Linkslauf enthält zwei Isentropen und zwei Isobaren. Die realen Verdichtungs- und Expansionswege erzeugen Entropie; ihre Endpunkte liegen gegenüber den Isentropen nach rechts versetzt.]),
+  "lnss01-segelflug-polare": (titel: "Bild lesen", body: [Originalskizze aus SMLNSS01, Aufgabenblatt PDF-S.5–6. Komponenten, Zustände, Koordinaten und Polarenablesung sind im zugehörigen Aufgabentext erläutert.]),
+  "lnss01-fussboden-original": (titel: "Bild lesen", body: [Originalskizze aus SMLNSS01, Aufgabenblatt PDF-S.5–6. Komponenten, Zustände, Koordinaten und Polarenablesung sind im zugehörigen Aufgabentext erläutert.]),
+  "lnss01-kruemmer-original": (titel: "Bild lesen", body: [Originalskizze aus SMLNSS01, Aufgabenblatt PDF-S.5–6. Komponenten, Zustände, Koordinaten und Polarenablesung sind im zugehörigen Aufgabentext erläutert.]),
+  "pf0102-sauna-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung der Saunaaufgabe aus PFWS01/02. Waagerecht Wasserbeladung, senkrecht Enthalpie, blau die Sättigung bei1bar. Die Mischungsgerade von heißer Saunaluft zur Umgebung schneidet die Sättigungskurve zweimal; dazwischen entsteht Nebel.]),
+  "pf0102-sauna-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung der Saunaaufgabe aus PFWS01/02. Waagerecht Wasserbeladung, senkrecht Enthalpie, blau die Sättigung bei1bar. Die Mischungsgerade von heißer Saunaluft zur Umgebung schneidet die Sättigungskurve zweimal; dazwischen entsteht Nebel.]),
+  "lnss01-wirbelkanal-original": (titel: "Bild lesen", body: [Originalskizze aus SMLNSS01, Aufgabenblatt PDF-S.5–6. Komponenten, Zustände, Koordinaten und Polarenablesung sind im zugehörigen Aufgabentext erläutert.]),
+  "vorlesung-rohrnetz-original": (titel: "Bild lesen", body: [Originalnetz aus S23, PDF-S.27. Gemeinsamer Weg zwei Längenℓ, oberer Zweig eineℓ, rechter Zweig zweiℓ. Die Endbehälter liegen auf unterschiedlichen Höhen. Die T-Stückbeiwerte beziehen sich auf den ungetrennten Strom.]),
+  "v05-isobaren-0": (titel: "Bild lesen", body: [Eigene berechnete Isobaren des idealen Luftmodells nachV05 PDF-S.14. Waagerecht steht die Entropie, senkrecht die Celsiustemperatur. Die farbigen Kurven gelten für feste Drücke. Bezug:1bar/0°C/s0; Rechenwerte und Einheiten stehen im zugehörigen Aufgabentext.]),
+  "v05-isobaren-1": (titel: "Bild lesen", body: [Eigene berechnete Isobaren des idealen Luftmodells nachV05 PDF-S.14. Waagerecht steht die Entropie, senkrecht die Celsiustemperatur. Die farbigen Kurven gelten für feste Drücke. Bezug:1bar/0°C/s0; Rechenwerte und Einheiten stehen im zugehörigen Aufgabentext.]),
+  "turbofan-folien-original": (titel: "Bild lesen", body: [Der Kernstrom läuft durch Verdichter, Brennkammer und Turbinen; der Fan fördert zusätzlich Nebenstrom. Eine Hochdruckturbine treibt den Hochdruckverdichter, eine Niederdruckturbine den Fan und Niederdruckverdichter über eine zweite Welle. Die Zahlen und der dargestellte Flugzeugtyp sind historische Folienbeispiele. QuelleV06 PDF-S.13.]),
+  "hydrodynamisches-paradoxon": (titel: "Bild lesen", body: [Die Strömung verlässt den Spalt zwischen Rohr und Kreisplatte radial. Bei konstantem Spalt ist die Geschwindigkeit innen größer als außen; der statische Druck liegt dort unter dem Außendruck. Die Druckverteilung kann die Platte zum Rohr ziehen. Direkt im Umlenk-/Auftreffgebiet muss zusätzlich die Impulswirkung betrachtet werden. QuelleS23 PDF-S.6.]),
+  "hydrostatisches-paradoxon": (titel: "Bild lesen", body: [Eigene schematische Darstellung nach BS, Aufgabe1.17, PDF-S.45, zum Thema vonS1 PDF-S.4. Alle Gefäße haben gleiche Bodenfläche und Füllhöhe; ihre Wassermassen unterscheiden sich. Die grünen Bodenkraftpfeile sind deshalb gleich. Schräge und abgestufte Wände tragen vertikale Kraftanteile. Die Skizze rekonstruiert keinen fehlenden Tafelanschrieb.]),
+  "luft-wasser-memory": (titel: "Bild lesen", body: [Die Luftzustände L werden mit der gesättigten Grenzschicht über Wasser bei tG verglichen. Temperaturunterschied und Wasserdampfpartialdruck entscheiden über Wärme- und Stoffstrom; Verdunstung ist nicht automatisch identisch mit reiner Luftkühlung. G ist der zugehörige Sättigungszustand. Quelle MT PDF-S.25, BildM8-4.]),
+  "taupunktregler-memory": (titel: "Bild lesen", body: [Außenluft ODA wird auf der zum Soll-Taupunkt TP gehörenden Enthalpie vorbereitet, im idealen Wäscher bis TP gesättigt und danach bei konstantem Wassergehalt zur Raumluft IDA erwärmt. Die Lage des maximalen Außenluftzustands ODAmax begrenzt dieses einfache Regelverfahren. Quelle MT PDF-S.25, BildM8-3a.]),
+  "mollier-memory-original": (titel: "Bild lesen", body: [Im Mollier-Diagramm wächst x nach rechts; Enthalpien werden an der schiefen h-Achse bzw. ihren parallelen Linien gelesen. Der Mischzustand liegt auf der Verbindungslinie der Ausgangszustände. Die Kühlgerade erreicht zuerst den Taupunkt; bei tieferer Kühlfläche wird Wasser ausgeschieden. G markiert die Kühlgrenze, F die Kühlflächentemperatur. Quelle MT PDF-S.23, BildM8-1.]),
+  "pf0304-tunnel-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf0304-tunnel-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "ln9900-kammer-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "ln9900-kammer-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf9900-dampfbad-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf9900-dampfbad-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf0506-schule-schema": (titel: "Bild lesen", body: [Originalskizze aus PF Thermodynamik WS05/06. Komponenten und Zustandsnummern werden im zugehörigen Aufgabentext erläutert. Die Bildunterschrift nennt die Quelle.]),
+  "pf0001-klima-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf0001-klima-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "ueb9900-buero-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "ueb9900-buero-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf0506-schwimmhalle-schema": (titel: "Bild lesen", body: [Originalskizze aus PF Thermodynamik WS05/06. Komponenten und Zustandsnummern werden im zugehörigen Aufgabentext erläutert. Die Bildunterschrift nennt die Quelle.]),
+  "pf0405-winter-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf0405-winter-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf0203-optionen-1": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "pf0203-optionen-0": (titel: "Bild lesen", body: [Eigene berechnete h-x-Darstellung zur angegebenen Altklausur. Waagerecht Wasserbeladung in g/kg trockene Luft, senkrecht spezifische Enthalpie in kJ/kg trockene Luft. Blau zeigt Sättigung bei1bar, grün die Zustandsfolge, beschriftete Punkte die im Aufgabentext definierten Zustände. Beim Kühlen mit Kondensation folgt der reale Verlauf der Sättigungsgrenze; die Verbindungslinien sind eine schematische Übersicht.]),
+  "gleitflug-kraefte": (titel: "Bild lesen", body: [Die Flugbahn fällt nach rechts ab. Auftrieb steht senkrecht zur relativen Anströmung, Widerstand entgegen der Bewegung, Gewicht senkrecht nach unten. Im stationären Gleitflug bilden die drei Kräfte ein geschlossenes Dreieck. Die beste Gleitzahl ist nicht automatisch die kleinste Sinkgeschwindigkeit. Eigene Darstellung nach BS PDF-S. 323–330.]),
+  "koerperkraefte": (titel: "Bild lesen", body: [Die Kugel bewegt sich im Fall nach unten; Widerstand und statischer Auftrieb zeigen nach oben. Bei stationärer Endgeschwindigkeit ist die resultierende Kraft null. A ist bei der Kugel ihre Stirn- bzw. Schattenfläche, nicht die ganze Kugeloberfläche. Eigene Darstellung nach BS Widerstand/Fallgleichgewicht, PDF-S. 282–306.]),
+  "modell-aehnlichkeit": (titel: "Bild lesen", body: [Die große und kleine Kugel sind geometrisch ähnlich. Unterschiedliche Fluide und Geschwindigkeiten können dieselbe Reynolds-Zahl ergeben. Dann bleiben bei gleicher relativer Rauigkeit die dimensionslosen Kraft-/Druckbeiwerte gleich, während absolute Kräfte mit Dichte, Geschwindigkeit und Fläche skalieren. Andere dominante Effekte benötigen zusätzliche Kennzahlen. Eigene Darstellung nach BS PDF-S. 199–204.]),
+  "potential-stromlinien": (titel: "Bild lesen", body: [Die Anströmung läuft von links nach rechts. Grün ist die trennende Stromlinie der Überlagerung von Parallelströmung und Quelle; ihr vorderster Punkt ist ein Staupunkt. Blaue Stromlinien umströmen die grüne Kontur. Die geometrische Ähnlichkeit ist eine Modellhilfe; weder Reibungswiderstand noch Ablösung werden dargestellt. Eigene Auswertung der Potential-/Stromfunktion nach BS PDF-S. 161–163.]),
+  "ws13-schiff-original": (titel: "Bild lesen", body: [Originalskizze aus Q140, PDF-S. 6; im Aufgabentext mit Herkunft und Größen erläutert.]),
+  "ss13-rohrnetz-original": (titel: "Bild lesen", body: [Originalskizze aus Q141, PDF-S. 3; im Aufgabentext mit Herkunft und Größen erläutert.]),
+  "ss24-fontane-original": (titel: "Bild lesen", body: [Originalskizze aus Q139, PDF-S. 2; im Aufgabentext mit Herkunft und Größen erläutert.]),
+  "ss24-presse-original": (titel: "Bild lesen", body: [Originalskizze aus Q139, PDF-S. 3; im Aufgabentext mit Herkunft und Größen erläutert.]),
+  "kugel-stratifikation-original": (titel: "Bild lesen", body: [Original-Kugel mit lokaler y-Koordinate ab Mittelpunkt und x nach unten ab Oberfläche. T ist die Tiefe der Kugeloberkante, xM die Mittelpunkttiefe. Quelle Zusatzblatt Auftrieb PDF-S. 1.]),
+  "rohrnetz-original": (titel: "Bild lesen", body: [Original-Rohrnetz mit Knoten I/II, Bypass, Wärmeübertrager und gemeinsamem Strang 3. Quelle Zusatzblatt Rohrnetz PDF-S. 1; Höhen und Durchmesserbezeichnungen gehören zum Original. In Aufgaben.typ erläutert.]),
+  "waermeleitung-fourier": (titel: "Bild lesen", body: [Die Vorzeichenbeziehung zeigt: Wärme fließt von höherer zu niedrigerer Temperatur. Links stehen die lokale Wärmestromdichte und rechts der Temperaturgradient. Je nach ebener, zylindrischer oder kugelförmiger Wand verändert sich die Fläche entlang des Wärmewegs. Quelle MT PDF-S. 38.]),
+  "brennstoffzelle-kennlinie": (titel: "Bild lesen", body: [Waagerecht steht der elektrische Strom, senkrecht die Zellspannung. Die reale Spannung fällt unter die reversible Leerlaufspannung; das Rechteck U mal I ist der abgegebene Leistungsbetrag. Die Differenz zur energetischen Reaktionsspannung wird als Wärme abgeführt. Quelle MT PDF-S. 35.]),
+  "brennstoffzelle-schema": (titel: "Bild lesen", body: [Links wird Wasserstoff an der Anode in Protonen und Elektronen getrennt. Die Elektronen fließen durch die äußere Last und leisten elektrische Arbeit; Protonen passieren den Elektrolyten. Rechts entstehen mit Sauerstoff Wasser und Wärme. Quelle MT PDF-S. 32, Wasserstoff-Sauerstoff-Zelle; Wege nicht mit einem thermischen Kreisprozess verwechseln.]),
+  "uebung-1-11-realgasdiagramm": (titel: "Bild lesen", body: [Realgasfaktor über reduziertem Druck, Parameter reduzierte Temperatur. Original aus Ü 1.11, PDF-S. 8; nur in Aufgaben.typ genutzt.]),
+  "r134a-vollstaendiges-ph": (titel: "Bild lesen", body: [Vollständiges R134a-Druck-Enthalpie-Diagramm aus BT A.12, PDF-S. 516, gedreht für h waagerecht. Logarithmische Druckachse, Sättigungsgrenzen und Isolinien. Nur in Aufgaben.typ als Originalquelle verwendet.]),
+  "map-stroemung": (titel: "Bild lesen", body: [Die vier Äste ordnen das Kapitel vom Modell über die Rechenschritte bis zur Ergebnisprüfung. Die Verknüpfungen werden in den Abschnitten erläutert; eigene Darstellung.]),
+  "map-verbrennung": (titel: "Bild lesen", body: [Die vier Äste ordnen das Kapitel vom Modell über die Rechenschritte bis zur Ergebnisprüfung. Die Verknüpfungen werden in den Abschnitten erläutert; eigene Darstellung.]),
+  "map-feuchte": (titel: "Bild lesen", body: [Die vier Äste ordnen das Kapitel vom Modell über die Rechenschritte bis zur Ergebnisprüfung. Die Verknüpfungen werden in den Abschnitten erläutert; eigene Darstellung.]),
+  "map-maschinen": (titel: "Bild lesen", body: [Die vier Äste ordnen das Kapitel vom Modell über die Rechenschritte bis zur Ergebnisprüfung. Die Verknüpfungen werden in den Abschnitten erläutert; eigene Darstellung.]),
+  "map-idealesgas": (titel: "Bild lesen", body: [Die vier Äste ordnen das Kapitel vom Modell über die Rechenschritte bis zur Ergebnisprüfung. Die Verknüpfungen werden in den Abschnitten erläutert; eigene Darstellung.]),
+  "impuls-kontrollvolumen": (titel: "Bild lesen", body: [Zuerst Geschwindigkeiten und Druckkräfte einzeichnen, dann die Komponenten des austretenden minus eintretenden Impulsstroms bilden. Die berechnete Wandkraft auf das Fluid wechselt beim Übergang zur Fluidkraft auf den Krümmer ihr Vorzeichen.]),
+  "moody-original": (titel: "Bild lesen", body: [Die waagerechte Achse zeigt die Reynolds-Zahl, die senkrechte die Darcy-Rohrreibzahl. Rauigkeitskurven unterscheiden das Übergangsgebiet vom hydraulisch rauen Bereich. Abgelesene Werte sind Näherungen; keine Fanning-Reibzahl einsetzen.]),
+  "plank-unterkuehlung": (titel: "Bild lesen", body: [Drosseln bleibt im h-Bild senkrecht, der Verdichter hebt h an. Unterkühlung senkt die Eintrittsenthalpie des Verdampfers; Saugüberhitzung und nützliche Verdampferüberhitzung müssen durch die Systemgrenze getrennt werden.]),
+  "rankine-zwischenueberhitzung": (titel: "Bild lesen", body: [Links steht der einfache Dampfumlauf, rechts kommen Zwischenüberhitzung und ein entnommener Heizdampfstrom hinzu. Hinter einer Entnahme durchströmt nur der verbleibende Massenstrom die nächste Turbinenstufe.]),
+  "stirling-regeneration": (titel: "Bild lesen", body: [Die Isothermen übertragen Arbeit und äußere Wärme; die Isochoren verschieben Wärme zwischen Gas und Regenerator. Erst bei idealer Regeneration müssen die isochoren Wärmen nicht von außen bereitgestellt werden.]),
+  "joule-ideal-real": (titel: "Bild lesen", body: [Der reale Verdichter endet rechts und wärmer als der ideale; die reale Turbine rechts und wärmer als ihr idealer Austritt. Deshalb wächst die Verdichteraufnahme und sinkt die Turbinenabgabe. Nettoarbeit ist stets ihre Differenz.]),
+  "otto-diesel-seiliger": (titel: "Bild lesen", body: [Die drei Vergleichsprozesse unterscheiden sich durch die Wärmezufuhr bei konstantem Volumen, konstantem Druck oder beidem. Die Isentropen schließen Verdichtung und Expansion ab. Die Tabellenwerte sind historische Beispiele, keine heutigen Motorzusagen.]),
+  "gas-isolinien": (titel: "Bild lesen", body: [Waagerecht steht das Volumen bzw. die Entropie. Im p-v-Bild fällt die Isentrope steiler als die Isotherme; im T-s-Bild steigt die Isochore steiler als die Isobare. Die Gleichsetzung von Isenthalpe und Isotherme gilt hier nur für das ideale Gas.]),
+  "exergie-gasturbinevar": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "exergie-gasturbine": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "exergie-gasstromvar": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "exergie-gasstrom": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "exergie-co2var": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "exergie-co2": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "exergie-abgasvar": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "exergie-abgas": (titel: "Bild lesen", body: [Eigene Darstellung: T-s-Bild links, p-v-Bild rechts; die Reihenfolge der farbigen Pfeile gibt den reversiblen Weg über die Umgebungsisotherme an. Modellwerte nach der jeweiligen Aufgabe. Nur in Aufgaben.typ verwendet.]),
+  "a415-pfade": (titel: "Bild lesen", body: [Quellenausschnitt mit Originalangabe bzw. Lösungsskizze. Fundstelle und Einordnung stehen in der zugehörigen Aufgabe; nur dort verwendet.]),
+  "a414-pfade": (titel: "Bild lesen", body: [Quellenausschnitt mit Originalangabe bzw. Lösungsskizze. Fundstelle und Einordnung stehen in der zugehörigen Aufgabe; nur dort verwendet.]),
+  "a414-original": (titel: "Bild lesen", body: [Quellenausschnitt mit Originalangabe bzw. Lösungsskizze. Fundstelle und Einordnung stehen in der zugehörigen Aufgabe; nur dort verwendet.]),
+  "map-exergie": (titel: "Bild lesen", body: [Die vier Äste führen von der Umgebung über die Systemart zum reversiblen Vergleich und zur Entropieerzeugung. Erst nach Wahl von System und Referenz ist eine Exergiezahl eindeutig.]),
+  "faulgas-angabe": (titel: "Bild lesen", body: [Die Originalangabe zeigt Volumen, Druck, Temperatur, Tiefe und die Umgebung. Diese Abbildung wird nur in Aufgaben.typ als Aufgabenquelle verwendet.]),
+  "exergie-weg": (titel: "Bild lesen", body: [Zuerst führt die Isentrope von 1 nach a zur Umgebungstemperatur, dann die Umgebungsisotherme nach ∞. Der Vergleich über die Drossel nach b erzeugt Entropie und liefert weniger Arbeit. Enddruck und Endtemperatur allein bestimmen noch keinen konkreten Prozessweg.]),
+  "kreisprozess-flaechen": (titel: "Bild lesen", body: [Die linke Hälfte zeigt die Wärmekraftmaschine, die rechte Kältemaschine und Wärmepumpe. Die Umlaufrichtung kehrt die Nettozeichen um. Druckarbeit ist im p-v-Bild eine geschlossene Fläche; Wärme im T-s-Bild nur unter den angegebenen Reversibilitätsbedingungen.]),
+  "hs-ts-vergleich": (titel: "Bild lesen", body: [Links bedeuten rote und blaue Flächen Wärme; rechts sind dieselben Enthalpiedifferenzen senkrechte Strecken. Der reale Turbinenaustritt 6 liegt rechts und höher als 6is: kleinere Arbeitsabgabe bei gleichem Enddruck.]),
   "carnot-ts-rechteck": (titel: "Bild lesen", body: [Die Temperatur steht senkrecht, die spezifische Entropie waagerecht. Der Weg 1→2→3→4→1 läuft rechtsherum; oben wird Wärme zugeführt, unten abgeführt. Weil beide Isothermen dieselbe Entropiebreite haben, bleibt ihre Flächendifferenz als Nettoarbeit.]),
   "r134a-angabe": (titel: "Bild lesen", body: [Der blaue Kreis markiert den gesuchten R134a-Zustand; die farbigen Beispiel-Isolinien laufen nicht sämtlich durch diesen Punkt. Die Abbildung gehört ausschließlich zu Aufgaben.typ.]),
   "a420-angabe": (titel: "Bild lesen", body: [Die Originalaufgabe enthält Zustandsvorgaben, Zielpunkte und Isolinien für die selbstständige Diagrammauswertung. Die Abbildung gehört ausschließlich zu Aufgaben.typ.]),
@@ -295,7 +1473,7 @@
 
 #note("Dein Feynman-Schritt", [Sieh dir die Abbildung an. Erkläre dann ohne Vorlage: *Was passiert? Warum? Wann gilt die Formel?* Erst anschließend vergleichst du deine Erklärung mit dem Text und den Formeln.])
 
-Stand: *12.11.2026*. Ergänzt sind die Vorlesungsseiten vom 10.11. (Zustandsdiagramme, Flächendeutung, Rankine- und Plank-Prozess) und die überlieferten Carnot-Seiten vom 11.11. Aufgaben und Formelsammlung sind abgeglichen. Nicht dokumentierte Zwischenfolien zur Exergie werden nicht als behandelt vorausgesetzt.
+Stand: *13.11.2026*. Ausbau des vollständigen Moduls nach der Sammlung „Unterlagen zur Vorlesung“ und den vollständigen Übungs-/Prüfungsquellen. Die Vorlesungsmarkierungen beschränken auf deinen ausdrücklichen Auftrag den Inhalt nicht mehr. Noch fehlende konkrete Tafelanschriebe werden später anhand deiner ausgefüllten Seiten ergänzt; der vollständige Aufgabenabgleich ist im Bearbeitungsprotokoll nachvollziehbar.
 
 #pagebreak()
 #heading(level: 1, outlined: false)[Wegweiser]
@@ -305,7 +1483,7 @@ Stand: *12.11.2026*. Ergänzt sind die Vorlesungsseiten vom 10.11. (Zustandsdiag
 #outline(title: none, depth: 2, indent: auto)
 ]
 #v(2mm)
-#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* N10 = „Skript FET VL 10.11.pdf“ (13 PDF-Seiten); N11 = „Skript FET VL11.11.pdf“ (2 PDF-Seiten); I12 = Import vom 12.11.2026 (Zuordnung in Unterlagen/Bestandsaufnahme/Import_2026-11-12.json); L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; N28 = „Skript FET.pdf“, VL 28.10.; N03 = VL 3.11.; N04 = VL 4.11.; T29 = Tutorium 29.10.; R30 = Übungsrechnungen 30.10.; M13 = Musterlösung Ü 2.13 (5 Seiten); M32 = Musterlösung Ü 3.2 (1 Seite); M211 = Musterlösung Ü 2.11 (1 Seite); M36 = Musterlösung Ü 3.6 (3 Seiten); V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
+#text(size: 8.5pt, fill: muted)[*Quellenkürzel:* V05 = „05 Ideales Gas.pdf“ (20 S.); V06 = „06 Thermische Maschinen.pdf“ (28 S.); M71 = „05_Ideales_Gas_ZAE_Tab_M7-1-.pdf“; MT = „thermodynamik_memory.pdf“ (45 S., eigene PDF-Zählung beachten); S1 = „Str 01 Kap1 Hydrostatik.pdf“ (20 S.); S23 = „Str 02 Kap2 und 3 Bernoulli Rohrstr.pdf“ (28 S.); S56 = „Str 05-6 Kap5-6 Impuls-Drall.pdf“ (7 S.); alle aus der vollständigen Sammlung „Unterlagen zur Vorlesung“. Ü = vollständige 65-seitige Aufgabensammlung mit 125 Originalaufgaben. T12 = „Tutorium 12.11.2026.pdf“ (6 PDF-Seiten); V04 = vollständiger Foliensatz „04 2-HS Diagramme.pdf“ (Import 12.11., 40 PDF-Seiten, Foliennummer = PDF-Seite); M4.n = jeweilige historische Musterlösung zu Ü 4.n aus dem Import 12.11.; N10 = „Skript FET VL 10.11.pdf“ (13 PDF-Seiten); N11 = „Skript FET VL11.11.pdf“ (2 PDF-Seiten); I12 = Import vom 12.11.2026 (Zuordnung in Unterlagen/Bestandsaufnahme/Import_2026-11-12.json); L = Lernskript 18.10.2026; N = Vorlesungsseiten 21.10.2026 mit deinen Notizen; N27 = „03 1. Hauptsatz.pdf“, Vorlesungsunterlagen 27.10.2026 mit Notizen; N28 = „Skript FET.pdf“, VL 28.10.; N03 = VL 3.11.; N04 = VL 4.11.; T29 = Tutorium 29.10.; R30 = Übungsrechnungen 30.10.; M13 = Musterlösung Ü 2.13 (5 Seiten); M32 = Musterlösung Ü 3.2 (1 Seite); M211 = Musterlösung Ü 2.11 (1 Seite); M36 = Musterlösung Ü 3.6 (3 Seiten); V = Vorlesungsskript; Ü = Übungsaufgaben; T = Tutorium 15.10.2026; W = WZF 16.10.2026; R = handschriftliche Übungsrechnungen; T22 = Tutorium 22.10.2026; W23 = WZF 23.10.2026; M1 = Musterlösung Ü 1.14 (3 Seiten); M2 = Musterlösung Ü 2.1 (8 Seiten); B = FET Big Picture, Dennis Lehner, V06; K = ältere Altklausurübersicht „Kurzfragen“, Stand 26.11.2010; BT = Thermodynamik für Ingenieure; BS = Technische Strömungslehre. „PDF-S.“ zählt ab der ersten PDF-Seite; bei N ist „S.“ ebenfalls die PDF-Seite. Bestehende Nachschlagestellen bis 20.10. nennen Seiten von L; neue verlinkte Verweise berechnen Abschnitt und Seite im aktuellen Lernskript automatisch.]
 
 #pagebreak()
 #heading(level: 1, outlined: false, bookmarked: false)[Das Modul auf einen Blick] <ueberblick>
@@ -318,10 +1496,13 @@ Jeder Kasten führt zu seinem Kapitel. Die Pfeiltexte zeigen, wie die Kapitel zu
   chunk([Kapitel 2 · Stoffeigenschaften], [Phasen · Stoffmodelle · Dampftafeln], ziel: <a-2>),
   chunk([Kapitel 3 · Erster Hauptsatz], [Energiebilanz · Arbeitsformen · Kreisprozess], ziel: <a-3>),
   pfeil(beschriftung: [wird geprüft durch]),
-  chunk([Kapitel 4 · Zweiter Hauptsatz], [Richtung · Entropie · Zustandsdiagramme], ziel: <a-4>),
+  chunk([Kapitel 4 · Zweiter Hauptsatz], [Richtung · Entropie · Diagramme · Exergie], ziel: <a-4>),
+  chunk([Kapitel 5 · Ideales Gas], [Stoffmodell · Polytropen · Bilanzen], ziel: <a-5>), pfeil(), chunk([Kapitel 6 · Maschinen], [Motor · Gasturbine · Dampf · Kälte], ziel: <a-6>),
+  chunk([Kapitel 7 · Feuchte Luft], [Feuchte · Luftbehandlung], ziel: <a-7>), pfeil(), chunk([Kapitel 8 · Verbrennung], [Reaktion · Luftbedarf · Abgas], ziel: <a-8>),
+  chunk([Kapitel 9 · Strömungsmechanik], [Hydrostatik · Rohrnetz · Kräfte], ziel: <a-9>), pfeil(), chunk([Gemeinsame Prüfung], [Masse · Energie · Entropie · Impuls], ziel: <a-9-8>),
 )
 
-Die Systemgrenze legt fest, was Du betrachtest und was darüber übertragen wird. Kapitel 1 gibt die Größen und Bilanzbegriffe vor; Kapitel 2 liefert die Stoffzustände und Tabellenwerte. Kapitel 3 verbindet beides zur Energieerhaltung und zu den Arbeitsformen. Kapitel 4 ergänzt die mögliche Prozessrichtung: Entropie wird transportiert und im Inneren erzeugt. Zusammen prüfen Energie- und Entropiebilanz den physikalisch möglichen Ablauf.
+Die Systemgrenze legt fest, was Du betrachtest und was darüber übertragen wird. Kapitel 1 gibt die Größen und Bilanzbegriffe vor; Kapitel 2 liefert die Stoffzustände und Tabellenwerte. Kapitel 3 verbindet beides zur Energieerhaltung und zu den Arbeitsformen. Kapitel 4 ergänzt die mögliche Prozessrichtung: Entropie wird transportiert und im Inneren erzeugt. Zusammen prüfen Energie- und Entropiebilanz den physikalisch möglichen Ablauf; die Exergie bewertet zusätzlich die maximal nutzbare Arbeit gegenüber der Umgebung.
 
 #src[Eigene Darstellung; Zusammenführung des bereits enthaltenen Stoffs und der Denkkette auf der Titelseite.]
 
@@ -334,7 +1515,7 @@ Die Gesamtübersicht *Big Picture* verbindet Thermodynamik und Strömungsmechani
  th([Verbindung], [So nutzt du sie im Lernskript]),
  [Masse ↔ Volumenstrom], [$dot(m)=rho A c$ aus Kapitel 1 bleibt beim Verdampfen erhalten; $dot(V)$ ändert sich mit dem Stoffzustand in Kapitel 2.],
  [Stoffwert ↔ Energiebilanz], [$h=u+p v$ verbindet Kapitel 2 mit dem ersten Hauptsatz in Kapitel 3. Der Stickstoffbehälter zeigt zusätzlich eine offene, zeitabhängige Bilanz.],
- [Gesamtübersicht ↔ Vorlesungsstand], [Kreisprozesse sowie Entropie und Zustandsdiagramme sind jetzt durch N03/N04 belegt. Exergieberechnungen, ausführliche Rohrreibungsrechnung und Impulssatz bleiben ohne weiteren Vorlesungsnachweis außerhalb des behandelten Stoffes.],
+ [Gesamtübersicht ↔ Vorlesungsstand], [Kreisprozesse sowie Entropie und Zustandsdiagramme sind jetzt durch N03/N04 belegt. Exergieberechnungen sind durch die Bestätigung zu V04, PDF-S. 30–39, ebenfalls behandelt. Die vollständigen Strömungsfolien werden unabhängig vom aktuellen Vorlesungsfortschritt in Kapitel 9 aufgearbeitet.],
 )
 #src[B, PDF-S. 2, 4–9 und 18–24; N03, PDF-S. 12–14; N04, PDF-S. 4–11. Zuordnung zum belegten Stand: eigene Darstellung.]
 
@@ -956,6 +2137,32 @@ Ein Gemisch wird wie ein „Ersatzstoff“ behandelt: Kennt man die Anteile, erg
 #src([N S. 2 (Folie 02 Stoffeigenschaften 26) mit Randnotizen; BT 3.7, S. 83–85 (Gl. 3.28–3.35, Beispiel 3.9), PDF-S. 103–105; Partialgrößen ergänzend erklärt nach BT 8.1–8.2, S. 240–243, PDF-S. 258–261. Ab Folie 27 nicht behandelt (N S. 3, Trennblatt).])
 #hoch(<a-2>, [Kapitelübersicht])
 
+#pagebreak(weak: true)
+=== 2.12.3 Reduzierte Zustände, kritische Anpassung und Berthelot <a-2-12-3>
+Ein allgemeines Realgasdiagramm ordnet ähnliche Stoffzustände über $p_r=p/p_"kr"$ und $T_r=T/T_"kr"$ zu. Z wird dann für diese reduzierten Koordinaten und den richtigen Stoff abgelesen. Diagramm, stoffeigene Tabelle und Zustandsgleichung sind verschiedene Genauigkeitsstufen; ihre Zahlen müssen nicht bis zur letzten Stelle übereinstimmen.
+#bild("vdw-kritische-isotherme", [Kritische und überkritische Modellisotherme nach Van der Waals. Eigene Darstellung; Ü1.12.], height: 64mm)
+Am kritischen Punkt hat die Modellisotherme eine waagerechte Wendestelle: $(partial p/partial v)_T=0$ und $(partial^2p/partial v^2)_T=0$. Für Van der Waals folgt:
+#form[$ v_"kr"=3b quad a=3p_"kr" v_"kr"^2 quad R_"fit"=frac(8p_"kr"v_"kr",3T_"kr") $]
+Diese Anpassung an alle drei kritischen Daten lässt R als Modellparameter frei. Das physikalische R bleibt dagegen $R_m/M$. Weil Van der Waals $Z_"kr"=3/8$ erzwingt, kann man nicht beliebige drei kritische Messwerte und das physikalische R zugleich mit nur a und b exakt erfüllen. Eine abweichende Anpassung ist eine Modellgrenze, keine Änderung der universellen Gaskonstante.
+Die *Berthelot-Gleichung* macht den Anziehungsterm zusätzlich temperaturabhängig:
+#form[$ p=frac(R T,v-b)-frac(a,T v^2) $
+$ (frac(partial p,partial T))_v=frac(R,v-b)+frac(a,T^2v^2) quad (frac(partial p,partial v))_T=-frac(R T,(v-b)^2)+frac(2a,T v^3) $]
+Das totale Differential ist $dif p=(partial p/partial v)_T dif v+(partial p/partial T)_v dif T$. Die Vertauschbarkeit der gemischten zweiten Ableitungen wird in einem glatten Gebiet geprüft; die Singularitäten v=0 und v=b gehören nicht dazu. Physikalische Phasenstabilität ist zusätzlich zu prüfen und folgt nicht schon aus einer formal glatten Funktion.
+
+=== 2.12.4 Spannungskoeffizient und Kompressibilität <a-2-12-4>
+#form[$ beta_v=frac(1,p)(frac(partial p,partial T))_v quad chi_T=-frac(1,v)(frac(partial v,partial p))_T=-frac(1,v(partial p/partial v)_T) $]
+βv beschreibt die relative Druckänderung beim Erwärmen mit festem Volumen, χT die relative Volumenabnahme bei isothermer Druckerhöhung. βv hat die Einheit1/K, χT die Einheit1/Pa. Beim idealen Gas sind βv=1/T und χT=1/p. Ein Stoffmodell muss zuerst zu dem betrachteten Zustand passen.
+Die Berthelot-Gleichung muss für χT nicht vollständig kubisch nach v aufgelöst werden, *wenn v bereits bekannt ist*: Dann wird die oben genannte Ableitung direkt eingesetzt und invertiert. Sind nur p und T bekannt, muss zunächst die passende physikalische Volumenlösung gefunden werden. Diese Unterscheidung präzisiert die Frage nach der „schwierigen“ direkten Auflösung in Ü1.13e.
+Die isobare relative Volumenausdehnung $alpha_v=(partial v/partial T)_p/v$ erfüllt $alpha_v=p beta_v chi_T$ und $dif v/v=alpha_v dif T-chi_T dif p$. Diese Größen sind lokale Ableitungen; ein konstanter Zahlenwert über einen großen Bereich ist eine weitere Näherung.
+#src[Ü1.11–1.13, PDF-S.8–9; kritische Bedingungen und Berthelot-Differential direkt aus den Aufgaben. Koeffizientenbeziehung eigene implizite Ableitung.]
+
+=== 2.12.5 Empirische Wasserdampfgleichung nach Koch <a-2-12-5>
+Die in Ü1.11 mitgegebene Koch-Beziehung ist ein empirischer Handrechenvergleich zur Dampftafel, kein allgemeines Naturgesetz:
+#form[$ v=frac(R T,p)-frac(A,theta^"2,82")-p^2(frac(B,theta^14)+frac(C,theta^"31,6")) quad theta=T/(100 thin "K") $]
+Der Druck wird hier in Pa, T in K und v in m³/kg eingesetzt. Für die ausdrücklich mitgelieferten Parameter gelten A=0,9172m³/kg, B=1,3609·10⁻⁶m³/(kgPa²), C=4,5534·10⁵m³/(kgPa²). Andere Einheiten verändern die Koeffizienten. Die Aufgaben vergleichen diese Näherung mit den vorgegebenen Tabellenzuständen; sie ist nicht ungeprüft in Flüssigkeits- oder andere Temperatur-/Druckbereiche zu extrapolieren.
+#src[Ü1.11, PDF-S.8–9, Koch-Gleichung und dortige Parameter; Vergleich mit Dampftafel und Z-Modellen.]
+#hoch(<a-2>, [Kapitelübersicht])
+
 
 == 2.13 Ergänzung aus Tutorium und WZF 22.–23.10. <a-2-13>
 Die neuen Übungen verbinden Tabellenlesen und Bilanzen. Drei Fragen steuern den Rechenweg: *In welchem Gebiet liegt der Stoff? Welche Bezugsgröße ist gemeint? Was bleibt im Prozess wirklich konstant?*
@@ -1466,14 +2673,15 @@ Für die elektrische Kochplatte gilt $P_"el"=dot(Q)/eta_"ges"$. Der Gesamtwirkun
 #überblick([Kapitel 4 auf einen Blick],
  idee(<a-4-1>, [Energieerhaltung legt die Richtung noch nicht fest.], [Irreversibilität beschreibt die gemeinsame Rückkehr von System und Umgebung.]),
  idee(<a-4-2>, [Entropie wird transportiert und erzeugt.], [Wärme und Stoff tragen sie über Grenzen; innere Erzeugung ist niemals negativ.]),
- idee(<a-4-3>, [Eine Entropiedifferenz gehört zu zwei Zuständen.], [Stoffmodell, Kelvin und konsistente Tabellen bestimmen den Rechenweg.]),
  idee(<a-4-4>, [Ein Diagramm zeigt Bedingungen als Linien.], [Erst Achsen und konstant gehaltene Größe nennen, dann den Zustandsweg lesen.]),
- idee(<a-4-5>, [Eine Fläche braucht eine Bedingung.], [Wärme, Dissipation und Zustandsdifferenzen unterscheiden.]),
  idee(<a-4-7>, [Kreisprozesse verbinden Wärme und Arbeit.], [Rankine, Plank und Carnot anhand der Richtung und der Bauteile erklären.]),
+ idee(<a-4-8>, [Weg und Umlaufrichtung bestimmen die Flächendeutung.], [h-s-Strecken und Nettoflächen mit der Bilanz verknüpfen.]),
+ idee(<a-4-9>, [Exergie bewertet die Arbeitsfähigkeit gegenüber der Umgebung.], [Offen oder geschlossen rechnen und Entropieerzeugung als Verlust erkennen.]),
 )
 #karte((1fr, auto, 1fr),
  chunk([Richtung prüfen], [reversibel · irreversibel · unmöglich], ziel: <a-4-1>), pfeil(), chunk([Entropie bilanzieren], [Transport + Erzeugung], ziel: <a-4-2>),
  chunk([Werte bestimmen], [Stoffmodell · Tabellen · Δs], ziel: <a-4-3>), pfeil(), chunk([Weg darstellen], [T-s · h-s · lg(p)-h], ziel: <a-4-4>),
+ chunk([Kreisprozess auswerten], [Wärme · Arbeit · Richtung], ziel: <a-4-8>), pfeil(), chunk([Arbeitsfähigkeit bewerten], [Umgebung · Exergie · Verlust], ziel: <a-4-9>),
 )
 #hoch(<ueberblick>, [Modul auf einen Blick])
 Der erste Hauptsatz sagt, *wie viel Energie* ausgetauscht wird. Der zweite prüft, *in welcher Richtung* ein Prozess ablaufen kann. Die neue Zustandsgröße Entropie macht diese Prüfung berechenbar; Diagramme verbinden sie mit den schon bekannten Stoffgrößen.
@@ -1588,11 +2796,12 @@ $T$ in K und $s$ in kJ/(kg K) ergeben kJ/kg. Bei reibungsfreiem, intern reversib
 Gibbs verbindet dieselbe Fläche mit Zustandsgrößen. Deshalb kann eine Flächenaussage auch gelten, wenn der Wärmeaustausch nicht allein aus der Fläche ablesbar ist.
 #bild("ts-zustandsflaechen", [Zustandsgrößen aus Flächen. N10, PDF-S. 8 / Folie 04-13.], height: 75mm)
 #form[$ v="konstant": integral_1^2 T dif s=u_2-u_1 quad p="konstant": integral_1^2 T dif s=h_2-h_1 $]
+#note("Korrektur der Tutoriumsmitschrift", [T12, PDF-S. 5, vertauscht beide Vorzeichen. Richtig ist $T dif s=dif h-v dif p=dif u+p dif v$. Das folgt aus $h=u+p v$. Auf PDF-S. 6 steht beim isothermen Hilfsschritt $dif v=0$; Isothermie allein fordert das nicht. Im hier zusätzlich inkompressiblen Stoffmodell ist $dif v approx 0$ eine eigene Näherung.], fill: sand)
 Die erste Beziehung folgt aus $T dif s=dif u+p dif v$ mit $dif v=0$, die zweite aus $T dif s=dif h-v dif p$ mit $dif p=0$. Beide beschreiben einen Weg auf der jeweiligen Gleichgewichtslinie. Im Zweiphasengebiet eines reinen Stoffes sind Isobare und Isotherme dieselbe Sättigungsstrecke:
 #form[$ h''-h'=T_s(s''-s') quad frac(dif p_s,dif T)=frac(h''-h',T(v''-v'))=frac(s''-s',v''-v') $]
 Dies ist die *Clausius-Clapeyron-Gleichung* entlang der Phasengrenze. Bei Verdampfung sind Zähler und Volumendifferenz positiv: Mit steigender Sättigungstemperatur steigt der Sättigungsdruck. Für die Schmelzkurve von Wasser ist die Volumenänderung andersherum; die Steigung kann negativ sein.
 #note("Fehler vermeiden", [Die Folien zeichnen oft °C an die T-Achse. Eine Energiefläche muss trotzdem von *0 K* aus gemessen werden. Rechne deshalb die Achsenwerte zuerst um: $T/"K"=vartheta/"°C"+"273,15"$, dann integrieren.], fill: sand)
-#src[N10, PDF-S. 8 und 11 / Folien 04-13 und 04-16; eigene Ableitung aus Gibbs.]
+#src[N10, PDF-S. 8 und 11 / Folien 04-13 und 04-16; T12, PDF-S. 5–6; eigene Ableitung aus Gibbs.]
 #hoch(<a-4>, [Kapitelübersicht])
 
 #pagebreak()
@@ -1617,15 +2826,856 @@ Diese *Leistungszahlen* vergleichen den jeweils gewünschten Wärmestrom mit dem
 Die überlieferten Seiten zeigen vier Schritte: 1→2 reversibel adiabate Verdichtung, 2→3 isotherme Wärmezufuhr bei $T_H$, 3→4 reversibel adiabate Expansion, 4→1 isotherme Wärmeabfuhr bei $T_K$. Auf den Isentropen wird keine Wärme übertragen. Die beiden Isothermen haben dieselbe Entropiebreite $Delta s$.
 #form[$ q_"zu"=T_H Delta s quad abs(q_"ab")=T_K Delta s quad eta_C=1-frac(T_K,T_H) $]
 $T_H>T_K>0$ in *Kelvin*. Die letzte Gleichung folgt direkt aus der Kreisprozessbilanz und der Rechteckfläche. Sie ist der reversible Vergleich für genau zwei konstante Temperaturniveaus; reale Irreversibilität senkt die erreichbare Arbeitsausbeute.
-#note("★ Klausur · von dir markiert", [N10, PDF-S. 3, nennt ausdrücklich „Aufgabe 1 Prüfung = Entwicklung Zustandsdiagramm (eher Ts-Diagramm)“. Benenne Achsen, Zustände, Laufrichtung, konstante Größen und die Bedeutung der Flächen. N11 zeigt den Carnot-Weg; die im annotierten Auszug fehlenden Zwischenfolien 04-19 bis 04-24 belegen keinen weiteren Stoffumfang.])
+#note("★ Klausur · von dir markiert", [N10, PDF-S. 3, nennt ausdrücklich „Aufgabe 1 Prüfung = Entwicklung Zustandsdiagramm (eher Ts-Diagramm)“. Benenne Achsen, Zustände, Laufrichtung, konstante Größen und die Bedeutung der Flächen. N11 zeigt den Carnot-Weg. Die zusätzlich von dir bestätigten Folien 04-19–24 werden in 4.8 ergänzt; Exergie ab 04-30 folgt in 4.9.])
 #bild("map-diagramme", [Mindmap: Zustandsdiagramme und Kreisprozesse. Eigene Darstellung.], height: 46mm)
 #src[N10, PDF-S. 12–13 / Folien 04-17–18; N11, PDF-S. 1–2 / Folie 04-25 und Mitschrift. Leistungszahlen und Carnot-Formel aus den gezeigten Energiebilanzen bzw. Flächen hergeleitet (eigene Ergänzung).]
 #hoch(<a-4>, [Kapitelübersicht])
 
+
+#pagebreak()
+== 4.8 Ergänzung · h-s-Strecken und allgemeine Kreisprozesse <a-4-8>
+Ein Diagramm ändert nicht die Energiebilanz, sondern zeigt sie anders. Im h-s-Bild liest du Enthalpiedifferenzen direkt als Höhenunterschiede ab; im T-s-Bild brauchst du für Energieaussagen Flächen und die zugehörigen Prozessbedingungen.
+#bild("hs-ts-vergleich", [Derselbe Dampfprozess in zwei Diagrammen. V04, PDF-S. 19 / Folie 04-19.], height: 67mm)
+#form[$ q_"Kessel"=h_5-h_2 quad w_"T"=h_6-h_5 quad w_"P"=h_2-h_1 $]
+*Voraussetzungen:* stationäre Bauteile; Kessel ohne technische Arbeit, Turbine und Pumpe adiabat; Änderungen äußerer Energien vernachlässigt. Die Turbinenarbeit ist in Zufuhrkonvention negativ. Rechts vom isentropen Vergleich liegt bei gleichem Enddruck eine größere Austrittsenthalpie: weniger Abgabe. Nicht jede beliebige h-Differenz ist automatisch Wärme oder Arbeit.
+#note("Genaue Lesart der Folie", [„Technische Arbeit im T-s-Diagramm nicht darstellbar“ meint: keine allgemeine unmittelbare Arbeitsstrecke. Mit Prozessmodell und Bilanz kann Arbeit sehr wohl berechnet werden; beim reversiblen vollständigen Umlauf entspricht die eingeschlossene Wärmefläche dem Betrag der Nettoarbeit.], fill: sand)
+#src[V04, PDF-S. 19; Bauteilbilanzen aus 3.10 und 4.7.1. Präzisierung der verkürzten Bildunterschrift als eigene Ergänzung.]
+
+#pagebreak()
+=== 4.8.1 Rechts- und linksläufig: dieselbe Bilanz, anderer Nutzen <a-4-8-1>
+#bild("kreisprozess-flaechen", [Arbeits- und Wärmeflächen im Umlauf. V04, PDF-S. 24 / Folie 04-24.], height: 70mm)
+Die Wärmekraftmaschine verdichtet auf dem kälteren und expandiert auf dem heißeren Weg. So ist die Arbeitsabgabe größer als die Aufnahme. Beim umgekehrten Umlauf ist die Nettoarbeit aufzuwenden; damit wird Wärme vom kalten zum warmen Niveau transportiert. Bei einer Kolbenmaschine wechseln die Schritte zeitlich, bei durchströmten Bauteilen liegen sie an verschiedenen Orten.
+#form[$ W_"netto"=-(Q_"zu"+Q_"ab") quad P_"netto"=-(dot(Q)_"zu"+dot(Q)_"ab") $]
+$Q_"ab"<0$; rechtsläufig ist $W_"netto"<0$, linksläufig $W_"netto">0$. $W,Q$ sind Energien in kJ, $P,dot(Q)$ Leistungen in kW. Stationärer Kreislauf bzw. vollständiger Umlauf ohne verbleibende Änderung gespeicherter Energie.
+#form[$ w_v=-integral.cont p dif v quad w_p=integral.cont v dif p=-integral.cont p dif v $]
+Die beiden Umlaufintegrale sind gleich, weil $integral.cont dif(p v)=0$. Die erste Formel beschreibt quasistatische Volumenarbeit eines geschlossenen Systems, die zweite reversible Druckarbeit eines durchströmten Kreises. Bei realer Dissipation muss deren Beitrag zur Gesamtarbeit zusätzlich berücksichtigt werden.
+#note("Tutorium · Vorzeichen und Flächen", [T12, PDF-S. 1, schreibt verkürzt $integral p dif v=w$ und $integral T dif s=q$. In unserer Zufuhrkonvention gilt geschlossen $w_v=-integral p dif v$; offen ist Druckarbeit $integral v dif p$. Die T-s-Fläche ist nur im passenden reversiblen Modell allein Wärme, sonst im Folienmodell $q+j$. Im p-v-Bild heißt Expansion Bewegung nach rechts; ein Druckabfall allein beweist keine Expansion.], fill: sand)
+#src[V04, PDF-S. 20–24; T12, PDF-S. 1. Vorzeichen aus der im Skript durchgehend verwendeten Zufuhrkonvention; Umlaufintegral durch partielle Integration ergänzt.]
+#hoch(<a-4>, [Kapitelübersicht])
+
+#pagebreak()
+== 4.9 Ergänzung · Exergie und Anergie <a-4-9>
+Gleich viel Energie kann unterschiedlich viel Arbeit ermöglichen. Ein warmer Speicher in einer kalten Umgebung besitzt einen Temperaturunterschied, den eine ideale Maschine nutzen kann; derselbe Speicher bei Umgebungstemperatur bietet diese Möglichkeit nicht mehr.
+#bild("map-exergie", [Mindmap zur Exergie. Eigene Darstellung nach V04, PDF-S. 30–39.], height: 46mm)
+*Exergie* ist die maximal nutzbare Arbeit beim reversiblen Übergang zum festgelegten Umgebungszustand. *Anergie* ist der verbleibende, unter diesen Bedingungen nicht in Arbeit umwandelbare Energieanteil. „Nutzlos“ auf der Folie meint nur die fehlende Arbeitsfähigkeit gegenüber dieser Umgebung: Wärme kann für einen anderen Zweck weiterhin brauchbar sein. Energie bleibt erhalten, Exergie kann durch Irreversibilität vernichtet werden.
+$E$ in kJ, $dot(E)$ in kW, $e$ in kJ/kg. Mechanische und elektrische Arbeit sind vollständig Exergie. Thermische Energie wird erst nach Angabe von Umgebungstemperatur $T_"∞"$ und gegebenenfalls Umgebungsdruck $p_"∞"$ bewertet.
+#note("Modellgrenze im Wasserbeispiel", [V04, PDF-S. 30, kühlt Wasser rechnerisch von 50 auf −50 °C mit konstantem $c_p$ ohne Phasenwechsel. Das erklärt die Umgebungsabhängigkeit, ist aber kein physikalisch vollständiger Gefriervorgang: Bei gewöhnlichem Druck müsste Eisbildung mit Schmelzwärme und anderen Wärmekapazitäten berücksichtigt werden. Der Folienwert rund 7,3 MJ gilt nur für das vereinfachte Stoffmodell.], fill: sand)
+#src[V04, PDF-S. 30–31; BT 5.5, S. 157–159 / PDF-S. 177–179. Modellgrenze anhand der Phasenlehre aus Kapitel 2 ergänzt.]
+
+=== 4.9.1 Exergie der Wärme: Carnot-Faktor am Wärmekontakt <a-4-9-1>
+#form[$ E_(Q,12)=integral_1^2 (1-frac(T_"∞",T_b)) delta Q quad T_b="konstant": E_Q=(1-frac(T_"∞",T_b))Q $]
+$T_b$ ist die absolute Temperatur, bei der die Wärmeübertragung bewertet wird; die Umgebung bleibt bei $T_"∞"$. Für $T_b>T_"∞"$ und positive Wärmezufuhr liegt der Exergieanteil zwischen null und $Q$. Bei Umgebungstemperatur ist er null. Für wechselnde Temperatur darf ein einzelner Carnot-Faktor nicht ungeprüft vor das Integral gezogen werden.
+#form[$ B_Q=Q-E_Q quad T_b="konstant": B_Q=frac(T_"∞",T_b)Q $]
+Unter Umgebungstemperatur kann der *gerichtete* Exergietransport ein anderes Vorzeichen als der Wärmetransport haben. Zum Kälteerzeugen ist Arbeitsfähigkeit aufzuwenden; „Exergieanteil“ ist dann kein stets positives Stück eines Wärmestrompfeils.
+#note("Endlicher Speicher", [Für einen inkompressiblen Körper mit konstantem $c$, ohne Phasenwechsel und ohne Lage-/Bewegungsänderung folgt bei gleichem Umgebungsdruck: $E=m c[(T_1-T_"∞")-T_"∞" ln(T_1/T_"∞")]$. Die Temperatur des Körpers sinkt beim Entladen; deshalb ist sein anfänglicher Carnot-Faktor nicht für die gesamte abgegebene Wärme gültig.])
+#src[V04, PDF-S. 30–31; BT 5.5, S. 159–161 / PDF-S. 179–181. Speicherformel durch Integration ergänzt.]
+
+#pagebreak()
+=== 4.9.2 Offener Stoffstrom und geschlossene Masse <a-4-9-2>
+Wähle zuerst die Systemart. Im Stoffstrom steckt die Verschiebearbeit in der Enthalpie. Bei einer geschlossenen Masse geht die Volumenänderung gegen die Umgebung gesondert in die nutzbare Arbeit ein.
+#form[$ e_"offen"=(h_1-h_"∞")-T_"∞"(s_1-s_"∞")+frac(c_1^2-c_"∞"^2,2)+g(z_1-z_"∞") $]
+#form[$ e_"geschlossen"=(u_1-u_"∞")+p_"∞"(v_1-v_"∞")-T_"∞"(s_1-s_"∞")+frac(c_1^2-c_"∞"^2,2)+g(z_1-z_"∞") $]
+$E=m e$ für die Masse und $dot(E)=dot(m)e$ für den stationären Strom. In SI liefern $p$ in Pa, $v$ in m³/kg, $c$ in m/s und $g z$ in m²/s² zunächst J/kg. Bei $h,u$ in kJ/kg sind diese Beiträge durch 1000 umzurechnen. Alle Stoffwerte benutzen denselben Referenzzustand, dieselbe Zusammensetzung und dasselbe Stoffmodell; chemische Reaktionen sind hier nicht bewertet.
+#note("Quellenkorrektur · Folie 04-32", [In der Klammer der *spezifischen* geschlossenen Formel muss $p_"∞"(v_1-v_"∞")$ stehen. Die groß geschriebenen $V$ der Folie würden nach Multiplikation mit $m$ die Einheit verfälschen. Gleichwertig extensiv ist $p_"∞"(V_1-V_"∞")$ außerhalb der Massenklammer.], fill: sand)
+Für ideale Gase mit konstanten Wärmekapazitäten gilt $Delta h=c_p Delta T$, $Delta u=c_v Delta T$ und $Delta s=c_p ln(T_1/T_"∞")-R ln(p_1/p_"∞")$. Bei Wasserdampf werden passende Tabellenwerte statt eines pauschalen konstanten $c_p$ verwendet.
+#src[V04, PDF-S. 32; BT 5.5, S. 161–163 / PDF-S. 181–183. Dimensionsprüfung und Umrechnung ergänzt.]
+
+#pagebreak()
+=== 4.9.3 Reversibler Weg und maximal nutzbare Arbeit <a-4-9-3>
+#bild("exergie-weg", [Isentrope und Umgebungsisotherme als reversibler Weg. V04, PDF-S. 33 / Folie 04-33.], height: 66mm)
+Ein geeigneter Vergleichsweg hat zwei Schritte: erst reversibel adiabat bis zur Umgebungstemperatur, dann reversibel isotherm bis zum Umgebungsdruck. Beim isothermen Schritt wird Wärme nur mit der Umgebung und im Grenzfall verschwindender Temperaturdifferenz übertragen. Je nach Anfangszustand kann einer der Schritte Verdichtung und Arbeitsaufnahme verlangen; entscheidend ist die Summe.
+#form[$ W_"Nutz,rev"=-E_1 quad P_"rev"=-dot(E)_1 $]
+Die negative Arbeit ist die maximal mögliche Abgabe in der Zufuhrkonvention. Für ein geschlossenes System ist die *Nutzarbeit* von der gesamten Grenzarbeit zu unterscheiden: $W_"Nutz"=W_v+p_"∞"(V_"∞"-V_1)$. Der Anteil zur Verdrängung der Umgebung steht nicht als zusätzliche Nutzarbeit zur Verfügung.
+Für zwei vorgegebene Stromzustände ohne äußere Energieänderung und mit Wärme ausschließlich bei $T_"∞"$ gilt:
+#form[$ w_(t,"rev",12)=(h_2-h_1)-T_"∞"(s_2-s_1)=e_2-e_1 $]
+Der dargestellte Weg erreicht das Maximum; andere *reversible* Wege mit denselben äußeren Bedingungen können denselben Wert erreichen. Die Folienaussage „alle anderen Wege liefern weniger“ ist für irreversible Alternativen richtig, als pauschaler Ausschluss weiterer reversibler Anordnungen jedoch zu stark.
+#src[V04, PDF-S. 32–38; BT 5.5, S. 161–163 / PDF-S. 181–183. Abgrenzung Nutz-/Gesamtarbeit und Präzisierung gleichwertiger reversibler Wege ergänzt.]
+
+=== 4.9.4 Entropieerzeugung misst die verlorene Arbeitsfähigkeit <a-4-9-4>
+#form[$ E_"V"=T_"∞" S_"erz">=0 quad dot(E)_"V"=T_"∞" dot(S)_"erz">=0 $]
+Hier bedeutet Verlust stets den *positiven Betrag*. Bei einer stationären adiabaten Turbine ohne äußere Energieänderung folgt aus der Exergiebilanz:
+#form[$ dot(E)_1+P=dot(E)_2+dot(E)_"V" quad dot(E)_"V"=dot(E)_1-dot(E)_2+P $]
+$P<0$ bei Abgabe. Deshalb darf der ganze Exergieabfall nicht als Verlust gezählt werden: Ein Teil verlässt die Turbine als wertvolle Wellenleistung. Bei einer adiabaten Drossel mit unveränderter kinetischer Energie ist $P=0$; dort geht der gesamte Exergieabfall verloren.
+#note("Quellenhinweis · Folie 04-39", [Die Folie nennt den negativen Rest $dot(E)_2-dot(E)_1-P$ „Verluststrom“. Unser positiver Verlustbetrag ist sein Gegenwert. Bei gleichem Zahlenmaterial stimmen die Bilanzen überein. Der Umgebungsdruck fehlt in der Aufgabenabbildung; absolute Exergieströme benötigen diese zusätzliche Angabe, ihre Differenz und der Verlust dagegen nicht.], fill: sand)
+#src[V04, PDF-S. 39; BT 5.5, S. 163–165 / PDF-S. 183–185. Positive Verlustkonvention ausdrücklich gewählt.]
+#hoch(<a-4>, [Kapitelübersicht])
+
 #block(breakable: false)[
-*Der Zusammenhang in Kapitel 4.* Reversibilität verlangt die gemeinsame Rückkehr von System und Umgebung. Die Entropiebilanz trennt dafür Transport und nichtnegative Erzeugung. Stoffmodelle und Tabellen liefern die Zustandsdifferenzen; die Diagramme machen ihren Zusammenhang mit Druck, Temperatur und Enthalpie sichtbar. Die neuen Flächenbeziehungen erklären Wärme, Dissipation und Zustandsdifferenzen. Rankine und Plank ordnen die Bauteile zu Kreisprozessen; Carnot liefert den reversiblen Temperaturvergleich. Zusammen mit dem ersten Hauptsatz entsteht so eine doppelte Prüfung: Der Energieausgleich muss stimmen und die Entropieerzeugung darf nicht negativ sein.
-#src[N04, PDF-S. 4–11; N10, PDF-S. 7–13; N11, PDF-S. 1–2. Eigene Zusammenführung.]
+*Der Zusammenhang in Kapitel 4.* Reversibilität verlangt die gemeinsame Rückkehr von System und Umgebung. Die Entropiebilanz trennt dafür Transport und nichtnegative Erzeugung. Stoffmodelle und Tabellen liefern die Zustandsdifferenzen; die Diagramme machen ihren Zusammenhang mit Druck, Temperatur und Enthalpie sichtbar. Die neuen Flächenbeziehungen erklären Wärme, Dissipation und Zustandsdifferenzen. Rankine und Plank ordnen die Bauteile zu Kreisprozessen; Carnot liefert den reversiblen Temperaturvergleich. h-s-Strecken zeigen Bauteilenergien; Umlaufflächen erklären die Nettoarbeit. Exergie verbindet die erreichbare Nutzarbeit mit dem Umgebungszustand, Entropieerzeugung mit ihrem Verlust. Zusammen mit dem ersten Hauptsatz entsteht so eine doppelte Prüfung: Der Energieausgleich muss stimmen und die Entropieerzeugung darf nicht negativ sein.
+#src[N04, PDF-S. 4–11; N10, PDF-S. 7–13; N11, PDF-S. 1–2; V04, PDF-S. 19–24 und 30–39; T12. Eigene Zusammenführung.]
 ]
+
+
+#pagebreak()
+= Kapitel 5 · Ideales Gas und Zustandsänderungen <a-5>
+#überblick([Kapitel 5 auf einen Blick],
+ idee(<a-5-1>, [Modell, Gas- und Normvolumen], [Absolutdruck, Kelvin und Mengenbezug festlegen.]),
+ idee(<a-5-2>, [Kalorische Größen und Differentiale], [Wegunabhängige Stoffgrößen von Prozessgrößen trennen.]),
+ idee(<a-5-3>, [Isolinien und Entropiedifferenz], [Das Diagramm vor der Rechnung lesen.]),
+ idee(<a-5-4>, [Polytrope und Sonderfälle], [Zustandsweg bestimmen und Integrale passend auswerten.]),
+ idee(<a-5-5>, [Offene Maschine, Kolben und Entleeren], [Druckarbeit, Dissipation und Speicherung unterscheiden.]),
+)
+#karte((1fr, auto, 1fr),
+ chunk([Modell, Gas- und Normvolumen], [Absolutdruck, Kelvin und Mengenbezug festlegen.], ziel: <a-5-1>), pfeil(),
+ chunk([Kalorische Größen und Differentiale], [Wegunabhängige Stoffgrößen von Prozessgrößen trennen.], ziel: <a-5-2>),
+ chunk([Isolinien und Entropiedifferenz], [Das Diagramm vor der Rechnung lesen.], ziel: <a-5-3>), pfeil(),
+ chunk([Polytrope und Sonderfälle], [Zustandsweg bestimmen und Integrale passend auswerten.], ziel: <a-5-4>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+Das ideale Gas ist das gemeinsame Rechenmodell vieler Verdichter-, Kolben- und Turbinenaufgaben. Die Zustandsgleichung verbindet p, v und T; erst der Prozessweg und die Bilanz legen Wärme und Arbeit fest. Dieses Kapitel ergänzt den vollständigen Foliensatz V05, unabhängig vom aktuellen Vorlesungsfortschritt.
+
+#pagebreak(weak: true)
+== 5.1 Modell, Gas- und Normvolumen <a-5-1>
+Ein Gas verhält sich näherungsweise ideal, wenn Wechselwirkungen und Eigenvolumen gegenüber den übrigen Effekten klein sind. „Hohe Temperatur, niedriger Druck“ ist eine qualitative Hilfe; nahe Sättigung oder kritischem Zustand sind Tabellen oder reale Zustandsgleichungen nötig.
+#bild("map-idealesgas", [Mindmap zum idealen Gas. Eigene Darstellung.], height: 46mm)
+#form[$ p V=m R T=n R_m T quad R=R_m/M quad V_n=V frac(p,p_n)frac(T_n,T) $]
+$V_n$ ist das auf einen genannten Referenzdruck und eine genannte Referenztemperatur umgerechnete Volumen derselben Stoffmenge. Die Folie verwendet $T_n="273,15"$ K, $p_n="1,01325"$ bar und $V_(m,n) approx "22,414"$ m³/kmol. Ein Normkubikmeter ist kein zusätzlich vorhandener Raum. Ein Überdruck muss vor der Gasgleichung zum Absolutdruck ergänzt werden.
+#note("Vorlesungsanschrieb später ergänzen", [V05 enthält Tafel-/Arbeitsseiten, insbesondere PDF-S. 6, 10, 14–15 und 18–19. Die hier belegten Modellgleichungen ersetzen keinen noch fehlenden konkreten Vorlesungsanschrieb. Neue ausgefüllte Seiten werden später unter den stabilen Abschnitten dieses Kapitels eingearbeitet.])
+#src[V05, PDF-S. 3–10 und 16; MT, PDF-S. 18–20. Normzustand als Definition der vorliegenden Quelle, nicht als Behauptung, jeder Normbezug sei gleich.]
+#hoch(<a-5>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 5.2 Kalorische Größen und Differentiale <a-5-2>
+Beim idealen Gas hängen h und u nur von T ab. Die Enthalpie einer realen Drossel muss daher nicht mit deren Temperatur konstant bleiben; diese Folgerung gilt erst nach Wahl des idealen Gasmodells. Der Joule-Überströmversuch untersucht u, der Joule-Thomson-Drosselversuch h.
+#form[$ dif u=c_v(T)dif T quad dif h=c_p(T)dif T quad c_p-c_v=R quad kappa=c_p/c_v $]
+Bei konstanten Wärmekapazitäten ist $Delta h=c_p Delta T$, $Delta u=c_v Delta T$, $c_v=R/(kappa-1)$ und $c_p=kappa R/(kappa-1)$. Für große Temperaturbereiche die vorgegebene mittlere Wärmekapazität oder das Integral verwenden. Die reine Temperaturabhängigkeit ist nicht dasselbe wie konstantes c.
+#form[$ frac(dif p,p)+frac(dif v,v)=frac(dif T,T) $]
+Das totale Differential folgt aus der Gasgleichung. Es beschreibt kleine verknüpfte Zustandsänderungen; für große Änderungen nutzt man die vollständige Gleichung zwischen den Endzuständen.
+Für das *halbideale Gas* bleiben p v=R T und u/h temperaturabhängig, aber die Wärmekapazität ist nicht konstant. Aus einer mittleren Tabelle ab 0 °C entsteht Δh als Differenz c̄p(ϑ₂)ϑ₂−c̄p(ϑ₁)ϑ₁. Für Entropie ist dagegen das Integral ∫cp(T)/T dT nötig, mit der wahren Kapazität cp=dh/dT. Die mittlere Tabelle ungeändert als lokale Kapazität einzusetzen wäre ein Modellwechsel.
+#src[V05, PDF-S. 7–12 und 16; MT, PDF-S. 18–20; Ü 9.8; Grundlagen der Wärmekapazität bereits 3.8.]
+#hoch(<a-5>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 5.3 Isolinien und Entropiedifferenz <a-5-3>
+#bild("gas-isolinien", [Isolinien des idealen Gases. V05, PDF-S. 13.], height: 68mm)
+#form[$ Delta s=c_p ln(T_2/T_1)-R ln(p_2/p_1)=c_v ln(T_2/T_1)+R ln(v_2/v_1) $]
+Konstante Wärmekapazitäten; absolute Temperaturen und Drücke. Im T-s-Bild ist die Steigung einer Isobare $dif T/dif s=T/c_p$, einer Isochore $T/c_v$. Weil $c_p>c_v$, steigt die Isochore steiler. Die Wahl des Entropienullpunkts verschiebt das Diagramm, nicht die Differenzen.
+Für eine Luft-Isobare mit Referenz $(T_0,p_0,s_0)$ folgt $T=T_0 exp[(s-s_0+R ln(p/p_0))/c_p]$. Das ist die Grundlage der Zeichenaufgabe auf V05, PDF-S. 14; die Wärmefläche ist in Kelvin zu lesen.
+#src[V05, PDF-S. 13–15; MT, PDF-S. 18–20. Steigungen und explizite Isobare ergänzend hergeleitet.]
+#hoch(<a-5>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 5.4 Polytrope und Sonderfälle <a-5-4>
+Eine *Polytrope* ist ein Weg mit $p v^n="konstant"$. Der Exponent n beschreibt den Verlauf; er ist nicht automatisch der Stoffwert κ. Eine polytrope reale Maschine kann Wärme und Dissipation zugleich besitzen.
+#form[$ frac(T_2,T_1)=(frac(p_2,p_1))^((n-1)/n) quad frac(T_2,T_1)=(frac(v_1,v_2))^(n-1) $]
+#tab(columns: (auto,1fr,1.6fr), th([Weg],[Bedingung],[Folge]),
+[isobar],[$n=0$],[$v/T="konstant"$],
+[isochor],[$v="konstant"$],[$p/T="konstant"$; Grenzfall $n arrow infinity$],
+[isotherm],[$n=1$],[$p v="konstant"$],
+[isentrop],[$n=kappa$],[Reversibel adiabat bei konstantem κ; Isentropie allein beweist keine Reversibilität.])
+#form[$ w_v=frac(p_2 v_2-p_1 v_1,n-1) quad w_p=frac(n,n-1)R(T_2-T_1)=n w_v $]
+Die Formeln gelten für $n != 1$, quasistatische Volumenarbeit bzw. Druckarbeitsintegral. Für $n=1$ ist $w_v=R T ln(v_1/v_2)$ und $w_p=R T ln(p_2/p_1)$. Bei konstantem Volumen ist $w_v=0$; der Grenzfall wird direkt bilanziert. Die Wärme folgt bei geschlossenem reibungsfreiem System aus $q=Delta u-w_v$, beim stationären reibungsfreien Strom aus $q=Delta h-w_p$.
+#src[V05, PDF-S. 17–19; M71, PDF-S. 1. Mathematische Grenzfälle mit der Energiebilanz präzisiert.]
+#hoch(<a-5>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 5.5 Offene Maschine, Kolben und Entleeren <a-5-5>
+Für dieselben Endzustände sind offene und geschlossene Aufgaben verschieden. Im offenen stationären Verdichter gilt ohne äußere Energieänderung $w_t=Delta h-q=w_p+j$; im geschlossenen Kolben $w_g=Delta u-q=w_v+j$. Der reversible Vergleich streicht j, nicht beliebig die Wärme.
+#form[$ j=w_t-w_p>=0 quad integral T dif s=q+j $]
+Die zweite Beziehung benutzt das lokale Folienmodell aus 4.5. Ein diabater Verdichter kann Entropie abgeben und trotzdem Dissipation erzeugen. Die minimale Wärmeabfuhr für denselben Weg bei $j=0$ ist deshalb von der tatsächlichen Abfuhr zu trennen.
+Ein starrer Tank mit Entnahme ist dagegen *offen und instationär*. Für ideale, homogene, adiabate Tankentleerung ohne Arbeit und ohne äußere Energien gilt $dif(m c_v T)=c_p T dif m$ und damit $T/T_0=(m/m_0)^(kappa-1)$, $p/p_0=(m/m_0)^kappa$. Beim Füllen sind Einströmzustand und Speicherzustand getrennt zu bilanzieren.
+#note("Der Zusammenhang in Kapitel 5", [Gasgleichung und kalorische Beziehungen liefern Zustände. Der Prozessweg bestimmt die Integrale, die Systemart die Bilanz. Erst danach werden Arbeit, Wärme und Entropie gemeinsam geprüft.])
+#src[V05, PDF-S. 5 und 11–19; Ü 5.1–5.14, PDF-S. 31–35. Entleerungsbeziehung eigene Herleitung für das ausdrücklich genannte Modell.]
+#hoch(<a-5>, [Kapitelübersicht])
+
+#pagebreak()
+= Kapitel 6 · Thermische Maschinen <a-6>
+#überblick([Kapitel 6 auf einen Blick],
+ idee(<a-6-1>, [Kolbenprozesse: Otto, Diesel, Seiliger], [Wärmezufuhr und Verdichtung bestimmen den Vergleich.]),
+ idee(<a-6-2>, [Reale Wirkungsgrade und Kraft-Wärme-Kopplung], [Vergleich, innere Arbeit und Wellenarbeit getrennt zählen.]),
+ idee(<a-6-3>, [Joule-Prozess und Gasturbine], [Verdichter und Turbine gemeinsam bilanzieren.]),
+ idee(<a-6-4>, [Regeneration und weitere Energiewandler], [Stirling, chemische Arbeit und Wärmeleitung im Zusammenhang.]),
+ idee(<a-6-5>, [Rankine, Entnahme und Gas-und-Dampf], [Teilströme nach jeder Verzweigung neu bestimmen.]),
+ idee(<a-6-6>, [Kälteprozesse, Unterkühlung und Kaskade], [Nutzen und Verdichteraufwand an derselben Grenze messen.]),
+)
+#karte((1fr, auto, 1fr),
+ chunk([Kolbenprozesse: Otto, Diesel, Seiliger], [Wärmezufuhr und Verdichtung bestimmen den Vergleich.], ziel: <a-6-1>), pfeil(),
+ chunk([Reale Wirkungsgrade und Kraft-Wärme-Kopplung], [Vergleich, innere Arbeit und Wellenarbeit getrennt zählen.], ziel: <a-6-2>),
+ chunk([Joule-Prozess und Gasturbine], [Verdichter und Turbine gemeinsam bilanzieren.], ziel: <a-6-3>), pfeil(),
+ chunk([Stirling und Regenerator], [Innere und äußere Wärme auseinanderhalten.], ziel: <a-6-4>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+#link(<a-6-7>)[Brennstoffzellen] · #link(<a-6-8>)[Wärmeleitung]
+Vergleichsprozesse zerlegen eine Maschine in berechenbare Schritte. Die reale Maschine wird anschließend über Gütegrade und mechanische Wirkungsgrade mit diesem Vergleich verbunden. Ein einzelner großer Turbinenbeitrag ist noch keine große Nettoleistung.
+
+#pagebreak(weak: true)
+== 6.1 Kolbenprozesse: Otto, Diesel, Seiliger <a-6-1>
+#bild("otto-diesel-seiliger", [Vergleichsprozesse und Wirkungsgrade. V06, PDF-S. 5.], height: 70mm)
+Beim *Otto*-Vergleich erfolgt die Wärmezufuhr isochor, beim *Diesel*-Vergleich isobar, beim *Seiliger*-Vergleich in beiden Schritten. Verdichtung und Expansion sind im Idealvergleich isentrop, die abschließende Wärmeabgabe isochor. Der echte Viertaktmotor hat zusätzlich Ansaugen und Ausschieben; dessen Gaswechselschleife wird im einfachen Vergleich ersetzt bzw. vernachlässigt.
+#form[$ epsilon=V_1/V_2 quad eta_"Otto"=1-epsilon^(1-kappa) $]
+#form[$ eta_"Diesel"=1-frac(phi^kappa-1,epsilon^(kappa-1)kappa(phi-1)) $]
+$phi$ ist das Einspritz-/Abschneidevolumenverhältnis. Gleiches κ und gleiches ε vorausgesetzt, ist der ideale Otto-Wirkungsgrad größer. Reale Diesel arbeiten meist mit anderen Verdichtungsverhältnissen; aus dem idealen Vergleich folgt daher keine pauschale reale Rangfolge.
+Hubvolumen $V_h=V_1-V_2$, Rest-/Kompressionsvolumen $V_k=V_2$, Mitteldruckbetrag $p_m=abs(W)/V_h$. Die Leistung ist Arbeit je Spiel mal Spiele je Zeit: Viertakt ein Spiel je zwei Umdrehungen und Zylinder, Zweitakt je eine Umdrehung.
+Warum die Verdichtung im Otto-Vergleich den Wirkungsgrad erhöht: $q_"zu"=c_v(T_3-T_2)$ und $abs(q_"ab")=c_v(T_4-T_1)$. Die beiden Isentropen liefern $T_2/T_1=T_3/T_4=epsilon^(kappa-1)$. Damit ist $abs(q_"ab")/q_"zu"=epsilon^(1-kappa)$. Das Kreisprozess-Ergebnis ist also die Folge der beiden Volumengrenzen und der Wärmeübertragung, keine zusätzliche Stoffformel.
+=== 6.1.1 Seiliger: Druck- und Volumensteigerung getrennt <a-6-1-1>
+Die isochore Teilwärme erhöht zunächst den Druck um den Faktor $psi=p_3/p_2$. Die anschließende isobare Teilwärme vergrößert das Volumen um $phi=V_4/V_3$; wegen $V_3=V_2$ ist das dieselbe φ-Basis wie im Memory. Für konstantes ideales Gas ergibt sich:
+#form[$ eta_"Seiliger"=1-frac(psi phi^kappa-1,epsilon^(kappa-1)[psi-1+kappa psi(phi-1)]) $]
+Im Grenzfall φ=1 bleibt der Otto-Prozess, im Grenzfall ψ=1 der Diesel-Prozess. Bei beiden zugleich gleich eins wird keine Wärme zugeführt; dann ist der Quotient als Wirkungsgrad des arbeitenden Kreisprozesses nicht definiert. Die Gleichung setzt dieselben isentropen Verdichtungs-/Expansionsmodelle wie die beiden Vergleiche voraus.
+#src[MT, PDF-S.28–29 (M29–M30), Gl.9.29–9.34; V06, PDF-S.5. Grenzfälle eigene Prüfung.]
+#src[V06, PDF-S. 2–8; Ü 6.1–6.4 und 9.6. Bezeichnungen ε/φ nach den Folien.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 6.2 Reale Wirkungsgrade und Kraft-Wärme-Kopplung <a-6-2>
+Theoretische Arbeit, indizierte Arbeit aus dem gemessenen p-V-Diagramm und effektive Wellenarbeit sind verschiedene Größen. Mechanische Verluste liegen zwischen innerer und äußerer Arbeit, der Gütegrad zwischen Idealvergleich und indiziertem Prozess.
+#form[$ eta_"eff"=eta_"th" eta_G eta_"mech" quad eta_G=abs(W_i)/abs(W_"Vergleich") $]
+Die gleiche System- und Brennstoffbasis muss bei jedem Quotienten erhalten bleiben. Die im Diagramm abgelesene Kreisfläche ist mit der jeweiligen Vorzeichenkonvention zu versehen.
+#form[$ eta_"BHKW"=frac(P_"el"+dot(Q)_"Nutz",dot(m)_B H_u) $]
+Beim Blockheizkraftwerk wird zusätzlich nutzbare Heizwärme gezählt. Dieser Gesamtenergienutzungsgrad ist nicht der elektrische Wirkungsgrad und nicht der exergetische Wirkungsgrad. Ein höherer Wert durch Mitnutzung von Wärme bedeutet nicht, dass Wärme vollständig zu Strom wird.
+#bild("map-maschinen", [Mindmap zur Maschinenbilanz. Eigene Darstellung.], height: 46mm)
+#src[V06, PDF-S. 5 und 9; Ü 6.1–6.4. Begriffe zur Nutzungsgrenze ergänzt.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 6.3 Joule-Prozess und Gasturbine <a-6-3>
+#bild("joule-ideal-real", [Idealer und realer Joule-Prozess. V06, PDF-S. 14.], height: 67mm)
+Der ideale Joule-Prozess besteht aus isentroper Verdichtung, isobarer Wärmezufuhr, isentroper Expansion und isobarer Wärmeabgabe. In der offenen Gasturbine ersetzt der Gaswechsel die letzte Kühlstrecke des gedachten geschlossenen Umlaufs. Beim Strahltriebwerk wird ein Teil der verfügbaren Enthalpie in der Düse zur Strahlgeschwindigkeit.
+#form[$ eta_"Joule"=1-(p_1/p_2)^((kappa-1)/kappa) quad w_t=c_p[(T_2-T_1)+(T_4-T_3)] $]
+Konstantes ideales Gas, gleiche Druckverhältnisse, reversible Druckmaschinen und keine Druckverluste. Real ist $eta_("is,V")=(h_(2s)-h_1)/(h_2-h_1)$, $eta_("is,T")=(h_3-h_4)/(h_3-h_(4s))$. Verdichter: ideale Aufnahme durch Gütegrad teilen; Turbine: ideale Abgabe damit multiplizieren.
+Innere Wärmerückgewinnung ist sinnvoll, wenn der Turbinenaustritt wärmer ist als der Verdichteraustritt. Ein Regenerator verringert die nötige Brennkammerwärme; er erzeugt keine Energie. Druckverluste und unvollständiger Wärmeaustausch begrenzen den Gewinn.
+=== 6.3.1 Turbojet, Turbofan und getrennte Wellen <a-6-3-1>
+Im *Turbojet* liefert der Gasgenerator einen heißen Druckgasstrom, der in der Schubdüse beschleunigt wird. Die Turbine muss zuerst den Verdichter antreiben; nur der verbleibende Enthalpieabfall steht für den Strahl zur Verfügung. Bei der *offenen* Gasturbine wird das Arbeitsgas laufend ausgetauscht, im Gegensatz zum eingeschlossenen Vergleichsgas des Kolbenprozesses.
+#bild("turbofan-folien-original", [Zweiwelliger Turbofan im historischen Folienbeispiel. V06, PDF-S.13.], height: 66mm)
+Ein *Turbofan* fördert zusätzlich Luft am Kern vorbei. Hoch- und Niederdrucksystem können über getrennte Wellen mit unterschiedlichen Drehzahlen laufen. Das *Nebenstromverhältnis* ist der Massenstrom im Nebenstrom geteilt durch den Kernmassenstrom. Für eine Gesamtbilanz sind beide Austrittsstrahlen und alle äußeren Energieanschlüsse zu erfassen.
+#src[V06, PDF-S. 11–18; Ü 9.5. Folienzahlen zu konkreten Anlagen als historische Beispiele.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 6.4 Stirling und Regenerator <a-6-4>
+#bild("stirling-regeneration", [Stirling-Vergleich mit Regeneration. V06, PDF-S. 19.], height: 70mm)
+Zwei Isothermen übertragen äußere Wärme, zwei Isochoren verbinden sie. Im idealen Regenerator wird die beim Abkühlen auf einer Isochore frei werdende Wärme gespeichert und im nächsten Schritt wieder an das Gas abgegeben. Ein reiner Speicher ist damit kein zusätzlicher äußerer Wärmelieferant.
+#form[$ abs(W_"netto")=m R(T_H-T_K)ln(V_"max"/V_"min") $]
+Für ideale vollständige Regeneration ist $Q_"zu"=m R T_H ln(V_"max"/V_"min")$ und $eta=1-T_K/T_H$. Ohne Regeneration muss die äußere Wärme auch die isochore Erwärmung decken; derselbe Carnot-Wert darf dann nicht einfach angesetzt werden. Die konkrete Konstruktion mit Verdränger und Arbeitskolben erklärt die zeitliche Verschiebung der Gasvolumina.
+=== 6.4.1 Weitere regenerative Verfahren aus dem Memory
+Der *Ericsson*-Vergleich ersetzt die beiden Isochoren des Stirling-Prozesses durch Isobaren. Zwei Isothermen und ideale vollständige Regeneration ergeben wieder den Carnot-Wirkungsgrad. Die Regeneratorwärme ist intern, äußere Wärme wird auf den Isothermen übertragen.
+Die im Memory gezeigten *Gifford-McMahon*- und *Vuilleumier*-Anlagen nutzen periodische Gasverschiebung zwischen warmen und kalten Räumen. Das Verdrängen und Speichern verbindet die Teilprozesse; es ist keine zusätzliche Energiequelle. Die Vuilleumier-Wärmepumpe erhält ihren Antrieb wesentlich durch Wärme. Für die Bewertung sind deshalb alle äußeren Wärme- und Arbeitsanschlüsse der jeweiligen Skizze zu zählen.
+Im gezeigten β-Stirling haben *Arbeitskolben* und *Verdränger* unterschiedliche Aufgaben. Der Arbeitskolben ändert das gesamte Gasvolumen und überträgt Arbeit. Der Verdränger verschiebt Gas zwischen heißem und kaltem Bereich; seine Bewegung ist zeitlich gegenüber dem Arbeitskolben versetzt. Beim Folienmodell ohne Regenerator muss die sonst intern speicherbare Wärme von außen zu- und abgeführt werden. Das ideale Stirling-Diagramm ist daher ein Vergleich, kein identisches Messdiagramm dieses Modells.
+=== 6.4.2 Linksläufiger Stirling und Philips-Gaskältemaschine <a-6-4-2>
+Kehrt man die Umlaufrichtung um, wird Arbeit zugeführt: Das Gas nimmt auf der kalten Isotherme Wärme auf und gibt auf der warmen Wärme ab. Die beiden Isochoren verbinden die Temperaturniveaus über den Regenerator.
+#bild("philips-stirling-kaelte-memory", [Linksläufiger Stirling und Philips-Gaskältemaschine. MT, PDF-S.31 (M32).], height: 61mm)
+#form[$ epsilon_K=frac(T_K,T_H-T_K) quad epsilon_"WP"=frac(T_H,T_H-T_K) $]
+Das sind die reversiblen Grenzen bei vollständiger Regeneration, jeweils in Kelvin und mit $T_H>T_K$. Reale Temperaturdifferenzen, Druckverluste und unvollständige Regeneration erhöhen den Aufwand. „Gas“ bezeichnet hier das Arbeitsmittel, nicht einen Brennstoff, der in der Kältemaschine verbrennt.
+#src[MT, PDF-S.31, BildM9-16/M9-17 und Gl.5.54/5.58.]
+#src[V06, PDF-S. 19–21; MT, PDF-S. 29 und 31–32, regenerative Kreisprozesse. Stirling-Arbeit ergänzend hergeleitet.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 6.5 Rankine, Entnahme und Gas-und-Dampf <a-6-5>
+#bild("rankine-zwischenueberhitzung", [Rankine, Zwischenüberhitzung und Heizdampfentnahme. V06, PDF-S. 22.], height: 72mm)
+Die Grundbilanz aus 4.7 bleibt: Pumpe → Kessel → Turbine → Kondensator. Zwischenüberhitzung führt zwischen Turbinenstufen zusätzliche Wärme zu. Bei Heizdampfentnahme gilt $dot(m)_"HT"=dot(m)_"Heiz"+dot(m)_"NT"$; die zweite Turbine und ihr Kondensator erhalten nur den Reststrom. Abgeschiedenes Wasser ist weder vernichtet noch automatisch im nächsten Turbinenstrom enthalten.
+#form[$ P_T=sum_i dot(m)_i(h_("aus",i)-h_("ein",i)) quad P_P approx sum_i dot(m)_i v_i Delta p_i $]
+Jeweils passende Massenbasis, Stoffwerte und Wirkungsgraddefinition verwenden. Wird Pumpenarbeit laut Aufgabe schon in einem Gesamtfaktor berücksichtigt, darf sie nicht nochmals abgezogen werden.
+Ein Gas-und-Dampf-Kraftwerk nutzt Gasturbinenabwärme als Wärmezufuhr des Dampfkreises. Bei einer gemeinsamen Brennstoffbasis gilt $eta_"GuD"=(abs(P_"GT")+abs(P_"Dampf"))/(dot(Q)_B+dot(Q)_"Zusatz")$. Heizwärme, interne Übertragerwärme und Brennstoffwärme dürfen nicht doppelt in die Bilanz eingehen.
+#tab(columns: (1fr,1fr,1fr), th([Vergleich],[Vorteil],[Grenze]),
+[Gasprozess],[Hohe obere Fluidtemperatur erreichbar.],[Verdichter braucht viel Arbeit; Abgas bleibt heiß.],
+[Dampfprozess],[Kondensation nahe Umgebung ermöglicht niedrige Wärmeabgabetemperatur.],[Oberes Temperaturniveau ist durch Stoff-/Anlagengrenzen beschränkt.],
+[GuD],[Heißes GT-Abgas treibt zusätzlich den Dampfprozess.],[Endliche Temperaturdifferenzen, Verluste und Eigenbedarf bleiben.])
+Für den vereinfachten GuD ohne Zusatzfeuerung folgt aus der Kette $eta_"GuD"=eta_G+eta_D eta_K(1-eta_G)$. $eta_K$ bezeichnet hier den Anteil der GT-Abwärme, der den Dampfprozess erreicht; $eta_D$ dessen Netto-Wirkungsgrad. Eine Formel mit Zusatzfeuerung braucht die zusätzliche Brennstoffwärme auch im Nenner.
+=== 6.5.1 Mittlere Wärmezufuhrtemperatur und Regeneration <a-6-5-1>
+Die Kesselwärme entsteht aus Flüssigkeitsvorwärmung, Verdampfung und Überhitzung. Für einen reversiblen isobaren Heizweg ist die thermodynamische mittlere Zufuhrtemperatur $bar(T)_"zu"=(h_5-h_2)/(s_5-s_2)$; sie ist kein einfaches arithmetisches Mittel der Eintritts- und Austrittstemperatur.
+Speisewasservorwärmung durch Entnahmedampf verschiebt äußere Kesselwärme zu höheren Temperaturen. Dafür steht der entnommene Dampf nicht mehr für die gesamte weitere Turbinenexpansion zur Verfügung. Zwischenüberhitzung, überkritische Wärmezufuhr und Luftvorwärmung verändern jeweils andere Teile des Heizwegs; ihr Nutzen wird mit der vollständigen Bilanz geprüft.
+Mit Zusatzfeuerung lautet das gemeinsame Kesselmodell des Memory $dot(Q)_D=eta_K[(1-eta_G)dot(Q)_G+dot(Q)_Z]$ und $eta_"GuD"=[eta_G dot(Q)_G+eta_D dot(Q)_D]/[dot(Q)_G+dot(Q)_Z]$. $dot(Q)_Z$ ist hier der zusätzliche Wärmestrom vor dem Dampferzeuger; der gemeinsame Übertragungs-/Kesselwirkungsgrad ηK wirkt auf beide Wärmezufuhren. Andere Anlagen mit getrennten Wirkungsgraden brauchen eine entsprechend getrennte Bilanz.
+#src[MT, PDF-S.26 (M27), Gl.9.1–9.12 und Maßnahmen zur Wirkungsgradverbesserung; PDF-S.38, Gl.9.81–9.85. Bezüge der Zusatzwärme ausdrücklich getrennt.]
+#src[V06, PDF-S. 22–23; Ü 6.7–6.9 und 9.1–9.4.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 6.6 Kälteprozesse, Unterkühlung und Kaskade <a-6-6>
+#bild("plank-unterkuehlung", [Plank-Prozess mit Unterkühlung und Saugüberhitzung. V06, PDF-S. 25.], height: 70mm)
+Die Drossel erhält h, der Verdampfer nimmt Wärme auf, der Verdichter benötigt Arbeit und der Verflüssiger gibt Wärme ab. Unterkühlung verringert die Enthalpie vor der Drossel. Überhitzung im eigentlichen Verdampfer kann zum Nutzen zählen; weitere Erwärmung in der Saugleitung außerhalb der Wärmequelle ist zusätzliche Verdichterbelastung.
+#form[$ epsilon_K=dot(Q)_"Quelle"/P_V quad epsilon_"WP"=abs(dot(Q)_"Heiz")/P_V $]
+Bei einer Kaskade gibt der kalte Kreislauf seine Kondensationswärme an den warmen ab: $abs(dot(Q)_"Kond,kalt")=dot(Q)_"Verd,warm"$. Die gesamte Kälteleistungszahl ist $dot(Q)_"kalt"/(P_(V,1)+P_(V,2))$, nicht das Produkt der einzelnen Zahlen. Reale Verdichtung und Drosselung erzeugen Entropie.
+=== 6.6.1 Absorption und kryogene Verflüssigung
+Bei der *Absorptionskältemaschine* ersetzen Absorber, Lösungspumpe und Austreiber den großen Dampfverdichter. Wärme treibt das Austreiben des Kältemittels an. Der Verdampfer nimmt Nutzkälte auf, Absorber und Kondensator geben Wärme ab; die kleine Lösungspumpe benötigt trotzdem Arbeit. Deshalb ist die Kälteleistungszahl auf den gesamten zugeführten Antriebsaufwand zu beziehen.
+Beim *Linde-Verfahren* wird Hochdruckgas vor der Drossel durch den kalten Rückgasstrom vorgekühlt. Die isenthalpe Drossel kann bei geeignetem realem Stoffzustand einen Flüssigkeitsanteil erzeugen; der Abscheider trennt ihn ab. Im Wärmeübertrager fließt nur der verbleibende Dampf zurück. Der ideale Gasfall mit h=h(T) erklärt die Verflüssigung durch bloßes Drosseln nicht.
+Das *Claude-Verfahren* ergänzt eine Expansionsmaschine für einen Teilstrom. Sie liefert Arbeit und zusätzliche Kühlung. Damit ändern sich Rückstrom- und Energieaufteilung; die Linde-Formel darf nicht ohne den zusätzlichen Turbinenzweig übernommen werden.
+=== 6.6.2 Joule-Gaskälte: Verdichten, kühlen, entspannen <a-6-6-2>
+Im *linksläufigen Joule-Prozess* bleibt das Arbeitsmittel gasförmig: Es wird isentrop verdichtet, bei hohem Druck gekühlt, isentrop entspannt und bei niedrigem Druck durch Aufnahme der Nutzkälte erwärmt. Anders als bei der Dampfkältemaschine ersetzt die Expansionsmaschine die isenthalpe Drossel und gewinnt einen Teil der Verdichterarbeit zurück.
+#bild("joule-kaeltemaschine-memory", [Joule-Gaskältemaschine mit idealen und realen Wegen. MT, PDF-S.30 (M31).], height: 60mm)
+#form[$ epsilon_K=frac(1,r^((kappa-1)/kappa)-1) quad epsilon_"WP"=frac(1,1-r^(-(kappa-1)/kappa)) quad r=p_H/p_K $]
+Konstante Wärmekapazitäten, ideale Isentropen und gleiche Druckverhältnisse. Die Temperaturfolge muss tatsächlich Wärmeaufnahme auf der kalten Isobare ergeben. Real folgen Nutzkälte und Nettoarbeit aus den konkreten Enthalpiedifferenzen; die Idealformeln werden dann nicht unverändert übernommen.
+
+=== 6.6.3 Wärmegetriebene Kälte und Verflüssigungsanteil <a-6-6-3>
+Für die Absorptionsanlage definiert das Memory das Wärmeverhältnis $zeta=dot(Q)_0/(dot(Q)_G+P_P)$: Nutzkälte geteilt durch Austreiberwärme und Pumpenarbeit, jeweils als positive Aufwands-/Nutzbeträge. Das ist eine andere Bezugsgröße als die reine Verdichter-Leistungszahl.
+#bild("linde-claude-memory", [Stromaufteilung und T-s-Verlauf bei Linde und Claude. MT, PDF-S.30 (M31), vollständig angeordnete Ausschnitte.], height: 100mm)
+Für die Zustandsnummern dieser Abbildung gilt mit den Enthalpien auf derselben Stoffbasis:
+#form[$ y_"Linde"=frac(dot(m)_L,dot(m))=frac(h_1-h_2,h_1-h_0) $
+$ y_"Claude"=frac(h_1-h_2,h_1-h_0)+frac(dot(m)_E,dot(m))frac(h_3-h_7,h_1-h_0) $]
+0 ist die abgetrennte Flüssigkeit, 1 der zurückkehrende Niederdruckstrom am warmen Ende, 2 der vorgekühlte Hochdruckstrom. Beim Claude-Verfahren expandiert der Teilstrom E von3 nach7. Die Beziehungen entstehen aus der Energie- und Massenbilanz des dargestellten Gesamtbereichs; sie sind keine universelle Formel für anders verschaltete Anlagen.
+#src[MT, PDF-S.27, Gl.9.28; PDF-S.30, BildM9-10 bisM9-13 und Gl.9.48–9.55.]
+#src[MT, PDF-S. 27 und 30; Ü 9.20, PDF-S. 61.]
+
+#hoch(<a-6>, [Kapitelübersicht])
+#pagebreak(weak: true)
+== 6.7 Ergänzung · Brennstoffzellen und chemische Arbeit <a-6-7>
+Eine *Brennstoffzelle* wandelt chemische Reaktionsenergie durch getrennte Elektrodenreaktionen direkt in elektrische Arbeit und Wärme um. Der äußere Elektronenweg führt durch den Verbraucher. Der Elektrolyt transportiert passende Ionen und verhindert den direkten Elektronenkurzschluss.
+#bild("brennstoffzelle-schema", [Elektroden und äußerer Stromkreis. MT, PDF-S. 32 (M33).], height: 58mm)
+#form[$ "H₂"+frac(1,2)"O₂" -> "H₂O" quad Delta G_m=Delta H_m-T Delta S_m $]
+Reaktionsgrößen beziehen sich auf dieselbe stöchiometrische Reaktionsmenge und dieselben Temperatur-/Druckzustände. Für die isotherme, isobare reversible Reaktion ist die maximal abgegebene elektrische Arbeit je Reaktionsmenge $-Delta G_m$; die gesamte freiwerdende Reaktionsenthalpie $-Delta H_m$ umfasst zusätzlich den Wärmeteil.
+#form[$ abs(P_"el,rev")=-dot(xi) Delta G_m quad U_"rev"=-frac(Delta G_m,z F) $]
+$dot(xi)$ ist der Reaktionsfortschritt in mol/s, z die Elektronenzahl pro Reaktion, F die Faraday-Konstante in C/mol. Dann sind ΔG in J/mol und Spannung in Volt zu verwenden. Bei Wasserstoff/Sauerstoff ist z=2.
+#src[MT, PDF-S. 32–34 (M33–M35), insbesondere Gl. 9.59–9.69.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+=== 6.7.1 Reale Zellspannung, Nutzung und Zelltypen
+#bild("brennstoffzelle-kennlinie", [Strom-Spannungs-Kennlinie. MT, PDF-S. 35 (M36).], height: 66mm)
+Bei Belastung fällt die reale Spannung unter die reversible Spannung. Elektrischer Abgabebetrag ist U I, nicht Leerlaufspannung mal einem beliebigen Strom. Die *Spannungseffizienz* ist U/Urev; zusätzlich bestimmt die Brennstoffnutzung, welcher Anteil des zugeführten Brennstoffs tatsächlich reagiert.
+#form[$ eta_"el"=frac(U I,dot(n)_("B,zu") H_(u,m)) $]
+Gleiche molare Brennstoffbasis und Heizwertbezug vorausgesetzt. Wird Wasser flüssig statt dampfförmig als Produkt angesetzt, ändert sich Reaktionsenthalpie und Bezugswirkungsgrad. Für eine Wasserstoffzelle ist daher ausdrücklich zu sagen, ob Hu oder Ho im Nenner steht.
+#tab(columns: (auto,1fr,1fr), th([Typ],[Elektrolyt / Ionen],[Temperaturniveau im Memory]),
+[PEMFC],[Protonenmembran, H⁺],[Niedertemperatur etwa 60–90 °C],
+[AFC],[Alkalische Lösung, OH⁻],[Etwa 60–80 °C],
+[PAFC],[Phosphorsäure, H⁺],[Etwa 160–220 °C],
+[MCFC],[Carbonatschmelze, CO₃²⁻],[Etwa 600–650 °C],
+[SOFC],[Festoxid, O²⁻],[Etwa 800–1000 °C])
+Diese Bereiche sind die historischen Lehrtabellen des Memory, keine Aussage über aktuelle am Markt angebotene Anlagen. Wasserstoffherstellung, Aufbereitung und eventuelle Kraft-Wärme-Kopplung erweitern die Systemgrenze; sie werden bei einem Anlagenwirkungsgrad zusätzlich bilanziert.
+=== 6.7.2 Reaktionsumsatz, Verlustwärme und elektrische Nutzung <a-6-7-2>
+Der *Reaktionsfortschritt* ξ zählt umgesetzte Reaktionsmengen: $n_i=n_(i,0)+nu_i xi$. Stöchiometrische Zahlen ν sind bei Edukten negativ, bei Produkten positiv. Deshalb kann sich die gesamte Stoffmenge ändern, obwohl die Atomzahlen erhalten bleiben. Das z des Memory bezeichnet hier den Reaktionsfortschritt; im Lernskript bleibt z die Elektronenzahl, ξ der Fortschritt.
+#form[$ I=z F dot(xi) quad U_H=-frac(Delta H_m,z F) quad abs(P_"el")=U I $]
+$U_H$ ist die thermoneutrale Spannung auf der gewählten Enthalpie-/Wasserbasis. Für abgegebene elektrische Leistung und abgegebene Wärme als positive Beträge folgt $dot(Q)_"ab"=(-Delta H_m)dot(xi)-U I=(U_H-U)I$. Die reversible Spannung verwendet dagegen ΔG. Wärmeabgabe kann deshalb auch im reversiblen Betrieb auftreten: Reversibel bedeutet nicht automatisch adiabatisch.
+#form[$ P_"zu"=dot(xi)Delta G_m+T dot(S)_"erz" quad dot(Q)_"zu"=T dot(xi)Delta S_m-T dot(S)_"erz" $]
+Diese beiden Vorzeichengleichungen gelten für die isotherm-isobare Reaktion mit äußerer Wärmeübertragung bei T; Leistungen positiv *zum* System, $dot(S)_"erz">=0$. Bei gleicher Reaktion vermindert Entropieerzeugung die abgebbare elektrische Leistung. Zusammen ergeben sie wieder $P_"zu"+dot(Q)_"zu"=dot(xi)Delta H_m$.
+Mit Brennstoffnutzung $chi=dot(n)_"B,umgesetzt"/dot(n)_"B,zu"$ folgt auf derselben Enthalpiebasis $eta_"el"=chi U/U_H=chi(U/U_"rev")(U_"rev"/U_H)$. Drei verschiedene Begriffe stehen darin: Nutzung des Brennstoffs, Spannungsverlust und thermodynamischer Anteil. Beim Umstellen auf den Heizwert müssen Wasserzustand und ΔH dazu passen.
+#bild("brennstoffzelle-elektroden-memory", [Elektrodenreaktionen und Ladungsträger. MT, PDF-S.37 (M38), TabelleM9-3.], height: 74mm)
+Protonenzellen transportieren H⁺ von der Anode zur Kathode; die hier gezeigten OH⁻-, CO₃²⁻- und O²⁻-Zellen transportieren negative Ionen in Gegenrichtung. Bei der Carbonatzelle wird zusätzlich CO₂ an der Kathode benötigt und an der Anode frei. Die Halbgleichungen erklären damit die unterschiedlichen Stoffanschlüsse trotz ähnlicher Gesamtreaktion.
+#note("Wasserzustand in der Quellentabelle", [MT, PDF-S.37, TabelleM9-4 bezeichnet auch in der zweiten Zeile das Produkt als flüssig. Die Zeilen unterscheiden sich aber ausdrücklich durch gasförmiges bzw. flüssiges Wasser und zugehörige Enthalpie-/Gibbswerte. Die Werte 241,82/228,57kJ/mol werden hier nur als das vorgegebene Paar der Dampfprodukt-Zeile verwendet; Wasserzustand und Bezug dürfen nicht zwischen den Zeilen vermischt werden.], fill: sand)
+#src[MT, PDF-S.33–35 (M34–M36), Gl.9.59–9.79; PDF-S.37, TabellenM9-3/M9-4. Abgabe-/Zufuhrzeichen und ξ gegenüber z vereinheitlicht.]
+#src[MT, PDF-S. 35–37 (M36–M38), Tabellen M9-2 bis M9-4; Definition der äußeren Bilanzgrenze erläutert.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 6.8 Ergänzung · Wärmeleitung aus dem Memory <a-6-8>
+*Wärmeleitung* ist Energieübertragung infolge eines Temperaturgefälles ohne einen makroskopischen Stoffstrom durch die Wand. Der Stoffwert λ heißt hier Wärmeleitfähigkeit; er ist von der dimensionslosen Darcy-Rohrreibzahl gleichen Buchstabens zu unterscheiden.
+#bild("waermeleitung-fourier", [Fourier-Beziehung für Wärmeleitung. MT, PDF-S. 38 (M39).], height: 63mm)
+#form[$ dot(q)_x=-lambda frac(dif T,dif x) quad dot(Q)=lambda A frac(T_1-T_2,L) $]
+Die zweite Gleichung gilt für stationäre eindimensionale Leitung durch eine ebene Wand mit konstanter Fläche A, Dicke L und konstanter λ, ohne innere Wärmequelle. λ in W/(m K), A in m², L in m liefern Watt. Das Minuszeichen der lokalen Form bedeutet: Die Wärme fließt zum kälteren Ort.
+Bei einem Rohr oder einer Kugelschale ändert sich die leitende Fläche mit dem Radius. Dann wird die lokale Gleichung mit A(r) integriert; die ebene Formel mit einer beliebigen Außenfläche wäre falsch. Grenzflächen-Konvektion und Strahlung benötigen eigene Modelle und Randbedingungen, die diese lokale Leitungsbeziehung nicht ersetzt.
+=== 6.8.1 Temperaturfeld und Wärmeausbreitung <a-6-8-1>
+Fourier beschreibt den lokalen Wärmestrom; die *Wärmeleitungsgleichung* beschreibt, wie sich die Temperatur im Körper mit der Zeit verändert. Für homogenen isotropen Stoff mit konstanten Kennwerten, ohne Strömung und ohne innere Wärmequelle gilt:
+#form[$ frac(partial T,partial tau)=a nabla^2 T quad a=frac(lambda,rho c) $]
+$a$ ist die Temperaturleitfähigkeit in m²/s, c die passende spezifische Wärmekapazität. Für λ in W/(m K) und ρ in kg/m³ muss c in J/(kg K) eingesetzt werden, damit a in m²/s entsteht. In kartesischen Koordinaten ist $nabla^2 T=T_(x x)+T_(y y)+T_(z z)$; die Indizes bedeuten zweite Ortsableitungen. Bei rein radialer Zylindersymmetrie wird daraus $T_(r r)+T_r/r$, bei Kugelsymmetrie $T_(r r)+2T_r/r$. Der Geometriefaktor beschreibt die mit r zunehmende Wärmeleitfläche.
+Zum Lösen braucht man eine Anfangstemperaturverteilung und Randbedingungen, etwa vorgegebene Wandtemperatur oder Wärmestromdichte. Die Größenordnung der Ausgleichszeit ist $tau approx L^2/a$; doppelte Weglänge bedeutet bei gleichem Stoff etwa vierfache Zeit. Die vollständigen Winkelterme des Memory entfallen nur unter den ausdrücklich genannten Symmetrien.
+#src[MT, PDF-S. 38 (M39), Abschnitt 10.1, Gl.10.1 und10.9a–d; ebene stationäre Form ergänzend integriert.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#note("Der Zusammenhang in Kapitel 6", [Jeder Vergleichsprozess benutzt die Gas- oder Dampfbilanzen aus den vorigen Kapiteln. Die Apparate und Teilmassenströme bestimmen, welche Wärme und Arbeit zusammengezählt werden; Wirkungsgrade vergleichen erst danach klar definierte Nutzen und Aufwände.])
+#src[V06, PDF-S. 24–27; Ü 6.5–6.6 und 6.10. Leistungszahlen bereits in 4.7 eingeführt.]
+#hoch(<a-6>, [Kapitelübersicht])
+
+#pagebreak()
+= Kapitel 7 · Feuchte Luft · Ergänzung aus der vollständigen Aufgabensammlung <a-7>
+#überblick([Kapitel 7 auf einen Blick],
+ idee(<a-7-5>, [Allgemeine Gasgemische], [Massen- und Molanteile richtig umrechnen.]),
+ idee(<a-7-1>, [Bezugsmasse, Partialdruck und Sättigung], [Wassergehalt x und relative Feuchte φ unterscheiden.]),
+ idee(<a-7-2>, [Volumen, Enthalpie und h-x-Diagramm], [Alle spezifischen Größen auf dieselbe Masse beziehen.]),
+ idee(<a-7-3>, [Taupunkt, Erwärmen und Entfeuchten], [Beim Kühlen zuerst die Phasengrenze prüfen.]),
+ idee(<a-7-4>, [Mischen, Befeuchten und Druckluft], [Luft-, Wasser- und Energiebilanz gemeinsam lösen.]),
+)
+#karte((1fr, auto, 1fr),
+ chunk([Bezugsmasse, Partialdruck und Sättigung], [Wassergehalt x und relative Feuchte φ unterscheiden.], ziel: <a-7-1>), pfeil(),
+ chunk([Volumen, Enthalpie und h-x-Diagramm], [Alle spezifischen Größen auf dieselbe Masse beziehen.], ziel: <a-7-2>),
+ chunk([Taupunkt, Erwärmen und Entfeuchten], [Beim Kühlen zuerst die Phasengrenze prüfen.], ziel: <a-7-3>), pfeil(),
+ chunk([Mischen, Befeuchten und Druckluft], [Luft-, Wasser- und Energiebilanz gemeinsam lösen.], ziel: <a-7-4>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+Die Übungs- und Klausursammlungen enthalten auch Luftbehandlung und Feuchtebilanzen. Dieses Kapitel stellt dafür die Grundlagen bereit; es ist eine Ergänzung aus diesen Quellen und dem mitgelieferten Thermodynamik-Memory, kein nachträglich behaupteter Vorlesungsanschrieb.
+
+#pagebreak(weak: true)
+== 7.1 Bezugsmasse, Partialdruck und Sättigung <a-7-1>
+Feuchte Luft besteht aus trockener Luft und Wasser. Solange kein Nebel vorliegt, wird der Wasserdampf als Gasanteil behandelt. Seine mögliche Menge ist durch den Sättigungsdruck bei der Lufttemperatur begrenzt; der Gesamtdruck allein bestimmt die Feuchte nicht.
+#bild("map-feuchte", [Mindmap zur Luftbehandlung. Eigene Darstellung.], height: 46mm)
+#form[$ p=p_L+p_W quad phi=p_W/p_s(T) quad x=m_W/m_L $]
+$x$ ist kg Wasser je kg *trockene* Luft, nicht der Wasser-Massenanteil am gesamten Gemisch und nicht der Dampfgehalt des Nassdampfs. Für gasförmiges Wasser folgt mit $R_L/R_W approx "0,622"$:
+#form[$ x=frac(R_L,R_W)frac(phi p_s,p-phi p_s) quad p_W=frac(x p,R_L/R_W+x) $]
+Die Gleichung setzt die ideale Gasphase voraus. Enthält die Luft zusätzlich flüssige Tröpfchen, hat der Dampfdruck höchstens den Sättigungswert; der darüber hinausgehende Wassergehalt ist gesondert als Flüssigkeit zu bilanzieren.
+Die *Sättigungswasserbeladung* ist $x_s=(R_L/R_W)p_s/(p-p_s)$. Der *Feuchtegrad* $Psi=x/x_s$ ist deshalb nicht allgemein gleich der relativen Feuchte φ. Für ungesättigte Gasphase folgt $Psi=phi(p-p_s)/(p-phi p_s)$. Bei Nebel ist φ=1, während der gesamte Wassergehalt x größer als $x_s$ sein kann. Der Wasser-Massenanteil am gesamten Gemisch ist $xi_W=x/(1+x)$.
+#src[Ü Kapitel 7, PDF-S. 42–44; MT, PDF-S. 21–25; BT 8.4–8.5, S. 248–252 / PDF-S. 266–270.]
+#hoch(<a-7>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 7.2 Volumen, Enthalpie und h-x-Diagramm <a-7-2>
+#form[$ v_L=V/m_L=frac((R_L+x R_W)T,p) quad rho_"Gemisch"=frac(1+x,v_L) $]
+$v_L$ ist auf trockene Luft bezogen. Sein Kehrwert ist die trockene Luftmasse pro Gemischvolumen; erst der Faktor $1+x$ liefert die gesamte Gemischdichte. Bei Nebel ist der Gasanteil mit dem Sättigungswert zu beschreiben, das kleine Flüssigkeitsvolumen meist vernachlässigbar.
+#form[$ h_(1+x)=c_(p,L) vartheta+x(r_0+c_(p,W) vartheta) $]
+Die Enthalpie steht in kJ je kg trockener Luft. $vartheta$ ist hier der Celsius-Zahlenwert gegenüber dem ausdrücklich gewählten 0-°C-Bezug, keine absolute Temperatur in einem Carnot-Quotienten. Nach BT passen näherungsweise $c_(p,L)="1,005"$, $c_(p,W)="1,852"$ kJ/(kg K), $r_0=2502$ kJ/kg für den dort genannten Temperaturbereich. Aufgaben können andere gerundete Konstanten verwenden; diese haben für deren Nachrechnung Vorrang.
+Im h-x-Diagramm müssen die schiefe Enthalpieachse, die x-Richtung und die Sättigungskurve zuerst gelesen werden. Außerhalb des Sättigungsgebiets liegt der Mischzustand auf der Verbindungsgeraden der Ausgangszustände. Eine Temperaturdifferenz allein ist bei wechselndem x kein vollständiger Enthalpieunterschied.
+#bild("mollier-memory-original", [Original-Mollierbild mit Misch-, Heiz- und Kühlwegen. MT, PDF-S.23 (M24).], height: 76mm)
+#note("Dichtebezug im Memory", [MT, PDF-S.22, Gl.8.47 bezeichnet $m_L/V$ als „Dichte der feuchten Luft“. Der Nennerbezug zeigt: Das ist die *Trockenluft-Partialdichte*. Die gesamte Gemischdichte enthält den Faktor $1+x$.], fill: sand)
+
+=== 7.2.1 Gesättigte Luft, Wassernebel und Eisnebel <a-7-2-1>
+Sobald überschüssiges Wasser als Tropfen vorliegt, darf der Gesamtwassergehalt nicht vollständig mit der Dampfenthalpie multipliziert werden. Die Gasphase enthält bei Gleichgewicht nur $x_s$; der Rest $x-x_s$ hat Flüssigkeits- oder Eisenthalpie.
+#form[$ h_s=c_(p,L)vartheta+x_s(r_0+c_(p,W)vartheta) $
+$ h_"Nebel"=h_s+(x-x_s)c_(W,"fl")vartheta $
+$ h_"Eisnebel"=h_s+(x-x_s)(-r_"Schmelz"+c_"Eis" vartheta) $]
+Alle Werte je kg trockener Luft, mit flüssigem Wasser bei0°C als Nullpunkt. Im Eisgebiet ist $p_s$ der Sättigungsdruck über Eis. Das Memory nennt näherungsweise $r_"Schmelz"="333,5"$ kJ/kg und $c_"Eis"="2,04"$ kJ/(kg K). Die freie Gasgleichung benutzt nur die gasförmige Wasserbeladung, die Gesamtmasse zusätzlich das kondensierte Wasser.
+#src[BT 8.5, S. 250–253 / PDF-S. 268–271; MT, PDF-S. 22–24; Ü Kapitel 7.]
+#hoch(<a-7>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 7.3 Taupunkt, Erwärmen und Entfeuchten <a-7-3>
+Der *Taupunkt* ist die Temperatur, bei der der vorhandene Wasserdampfpartialdruck zum Sättigungsdruck wird: $p_s(T_"tau")=p_W$. Reines Erwärmen bei gleichem Druck und ohne Wasserzugabe erhält x; φ sinkt, weil der Sättigungsdruck steigt. Beim Abkühlen steigt φ zunächst bis eins.
+#form[$ dot(m)_"Kond"=dot(m)_L(x_1-x_2) $]
+Die Formel gilt für abgeführtes Kondensat bei $x_1>x_2$. Wird unter den Taupunkt gekühlt, bleibt der gasförmige Anteil im idealen Endgleichgewicht gesättigt; überschüssiges Wasser fällt aus. Die Kühlleistung muss die Enthalpie des abgetrennten Kondensats berücksichtigen:
+#form[$ dot(Q)=dot(m)_L(h_2-h_1)+dot(m)_"Kond" h_"Kond" $]
+Stationärer Kühler ohne Wellenarbeit und äußere Energieänderung; Q positiv zum System. Mit dem gewählten Wasserbezug ist $h_"Kond" approx c_W vartheta_2$. Unter 0 °C muss statt flüssigem Kondensat der Eis-/Reifzustand samt Enthalpie verwendet werden.
+Die *Kühlgrenztemperatur* ist von der Taupunkttemperatur zu unterscheiden. Beim idealen adiabaten Kontakt mit Wasser nähert sich die Luft einem Sättigungszustand G. Die Wasserenthalpie bestimmt die Richtung im h-x-Bild:
+#form[$ h_G-h_1=(x_G-x_1)h_W quad x_G=x_s(T_G) $]
+Ist die zugeführte Flüssigkeitsenthalpie im gewählten Bezug vernachlässigbar, ist dieser Weg näherungsweise isenthalp. Der Taupunkt entsteht dagegen durch Abkühlen ohne anfängliche Wasserzugabe. Die Kühlfläche kann wiederum unter beiden Temperaturen liegen und dadurch aktiv entfeuchten.
+#src[MT, PDF-S. 24–25; BT 8.7 und 8.9; Ü 7.1–7.9. Bilanz mit Kondensat ausdrücklich aus der Energieerhaltung formuliert.]
+#hoch(<a-7>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 7.4 Mischen, Befeuchten und Druckluft <a-7-4>
+Bei einer adiabaten Mischkammer wird die trockene Luftmasse erhalten. Die Wasser- und Enthalpieströme addieren sich auf derselben trockenen Luftbasis.
+#form[$ x_M=frac(dot(m)_(L,1)x_1+dot(m)_(L,2)x_2,dot(m)_(L,1)+dot(m)_(L,2)) quad h_M=frac(dot(m)_(L,1)h_1+dot(m)_(L,2)h_2,dot(m)_(L,1)+dot(m)_(L,2)) $]
+Der Mischpunkt liegt näher am stärkeren Trockenluftstrom. Erst nach x und h wird die Mischtemperatur berechnet und geprüft, ob Nebel entsteht. Beim Einsprühen kommt zusätzlich die Enthalpie des Wassers bzw. Dampfes hinzu; eine adiabate Befeuchtung ist nur bei vernachlässigbarer Wasserenthalpie näherungsweise isenthalp.
+Bei Verdichtung ohne Kondensation bleibt x gleich, der Wasserdampfpartialdruck wächst mit dem Gesamtdruck. Kühlt die Druckluft danach ab, kann sie Wasser abgeben. Entspannung auf den alten Gesamtdruck macht das zuvor ausgeschiedene Wasser nicht automatisch rückgängig.
+#form[$ h_2-h_1=(x_2-x_1)h_W+q $]
+Stationär, gleiche trockene Luftmasse, eingesprühtes Wasser verbleibt im betrachteten Austritt und q ist zusätzlich zugeführte Wärme je kg trockener Luft. Bei abgeschiedenem Wasser kommt dessen eigener Enthalpiestrom hinzu. So werden Dampfbefeuchtung, Flüssigeindüsung und Raumwärme getrennt.
+
+=== 7.4.1 Taupunktregelung und Wasseroberfläche <a-7-4-1>
+Ein idealer Taupunktregler stellt zuerst die zum gewünschten Wassergehalt gehörende Sättigung her. Im Winter wird die Außenluft nötigenfalls vorgewärmt, im Wäscher bis zum Soll-Taupunkt befeuchtet und anschließend auf die gewünschte Zulufttemperatur erwärmt. Der Nacherhitzer ändert x nicht. Ist die Außenluft schon zu feucht, reicht dieses reine Befeuchtungsverfahren nicht; Wasser muss zuvor auskondensieren.
+#bild("taupunktregler-memory", [Taupunktregelung im h-x-Bild. MT, PDF-S.25 (M26), BildM8-3a.], height: 47mm)
+Wärmerückgewinnung überträgt Energie zwischen zwei Luftströmen. Umluft führt dagegen auch deren Feuchte zurück. Deshalb ändern diese beiden Maßnahmen die Mischbilanzen unterschiedlich.
+#bild("luft-wasser-memory", [Wärme- und Stoffaustausch an einer Wasseroberfläche. MT, PDF-S.25 (M26), BildM8-4.], height: 61mm)
+Über einer Wasseroberfläche bei $T_W$ ist die Grenzluft gesättigt. Ist $p_W<p_s(T_W)$, verdunstet Wasser; bei größerem Luft-Dampfpartialdruck kondensiert es. Die Richtung des sensiblen Wärmestroms folgt unabhängig davon dem Temperaturunterschied. Deshalb kann Verdunstung je nach Wasserzustand mit Abkühlung oder Erwärmung der Luft verbunden sein.
+=== 7.4.2 Raumzustand aus Zuluft und inneren Lasten <a-7-4-2>
+#bild("klimazentrale-memory", [Luftbehandlungszentrale und Raumlasten. MT, PDF-S.23 (M24), BildM8-2.], height: 60mm)
+Zuluft ist der Zustand vor dem Raum, Raum-/Abluft der Zustand danach. Menschen, Prozesse oder eine Wasseroberfläche bringen Feuchte und Energie ein. Im stationären Raum mit gleichem Trockenluftstrom am Ein- und Austritt gelten:
+#form[$ dot(m)_L(x_"IDA"-x_"SUP")=sum dot(m)_W $
+$ dot(m)_L(h_"IDA"-h_"SUP")=sum dot(Q)+sum P+sum dot(m)_W h_W $]
+Wärme, Arbeit und Wasserströme sind hier positiv in den Raum; Wasserabfuhr wird mit negativem Vorzeichen erfasst. Die Wasserenthalpie muss zur eintretenden Phase und zum gemeinsamen 0-°C-Bezug passen. Wird eine angegebene Raumlast bereits einschließlich der Verdampfungswärme definiert, darf diese nicht nochmals addiert werden. Aus beiden Bilanzen entsteht im h-x-Bild eine Raumgerade; ihr Schnitt mit dem gewünschten Raumzustand bestimmt einen passenden Zuluftzustand bzw. Luftstrom.
+#src[MT, PDF-S.23, BildM8-2 und zugehörige Beschreibung der Raumlasten; Bilanzen aus dem ersten Hauptsatz und Wassererhaltung formuliert.]
+#src[MT, PDF-S. 24–25; BT 8.7–8.10, insbesondere S. 261–262 / PDF-S. 279–280; Ü Kapitel 7.]
+#hoch(<a-7>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 7.5 Ergänzung · Allgemeine ideale Gasgemische <a-7-5>
+Ein *Massenanteil* zählt Kilogramm, ein *Molanteil* Teilchenmengen. Leichter Wasserstoff kann deshalb einen großen Molanteil haben, obwohl sein Massenanteil klein ist. Die Anteile sind immer auf dieselbe Gesamtmenge zu beziehen.
+#form[$ xi_i=m_i/m quad psi_i=n_i/n quad psi_i=frac(xi_i/M_i,sum_j xi_j/M_j) $]
+#form[$ M=frac(1,sum_i xi_i/M_i)=sum_i psi_i M_i quad R=R_m/M=sum_i xi_i R_i $]
+M in kg/kmol und Rm in kJ/(kmol K) liefern R in kJ/(kg K). Für ideale Gase ist der Molanteil zugleich der Volumenanteil bei gemeinsamen p und T. Die Massenanteile erhältst Du umgekehrt aus $xi_i=psi_i M_i/M$.
+Nach Dalton ist $p_i=psi_i p$ und nach Amagat addieren sich die gedachten Partialvolumina bei gleichem p und T. Wärmekapazitäten und Enthalpien werden dagegen passend zur Basis gemittelt: massenspezifisch mit ξ, molar mit ψ. In einem starren geschlossenen Gemisch wird elektrische Heizenergie zu ΔU, in einem stationär beheizten Strom zu ΔH (ohne andere Energieänderungen).
+#note("Fehler vermeiden", [Reine Normdichten dürfen für Gemischmassenanteile nicht einfach addiert werden. Erst jeden Dichtebeitrag mit dem Volumen-/Molanteil gewichten. Das korrigiert M9.16f.], fill: sand)
+=== 7.5.1 Entropie beim Mischen idealer Gase <a-7-5-1>
+Ideale Gase haben bei gemeinsamem T keine Mischungsenthalpie. Trotzdem vergrößert das Vermischen verschiedener zunächst getrennter Gase bei gleichem T und p die Entropie: Jedes Gas kann nach dem Entfernen der Trennwand einen größeren Raum belegen.
+#form[$ Delta S_"Misch"=-n R_m sum_i psi_i ln(psi_i)>=0 $]
+Für vorher getrennte reine ideale Gase bei gleichem T und p, ohne Reaktion. Die Größe n ist die gesamte Stoffmenge nach dem Mischen. Bei unveränderter Zusammensetzung gilt für Zustandsänderungen dagegen $Delta s=c_(p,"Gemisch")ln(T_2/T_1)-R_"Gemisch"ln(p_2/p_1)$ bei konstanten Kapazitäten. Ändern sich die Anteile, darf dieser feste-Gemisch-Ausdruck nicht ungeprüft benutzt werden.
+#src[MT, PDF-S. 20–21 (insbesondere Gl.8.31 zur Mischungsentropie); BT Kapitel 8; Ü 7.1–7.2, PDF-S. 42; Ü 9.16, PDF-S. 57. Umrechnungen aus Definitionen hergeleitet.]
+#hoch(<a-7>, [Kapitelübersicht])
+#note("Der Zusammenhang in Kapitel 7", [Der Partialdruck entscheidet über Sättigung, die Trockenluftmasse über die Bezugsbasis. x bilanziert Wasser, h bilanziert Energie. Erst beide zusammen legen den neuen Zustand fest.])
+
+#pagebreak()
+= Kapitel 8 · Verbrennungsrechnung · Ergänzung aus der Aufgabensammlung <a-8>
+#überblick([Kapitel 8 auf einen Blick],
+ idee(<a-8-1>, [Reaktionsgleichung und Mengenbasis], [Atome erhalten und molare von massenbezogenen Daten trennen.]),
+ idee(<a-8-2>, [Mindestluftbedarf und Luftüberschuss], [Stöchiometrie vor den tatsächlichen Luftstrom setzen.]),
+ idee(<a-8-3>, [Abgas: feucht, trocken und normiert], [Wasser und Luftstickstoff vollständig mitführen.]),
+ idee(<a-8-4>, [Heizwert, Brennwert und Wärmebilanz], [Den Zustand des Produktwassers zur Energieaussage nennen.]),
+)
+#karte((1fr, auto, 1fr),
+ chunk([Reaktionsgleichung und Mengenbasis], [Atome erhalten und molare von massenbezogenen Daten trennen.], ziel: <a-8-1>), pfeil(),
+ chunk([Mindestluftbedarf und Luftüberschuss], [Stöchiometrie vor den tatsächlichen Luftstrom setzen.], ziel: <a-8-2>),
+ chunk([Abgas: feucht, trocken und normiert], [Wasser und Luftstickstoff vollständig mitführen.], ziel: <a-8-3>), pfeil(),
+ chunk([Heizwert, Brennwert und Wärmebilanz], [Den Zustand des Produktwassers zur Energieaussage nennen.], ziel: <a-8-4>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+Die vollständigen Aufgaben und historischen Prüfungen enthalten Brennstoff-, Luft- und Abgasrechnungen. Zuerst werden Atome bilanziert, danach Mengenbezug und Energie. Heizwerte und historische Brennstoffdaten werden als Aufgabenwerte verwendet.
+
+#pagebreak(weak: true)
+== 8.1 Reaktionsgleichung und Mengenbasis <a-8-1>
+Eine vollständige Verbrennung bildet im vereinfachten Rechenmodell CO₂ aus C, H₂O aus H und SO₂ aus S. Die Atome bleiben erhalten. Für einen allgemeinen Brennstoffanteil mit C, H und O gilt:
+#form[$ "C"_a "H"_b "O"_c+(a+b/4-c/2)"O"_2 -> a "CO"_2+(b/2)"H"_2"O" $]
+Der bereits im Brennstoff enthaltene Sauerstoff vermindert den äußeren Bedarf. Inerte Anteile, Stickstoff, mitgebrachtes Wasser und Asche müssen getrennt verfolgt werden. Bei Massenanteilen zuerst durch die zugehörigen Molmassen teilen, bevor Atommengen addiert werden.
+#bild("map-verbrennung", [Mindmap zum Verbrennungsschema. Eigene Darstellung.], height: 46mm)
+#note("Quellenfehler im Buchbeispiel", [BT, PDF-S. 446, schreibt im Methanolbeispiel widersprüchliche Wasserkoeffizienten. Aus der Atombilanz folgt eindeutig $"CH"_3"OH"+"1,5""O"_2 -> "CO"_2+2"H"_2"O"$. Die allgemeine Reaktionsgleichung darüber ist die sichere Grundlage.], fill: sand)
+#src[Ü Kapitel 8, PDF-S. 45 ff.; MT, Verbrennungsabschnitt; BT 11.3–11.4, S. 428–433 / PDF-S. 443–448.]
+#hoch(<a-8>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 8.2 Mindestluftbedarf und Luftüberschuss <a-8-2>
+#form[$ L_"min"=frac(O_"min",psi_("O2",L)) quad lambda=frac(L,L_"min") quad L=lambda L_"min" $]
+L und O müssen denselben Brennstoffbezug besitzen, etwa kmol Luft bzw. O₂ je kmol Brennstoff. Bei trockener Luft verwendet die Quelle ungefähr 21 Mol-% Sauerstoff. Der Sauerstoff-Massenanteil ist dagegen rund 23,14 % und darf nicht an derselben Stelle eingesetzt werden.
+Für eine Elementaranalyse mit Massenanteilen c, h, s und o folgt mit gerundeten Molmassen der O₂-Bedarf je kg Brennstoff:
+#form[$ n_("O2,min")=c/12+h/4+s/32-o/32 $]
+Alle Terme stehen in kmol/kg. Bei λ größer eins bleibt nach vollständiger Verbrennung überschüssiger Sauerstoff; bei λ kleiner eins ist das Modell vollständiger Verbrennung im Allgemeinen nicht mehr erfüllbar. „60 % Luftüberschuss“ bedeutet λ=1,6, nicht 0,6.
+#src[BT 11.4, S. 431–435 / PDF-S. 446–450; Ü Kapitel 8. Gerundete Molmassen ausdrücklich angegeben.]
+#hoch(<a-8>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 8.3 Abgas: feucht, trocken und normiert <a-8-3>
+Zur Produktmenge gehören Reaktionsprodukte, Brennstoffwasser, mit der Luft eingetragenes Wasser, Luftstickstoff und gegebenenfalls überschüssiger Sauerstoff. Der trockene Abgasbezug lässt nur das Wasser weg, nicht den Stickstoff. Gasförmige Molanteile werden erst nach der Summe aller passenden Produktmengen gebildet.
+#form[$ psi_i=n_i/sum_j n_j quad V_n=n V_(m,n) quad n_("O2,rest")=(lambda-1)n_("O2,min") $]
+Die Rest-O₂-Beziehung setzt vollständige Umsetzung und den gleichen Stoffmengenbezug voraus. Bei feuchter Luft kommt $n_("H2O,L")/n_(L,"trocken")=phi p_s/(p-phi p_s)$ hinzu. Bei Abgasanalysen müssen gemessene trockene Prozentwerte mit einer trockenen Modellzusammensetzung verglichen werden.
+Roh-, trocken-, wasserfrei- oder wasser-/aschefreier Brennstoff unterscheiden sich durch den Nenner. Vor einer Umrechnung die verbleibende Massenfraktion ausdrücklich nennen; ein auf Brennstoffmasse bezogener Heizwert bleibt dabei keine unveränderliche Zahl.
+#note("Weiterrechenwerte neu bilanzieren", [Gibt ein Aufgabenblatt für spätere Teilaufgaben ausdrücklich eine andere Brenngaszusammensetzung vor, müssen deren Produkte und Mengen neu zu diesen Atomzahlen passen. Die alte Rauchgasanalyse darf dann nicht unverändert für den neuen Stoff verwendet werden. M9.16j vermischt diese Daten; die Aufgabe zeigt beide Ausgangslagen ausdrücklich.], fill: sand)
+=== 8.3.1 Produkttabelle auf einer festen Brennstoffbasis <a-8-3-1>
+Die beiden Brennstoffgruppen des Memory verlangen verschiedene Nenner. In der ersten Spalte stehen kmol Produkt je kg fester/flüssiger Brennstoff mit Massenanteilen c,h,s,w,n. In der zweiten stehen kmol Produkt je kmol Gasgemisch mit Molanteilen ψ. Für trockene Brennluft und vollständige Umsetzung gilt:
+#tab(columns: (auto,1fr,1.4fr), th([Produkt],[Elementaranalyse: kmol/kg],[Gasgemisch: kmol/kmol]),
+[CO₂],[$c/12$],[$sum_i a_i psi_i$; inklusive schon enthaltenem CO₂],
+[H₂O],[$h/2+w/18$],[$sum_i (b_i/2)psi_i+psi_("H₂O")$],
+[SO₂],[$s/32$],[Schwefelmenge aus allen umgesetzten Komponenten],
+[O₂],[$(lambda-1)n_("O₂,min")$],[$(lambda-1)O_"min"$],
+[N₂],[$n/28+psi_("N₂,L")lambda L_"min"$],[Brennstoff-N₂ plus Luft-N₂])
+$a_i,b_i$ zählen die C-/H-Atome brennbarer Komponenten; bereits enthaltenes CO₂ oder H₂O wird als Inert-/Begleitstoff zusätzlich mitgenommen und nicht nochmals verbrannt. Bei feuchter Brennluft kommt deren Wasserbeitrag separat hinzu. Brennstoffsauerstoff ist schon bei der Mindestluft zu verrechnen; ihn ein zweites Mal vom Rest-O₂ abzuziehen wäre falsch.
+Aus den molaren Produkten folgt die Massenmenge durch $m_i=n_i M_i$. Die trockene Analyse normiert erst nach Weglassen des Wassers neu auf ihre eigene Summe. Für Hu,m und Hu,v gilt $H_(u,m)=M_B H_u$ und $H_(u,v)=H_(u,m)/V_(m,n)$; derselbe Normzustand ist dabei ausdrücklich beizubehalten.
+#src[MT, PDF-S.39–45 (M44–M50), TabellenM11-1 bisM11-10 und Gl.11.36–11.40. Produkttabelle aus Atombilanzen zusammengeführt.]
+#src[BT 11.4–11.6, S. 433–443 / PDF-S. 448–458; MT Verbrennungsschema; Ü Kapitel 8 und 9.16.]
+#hoch(<a-8>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 8.4 Heizwert, Brennwert und Wärmebilanz <a-8-4>
+Der *Heizwert* Hᵤ beschreibt den Energieumsatz mit dampfförmigem Produktwasser; der *Brennwert* Hₒ mit kondensiertem Wasser am festgelegten Bezug. Der Unterschied ist die zusätzlich nutzbare Kondensationsenthalpie des bei der Verbrennung entstandenen bzw. mitgebrachten Wassers.
+#form[$ H_o-H_u=m_("W,Produkt")r_0 quad dot(Q)_B=dot(m)_B H_u $]
+Die erste Formel ist je kg Brennstoff zu lesen, wenn die Wassermasse entsprechend auf kg Brennstoff bezogen ist. Bei Volumen- und Molheizwerten müssen Bezug und Einheiten erst umgerechnet werden. Eine Temperaturerhöhung des Abgases erfordert die Enthalpiesumme aller Produktkomponenten, nicht nur eines pauschalen Luftstroms.
+Für den adiabaten Verbrennungszustand gilt im vereinfachten Modell: Brennstoffenergie plus sensible Zufuhrenthalpie gleich sensible Produktenthalpie. Temperaturabhängige Wärmekapazitäten erfordern gegebenenfalls eine Iteration. Der Taupunkt folgt aus dem Wasserdampfpartialdruck; Kondensation verändert zugleich Abgasmenge und Energiebilanz.
+Für feste/flüssige Brennstoffe verwendet MT die empirische Näherung $H_u=["33,9"c+"121,4"h+"10,5"s-"15,2"o-"2,44"w]$ MJ/kg mit Element-/Wassermassenanteilen als Brüchen. Ein Mess- oder Tabellenwert hat Vorrang. Ein unbekannter Restanteil im Brenngas bleibt mit seinem Heizwert als Parameter stehen; die Bezeichnung „weitere Kohlenwasserstoffe“ allein legt den Zahlenwert nicht fest.
+Bei einer Bezugstemperatur ϑ₀ sind sensible Produktenthalpien als c̄pi(ϑ)ϑ−c̄pi(ϑ₀)ϑ₀ anzusetzen. Liegen Brennstoff und Luft schon bei ϑ₀, ist deren zusätzliche sensible Zufuhr null. Adiabate Verbrennungstemperatur ist die Nullstelle der vollständigen Energiebilanz mit temperaturabhängigen c̄p; Wärmeverlust und unverbrannte Stoffe verändern die Bilanz.
+#src[MT PDF-S. 45 (M50), Gl. 11.39–11.51; Ü 8.4 und 8.10.]
+#note("Der Zusammenhang in Kapitel 8", [Atombilanz liefert Sauerstoffbedarf und Produkte. Luftüberschuss und Feuchte vervollständigen die Stoffbilanz. Erst danach bewerten Heizwert, Brennwert und sensible Enthalpien den Energieumsatz.])
+#src[Ü Kapitel 8; MT Verbrennungsabschnitt; BT 11.7, S. 449–457 / PDF-S. 464–472. Wärmekapazitäten nur nach der jeweiligen Aufgabenquelle.]
+#hoch(<a-8>, [Kapitelübersicht])
+
+#pagebreak()
+= Kapitel 9 · Strömungsmechanik <a-9>
+#überblick([Kapitel 9 auf einen Blick],
+ idee(<a-9-1>, [Hydrostatik, Druckmessung und Kesselformel], [Druck ist skalar, Druckkräfte sind gerichtet.]),
+ idee(<a-9-2>, [Wandkraft, Druckmittelpunkt und Auftrieb], [Druckverteilung integrieren statt nur mit Tiefe zu multiplizieren.]),
+ idee(<a-9-3>, [Atmosphäre und gekrümmte Stromlinien], [Veränderliche Dichte und Normalbeschleunigung berücksichtigen.]),
+ idee(<a-9-4>, [Bernoulli und Druckbegriffe], [Statische, dynamische und Lageanteile gemeinsam bilanzieren.]),
+ idee(<a-9-5>, [Rohrreibung und Einzelverluste], [Reynolds-Zahl und Darcy-Reibzahl passend bestimmen.]),
+ idee(<a-9-6>, [Pumpen, Kennlinien und Rohrnetze], [Knoten und Maschen mit dem richtigen Widerstandsgesetz lösen.]),
+)
+#karte((1fr, auto, 1fr),
+ chunk([Hydrostatik, Druckmessung und Kesselformel], [Druck ist skalar, Druckkräfte sind gerichtet.], ziel: <a-9-1>), pfeil(),
+ chunk([Wandkraft, Druckmittelpunkt und Auftrieb], [Druckverteilung integrieren statt nur mit Tiefe zu multiplizieren.], ziel: <a-9-2>),
+ chunk([Atmosphäre und gekrümmte Stromlinien], [Veränderliche Dichte und Normalbeschleunigung berücksichtigen.], ziel: <a-9-3>), pfeil(),
+ chunk([Bernoulli und Druckbegriffe], [Statische, dynamische und Lageanteile gemeinsam bilanzieren.], ziel: <a-9-4>),
+)
+#hoch(<ueberblick>, [Modul auf einen Blick])
+#link(<a-9-7>)[Impuls] · #link(<a-9-8>)[Drall] · #link(<a-9-9>)[Ähnlichkeit] · #link(<a-9-10>)[Potential] · #link(<a-9-11>)[Widerstand] · #link(<a-9-12>)[Gleitflug] · #link(<a-9-13>)[Kompressibler Ausfluss]
+
+Strömungsaufgaben beginnen mit der Wahl des Kontrollvolumens. Hydrostatik bestimmt ruhende Druckfelder, Bernoulli die mechanische Energiebilanz, Impuls die Kräfte. Verluste und Pumpen verbinden diese Werkzeuge im Rohrnetz.
+
+#pagebreak(weak: true)
+== 9.1 Hydrostatik, Druckmessung und Kesselformel <a-9-1>
+In einer ruhenden Flüssigkeit gleicher Dichte wächst der Druck mit der Tiefe; bei Höhe z nach oben gilt $dif p/dif z=-rho g$. Zusammenhängende ruhende Flüssigkeitsbereiche haben in derselben Höhe denselben Druck, sofern kein Trennglied dazwischen liegt. Ein U-Rohr wird deshalb abschnittsweise über seine Dichten bilanziert.
+#form[$ p=p_0+rho g h quad F=p A quad frac(F_1,A_1)=frac(F_2,A_2) $]
+Die Kraftformel setzt gleichmäßigen Druck auf einer ebenen Fläche voraus. Eine hydraulische Presse überträgt Druck, erzeugt aber keine Energie: Kraftgewinn geht mit kleinerem Weg einher. Bei absolutem Druck unter dem Dampfdruck kann Flüssigkeit verdampfen; ein gedachter Heber funktioniert dann nicht mehr als zusammenhängende Flüssigkeitssäule.
+Für den dünnwandigen Zylinder liefern Freischnitte näherungsweise Umfangsspannung $sigma_U=p_"ü"d/(2t)$ und Längsspannung $sigma_L=p_"ü"d/(4t)$. Entscheidend ist die Druckdifferenz über der Wand. Ein Festigkeitsnachweis verlangt zusätzlich zulässige Spannung, Sicherheitsbeiwert und geeignetes Vergleichsspannungsmodell.
+#bild("map-stroemung", [Mindmap der strömungsmechanischen Werkzeuge. Eigene Darstellung.], height: 46mm)
+=== 9.1.1 Hydrostatisches Paradoxon <a-9-1-1>
+#bild("hydrostatisches-paradoxon", [Gleiche Bodenkraft bei verschiedenen Gefäßformen. Eigene Darstellung nach BS, PDF-S.45; Thema S1, PDF-S.4.], height: 62mm)
+Die Folie S1, PDF-S.4, ist ein Tafel-Platzhalter; die Skizze erklärt das belegte Grundprinzip und ersetzt nicht Deine spätere Mitschrift. Gleiche Füllhöhe und Dichte ergeben auf gleicher horizontaler Bodenfläche dieselbe Bodenkraft, auch wenn unterschiedlich viel Flüssigkeit im Gefäß liegt. Der scheinbare Widerspruch verschwindet im Kräftegleichgewicht: Schräge oder abgestufte Seitenwände übertragen zusätzlich vertikale Kräfte. „Bodenkraft gleich Flüssigkeitsgewicht“ gilt deshalb nicht für beliebige Gefäßformen.
+=== 9.1.2 Warum Druck keine Richtung hat <a-9-1-2>
+#bild("druck-richtungsunabhaengigkeit", [Kräftegleichgewicht am ruhenden Flüssigkeitsprisma. S1, PDF-S.2.], height: 67mm)
+Druck ist eine skalare Ortsgröße; erst die *Druckkraft* bekommt durch die Flächennormale eine Richtung. Beim infinitesimal kleinen ruhenden Prisma verknüpfen die projizierten Flächen die Normalkraftkomponenten. Deren Gleichgewicht liefert denselben Druck auf allen unterschiedlich orientierten Schnittflächen. Das Eigengewicht skaliert mit der dritten, die Flächenkraft mit der zweiten Längendimension und verschwindet deshalb in diesem lokalen Grenzübergang relativ zur Flächenkraft.
+Die Richtungsunabhängigkeit gilt für den hydrostatischen Druck. In einer bewegten zähen Flüssigkeit kommen Schub- und gegebenenfalls weitere Normalspannungen zum Druckanteil hinzu; diese werden dadurch nicht ebenfalls zu richtungsunabhängigen Größen.
+#src[S1, PDF-S.2; Gleichgewichtsargument der Folie ergänzend in Worten ausgeführt.]
+#src[S1, PDF-S. 1–8; BS Kapitel 1. Die überwiegend mit „Tafel“ beschrifteten Arbeitsseiten bleiben Quellen für spätere Mitschriftergänzungen.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+
+=== 9.1.3 Wandspannungen, Kapillaren und dünne Druckhüllen <a-9-1-3>
+Ein ruhendes einfaches Fluid trägt keine dauernden Schubspannungen. Sein Druck ist am selben Punkt in allen Richtungen gleich. Bei einem strömenden realen Fluid muss dieser skalare thermodynamische Druck von den zusätzlichen viskosen Spannungen unterschieden werden: Die gesamte Normalspannung ist dann nicht zwingend richtungsunabhängig. Räumliche Druckänderung, etwa mit der Tiefe, widerspricht örtlicher Druckisotropie nicht.
+*Oberflächenspannung* σ beschreibt Kraft je Grenzlinienlänge bzw. Energie je neu gebildeter Grenzfläche; N/m und J/m² sind gleichwertig. In einer dünnen kreisförmigen Kapillare verbindet das Kräftegleichgewicht Grenzflächenzug und Flüssigkeitsgewicht:
+#form[$ h=frac(2sigma cos theta,rho g r) $]
+Kontaktwinkel θ wird durch die Flüssigkeit gemessen, r ist der Kapillarradius. Gute Benetzung wie Wasser an sauberem Glas liefert im einfachen Modell θ kleiner als90° und Aufstieg; Quecksilber an Glas liefert Depression. Andere Stoffpaarungen und verschmutzte Oberflächen brauchen ihre eigenen Kontaktwinkel.
+Eine dünnwandige geschlossene zylindrische Druckhülle trägt den inneren Überdruck Δp vor allem als Membranzug. Mit Wanddicke s und Durchmesser D folgt aus dem Gleichgewicht am längs aufgeschnittenen Mantel bzw. an der Stirnfläche:
+#form[$ sigma_phi=frac(Delta p D,2s) quad sigma_z=frac(Delta p D,4s) $]
+Die Umfangsspannung ist doppelt so groß wie die axiale. Ein Längsriss entlastet diese stärkere Umfangszugspannung. Die echte radiale Wandnormalspannung ist etwas anderes und im dünnwandigen Modell vergleichsweise klein; die Bezeichnung „radiale Spannung“ mancher Kurzfragen meint hier ungenau die Umfangsspannung. Die Näherung verlangt s viel kleiner als D und erfasst keine lokalen Spannungsspitzen.
+#src[SM PF SS03, Kurzfragen6–7 und10, PDF-S.1/MusterPDF-S.3; SM PF SS02, Kurzfrage12, PDF-S.2/MusterPDF-S.4; gescannte SM LN SS01, Fragen1.9–1.12, PDF-S.1. Kräftegleichgewichte eigene Erläuterung.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+== 9.2 Wandkraft, Druckmittelpunkt und Auftrieb <a-9-2>
+Auf eine senkrechte ebene Wand wirkt in größerer Tiefe stärkerer Druck. Die Gesamtkraft greift deshalb im Allgemeinen unterhalb des Flächenschwerpunkts an. Mit Überdruck null an der freien Oberfläche gilt für die vollständig benetzte vertikale Fläche:
+#form[$ F=rho g A h_S quad h_D=h_S+frac(I_S,A h_S) $]
+$h_S$ ist die Schwerpunkttiefe, $I_S$ das Flächenträgheitsmoment um die waagerechte Schwerpunktachse. Zusätzlicher gleichmäßiger Gasüberdruck verändert Kraft und Angriffspunkt; dafür den Druck direkt integrieren. Für geneigte Flächen ist die vertikale Tiefe von der Entfernung entlang der Fläche zu unterscheiden.
+#form[$ F_A=rho_"Fluid"g V_"verdrängt" $]
+Die Auftriebskraft entspricht dem Gewicht des verdrängten Fluids. Bei räumlich veränderlicher Dichte ist $F_A=g integral_(V_"verdrängt")rho(z)dif V$. Schweben verlangt gleiche Gesamtkräfte, stabile Lage zusätzlich ein rückstellendes Moment. Die Folienaussage „dreht sich bis Auftrieb im Schwerpunkt angreift“ ist verkürzt: Gewicht und Auftrieb müssen auf einer gemeinsamen Wirkungslinie liegen, ihre Angriffspunkte müssen nicht zusammenfallen.
+#src[S1, PDF-S. 9–10 und 16–17; zusätzliches Blatt „2022-01-11 FET Auftrieb rho(z) Kugel.pdf“; BS Kapitel 1. Stabilitätsabgrenzung ergänzt.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+
+=== 9.2.1 Schwimmen braucht auch ein rückstellendes Moment <a-9-2-1>
+Das Kräftegleichgewicht FA=FG legt fest, wie viel Fluid ein schwimmender Körper verdrängt. Es entscheidet noch nicht, ob eine leicht geneigte Lage wieder in die Ausgangslage zurückkehrt. Bei einer kleinen Neigung verschiebt sich der Schwerpunkt des verdrängten Volumens B und damit die Auftriebswirkungslinie.
+Das *Metazentrum* M ist im linearen Kleinneigungsmodell der Schnitt dieser verschobenen Auftriebslinie mit der ursprünglichen Symmetrielinie. Liegt der Körperschwerpunkt G unter M, wirkt das Moment rückstellend. Für eine geeignete symmetrische Wasserlinienfläche gilt:
+#form[$ G M=B M-B G quad B M=frac(I_"Wasserlinie",V_"verdrängt") $]
+I ist das Flächenträgheitsmoment der Wasserlinie um die betrachtete Neigungsachse, mit Einheit m⁴; V hat m³. Daher ist GM eine Länge. G unter B ist eine hinreichende stabile Anordnung, aber allgemeine Stabilität verlangt G unter M. Für einen schlanken senkrechten Kreiszylinder ergibt sich BM=D²/(16LC), weil I=πD⁴/64 und V=πD²LC.
+#note("Musterantwort präzisieren", [SM PF SS06, Aufgabe1.3, verlangt G unter B. Das ist eine passende hinreichende Bedingung für den schlanken Stab. Als allgemeines notwendiges Kriterium wäre sie zu streng. Die zusätzliche Geometriewirkung der Wasserlinie steckt in BM.], fill: sand)
+#src[SM PF SS06, Aufgabe1.1–1.3, PDF-S.5 und9; Kräfte-/Momentenprinzip aus9.2. Metazentrische Kleinneigungsformel als eigene geometrische Ergänzung und Präzisierung der Musterantwort.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+== 9.3 Atmosphäre und gekrümmte Stromlinien <a-9-3>
+#form[$ frac(dif p,dif z)=-rho g=-frac(p g,R T(z)) $]
+Bei isothermer Atmosphäre folgt $p(z)=p_0 exp[-g(z-z_0)/(R T)]$. Bei linearer Temperatur $T=T_0-L(z-z_0)$ mit positivem Temperaturgradientbetrag L:
+#form[$ p(z)=p_0 (T(z)/T_0)^(g/(R L)) quad rho(z)=p(z)/(R T(z)) $]
+Gleiche Gaskonstante, hydrostatisches Modell und näherungsweise konstantes g; jeden Schichtabschnitt mit seinem Anfangszustand verknüpfen. Eine polytrope Schichtung mit n ist nicht automatisch isentrop; dafür müsste n zum Stoffwert κ passen. Die Folie verwendet n≈1,23628, also nicht κ≈1,4 für Luft.
+Quer zu einer gekrümmten Stromlinie erfordert die Zentripetalbeschleunigung einen Druckgradienten. In Richtung vom Krümmungsmittelpunkt nach außen gilt $dif p/dif r=rho c^2/r$. Im geraden Freistrahl ohne Oberflächenspannung prägt sich näherungsweise der Umgebungsdruck ein.
+#note("Einheitenkorrektur auf S1, PDF-S. 18", [Der Rechenwert des dünnen Wasserfilms beträgt rund 2,63 bar. Das sind rund 263.000 Pa; die gedruckte Kombination „26300 Pa = 2,63 bar“ enthält einen Faktor-10-Fehler.], fill: sand)
+Das historische Folienmodell benutzt $p_0=101325$ Pa, $T_0="288,15"$ K und $R="287,053"$ J/(kg K). Die Schichten werden an ihren Grenzen stetig aneinander angeschlossen:
+#tab(columns: (auto,1fr,1fr), th([Höhe z],[Temperaturprofil],[Druckansatz]),
+[0–11km],[$T=T_0-"0,0065"z$; z in m],[Polytrope Höhenformel],
+[11–20km],[$T="216,65"$ K],[Isotherme Höhenformel ab11km],
+[20–32km],[$T="216,65"+"0,001"(z-20000)$ K],[Allgemeine Integration mit positivem Temperaturgradient])
+Die Tabelle beschreibt die idealisierte Standardatmosphäre der Unterlage, keine aktuelle Wetterlage. Die Schichtung ist ein räumlicher Zustand; sie ist nicht automatisch der isentrope Aufstieg eines einzelnen Luftpakets.
+#src[S1, PDF-S. 11–15 und 18. Atmosphärenformeln aus Hydrostatik und idealem Gas hergeleitet; Zahlen sind das historische ICAO-Modell der Quelle.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 9.4 Bernoulli und Druckbegriffe <a-9-4>
+#form[$ p_1+rho c_1^2/2+rho g z_1+Delta p_"Pumpe"=p_2+rho c_2^2/2+rho g z_2+Delta p_"V" $]
+Stationäre inkompressible mechanische Energiebilanz; Verlustbetrag positiv in Strömungsrichtung, Pumpenzufuhr positiv. Die reibungsfreie Grundform gilt entlang einer Stromlinie. Zwischen beliebigen Punkten verschiedener Stromlinien ist zusätzlich etwa ein wirbelfreies Feld mit gemeinsamer Bernoulli-Konstante erforderlich; der pauschale Satz auf S23, PDF-S. 1, lässt diese Voraussetzung weg.
+#form[$ p_"dyn"=rho c^2/2 quad p_"ges"=p_"stat"+p_"dyn" quad c=sqrt(2 Delta p/rho) $]
+Prandtl-/Pitotmessung erfasst den Unterschied zwischen Stau- und statischem Druck. Die letzte Gleichung gilt bei geeigneter inkompressibler Messung. Eine Höhendifferenz in einem Manometer ist erst über die beteiligten Dichten in Δp umzusetzen. Venturi verbindet Kontinuität $A_1 c_1=A_2 c_2$ und Bernoulli; der kleinere Querschnitt erhöht c und senkt im reibungsfreien horizontalen Fall den statischen Druck.
+=== 9.4.1 Hydrodynamisches Paradoxon <a-9-4-1>
+#bild("hydrodynamisches-paradoxon", [Radiale Spaltströmung an einer Kreisplatte. S23, PDF-S.6.], height: 75mm)
+Für einen engen konstanten Spalt s und stationäre radiale Strömung außerhalb der zentralen Umlenkzone gilt aus Kontinuität $c(r)=dot(V)/(2 pi r s)$. Nach außen wächst die durchströmte Ringfläche, die Geschwindigkeit sinkt. Bei Umgebungsdruck am äußeren Radius $r_a$ folgt reibungsfrei:
+#form[$ p(r)=p_"∞"+rho/2[c(r_a)^2-c(r)^2] $]
+Innen ist c größer und der statische Druck kleiner. Die Platte kann dadurch zum Rohr gezogen werden. Im unmittelbaren Auftreff- und Umlenkbereich reicht diese eindimensionale Bernoulli-Betrachtung nicht; dort gehört die Impulsbilanz hinzu.
+=== 9.4.2 Ausfluss und Heber: erst die Endpunkte, dann den Scheitel <a-9-4-2>
+#bild("torricelli-heber-folie", [Offener Behälter mit tieferem Austritt. S23, PDF-S.2.], height: 57mm)
+Sind freie Oberfläche und Austritt auf gleichem Umgebungsdruck und ist die Behälterfläche groß, wird die Lageenergie in Austrittsgeschwindigkeit umgewandelt: $c_2=sqrt(2g(z_1-z_2))$. Das ist die Torricelli-Formel für den verlustfreien, näherungsweise stationären Ausfluss. Reale Rohr-/Einlaufverluste verringern die Geschwindigkeit.
+Für einen gleich weiten Heber mit Verlustbeiwert ζ zwischen Oberfläche und Austritt gilt $c=sqrt(2g(z_1-z_2)/(1+zeta))$. Am Scheitel S ist der Absolutdruck $p_S=p_"∞"+rho g(z_1-z_S)-rho c_S^2/2-Delta p_("V",1->S)$. Er muss oberhalb des zum Stoffzustand gehörenden Dampfdrucks bleiben. Eine tiefere Austrittsöffnung kann somit mehr Durchsatz erzeugen und zugleich den Scheiteldruck weiter absenken.
+
+=== 9.4.3 Dieselbe Bilanz in drei Einheiten <a-9-4-3>
+#tab(columns: (auto,1fr,auto), th([Form],[Einzelterme],[Einheit]),
+[Spezifische Energie],[$p/rho+c^2/2+g z$],[J/kg],
+[Druck],[$p+rho c^2/2+rho g z$],[Pa],
+[Höhe],[$p/(rho g)+c^2/(2g)+z$],[m])
+Pumpenarbeit und Verlust müssen in derselben Zeile angegeben werden: Y und j, ρY und ΔpV, oder Y/g und hV. Es gilt $Delta p_V=rho j=rho g h_V$. Bei der Umrechnung ist insbesondere 1bar=100000Pa zu beachten; der nackte Zahlenwert eines Drucks in bar passt nicht zu ρc²/2 in Pascal.
+#src[S23, PDF-S.1–3 und7–8; S1, PDF-S.7. Torricelli-/Heberbeziehung aus den angegebenen Bernoulli-Bedingungen hergeleitet.]
+#src[S23, PDF-S. 1–8; BS 2.1–2.6. Gültigkeit zwischen Stromlinien ausdrücklich präzisiert.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+
+=== 9.4.4 Offene Gerinne und der Wechselsprung <a-9-4-4>
+Ein Gerinne besitzt eine freie Oberfläche. Am festen Boden haftet das reale Fluid, oben fehlt eine zweite haftende Rohrwand. Die Geschwindigkeit wächst meist vom Boden zur Oberfläche; in realen Querschnitten kann ihr Maximum durch Sekundärströmungen etwas unter dem Spiegel liegen.
+Die *Froude-Zahl* verbindet Strömung und Schwerewellen. Für einen breiten rechteckigen Querschnitt mit Tiefe h gilt Fr=c/√(gh): Fr kleiner als1 heißt strömend, Fr größer als1 schießend. Beim *Wechselsprung* wird eine schnelle flache Strömung abrupt langsamer und tiefer. Masse und Impuls bleiben bilanziert, mechanische Energie wird dissipiert.
+#form[$ Q=b h_1 c_1=b h_2 c_2 quad frac(h_2,h_1)=frac(sqrt(1+8"Fr"_1^2)-1,2) $]
+Die zweite Formel folgt als eigene Herleitung aus der stationären Impulsbilanz des horizontalen rechteckigen Kanals mit hydrostatischer Drucklast und vernachlässigter Bodenreibung über die kurze Sprungstrecke. Sie ist keine verlustfreie Bernoulli-Beziehung. Andere Querschnitte oder geneigte Sohlen benötigen ihre eigene Impulsbilanz.
+#src[SM PF SS02, Kurzfrage9, PDF-S.1/MusterPDF-S.3; SM PF SS04, Kurzfragen3 und5, PDF-S.1/MusterPDF-S.3. Verbundene-Tiefen-Formel eigene Herleitung aus Kontinuität und Impulssatz9.7.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+== 9.5 Rohrreibung und Einzelverluste <a-9-5>
+#form[$ Re=frac(c d_h,nu) quad d_h=4 A/U_"benetzt" quad Delta p_"V"=(lambda L/d_h+sum_i zeta_i)rho c^2/2 $]
+Die Summe setzt dieselbe Bezugsgeschwindigkeit voraus; bei verschiedenen Durchmessern jeden Beitrag mit seinem eigenen c auswerten. Der hydraulische Durchmesser ist eine geometrische Ersatzgröße; Formkorrekturen können im laminaren Fall nötig sein. ν in m²/s, Rohrrauigkeit k und d in denselben Längeneinheiten.
+#bild("moody-original", [Darcy-Rohrreibzahl aus dem Moody-Diagramm. S23, PDF-S. 13.], height: 65mm)
+Für laminares Kreisrohr gilt λ=64/Re. Die Folien verwenden Re≈2320 als Übergangskennwert; der Übergang ist kein universeller scharfer Sprung. Turbulent hängt λ von Re und k/d ab, im vollständig rauen Grenzfall nur von k/d. Eine gebräuchliche implizite Gleichung ist
+#form[$ frac(1,sqrt(lambda))=-2 log_(10)(frac(k,"3,71"d)+frac("2,51",Re sqrt(lambda))) $]
+Iteration und anschließend beide Seiten kontrollieren. Druckdifferenz ist nicht automatisch Verlust: Beschleunigung, Höhenänderung oder eine Maschine können ebenfalls p verändern. Positiver Verlustbetrag ist $Delta p_"V"=rho j$; die negative Vorzeichenangabe auf S23, PDF-S. 7, passt nicht zu dieser im Skript verwendeten Betragsdefinition.
+Die Folien unterscheiden näherungsweise mit $Re k/d$: unter65 hydraulisch glatt, zwischen65 und1300 Übergang, oberhalb1300 vollständig rau. Das sind die Orientierungsbereiche der angegebenen Tabelle, keine universellen scharfen Naturgrenzen. „Glatt“ heißt, dass die Rauheit in der viskosen Unterschicht keinen maßgeblichen zusätzlichen Widerstand erzeugt; es heißt nicht zwangsläufig k=0.
+Bei laminar voll entwickelter Kreisrohrströmung ist das Geschwindigkeitsprofil parabolisch: $c(r)=2 bar(c)[1-(r/R)^2]$. Wandhaftung erzwingt $c(R)=0$, in der Achse ist $c(0)=2bar(c)$. Im turbulenten Fall ist der Kern flacher, der Wandgradient bleibt groß. Die Darcy-Reibzahl bezieht sich auf die mittlere Geschwindigkeit $bar(c)$, nicht auf die Achsgeschwindigkeit.
+=== 9.5.1 Reibungsformeln und das passende Widerstandsgesetz <a-9-5-1>
+Für das voll entwickelte laminare Kreisrohr ergibt λ=64/Re unmittelbar das Hagen-Poiseuille-Gesetz mit dynamischer Viskosität $eta=rho nu$:
+#form[$ Delta p_V=frac(128 eta L,pi d^4)dot(V) $]
+Hier ist der Verlust *linear* im Durchsatz. Im glatten turbulenten Bereich liefert die Blasius-Näherung $lambda="0,3164"/Re^"0,25"$ ungefähr für Re zwischen4000 und100000. Damit wächst der reine Rohrverlust bei festen Stoff-/Geometriedaten ungefähr mit $dot(V)^"1,75"$. Im vollständig rauen Bereich ist λ näherungsweise unabhängig von Re und der Verlust wächst quadratisch.
+Für das vollständig raue Kreisrohr folgt aus der Colebrook-Gleichung $lambda=[-2log_(10)(k/("3,71"d))]^(-2)$. Die vollständige Colebrook-Gleichung in9.5 verbindet den Übergangs- mit dem rauen Bereich; im laminaren Bereich ersetzt sie die 64/Re-Beziehung nicht. Ein Rohrbogen zählt mit seiner gestreckten Länge zur Wandreibung und zusätzlich mit seinem eigenen Umlenkverlust; keines der beiden ist automatisch schon im anderen enthalten.
+Eine quadratische Anlagenkennlinie setzt daher konstante oder ausreichend wenig veränderliche Beiwerte voraus. Gerade bei einer Durchmessersuche ändern sich Geschwindigkeit, Reynolds-Zahl, k/d und Reibzahl gemeinsam. Nach dem Rechnen sind Bereich und angenommene Beiwerte erneut zu prüfen.
+#src[S23, PDF-S.9–13 und20; Blasius-/Rauheitsbeziehung aus Tabelle aufPDF-S.12, Exponenten aus Darcy und Kontinuität hergeleitet.]
+#src[S23, PDF-S. 9–20; Zusatzblatt Rohrreibzahl/Newton 09.01.2022; BS Kapitel 8. Reibzahl hier Darcy, nicht Fanning.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 9.6 Pumpen, Kennlinien und Rohrnetze <a-9-6>
+Die Pumpe stellt die spezifische Stutzenarbeit $Y=Delta p/rho+Delta(c^2)/2+g Delta z$ bereit. Hydraulische Leistung ist $P_"hydr"=dot(m)Y=dot(V)Delta p_"Pumpe"$; für die elektrische Aufnahme durch den Gesamtwirkungsgrad teilen. Sind elektrische und hydraulische Teilwirkungsgrade getrennt gegeben, die passenden Grenzen beachten.
+#form[$ sum_"Knoten"dot(V)_i=0 quad sum_"Masche"Delta p_i=0 quad Delta p_i=R_i dot(V)_i abs(dot(V)_i) $]
+Die letzte Form gilt für das quadratische Widerstandsmodell mit Richtungsvorzeichen. Reihenschaltung: Widerstände addieren. Parallelschaltung gleichgerichteter Stränge: $1/sqrt(R_"ers")=sum_i 1/sqrt(R_i)$. Das ist nicht die elektrische Parallelschaltungsformel $1/R=sum 1/R_i$, weil die hydraulische Kennlinie hier quadratisch ist. Laminar kann das Gesetz dagegen linear sein.
+Der Betriebspunkt ist der Schnitt von Pumpen- und Anlagenkennlinie. Bei unbekanntem Durchmesser oder Volumenstrom ändern sich Re und oft λ; Geometrie und Reibzahl deshalb gegebenenfalls iterativ gemeinsam bestimmen. Eine Höhen- oder Gegendruckdifferenz erzeugt einen Kennlinienanteil auch bei null Durchfluss.
+#src[S23, PDF-S. 21–27; Blatt „03-X Ström Rohrnetz Aufg Angabe 2020-12-09.pdf“. Richtungsform und Parallelschaltung aus Kontinuität hergeleitet.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 9.7 Impulssatz und Krümmerkräfte <a-9-7>
+#bild("impuls-kontrollvolumen", [Kontrollvolumen und Kraftkomponenten am Krümmer. S56, PDF-S. 3.], height: 70mm)
+#form[$ sum vec(F)=sum_"aus"dot(m) vec(c)-sum_"ein"dot(m) vec(c) $]
+Stationäres Kontrollvolumen mit geeigneten mittleren Geschwindigkeiten. Druckkräfte zeigen an der Schnittfläche von außen in das Kontrollvolumen; Gewicht, Lager-/Wandkraft und weitere äußere Kräfte sind zusätzlich einzutragen. Die Gleichung wird komponentenweise ausgewertet, nicht mit bloßen Geschwindigkeitsbeträgen.
+Die gesuchte Fluidkraft auf den Krümmer ist die Gegenkraft der Wand auf das Fluid. Mit Überdrücken darf gerechnet werden, wenn der Umgebungsdruck auf alle übrigen äußeren Flächen konsistent mit erfasst ist; andernfalls Absolutdrücke und äußere Umgebungskräfte separat bilanzieren.
+Bei einem freien Strahl ist der Überdruck am Austritt ungefähr null. Der Impulsstrom kann trotzdem groß sein. Eine Strahlumlenkung erzeugt auch ohne großen Druck an der sichtbaren freien Oberfläche eine Kraft.
+#src[S56, PDF-S. 1–6; BS 3.1–3.2. Modellbedingungen und Kraft/Gegenkraft ausdrücklich getrennt.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 9.8 Drall und die gemeinsame Lösungsstrategie <a-9-8>
+Für rotierende Strömungsmaschinen ist neben dem Impuls der *Drall* entscheidend. Der Hebelarm gehört zum Geschwindigkeitsanteil, der das Moment um die gewählte Achse erzeugt.
+#form[$ M=dot(m)(r_2 c_(u,2)-r_1 c_(u,1)) quad P=M omega $]
+Stationärer Einzelstrom, feste Achse und passende Drehrichtungszeichen. $c_u$ ist der tangentiale Anteil der absoluten Geschwindigkeit. Eine rein radiale Komponente trägt um diese Achse keinen Drallstrom. Für Kraft- und Momentenbilanzen sind Druckmomente und sonstige äußere Momente mit zu berücksichtigen.
+
+Die Eulersche Turbomaschinenhauptgleichung folgt aus demselben Drallsatz durch Multiplikation mit der Winkelgeschwindigkeit:
+#form[$ Y_"th"=u_2 c_(u,2)-u_1 c_(u,1) quad u_i=omega r_i quad P_"th"=dot(m)Y_"th" $]
+$u_i$ ist die Umfangsgeschwindigkeit des Laufrads, $c_(u,i)$ die tangentiale Komponente der *absoluten* Fluidgeschwindigkeit. Positive Y bedeutet Energiezufuhr zum Fluid; für eine Turbine wird sie bei dieser Konvention negativ. Relative Schaufelgeschwindigkeit und absolute Fluidgeschwindigkeit dürfen nicht verwechselt werden.
+#src[S56 (Impuls-/Drallthema); BS 3.3, S. 83 ff. / PDF-S. 98 ff. Drallform als ergänzende Buchgrundlage zur mitgelieferten Sammlung.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 9.9 Ergänzung für Altklausuren · Modellversuch und Ähnlichkeit <a-9-9>
+Ein verkleinertes Modell soll dieselbe dimensionslose Strömung erzeugen wie das Original. Geometrische Ähnlichkeit allein reicht nicht: Je nach dominanten Kräften müssen passende Kennzahlen und relative Rauigkeiten gleich sein.
+#bild("modell-aehnlichkeit", [Reynolds-Ähnlichkeit. Eigene Darstellung; Grundlage BS, PDF-S. 199–204.], height: 60mm)
+#form[$ Re=c L/nu quad "Fr"=c/sqrt(g L) quad "Ma"=c/a quad "St"=f L/c $]
+Re vergleicht Trägheits-/Druckwirkung und Zähigkeit; Fr ist bei Schwerkraft-/Oberflächenproblemen maßgeblich, Ma bei Kompressibilität und St bei periodischen Vorgängen wie Wirbelablösung. Für ideales Gas ist $a=sqrt(kappa R T)$ die Schallgeschwindigkeit. Bei kleinen Machzahlen (Faustregel Ma unter etwa 0,3) ist eine näherungsweise inkompressible Behandlung häufig möglich; hoher Absolutdruck allein garantiert sie nicht.
+#form[$ frac(F_O,F_M)=frac(rho_O c_O^2 A_O,rho_M c_M^2 A_M) quad frac(Delta p_O,Delta p_M)=frac(rho_O c_O^2,rho_M c_M^2) $]
+Die Quotienten setzen gleiche relevante dimensionslose Beiwerte voraus. Rauheit ist als k/L zu vergleichen. Eine Kraft pro Länge bei einem langen Draht ist auf die entsprechende Modelllänge zu beziehen; Fläche und Länge dürfen im Skalieren nicht vermischt werden.
+=== 9.9.1 Euler-Zahl und die Verhältnisrichtung der Zeit <a-9-9-1>
+Die *Euler-Zahl* $"Eu"=Delta p/(rho c^2)$ vergleicht eine Druckdifferenz mit dem Trägheitsdruckmaß; manche Quellen verwenden ρc²/2 und erhalten dann den doppelten Zahlenwert. Definition und Bezugsdruck sind daher mitzunennen. Fr=c/√(gL) ist die Wurzel des Verhältnisses von Trägheits- zu Gewichtskraft, nicht unmittelbar dieses Kraftverhältnis selbst.
+Mit einer Periodendauer τ ist $"St"=f L/c=L/(c tau)$. Es ist die charakteristische Durchströmzeit L/c *geteilt durch* die Periodendauer. Der verbale Quotient in der Musterlösung SM WS03/04, Kurzfrage1, steht dazu umgekehrt; die dort angegebene Formel L/(cτ) und diese Definition stimmen überein.
+#src[SM PF WS03/04, Kurzfrage1 mit Musterlösung, PDF-S.1und3; Verhältnisrichtungen aus den angegebenen dimensionslosen Definitionen geprüft.]
+#src[Historische SM-Prüfungen SS00/SS01/SS04 und WS05/06, Aufgaben zum Modellversuch; BS, PDF-S. 199–204, Reynolds-Ähnlichkeit und weitere Kennzahlen; Schallgeschwindigkeit BS Kapitel 11.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+== 9.10 Ergänzung für Altklausuren · Potential und Stromfunktion <a-9-10>
+Eine *Potentialströmung* ist im betrachteten Gebiet drehungsfrei. Bei inkompressibler ebener Strömung beschreiben Potential Φ und Stromfunktion Ψ dasselbe Geschwindigkeitsfeld. Sie liefern eine äußere reibungsfreie Modellströmung; die Wandhaftung und reale Grenzschicht werden dadurch nicht beschrieben.
+#form[$ u=frac(partial Phi,partial x) quad v=frac(partial Phi,partial y) quad u=frac(partial Psi,partial y) quad v=-frac(partial Psi,partial x) $]
+#form[$ frac(partial u,partial x)+frac(partial v,partial y)=0 quad frac(partial v,partial x)-frac(partial u,partial y)=0 $]
+Die erste Gleichung ist Kontinuität, die zweite Drehungsfreiheit. Für das Potential folgt $Delta Phi=0$, für die Stromfunktion entsprechend $Delta Psi=0$. In glatten Gebieten stehen Linien Φ=konstant und Ψ=konstant senkrecht aufeinander. Singularitäten (Quellen, Senken, Wirbelzentren) sind ausdrücklich aus dem Gültigkeitsgebiet auszunehmen.
+#bild("potential-stromlinien", [Parallelströmung plus Quelle als äußere Körperströmung. Eigene analytische Darstellung.], height: 66mm)
+#src[BS, PDF-S. 161–163, ebene Potentialströmungen und Tabelle 4.1; historische SM-Prüfungen Aufgabe 4.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+=== 9.10.1 Polarkoordinaten, Quellen, Senken und Wirbel
+#form[$ c_r=frac(partial Phi,partial r)=frac(1,r)frac(partial Psi,partial phi) quad c_phi=frac(1,r)frac(partial Phi,partial phi)=-frac(partial Psi,partial r) $]
+$x=r cos phi$, $y=r sin phi$. Winkel im Bogenmaß und mit richtigem Quadranten verwenden; ein einzelnes arctan(y/x) ohne Quadrantenkontrolle beschreibt das Feld nicht überall richtig. Rücktransformation: $u=c_r cos phi-c_phi sin phi$, $v=c_r sin phi+c_phi cos phi$.
+#tab(columns: (auto,1fr,1fr), th([Baustein],[Potential Φ],[Stromfunktion Ψ]),
+[Parallel nach +x],[$c_infinity x=c_infinity r cos phi$],[$c_infinity y=c_infinity r sin phi$],
+[Quelle/Senke],[$E/(2 pi) ln r$],[$E/(2 pi)phi$],
+[Potentialwirbel],[$Gamma/(2 pi)phi$],[$-Gamma/(2 pi)ln r$],
+[Kreiszylinder],[$c_infinity(r+R^2/r)cos phi$],[$c_infinity(r-R^2/r)sin phi$])
+E positiv ist eine Quelle, E negativ eine Senke; Γ legt den Drehsinn fest. Die Funktionen dürfen wegen der Linearität der Laplace-Gleichung überlagert werden. Ein Staupunkt erfüllt u=v=0. Eine gewünschte Körperkontur kann als geeignete Stromlinie Ψ=ΨS gewählt werden; im Kanal mit konstanter Tiefe b ist der Volumenstrom zwischen zwei Linien $dot(V)=b abs(Delta Psi)$.
+#form[$ p=p_0+frac(rho,2)(c_0^2-u^2-v^2)+rho g(z_0-z) $]
+Bernoulli mit gemeinsamem Bezug gilt über das gesamte zusammenhängende drehungsfreie Gebiet unter den angegebenen reibungsfreien, stationären Bedingungen. Potential und Stromfunktion haben die Einheit m²/s; eine ebene Ergiebigkeit E ist eine Volumenrate pro Tiefe. An einem idealen Wirbelzentrum divergiert die Geschwindigkeit; dieses Zentrum ist kein physikalisch überall gültiges Modell.
+Der Druckbeiwert normalisiert den örtlichen Druck gegenüber der ungestörten Anströmung:
+#form[$ c_p=frac(p-p_"∞",rho c_"∞"^2/2)=1-frac(c^2,c_"∞"^2) $]
+Die zweite Form setzt dieselbe reibungsfreie Bernoulli-Konstante und vernachlässigbare Höhenänderung voraus. $c_p$ ist hier dimensionsloser *Druckbeiwert*, nicht die Wärmekapazität. Auf einer Stromlinie ist die Geschwindigkeit tangential: $c_n=0$, $c_t=abs(vec(c))$; das ist eine weitere Zerlegung desselben Vektors.
+#src[SM PF SS03, Aufgabe4.1 und4.10, PDF-S.6 und MusterlösungPDF-S.10; Druckbeiwert aus Bernoulli hergeleitet.]
+#src[BS, PDF-S. 161–163; historische SM-Prüfungen SS00–SS06, Potential-/Stromfunktionsaufgaben; Umrechnungen aus Basisvektoren hergeleitet.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+=== 9.10.2 D’Alembert und der reale Wirbelkern <a-9-10-2>
+Das *D’Alembertsche Paradoxon* betrifft den verschwindenden Widerstand der idealen stationären inkompressiblen Potentialumströmung eines Körpers unter den zugehörigen Randbedingungen. Eine reale Strömung erzeugt dagegen Grenzschicht, Ablösung und Widerstand. „Die gesamte Druckkraft ist immer null“ wäre zu allgemein: Mit Zirkulation kann ein ideales Modell Auftrieb besitzen, obwohl es keinen Widerstand vorhersagt.
+Beim idealen Potentialwirbel ist $c_phi=Gamma/(2pi r)$ und das Feld außerhalb des Zentrums drehungsfrei. Im Zentrum würde c unbeschränkt wachsen; reale Zähigkeit und ein endlicher Wirbelkern verhindern diese Singularität. Ein vereinfachter Starrkörperkern hat dagegen $c_phi=Omega r$ mit endlicher Drehung. Potentialwirbel und realer Wirbel sind deshalb nicht über den gesamten Radius dieselbe Funktion.
+#src[SM PF WS03/04, Kurzfragen6b,15,17; BS, ebene Potentialströmung und reale Grenzschicht/Körperwiderstand. Voraussetzungen und Abgrenzung zum Auftrieb präzisiert.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+
+=== 9.10.3 Reale Strömung, Potentialnäherung und Feldanalogie <a-9-10-3>
+Die *Navier-Stokes-Gleichungen* sind die lokale Impulsbilanz für ein viskoses Newtonsches Fluid. Eine konkrete Strömung folgt erst zusammen mit Massenerhaltung, gegebenenfalls thermischer Energiegleichung, Stoffmodell und Rand-/Anfangsbedingungen. Numerische Strömungsrechnung löst dieses gekoppelte Problem; zeitgemittelte Turbulenzmodelle benötigen zusätzliche Schließungen.
+Ein zweiter Rechenweg verbindet ein reibungsfreies Außenfeld mit einer viskosen Grenzschicht. Das Außenfeld liefert den Druckverlauf, die Grenzschicht Wandreibung und Hinweise auf Ablösung. Bei großer abgelöster Nachlaufzone reicht diese einfache Trennung häufig nicht mehr.
+Die gemeinsame Mathematik erklärt auch eine nützliche Analogie. Für stationäre quellenfreie Wärmeleitung mit konstantem λ gilt ΔT=0. Eine stationäre inkompressible Sickerströmung nach dem linearen Darcy-Gesetz mit konstantem isotropem Durchlässigkeitsbeiwert erfüllt für ihre hydraulische Höhe H ebenfalls ΔH=0. Das Potential einer inkompressiblen wirbelfreien Strömung erfüllt ΔΦ=0.
+#form[$ Delta T=0 quad Delta H=0 quad Delta Phi=0 $]
+Hier bezeichnet Δ den Laplace-Operator, etwa ∂²/∂x²+∂²/∂y² im ebenen Feld, keine endliche Zustandsdifferenz. Gleiche Geometrie und entsprechende Randbedingungen erzeugen mathematisch gleiche Feldformen, obwohl Temperatur, hydraulische Höhe und Geschwindigkeitspotential verschiedene physikalische Größen bleiben.
+#src[SM LN SS00, Kurzfragen20 und29, PDF-S.2/4; SM PF SS00, Kurzfrage12, PDF-S.2/4; SM PF WS01/02, Kurzfrage14–15, PDF-S.2/4. Mathematische Verknüpfung eigene Erläuterung.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+== 9.11 Ergänzung für Altklausuren · Grenzschicht und Körperwiderstand <a-9-11>
+Reale Fluide haften an festen Wänden. In der *Grenzschicht* wächst die Geschwindigkeit von der Wand bis auf den Außenwert. Reibung und mögliche Ablösung erzeugen Widerstand, den eine ideale symmetrische Potentialströmung allein nicht vorhersagt.
+#form[$ F_W=c_W frac(rho c^2,2)A quad Re=frac(c L,nu) $]
+A ist die in der jeweiligen Beiwertdefinition genannte Fläche. Für Kugeln meist die Stirnfläche πd²/4, bei Plattenreibbeiwerten häufig die benetzte Fläche. Form, Re, Rauheit und gegebenenfalls Ma müssen zum Diagramm passen. Bei unbekannter Geschwindigkeit hängen cW und Re oft von derselben gesuchten Größe ab und werden iterativ abgeglichen.
+#bild("koerperkraefte", [Stationäres Fallgleichgewicht. Eigene Darstellung; BS, Widerstands- und Fallmodelle.], height: 63mm)
+#form[$ (m-rho_F V)g=frac(rho_F,2)c_W A c_"End"^2 $]
+Endgeschwindigkeit bedeutet Kräftegleichgewicht, keine gleichmäßige Beschleunigung. Der Auftrieb kann bei einer schweren Stahlkugel in Luft klein sein, in Wasser oder bei leichten Hohlkörpern ist er mitzuzählen. Im Kriechbereich einer Kugel gilt $c_W=24/Re$ und damit $F_W=3pi eta d c$ (Stokes), mit dynamischer Viskosität η; außerhalb dieses Bereichs das passende Diagramm verwenden.
+Eine turbulente Grenzschicht hat meist höhere Wandschubspannung, kann aber einem Druckanstieg länger folgen und später ablösen. Der Druckwiderstand kann dadurch sinken. Deshalb führt „mehr Turbulenz“ bei einem stumpfen Körper nicht automatisch zu größerem Gesamtwiderstand; die kritische Re-Zahl und Oberflächenbedingungen sind entscheidend.
+#src[Historische SM-Prüfungen Aufgaben zu Kugel, Fallschirm und Draht; BS, PDF-S. 212 und 220, Grenzschicht/Wirbelbildung, sowie PDF-S. 282–306, Körperwiderstand und freier Fall.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+=== 9.11.1 Längsangeströmte Platte <a-9-11-1>
+Bei einem dünnen plattenförmigen Körper entsteht der Widerstand vor allem durch Schubspannung an der benetzten Oberfläche. Der *mittlere Plattenreibungsbeiwert* $c_F$ ist auf die gesamte benetzte Fläche bezogen; er ist nicht die Darcy-Rohrreibzahl λ und nicht ein auf Stirnfläche definierter Körperbeiwert.
+#form[$ F_R=c_F rho c_"∞"^2 A_"benetzt"/2 quad Re_L=c_"∞" L/nu $]
+#tab(columns: (1fr,1.8fr,1.2fr), th([Modell],[Mittlerer Beiwert],[Voraussetzung]),
+[Laminar/glatt],[$c_F="1,328"/sqrt(Re_L)$],[Unabgelöste ebene Platte.],
+[Turbulent/glatt],[$c_F="0,455"/(log_(10)(Re_L))^"2,58"$],[Von vorne turbulent; Gültigkeitsbereich der Quelle beachten.],
+[Turbulent/sandrau],[$c_F=("1,89"+"1,62"log_(10)(L/k_s))^(-"2,5")$],[$10^2<L/k_s<10^6$; sandraue Ersatzrauheit.])
+Ein vorgegebener laminar-turbulenter Umschlag muss berücksichtigt werden, wenn der laminare Anlauf einen wesentlichen Anteil der Platte einnimmt. Die von-vorne-turbulente Formel darf dann nicht ungeprüft über die gesamte Fläche benutzt werden. Bei sehr großer Rauheit kann der Rauheitswiderstand dagegen dominieren.
+Für die laminare Grenzschicht liefern die Folienbuch-Modelle die Dicke $delta approx 5sqrt(nu x/c_"∞")$ und die *Verdrängungsdicke* $delta^* approx "1,73"sqrt(nu x/c_"∞")$. δ kennzeichnet den Rand des Geschwindigkeitsdefizits; δ∗ die gleichwertige Verringerung des verfügbaren Durchflussquerschnitts. Beide Dicken sind deshalb verschieden.
+#heading(level: 3, outlined: false)[Turbulente Plattengrenzschicht und Tabellenabgleich]
+Für die von vorne turbulent angenäherte glatte Platte nennt die mitgelieferte Tabelle zusätzlich $delta="0,37"x Re_x^(-"0,2")$ und $delta^*="0,01738"Re_x^"0,861"nu/c_"∞"$. Ein Rohr-Einlaufmodell kann die Verdrängungsdicke näherungsweise über $D_"wirksam"=D-2delta^*$ berücksichtigen; es bleibt eine Näherung vor dem Zusammenwachsen der Wandgrenzschichten.
+#note("Auffällige Wandschubspannungszeile", [Der Exponent−2/3 in der Wandschubspannungszeile der alten Beilage und auch BS,Tabelle7.1 ist nicht mit deren zugleich angegebenem mittleren Reibbeiwert vereinbar: Bei Re≈7,6·10⁶ ergibt die Zeile einen lokalen Beiwert von etwa0,18; aus der Ableitung der gesamten Reibkraft folgt aus cF dagegen etwa0,0026. Die Aufgabe „Rohreinlauf“ verwendet deshalb die explizite Diagramm-/Musterlösungsangabe für die Glattgrenze. Die auffällige Formel wird nicht als geprüfte Rechenregel übernommen.], fill: sand)
+#src[SM LN SS05, PDF-S.9–10; BS,Tabelle7.1,PDF-S.214. Konsistenztest durch lokale Ableitung der angegebenen mittleren Reibkraft.]
+#src[BS,Tabelle7.1,PDF-S.214; historische SM-Prüfungen, Aufgaben zur längsangeströmten Platte.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+=== 9.11.2 Newtonscher Schubspannungsansatz <a-9-11-2>
+Bei parallelen Fluidschichten mit Geschwindigkeit c(y) ist die viskose Schubspannung im Newtonschen Modell proportional zum Geschwindigkeitsgradienten:
+#form[$ tau=eta frac(dif c,dif y) quad nu=eta/rho $]
+η ist die dynamische Viskosität inPa·s, ν die kinematische inm²/s. Der Quotient c/y darf nur bei einem dazu passenden linearen Profil anstelle der lokalen Ableitung benutzt werden. Die hier gezeigte Vorzeichenform benennt die Spannungskomponente; die Reibungskraft auf das jeweils betrachtete Gegenstück wirkt entgegengesetzt zur Relativbewegung.
+Turbulente Strömung hat zusätzlich einen durch Geschwindigkeitsschwankungen übertragenen Impuls. Die molekulare Viskosität des Stoffes wird dadurch nicht plötzlich zu einer anderen Stoffkonstante. Ein empirischer Reibungsbeiwert beschreibt die gesamte resultierende Wandwirkung im jeweils definierten Modell.
+#src[SM PF WS03/04, Kurzfrage14 und Musterlösung; BS, Viskosität und Grenzschicht; η/ν-Umrechnung aus der Definition.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+
+=== 9.11.3 Ablösung, Nachlauf und Widerstandsarten <a-9-11-3>
+Ein ansteigender Außendruck in Strömungsrichtung bremst die wandnahe Bewegung. Wird der Wandgradient null und danach negativ, kann die Grenzschicht ablösen und zurückströmen. Ein Krümmer oder eine zurückspringende Stufe erzeugt deshalb mehr als die Reibung einer gleich langen geraden Strecke: Umlenkung, Sekundärströmung und Ablösung dissipieren zusätzliche mechanische Energie.
+*Reibungswiderstand* entsteht aus tangentialen Wandschubspannungen, *Druck- oder Formwiderstand* aus der resultierenden Druckverteilung. Eine dünne längs angeströmte Platte ist vor allem ein Reibungsfall; eine quer angeströmte Platte ein Druckwiderstandsfall. Ein stumpfes Heck verhindert im großen Nachlauf eine gute Druckrückgewinnung und erhöht dadurch den Gesamtwiderstand.
+Bei Kugel und Zylinder kann ein Grenzschichtumschlag die Ablösung nach hinten verschieben. Trotz höherer Wandreibung kann der Gesamtwiderstand stark sinken, weil der Druckwiderstand stärker abnimmt: die *Widerstandskrise*. Kritischer Bereich und Verlauf hängen unter anderem von Re und Rauheit ab.
+#note("Lokale und gesamte Kraft", [τW ist eine örtliche Spannung. Die gesamte Reibungskraft ist ihre Integration über die benetzte Fläche. τW mal Gesamtfläche ist nur dann richtig, wenn τW als geeigneter Flächenmittelwert gemeint ist.])
+#src[SM PF WS02/03, Kurzfragen12–15, PDF-S.2/4; SM PF SS02, Kurzfragen17–19, PDF-S.2/4; SM PF SS05, Kurzfrage14, PDF-S.2/4.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+== 9.12 Ergänzung für Altklausuren · Wirbelablösung und Gleitflug <a-9-12>
+Hinter quer angeströmten Körpern können sich periodisch Wirbel ablösen. Die dimensionslose Frequenz beschreibt die *Strouhal-Zahl* $"St"=f d/c$. Bei ähnlichen Strömungen erlaubt sie die Umrechnung von Modell- auf Originalfrequenz; einen konstanten St-Wert nur im passenden Re-/Geometriebereich annehmen.
+#bild("gleitflug-kraefte", [Kräfte im stationären Gleitflug. Eigene Darstellung, nicht maßstäblich.], height: 62mm)
+Für einen Tragflügel mit Bezugsfläche S gilt $F_A=c_A rho c^2S/2$ und $F_W=c_W rho c^2S/2$. Im stetigen Gleitflug ist $F_A=m g cos gamma$, $F_W=m g sin gamma$; damit:
+#form[$ tan gamma=c_W/c_A quad c=sqrt(frac(2m g cos gamma,rho S c_A)) $]
+Kleineres cW/cA bedeutet einen flacheren Gleitwinkel. Manche Quellen nennen den Kehrwert cA/cW „Gleitzahl“; hier ist die im Buch verwendete Verhältnisrichtung jeweils ausdrücklich zu nennen. Im Polardiagramm liefert eine Ursprungstangente das beste Gleiten, sofern die Achsen und ihr Maßstab korrekt gelesen werden.
+*Kleinste Sinkgeschwindigkeit* ist ein anderes Ziel. Bei kleinem Winkel ist $c_"sink" approx c c_W/c_A$; nach Einsetzen von c minimiert man $c_W/c_A^(3/2)$ statt nur cW/cA. Ein Aufwind muss mindestens diese Sinkgeschwindigkeit ausgleichen. In einer idealen Potentialströmung kann der vertikale Geschwindigkeitsanteil des Modells einen solchen Aufwind beschreiben.
+Die lineare Potentialnäherung für ein schlankes symmetrisches Profil ist $c_A approx 2 pi alpha$ (α in rad); sie gilt nicht über den Strömungsabriss hinaus. Reale Polaren aus der Aufgabe haben Vorrang. Endliche Spannweite erzeugt Randwirbel und zusätzlichen induzierten Widerstand; der zweidimensionale Vergleich allein beschreibt diesen Anteil nicht.
+=== 9.12.1 Parabolische Polare: Widerstand und Leistung optimieren <a-9-12-1>
+Für $c_W=c_(W,0)+K c_A^2$ mit positiven konstanten $c_(W,0)$ und K hat stationärer Horizontalflug die Beziehung $c_A=2m g/(rho S c^2)$. Daraus folgen zwei verschiedene Betriebspunkte:
+#form[$ c_(A,"min.Widerstand")=sqrt(c_(W,0)/K) quad c_(A,"min.Leistung")=sqrt(3c_(W,0)/K) $]
+#form[$ c_"min.Leistung"=(frac(4K,3c_(W,0)))^(1/4)sqrt(frac(m g,rho S)) $]
+Minimale Leistung bedeutet minimalen Widerstand *mal* Geschwindigkeit. Die zugehörige Geschwindigkeit ist deshalb kleiner als die des minimalen Widerstands. Der angenommene Beiwert muss noch unter dem zulässigen Auftriebsmaximum liegen; Abreißen und andere Grenzen sind in der einfachen quadratischen Polare nicht enthalten.
+#src[SM PF SS04, Aufgabe5.6, PDF-S.6 und MusterlösungPDF-S.11; Optima aus der vorgegebenen Polare und dem Kräftegleichgewicht hergeleitet.]
+#note("Der Zusammenhang der Altklausur-Ergänzungen", [Ähnlichkeit überträgt dimensionslose Ergebnisse zwischen Modell und Original. Potential-/Stromfunktion liefert ein äußeres Geschwindigkeitsfeld, Bernoulli den zugehörigen Druck. Grenzschicht und Beiwerte ergänzen reale Kräfte; Kraftgleichgewicht und Polare bestimmen Fall-, Steig- oder Gleitbewegung.])
+#src[BS, PDF-S. 220 und 323–330; historische SM-Prüfungen zu Kármán-Wirbelstraße, Körperwiderstand und Segelflug. Sinkgeschwindigkeitsziel aus Kraftgleichgewicht hergeleitet.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#pagebreak(weak: true)
+
+=== 9.12.2 Endliche Tragflächen, Bezugssysteme und Moment <a-9-12-2>
+Auftrieb und Widerstand beziehen sich auf die Anströmrichtung, Normalkraft und Tangentialkraft auf die Flügelsehne. Beide Zerlegungen beschreiben dieselbe resultierende Kraft; der Anstellwinkel dreht das Bezugssystem. Der Druckpunkt ist ihr momentfreier Angriffspunkt und muss kein fester geometrischer Punkt sein.
+#form[$ M=c_m frac(rho c_"∞"^2,2)S l_"ref" $]
+Das Moment verlangt einen benannten Bezugspunkt und eine Referenzlänge lref. Der häufig verwendete Viertelsehnenpunkt ist eine solche Konvention. Ein Wechsel des Bezugspunktes ergänzt das Hebelarmmoment der resultierenden Kraft.
+Die Zirkulation liefert im ebenen idealen Modell den Auftrieb je Spannweite. Die Kutta-Bedingung am Hinterrand wählt die passende Zirkulation; beim realen Anfahren entsteht zugleich ein Anfahrwirbel. Bei einer endlichen Tragfläche fließt Luft um die Randbögen von der Druck- zur Saugseite: Nachlaufwirbel und Abwind kippen die aerodynamische Kraft und erzeugen *induzierten Widerstand*.
+Eine elliptische Auftriebsverteilung bedeutet einen elliptischen Verlauf der Last je Spannweite. Im idealen Traglinienmodell hat sie bei vorgegebener Spannweite und Gesamtauftrieb den kleinsten induzierten Widerstand. Das ist eine Aussage über die Lastverteilung, nicht bloß über einen elliptisch gezeichneten Grundriss.
+#src[SM PF SS02, Kurzfragen20–23, PDF-S.2/4; SM PF SS01, Kurzfragen19–21, PDF-S.2/4; SM PF SS04, Kurzfragen19–20, PDF-S.2/4.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+== 9.13 Kompressibler Gasausfluss und kritischer Massenstrom <a-9-13>
+Strömt Luft durch ein kleines Ventil aus einer ruhenden Umgebung in einen stark evakuierten Raum, ändert sich ihre Dichte erheblich. Die inkompressible Formel $c=sqrt(2Delta p/rho)$ ist dafür keine ausreichende Ausflussregel. Der Zustand vor dem Ventil wird mit Staudruck p₀ und Stautemperatur T₀ beschrieben; dahinter herrscht der Absolutdruck pₐᵦ.
+#form[$ pi_p=frac(p_"ab",p_0) quad frac(T,T_0)=pi_p^((kappa-1)/kappa) quad c^2/2=c_p(T_0-T) $]
+Die Temperaturbeziehung setzt ideales Gas, konstantes κ und isentrope Entspannung voraus. Aus $dot(m)=rho c A$, $rho=p/(R T)$ und $c_p=kappa R/(kappa-1)$ folgt für das unterkritische Druckgefälle:
+#form[$ dot(m)=frac(A p_0,sqrt(R T_0))sqrt(frac(2kappa,kappa-1)[pi_p^(2/kappa)-pi_p^((kappa+1)/kappa)]) $]
+A ist hier die effektive engste Durchlassfläche; reale Abweichungen müssen bereits in dieser effektiven Fläche bzw. in einem zusätzlichen ausdrücklich genannten Ausflussbeiwert berücksichtigt sein. R inJ/(kgK),p₀inPa,T₀inK,Ainm²liefernkg/s.
+#bild("kompressibler-gasausfluss", [Normierter isentroper Luftmassenstrom. Eigene Herleitung nach dem idealen Gasmodell; Bezug SM PF SS05, Aufgabe1.6–1.7.], height: 65mm)
+Die Ausflussfunktion besitzt ein Maximum bei
+#form[$ pi_"krit"=(frac(2,kappa+1))^(kappa/(kappa-1)) quad dot(m)_"max"=frac(A p_0,sqrt(R T_0))sqrt(kappa)(frac(2,kappa+1))^((kappa+1)/(2(kappa-1))) $]
+Für Luft mit κ=1,4 ist das kritische Druckverhältnis etwa0,5283. Sobald $p_"ab"/p_0$ diesen Wert unterschreitet, wird die Formel mit dem kritischen Zustand ausgewertet: Noch niedrigerer Nachdruck steigert den idealen Massenstrom nicht weiter. Im engsten Querschnitt ist dann die lokale Machzahl1 erreicht. Ein kleineres Druckverhältnis ist also ein größeres Druckgefälle, nicht ein kleinerer Antrieb.
+Beim Aquarium gilt aus Hydrostatik $p_"ab"=p_"∞"-rho_W g h$, wenn h über dem äußeren Teichspiegel gemessen wird. Daher $h_"krit"=(1-pi_"krit")p_"∞"/(rho_W g)$. Die Lufttemperatur im sich füllenden Innenraum wird dadurch nicht automatisch festgelegt: Eine Masse am späteren Füllstand verlangt zusätzlich dessen Gaszustand oder eine instationäre Energiebilanz.
+#note("Der Zusammenhang der Ergänzung", [Gasgleichung und Isentrope liefern Dichte und Temperatur, die Energiebilanz liefert Geschwindigkeit. Das Produkt ρcA besitzt eine kritische Grenze. Dieselbe Systemwahl trennt den kurzzeitig betrachteten Ventilausfluss vom instationär gefüllten Raum.])
+#src[SM PF SS05, Aufgabe1.1–1.7, PDF-S.5 und MusterlösungPDF-S.9; ideale Isentropen5.4 und stationäre Energiebilanz3.1.1. Ausflussfunktion/Maximum eigene Herleitung aus diesen Beziehungen.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+
+=== 9.13.1 Schallausbreitung, Laval-Düse und konstantes Rohr <a-9-13-1>
+Die Strömungsgeschwindigkeit c beschreibt Fluidteilchen, die *Schallgeschwindigkeit* a die Ausbreitung kleiner Druckstörungen relativ zum Fluid. Kleine Störungen sind näherungsweise isentrop:
+#form[$ a^2=(frac(partial p,partial rho))_s quad a_"ideales Gas"=sqrt(kappa R T) quad "Ma"=c/a $]
+Bei Ma größer als1 liegen die Störungen des gleichförmig bewegten kleinen Körpers im Machkegel hinter ihm; dessen halber Öffnungswinkel erfüllt sinμ=1/"Ma". Reine Hörverzögerung eines entfernten Flugzeugs beweist keinen Überschall: Licht kommt auch bei Unterschall früher an als Schall.
+Für eine stationäre eindimensionale isentrope Gasströmung folgt aus Kontinuität und Energiebilanz die Flächen-Geschwindigkeits-Beziehung:
+#form[$ frac(dif A,A)=("Ma"^2-1)frac(dif c,c) $]
+Untersonisch beschleunigt die Verengung und verzögert die Erweiterung; im Überschall ist es umgekehrt. Eine passend betriebene *Laval-Düse* verbindet einen konvergenten mit einem divergenten Teil und erreicht am engsten Querschnitt Ma1. Der Nachdruck bestimmt den tatsächlichen Betriebszustand; ein kleines Druckverhältnis allein garantiert keinen stoßfreien Überschall im gesamten divergenten Teil.
+In einem Rohr konstanten Querschnitts braucht eine qualitative p-ρ-T-c-Skizze weitere Annahmen. Im stationären adiabaten reibungsbehafteten Unterschallmodell (*Fanno-Strömung*) steigen c und Ma, während p,ρ,T sinken. Im inkompressiblen Modell bleiben bei festem Q und A die mittlere Geschwindigkeit und Dichte konstant; p fällt durch Reibung. Eine eindeutige Temperaturkurve folgt dort erst aus der thermischen Bilanz.
+#note("Heizen im reibungsfreien Rohr", [Das Fragearchiv Q172, Thermodynamikfrage20, nennt bei konstantem Rohrquerschnitt und Erwärmung pauschal p=konstant. Das ist für einen beschleunigten kompressiblen Strom nicht allgemein richtig: Kontinuität liefert ρc=konstant und die reibungsfreie Impulsbilanz p+ρc²=konstant. Damit ändern sich p und c gekoppelt. Konstanter Druck wäre eine zusätzliche Näherung, etwa bei vernachlässigter Impulsänderung.], fill: sand)
+#src[SM PF SS06, Kurzfragen19–21, PDF-S.2/4; SM PF SS00, Kurzfragen13–16, PDF-S.2/4; SM PF WS05/06, Kurzfrage21, PDF-S.2/4; Kurzfragenarchiv Q172, PDF-S.2, TD20. Flächenbeziehung und Heizrohr-Kontrolle eigene Herleitung aus Kontinuität, Impuls und Energie.]
+#hoch(<a-9>, [Kapitelübersicht])
+
+#note("Der Zusammenhang in Kapitel 9", [Hydrostatik liefert ruhende Drücke und Auftrieb. Kontinuität verbindet Querschnitt und Geschwindigkeit, Bernoulli bilanziert mechanische Energie. Rohrwiderstände beschreiben deren Entwertung, Impuls und Drall liefern Kräfte und Momente. Potentialfeld und Grenzschicht verbinden Außenströmung und Wandwirkung; Ähnlichkeit und Machzahl prüfen, ob das gewählte Modell zum konkreten Fall passt.])
 
 #pagebreak(weak: true)
 = Anhang
@@ -1693,6 +3743,11 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [Drei Phasen, extensiv], [$Y=sum_i m_i y_i$], [$Y=V,H,U,S$; alle Phasen einbeziehen, Werte mit demselben Bezug.],
  [Rohrdurchmesser], [$d=sqrt(4 dot(m)v/(pi c))$], [Stationärer Kreisquerschnitt; $v$ aus passendem Stoffmodell; Ergebnis m bei SI-Einheiten.],
  [Starre geschlossene Erwärmung], [$Q=m[(h_2-h_1)-v(p_2-p_1)]$], [Keine weitere Arbeit, äußere Energien unverändert; konstantes $m,V,v$.],
+ [Kritische vdW-Anpassung], [$v_"kr"=3b; a=3p_"kr"v_"kr"^2; R_"fit"=8p_"kr"v_"kr"/(3T_"kr")$], [Rfit ist Modellparameter; Zkrit=3/8, physikalisches R=Rm/M getrennt.],
+ [Berthelot], [$p=R T/(v-b)-a/(T v^2)$], [Einphasige passende Modellwurzel; a,b mit korrekter Massen-/Molbasis.],
+ [Stoffkoeffizienten], [$beta_v=(partial p/partial T)_v/p; chi_T=-1/(v(partial p/partial v)_T)$], [βv in1/K, χT in1/Pa; lokale Ableitungen.],
+ [Koch-Vergleich], [$v=R T/p-A/theta^"2,82"-p^2(B/theta^14+C/theta^"31,6")$], [θ=T/(100K); ausschließlich die Parameter/Einheiten aus2.12.5.],
+
 )
 
 === Formeln zu Kapitel 3 · Energiebilanzen: Erster Hauptsatz
@@ -1744,7 +3799,108 @@ Die Gleichungen sind mit der Zufuhrkonvention formuliert. $W$ und $P_t$ sind pos
  [T-s-Zustandsfläche], [$integral T dif s=Delta u$ bei $dif v=0$; $=Delta h$ bei $dif p=0$], [Gibbs, Gleichgewichtsweg auf Isochore bzw. Isobare.],
  [Carnot], [$eta_C=1-T_K/T_H$], [Reversibler Kreisprozess zwischen zwei konstanten Kelvin-Temperaturen.],
  [Leistungszahlen], [$epsilon_"K"=q_"kalt"/w_"zu"$; $epsilon_"WP"=epsilon_"K"+1$], [Stationärer Kreisprozess, gleiche Systemgrenze und vollständige Bilanz.],
+ [Wärmeexergie], [$E_Q=integral(1-T_"∞"/T_b)delta Q$], [Bei konstantem $T_b$: $(1-T_"∞"/T_b)Q$. Kelvin; Umgebung konstant.],
+ [Stromexergie], [$e=(h-h_"∞")-T_"∞"(s-s_"∞")$], [Stationärer Strom, äußere Energien hier vernachlässigt; $dot(E)=dot(m)e$.],
+ [Geschlossene Exergie], [$e=(u-u_"∞")+p_"∞"(v-v_"∞")-T_"∞"(s-s_"∞")$], [Feste Masse; keine äußere Energieänderung; $E=m e$.],
+ [Äußere Exergie], [$Delta e_"aussen"=(c^2-c_"∞"^2)/2+g(z-z_"∞")$], [Zu beiden Zustandsformeln addieren; SI ergibt J/kg.],
+ [Maximale Nutzabgabe], [$W_"Nutz,rev"=-E$; $P_"rev"=-dot(E)$], [Reversibel zum festgelegten Umgebungszustand; Zufuhrkonvention.],
+ [Zwei Stromzustände, reversibel], [$w_t=Delta h-T_"∞" Delta s$], [Wärme nur bei Umgebungstemperatur; äußere Energieänderungen null.],
+ [Exergieverlust], [$E_"V"=T_"∞" S_"erz"$], [Positiver Verlustbetrag; stationär $dot(E)_"V"=T_"∞"dot(S)_"erz"$.],
+ [Endlicher thermischer Speicher], [$E=m c[Delta T-T_"∞"ln(T_1/T_"∞")]$], [Konstantes $c$, inkompressibel, keine Phasen-/äußere Energieänderung, gleicher Druck; $Delta T=T_1-T_"∞"$.],
  [Fester Stoff], [$u_2-u_1=c Delta T$], [Inkompressibel; $c$ in J/(kg K).],
+)
+
+
+=== Formeln zu Kapitel 5 · Ideales Gas
+#tab(columns: (1.15fr,1.8fr,1.7fr), th([Thema],[Formel],[Voraussetzung / Einheit]),
+ [Gasgleichung], [$p V=m R T=n R_m T$], [Ideales Gas; p absolut, T Kelvin.],
+ [Normvolumen], [$V_n=V(p/p_n)(T_n/T)$], [Gleiche Stoffmenge; Referenz ausdrücklich nennen.],
+ [Polytrope], [$p v^n="konstant"$], [Gleichgewichtszustände; n ist Prozessparameter.],
+ [Polytrope, Arbeit], [$w_v=(p_2v_2-p_1v_1)/(n-1); w_p=n w_v$], [n≠1, quasistatisch bzw. Druckintegral; reale Arbeit zusätzlich j.],
+ [Isotherme Arbeit], [$w_v=R T ln(v_1/v_2); w_p=R T ln(p_2/p_1)$], [Konstantes T; offene und geschlossene Arbeitsform trennen.],
+ [Tankentleerung], [$T/T_0=(m/m_0)^(kappa-1); p/p_0=(m/m_0)^kappa$], [Starr, homogen, adiabat; ideales Gas, konstante Wärmekapazitäten.],
+)
+
+=== Formeln zu Kapitel 6 · Thermische Maschinen
+#tab(columns: (1.15fr,1.8fr,1.7fr), th([Thema],[Formel],[Voraussetzung / Einheit]),
+ [Otto], [$eta=1-epsilon^(1-kappa)$], [Idealer Luftvergleich; epsilon=V_max/V_min.],
+ [Seiliger], [$eta=1-(psi phi^kappa-1)/(epsilon^(kappa-1)(psi-1+kappa psi(phi-1)))$], [Ideale Isentropen, konstantes κ; ψ Druck-, φ Volumensteigerung.],
+ [Diesel], [$eta=1-(phi^kappa-1)/(epsilon^(kappa-1)kappa(phi-1))$], [Isobare Wärmezufuhr; phi Abschneideverhältnis.],
+ [Joule], [$eta=1-(p_1/p_2)^((kappa-1)/kappa)$], [Ideal reversibel; gleicher Druckhub beider Maschinen.],
+ [Joule-Gaskälte], [$epsilon_K=1/(r^((kappa-1)/kappa)-1)$], [Ideale Isentropen, r=pH/pK; kalte Wärmeaufnahme muss möglich sein.],
+ [Absorptionskälte], [$zeta=dot(Q)_0/(dot(Q)_G+P_P)$], [Positive Nutz-/Aufwandsbeträge; Wärme- und Arbeitsantrieb zählen.],
+ [Wirkungsgradkette], [$eta_"eff"=eta_"th" eta_G eta_"mech"$], [Gleiche Energie-/Brennstoffbasis.],
+ [Verdichtergüte], [$eta_("is,V")=(h_(2s)-h_1)/(h_2-h_1)$], [Adiabat, gleiche Enddruckbedingung.],
+ [Spiele pro Zeit], [$f=N/120$], [Viertakt je Zylinder, N in min⁻¹; Zweitakt N/60.],
+ [Regenerativer Stirling], [$abs(W)=m R(T_H-T_K)ln(V_max/V_min)$], [Ideales Gas, zwei Isothermen; idealer Regenerator für Carnot-Wirkungsgrad.],
+ [GuD ohne Zusatzfeuerung], [$eta_"GuD"=eta_G+eta_D eta_K(1-eta_G)$], [Abwärme vollständig bilanziert; Dampf-Nettoanteil und Übertragungsgrad passend definiert.],
+ [Wärmediffusion], [$partial T/partial tau=a nabla^2 T; a=lambda/(rho c)$], [Homogen/isotrop, konstante Stoffwerte, keine Quelle/Strömung.],
+ [Reaktionsarbeit], [$Delta G_m=Delta H_m-T Delta S_m$], [Isotherm/isobar, dieselbe stöchiometrische Basis.],
+ [Zellspannung], [$U_"rev"=-Delta G_m/(z F); abs(P_"el")=U I$], [ΔG J/mol, F C/mol, z Elektronen je Reaktion.],
+ [Zellstrom und Wärme], [$I=z F dot(xi); dot(Q)_"ab"=(U_H-U)I$], [UH=−ΔHm/(zF), gleicher Reaktions-/Wasserbezug.],
+ [Ebene Leitung], [$dot(Q)=lambda A (T_1-T_2)/L$], [Stationär, eindimensional, konstantes λ/A, keine Quelle.],
+)
+
+=== Formeln zu Kapitel 7 · Feuchte Luft
+#tab(columns: (1.15fr,1.8fr,1.7fr), th([Thema],[Formel],[Voraussetzung / Einheit]),
+ [Mischungsentropie], [$Delta S_"Misch"=-n R_m sum_i psi_i ln(psi_i)$], [Vorher getrennte reine ideale Gase, gemeinsames T/p, keine Reaktion.],
+ [Nebelenthalpie], [$h=h_s+(x-x_s)c_W vartheta$], [Flüssigkeitsnebel; Gesamtwasser x, gesättigte Gasphase x_s; Bezug0°C.],
+ [Feuchtegrad], [$Psi=x/x_s; xi_W=x/(1+x)$], [Ψ und φ unterscheiden; Massenanteil auf Gesamtgemisch.],
+ [Befeuchten], [$h_2-h_1=(x_2-x_1)h_W+q$], [Je kg trockene Luft, alles eingesprühte Wasser bleibt im betrachteten Austritt.],
+ [Gasgemisch], [$M=1/(sum xi_i/M_i); R=R_m/M$], [Massenanteile ξ; ideale Mischung.],
+ [Umrechnung], [$xi_i=psi_i M_i/(sum psi_j M_j)$], [Molanteil ψ und Massenanteil ξ.],
+ [Feuchte], [$x=m_W/m_L; phi=p_W/p_s$], [kg Wasser je kg trockene Luft; Gasphase bis Sättigung.],
+ [Partialdruck], [$x=(R_L/R_W)phi p_s/(p-phi p_s)$], [Ideales Gas-Dampf-Gemisch.],
+ [Enthalpie], [$h=c_(p,L) vartheta+x(r_0+c_(p,W)vartheta)$], [0-°C-Bezug; kJ/kg trockene Luft; passende Konstanten.],
+ [Mischen], [$h_M=(sum dot(m)_(L,i)h_i)/(sum dot(m)_(L,i))$], [Ebenso x; stationär, adiabat, gleiche Bezugsmasse.],
+ [Raumlast], [$dot(m)_L(h_"IDA"-h_"SUP")=sum dot(Q)+sum P+sum dot(m)_W h_W$], [Stationär, gleicher Trockenluftstrom; Lastdefinition ohne Doppelzählung.],
+ [Kondensat], [$dot(m)_K=dot(m)_L(x_1-x_2)$], [Feuchteabnahme; Wasserenthalpie in Kühlbilanz beachten.],
+)
+
+=== Formeln zu Kapitel 8 · Verbrennung
+#tab(columns: (1.15fr,1.8fr,1.7fr), th([Thema],[Formel],[Voraussetzung / Einheit]),
+ [Luftverhältnis], [$lambda=L/L_min; L_min=O_min/psi_("O2",L)$], [Gleicher molarer Brennstoffbezug.],
+ [Elementaranalyse], [$n_("O2,min")=c/12+h/4+s/32-o/32$], [kmol O₂ je kg Brennstoff; gerundete Molmassen.],
+ [Heiz-/Brennwert], [$H_o-H_u=m_("W,Produkt")r_0$], [Wassermasse auf denselben Brennstoffbezug normiert.],
+ [Empirischer Heizwert], [$H_u="33,9"c+"121,4"h+"10,5"s-"15,2"o-"2,44"w$], [MT-Näherung, MJ/kg; Massenanteile als Brüche.],
+ [Brennstoffleistung], [$dot(Q)_B=dot(m)_B H_u$], [Heizwert-/Brennwertbasis ausdrücklich angeben.],
+)
+
+=== Formeln zu Kapitel 9 · Strömungsmechanik
+#tab(columns: (1.15fr,1.8fr,1.7fr), th([Thema],[Formel],[Voraussetzung / Einheit]),
+ [Hydrostatik], [$dif p/dif z=-rho g$], [Höhe nach oben, ruhendes Fluid.],
+ [Seitenwand], [$F=rho g A h_S; h_D=h_S+I_S/(A h_S)$], [Vertikale ebene Fläche, freie Oberfläche ohne Überdruck.],
+ [Auftrieb], [$F_A=g integral_V rho(z)dif V$], [Konstant rho: rho g V; verdrängtes Fluidvolumen.],
+ [Atmosphäre, isotherm], [$p=p_0 exp[-g(z-z_0)/(R T)]$], [Hydrostatisch, ideale Luft, konstantes g und T.],
+ [Torricelli], [$c=sqrt(2g Delta z)$], [Großer offener Behälter, freier tieferer Austritt, verlustfrei/quasistationär.],
+ [Laminarer Durchsatz], [$Delta p_V=128 eta L dot(V)/(pi d^4)$], [Voll entwickeltes laminares Kreisrohr, η dynamische Viskosität.],
+ [Rohrreibung], [$Re=c d_h/nu; Delta p_V=lambda(L/d_h)rho c^2/2$], [Darcy-Reibzahl; laminares Kreisrohr lambda=64/Re.],
+ [Einzelverlust], [$Delta p_V=zeta rho c^2/2$], [Jeweils angegebene Bezugsgeschwindigkeit.],
+ [Quadratische Parallele], [$1/sqrt(R_"ers")=sum_i 1/sqrt(R_i)$], [Gleiche Enddrücke; Delta p=R dot(V)^2.],
+ [Pumpenaufnahme], [$P_"el"=dot(m)Y/eta_"ges"$], [Y spezifische mechanische Energiezunahme.],
+ [Impuls], [$sum vec(F)=sum_"aus" dot(m)vec(c)-sum_"ein" dot(m)vec(c)$], [Stationär; Druck-, Gewicht- und Wandkräfte zählen.],
+ [Drall], [$M=dot(m)(r_2c_(u,2)-r_1c_(u,1)); P=M omega$], [Stationär, feste Achse; c_u absoluter Tangentialanteil.],
+ [Modellähnlichkeit], [$Re=c L/nu; "Fr"=c/sqrt(g L); "Ma"=c/a; "St"=f L/c$], [Passende Geometrie, Stoffwerte und dominante Effekte.],
+ [Potential], [$u=partial Phi/partial x; v=partial Phi/partial y$], [Inkompressibel/drehungsfrei: Delta Phi=0, Singularitäten ausschließen.],
+ [Stromfunktion], [$u=partial Psi/partial y; v=-partial Psi/partial x$], [Eben, gleiche Vorzeichenkonvention; Vdot=b abs(Delta Psi).],
+ [Körperkräfte], [$F_W=c_W rho c^2 A/2; F_A=c_A rho c^2 S/2$], [Flächen-/Beiwertdefinition aus Diagramm.],
+ [Plattenreibung], [$F_R=c_F rho c_"∞"^2 A_"benetzt"/2$], [cF auf benetzte Fläche, nicht Darcy-λ; korrekte Grenzschicht-/Rauheitsformel aus9.11.1.],
+ [Laminare Grenzschicht], [$delta approx 5sqrt(nu x/c_"∞"); delta^* approx "1,73"sqrt(nu x/c_"∞")$], [Ebene Platte, ohne Druckgradient, stationär/inkompressibel und unabgelöst.],
+ [Fallende Kugel], [$F_W=3pi eta d c$], [Stokes, Kriechströmung; eta dynamische Viskosität.],
+ [Gleitflug], [$tan gamma=c_W/c_A$], [Stationäres Kräftegleichgewicht; kleine Sinkrate ist anderes Optimum.],
+
+ [Druckbeiwert], [$c_p=(p-p_"∞")/(rho c_"∞"^2/2)$], [Dimensionslos; gleiche Bezugshöhe und freie Anströmung benennen.],
+ [Kritisches Gasdruckverhältnis], [$pi_"krit"=(2/(kappa+1))^(kappa/(kappa-1))$], [Isentroper idealer Ausfluss; für Luftκ1,4 etwa0,5283.],
+ [Kritischer Gasmassenstrom], [$dot(m)_"max"=A p_0 sqrt(kappa/(R T_0))(2/(kappa+1))^((kappa+1)/(2(kappa-1)))$], [p0/T0 Stauzustand; effektive FlächeA; SI-Einheiten.],
+
+ [Kapillarhöhe], [$h=2sigma cos(theta)/(rho g r)$], [Kreisförmige dünne Kapillare; Kontaktwinkel durch Flüssigkeit.],
+ [Dünne Druckhülle], [$sigma_phi=Delta p D/(2s), sigma_z=Delta p D/(4s)$], [Geschlossener dünnwandiger Zylinder; Überdruck.],
+ [Metazentrische Höhe], [$G M=I_"Wasserlinie"/V_"verdrängt"-B G$], [Kleine Neigung, passende Symmetrie; stabil bei GM positiv.],
+ [Rechteckiger Wechselsprung], [$h_2/h_1=(sqrt(1+8"Fr"_1^2)-1)/2$], [Horizontaler Rechteckkanal; hydrostatische Endquerschnitte.],
+ [Schallgeschwindigkeit], [$a^2=(partial p/partial rho)_s, a=sqrt(kappa R T)$], [Zweite Gleichung ideales Gas; T inK.],
+ [Düsenflächenbeziehung], [$dif A/A=("Ma"^2-1)dif c/c$], [Stationär, eindimensional, isentrop.],
+ [Machwinkel], [$sin mu=1/"Ma"$], [Ma größer als1; kleine Störung, gleichförmiges Medium.],
+
 )
 
 #note("Wichtige Zahlen", [
