@@ -1648,23 +1648,32 @@ const pdfNamen = new Map();                      // Blob-Adresse → Dateiname, 
 const pdfDateiname = href => pdfNamen.get(href) || (href.startsWith("blob:") ? "Lernplan Stand " + heuteIso() + ".pdf" : DATA.find(m => m.file === href)?.download || decodeURIComponent(href.split("/").pop()));
 const pdfDateien = new Map();                    // href → File, damit ein zweites Tippen sofort teilen kann
 async function pdfSichern(href, knopf) {
-  const name = pdfDateiname(href), text = knopf.textContent;
+  const name = pdfDateiname(href), text = knopf.dataset.text || knopf.textContent;
   try {
-    if (APP && pdfDateien.has(href)) {
-      try { await navigator.share({ files: [pdfDateien.get(href)] }); } catch {}
-      knopf.textContent = knopf.dataset.text || text; return;
+    let datei = pdfDateien.get(href), blob;
+    if (!datei) {
+      knopf.textContent = "Lädt …";
+      const antwort = await fetch(href);
+      if (!antwort.ok) throw Error("Die PDF konnte nicht geladen werden. Bitte erneut versuchen.");
+      blob = await antwort.blob();
+      datei = typeof File === "function" ? new File([blob], name, { type: "application/pdf" }) : null;
     }
-    knopf.textContent = "Lädt …";
-    const blob = await (await fetch(href)).blob();
-    const datei = typeof File === "function" ? new File([blob], name, { type: "application/pdf" }) : null;
     if (APP && datei && navigator.canShare?.({ files: [datei] })) {
       pdfDateien.set(href, datei);
-      try { await navigator.share({ files: [datei] }); knopf.textContent = text; }
+      // Mit einer fertigen Datei direkt im Klick teilen, ohne vorheriges await.
+      try { await navigator.share({ files: [datei] }); }
       catch (err) {
-        // Nach dem Laden ist das Tippen „verbraucht“: dann einmal erneut tippen lassen
-        if (err.name === "NotAllowedError") { knopf.dataset.text = text; knopf.textContent = "Jetzt sichern"; }
-        else knopf.textContent = text;
+        if (err.name === "NotAllowedError") {
+          knopf.dataset.text = text; knopf.dataset.pdfBereit = href; knopf.textContent = "Jetzt sichern";
+          meldung('Die PDF ist fertig. Tippe auf „Jetzt sichern“, um sie zu teilen oder in Dateien zu speichern.', 6000);
+          return;
+        }
+        if (err.name !== "AbortError") {
+          meldung("Die PDF konnte nicht geteilt werden. Du kannst sie in der Vorschau öffnen.", 6000);
+          pdfOeffnen(href);
+        }
       }
+      delete knopf.dataset.pdfBereit; delete knopf.dataset.text; knopf.textContent = text;
       return;
     }
     if (APP) { knopf.textContent = text; pdfOeffnen(href); return; }
@@ -1673,7 +1682,11 @@ async function pdfSichern(href, knopf) {
     document.body.appendChild(tmp); tmp.click(); tmp.remove();
     setTimeout(() => URL.revokeObjectURL(url), 60000);
     knopf.textContent = text;
-  } catch { knopf.textContent = text; if (!APP) location.href = href; }
+  } catch (err) {
+    delete knopf.dataset.pdfBereit; delete knopf.dataset.text; knopf.textContent = text;
+    meldung(err.message || "Die PDF konnte nicht gesichert werden. Bitte erneut versuchen.", 6000);
+    if (!APP) location.href = href;
+  }
 }
 // Jeder Quellenlink trägt nur die Markierungen seiner Antwort. Auch bei schnellem Schließen oder
 // erneutem Öffnen darf eine ältere PDF-Ladung die aktuelle Ansicht nicht überschreiben.

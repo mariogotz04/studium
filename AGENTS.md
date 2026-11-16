@@ -203,6 +203,11 @@ Nicht direkt in `~/Studium-Webseite` arbeiten: Das Skript überschreibt dort all
 
 ## Änderungsprotokoll
 
+### 16.11.2026 · Wochen-PDF auf dem iPad sichern
+- „Jetzt sichern“ verwendet die bereits erzeugte PDF direkt im Klick, ohne erneuten Build oder Fetch. So bleibt die User-Activation für das Teilen-Menü erhalten. Nach erfolgreichem Teilen oder Abbruch erzeugt ein neuer Export wieder den aktuellen Aufgabenstand.
+- Originale Buttonbeschriftung wiederherstellen; blockiertes Teilen sichtbar melden, bei anderen Share-Fehlern die integrierte Vorschau öffnen. Alte Blob-Dateinamen beim nächsten Export freigeben.
+- `node test_pdf.cjs` reproduziert den bisherigen Fehler und prüft zweiten Tipp, Dateinamen, neuen Export, erneute Blockade, Abbruch, Fehler, Vorschau und Browser-Download. Läuft auch in CI.
+
 ### 12.11.2026 · Hörzusammenfassung entfernt, Verständnisfragen 3 Minuten im Lernplan
 - EPUB-Hörzusammenfassung und Leseansicht entfernt (Marios Wunsch); build.py ohne Hörskript-Abgleich, Hoerskript.md aus allen Modulen nach „Zum Löschen“.
 - Lernplan: Verständnisfragen zählen pauschal 3 Minuten (`VERSTEHEN_MIN` in lernplan.js), Rechenaufgaben mit ihren `minuten:`.

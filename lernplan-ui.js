@@ -206,19 +206,22 @@ function lernplanSeite(woche){
 }
 function lpBlattName(w){const y=Lernplan.kwYear(w);return 'Aufgaben KW '+Lernplan.kw(w)+(y!==Lernplan.kwYear(heuteIso())?' '+y:'')+'.pdf';}
 async function lpBlattPdf(w,knopf){
+ // „Jetzt sichern“ muss die fertige Datei im selben Tipp teilen. Ein erneuter
+ // PDF-Build würde die iPad-User-Activation wieder verbrauchen.
+ if(knopf?.dataset.pdfBereit===lpDatei&&lpExportWoche===w&&pdfDateien.has(lpDatei))return pdfSichern(lpDatei,knopf);
  const p=lpPlan();if(!p)return;const c=lpKatalog(),us=lpWochenEinheiten(p,w).filter(u=>u.type==='aufgaben');
  if(!us.length)return meldung('In dieser Woche sind keine Aufgaben eingeplant.');
- const text=knopf?.textContent;if(knopf){knopf.disabled=true;knopf.textContent='PDF wird erstellt …';}
+ const text=knopf?.textContent;if(knopf){knopf.dataset.text=text;knopf.disabled=true;knopf.textContent='PDF wird erstellt …';}
  try{
   if(!window.LernplanPDF)await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='lernplan-pdf.js'+new URL(document.querySelector('script[src^="lernplan-ui.js"]').src).search;s.onload=resolve;s.onerror=()=>reject(Error('Die PDF-Funktion konnte nicht geladen werden.'));document.head.appendChild(s);});
   const aufgaben=us.map(u=>{const m=LERNEN.find(m=>m.name===u.module),i=(m?.aufgaben||[]).findIndex(x=>x.id===u.targets[0]);if(i<0)return null;const x=m.aufgaben[i];
    return {modul:m.name,blatt:m.ablatt,seite:i,nr:x.nr||i+1,titel:x.t,art:x.art,kapitel:x.k,abschnitt:(lpAufgabe(u,c)||{}).label||'',herkunft:lpHerkunft({herkunft:x.h,vorlage:x.v}),original:x.h==='original',min:aufgabeMinuten(x),schritte:x.s.length,platz:x.platz||0,
     erledigt:lpStand(u,c).done,link:new URL(location.pathname,location.origin).href+'#lernen/'+encodeURIComponent(m.name)+'/aufgabe/'+x.id};}).filter(Boolean);
   const bytes=await LernplanPDF.wochenblatt({week:w,kw:Lernplan.kw(w),aufgaben,base:new URL(location.pathname,location.origin).href});
-  if(lpDatei){URL.revokeObjectURL(lpDatei);pdfDateien.delete(lpDatei);}
+  if(lpDatei){URL.revokeObjectURL(lpDatei);pdfDateien.delete(lpDatei);pdfNamen.delete(lpDatei);}
   const name=lpBlattName(w);lpDatei=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));pdfNamen.set(lpDatei,name);lpExportWoche=w;
   if(APP)await pdfSichern(lpDatei,knopf||document.body);
   else{const a=Object.assign(document.createElement('a'),{href:lpDatei,download:name});a.setAttribute('data-pdf-direkt','');document.body.appendChild(a);a.click();a.remove();}
- }catch(e){console.error(e);meldung(e.message||'Die PDF konnte nicht erzeugt werden.',6000);}finally{if(knopf){knopf.disabled=false;if(knopf.textContent==='PDF wird erstellt …')knopf.textContent=text;}}
+ }catch(e){console.error(e);meldung(e.message||'Die PDF konnte nicht erzeugt werden.',6000);}finally{if(knopf){knopf.disabled=false;if(!knopf.dataset.pdfBereit){delete knopf.dataset.text;knopf.textContent=text;}}}
 }
 document.addEventListener('click',e=>{const b=e.target.closest?.('[data-lp-blatt]');if(b){e.preventDefault();lpBlattPdf(b.dataset.lpBlatt,b);}});
